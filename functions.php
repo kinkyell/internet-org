@@ -5,6 +5,19 @@
  * @package Internet.org
  */
 
+// PLUGIN INCLUSION
+wpcom_vip_load_plugin( 'babble', 'internet_org-plugins' );
+wpcom_vip_load_plugin( 'fieldmanager' );
+wpcom_vip_load_plugin( 'wp-google-analytics' );
+wpcom_vip_load_plugin( 'responsive-images' );
+wpcom_vip_load_plugin( 'cache-nav-menus' );
+wpcom_vip_load_plugin( 'facebook' );
+wpcom_vip_load_plugin( 'lazy-load' );
+
+// Not sure how to include this one yet, need to work with VIP team
+// wpcom_vip_load_plugin( 'vip-search-add-on' );
+
+
 if ( ! function_exists( 'internet_org_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
