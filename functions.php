@@ -5,6 +5,24 @@
  * @package Internet.org
  */
 
+if (!function_exists('wpcom_vip_load_plugin')) {
+    function wpcom_vip_load_plugin( $plugin, $domain = '' ) {
+        if ( empty( $domain ) ) {
+            $domain = 'plugins';
+        }
+
+        $domain_path = realpath( '../' . sanitize_file_name( $domain ) );
+
+        $clean_plugin_name = sanitize_file_name( $plugin );
+
+        $plugin_file = trailingslashit( trailingslashit($domain_path) ) . $clean_plugin_name . '/' . $clean_plugin_name . '.php';
+
+        if (file_exists( $plugin_file ) ) {
+            require_once( $plugin_file );
+        }
+    }
+}
+
 // PLUGIN INCLUSION
 wpcom_vip_load_plugin( 'babble', 'internet_org-plugins' );
 wpcom_vip_load_plugin( 'fieldmanager' );
@@ -13,6 +31,8 @@ wpcom_vip_load_plugin( 'responsive-images' );
 wpcom_vip_load_plugin( 'cache-nav-menus' );
 wpcom_vip_load_plugin( 'facebook' );
 wpcom_vip_load_plugin( 'lazy-load' );
+
+
 
 // Not sure how to include this one yet, need to work with VIP team
 // wpcom_vip_load_plugin( 'vip-search-add-on' );

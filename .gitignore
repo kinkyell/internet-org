@@ -1,2 +1,12 @@
-README
+.idea
+.projects
+.htaccess
+wp-content/uploads
+wp-content/debug.log
+robots.txt
+
+wp-config.php
+
+.DS_Store
+._*
 
