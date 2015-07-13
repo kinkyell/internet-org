@@ -1,0 +1,37 @@
+//----------------------------------------------------------------------
+// Utilities
+//----------------------------------------------------------------------
+@mixin isVisuallyHidden() {
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    border: 0;
+    position: absolute;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+@mixin isHidden() {
+    display: none;
+}
+
+@mixin clearfix() {
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+.u-isHidden {
+    @include isHidden();
+}
+
+.u-isVisuallyHidden {
+    @include isHidden();
+}
