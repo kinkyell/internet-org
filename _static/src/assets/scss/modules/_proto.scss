@@ -1,0 +1,38 @@
+/* ---------------------------------------------------------------------
+ Stage
+------------------------------------------------------------------------ */
+
+/* ---------------------------------------------------------------------
+ Stage
+------------------------------------------------------------------------ */
+.stage {
+    width: 100vw;
+    height: 100vh;
+}
+
+.stage-panel {
+    width: 100vw;
+    height: 100vh;
+}
+
+/* ---------------------------------------------------------------------
+ Narrative
+------------------------------------------------------------------------ */
+.narrative {
+    width: 100vw;
+    height: 100vh;
+}
+
+.narrative-section {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(http://placehold.it/400x700);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.narrative-section-bd {
+    height: 40vh;
+    padding: 24px;
+    background-color: #efede5;
+}
