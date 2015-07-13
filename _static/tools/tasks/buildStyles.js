@@ -2,6 +2,8 @@
 'use strict';
 
 module.exports = function(grunt) {
+    var identity = function(input) { return input; };
+
     grunt.config.merge({
         sass: {
             buildStyles: {
@@ -13,14 +15,29 @@ module.exports = function(grunt) {
                     ext: '.css'
                 }],
                 options: {
-                    outputStyle: (grunt.option('prod') ? 'compressed' : 'nested')
+                outputStyle: (grunt.option('prod') ? 'compressed' : 'nested')
                 }
+            }
+        },
+
+        postcss: {
+            options: {
+                processors: [
+                    require('pixrem')(), // add fallbacks for rem units
+                    require('autoprefixer-core')({
+                        browsers: ['ie >= 9', 'iOS >= 7', 'Safari >= 7', 'Android >= 4', 'last 2 versions']
+                    }), // add vendor prefixes
+                ].filter(identity)
+            },
+            buildStyles: {
+                src: '<%= env.DIR_DEST %>/assets/styles/*.css'
             }
         }
 
     });
 
     grunt.registerTask('buildStyles', [
-        'sass:buildStyles'
+        'sass:buildStyles',
+        'postcss:buildStyles'
     ]);
 };
