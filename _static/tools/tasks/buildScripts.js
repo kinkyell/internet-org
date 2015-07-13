@@ -109,12 +109,27 @@ module.exports = function(grunt) {
                 }
             },
             buildScripts: ['<%= env.DIR_SRC %>/**/*.hbs']
+        },
+
+        // builds custom modernizr script with opt-in format
+        modernizr: {
+            buildScripts: {
+                devFile: 'remote',
+                outputFile: '<%= env.DIR_SRC %>/assets/scripts/modernizr.build.js',
+                parseFiles: false,
+                uglify: false,
+
+                // full set of tests here:
+                // https://github.com/Modernizr/modernizr.com/blob/gh-pages/i/js/modulizr.js#L15-157
+                tests: grunt.file.readJSON('modernizr-tests.json').tests
+            }
         }
     });
 
     grunt.registerTask('buildScripts',
         shouldMinify
             ? [
+                'modernizr:buildScripts:bust',
                 'copy:buildScripts',
                 'requirejs:buildScripts',
                 'useminPrepare:buildScripts',
@@ -122,6 +137,7 @@ module.exports = function(grunt) {
                 'uglify:generated'
             ]
             : [
+                'modernizr:buildScripts',
                 'copy:buildScripts'
             ]
     );
