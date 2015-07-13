@@ -11,15 +11,27 @@
 @import "base/_elements";
 
 /* ---------------------------------------------------------------------
- Objects
+ Objects: layout
 ------------------------------------------------------------------------ */
-@import "objects/_btn";
 @import "objects/_container";
 @import "objects/_grid";
-@import "objects/_hdg";
-@import "objects/_media";
-@import "objects/_narrative";
-@import "objects/_quarentine";
 @import "objects/_site";
 @import "objects/_stage";
 @import "objects/_vr";
+
+/* ---------------------------------------------------------------------
+ Objects: repeaters
+------------------------------------------------------------------------ */
+@import "objects/_media";
+
+/* ---------------------------------------------------------------------
+ Objects: typography
+------------------------------------------------------------------------ */
+@import "objects/_hdg";
+
+/* ---------------------------------------------------------------------
+ Objects: modules
+------------------------------------------------------------------------ */
+@import "objects/_btn";
+@import "objects/_narrative";
+@import "objects/_quarentine";
