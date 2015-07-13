@@ -2,7 +2,7 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     var $ = require('jquery');
-    var Scroll = require('../../vendor/scroll/Scroll');
+    var Scroll = {};//require('scroll');
 
     var CONFIG = {};
 

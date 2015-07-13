@@ -37,6 +37,7 @@ require.config({
         // bower modules automatically. Otherwise it defaults to double quotes.
         requirejs: '../vendor/requirejs/require',
         jquery: '../vendor/jquery/jquery',
+        scroll: '../vendor/scroll/Scroll'
     },
 
     shim: {

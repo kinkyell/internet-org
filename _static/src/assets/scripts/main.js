@@ -6,6 +6,11 @@
 // RequireJS syntax is used here to specify dependencies. Do not use this
 // syntax in any other modules.
 
+define('jquery', function() {
+    'use strict';
+    return window.jQuery;
+});
+
 /**
  * Bootstrap.
  */
@@ -18,7 +23,7 @@ require(
     ) {
         'use strict';
 
-        
+
         window.app = new App();
     }
 );
