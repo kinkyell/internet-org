@@ -1,0 +1,17 @@
+/* ---------------------------------------------------------------------
+Media
+
+Common media layout construct
+------------------------------------------------------------------------ */
+.media {
+    overflow: hidden; /* clear floated children */
+}
+
+.media-figure {
+    float:left;
+    margin: 0 10px 0 0;
+}
+
+.media-bd {
+    overflow: hidden; /* trigger block formatting context */
+}

@@ -1,0 +1,37 @@
+/* ---------------------------------------------------------------------
+ Hdg
+
+ heading styles
+------------------------------------------------------------------------ */
+.hdg {
+    color: $COLOR_BLACK;
+}
+
+.hdg_1 {
+    font-size: 30px;
+}
+
+.hdg_2 {
+    font-size: 24px;
+}
+
+.hdg_3 {
+    font-size: 18px;
+}
+
+.hdg_4 {
+    font-size: 14px;
+    letter-spacing: 5px;
+}
+
+.hdg_5 {
+    font-size: 12px;
+}
+
+.mix-hdg_white {
+    color: $COLOR_WHITE;
+}
+
+.mix-hdg_bold {
+    font-weight: bold;
+}
