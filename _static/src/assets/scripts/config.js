@@ -38,7 +38,8 @@ require.config({
         requirejs: '../vendor/requirejs/require',
         jquery: '../vendor/jquery/jquery',
         scroll: '../vendor/scroll/Scroll',
-        stark: '../vendor/starkjs/dist/amd'
+        stark: '../vendor/starkjs/dist/amd',
+        promise: '../vendor/es6-promise/promise'
     },
 
     shim: {
