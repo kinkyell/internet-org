@@ -1,6 +1,7 @@
 define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
+    var Modernizr = require('modernizr');
     var PanelView = require('views/PanelView');
 
     // polyfill promises
@@ -39,7 +40,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._cutsTheMustard = function() {
-        if (typeof Object.getPrototypeOf !== 'function') {
+        if (
+            (typeof Object.getPrototypeOf !== 'function')
+        ) {
             return false;
         }
 

@@ -42,7 +42,16 @@ require.config({
         promise: '../vendor/es6-promise/promise'
     },
 
+    map: {
+        '*': {
+            'modernizr': 'modernizr.build'
+        }
+    },
+
     shim: {
+        'modernizr.build': {
+            exports: 'Modernizr'
+        }
     },
 
     waitSeconds: 120
