@@ -1,0 +1,28 @@
+{
+  "name": "stark",
+  "version": "0.0.8",
+  "homepage": "https://github.com/nickstark/stark",
+  "authors": [
+    "Nick Stark <dev.nickstark@gmail.com>"
+  ],
+  "description": "Modular, reusable utilities",
+  "license": "MIT",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "demo.*"
+  ],
+  "_release": "0.0.8",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.8",
+    "commit": "11c5d26f031fdf5db0aa1f00bc2f02983c286008"
+  },
+  "_source": "git://github.com/nickstark/stark.git",
+  "_target": "~0.0.7",
+  "_originalSource": "starkjs"
+}
