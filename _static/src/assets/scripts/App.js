@@ -1,12 +1,19 @@
 define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
-    var Modernizr = require('modernizr');
-    var PanelView = require('views/PanelView');
-
     // polyfill promises
     var ES6Promise = require('promise');
     ES6Promise.polyfill();
+
+    require('modernizr');
+    require('services/apiService');
+
+    var PanelView = require('views/PanelView');
+
+    // TODO: Setup modules
+    //     - Asset Loader
+    //     - API Service
+    //     - Router
 
     /**
      * Initial application setup. Runs once upon every page load.
