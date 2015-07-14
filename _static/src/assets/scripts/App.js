@@ -3,7 +3,9 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var PanelView = require('views/PanelView');
 
-    console.log(require('appConfig'))
+    // polyfill promises
+    var ES6Promise = require('promise');
+    ES6Promise.polyfill();
 
     /**
      * Initial application setup. Runs once upon every page load.
