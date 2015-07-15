@@ -80,6 +80,26 @@ define(function(require, exports, module) { // jshint ignore:line
         eventHub.publish('Router:stateChange', this._currentStates);
     };
 
+    /**
+     * Get all current states
+     *
+     * @method getActiveStates
+     * @returns {Array} A list of the currently active states (history)
+     */
+    Router.prototype.getActiveStates = function(event) {
+        return this._currentStates.slice(0);
+    };
+
+    /**
+     * Get top state
+     *
+     * @method getTopState
+     * @returns {String} The top state identifier
+     */
+    Router.prototype.getTopState = function(event) {
+        return this._currentStates[this._currentStates.length - 1];
+    };
+
     return Router;
 
 });
