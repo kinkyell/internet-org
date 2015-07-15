@@ -9,6 +9,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var FallbackHistoryManager = require('util/history/FallbackHistoryManager');
 
     var ROUTER_LINK_SELECTOR = '.js-stateLink';
+    var STATE_CHANGE_EVENT = 'Router:stateChange';
 
     /**
      * Manages the stack of active states
@@ -63,7 +64,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     Router.prototype._onPopState = function(state) {
         this._currentStates = state || [];
-        eventHub.publish('Router:stateChange', this._currentStates);
+        eventHub.publish(STATE_CHANGE_EVENT, this._currentStates);
     };
 
     /**
@@ -77,7 +78,7 @@ define(function(require, exports, module) { // jshint ignore:line
         event.preventDefault();
         this._currentStates.push(event.currentTarget.pathname);
         this.historyManager.pushState(this._currentStates, null, event.currentTarget.pathname);
-        eventHub.publish('Router:stateChange', this._currentStates);
+        eventHub.publish(STATE_CHANGE_EVENT, this._currentStates);
     };
 
     /**
@@ -98,6 +99,19 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     Router.prototype.getTopState = function(event) {
         return this._currentStates[this._currentStates.length - 1];
+    };
+
+    /**
+     * Navigate to route
+     *
+     * @method navigateTo
+     * @returns {String} The top state identifier
+     */
+    Router.prototype.navigateTo = function(stateName, silent) {
+        this._currentStates.push(stateName);
+        if (!silent) {
+            eventHub.publish(STATE_CHANGE_EVENT, this._currentStates);
+        }
     };
 
     return Router;
