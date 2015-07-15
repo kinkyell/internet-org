@@ -6,27 +6,24 @@
 define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
-    // Class name references
+    var ClassDict = require('util/ClassDict');
+
+    // Global Class name references
     //
     // NOTE: Do NOT include the '.' before the classname. This will be added
     // to the object with a _SELECTOR suffix.
     //
-    // Ex. EXAMPLE_CLASS === 'className', EXAMPLE_CLASS_SELECTOR === '.className'
+    // NOTE: Only include global classes here. If it's specific to a view,
+    // create a ClassDict in the view itself
+    //
     var classes = {
         EXAMPLE_CLASS: 'className'
     };
 
-    // add all _SELECTOR varieties
-    for (var className in classes) {
-        if (classes.hasOwnProperty(className) && !classes[className + '_SELECTOR']) {
-            classes[className + '_SELECTOR'] = '.' + classes[className];
-        }
-    }
-
 
     // Additional Variables
     var appConfig = {
-        classes: classes,
+        classes: new ClassDict(classes),
         apiBase: 'http://localhost'
     };
 

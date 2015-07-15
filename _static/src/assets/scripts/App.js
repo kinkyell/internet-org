@@ -8,11 +8,12 @@ define(function(require, exports, module) { // jshint ignore:line
     require('modernizr');
     require('services/apiService');
 
-    var PanelView = require('views/PanelView');
+    var Router = require('services/Router');
+
+    //var PanelView = require('views/PanelView');
 
     // TODO: Setup modules
     //     - Asset Loader
-    //     - API Service
     //     - Router
 
     /**
@@ -37,7 +38,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto.init = function() {
-        this.panelView = new PanelView();
+        //this.panelView = new PanelView();
+        this.router = new Router();
     };
 
     /**
