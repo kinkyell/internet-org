@@ -1,0 +1,33 @@
+/* ---------------------------------------------------------------------
+ 12 Column Grid
+------------------------------------------------------------------------ */
+.grid:before,
+.grid:after {
+   content: " ";
+   display: table;
+}
+
+.grid:after {
+    clear: both;
+}
+
+.grid-col {
+    float: left;
+}
+
+.grid-col + .grid-col {
+    margin-left: 2.127663%;
+}
+
+.grid-col_1of12 { width: 6.382989%; }
+.grid-col_2of12 { width: 14.893641%; }
+.grid-col_3of12 { width: 23.404293%; }
+.grid-col_4of12 { width: 31.914945%; }
+.grid-col_5of12 { width: 40.425597%; }
+.grid-col_6of12 { width: 48.936249%; }
+.grid-col_7of12 { width: 57.446901%; }
+.grid-col_8of12 { width: 65.957553%; }
+.grid-col_9of12 { width: 74.468205%; }
+.grid-col_10of12 { width: 82.978857%; }
+.grid-col_11of12 { width: 91.489509%; }
+.grid-col_12of12 { width: 100%; }
