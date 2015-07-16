@@ -13,25 +13,25 @@
 /* ---------------------------------------------------------------------
  Objects: layout
 ------------------------------------------------------------------------ */
-@import "objects/_container";
-@import "objects/_grid";
-@import "objects/_site";
-@import "objects/_stage";
-@import "objects/_vr";
+@import "objects/layout/_container";
+@import "objects/layout/_grid";
+@import "objects/layout/_site";
+@import "objects/layout/_stage";
+@import "objects/layout/_vr";
 
 /* ---------------------------------------------------------------------
  Objects: repeaters
 ------------------------------------------------------------------------ */
-@import "objects/_media";
+@import "objects/repeaters/_media";
 
 /* ---------------------------------------------------------------------
  Objects: typography
 ------------------------------------------------------------------------ */
-@import "objects/_hdg";
+@import "objects/typography/_hdg";
 
 /* ---------------------------------------------------------------------
  Objects: modules
 ------------------------------------------------------------------------ */
-@import "objects/_btn";
-@import "objects/_narrative";
-@import "objects/_quarentine";
+@import "objects/modules/_btn";
+@import "objects/modules/_narrative";
+@import "objects/modules/_quarentine";
