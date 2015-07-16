@@ -17,10 +17,27 @@ module.exports = function(grunt) {
                     dest: '<%= env.DIR_DEST %>'
                 }]
             }
+        },
+
+        grunticon: {
+            buildStatic: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= env.DIR_SRC %>/assets/media/images/icons',
+                    src: ['*.svg', '*.png'],
+                    dest: '<%= env.DIR_DEST %>/assets/media/images/icons'
+                }],
+                options: {
+                    enhanceSVG: true,
+                    cssprefix: '.icon-',
+                    compressPNG: grunt.option('prod')
+                }
+            }
         }
     });
 
     grunt.registerTask('buildStatic', [
         'copy:buildStatic',
+        'grunticon:buildStatic'
     ]);
 };

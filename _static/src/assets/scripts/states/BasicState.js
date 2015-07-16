@@ -6,16 +6,16 @@ define(function(require, exports, module) { // jshint ignore:line
     /**
      * Manages the stack of active states
      *
-     * @class ExampleState
+     * @class BasicState
      * @constructor
      */
-    var ExampleState = function() {
+    var BasicState = function() {
         AbstractState.call(this);
     };
 
-    ExampleState.prototype = Object.create(AbstractState.prototype);
-    ExampleState.prototype.constructor = ExampleState;
+    BasicState.prototype = Object.create(AbstractState.prototype);
+    BasicState.prototype.constructor = BasicState;
 
-    return ExampleState;
+    return BasicState;
 
 });
