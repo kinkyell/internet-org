@@ -1,7 +1,12 @@
 /* ---------------------------------------------------------------------
- Modern Styles
+ Stage
 ------------------------------------------------------------------------ */
-@import "base/_reset";
-@import "base/_elements";
+.stage {
+    width: 100vw;
+    height: 100vh;
+}
 
-//@import "modules/_proto";
+.stage-panel {
+    width: 100vw;
+    height: 100vh;
+}

@@ -9,7 +9,7 @@
     padding: 16px;
     border: 0;
     box-sizing: border-box;
-    background-color: $COLOR_BLUE;
+    background-color: red; //replace with color
     color: #eeeeee; /* fallback for non rgba browsers */
     color: rgba(255,255,255,.9);
     font-weight: bold;
@@ -39,13 +39,13 @@
 
 .mix-btn_glass {
     background-color: transparent;
-    border: 1px solid $COLOR_WHITE_ALPHA;
+    border: 1px solid red;
 }
 
 .mix-btn_glass:hover {
-    background-color: $COLOR_LIGHT_BLUE;
+    background-color: red;
 }
 
 .mix-btn_light {
-    background-color: $COLOR_LIGHT_BLUE;
+    background-color: red;
 }
