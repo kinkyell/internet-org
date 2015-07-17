@@ -2,6 +2,83 @@
 
 > internet.org website
 
+## Project Info
+
+- Name: Facebook Internet.org
+- Client: Fantasy Interactive
+- [Project Page](https://mainframe.nerdery.com/new_edit_project_admin.php?id=19277)
+- [Systems Info](https://mainframe.nerdery.com/client.php?id=FI#tab_systems)
+
+### Client-side developers
+
+- Jason Dicks [L]     (07/13/2015 - )
+- Nick Stark          (07/13/2015 - )
+- Patrick Jannette    (07/20/2015 - )
+
+### Browser support
+
+> Autoprefixer via PostCSS is being used to provide vendor prefixes.
+
+#### Desktop
+| Browser           | Version       | Type   | Testing OS   | Support     |
+|-------------------|---------------|--------|--------------|-------------|
+| Chrome            | Auto Updating | CS     | OS X 10.10.X | FULL        |
+| Firefox           | Auto-Updating | CS     | OS X 10.10.X | FULL        |
+| Safari            | 7             | Legacy | OS X 10.9.X  | Progressive |
+| Sarari            | 8             | CS     | OS X 10.10.X | FULL        |
+| Internet Explorer | 11            | CS     | Windows 7    | FULL        |
+| Internet Explorer | 10            | CS     | Windows 8    | FULL        |
+
+#### Mobile
+| Manufacturer     | Device        | OS / Version                                                     | Support | Browser |
+|----------------- |---------------|------------------------------------------------------------------|---------|---------|
+| Apple            | iPhone 4      | iOS 7.1.2                                                        | Full    | Safari  |
+| Apple            | iPad 2        | iOS 7.1.2                                                        | Full    | Safari  |
+| Apple            | iPhone5       | iOS 8.3 (Previous version to the CS version when testing begins) | Full    | Safari  |
+| Apple            | iPad Mini     | iOS 8.3 (Previous version to the CS version when testing begins) | Full    | Safari  |
+| Apple            | iPhone 6      | iOS 8.4 (CS version when testing begins)                         | Full    | Safari  |
+| Apple            | iPad3         | iOS 8.4 (CS version when testing begins)                         | Full    | Safari  |
+| HTC              | HTC One       | Android 4.1.2                                                    | Full    | Default |
+| Google/LG        | Nexus 4       | Android 4.2.2                                                    | Full    | Default |
+| Samsung          | Galaxy Note 2 | Android 4.4.2                                                    | Full    | Chrome  |
+| Motorola         | Moto G        | Android 4.4.4                                                    | Full    | Chrom   |
+| Samsung          | Galaxy S6     | Android 5.0.2                                                    | Full    | Chrome  |
+
+
+
+## Project Methodologies
+
+### Icons
+
+Icons are created using Grunticon. SVG images in the icons folder will be coverted
+into data urls and png fallbacks.
+
+
+
+
+
+
+## Project Resources
+
+### How to deploy to staging environment
+
+TODO: Fill this in once set up (git hooks, what server, etc.)
+
+### How to deploy to production environment
+
+TODO: Fill this in once set up (git hooks, what server, etc.)
+
+
+
+
+
+TODO: More info
+- Grunt tasks
+- How to build a view/state
+- special tool selection
+    - modernizr-tests.json file
+
+
 ## Installation
 
 ### Step One - Install Node.js
