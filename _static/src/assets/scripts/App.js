@@ -14,6 +14,11 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var Router = require('services/Router');
 
+    var AbstractView = require('views/AbstractView');
+    var MenuView = require('views/MenuView');
+
+    window.menu = new MenuView($('body'));
+
     //var PanelView = require('views/PanelView');
 
     // TODO: Setup modules
