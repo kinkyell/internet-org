@@ -6,7 +6,7 @@
 
 ### Step One - Install Node.js
 
-Installation of Node.js is a prerequisite to running the Grunt build tool. Run the `node-install` scripts below to install everything you need to get started: Node.js, grunt-cli, and bower. 
+Installation of Node.js is a prerequisite to running the Grunt build tool. Run the `node-install` scripts below to install everything you need to get started: Node.js, grunt-cli, and bower.
 
 **Windows:**
 
@@ -37,16 +37,16 @@ Installation of Node.js is a prerequisite to running the Grunt build tool. Run t
 
 Grunt will expect a file called `build-env.js` in the project root. This contains environment-specific settings for the build process in much the same way as an .htaccess file, web.config, etc.
 
-1. Copy the `build-env.js.dist` file in the root of your project to `build-env.js`. 
-1. Edit entries in this file to tailor the build process. Normally, you do not need to modify the settings in this file unless you want to change the built output paths. 
+1. Copy the `build-env.js.dist` file in the root of your project to `build-env.js`.
+1. Edit entries in this file to tailor the build process. Normally, you do not need to modify the settings in this file unless you want to change the built output paths.
 
 
 ### Step Three - Add grunt plugins
 
-A baseline set of Grunt build tasks are included which will work for most projects out-of-the-box. Beyond that, there are hundreds of additional Grunt plugins available which can run additional tasks that may be useful for your project. 
+A baseline set of Grunt build tasks are included which will work for most projects out-of-the-box. Beyond that, there are hundreds of additional Grunt plugins available which can run additional tasks that may be useful for your project.
 
 1. (Optional) Add a new line for each Grunt plugin you want to add to `package.json` in the project root.
-1. On the command line, navigate to the root directory of the project and enter the following. 
+1. On the command line, navigate to the root directory of the project and enter the following.
 
         npm install
 
@@ -54,14 +54,14 @@ A baseline set of Grunt build tasks are included which will work for most projec
 
 
 ### Step Four - Add bower libraries
-Add 3rd-party libraries to your project using bower. 
+Add 3rd-party libraries to your project using bower.
 
 1. (Optional) Add a new line for each third-party library you want to `bower.json` in the project root
 1. On the command line, navigate to the root directory of the project and enter the following. This will scan the file `bower.json` and download each library into the directory `/src/assets/vendor`.
 
         bower install
 
-1. Commit the new libraries created under `src/assets/vendor` to source control. 
+1. Commit the new libraries created under `src/assets/vendor` to source control.
 1. (Optional) Run the following command to inject into your code a reference to all libraries found in `bower.json`. If you're using RequireJS, a new entry for each library will be added to  `/src/assets/scripts/config.js`. Otherwise, script tags will be added `/src/index.html`.
 
         grunt inject
@@ -96,6 +96,28 @@ _Use this method only when developing locally, do not use this method on shared 
 
 ## Documentation
 
+### CSS Organization Structure
+
+Layout:
+Concerned with high-level separation, positioning & spacing
+EX: grid, vr, site, container
+
+Module:
+Functional grouping of items forming a reusable construct.
+EX: blurb
+
+Repeater:
+Repeating module-level layout patterns
+EX: media, feature, hlist, vlist
+
+Item:
+Smallest object type, generally contains no child objects
+EX: btn, cta, icn, etc..
+
+Typography:
+Type on the web deserves special care which is why all type-related objects can be found here.
+EX: hdg, txt, etc..
+
 
 ## Usage
 
@@ -122,7 +144,7 @@ _Use this method only when developing locally, do not use this method on shared 
             /vendor                         /* Third-party libraries. Bower outputs here by default */
         /templates                          /* Markup templates */
         index.html                          /* Index page */
-    
+
     /tools
         /cache                              /* Nerdery-created bower modules */
         /tasks                              /* Config files for each grunt task */
@@ -136,7 +158,7 @@ _Use this method only when developing locally, do not use this method on shared 
         node-standalone-install.sh          /* Mac/Linux bundled executable for node+bower+grunt */
         node-standalone-uninstall.sh        /* Mac/Linux bundled executable uninstall for node+bower+grunt */
         npm-postinstall.js                  /* Copies local Nerdery modules to node_modules */
-    
+
     .bowerrc                                /* bower configuration */
     .editorconfig                           /* IDE style rules (see editorconfig.org) */
     .gitattributes                          /* Settings for Git source control */
@@ -153,7 +175,7 @@ _Use this method only when developing locally, do not use this method on shared 
     README.md                               /* Steps for building the application */
 
 ### Build output
-    
+
  * THESE FILES ARE GENERATED BY AN AUTOMATED TOOL.
  * DO NOT MODIFY DIRECTLY. INSTEAD, MODIFY THE APPROPRIATE SOURCE CODE.
  * IN GENERAL, DO NOT COMMIT TO SOURCE CONTROL
