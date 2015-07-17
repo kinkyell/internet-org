@@ -39,12 +39,17 @@ require.config({
         jquery: '../vendor/jquery/jquery',
         scroll: '../vendor/scroll/Scroll',
         stark: '../vendor/starkjs/dist/amd',
-        promise: '../vendor/es6-promise/promise'
+        promise: '../vendor/es6-promise/promise',
+        'gsap-cssPlugin': '../vendor/gsap/src/uncompressed/plugins/CSSPlugin',
+        'gsap-tween': '../vendor/gsap/src/uncompressed/TweenLite',
+        'gsap-timeline': '../vendor/gsap/src/uncompressed/TimelineLite'
     },
 
     map: {
         '*': {
-            'modernizr': 'modernizr.build'
+            'modernizr': 'modernizr.build',
+            'TweenLite': 'gsap-tween',
+            'TimelineLite': 'gsap-timeline'
         }
     },
 
