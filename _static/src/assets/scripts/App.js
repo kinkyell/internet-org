@@ -8,6 +8,10 @@ define(function(require, exports, module) { // jshint ignore:line
     require('modernizr');
     require('services/apiService');
 
+    require('gsap-timeline')
+
+    window.assetLoader = require('services/assetLoader')
+
     var Router = require('services/Router');
 
     //var PanelView = require('views/PanelView');
