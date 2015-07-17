@@ -8,5 +8,7 @@
     "jquery": "components/jquery#1.11.0",
     "nerdery-function-bind": "./tools/cache/nerdery-function-bind"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "gsap": "~1.17.0"
+  }
 }
