@@ -62,8 +62,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     Router.prototype._onPopState = function(state) {
+        var prevStates = this._currentStates.slice(0);
         this._currentStates = state || [];
-        eventHub.publish('Router:stateChange', this._currentStates);
+        eventHub.publish('Router:stateChange', this._currentStates, prevStates);
     };
 
     /**
@@ -74,10 +75,11 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     Router.prototype._onStateTrigger = function(event) {
+        var prevStates = this._currentStates.slice(0);
         event.preventDefault();
         this._currentStates.push(event.currentTarget.pathname);
         this.historyManager.pushState(this._currentStates, null, event.currentTarget.pathname);
-        eventHub.publish('Router:stateChange', this._currentStates);
+        eventHub.publish('Router:stateChange', this._currentStates, prevStates);
     };
 
     /**
@@ -107,9 +109,10 @@ define(function(require, exports, module) { // jshint ignore:line
      * @returns {String} The top state identifier
      */
     Router.prototype.navigateTo = function(stateName, silent) {
+        var prevStates = this._currentStates.slice(0);
         this._currentStates.push(stateName);
         if (!silent) {
-            eventHub.publish('Router:stateChange', this._currentStates);
+            eventHub.publish('Router:stateChange', this._currentStates, prevStates);
         }
     };
 
