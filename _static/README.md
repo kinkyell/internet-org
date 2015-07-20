@@ -98,25 +98,25 @@ _Use this method only when developing locally, do not use this method on shared 
 
 ### CSS Organization Structure
 
-Layout:
+#### Layout:
 Concerned with high-level separation, positioning & spacing
-EX: grid, vr, site, container
+*EX: grid, vr, site, container*
 
-Module:
+#### Module:
 Functional grouping of items forming a reusable construct.
-EX: blurb
+*EX: blurb*
 
-Repeater:
+#### Repeater:
 Repeating module-level layout patterns
-EX: media, feature, hlist, vlist
+*EX: media, feature, hlist, vlist*
 
-Item:
+#### Item:
 Smallest object type, generally contains no child objects
-EX: btn, cta, icn, etc..
+*EX: btn, cta, icn, etc..*
 
 Typography:
 Type on the web deserves special care which is why all type-related objects can be found here.
-EX: hdg, txt, etc..
+*EX: hdg, txt, etc..*
 
 
 ## Usage
