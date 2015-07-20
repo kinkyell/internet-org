@@ -56,6 +56,9 @@ require.config({
     shim: {
         'modernizr.build': {
             exports: 'Modernizr'
+        },
+        'gsap-tween': {
+            exports: 'TweenLite'
         }
     },
 

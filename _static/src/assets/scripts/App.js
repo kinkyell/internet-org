@@ -8,6 +8,7 @@ define(function(require, exports, module) { // jshint ignore:line
     require('modernizr');
     require('services/apiService');
 
+    require('gsap-cssPlugin');
     require('gsap-timeline')
 
     window.assetLoader = require('services/assetLoader')
@@ -17,7 +18,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var AbstractView = require('views/AbstractView');
     var MenuView = require('views/MenuView');
     var StateStack = require('services/StateStack');
-    var BasicState = require('states/BasicState');
+    var PanelState = require('states/PanelState');
 
     var eventHub = require('services/eventHub');
 
@@ -94,7 +95,7 @@ define(function(require, exports, module) { // jshint ignore:line
         if (states.length > previousStates.length) {
             // navigating forward
             console.log('forward', states[states.length - 1]);
-            this.states.push(BasicState, {
+            this.states.push(PanelState, {
                 stateName: states[states.length - 1]
             });
         } else {
