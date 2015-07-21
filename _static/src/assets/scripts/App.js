@@ -22,7 +22,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var eventHub = require('services/eventHub');
 
-    //var PanelView = require('views/PanelView');
+    var PanelView = require('views/PanelView');
 
     // TODO: Setup modules
     //     - Asset Loader
@@ -54,6 +54,8 @@ define(function(require, exports, module) { // jshint ignore:line
         this.router = new Router();
 
         this._setupStates();
+
+        this.panelView = new PanelView($('.js-panelView'));
     };
 
     /**
