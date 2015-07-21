@@ -4,7 +4,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var AbstractHistoryManager = require('./AbstractHistoryManager');
 
     /**
-     * Interface for history manager classes
+     * Falls back to no-js behavior for history management
      *
      * @class FallbackHistoryManager
      * @constructor

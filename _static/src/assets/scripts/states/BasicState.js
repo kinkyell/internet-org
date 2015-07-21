@@ -7,6 +7,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * Manages the stack of active states
      *
      * @class BasicState
+     * @extends AbstractState
      * @constructor
      */
     var BasicState = function(options) {

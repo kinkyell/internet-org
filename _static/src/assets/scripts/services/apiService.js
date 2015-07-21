@@ -13,6 +13,9 @@ define(function(require, exports, module) { // jshint ignore:line
     var APIService = {
 
         //TODO: remove example
+        /**
+         * Returns example html for demo
+         */
         getExamplePage: function() {
             return new Promise(function(resolve, reject) {
                 $.get(BASE_URL + '/pages/example-content.html').done(function(data) {
