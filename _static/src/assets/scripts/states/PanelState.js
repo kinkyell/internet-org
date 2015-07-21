@@ -13,20 +13,31 @@ define(function(require, exports, module) { // jshint ignore:line
      * Manages the stack of active states
      *
      * @class PanelState
+     * @extends BasicState
      * @constructor
      */
     var PanelState = function(options) {
         this._handlePanelContentLoad = this._onPanelContentLoad.bind(this);
+        this._handlePanelContentError = this._onPanelContentError.bind(this);
         BasicState.call(this);
     };
 
     PanelState.prototype = Object.create(BasicState.prototype);
     PanelState.prototype.constructor = PanelState;
 
+    /**
+     * Activate state
+     *  - request panel content from server
+     *  - create panel markup
+     *  - tween in panel
+     *
+     * @method activate
+     * @fires State:activate
+     */
     PanelState.prototype.activate = function() {
         this.$panelContent = $(PANEL_TEMPLATE).appendTo('body');
 
-        apiService.getExamplePage().then(this._handlePanelContentLoad);
+        apiService.getExamplePage().then(this._handlePanelContentLoad, this._handlePanelContentError);
 
         this.tween = Tween.from(this.$panelContent[0], PANEL_ANIMATE_SPEED, {
             xPercent: 100,
@@ -39,6 +50,13 @@ define(function(require, exports, module) { // jshint ignore:line
         BasicState.prototype.activate.call(this);
     };
 
+    /**
+     * Append markup to panel when loaded
+     *
+     * @method _onPanelContentLoad
+     * @param {String} markup HTML content from ajax request
+     * @private
+     */
     PanelState.prototype._onPanelContentLoad = function(markup) {
         if (!this.active) {
             return;
@@ -47,6 +65,29 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$panelContent.append($markup).removeClass('panel_isLoading');
     };
 
+    /**
+     * Append error message when content fails to load
+     *
+     * @method _onPanelContentError
+     * @param {Object} error Ajax error object
+     * @private
+     */
+    PanelState.prototype._onPanelContentError = function(error) {
+        if (!this.active) {
+            return;
+        }
+        console.log(error);
+        this.$panelContent.append('<div class="error">An error occurred.</div>');
+    };
+
+    /**
+     * Deactivate the panel
+     *  - Animate tween out
+     *  - Remove markup
+     *
+     * @method deactivate
+     * @fires State:deactivate
+     */
     PanelState.prototype.deactivate = function() {
         this.tween.reverse();
 
