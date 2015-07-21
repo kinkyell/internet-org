@@ -12,6 +12,9 @@ define( 'IO_DIR', __DIR__ );
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
 wpcom_vip_load_plugin( 'babble', 'internet_org-plugins' );
+wpcom_vip_load_plugin( 'fieldmanager-demo', 'internet_org-plugins' );
+wpcom_vip_load_plugin( 'iorg-custom-posttypes', 'internet_org-plugins' );
+wpcom_vip_load_plugin( 'iorg-custom-fields', 'internet_org-plugins' );
 wpcom_vip_load_plugin( 'fieldmanager' );
 wpcom_vip_load_plugin( 'wp-google-analytics' );
 wpcom_vip_load_plugin( 'responsive-images' );
@@ -22,6 +25,8 @@ wpcom_vip_load_plugin( 'lazy-load' );
 // Not sure how to include this one yet, need to work with VIP team
 // wpcom_vip_load_plugin( 'vip-search-add-on' );
 
+// MANUAL INCLUSION (Multiple Plugins in one dir)
+require_once(__DIR__ . '/../internet_org-plugins/babble/translation-fields.php');
 
 if ( ! function_exists( 'internet_org_setup' ) ) :
 /**
@@ -166,3 +171,53 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+
+
+
+
+
+
+// put this in functions.php or an include file
+add_action( 'fm_post_post', function() {
+    $fm = new Fieldmanager_Group( array(
+        'name' => 'contact_information',
+        'children' => array(
+            'name' => new Fieldmanager_Textfield( __( 'Name', 'your-domain' ) ),
+            'phone_number' => new Fieldmanager_Textfield( __( 'Phone Number', 'your-domain' ) ),
+            'website' => new Fieldmanager_Link( __( 'Website', 'your-domain' ) ),
+        ),
+    ) );
+    $fm->add_meta_box( __( 'Contact Information', 'your-domain' ), 'post' );
+} );
+
+
+add_action( 'fm_post_post', function() {
+    $fm = new Fieldmanager_Group( array(
+        'name' => 'slideshow',
+        'limit' => 0,
+        'label' => __( 'New Slide', 'your-domain' ),
+        'label_macro' => array( __( 'Slide: %s', 'your-domain' ), 'title' ),
+        'add_more_label' => __( 'Add another slide', 'your-domain' ),
+        'collapsed' => true,
+        'sortable' => true,
+        'children' => array(
+            'title' => new Fieldmanager_Textfield( __( 'Slide Title', 'your-domain' ) ),
+            'slide' => new Fieldmanager_Media( __( 'Slide', 'your-domain' ) ),
+            'description' => new Fieldmanager_RichTextarea( __( 'Description', 'your-domain' ) ),
+            'posts' => new Fieldmanager_Autocomplete( array(
+                'label' => __( 'Related Posts', 'your-domain' ),
+                'limit' => 0,
+                'sortable' => true,
+                'one_label_per_item' => false,
+                'add_more_label' => __( 'Add another related link', 'your-domain' ),
+                'datasource' => new Fieldmanager_Datasource_Post( array(
+                    'query_args' => array(
+                        'post_status' => 'any',
+                    ),
+                ) ),
+            ) ),
+        ),
+    ) );
+    $fm->add_meta_box( __( 'Slides', 'your-domain' ), 'post' );
+} );
