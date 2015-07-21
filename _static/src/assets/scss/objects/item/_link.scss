@@ -1,0 +1,49 @@
+/* ---------------------------------------------------------------------
+ Link
+
+ common links styling
+------------------------------------------------------------------------ */
+
+.link {
+    font-family: $FONT_SANS_BLACK;
+    font-weight: bolder; // TODO: REMOVE ONCE Web Fonts are in place
+    font-size: 18px;
+    line-height: 1.222222;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $CLR_ACCENT;
+    @include transition(all 0.3s ease-in-out);
+}
+
+.link:after {
+    content: " → ";
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    margin-left: 0;
+    @include transition(margin 0.1s ease-in-out);
+}
+
+
+// THEME CLASSES by contectual or chain selection
+.theme-impact .link,
+.link_themeImpact {
+    color: $CLR_IMPACT;
+}
+
+.theme-approach .link,
+.link_themeApproach {
+    color: $CLR_APPROACH;
+}
+
+.theme-mission .link,
+.link_themeMission {
+    color: $CLR_MISSION;
+}
+
+.link:hover {
+    color: $CLR_ACCENT;
+}
+
+.link:hover:after {
+    margin-left: 3px;
+}

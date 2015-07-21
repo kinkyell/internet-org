@@ -3,35 +3,45 @@
 
  heading styles
 ------------------------------------------------------------------------ */
+
 .hdg {
-    color: red;
+	font-family: $FONT_SERIF;
+    font-weight: 400; // TODO: REMOVE ONCE Web Fonts are in place
+	color: $CLR_BLACK;
 }
 
 .hdg_1 {
-    font-size: 30px;
+    font-size: 64px;
+    line-height: 1.28;
 }
 
 .hdg_2 {
-    font-size: 24px;
+    font-size: 32px;
+    line-height: 0.64;
 }
 
 .hdg_3 {
-    font-size: 18px;
+    font-size: 26px;
+    line-height: 0.65;
 }
 
 .hdg_4 {
-    font-size: 14px;
-    letter-spacing: 5px;
+    font-size: 22px;
+    line-height: 0.7333333;
 }
 
 .hdg_5 {
-    font-size: 12px;
+    font-size: 20px;
+    line-height: 0.6666667;
 }
 
-.mix-hdg_white {
-    color: red;
+.hdg_subHdg {
+	font-family: $FONT_SANS;
+	font-size: 28px;
+	line-height: 0.7;
 }
 
-.mix-hdg_bold {
-    font-weight: bold;
-}
+/* Heading Mixins */
+.mix-hdg_white 	{ color: white; }
+.mix-hdg_gray 	{ color: $CLR_GRAY; }
+.mix-hdg_italic { font-family: $FONT_SERIF_ITALIC; }

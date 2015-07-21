@@ -1,0 +1,12 @@
+/* ---------------------------------------------------------------------
+ V List
+------------------------------------------------------------------------ */
+.vList > * {
+    display: block;
+    margin-bottom: $SPACE_x2;
+}
+
+.vList_divided > * + * {
+    padding-top: $SPACE_x2;
+    border-top: 1px solid #cccccc;
+}
