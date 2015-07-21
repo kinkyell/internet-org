@@ -24,7 +24,13 @@ define(function(require, exports, module) { // jshint ignore:line
     // Additional Variables
     var appConfig = {
         classes: new ClassDict(classes),
-        apiBase: ''
+        apiBase: '',
+        animationSpeeds: {
+            SLIDE_IN: 0.3, // panel sliding in
+            SLIDE_OUT: 0.3, // panel sliding out
+            SWAP_IN: 0.5, // panel overlapping
+            SWAP_OUT: 0.5 // panel fading out
+        }
     };
 
     return appConfig;

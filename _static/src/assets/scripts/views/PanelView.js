@@ -4,8 +4,6 @@ define(function(require, exports, module) { // jshint ignore:line
     var $ = require('jquery');
     var Scroll = {};//require('scroll');
 
-    var CONFIG = {};
-
     /**
      * A view for transitioning display panels
      *

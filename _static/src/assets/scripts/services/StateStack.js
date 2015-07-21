@@ -43,7 +43,9 @@ define(function(require, exports, module) { // jshint ignore:line
         eventHub.publish('StateStack:push', stateInstance);
 
         // activate the new state
-        stateInstance.activate();
+        stateInstance.activate({
+            method: 'push'
+        });
     };
 
     /**
@@ -66,9 +68,45 @@ define(function(require, exports, module) { // jshint ignore:line
          */
         eventHub.publish('StateStack:pop', stateInstance);
 
-        stateInstance.deactivate();
+        stateInstance.deactivate({
+            method: 'pop'
+        });
 
         return stateInstance;
+    };
+
+    /**
+     * Swap top state on stack
+     *
+     * @method swap
+     * @param {AbstractState} StateCtor A state constructor to activate
+     * @param {Object} options Options to pass to new state
+     * @fires StateStack:swap
+     * @returns {Object}
+     */
+    StateStack.prototype.swap = function(StateCtor, options) {
+        var prevInstance = this._activeStates.pop();
+
+        var stateInstance = new StateCtor(options);
+        this._activeStates.push(stateInstance);
+
+        /**
+         * State pushed event
+         *
+         * @event StateStack:push
+         * @param {AbstractState} state State instance that was pushed
+         */
+        eventHub.publish('StateStack:swap', stateInstance, prevInstance);
+
+        // deactivate old instance
+        prevInstance.deactivate({
+            method: 'swap'
+        });
+
+        // activate the new state
+        stateInstance.activate({
+            method: 'swap'
+        });
     };
 
     /**
