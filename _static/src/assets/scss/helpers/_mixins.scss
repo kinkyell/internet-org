@@ -1,0 +1,18 @@
+// ----------------------------------------------------------------------------
+// Mixin - Breakpoint
+//
+// Mixins for Mediaqueries Major Breakpoints
+// ----------------------------------------------------------------------------
+@mixin breakpoint($point) {
+    @if $point == SM {
+        @media (min-width: $BP_SM) { @content; } // 480px
+    }
+
+    @else if $point == MD {
+        @media (min-width: $BP_MD) { @content; } // 768px
+    }
+
+    @else if $point == LG {
+        @media (min-width: $BP_LG) { @content; } // 768px
+    }
+}
