@@ -1,7 +1,27 @@
 {{#extend "layout"}}
     {{#content "body" mode="append"}}
 
+        <div class="site">
+            <div class="site-hd"></div>
+            <div class="site-bd">
+                <div class="container">
 
+                    <form novalidate>
+                        <fieldset>
+                            <div class="vr vr_x4">
+                                <label>First Name</label>
+                                <input class="inputText" type="text" />
+                            </div>
 
+                            <div class="vr vr_x4">
+                                <label>Reason for submission</label>
+                                <input class="inputRadio" type="radio" />
+                            </div>
+                        </fieldset>
+                    </form>
+
+                </div>
+            </div>
+        </div>
     {{/content}}
 {{/extend}}
