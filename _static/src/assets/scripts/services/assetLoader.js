@@ -1,8 +1,6 @@
 define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
-    var eventHub = require('services/eventHub');
-
     /**
      * Manages the stack of active states
      *

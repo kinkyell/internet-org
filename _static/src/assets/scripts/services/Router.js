@@ -9,6 +9,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var FallbackHistoryManager = require('util/history/FallbackHistoryManager');
 
     var ROUTER_LINK_SELECTOR = '.js-stateLink';
+    var ROUTER_BACK_SELECTOR = '.js-stateBack';
 
     /**
      * Manages the stack of active states
@@ -29,6 +30,7 @@ define(function(require, exports, module) { // jshint ignore:line
     Router.prototype._init = function() {
         this._handlePopState = this._onPopState.bind(this);
         this._handleStateTrigger = this._onStateTrigger.bind(this);
+        this._handleStateBack = this._onStateBack.bind(this);
 
         /**
          * Current list of state data
@@ -52,6 +54,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         eventHub.subscribe('HistoryManager:popState', this._handlePopState);
         $(document.body).on('click', ROUTER_LINK_SELECTOR, this._handleStateTrigger);
+        $(document.body).on('click', ROUTER_BACK_SELECTOR, this._handleStateBack);
     };
 
     /**
@@ -62,8 +65,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     Router.prototype._onPopState = function(state) {
+        var prevStates = this._currentStates.slice(0);
         this._currentStates = state || [];
-        eventHub.publish('Router:stateChange', this._currentStates);
+        eventHub.publish('Router:stateChange', this._currentStates, prevStates);
     };
 
     /**
@@ -74,10 +78,23 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     Router.prototype._onStateTrigger = function(event) {
+        var prevStates = this._currentStates.slice(0);
         event.preventDefault();
         this._currentStates.push(event.currentTarget.pathname);
         this.historyManager.pushState(this._currentStates, null, event.currentTarget.pathname);
-        eventHub.publish('Router:stateChange', this._currentStates);
+        eventHub.publish('Router:stateChange', this._currentStates, prevStates);
+    };
+
+    /**
+     * Handle back link click in UI
+     *
+     * @method _onStateBack
+     * @param {ClickEvent} event Click event from router link
+     * @private
+     */
+    Router.prototype._onStateBack = function(event) {
+        event.preventDefault();
+        this.historyManager.back();
     };
 
     /**
@@ -107,9 +124,10 @@ define(function(require, exports, module) { // jshint ignore:line
      * @returns {String} The top state identifier
      */
     Router.prototype.navigateTo = function(stateName, silent) {
+        var prevStates = this._currentStates.slice(0);
         this._currentStates.push(stateName);
         if (!silent) {
-            eventHub.publish('Router:stateChange', this._currentStates);
+            eventHub.publish('Router:stateChange', this._currentStates, prevStates);
         }
     };
 

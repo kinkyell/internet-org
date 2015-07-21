@@ -8,6 +8,7 @@ define(function(require, exports, module) { // jshint ignore:line
     require('modernizr');
     require('services/apiService');
 
+    require('gsap-cssPlugin');
     require('gsap-timeline')
 
     window.assetLoader = require('services/assetLoader')
@@ -16,8 +17,10 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var AbstractView = require('views/AbstractView');
     var MenuView = require('views/MenuView');
+    var StateStack = require('services/StateStack');
+    var PanelState = require('states/PanelState');
 
-    window.menu = new MenuView($('body'));
+    var eventHub = require('services/eventHub');
 
     //var PanelView = require('views/PanelView');
 
@@ -47,8 +50,10 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto.init = function() {
-        //this.panelView = new PanelView();
+        this._handleStateChange = this._onStateChange.bind(this);
         this.router = new Router();
+
+        this._setupStates();
     };
 
     /**
@@ -59,12 +64,45 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._cutsTheMustard = function() {
         if (
-            (typeof Object.getPrototypeOf !== 'function')
+            (typeof Object.getPrototypeOf !== 'function') ||
+            (typeof Function.prototype.bind !== 'function')
         ) {
             return false;
         }
 
         return true;
+    };
+
+    /**
+     * Checks if browser has necessary features to run application
+     *
+     * @method _setupStates
+     * @private
+     */
+    proto._setupStates = function() {
+        this.states = new StateStack();
+
+        eventHub.subscribe('Router:stateChange', this._handleStateChange);
+    };
+
+    /**
+     * Checks if browser has necessary features to run application
+     *
+     * @method _onStateChange
+     * @private
+     */
+    proto._onStateChange = function(states, previousStates) {
+        if (states.length > previousStates.length) {
+            // navigating forward
+            console.log('forward', states[states.length - 1]);
+            this.states.push(PanelState, {
+                stateName: states[states.length - 1]
+            });
+        } else {
+            console.log('backward');
+            this.states.pop();
+        }
+        console.log(this.states);
     };
 
     return App;

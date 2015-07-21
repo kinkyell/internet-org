@@ -27,7 +27,14 @@
 @import "objects/layout/vr";
 
 /* ---------------------------------------------------------------------
- Objects: repeaters
+ Objects: module
+------------------------------------------------------------------------ */
+@import "objects/module/narrative";
+@import "objects/module/panel";
+@import "objects/module/quarentine";
+
+/* ---------------------------------------------------------------------
+ Objects: repeater
 ------------------------------------------------------------------------ */
 @import "objects/repeater/media";
 @import "objects/repeater/feature";
@@ -35,14 +42,12 @@
 @import "objects/repeater/vlist";
 
 /* ---------------------------------------------------------------------
+ Objects: item
+------------------------------------------------------------------------ */
+@import "objects/item/btn";
+
+/* ---------------------------------------------------------------------
  Objects: typography
 ------------------------------------------------------------------------ */
 @import "objects/typography/hdg";
 @import "objects/typography/bdcpy";
-
-/* ---------------------------------------------------------------------
- Objects: modules
------------------------------------------------------------------------- */
-@import "objects/module/narrative";
-@import "objects/module/quarentine";
-@import "objects/module/quote";

@@ -39,7 +39,9 @@ module.exports = function(grunt) {
 
     grunt.registerTask('buildStatic', [
         'copy:buildStatic'
-        // ,
-        // 'grunticon:buildStatic'
+    ]);
+
+    grunt.registerTask('buildIcons', [
+        'grunticon:buildStatic'
     ]);
 };

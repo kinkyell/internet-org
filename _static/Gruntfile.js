@@ -95,6 +95,10 @@ module.exports = function(grunt) {
         ['clean:dest', 'buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts', 'clean:tmp']
     );
 
+    grunt.registerTask('icons', 'Compile icons.', [
+        'buildStatic', 'buildIcons' //TODO: fix grunicon task
+    ]);
+
     grunt.registerTask('docs', 'Generate documentation.',
         ['clean:docs', 'docsScripts', 'clean:tmp']
     );
