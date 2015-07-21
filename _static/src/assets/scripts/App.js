@@ -9,24 +9,14 @@ define(function(require, exports, module) { // jshint ignore:line
     require('services/apiService');
 
     require('gsap-cssPlugin');
-    require('gsap-timeline')
-
-    window.assetLoader = require('services/assetLoader')
+    require('gsap-timeline');
 
     var Router = require('services/Router');
 
-    var AbstractView = require('views/AbstractView');
-    var MenuView = require('views/MenuView');
     var StateStack = require('services/StateStack');
     var PanelState = require('states/PanelState');
 
     var eventHub = require('services/eventHub');
-
-    //var PanelView = require('views/PanelView');
-
-    // TODO: Setup modules
-    //     - Asset Loader
-    //     - Router
 
     /**
      * Initial application setup. Runs once upon every page load.
@@ -98,9 +88,14 @@ define(function(require, exports, module) { // jshint ignore:line
             this.states.push(PanelState, {
                 stateName: states[states.length - 1]
             });
-        } else {
+        } else if (states.length < previousStates.length) {
             console.log('backward');
             this.states.pop();
+        } else {
+            console.log('swap');
+            this.states.swap(PanelState, {
+                stateName: states[states.length - 1]
+            });
         }
         console.log(this.states);
     };

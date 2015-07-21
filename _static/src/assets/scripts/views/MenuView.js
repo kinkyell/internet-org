@@ -1,10 +1,7 @@
 define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
-    var $ = require('jquery');
     var AbstractView = require('./AbstractView');
-
-    var CONFIG = {};
 
     /**
      * A view for transitioning display panels

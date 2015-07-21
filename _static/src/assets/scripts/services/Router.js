@@ -10,6 +10,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var ROUTER_LINK_SELECTOR = '.js-stateLink';
     var ROUTER_BACK_SELECTOR = '.js-stateBack';
+    var ROUTER_SWAP_SELECTOR = '.js-stateSwap';
 
     /**
      * Manages the stack of active states
@@ -31,6 +32,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handlePopState = this._onPopState.bind(this);
         this._handleStateTrigger = this._onStateTrigger.bind(this);
         this._handleStateBack = this._onStateBack.bind(this);
+        this._handleStateSwap = this._onStateSwap.bind(this);
 
         /**
          * Current list of state data
@@ -55,6 +57,7 @@ define(function(require, exports, module) { // jshint ignore:line
         eventHub.subscribe('HistoryManager:popState', this._handlePopState);
         $(document.body).on('click', ROUTER_LINK_SELECTOR, this._handleStateTrigger);
         $(document.body).on('click', ROUTER_BACK_SELECTOR, this._handleStateBack);
+        $(document.body).on('click', ROUTER_SWAP_SELECTOR, this._handleStateSwap);
     };
 
     /**
@@ -82,6 +85,21 @@ define(function(require, exports, module) { // jshint ignore:line
         event.preventDefault();
         this._currentStates.push(event.currentTarget.pathname);
         this.historyManager.pushState(this._currentStates, null, event.currentTarget.pathname);
+        eventHub.publish('Router:stateChange', this._currentStates, prevStates);
+    };
+
+    /**
+     * Handle route swap in UI
+     *
+     * @method _onStateSwap
+     * @param {ClickEvent} event Click event from router link
+     * @private
+     */
+    Router.prototype._onStateSwap = function(event) {
+        var prevStates = this._currentStates.slice(0);
+        event.preventDefault();
+        this._currentStates[this._currentStates.length - 1] = event.currentTarget.pathname;
+        this.historyManager.replaceState(this._currentStates, null, event.currentTarget.pathname);
         eventHub.publish('Router:stateChange', this._currentStates, prevStates);
     };
 
