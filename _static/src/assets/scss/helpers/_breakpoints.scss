@@ -1,0 +1,26 @@
+//----------------------------------------------------------------------------
+// Breakpoint declarations
+//----------------------------------------------------------------------------
+
+body:after {
+    content: "BASE";
+}
+
+@include breakpoint(SM) {
+    body:after {
+        content: "SM";
+    }
+}
+
+@include breakpoint(MD) {
+    body:after {
+        content: "MD";
+    }
+}
+
+@include breakpoint(LG) {
+    body:after {
+        @include isHidden();
+        content: "LG";
+    }
+}

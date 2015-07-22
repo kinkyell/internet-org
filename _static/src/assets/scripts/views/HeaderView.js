@@ -2,6 +2,8 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     var AbstractView = require('./AbstractView');
+    var breakpointManager = require('services/breakpointManager');
+    var eventHub = require('services/eventHub');
 
     /**
      * A view for transitioning display panels
@@ -25,6 +27,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto.setupHandlers = function() {
+        this._handleStateChange = this._onStateChange.bind(this);
+        this._handleBreakpointChange = this._onBreakpointChange.bind(this);
         return this;
     };
 
@@ -37,7 +41,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto.createChildren = function() {
-        return this;
+        this._numStates = 0; //TODO: update with initial states load
+        this.$logo = this.$('.js-headerView-logo');
+        this.$menuBtn = this.$('.js-headerView-menuBtn');
     };
 
     /**
@@ -60,7 +66,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.layout = function() {
-        return this;
+        this._render();
+        this.$menuBtn.removeClass('u-disableTransitions').show();
     };
 
     /**
@@ -71,7 +78,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onEnable = function() {
-        return this;
+        eventHub.subscribe('StateStack:change', this._handleStateChange);
+        breakpointManager.subscribe(this._handleBreakpointChange);
     };
 
     /**
@@ -82,12 +90,51 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onDisable = function() {
-        return this;
+        eventHub.unsubscribe('StateStack:change', this._handleStateChange);
+        breakpointManager.unsubscribe(this._handleBreakpointChange);
+    };
+
+    /**
+     * Updates classes and positioning
+     *
+     * @method _render
+     * @public
+     */
+    proto._render = function() {
+        var bp = breakpointManager.getBreakpoint();
+        var isNarrow = bp === 'BASE' || bp === 'SM';
+        var isHome = this._numStates < 1;
+
+        // update stickinesss of header
+        this.$logo.toggleClass('header-logo_invert', false);
+        this.$menuBtn.toggleClass('header-menuBtn_invert', !isNarrow && isHome);
     };
 
     //////////////////////////////////////////////////////////////////////////////////
     // EVENT HANDLERS
     //////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Sets the menu state after state change
+     *
+     * @method _onStateChange
+     * @param {Array} states Active states
+     * @private
+     */
+    proto._onStateChange = function(states) {
+        this._numStates = states.length;
+        this._render();
+    };
+
+    /**
+     * Sets the menu state after breakpoint change
+     *
+     * @method _onBreakpointChange
+     * @private
+     */
+    proto._onBreakpointChange = function() {
+        this._render();
+    };
 
 
     //////////////////////////////////////////////////////////////////////////////////

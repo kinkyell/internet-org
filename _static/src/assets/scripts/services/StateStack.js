@@ -41,6 +41,7 @@ define(function(require, exports, module) { // jshint ignore:line
          * @param {AbstractState} state State instance that was pushed
          */
         eventHub.publish('StateStack:push', stateInstance);
+        eventHub.publish('StateStack:change', this._activeStates);
 
         // activate the new state
         stateInstance.activate({
@@ -67,6 +68,7 @@ define(function(require, exports, module) { // jshint ignore:line
          * @param {AbstractState} state State instance that was popped
          */
         eventHub.publish('StateStack:pop', stateInstance);
+        eventHub.publish('StateStack:change', this._activeStates);
 
         stateInstance.deactivate({
             method: 'pop'
@@ -97,6 +99,7 @@ define(function(require, exports, module) { // jshint ignore:line
          * @param {AbstractState} state State instance that was pushed
          */
         eventHub.publish('StateStack:swap', stateInstance, prevInstance);
+        eventHub.publish('StateStack:change', this._activeStates);
 
         // deactivate old instance
         prevInstance.deactivate({

@@ -7,6 +7,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     require('modernizr');
     require('services/apiService');
+    var $ = require('jquery');
 
     require('gsap-cssPlugin');
     require('gsap-timeline');
@@ -15,6 +16,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var StateStack = require('services/StateStack');
     var PanelState = require('states/PanelState');
+    var HeaderView = require('views/HeaderView');
 
     var eventHub = require('services/eventHub');
 
@@ -42,6 +44,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.init = function() {
         this._handleStateChange = this._onStateChange.bind(this);
         this.router = new Router();
+        this.headerView = new HeaderView($('.js-headerView'));
 
         this._setupStates();
     };

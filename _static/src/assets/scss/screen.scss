@@ -5,6 +5,7 @@
 @import "helpers/mixins";
 @import "helpers/utils";
 @import "helpers/vendor";
+@import "helpers/breakpoints";
 
 /* ---------------------------------------------------------------------
  Base Styles
@@ -30,6 +31,7 @@
 /* ---------------------------------------------------------------------
  Objects: module
 ------------------------------------------------------------------------ */
+@import "objects/module/header";
 @import "objects/module/narrative";
 @import "objects/module/panel";
 @import "objects/module/quarentine";

@@ -199,6 +199,17 @@ define(function(require, exports, module) { // jshint ignore:line
         return this;
     };
 
+    /**
+     * Shortcut menthod for this.$element.find()
+     *
+     * @method $
+     * @returns {jQuery}
+     * @public
+     */
+    proto.$ = function(selector) {
+        return this.$element.find(selector);
+    };
+
     //////////////////////////////////////////////////////////////////////////////////
     // EVENT HANDLERS
     //////////////////////////////////////////////////////////////////////////////////
