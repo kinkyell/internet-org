@@ -41,14 +41,16 @@ define(function(require, exports, module) { // jshint ignore:line
         var tweenOpts = {};
         var tweenSpeed;
 
-        this.$panelShade = $(SHADE_TEMPLATE).hide().appendTo('body');
+        this.$panelShade = $(SHADE_TEMPLATE).appendTo('body');
         this.$panelContent = $(PANEL_TEMPLATE).appendTo('body');
 
         apiService.getExamplePage().then(this._handlePanelContentLoad, this._handlePanelContentError);
+        Tween.set(this.$panelShade[0], { opacity: 0 });
 
         if (event.method === 'push') {
             tweenOpts.xPercent = 100;
             tweenSpeed = SPEEDS.SLIDE_IN;
+            Tween.to(this.$panelShade[0], tweenSpeed, { opacity: 1 });
         } else if (event.method === 'swap') {
             tweenOpts.yPercent = 100;
             tweenSpeed = SPEEDS.SWAP_IN;
@@ -70,8 +72,9 @@ define(function(require, exports, module) { // jshint ignore:line
         if (!this.active) {
             return;
         }
-        var $markup = $(markup);
+        var $markup = $('<div></div>').append(markup);
         this.$panelContent.append($markup).removeClass('panel_isLoading');
+        Tween.from($markup[0], SPEEDS.CONTENT_IN, { opacity: 0 });
     };
 
     /**
@@ -107,11 +110,13 @@ define(function(require, exports, module) { // jshint ignore:line
         };
         var tweenSpeed;
 
+        Tween.set(this.$panelShade[0], { opacity: 1 });
+
         if (event.method === 'pop') {
             tweenOpts.xPercent = 100;
             tweenSpeed = SPEEDS.SLIDE_OUT;
+            Tween.to(this.$panelShade[0], tweenSpeed, { opacity: 0 });
         } else if (event.method === 'swap') {
-            this.$panelShade.show();
             tweenOpts.opacity = 0.5;
             tweenOpts.transformOrigin = 'center top';
             tweenOpts.transform = 'scale(0.75) translateY(-25vh)';
