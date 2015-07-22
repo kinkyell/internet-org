@@ -1,0 +1,61 @@
+/* ---------------------------------------------------------------------
+ Header
+------------------------------------------------------------------------ */
+.header {
+    position: fixed;
+    top: 28px;
+    left: 29px;
+    right: 34px;
+    z-index: 100;
+}
+
+.header_static {
+    position: absolute;
+}
+
+.header-logo {
+    display: block;
+    width: 243px;
+}
+
+.header-logo path,
+.header-menuBtn path {
+    fill: #282828;
+    fill-rule: evenodd;
+    transition: fill 0.3s ease;
+}
+
+.header-menuBtn {
+    display: none; // no use without JS
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -17px;
+    padding: 8px 6px;
+    background: none;
+    border: 0;
+    font-weight: bold;
+    color: #282828;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.header-menuBtn-text {
+    margin-right: 10px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.header-menuBtn-icon {
+    width: 20px;
+    display: inline-block;
+}
+
+.header-menuBtn_invert {
+    color: #ffffff;
+}
+
+.header-logo_invert path,
+.header-menuBtn_invert path {
+    fill: #ffffff;
+}
