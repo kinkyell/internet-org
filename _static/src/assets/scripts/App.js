@@ -19,10 +19,8 @@ define(function(require, exports, module) { // jshint ignore:line
     var MenuView = require('views/MenuView');
     var StateStack = require('services/StateStack');
     var PanelState = require('states/PanelState');
-
+    var NarrativeView = require('views/NarrativeView');
     var eventHub = require('services/eventHub');
-
-    var PanelView = require('views/PanelView');
 
     // TODO: Setup modules
     //     - Asset Loader
@@ -55,7 +53,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         this._setupStates();
 
-        this.panelView = new PanelView($('.js-panelView'));
+        this.narrativeView = new NarrativeView($('.js-narrativeView'));
     };
 
     /**

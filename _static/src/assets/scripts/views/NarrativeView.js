@@ -67,7 +67,7 @@ define(function(require, exports, module) { // jshint ignore:line
          * @type {bool}
          * @private
          */
-        this._factor = 5;
+        this._factor = 10;
 
         /**
          * Speed in milleseconds to provide animation timing
@@ -112,7 +112,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto.setupHandlers = function() {
-        this.onWheelEventHandler = this.onWheelEvent.bind(this);
+        this._onWheelEventHandler = this._onWheelEvent.bind(this);
 
         return this;
     };
@@ -169,7 +169,7 @@ define(function(require, exports, module) { // jshint ignore:line
         }
         this.isEnabled = true;
 
-        $(window).on('mousewheel', this.onWheelEventHandler);
+        $(window).on('wheel', this._onWheelEventHandler);
 
         return this;
     };
@@ -219,12 +219,13 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onWheelEvent = function(event) {
-        var deltaY = this.normalizeDelta(event.deltaY)
+        var originalEvent = event.originalEvent;
+        var deltaY = this._normalizeDelta(originalEvent.deltaY);
 
-        if(this.direction === 'down' && deltaY > this.factor) {
-            this.scrollDown();
-        } else if(this.direction === 'up' && deltaY > this.factor) {
-            this.scrollUp();
+        if(this._direction === 'down' && deltaY > this._factor) {
+            this._scrollDown();
+        } else if(this._direction === 'up' && deltaY > this._factor) {
+            this._scrollUp();
         }
     };
 
@@ -242,13 +243,61 @@ define(function(require, exports, module) { // jshint ignore:line
         var _deltaY = deltaY;
 
         if (deltaY > 0) {
-            this.direction = 'up';
+            this._direction = 'up';
         } else {
-            this.direction = 'down';
+            this._direction = 'down';
             var _deltaY = _deltaY * -1;
         }
 
         return _deltaY;
+    };
+
+    /**
+     * Scoll specific section
+     *
+     * @method _scrollTo
+     * @param {num} offsetY the offset to scroll to
+     * @param {function} callback a method to call upon completion
+     * @private
+     */
+    proto._scrollTo = function(offsetY, callback) {
+        this._isAnimating = true;
+        $('html, body').animate({ scrollTop: offsetY }, this._scrollSpeed, callback);
+    };
+
+    proto._animationStub = function() {
+        console.log('_animationStub');
+        this._isAnimating = false;
+        $(window).on('wheel', this._onWheelEventHandler);
+    };
+
+    /**
+     * Scoll down to next section
+     *
+     * @method _scrollDown
+     * @private
+     */
+    proto._scrollDown = function() {
+        if (!this._isAnimating) {
+            // var $nextBlock = ;
+            // var position = $nextBlock.offset().top;
+            // this._scrollTo();
+            $(window).off('wheel', this._onWheelEventHandler);
+            window.setTimeout(this._animationStub.bind(this), this._scrollSpeed);
+        }
+    };
+
+    /**
+     * Scoll up to previous section
+     *
+     * @method _scrollUp
+     * @private
+     */
+    proto._scrollUp = function() {
+        if (!this._isAnimating) {
+            $(window).off('wheel', this._onWheelEventHandler);
+            window.setTimeout(this._animationStub.bind(this), this._scrollSpeed);
+        }
     };
 
     module.exports = NarrativeView;
@@ -273,98 +322,98 @@ define(function(require, exports, module) { // jshint ignore:line
 
 
 
-/////////////////////////////////////////////////
-$('.block').css('height', window.innerHeight);
+// /////////////////////////////////////////////////
+// $('.block').css('height', window.innerHeight);
 
-var lockScroll = function(){
-    $('body').addClass('no-scroll');
-}
+// var lockScroll = function(){
+//     $('body').addClass('no-scroll');
+// }
 
-var unlockScroll = function(){
-    $('body').removeClass('no-scroll');
-}
+// var unlockScroll = function(){
+//     $('body').removeClass('no-scroll');
+// }
 
-var down = true,
-        animating = false
-        factor = 5,
-        scrollSpeed = 650;
+// var down = true,
+//         animating = false
+//         factor = 5,
+//         scrollSpeed = 650;
 
-var normalizeDelta = function(deltaY){
-    var _deltaY = deltaY;
-    if(deltaY > 0)
-    {
-        down = false;
-    }
-    else
-    {
-        down = true;
-        _deltaY = _deltaY * -1;
-    }
-    return _deltaY;
-}
+// var normalizeDelta = function(deltaY){
+//     var _deltaY = deltaY;
+//     if(deltaY > 0)
+//     {
+//         down = false;
+//     }
+//     else
+//     {
+//         down = true;
+//         _deltaY = _deltaY * -1;
+//     }
+//     return _deltaY;
+// }
 
-lockScroll();
-window.scroll(0, 0);
+// lockScroll();
+// window.scroll(0, 0);
 
-var scrollTo = function(offsetY, callback){
-    animating = true;
-    $('html, body').animate({ scrollTop: offsetY }, scrollSpeed, callback);
-}
+// var scrollTo = function(offsetY, callback){
+//     animating = true;
+//     $('html, body').animate({ scrollTop: offsetY }, scrollSpeed, callback);
+// }
 
-var scrollDown = function(){
-    if(animating == false)
-    {
-        var scrollPos = $(window).scrollTop(),
-                $activeBlock = $('.block.active'),
-                activeIndex = $('.block').index($activeBlock),
-                $nextBlock = $('.block').eq(activeIndex + 1);
+// var scrollDown = function(){
+//     if(animating == false)
+//     {
+//         var scrollPos = $(window).scrollTop(),
+//                 $activeBlock = $('.block.active'),
+//                 activeIndex = $('.block').index($activeBlock),
+//                 $nextBlock = $('.block').eq(activeIndex + 1);
 
-        if($nextBlock.length)
-        {
-            $(window).off('mousewheel', detectScrolls);
-            scrollTo($nextBlock.offset().top, function(){
-                animating = false;
-                $activeBlock.removeClass('active');
-                $nextBlock.addClass('active');
-                $(window).on('mousewheel', detectScrolls);
-            });
-        }
-    }
-}
+//         if($nextBlock.length)
+//         {
+//             $(window).off('mousewheel', detectScrolls);
+//             scrollTo($nextBlock.offset().top, function(){
+//                 animating = false;
+//                 $activeBlock.removeClass('active');
+//                 $nextBlock.addClass('active');
+//                 $(window).on('mousewheel', detectScrolls);
+//             });
+//         }
+//     }
+// }
 
-var scrollUp = function(){
-    if(animating == false)
-    {
-        var scrollPos = $(window).scrollTop(),
-                $activeBlock = $('.block.active'),
-                activeIndex = $('.block').index($activeBlock),
-                $prevBlock = $('.block').eq(activeIndex - 1);
+// var scrollUp = function(){
+//     if(animating == false)
+//     {
+//         var scrollPos = $(window).scrollTop(),
+//                 $activeBlock = $('.block.active'),
+//                 activeIndex = $('.block').index($activeBlock),
+//                 $prevBlock = $('.block').eq(activeIndex - 1);
 
-        if(activeIndex > 0)
-        {
-            $(window).off('mousewheel', detectScrolls);
-            scrollTo(scrollPos - window.innerHeight, function(){
-                animating = false;
-                $activeBlock.removeClass('active');
-                $prevBlock.addClass('active');
-                $(window).on('mousewheel', detectScrolls);
-            });
-        }
-    }
-}
+//         if(activeIndex > 0)
+//         {
+//             $(window).off('mousewheel', detectScrolls);
+//             scrollTo(scrollPos - window.innerHeight, function(){
+//                 animating = false;
+//                 $activeBlock.removeClass('active');
+//                 $prevBlock.addClass('active');
+//                 $(window).on('mousewheel', detectScrolls);
+//             });
+//         }
+//     }
+// }
 
-var detectScrolls = function(e){
+// var detectScrolls = function(e){
 
-    var deltaY = normalizeDelta(e.deltaY)
-    if(down === true && deltaY > factor)
-    {
-        scrollDown();
-    }
-    else if(down === false && deltaY > factor)
-    {
-        scrollUp();
-    }
+//     var deltaY = normalizeDelta(e.deltaY)
+//     if(down === true && deltaY > factor)
+//     {
+//         scrollDown();
+//     }
+//     else if(down === false && deltaY > factor)
+//     {
+//         scrollUp();
+//     }
 
-}
+// }
 
-$(window).on('mousewheel', detectScrolls);
+// $(window).on('mousewheel', detectScrolls);
