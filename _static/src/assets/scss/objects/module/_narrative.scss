@@ -2,28 +2,41 @@
  Narrative
 ------------------------------------------------------------------------ */
 .narrative {
-    width: 100vw;
-    height: 100vh;
+    height: 100%;
 }
 
 .narrative-section {
-    width: 100vw;
-    height: 100vh;
-    background-image: url("http://placehold.it/400x700");
+    position: relative;
+    height: 100%;
+}
+
+.narrative-section-slides {
+    height: 100%;
+    overflow: hidden;
+}
+
+.narrative-section-slides-item {
+    height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
+    background-image: url("http://placehold.it/400x700");
 }
 
 .narrative-section-bd {
-    height: 40vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 40%;
     padding: 24px;
     background-color: #efede5;
 }
 
 @include breakpoint(MD) {
     .narrative-section-bd {
-        width: 50vw;
-        height: 100vh;
+        width: 50%;
+        height: 100%;
         padding: 24px;
         background-color: #efede5;
     }

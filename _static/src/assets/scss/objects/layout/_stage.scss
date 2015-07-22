@@ -1,12 +1,12 @@
 /* ---------------------------------------------------------------------
  Stage
 ------------------------------------------------------------------------ */
+@warn "replace viewport units with javascript calculated values";
 .stage {
     width: 100vw;
     height: 100vh;
 }
 
 .stage-panel {
-    width: 100vw;
-    height: 100vh;
+    height: 100%;
 }
