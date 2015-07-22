@@ -2,6 +2,9 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     var $ = require('jquery');
+    require('gsap-tween');
+    require('gsap-timeline');
+    require('gsap-scrollToPlugin');
 
     var CONFIG = {};
 
@@ -67,7 +70,7 @@ define(function(require, exports, module) { // jshint ignore:line
          * @type {bool}
          * @private
          */
-        this._factor = 10;
+        this._factor = 5;
 
         /**
          * Speed in milleseconds to provide animation timing
@@ -266,7 +269,6 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     proto._animationStub = function() {
-        console.log('_animationStub');
         this._isAnimating = false;
         $(window).on('wheel', this._onWheelEventHandler);
     };
@@ -279,11 +281,12 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._scrollDown = function() {
         if (!this._isAnimating) {
-            // var $nextBlock = ;
-            // var position = $nextBlock.offset().top;
-            // this._scrollTo();
             $(window).off('wheel', this._onWheelEventHandler);
-            window.setTimeout(this._animationStub.bind(this), this._scrollSpeed);
+
+            TweenLite.to($(window), 2, {scrollTo:{y:250}, ease:Power2.easeOut, onComplete: function() {
+                console.log('complete');
+            }});
+            // window.setTimeout(this._animationStub.bind(this), this._scrollSpeed);
         }
     };
 
