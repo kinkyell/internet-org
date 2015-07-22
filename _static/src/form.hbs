@@ -9,13 +9,19 @@
                     <form novalidate>
                         <fieldset>
                             <div class="vr vr_x4">
-                                <label>First Name</label>
-                                <input class="inputText" type="text" />
+                                <label class="u-isVisuallyHidden" for="inputName">First Name</label>
+                                <input class="inputText" id="inputName" type="text" />
                             </div>
 
                             <div class="vr vr_x4">
-                                <label>Reason for submission</label>
-                                <input class="inputRadio" type="radio" />
+                                <div class="inputRadio">
+                                    <input class="inputRadio-radio" id="radio01" type="radio" name="radio" />
+                                    <label class="inputRadio-label" for="radio01"><span class="inputRadio-label-inner"></span>Reason for submission</label>
+                                </div>
+                                <div class="inputRadio">
+                                    <input class="inputRadio-radio" id="radio02" type="radio" name="radio" />
+                                    <label class="inputRadio-label" for="radio02"><span class="inputRadio-label-inner"></span>Reason for submission</label>
+                                </div>
                             </div>
                         </fieldset>
                     </form>

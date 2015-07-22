@@ -53,6 +53,7 @@ define(function(require, exports, module) { // jshint ignore:line
             Tween.to(this.$panelShade[0], tweenSpeed, { opacity: 1 });
         } else if (event.method === 'swap') {
             tweenOpts.yPercent = 100;
+            tweenOpts.delay = SPEEDS.SWAP_IN_DELAY;
             tweenSpeed = SPEEDS.SWAP_IN;
         }
 
