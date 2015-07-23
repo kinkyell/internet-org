@@ -31,7 +31,10 @@ define(function(require, exports, module) { // jshint ignore:line
             SWAP_IN: 0.5, // panel overlapping
             SWAP_IN_DELAY: 0.2, // delay before overlapping
             SWAP_OUT: 0.7, // panel fading out
-            CONTENT_IN: 0.4 // content fade in
+            CONTENT_IN: 0.4, // content fade in
+            MENU_IN: 0.25, // menu in speed
+            MENU_DELAY: 0.175, // delay between menu and shade
+            MENU_OUT: 0.25 // menu out speed
         }
     };
 

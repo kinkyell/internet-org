@@ -3,6 +3,7 @@
 //----------------------------------------------------------------------------
 
 body:after {
+    @include isHidden();
     content: "BASE";
 }
 
@@ -20,7 +21,6 @@ body:after {
 
 @include breakpoint(LG) {
     body:after {
-        @include isHidden();
         content: "LG";
     }
 }
