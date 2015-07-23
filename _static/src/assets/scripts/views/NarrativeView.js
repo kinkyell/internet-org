@@ -4,6 +4,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var $ = require('jquery');
     require('gsap-tween');
     require('gsap-timeline');
+    require('gsap-cssPlugin');
     require('gsap-scrollToPlugin');
 
     var CONFIG = {};
@@ -264,8 +265,29 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._scrollTo = function(offsetY, callback) {
+
+        $(window).off('wheel', this._onWheelEventHandler);
         this._isAnimating = true;
-        $('html, body').animate({ scrollTop: offsetY }, this._scrollSpeed, callback);
+
+        console.log('call');
+        TweenLite.to(this.$element, 1, {scrollTo:{y:500}, onCompleteScope: this, onComplete: function() {
+            console.log('complete');
+        }});
+
+        // TweenLite.to(
+        //     this.$element,
+        //     1,
+        //     {
+        //         scrollTo:{y:500},
+        //         ease:Power2.easeOut,
+        //         onCompleteScope: this,
+        //         onComplete: function() {
+        //             console.log('complete');
+        //             this._isAnimating = false;
+        //             $(window).on('wheel', this._onWheelEventHandler);
+        //         }
+        //     }
+        // );
     };
 
     proto._animationStub = function() {
@@ -280,14 +302,11 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._scrollDown = function() {
-        if (!this._isAnimating) {
-            $(window).off('wheel', this._onWheelEventHandler);
-
-            TweenLite.to($(window), 2, {scrollTo:{y:250}, ease:Power2.easeOut, onComplete: function() {
-                console.log('complete');
-            }});
-            // window.setTimeout(this._animationStub.bind(this), this._scrollSpeed);
+        if (this._isAnimating) {
+            return;
         }
+
+        this._scrollTo();
     };
 
     /**
@@ -297,10 +316,11 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._scrollUp = function() {
-        if (!this._isAnimating) {
-            $(window).off('wheel', this._onWheelEventHandler);
-            window.setTimeout(this._animationStub.bind(this), this._scrollSpeed);
+        if (this._isAnimating) {
+            return;
         }
+
+        this._scrollTo();
     };
 
     module.exports = NarrativeView;
