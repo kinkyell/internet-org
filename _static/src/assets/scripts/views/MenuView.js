@@ -5,6 +5,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var breakpointManager = require('services/breakpointManager');
     var eventHub = require('services/eventHub');
     var Tween = require('gsap-tween');
+    var $ = require('jquery');
 
     var SPEEDS = require('appConfig').animationSpeeds;
 
@@ -114,6 +115,8 @@ define(function(require, exports, module) { // jshint ignore:line
         }
 
         this.isOpen = true;
+        eventHub.publish('MainMenu:change', this.isOpen);
+        eventHub.publish('MainMenu:open');
         this.$element.removeClass('u-isVisuallyHidden');
 
         this.$element.on('click', this._handleBgClick);
@@ -161,6 +164,8 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
         this.isOpen = false;
+        eventHub.publish('MainMenu:change', this.isOpen);
+        eventHub.publish('MainMenu:close');
 
         this.$element.off('click', this._handleBgClick);
         $win.off('keyup', this._handleEscPress);

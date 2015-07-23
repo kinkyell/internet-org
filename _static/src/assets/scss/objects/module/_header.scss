@@ -14,9 +14,22 @@
 }
 
 .header-logo {
+    position: absolute;
+    top: 0;
+    left: 12px;
     display: block;
     width: 125px;
+    margin-left: -12px;
     overflow: hidden;
+    transition: left 0.2s ease;
+}
+
+.header-logo_min {
+    width: 25px;
+}
+
+.mix-header-logo_center {
+    left: 50%;
 }
 
 .header-logo > svg {
@@ -34,9 +47,8 @@
 .header-menuBtn {
     display: none; // no use without JS
     position: absolute;
-    top: 50%;
+    top: 6px;
     right: 0;
-    margin-top: -17px;
     padding: 8px 6px;
     background: none;
     border: 0;
@@ -70,5 +82,9 @@
     .header-logo,
     .header-logo > svg {
         width: 243px;
+    }
+
+    .mix-header-logo_center {
+        left: 12px;
     }
 }
