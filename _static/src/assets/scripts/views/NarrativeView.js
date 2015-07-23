@@ -266,12 +266,14 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._scrollTo = function(offsetY, callback) {
 
-        $(window).off('wheel', this._onWheelEventHandler);
+        // $(window).off('wheel', this._onWheelEventHandler);
         this._isAnimating = true;
 
         console.log('call');
         TweenLite.to(this.$element, 1, {scrollTo:{y:500}, onCompleteScope: this, onComplete: function() {
-            console.log('complete');
+            console.log('complete', this);
+            this._isAnimating = false;
+            $(window).on('wheel', this._onWheelEventHandler);
         }});
 
         // TweenLite.to(
@@ -290,11 +292,6 @@ define(function(require, exports, module) { // jshint ignore:line
         // );
     };
 
-    proto._animationStub = function() {
-        this._isAnimating = false;
-        $(window).on('wheel', this._onWheelEventHandler);
-    };
-
     /**
      * Scoll down to next section
      *
@@ -305,6 +302,11 @@ define(function(require, exports, module) { // jshint ignore:line
         if (this._isAnimating) {
             return;
         }
+
+        console.log('_scrollDown');
+        TweenLite.to(this.$element, 1, {scrollTo: {y:200}, onCompleteScope: this, onComplete: function() {
+            console.log('done', this);
+        }});
 
         this._scrollTo();
     };
@@ -319,6 +321,8 @@ define(function(require, exports, module) { // jshint ignore:line
         if (this._isAnimating) {
             return;
         }
+
+        console.log('_scrollUp');
 
         this._scrollTo();
     };
