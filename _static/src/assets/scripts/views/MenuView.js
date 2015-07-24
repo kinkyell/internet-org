@@ -1,13 +1,16 @@
 define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
-    var $ = require('jquery');
     var AbstractView = require('./AbstractView');
+    var breakpointManager = require('services/breakpointManager');
+    var eventHub = require('services/eventHub');
+    var Tween = require('gsap-tween');
+    var $ = require('jquery');
 
-    var CONFIG = {};
+    var SPEEDS = require('appConfig').animationSpeeds;
 
     /**
-     * A view for transitioning display panels
+     * A view for displaying main menu
      *
      * @class MenuView
      * @param {jQuery} $element A reference to the containing DOM element.
@@ -18,6 +21,7 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     var proto = AbstractView.createChild(MenuView);
+    var $win = $(window);
 
     /**
      * Binds the scope of any handler functions.
@@ -28,6 +32,10 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto.setupHandlers = function() {
+        this._handleStateChange = this._onStateChange.bind(this);
+        this._handleBreakpointChange = this._onBreakpointChange.bind(this);
+        this._handleBgClick = this._onBgClick.bind(this);
+        this._handleEscPress = this._onEscPress.bind(this);
         return this;
     };
 
@@ -40,7 +48,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto.createChildren = function() {
-        return this;
+        this.isOpen = false;
+        this.$panel = this.$('.js-menuView-panel');
     };
 
     /**
@@ -51,7 +60,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.removeChildren = function() {
-        return this;
+        this.$panel = null;
     };
 
     /**
@@ -63,7 +72,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.layout = function() {
-        return this;
     };
 
     /**
@@ -74,7 +82,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onEnable = function() {
-        return this;
+        eventHub.subscribe('StateStack:change', this._handleStateChange);
+        breakpointManager.subscribe(this._handleBreakpointChange);
     };
 
     /**
@@ -85,12 +94,158 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onDisable = function() {
-        return this;
+        eventHub.unsubscribe('StateStack:change', this._handleStateChange);
+        breakpointManager.unsubscribe(this._handleBreakpointChange);
+    };
+
+    /**
+     * Opens menu
+     *
+     * @method open
+     * @public
+     */
+    proto.open = function() {
+        var bp = breakpointManager.getBreakpoint();
+        var isMobile = bp === 'BASE' || bp === 'SM';
+        var wrapperOpts = {};
+        var panelOpts = {};
+
+        if (this.isOpen) {
+            return;
+        }
+
+        this.isOpen = true;
+        eventHub.publish('MainMenu:change', this.isOpen);
+        eventHub.publish('MainMenu:open');
+        this.$element.removeClass('u-isVisuallyHidden');
+
+        this.$element.on('click', this._handleBgClick);
+        $win.on('keyup', this._handleEscPress);
+
+        if (isMobile) {
+            wrapperOpts.transform = 'scale(0.85)';
+            wrapperOpts.opacity = 0;
+        } else {
+            wrapperOpts.backgroundColor = 'rgba(0, 0, 0, 0)';
+            panelOpts.xPercent = 100;
+            panelOpts.delay = SPEEDS.MENU_DELAY;
+            Tween.from(this.$panel[0], SPEEDS.MENU_IN, panelOpts);
+        }
+
+        Tween.from(this.element, SPEEDS.MENU_IN, wrapperOpts);
+    };
+
+    /**
+     * Closes menu
+     *
+     * @method close
+     * @public
+     */
+    proto.close = function() {
+        var bp = breakpointManager.getBreakpoint();
+        var isMobile = bp === 'BASE' || bp === 'SM';
+        var wrapperTween;
+        var panelTween;
+        var wrapperOpts = {
+            onComplete: function() {
+                this.$element.addClass('u-isVisuallyHidden');
+                wrapperTween.progress(0);
+                wrapperTween.kill();
+                if (panelTween) {
+                    panelTween.progress(0);
+                    panelTween.kill();
+                }
+            },
+            callbackScope: this
+        };
+        var panelOpts = {};
+
+        if (!this.isOpen) {
+            return;
+        }
+        this.isOpen = false;
+        eventHub.publish('MainMenu:change', this.isOpen);
+        eventHub.publish('MainMenu:close');
+
+        this.$element.off('click', this._handleBgClick);
+        $win.off('keyup', this._handleEscPress);
+
+        if (isMobile) {
+            wrapperOpts.transform = 'scale(0.85)';
+            wrapperOpts.opacity = 0;
+        } else {
+            wrapperOpts.backgroundColor = 'rgba(0, 0, 0, 0)';
+            wrapperOpts.delay = SPEEDS.MENU_DELAY;
+            panelOpts.xPercent = 100;
+            panelTween = Tween.to(this.$panel[0], SPEEDS.MENU_OUT, panelOpts);
+        }
+
+        wrapperTween = Tween.to(this.element, SPEEDS.MENU_OUT, wrapperOpts);
+    };
+
+    /**
+     * Toggles menu
+     *
+     * @method toggle
+     * @public
+     */
+    proto.toggle = function() {
+        return this.isOpen ? this.close() : this.open();
     };
 
     //////////////////////////////////////////////////////////////////////////////////
     // EVENT HANDLERS
     //////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Sets the menu state after state change
+     *
+     * @method _onStateChange
+     * @param {Array} states Active states
+     * @private
+     */
+    proto._onStateChange = function(states) {
+        if (this.isOpen) {
+            this.close();
+        }
+    };
+
+    /**
+     * Sets the menu state after breakpoint change
+     *
+     * @method _onBreakpointChange
+     * @private
+     */
+    proto._onBreakpointChange = function() {
+
+    };
+
+    /**
+     * Close menu if background is clicked
+     *
+     * @method _onBgClick
+     * @param {ClickEvent} event Click event
+     * @private
+     */
+    proto._onBgClick = function(event) {
+        if (!this.$panel[0].contains(event.target)) {
+            this.close();
+        }
+    };
+
+    /**
+     * Close menu if background esc is pressed
+     *
+     * @method _onEscPress
+     * @param {KeyboardEvent} event Key up event
+     * @private
+     */
+    proto._onEscPress = function(event) {
+        if (event.keyCode === 27) { // ESC: 27
+            event.preventDefault();
+            this.close();
+        }
+    };
 
 
     //////////////////////////////////////////////////////////////////////////////////

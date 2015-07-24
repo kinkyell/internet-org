@@ -2,34 +2,27 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     var $ = require('jquery');
-
-    var noop = function() {};
+    var Scroll = {};//require('scroll');
 
     /**
      * A view for transitioning display panels
      *
-     * @class AbstractView
+     * @class PanelView
      * @param {jQuery} $element A reference to the containing DOM element.
      * @constructor
      */
-    var AbstractView = function($element) {
-        var thisProto = Object.getPrototypeOf(this);
-        if (thisProto === AbstractView.prototype) {
-            throw new TypeError('AbstractView should not be initialized directly.');
-        }
+    var PanelView = function($element) {
 
-        if (this.enable !== proto.enable || this.disable !== proto.disable) {
-            throw new Error('AbstractView: do not override enable or disable. Please use onEnable and onDisable.');
-        }
+        console.log('panelView');
 
         if ($element.length === 0) { return; }
 
         if (!($element instanceof $)) {
-            throw new TypeError('AbstractView: jQuery object is required');
+            throw new TypeError('MenuView: jQuery object is required');
         }
 
         /**
-         * A reference to the containing jQuery element.
+         * A reference to the containing DOM element.
          *
          * @default null
          * @property $element
@@ -37,16 +30,6 @@ define(function(require, exports, module) { // jshint ignore:line
          * @public
          */
         this.$element = $element;
-
-        /**
-         * A reference to the containing DOM element.
-         *
-         * @default null
-         * @property $element
-         * @type {Element}
-         * @public
-         */
-        this.element = $element[0];
 
         /**
          * Tracks whether component is enabled.
@@ -58,27 +41,10 @@ define(function(require, exports, module) { // jshint ignore:line
          */
         this.isEnabled = false;
 
-        this._bootStrapView();
-    };
-
-    var proto = AbstractView.prototype;
-
-    /**
-     * Initializes the UI Component View.
-     * Runs init, a single setupHandlers call, followed by createChildren and layout.
-     * Exits early if it is already initialized.
-     *
-     * @method _bootStrapView
-     * @returns {AbstractView}
-     * @private
-     */
-    proto._bootStrapView = function() {
         this.init();
-        this.setupHandlers();
-        this.createChildren();
-        this.layout();
-        this.enable();
     };
+
+    var proto = PanelView.prototype;
 
     /**
      * Initializes the UI Component View.
@@ -86,10 +52,17 @@ define(function(require, exports, module) { // jshint ignore:line
      * Exits early if it is already initialized.
      *
      * @method init
-     * @returns {AbstractView}
+     * @returns {PanelView}
      * @private
      */
-    proto.init = noop;
+    proto.init = function() {
+        this.setupHandlers()
+           .createChildren()
+           .layout()
+           .enable();
+
+        return this;
+    };
 
 
     /**
@@ -97,46 +70,58 @@ define(function(require, exports, module) { // jshint ignore:line
      * Should only be run on initialization of the view.
      *
      * @method setupHandlers
-     * @returns {AbstractView}
+     * @returns {PanelView}
      * @private
      */
-    proto.setupHandlers = noop;
+    proto.setupHandlers = function() {
+
+        return this;
+    };
 
     /**
      * Create any child objects or references to DOM elements.
      * Should only be run on initialization of the view.
      *
      * @method createChildren
-     * @returns {AbstractView}
+     * @returns {PanelView}
      * @private
      */
-    proto.createChildren = noop;
+    proto.createChildren = function() {
+
+        return this;
+    };
 
     /**
      * Remove any child objects or references to DOM elements.
      *
      * @method removeChildren
-     * @returns {AbstractView}
+     * @returns {PanelView}
      * @public
      */
-    proto.removeChildren = noop;
+    proto.removeChildren = function() {
+
+        return this;
+    };
 
     /**
      * Performs measurements and applys any positioning style logic.
      * Should be run anytime the parent layout changes.
      *
      * @method layout
-     * @returns {AbstractView}
+     * @returns {PanelView}
      * @public
      */
-    proto.layout = noop;
+    proto.layout = function() {
+        return this;
+    };
 
     /**
      * Enables the component.
+     * Performs any event binding to handlers.
      * Exits early if it is already enabled.
      *
      * @method enable
-     * @returns {AbstractView}
+     * @returns {PanelView}
      * @public
      */
     proto.enable = function() {
@@ -145,24 +130,21 @@ define(function(require, exports, module) { // jshint ignore:line
         }
         this.isEnabled = true;
 
-        return this.onEnable();
+        this.scroller = new Scroll();
+        this.scroller.subscribe('scroll', function() {
+            console.log('scroll');
+        });
+
+        return this;
     };
 
     /**
-     * Performs any event binding to handlers.
-     *
-     * @method onEnable
-     * @returns {AbstractView}
-     * @public
-     */
-    proto.onEnable = noop;
-
-    /**
      * Disables the component.
+     * Tears down any event binding to handlers.
      * Exits early if it is already disabled.
      *
      * @method disable
-     * @returns {AbstractView}
+     * @returns {PanelView}
      * @public
      */
     proto.disable = function() {
@@ -171,17 +153,8 @@ define(function(require, exports, module) { // jshint ignore:line
         }
         this.isEnabled = false;
 
-        return this.onDisable();
+        return this;
     };
-
-    /**
-     * Tears down any event binding to handlers.
-     *
-     * @method onDisable
-     * @returns {AbstractView}
-     * @public
-     */
-    proto.onDisable = noop;
 
     /**
      * Destroys the component.
@@ -189,7 +162,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * Should be called when the object should be left unused.
      *
      * @method destroy
-     * @returns {AbstractView}
+     * @returns {PanelView}
      * @public
      */
     proto.destroy = function() {
@@ -197,17 +170,6 @@ define(function(require, exports, module) { // jshint ignore:line
             .removeChildren();
 
         return this;
-    };
-
-    /**
-     * Shortcut menthod for this.$element.find()
-     *
-     * @method $
-     * @returns {jQuery}
-     * @public
-     */
-    proto.$ = function(selector) {
-        return this.$element.find(selector);
     };
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -220,12 +182,6 @@ define(function(require, exports, module) { // jshint ignore:line
     //////////////////////////////////////////////////////////////////////////////////
 
 
-    AbstractView.createChild = function createChild(ChildView) {
-        ChildView.prototype = Object.create(AbstractView.prototype);
-        ChildView.prototype.constructor = ChildView;
-        return ChildView.prototype;
-    };
-
-    module.exports = AbstractView;
+    module.exports = PanelView;
 
 });

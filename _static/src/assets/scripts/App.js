@@ -7,16 +7,13 @@ define(function(require, exports, module) { // jshint ignore:line
 
     require('modernizr');
     require('services/apiService');
+    var $ = require('jquery');
 
     require('gsap-cssPlugin');
-    require('gsap-timeline')
-
-    window.assetLoader = require('services/assetLoader')
+    require('gsap-timeline');
 
     var Router = require('services/Router');
 
-    var AbstractView = require('views/AbstractView');
-    var MenuView = require('views/MenuView');
     var StateStack = require('services/StateStack');
     var PanelState = require('states/PanelState');
     var NarrativeView = require('views/NarrativeView');
@@ -25,6 +22,8 @@ define(function(require, exports, module) { // jshint ignore:line
     // TODO: Setup modules
     //     - Asset Loader
     //     - Router
+
+    var HeaderView = require('views/HeaderView');
 
     /**
      * Initial application setup. Runs once upon every page load.
@@ -50,6 +49,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.init = function() {
         this._handleStateChange = this._onStateChange.bind(this);
         this.router = new Router();
+        this.headerView = new HeaderView($('.js-headerView'));
 
         this._setupStates();
 
@@ -98,9 +98,14 @@ define(function(require, exports, module) { // jshint ignore:line
             this.states.push(PanelState, {
                 stateName: states[states.length - 1]
             });
-        } else {
+        } else if (states.length < previousStates.length) {
             console.log('backward');
             this.states.pop();
+        } else {
+            console.log('swap');
+            this.states.swap(PanelState, {
+                stateName: states[states.length - 1]
+            });
         }
         console.log(this.states);
     };
