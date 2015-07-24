@@ -130,6 +130,7 @@ define(function(require, exports, module) { // jshint ignore:line
         var isMenuOpen = this.menuView.isOpen;
         var shouldBeCentered = (isMenuOpen || !isHome);
         var shouldBeRaised = (isMenuOpen && this.searchView.isOpen);
+        var shouldHaveBackBtn = (isNarrow && !isMenuOpen && !isHome);
 
         // invert logo when over imagery
         this.$logo.toggleClass('header-logo_invert', false);
@@ -144,7 +145,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$menuIcon.toggleClass('isOpen', isMenuOpen);
 
         // toggle back btn
-        this.$backBtn.toggleClass('isActive', !isMenuOpen && !isHome);
+        this.$backBtn.toggleClass('isActive', shouldHaveBackBtn);
 
         // move logo if necessary
         this.$logo
