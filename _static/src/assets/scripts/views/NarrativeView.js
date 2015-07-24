@@ -2,10 +2,10 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     var $ = require('jquery');
-    require('gsap-tween');
-    require('gsap-timeline');
     require('gsap-cssPlugin');
     require('gsap-scrollToPlugin');
+    require('gsap-tween');
+    require('gsap-timeline');
 
     var CONFIG = {};
 
@@ -81,7 +81,27 @@ define(function(require, exports, module) { // jshint ignore:line
          * @type {bool}
          * @private
          */
-        this._scrollSpeed = 650;
+        this._scrollSpeed = 250;
+
+        /**
+         * Tracks the current position of the narrative
+         *
+         * @default 0
+         * @property _position
+         * @type {bool}
+         * @private
+         */
+        this._position = 0;
+
+        /**
+         * reference to the total number of slides
+         *
+         * @default null
+         * @property _slidesLength
+         * @type {bool}
+         * @private
+         */
+        this._slidesLength = null;
 
         this.init();
     };
@@ -117,6 +137,9 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.setupHandlers = function() {
         this._onWheelEventHandler = this._onWheelEvent.bind(this);
+
+        this._onPrevSlideClickHandler = this._onPrevSlideClick.bind(this);
+        this._onNextSlideClickHandler = this._onNextSlideClick.bind(this);
 
         return this;
     };
@@ -157,6 +180,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.layout = function() {
         this.$narrativeSections.eq(0).addClass('isActive');
+        this._slidesLength = this.$narrativeSections.length;
 
         return this;
     };
@@ -178,13 +202,8 @@ define(function(require, exports, module) { // jshint ignore:line
 
         $(window).on('wheel', this._onWheelEventHandler);
 
-        var $el = $('.narrative-section');
-        var i = 0;
-        var l = $el.length;
-        for (; i < l; i++) {
-            var $curEl = $el.eq(i);
-            console.log($curEl.position().top);
-        }
+        $('.js-prev').on('click', this._onPrevSlideClickHandler);
+        $('.js-next').on('click', this._onNextSlideClickHandler);
 
         return this;
     };
@@ -243,6 +262,54 @@ define(function(require, exports, module) { // jshint ignore:line
         } else if(this._direction === 'up' && deltaY > this._factor) {
             // this._scrollUp();
         }
+    };
+
+    proto._onPrevSlideClick = function() {
+        event.preventDefault();
+
+        var prevSlidePos = this._position - 1;
+        this._gotoSlide(prevSlidePos);
+    };
+
+    proto._onNextSlideClick = function(event) {
+        event.preventDefault();
+
+        var nextSlidePos = this._position + 1;
+        this._gotoSlide(nextSlidePos);
+    };
+
+    proto._gotoSlide = function(position) {
+        if (position >= this._slidesLength || position < 0) {
+            return;
+        }
+
+        var $detinationSection = $('.narrative-section').eq(position);
+        var $sectionBody = $detinationSection.find('.narrative-section-bd');
+
+        var i = 0
+        var offsetY = 0;
+        for (; i < position; i++) {
+            offsetY += $('.narrative-section').eq(i).height();
+        }
+
+        if (position > this._position) {
+            var bdTwn = TweenLite.from($sectionBody, 0.5, {top: '50%'});
+        } else {
+            var bdTwn = TweenLite.from($sectionBody, 0.5, {top: '-50%'});
+        }
+
+        var tl = new TimelineLite();
+
+        tl.add(bdTwn);
+
+        if (position === 1 && this._position === 0) {
+            var opacTwn = TweenLite.from($sectionBody, 0.5, {opacity: 0});
+            tl.add(opacTwn, 0);
+        }
+
+        tl.to($('.narrative'), 0.35, { scrollTo: { y: offsetY }, onComplete: function() {
+            this._position = position;
+        }.bind(this) }, '-=0.5');
     };
 
     //////////////////////////////////////////////////////////////////////////////////
