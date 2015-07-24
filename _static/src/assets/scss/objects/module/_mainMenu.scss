@@ -17,6 +17,10 @@
     background: #f1efe7;
 }
 
+.mainMenu-panel-secondary {
+    padding: 0 8.8%;
+}
+
 @include breakpoint(MD) {
     .mainMenu-panel {
         width: 480px;
