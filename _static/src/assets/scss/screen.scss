@@ -17,6 +17,7 @@
 /* ---------------------------------------------------------------------
  Objects: item
 ------------------------------------------------------------------------ */
+@import "objects/item/auxLink";
 @import "objects/item/btn";
 @import "objects/item/link";
 
@@ -44,6 +45,7 @@
 @import "objects/repeater/media";
 @import "objects/repeater/feature";
 @import "objects/repeater/blocks";
+@import "objects/repeater/borderBlocks";
 @import "objects/repeater/vlist";
 
 /* ---------------------------------------------------------------------
