@@ -25,6 +25,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var appConfig = {
         classes: new ClassDict(classes),
         apiBase: '',
+        searchPath: '/search', // include prefix '/'
         animationSpeeds: {
             SLIDE_IN: 0.3, // panel sliding in
             SLIDE_OUT: 0.3, // panel sliding out
