@@ -5,6 +5,7 @@
 ------------------------------------------------------------------------ */
 
 .link {
+    @include transition(all 0.3s ease-in-out);
     font-family: $FONT_SANS_BLACK;
     font-weight: bolder; // TODO: REMOVE ONCE Web Fonts are in place
     font-size: 18px;
@@ -12,15 +13,14 @@
     text-decoration: none;
     text-transform: uppercase;
     color: $CLR_ACCENT;
-    @include transition(all 0.3s ease-in-out);
 }
 
 .link:after {
-    content: " → ";
+    @include transition(margin 0.1s ease-in-out);
+    content: " \xE2 ";
     font-family: 'Arial', sans-serif;
     font-size: 24px;
     margin-left: 0;
-    @include transition(margin 0.1s ease-in-out);
 }
 
 .link:hover,
@@ -67,4 +67,12 @@
 .link_themeMission:hover,
 .link_themeMission:active {
     color: $CLR_MISSION_ACTIVE;
+}
+
+.link:hover {
+    color: $CLR_ACCENT;
+}
+
+.link:hover:after {
+    margin-left: 3px;
 }

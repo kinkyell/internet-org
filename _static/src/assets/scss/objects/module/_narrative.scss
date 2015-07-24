@@ -19,3 +19,13 @@
     padding: 24px;
     background-color: #efede5;
 }
+
+@include breakpoint(MD) {
+    .narrative-section-bd {
+        width: 50vw;
+        height: 100vh;
+        padding: 24px;
+        background-color: #efede5;
+        box-sizing: border-box;
+    }
+}

@@ -22,7 +22,7 @@ define(function(require, exports, module) { // jshint ignore:line
                     // simulate network requests
                     setTimeout(function() {
                         resolve(data);
-                    }, 1500);
+                    }, 1000);
                 }).fail(function(error) {
                     reject(error);
                 });

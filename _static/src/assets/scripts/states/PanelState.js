@@ -6,8 +6,10 @@ define(function(require, exports, module) { // jshint ignore:line
     var apiService = require('services/apiService');
     var Tween = require('gsap-tween');
 
-    var PANEL_ANIMATE_SPEED = 0.3;
-    var PANEL_TEMPLATE = '<div class="panel panel_isLoading"><button type="button" class="js-stateBack">Back</button><a href="/deeper" class="js-stateLink">Go deeper</a></div>';
+    var SHADE_TEMPLATE = '<div class="shade"></div>';
+    var PANEL_TEMPLATE = '<div class="panel panel_isLoading"><button type="button" class="js-stateBack">Back</button><a href="/deeper" class="js-stateLink">Go deeper</a><a href="/swap" class="js-stateSwap">Swap me</a></div>'; //jshint ignore:line
+
+    var SPEEDS = require('appConfig').animationSpeeds;
 
     /**
      * Manages the stack of active states
@@ -19,6 +21,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var PanelState = function(options) {
         this._handlePanelContentLoad = this._onPanelContentLoad.bind(this);
         this._handlePanelContentError = this._onPanelContentError.bind(this);
+
         BasicState.call(this);
     };
 
@@ -34,20 +37,29 @@ define(function(require, exports, module) { // jshint ignore:line
      * @method activate
      * @fires State:activate
      */
-    PanelState.prototype.activate = function() {
+    PanelState.prototype.activate = function(event) {
+        var tweenOpts = {};
+        var tweenSpeed;
+
+        this.$panelShade = $(SHADE_TEMPLATE).appendTo('body');
         this.$panelContent = $(PANEL_TEMPLATE).appendTo('body');
 
         apiService.getExamplePage().then(this._handlePanelContentLoad, this._handlePanelContentError);
+        Tween.set(this.$panelShade[0], { opacity: 0 });
 
-        this.tween = Tween.from(this.$panelContent[0], PANEL_ANIMATE_SPEED, {
-            xPercent: 100,
-            onReverseComplete: function() {
-                this.$panelContent.remove();
-            },
-            callbackScope: this
-        });
+        if (event.method === 'push') {
+            tweenOpts.xPercent = 100;
+            tweenSpeed = SPEEDS.SLIDE_IN;
+            Tween.to(this.$panelShade[0], tweenSpeed, { opacity: 1 });
+        } else if (event.method === 'swap') {
+            tweenOpts.yPercent = 100;
+            tweenOpts.delay = SPEEDS.SWAP_IN_DELAY;
+            tweenSpeed = SPEEDS.SWAP_IN;
+        }
 
-        BasicState.prototype.activate.call(this);
+        Tween.from(this.$panelContent[0], tweenSpeed, tweenOpts);
+
+        BasicState.prototype.activate.call(this, event);
     };
 
     /**
@@ -61,8 +73,9 @@ define(function(require, exports, module) { // jshint ignore:line
         if (!this.active) {
             return;
         }
-        var $markup = $(markup);
+        var $markup = $('<div></div>').append(markup);
         this.$panelContent.append($markup).removeClass('panel_isLoading');
+        Tween.from($markup[0], SPEEDS.CONTENT_IN, { opacity: 0 });
     };
 
     /**
@@ -88,10 +101,32 @@ define(function(require, exports, module) { // jshint ignore:line
      * @method deactivate
      * @fires State:deactivate
      */
-    PanelState.prototype.deactivate = function() {
-        this.tween.reverse();
+    PanelState.prototype.deactivate = function(event) {
+        var tweenOpts = {
+            onComplete: function() {
+                this.$panelContent.remove();
+                this.$panelShade.remove();
+            },
+            callbackScope: this
+        };
+        var tweenSpeed;
 
-        BasicState.prototype.deactivate.call(this);
+        Tween.set(this.$panelShade[0], { opacity: 1 });
+
+        if (event.method === 'pop') {
+            tweenOpts.xPercent = 100;
+            tweenSpeed = SPEEDS.SLIDE_OUT;
+            Tween.to(this.$panelShade[0], tweenSpeed, { opacity: 0 });
+        } else if (event.method === 'swap') {
+            tweenOpts.opacity = 0.5;
+            tweenOpts.transformOrigin = 'center top';
+            tweenOpts.transform = 'scale(0.75) translateY(-25vh)';
+            tweenSpeed = SPEEDS.SWAP_OUT;
+        }
+
+        Tween.to(this.$panelContent[0], tweenSpeed, tweenOpts);
+
+        BasicState.prototype.deactivate.call(this, event);
     };
 
     return PanelState;
