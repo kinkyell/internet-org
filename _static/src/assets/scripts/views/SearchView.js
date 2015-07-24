@@ -21,7 +21,6 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     var proto = AbstractView.createChild(SearchView);
-    var $win = $(window);
 
     /**
      * Binds the scope of any handler functions.
@@ -33,7 +32,8 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.setupHandlers = function() {
         this._handleTriggerClick = this._onTriggerClick.bind(this);
-        return this;
+        this._handleMenuClose = this._onMenuClose.bind(this);
+        this._handleSubmit = this._onSubmit.bind(this);
     };
 
     /**
@@ -82,6 +82,8 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.onEnable = function() {
         this.$trigger.on('click', this._handleTriggerClick);
+        this.$element.on('submit', this._handleSubmit);
+        eventHub.subscribe('MainMenu:change', this._handleMenuClose);
     };
 
     /**
@@ -93,6 +95,8 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.onDisable = function() {
         this.$trigger.off('click', this._handleTriggerClick);
+        this.$element.off('submit', this._handleSubmit);
+        eventHub.unsubscribe('MainMenu:change', this._handleMenuClose);
     };
 
     /**
@@ -146,6 +150,24 @@ define(function(require, exports, module) { // jshint ignore:line
 
         event.preventDefault();
         this.toggle();
+    };
+
+    /**
+     * Sets the menu state after state change
+     *
+     * @method _onSubmit
+     * @param {Array} states Active states
+     * @private
+     */
+    proto._onSubmit = function(event) {
+        event.preventDefault();
+        var searchText = this.$input.val().trim();
+        if (!searchText) {
+            return;
+        }
+        eventHub.publish('Search:submit', {
+            searchText: searchText
+        });
     };
 
     /**

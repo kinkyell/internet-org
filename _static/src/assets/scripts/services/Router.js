@@ -4,6 +4,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var $ = require('jquery');
     var Modernizr = require('modernizr');
     var eventHub = require('services/eventHub');
+    var appConfig = require('appConfig');
 
     var UrlHistoryManager = require('util/history/UrlHistoryManager');
     var FallbackHistoryManager = require('util/history/FallbackHistoryManager');
@@ -33,6 +34,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handleStateTrigger = this._onStateTrigger.bind(this);
         this._handleStateBack = this._onStateBack.bind(this);
         this._handleStateSwap = this._onStateSwap.bind(this);
+        this._handleSearch = this._onSearch.bind(this);
 
         /**
          * Current list of state data
@@ -55,6 +57,7 @@ define(function(require, exports, module) { // jshint ignore:line
             new FallbackHistoryManager();
 
         eventHub.subscribe('HistoryManager:popState', this._handlePopState);
+        eventHub.subscribe('Search:submit', this._handleSearch);
         $(document.body).on('click', ROUTER_LINK_SELECTOR, this._handleStateTrigger);
         $(document.body).on('click', ROUTER_BACK_SELECTOR, this._handleStateBack);
         $(document.body).on('click', ROUTER_SWAP_SELECTOR, this._handleStateSwap);
@@ -113,6 +116,21 @@ define(function(require, exports, module) { // jshint ignore:line
     Router.prototype._onStateBack = function(event) {
         event.preventDefault();
         this.historyManager.back();
+    };
+
+    /**
+     * Handle back link click in UI
+     *
+     * @method _onSearch
+     * @param {ClickEvent} event Click event from router link
+     * @private
+     */
+    Router.prototype._onSearch = function(event) {
+        var prevStates = this._currentStates.slice(0);
+        var url = appConfig.searchPath + '/' + encodeURIComponent(event.searchText);
+        this._currentStates.push(url);
+        this.historyManager.pushState(this._currentStates, null, url);
+        eventHub.publish('Router:stateChange', this._currentStates, prevStates);
     };
 
     /**

@@ -48,6 +48,7 @@
     transition: fill 0.3s ease;
 }
 
+.header-backBtn,
 .header-menuBtn {
     display: none; // no use without JS
     position: absolute;
@@ -59,7 +60,24 @@
     font-weight: bold;
     color: #282828;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.header-backBtn {
+    display: block;
+    width: 22px;
+    height: 32px;
+    right: auto;
+    left: -100px;
+}
+
+.header-backBtn.isActive {
+    left: 0;
+}
+
+.header-backBtn > svg {
+    width: 100%;
+    height: 100%;
 }
 
 .header-menuBtn-text {

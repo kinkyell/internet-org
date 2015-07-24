@@ -52,6 +52,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$menuBtn = this.$('.js-headerView-menuBtn');
         this.$menuText = this.$('.js-headerView-menuBtn-text');
         this.$menuIcon = this.$('.js-headerView-menuBtn-icon');
+        this.$backBtn = this.$('.js-headerView-backBtn');
 
         this.menuView = new MenuView($('.js-menuView'));
         this.searchView = new SearchView($('.js-searchView'));
@@ -70,6 +71,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$menuBtn = null;
         this.$menuText = null;
         this.$menuIcon = null;
+        this.$backBtn = null;
     };
 
     /**
@@ -140,6 +142,9 @@ define(function(require, exports, module) { // jshint ignore:line
 
         // toggle icon
         this.$menuIcon.toggleClass('isOpen', isMenuOpen);
+
+        // toggle back btn
+        this.$backBtn.toggleClass('isActive', !isMenuOpen && !isHome);
 
         // move logo if necessary
         this.$logo
