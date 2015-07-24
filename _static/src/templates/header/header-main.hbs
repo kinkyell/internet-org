@@ -76,12 +76,19 @@
         </svg>
     </a>
 
-    <button type="button" class="header-menuBtn js-headerView-menuBtn u-disableTransitions">
+    <!-- <button type="button" class="header-menuBtn js-headerView-menuBtn u-disableTransitions">
         <span class="header-menuBtn-text js-headerView-menuBtn-text u-isVisuallyHiddenSmall">Menu</span>
         <span class="header-menuBtn-icon">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="20" height="12" viewBox="0 0 20 12">
                 <path d="M0.000,12.000 L0.000,10.000 L20.000,10.000 L20.000,12.000 L0.000,12.000 ZM0.000,5.000 L20.000,5.000 L20.000,7.000 L0.000,7.000 L0.000,5.000 ZM0.000,0.000 L20.000,0.000 L20.000,2.000 L0.000,2.000 L0.000,0.000 Z" />
             </svg>
+        </span>
+    </button> -->
+
+    <button type="button" class="header-menuBtn js-headerView-menuBtn u-disableTransitions">
+        <span class="menuTrigger">
+            <span class="menuTrigger-label js-headerView-menuBtn-text">Menu</span>
+            <span class="menuTrigger-icon js-headerView-menuBtn-icon"></span>
         </span>
     </button>
 
@@ -96,9 +103,21 @@
         </div>
         <div class="mainMenu-panel-primary">
             <ul>
-                <li><a href="/mission" class="js-stateLink">Our Mission</a></li>
-                <li><a href="/approach" class="js-stateLink">Our Approach</a></li>
-                <li><a href="/impact" class="js-stateLink">Our Impact</a></li>
+                <li>
+                    <div class="topicLink topicLink_themeMission">
+                        <a href="/mission" class="topicLink-link js-stateLink">Our Mission</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="topicLink topicLink_themeApproach">
+                        <a href="/approach" class="topicLink-link js-stateLink">Our Approach</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="topicLink topicLink_themeImpact">
+                        <a href="/impact" class="topicLink-link js-stateLink">Our Impact</a>
+                    </div>
+                </li>
             </ul>
         </div>
         <div class="mainMenu-panel-secondary">

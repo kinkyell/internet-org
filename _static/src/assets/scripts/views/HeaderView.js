@@ -49,6 +49,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$logo = this.$('.js-headerView-logo');
         this.$menuBtn = this.$('.js-headerView-menuBtn');
         this.$menuText = this.$('.js-headerView-menuBtn-text');
+        this.$menuIcon = this.$('.js-headerView-menuBtn-icon');
 
         this.menuView = new MenuView($('.js-menuView'));
     };
@@ -65,6 +66,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$menuView = null;
         this.$menuBtn = null;
         this.$menuText = null;
+        this.$menuIcon = null;
     };
 
     /**
@@ -129,6 +131,9 @@ define(function(require, exports, module) { // jshint ignore:line
 
         // hide menu text when open
         this.$menuText.toggleClass('u-isVisuallyHidden', isMenuOpen);
+
+        // toggle icon
+        this.$menuIcon.toggleClass('isOpen', isMenuOpen);
 
         // move logo if necessary
         if (isNarrow && !this.isLogoCentered && shouldBeCentered) {
