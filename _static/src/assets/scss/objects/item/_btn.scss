@@ -5,47 +5,193 @@
 ------------------------------------------------------------------------ */
 .btn {
     display: inline-block;
-    margin: 0;
-    padding: 16px;
     border: 0;
+    padding: 22px;
+    max-width: 480px;
+    width: 100%;
     box-sizing: border-box;
-    background-color: red; //replace with color
-    color: #eeeeee; /* fallback for non rgba browsers */
-    color: rgba(255,255,255,.9);
+    font-family: $FONT_SANS;
     font-weight: bold;
-    font-size: 14px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
     line-height: normal; /* set to normal to .btn can be usd on inputs in firefox with consistency */
     text-align: center;
     text-decoration: none;
+    text-transform: uppercase;
     cursor: pointer;
-    border-radius: 5px;
-    transition: all .12s ease-in-out;
+    background-color: $CLR_ACCENT;
+    color: white;
+    @include transition(background-color 0.2s ease-in-out);
 }
 
-.btn:hover{
-    background-color: #333333;
+.btn:hover,
+.bt:active {
+    background-color: $CLR_ACCENT_ACTIVE;
 }
 
-.btn_disabled {
-    color: #666666; /* fallback for non rgba browsers */
-    color: rgba(0,0,0,.3);
-    background-color: #cccccc !important; /* override hovers - disabled buttons don't have hover states */
+// THEME CLASSES by contectual or chain selection
+.theme-impact .btn,
+.btn_themeImpact {
+    background-color: $CLR_IMPACT;
 }
 
-.mix-btn_full {
-    width: 100%;
+.theme-impact .btn:hover, 
+.theme-impact .btn:active,
+.btn_themeImpact:hover,
+.btn_themeImpact:active {
+    background-color: $CLR_IMPACT_ACTIVE;
 }
 
-.mix-btn_glass {
-    background-color: transparent;
-    border: 1px solid red;
+.theme-approach .btn,
+.btn_themeApproach {
+    background-color: $CLR_APPROACH;
 }
 
-.mix-btn_glass:hover {
-    background-color: red;
+.theme-approach .btn:hover, 
+.theme-approach .btn:active,
+.btn_themeApproach:hover,
+.btn_themeApproach:active {
+    background-color: $CLR_APPROACH_ACTIVE;
 }
 
-.mix-btn_light {
-    background-color: red;
+.theme-mission .btn,
+.btn_themeMission {
+    background-color: $CLR_MISSION;
+}
+
+.theme-mission .btn:hover, 
+.theme-mission .btn:active,
+.btn_themeMission:hover,
+.btn_themeMission:active {
+    background-color: $CLR_MISSION_ACTIVE;
+}
+
+.circleBtn {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    height: 80px;
+    width: 80px;
+    text-align: center;
+    background-color: $CLR_ACCENT;
+    border-radius: 50%;
+    font-size: 22px;
+    @include transition(all 0.2s ease-in-out);
+
+}
+
+.contentOnMedia-link:hover > .circleBtn,
+.circleBtn:hover,
+.circleBtn:active {
+    background-color: $CLR_ACCENT_ACTIVE;
+}
+
+.circleBtn:after,
+.circleBtn:before {
+    content: "";
+    display: block;
+    height: 12px;
+    width: 13px;
+    position: absolute;
+    top: 33px;
+    border-bottom: 3px solid white;
+    border-right: 3px solid white;
+    transform: rotate(-45deg);
+    @include transition(left 0.2s ease-in-out);
+}
+
+.circleBtn:after {
+    left: 33px;
+}
+
+.circleBtn:before {
+    left: 25px;
+}
+
+.circleBtn_play:after {
+    content: "";
+    width: 0; 
+    height: 0;
+    border: none;
+    transform: none;
+    top: calc(50% - 12px);
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 20px solid white;
+}
+
+.circleBtn_play:before {
+    content: none;
+}
+
+.contentOnMedia-link:hover > .circleBtn:after,
+.circleBtn:hover:after,
+.circleBtn:active:after, {
+    left: 36px;
+}
+
+.contentOnMedia-link:hover > .circleBtn:before,
+.circleBtn:hover:before,
+.circleBtn:active:before, {
+    left: 27px;
+}
+
+// THEME CLASSES by contectual or chain selection
+.theme-impact .circleBtn,
+.circleBtn_themeImpact {
+    background-color: $CLR_IMPACT;
+}
+
+.theme-impact .circleBtn:hover, 
+.theme-impact .circleBtn:active,
+.circleBtn_themeImpact:hover,
+.circleBtn_themeImpact:active {
+    background-color: $CLR_IMPACT_ACTIVE;
+}
+
+.theme-approach .circleBtn,
+.circleBtn_themeApproach {
+    background-color: $CLR_APPROACH;
+}
+
+.theme-approach .circleBtn:hover, 
+.theme-approach .circleBtn:active,
+.circleBtn_themeApproach:hover,
+.circleBtn_themeApproach:active {
+    background-color: $CLR_APPROACH_ACTIVE;
+}
+
+.theme-mission .circleBtn,
+.circleBtn_themeMission {
+    background-color: $CLR_MISSION;
+}
+
+.theme-mission .circleBtn:hover, 
+.theme-mission .circleBtn:active,
+.circleBtn_themeMission:hover,
+.circleBtn_themeMission:active {
+    background-color: $CLR_MISSION_ACTIVE;
+}
+
+/* Facebook Button */
+.btn_facebook {
+    background-color: $CLR_FB;
+}
+
+.btn_facebook:hover,
+.btn_facebook:active {
+    background-color: $CLR_FB_ACTIVE;
+}
+
+.btn_facebook:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-bottom;
+    height: 20px;
+    width: 20px;
+    margin-right: 18px;
+    background-image: url('../media/images/icons/png/fb.png');
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20%3F%3E%3Csvg%20height%3D%22500%22%20id%3D%22svg2%22%20version%3D%221.1%22%20width%3D%22500%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Acc%3D%22http%3A//creativecommons.org/ns%23%22%20xmlns%3Adc%3D%22http%3A//purl.org/dc/elements/1.1/%22%20xmlns%3Ainkscape%3D%22http%3A//www.inkscape.org/namespaces/inkscape%22%20xmlns%3Ardf%3D%22http%3A//www.w3.org/1999/02/22-rdf-syntax-ns%23%22%20xmlns%3Asodipodi%3D%22http%3A//sodipodi.sourceforge.net/DTD/sodipodi-0.dtd%22%20xmlns%3Asvg%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cdefs%20id%3D%22defs4%22/%3E%3Cg%20id%3D%22layer1%22%20transform%3D%22translate%280%2C-552.36218%29%22%3E%3Cpath%20d%3D%22M%2050%200%20C%2022.3%200%20-1.0018638e-016%2022.3%200%2050%20L%200%20450%20C%200%20477.7%2022.3%20500%2050%20500%20L%20225.1875%20500%20L%20225.1875%20276.03125%20L%20180.90625%20276.03125%20L%20180.90625%20196.84375%20L%20225.1875%20196.84375%20L%20225.1875%20145.625%20C%20225.1875%20108.94857%20242.62281%2051.65625%20319.1875%2051.65625%20L%20388.15625%2051.90625%20L%20388.15625%20128.75%20L%20338.0625%20128.75%20C%20329.90292%20128.75%20318.3125%20132.83295%20318.3125%20150.3125%20L%20318.3125%20196.84375%20L%20389.28125%20196.84375%20L%20381.15625%20276.03125%20L%20318.3125%20276.03125%20L%20318.3125%20500%20L%20450%20500%20C%20477.7%20500%20500%20477.7%20500%20450%20L%20500%2050%20C%20500%2022.3%20477.7%20-1.0018638e-016%20450%200%20L%2050%200%20z%20%22%20id%3D%22rect2995%22%20style%3D%22fill%3A%23ffffff%3Bfill-opacity%3A1%3Bfill-rule%3Anonzero%22%20transform%3D%22translate%280%2C552.36218%29%22/%3E%3C/g%3E%3C/svg%3E');
+    background-size: cover;
+    background-repeat: no-repeat;
+
 }
