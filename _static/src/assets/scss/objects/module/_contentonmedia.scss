@@ -1,0 +1,63 @@
+/* ---------------------------------------------------------------------
+ Content On Media
+
+ patterns to place content on top of defferent types of media
+------------------------------------------------------------------------ */
+
+.contentOnMedia {
+    position: relative;
+}
+
+.contentOnMedia-media {
+    position: relative;
+}
+
+.contentOnMedia-link,
+.contentOnMedia-details {
+    position: absolute;
+}
+
+.contentOnMedia-details {
+    top: 20px;
+    left: 20px;
+}
+
+.contentOnMedia-details-title {
+    font-family: $FONT_SANS;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+}
+
+.contentOnMedia-details-title + .contentOnMedia-details-duration {
+    margin-top: 8px;
+}
+
+.contentOnMedia-details-duration {
+    font-family: $FONT_SANS;
+    font-size: 14px;
+    line-height: 1;
+    color: white;
+}
+
+.contentOnMedia-link_ct {
+    top: calc(50% - 40px);
+    left: calc(50% - 40px);
+}
+
+.contentOnMedia-link_br {
+    bottom: $SPACE_x4;
+    right: $SPACE_x4;
+}
+
+.contentOnMedia-link-cta {
+    display: inline-block;
+    vertical-align: middle;
+    font-family: $FONT_SERIF;
+    font-size: 26px;
+    line-height: 1;
+    color: white;
+    margin-right: 20px;
+}

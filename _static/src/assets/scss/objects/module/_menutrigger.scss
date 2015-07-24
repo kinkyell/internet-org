@@ -1,0 +1,81 @@
+/* ---------------------------------------------------------------------
+ Menu Trigger
+
+ Global Menu Icon trigger styles
+------------------------------------------------------------------------ */
+
+.menuTrigger {
+  display: inline-block;
+  text-align: right;
+  min-width: 80px;
+  position: relatve;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.menuTrigger-label {
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  color: $CLR_BLACK;
+  text-transform: uppercase;
+  display: inline-block;
+  vertical-align: text-top; 
+}
+
+.menuTrigger-icon {
+  display: inline-block;
+  vertical-align: top;
+  text-align: right;
+  height: 10px;
+  width: 20px;
+  margin-top: 1px;
+  border-bottom: 2px solid $CLR_BLACK;
+  opacity: 1;
+  transition: border 0.2s ease-in-out;
+}
+
+.menuTrigger-icon:before,
+.menuTrigger-icon:after {
+  position: relative;
+  content: "";
+  display: block;
+  height: 2px;
+  background-color: $CLR_BLACK;
+  transition: all 0.5s ease;
+}
+
+.menuTrigger-icon:after {
+  top: 3px;
+}
+
+// TODO: Need to add js hooks. Reference: http://codepen.io/patrickjannette/pen/vOVYXm
+
+.menuTrigger-icon.isOpen {
+  border: 0 solid transparent;
+}
+
+.menuTrigger-icon.isOpen:before {
+  transform: rotate(-135deg);
+  transform-origin: top middle;
+  top: 6px;
+  transition: all 0.3s linear;
+}
+
+.menuTrigger-icon.isOpen:after {
+  transform: rotate(135deg);
+  transform-origin: top middle;
+  top: 4px;
+  transition: all 0.3s linear;
+}
+
+.menuTrigger:hover .menuTrigger-icon.isOpen:before {
+  transform: rotate(405deg);
+  transform-origin: middle middle;
+}
+
+.menuTrigger:hover .menuTrigger-icon.isOpen:after {
+  transform: rotate(495deg);
+  transform-origin: middle middle;
+}
+

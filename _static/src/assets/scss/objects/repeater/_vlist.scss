@@ -3,10 +3,44 @@
 ------------------------------------------------------------------------ */
 .vList > * {
     display: block;
-    margin-bottom: $SPACE_x2;
+    margin-bottom: $SPACE_x1;
 }
 
 .vList_divided > * + * {
     padding-top: $SPACE_x2;
     border-top: 1px solid #cccccc;
+}
+
+.vList_bullets > *  {
+	font-family: $FONT_SANS;
+	line-height: 1.666667;
+	color: $CLR_GRAY;
+	position: relative;
+	padding-left: $SPACE_x3;
+}
+
+.vList_bullets > *:before {
+	content: '•';
+	position: absolute;
+	top: -8px;
+	left: 8px;
+	font-family: Arial, 'Arial', sans-serif;
+	font-size: 28px;
+	color: $CLR_ACCENT;
+}
+
+// THEME CLASSES by contectual or chain selection
+.theme-impact .vList_bullets > *:before,
+.vList_bullets_themeImpact > *:before {
+    color: $CLR_IMPACT;
+}
+
+.theme-approach .vList_bullets > *:before,
+.vList_bullets_themeApproach > *:before {
+    color: $CLR_APPROACH;
+}
+
+.theme-mission .vList_bullets > *:before,
+.vList_bullets_themeMission > *:before {
+    color: $CLR_MISSION;
 }

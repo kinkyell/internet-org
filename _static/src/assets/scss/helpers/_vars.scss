@@ -3,14 +3,24 @@
 //----------------------------------------------------------------------------
 
 $CLR_ACCENT: #ffcc02; // yellow
+$CLR_ACCENT_ACTIVE: #efbe02; // yellow ACTIVE
+$CLR_ACCENT_ALT: #efbe02; // yellow ALT
+$CLR_ACCENT_ALT_ACTIVE: #d6aa00; // yellow ALT ACTIVE
 $CLR_IMPACT: #ff6b00; // orange
+$CLR_IMPACT_ACTIVE: #ed6300; // orange ACTIVE
 $CLR_APPROACH: #fa5cb6; // magenta
+$CLR_APPROACH_ACTIVE: #eb4aa6; // magenta ACTIVE
 $CLR_MISSION: #9d25a0; // purple
+$CLR_MISSION_ACTIVE: #811784; // purple ACTIVE
+$CLR_FB: #3b5998; // facebook
+$CLR_FB_ACTIVE: #2d4a88; // facebook
 
-$CLR_BLACK: #000000;
-$CLR_GRAY: #6d6e64;
-$CLR_GRAY_LIGHT: #ebe8de;
-$CLR_GRAY_LIGHTER: #efede4;
+$CLR_BLACK: #000000; //Headlines
+$CLR_GRAY: #6d6e64; // Paragraph Text Color
+$CLR_GRAY_LIGHT: #d5d4ca; //Strokes
+$CLR_GRAY_LIGHTER: #efede4; // Main Background
+$CLR_BEIGE: #e0dccc; // Language Dropdown
+$CLR_BEIGE_LIGHT: #e9e6da; // Logo Watermark
 
 //----------------------------------------------------------------------------
 //Site Globals

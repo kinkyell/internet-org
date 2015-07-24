@@ -1,0 +1,21 @@
+/* ---------------------------------------------------------------------
+ Foot Box
+
+ styles for content areas at the end of stoires, campaigns, etc...
+------------------------------------------------------------------------ */
+
+
+.footBox {
+    background-color: $CLR_GRAY_LIGHTER;
+}
+
+.footBox-hd {
+    font-family: $FONT_SERIF;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.363636;
+    text-align: center;
+    color: $CLR_GRAY;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $CLR_GRAY_LIGHT;
+}
