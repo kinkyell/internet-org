@@ -130,6 +130,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto.createChildren = function() {
+        this.$narrativeSections = this.$element.find('> *');
 
         return this;
     };
@@ -155,6 +156,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.layout = function() {
+        this.$narrativeSections.eq(0).addClass('isActive');
+
         return this;
     };
 
@@ -174,6 +177,14 @@ define(function(require, exports, module) { // jshint ignore:line
         this.isEnabled = true;
 
         $(window).on('wheel', this._onWheelEventHandler);
+
+        var $el = $('.narrative-section');
+        var i = 0;
+        var l = $el.length;
+        for (; i < l; i++) {
+            var $curEl = $el.eq(i);
+            console.log($curEl.position().top);
+        }
 
         return this;
     };
@@ -223,13 +234,14 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onWheelEvent = function(event) {
+        event.preventDefault();
         var originalEvent = event.originalEvent;
         var deltaY = this._normalizeDelta(originalEvent.deltaY);
 
         if(this._direction === 'down' && deltaY > this._factor) {
             this._scrollDown();
         } else if(this._direction === 'up' && deltaY > this._factor) {
-            this._scrollUp();
+            // this._scrollUp();
         }
     };
 
@@ -265,31 +277,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._scrollTo = function(offsetY, callback) {
-
-        // $(window).off('wheel', this._onWheelEventHandler);
         this._isAnimating = true;
-
-        console.log('call');
-        TweenLite.to(this.$element, 1, {scrollTo:{y:500}, onCompleteScope: this, onComplete: function() {
-            console.log('complete', this);
-            this._isAnimating = false;
-            $(window).on('wheel', this._onWheelEventHandler);
-        }});
-
-        // TweenLite.to(
-        //     this.$element,
-        //     1,
-        //     {
-        //         scrollTo:{y:500},
-        //         ease:Power2.easeOut,
-        //         onCompleteScope: this,
-        //         onComplete: function() {
-        //             console.log('complete');
-        //             this._isAnimating = false;
-        //             $(window).on('wheel', this._onWheelEventHandler);
-        //         }
-        //     }
-        // );
+        $(window).off('wheel', this._onWheelEventHandler);
+        $('.narrative').animate({ scrollTop: offsetY }, this._scrollSpeed, callback);
     };
 
     /**
@@ -303,12 +293,20 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
 
-        console.log('_scrollDown');
-        TweenLite.to(this.$element, 1, {scrollTo: {y:200}, onCompleteScope: this, onComplete: function() {
-            console.log('done', this);
-        }});
+        var $currentSection = $('.narrative-section.isActive');
+        var $nextSection = $('.narrative-section.isActive').next();
+        var offsetY = $nextSection.position().top;
 
-        this._scrollTo();
+        console.log('scrollto: ', offsetY);
+
+        this._scrollTo(offsetY, function() {
+            console.log('callback', this);
+            this._isAnimating = false;
+            $(window).on('wheel', this._onWheelEventHandler);
+
+            $currentSection.removeClass('isActive');
+            $nextSection.addClass('isActive');
+        }.bind(this));
     };
 
     /**
@@ -318,13 +316,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._scrollUp = function() {
-        if (this._isAnimating) {
-            return;
-        }
 
-        console.log('_scrollUp');
-
-        this._scrollTo();
     };
 
     module.exports = NarrativeView;
