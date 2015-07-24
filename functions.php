@@ -12,7 +12,6 @@ define( 'IO_DIR', __DIR__ );
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
 wpcom_vip_load_plugin( 'babble', 'internet_org-plugins' );
-wpcom_vip_load_plugin( 'fieldmanager-demo', 'internet_org-plugins' );
 wpcom_vip_load_plugin( 'iorg-custom-posttypes', 'internet_org-plugins' );
 wpcom_vip_load_plugin( 'iorg-custom-fields', 'internet_org-plugins' );
 wpcom_vip_load_plugin( 'fieldmanager' );
