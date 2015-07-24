@@ -11,8 +11,15 @@
 // Header
 get_header();
 
+$after_title_custom_fields = get_post_meta( get_the_ID(), 'after_title_fm_fields', false );
+
+var_dump( $after_title_custom_fields );
+
 // content
 ?>
+
+<h1>HOME!!!</h1>
+
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
@@ -20,14 +27,15 @@ get_header();
 
 				<?php get_template_part( 'template-parts/content', 'page' ); ?>
 
-				<?php
-					// If comments are open or we have at least one comment, load up the comment template.
-					if ( comments_open() || get_comments_number() ) :
-						comments_template();
-					endif;
-				?>
-
 			<?php endwhile; // End of the loop. ?>
+
+			<?php
+
+
+			$custom_fields = get_post_meta( get_the_ID(), 'home_content_section', false );
+			var_dump( $custom_fields );
+
+			?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
