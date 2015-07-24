@@ -50,6 +50,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.createChildren = function() {
         this.isOpen = false;
         this.$panel = this.$('.js-menuView-panel');
+        this.$sliders = this.$('.js-menuView-slider');
     };
 
     /**
@@ -61,6 +62,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.removeChildren = function() {
         this.$panel = null;
+        this.$sliders = null;
     };
 
     /**
@@ -133,6 +135,7 @@ define(function(require, exports, module) { // jshint ignore:line
         }
 
         Tween.from(this.element, SPEEDS.MENU_IN, wrapperOpts);
+        this._animateSliders(panelOpts.delay);
     };
 
     /**
@@ -191,6 +194,23 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.toggle = function() {
         return this.isOpen ? this.close() : this.open();
+    };
+
+    /**
+     * Animates Slider section
+     *
+     * @method _animateSliders
+     * @public
+     */
+    proto._animateSliders = function(baseDelay) {
+        baseDelay = (baseDelay || 0) + SPEEDS.SLIDERS_STAGGER;
+        this.$sliders.each(function(idx, el) {
+            Tween.from(el, SPEEDS.SLIDERS_IN, {
+                opacity: 0,
+                xPercent: 30,
+                delay: baseDelay + (idx * SPEEDS.SLIDERS_STAGGER)
+            });
+        });
     };
 
     //////////////////////////////////////////////////////////////////////////////////

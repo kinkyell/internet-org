@@ -21,7 +21,7 @@
     width: 125px;
     margin-left: -12px;
     overflow: hidden;
-    transition: left 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .header-logo_min {
@@ -30,6 +30,10 @@
 
 .mix-header-logo_center {
     left: 50%;
+}
+
+.mix-header-logo_up {
+    top: -80px;
 }
 
 .header-logo > svg {
@@ -86,5 +90,9 @@
 
     .mix-header-logo_center {
         left: 12px;
+    }
+
+    .mix-header-logo_up {
+        top: 0;
     }
 }
