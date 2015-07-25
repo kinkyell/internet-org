@@ -94,6 +94,16 @@ define(function(require, exports, module) { // jshint ignore:line
         this._position = 0;
 
         /**
+         * Tracks the current position of slide position within a section
+         *
+         * @default 0
+         * @property _slidePosition
+         * @type {bool}
+         * @private
+         */
+        this._slidePosition = 0;
+
+        /**
          * reference to the total number of slides
          *
          * @default null
@@ -258,33 +268,97 @@ define(function(require, exports, module) { // jshint ignore:line
         var deltaY = this._normalizeDelta(originalEvent.deltaY);
 
         if(this._direction === 'down' && deltaY > this._factor) {
-            this._scrollDown();
+            // this._scrollDown();
         } else if(this._direction === 'up' && deltaY > this._factor) {
             // this._scrollUp();
         }
     };
 
+    proto._hasMultiple = function(position) {
+        var $currentSection = $('.narrative-section').eq(position);
+        var $slides = $currentSection.find('.narrative-section-slides-item');
+        var slidesCount = $slides.length;
+
+        return (slidesCount > 1) ? true : false;
+
+    };
+
     proto._onPrevSlideClick = function() {
         event.preventDefault();
 
+        if (this._gotoNextSlide()) {
+            return;
+        }
+
         var prevSlidePos = this._position - 1;
-        this._gotoSlide(prevSlidePos);
+        this._gotoSection(prevSlidePos);
     };
 
     proto._onNextSlideClick = function(event) {
         event.preventDefault();
 
-        var nextSlidePos = this._position + 1;
-        this._gotoSlide(nextSlidePos);
-    };
-
-    proto._gotoSlide = function(position) {
-        if (position >= this._slidesLength || position < 0) {
+        if (this._gotoNextSlide(true)) {
             return;
         }
 
-        var $detinationSection = $('.narrative-section').eq(position);
-        var $sectionBody = $detinationSection.find('.narrative-section-bd');
+        var nextSlidePos = this._position + 1;
+        this._gotoSection(nextSlidePos);
+    };
+
+    proto._gotoNextSlide = function(forward) {
+
+        if (this._isAnimating) {
+            return;
+        }
+
+        var $currentSection = $('.narrative-section').eq(this._position);
+        var $slidesContainer = $currentSection.find('.narrative-section-slides');
+        var $slides = $currentSection.find('.narrative-section-slides-item');
+        var slideCount = $slides.length;
+        var $currentSlide = $currentSection.find('.narrative-section-slides-item').eq(this._slidePosition);
+        var destinationSlidePos = this._slidePosition;
+
+        if (forward) {
+            destinationSlidePos += 1;
+            var atEnd = destinationSlidePos >= slideCount;
+        } else {
+            destinationSlidePos -= 1;
+            var atEnd = destinationSlidePos < 0;
+        }
+
+        var hasMultiple = this._hasMultiple(this._position);
+
+        if (!hasMultiple || atEnd) {
+            return false;
+        }
+
+        this._isAnimating = true;
+
+        var offsetY = 0;
+        var i = 0;
+        for (; i < destinationSlidePos; i++) {
+            offsetY += $slides.eq(i).height();
+        }
+
+        var tl = new TimelineLite();
+        tl.to($slidesContainer, 0.35, { scrollTo: { y: offsetY }, onComplete: function() {
+            this._slidePosition = (forward) ? this._slidePosition += 1 : this._slidePosition -= 1;
+            this._isAnimating = false;
+
+        }.bind(this) });
+
+        return true;
+    };
+
+    proto._gotoSection = function(position) {
+        if (position >= this._slidesLength || position < 0 || this._isAnimating) {
+            return;
+        }
+
+        this._isAnimating = true;
+
+        var $destinationSection = $('.narrative-section').eq(position);
+        var $sectionBody = $destinationSection.find('.narrative-section-bd');
 
         var i = 0
         var offsetY = 0;
@@ -292,11 +366,10 @@ define(function(require, exports, module) { // jshint ignore:line
             offsetY += $('.narrative-section').eq(i).height();
         }
 
-        if (position > this._position) {
-            var bdTwn = TweenLite.from($sectionBody, 0.5, {top: '50%'});
-        } else {
-            var bdTwn = TweenLite.from($sectionBody, 0.5, {top: '-50%'});
-        }
+        this._slidePosition = (position > this._position) ? 0 : $destinationSection.find('.narrative-section-slides-item:last-child').index();
+
+        var bdTwnPos = (position > this._position) ? '50%' : '-50%';
+        var bdTwn = TweenLite.from($sectionBody, 0.5, {top: bdTwnPos});
 
         var tl = new TimelineLite();
 
@@ -309,6 +382,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         tl.to($('.narrative'), 0.35, { scrollTo: { y: offsetY }, onComplete: function() {
             this._position = position;
+            this._isAnimating = false;
         }.bind(this) }, '-=0.5');
     };
 
@@ -389,117 +463,3 @@ define(function(require, exports, module) { // jshint ignore:line
     module.exports = NarrativeView;
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// /////////////////////////////////////////////////
-// $('.block').css('height', window.innerHeight);
-
-// var lockScroll = function(){
-//     $('body').addClass('no-scroll');
-// }
-
-// var unlockScroll = function(){
-//     $('body').removeClass('no-scroll');
-// }
-
-// var down = true,
-//         animating = false
-//         factor = 5,
-//         scrollSpeed = 650;
-
-// var normalizeDelta = function(deltaY){
-//     var _deltaY = deltaY;
-//     if(deltaY > 0)
-//     {
-//         down = false;
-//     }
-//     else
-//     {
-//         down = true;
-//         _deltaY = _deltaY * -1;
-//     }
-//     return _deltaY;
-// }
-
-// lockScroll();
-// window.scroll(0, 0);
-
-// var scrollTo = function(offsetY, callback){
-//     animating = true;
-//     $('html, body').animate({ scrollTop: offsetY }, scrollSpeed, callback);
-// }
-
-// var scrollDown = function(){
-//     if(animating == false)
-//     {
-//         var scrollPos = $(window).scrollTop(),
-//                 $activeBlock = $('.block.active'),
-//                 activeIndex = $('.block').index($activeBlock),
-//                 $nextBlock = $('.block').eq(activeIndex + 1);
-
-//         if($nextBlock.length)
-//         {
-//             $(window).off('mousewheel', detectScrolls);
-//             scrollTo($nextBlock.offset().top, function(){
-//                 animating = false;
-//                 $activeBlock.removeClass('active');
-//                 $nextBlock.addClass('active');
-//                 $(window).on('mousewheel', detectScrolls);
-//             });
-//         }
-//     }
-// }
-
-// var scrollUp = function(){
-//     if(animating == false)
-//     {
-//         var scrollPos = $(window).scrollTop(),
-//                 $activeBlock = $('.block.active'),
-//                 activeIndex = $('.block').index($activeBlock),
-//                 $prevBlock = $('.block').eq(activeIndex - 1);
-
-//         if(activeIndex > 0)
-//         {
-//             $(window).off('mousewheel', detectScrolls);
-//             scrollTo(scrollPos - window.innerHeight, function(){
-//                 animating = false;
-//                 $activeBlock.removeClass('active');
-//                 $prevBlock.addClass('active');
-//                 $(window).on('mousewheel', detectScrolls);
-//             });
-//         }
-//     }
-// }
-
-// var detectScrolls = function(e){
-
-//     var deltaY = normalizeDelta(e.deltaY)
-//     if(down === true && deltaY > factor)
-//     {
-//         scrollDown();
-//     }
-//     else if(down === false && deltaY > factor)
-//     {
-//         scrollUp();
-//     }
-
-// }
-
-// $(window).on('mousewheel', detectScrolls);
