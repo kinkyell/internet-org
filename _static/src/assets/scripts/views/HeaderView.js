@@ -134,6 +134,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         // invert logo when over imagery
         this.$logo.toggleClass('header-logo_invert', false);
+        this.$backBtn.toggleClass('header-backBtn_invert', false);
 
         // invert menu button over imagery
         this.$menuBtn.toggleClass('header-menuBtn_invert', !isMenuOpen && !isNarrow && isHome);
@@ -146,6 +147,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         // toggle back btn
         this.$backBtn.toggleClass('isActive', shouldHaveBackBtn);
+
 
         // move logo if necessary
         this.$logo

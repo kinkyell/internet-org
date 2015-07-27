@@ -3,7 +3,7 @@
 ------------------------------------------------------------------------ */
 .header {
     position: fixed;
-    top: 28px;
+    top: 18px;
     left: 29px;
     right: 34px;
     z-index: $Z-header;
@@ -52,7 +52,7 @@
 .header-menuBtn {
     display: none; // no use without JS
     position: absolute;
-    top: 6px;
+    top: 7px;
     right: 0;
     padding: 8px 6px;
     background: none;
@@ -96,11 +96,16 @@
 }
 
 .header-logo_invert path,
-.header-menuBtn_invert path {
+.header-menuBtn_invert path,
+.header-backBtn_invert path {
     fill: #ffffff;
 }
 
 @include breakpoint(MD) {
+    .header {
+        top: 28px;
+    }
+
     .header-logo,
     .header-logo > svg {
         width: 243px;
