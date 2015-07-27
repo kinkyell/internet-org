@@ -124,8 +124,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto._render = function() {
-        var bp = breakpointManager.getBreakpoint();
-        var isNarrow = bp === 'BASE' || bp === 'SM';
+        var isNarrow = breakpointManager.isMobile;
         var isHome = this._numStates < 1;
         var isMenuOpen = this.menuView.isOpen;
         var shouldBeCentered = (isMenuOpen || !isHome);
