@@ -64,6 +64,16 @@ define(function(require, exports, module) { // jshint ignore:line
         this._isAnimating = false;
 
         /**
+         * Tracks whether there is an active slide animation
+         *
+         * @default false
+         * @property _isAnimatingSlide
+         * @type {bool}
+         * @private
+         */
+        this._isAnimatingSlide = false;
+
+        /**
          * Threashold for wheel delta normalization
          *
          * @default 5
@@ -268,19 +278,10 @@ define(function(require, exports, module) { // jshint ignore:line
         var deltaY = this._normalizeDelta(originalEvent.deltaY);
 
         if(this._direction === 'down' && deltaY > this._factor) {
-            // this._scrollDown();
+            this._scrollDown();
         } else if(this._direction === 'up' && deltaY > this._factor) {
-            // this._scrollUp();
+            this._scrollUp();
         }
-    };
-
-    proto._hasMultiple = function(position) {
-        var $currentSection = $('.narrative-section').eq(position);
-        var $slides = $currentSection.find('.narrative-section-slides-item');
-        var slidesCount = $slides.length;
-
-        return (slidesCount > 1) ? true : false;
-
     };
 
     proto._onPrevSlideClick = function() {
@@ -305,9 +306,74 @@ define(function(require, exports, module) { // jshint ignore:line
         this._gotoSection(nextSlidePos);
     };
 
-    proto._gotoNextSlide = function(forward) {
+    //////////////////////////////////////////////////////////////////////////////////
+    // HELPERS
+    //////////////////////////////////////////////////////////////////////////////////
+    /**
+     * normalizes wheel event delta
+     *
+     * @method _normalizeDelta
+     * @param {num} deltaY delta returned from wheel event object
+     * @private
+     */
+    proto._normalizeDelta = function(deltaY) {
+        var _deltaY = deltaY;
 
-        if (this._isAnimating) {
+        if (deltaY > 0) {
+            this._direction = 'up';
+        } else {
+            this._direction = 'down';
+            var _deltaY = _deltaY * -1;
+        }
+
+        return _deltaY;
+    };
+
+    /**
+     * Scoll up to previous section
+     *
+     * @method _scrollUp
+     * @private
+     */
+    proto._scrollUp = function() {
+        if (this._gotoNextSlide() || this._isAnimating) {
+            return;
+        }
+
+        console.log('up');
+
+        var prevSlidePos = this._position - 1;
+        this._gotoSection(prevSlidePos);
+    };
+
+    /**
+     * Scoll down to next section
+     *
+     * @method _scrollDown
+     * @private
+     */
+    proto._scrollDown = function() {
+        if (this._gotoNextSlide(true) || this._isAnimating) {
+            return;
+        }
+
+        console.log('down');
+
+        var nextSlidePos = this._position + 1;
+        this._gotoSection(nextSlidePos);
+    };
+
+    proto._hasMultiple = function(position) {
+        var $currentSection = $('.narrative-section').eq(position);
+        var $slides = $currentSection.find('.narrative-section-slides-item');
+        var slidesCount = $slides.length;
+
+        return (slidesCount > 1) ? true : false;
+
+    };
+
+    proto._gotoNextSlide = function(forward) {
+        if (this._isAnimatingSlide) {
             return;
         }
 
@@ -332,7 +398,7 @@ define(function(require, exports, module) { // jshint ignore:line
             return false;
         }
 
-        this._isAnimating = true;
+        this._isAnimatingSlide = true;
 
         var offsetY = 0;
         var i = 0;
@@ -343,8 +409,7 @@ define(function(require, exports, module) { // jshint ignore:line
         var tl = new TimelineLite();
         tl.to($slidesContainer, 0.35, { scrollTo: { y: offsetY }, onComplete: function() {
             this._slidePosition = (forward) ? this._slidePosition += 1 : this._slidePosition -= 1;
-            this._isAnimating = false;
-
+            this._isAnimatingSlide = false;
         }.bind(this) });
 
         return true;
@@ -382,82 +447,10 @@ define(function(require, exports, module) { // jshint ignore:line
 
         tl.to($('.narrative'), 0.35, { scrollTo: { y: offsetY }, onComplete: function() {
             this._position = position;
-            this._isAnimating = false;
-        }.bind(this) }, '-=0.5');
-    };
-
-    //////////////////////////////////////////////////////////////////////////////////
-    // HELPERS
-    //////////////////////////////////////////////////////////////////////////////////
-    /**
-     * normalizes wheel event delta
-     *
-     * @method _normalizeDelta
-     * @param {num} deltaY delta returned from wheel event object
-     * @private
-     */
-    proto._normalizeDelta = function(deltaY) {
-        var _deltaY = deltaY;
-
-        if (deltaY > 0) {
-            this._direction = 'up';
-        } else {
-            this._direction = 'down';
-            var _deltaY = _deltaY * -1;
-        }
-
-        return _deltaY;
-    };
-
-    /**
-     * Scoll specific section
-     *
-     * @method _scrollTo
-     * @param {num} offsetY the offset to scroll to
-     * @param {function} callback a method to call upon completion
-     * @private
-     */
-    proto._scrollTo = function(offsetY, callback) {
-        this._isAnimating = true;
-        $(window).off('wheel', this._onWheelEventHandler);
-        $('.narrative').animate({ scrollTop: offsetY }, this._scrollSpeed, callback);
-    };
-
-    /**
-     * Scoll down to next section
-     *
-     * @method _scrollDown
-     * @private
-     */
-    proto._scrollDown = function() {
-        if (this._isAnimating) {
-            return;
-        }
-
-        var $currentSection = $('.narrative-section.isActive');
-        var $nextSection = $('.narrative-section.isActive').next();
-        var offsetY = $nextSection.position().top;
-
-        console.log('scrollto: ', offsetY);
-
-        this._scrollTo(offsetY, function() {
-            console.log('callback', this);
-            this._isAnimating = false;
             $(window).on('wheel', this._onWheelEventHandler);
-
-            $currentSection.removeClass('isActive');
-            $nextSection.addClass('isActive');
-        }.bind(this));
-    };
-
-    /**
-     * Scoll up to previous section
-     *
-     * @method _scrollUp
-     * @private
-     */
-    proto._scrollUp = function() {
-
+            this._isAnimating = false;
+            console.log('complete');
+        }.bind(this) }, '-=0.5');
     };
 
     module.exports = NarrativeView;
