@@ -3,7 +3,7 @@
 ------------------------------------------------------------------------ */
 .header {
     position: fixed;
-    top: 28px;
+    top: 18px;
     left: 29px;
     right: 34px;
     z-index: $Z-header;
@@ -21,7 +21,7 @@
     width: 125px;
     margin-left: -12px;
     overflow: hidden;
-    transition: left 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .header-logo_min {
@@ -30,6 +30,10 @@
 
 .mix-header-logo_center {
     left: 50%;
+}
+
+.mix-header-logo_up {
+    top: -80px;
 }
 
 .header-logo > svg {
@@ -44,10 +48,11 @@
     transition: fill 0.3s ease;
 }
 
+.header-backBtn,
 .header-menuBtn {
     display: none; // no use without JS
     position: absolute;
-    top: 6px;
+    top: 7px;
     right: 0;
     padding: 8px 6px;
     background: none;
@@ -55,7 +60,24 @@
     font-weight: bold;
     color: #282828;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.header-backBtn {
+    display: block;
+    width: 22px;
+    height: 32px;
+    right: auto;
+    left: -100px;
+}
+
+.header-backBtn.isActive {
+    left: 0;
+}
+
+.header-backBtn > svg {
+    width: 100%;
+    height: 100%;
 }
 
 .header-menuBtn-text {
@@ -74,11 +96,16 @@
 }
 
 .header-logo_invert path,
-.header-menuBtn_invert path {
+.header-menuBtn_invert path,
+.header-backBtn_invert path {
     fill: #ffffff;
 }
 
 @include breakpoint(MD) {
+    .header {
+        top: 28px;
+    }
+
     .header-logo,
     .header-logo > svg {
         width: 243px;
@@ -86,5 +113,9 @@
 
     .mix-header-logo_center {
         left: 12px;
+    }
+
+    .mix-header-logo_up {
+        top: 0;
     }
 }

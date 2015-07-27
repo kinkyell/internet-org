@@ -11,6 +11,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     require('gsap-cssPlugin');
     require('gsap-timeline');
+    var Tween = require('gsap-tween');
 
     var Router = require('services/Router');
 
@@ -50,10 +51,49 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handleStateChange = this._onStateChange.bind(this);
         this.router = new Router();
         this.headerView = new HeaderView($('.js-headerView'));
+        //this.viewController = new ViewController('.js-view');
 
         this._setupStates();
 
         this.narrativeView = new NarrativeView($('.js-narrativeView'));
+
+        var viewWindow = $('.js-viewWindow');
+        var isShifted = false;
+        var $panel = $('<div class="viewWindow-panel-content" style="background: #dddddd;">Hello</div>');
+
+        viewWindow.on('click', function() {
+            viewWindow.toggleClass('isShifted');
+            var feat = viewWindow.find('.viewWindow-panel_feature');
+            var isMobile = require('services/breakpointManager').isMobile;
+
+            if (isShifted) {
+                Tween.from(viewWindow[0], 0.5, {
+                    xPercent: isMobile ? -50 : -33.333
+                });
+
+                Tween.to($panel[0], 0.5, {
+                    xPercent: 100,
+                    onComplete: function() {
+                        $panel.detach();
+                    }
+                });
+            } else {
+                feat.append($panel);
+
+                Tween.from(viewWindow[0], 0.5, {
+                    xPercent: isMobile ? 50 : 33.333
+                });
+
+                Tween.set($panel[0], {
+                    xPercent: 0
+                });
+                Tween.from($panel[0], 0.5, {
+                    xPercent: 100
+                });
+            }
+
+            isShifted = !isShifted;
+        })
     };
 
     /**

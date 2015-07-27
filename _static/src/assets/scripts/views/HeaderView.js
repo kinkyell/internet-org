@@ -3,6 +3,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var AbstractView = require('./AbstractView');
     var MenuView = require('./MenuView');
+    var SearchView = require('./SearchView');
     var breakpointManager = require('services/breakpointManager');
     var eventHub = require('services/eventHub');
     var $ = require('jquery');
@@ -33,6 +34,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handleBreakpointChange = this._onBreakpointChange.bind(this);
         this._handleMenuBtnClick = this._onMenuBtnClick.bind(this);
         this._handleMenuChange = this._onMenuChange.bind(this);
+        this._handleSearchToggle = this._onSearchToggle.bind(this);
     };
 
     /**
@@ -49,8 +51,11 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$logo = this.$('.js-headerView-logo');
         this.$menuBtn = this.$('.js-headerView-menuBtn');
         this.$menuText = this.$('.js-headerView-menuBtn-text');
+        this.$menuIcon = this.$('.js-headerView-menuBtn-icon');
+        this.$backBtn = this.$('.js-headerView-backBtn');
 
         this.menuView = new MenuView($('.js-menuView'));
+        this.searchView = new SearchView($('.js-searchView'));
     };
 
     /**
@@ -65,6 +70,8 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$menuView = null;
         this.$menuBtn = null;
         this.$menuText = null;
+        this.$menuIcon = null;
+        this.$backBtn = null;
     };
 
     /**
@@ -90,6 +97,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.onEnable = function() {
         eventHub.subscribe('StateStack:change', this._handleStateChange);
         eventHub.subscribe('MainMenu:change', this._handleMenuChange);
+        eventHub.subscribe('Search:toggle', this._handleSearchToggle);
         breakpointManager.subscribe(this._handleBreakpointChange);
         this.$menuBtn.on('click', this._handleMenuBtnClick);
     };
@@ -104,6 +112,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.onDisable = function() {
         eventHub.unsubscribe('StateStack:change', this._handleStateChange);
         eventHub.unsubscribe('MainMenu:change', this._handleMenuChange);
+        eventHub.unsubscribe('Search:toggle', this._handleSearchToggle);
         breakpointManager.unsubscribe(this._handleBreakpointChange);
         this.$menuBtn.off('click', this._handleMenuBtnClick);
     };
@@ -115,14 +124,16 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto._render = function() {
-        var bp = breakpointManager.getBreakpoint();
-        var isNarrow = bp === 'BASE' || bp === 'SM';
+        var isNarrow = breakpointManager.isMobile;
         var isHome = this._numStates < 1;
         var isMenuOpen = this.menuView.isOpen;
         var shouldBeCentered = (isMenuOpen || !isHome);
+        var shouldBeRaised = (isMenuOpen && this.searchView.isOpen);
+        var shouldHaveBackBtn = (isNarrow && !isMenuOpen && !isHome);
 
         // invert logo when over imagery
         this.$logo.toggleClass('header-logo_invert', false);
+        this.$backBtn.toggleClass('header-backBtn_invert', false);
 
         // invert menu button over imagery
         this.$menuBtn.toggleClass('header-menuBtn_invert', !isMenuOpen && !isNarrow && isHome);
@@ -130,14 +141,18 @@ define(function(require, exports, module) { // jshint ignore:line
         // hide menu text when open
         this.$menuText.toggleClass('u-isVisuallyHidden', isMenuOpen);
 
+        // toggle icon
+        this.$menuIcon.toggleClass('isOpen', isMenuOpen);
+
+        // toggle back btn
+        this.$backBtn.toggleClass('isActive', shouldHaveBackBtn);
+
+
         // move logo if necessary
-        if (isNarrow && !this.isLogoCentered && shouldBeCentered) {
-            this.$logo.addClass('header-logo_min').addClass('mix-header-logo_center');
-            this.isLogoCentered = true;
-        } else if (this.isLogoCentered && !shouldBeCentered) {
-            this.$logo.removeClass('header-logo_min').removeClass('mix-header-logo_center');
-            this.isLogoCentered = false;
-        }
+        this.$logo
+            .toggleClass('header-logo_min', shouldBeCentered)
+            .toggleClass('mix-header-logo_center', shouldBeCentered)
+            .toggleClass('mix-header-logo_up', shouldBeRaised);
     };
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -173,6 +188,16 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onMenuChange = function() {
+        this._render();
+    };
+
+    /**
+     * Sets the header state after search toggles
+     *
+     * @method _onSearchToggle
+     * @private
+     */
+    proto._onSearchToggle = function() {
         this._render();
     };
 

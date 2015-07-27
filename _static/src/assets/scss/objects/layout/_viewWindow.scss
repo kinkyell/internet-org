@@ -1,0 +1,66 @@
+/* ---------------------------------------------------------------------
+View
+
+Layout for paneled views
+------------------------------------------------------------------------ */
+.viewWindow {
+    @include clearfix();
+    width: 200%;
+    height: 100%;
+    position: relative;
+}
+
+.viewWindow-panel {
+    width: 50%;
+    height: 100%;
+    float: left;
+    position: relative;
+    z-index: 0;
+}
+
+.viewWindow-panel-content {
+    width: 100%;
+    height: 100%;
+    padding: 80px 20px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+}
+
+.viewWindow-panel-content_left {
+    width: 200%;
+    padding-right: calc(100% + 20px);
+}
+
+.viewWindow.isShifted {
+    left: -100%;
+}
+
+.viewWindow-panel_feature {
+    display: none;
+    overflow: hidden;
+}
+
+.viewWindow-panel_feature {
+    z-index: -1;
+}
+
+@include breakpoint(MD) {
+    .viewWindow {
+        width: 150%;
+    }
+
+    .viewWindow-panel {
+        width: 33.333%;
+    }
+
+    .viewWindow-panel_feature {
+        display: block;
+    }
+
+    .viewWindow.isShifted {
+        left: -50%;
+    }
+}

@@ -76,12 +76,16 @@
         </svg>
     </a>
 
+    <button type="button" class="header-backBtn js-headerView-backBtn js-stateBack">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="19.938" height="31.938" viewBox="0 0 19.938 31.938">
+          <path d="M19.951,3.182 L6.640,15.969 L19.951,28.756 L16.623,31.953 L-0.015,15.969 L3.313,12.772 L3.313,12.772 L16.623,-0.015 L19.951,3.182 Z" />
+        </svg>
+    </button>
+
     <button type="button" class="header-menuBtn js-headerView-menuBtn u-disableTransitions">
-        <span class="header-menuBtn-text js-headerView-menuBtn-text u-isVisuallyHiddenSmall">Menu</span>
-        <span class="header-menuBtn-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="20" height="12" viewBox="0 0 20 12">
-                <path d="M0.000,12.000 L0.000,10.000 L20.000,10.000 L20.000,12.000 L0.000,12.000 ZM0.000,5.000 L20.000,5.000 L20.000,7.000 L0.000,7.000 L0.000,5.000 ZM0.000,0.000 L20.000,0.000 L20.000,2.000 L0.000,2.000 L0.000,0.000 Z" />
-            </svg>
+        <span class="menuTrigger">
+            <span class="menuTrigger-label js-headerView-menuBtn-text">Menu</span>
+            <span class="menuTrigger-icon js-headerView-menuBtn-icon"></span>
         </span>
     </button>
 
@@ -91,22 +95,41 @@
 <div class="mainMenu js-menuView u-isVisuallyHidden">
     <div class="mainMenu-panel js-menuView-panel">
         <div class="mainMenu-panel-hd">
-            <label for="mainMenu-search">Search</label>
-            <input type="search" id="mainMenu-search" name="s" placeholder="Search" />
+            <form class="searchBox js-searchView" role="search">
+                <label for="mainMenu-search" class="searchBox-icon js-searchView-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="40" height="40" viewBox="0 0 40 40">
+                      <path d="M39.724,35.318 L29.676,25.269 C31.311,22.737 32.449,19.451 32.449,16.219 C32.449,7.268 25.165,-0.011 16.217,-0.011 C7.266,-0.011 -0.012,7.268 -0.012,16.219 C-0.012,25.169 7.266,32.450 16.217,32.450 C19.449,32.450 22.700,31.315 25.234,29.679 L35.281,39.727 C35.615,40.062 36.166,40.062 36.498,39.727 L39.724,36.535 C40.061,36.201 40.061,35.654 39.724,35.318 ZM3.573,16.010 C3.573,9.155 9.152,3.574 16.009,3.574 C22.868,3.574 28.444,9.155 28.444,16.010 C28.444,22.869 22.868,28.447 16.009,28.447 C9.152,28.447 3.573,22.869 3.573,16.010 Z" />
+                    </svg>
+                    <span class="u-isVisuallyHidden">Search</span>
+                </label>
+                <input type="search" id="mainMenu-search" class="searchBox-input js-searchView-input" name="s" placeholder="Search" />
+            </form>
         </div>
         <div class="mainMenu-panel-primary">
             <ul>
-                <li><a href="/mission" class="js-stateLink">Our Mission</a></li>
-                <li><a href="/approach" class="js-stateLink">Our Approach</a></li>
-                <li><a href="/impact" class="js-stateLink">Our Impact</a></li>
+                <li>
+                    <div class="topicLink topicLink_themeMission js-menuView-slider">
+                        <a href="/mission" class="topicLink-link js-stateLink">Our Mission</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="topicLink topicLink_themeApproach js-menuView-slider">
+                        <a href="/approach" class="topicLink-link js-stateLink">Our Approach</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="topicLink topicLink_themeImpact js-menuView-slider">
+                        <a href="/impact" class="topicLink-link js-stateLink">Our Impact</a>
+                    </div>
+                </li>
             </ul>
         </div>
         <div class="mainMenu-panel-secondary">
-            <ul>
-                <li><a href="/careers" class="js-stateLink">Careers</a></li>
-                <li><a href="/press" class="js-stateLink">Press</a></li>
-                <li><a href="/contact" class="js-stateLink">Contact</a></li>
-                <li><a href="/facebook" class="js-stateLink">Facebook Page</a></li>
+            <ul class="borderBlocks borderBlocks_2up">
+                <li><a href="/careers" class="auxLink js-stateLink">Careers</a></li>
+                <li><a href="/press" class="auxLink js-stateLink">Press</a></li>
+                <li><a href="/contact" class="auxLink js-stateLink">Contact</a></li>
+                <li><a href="/facebook" class="auxLink js-stateLink">Facebook Page</a></li>
             </ul>
         </div>
         <div class="mainMenu-panel-lang">
