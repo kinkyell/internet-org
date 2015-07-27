@@ -4,10 +4,6 @@ define(function(require, exports, module) { // jshint ignore:line
     var AbstractView = require('./AbstractView');
     var breakpointManager = require('services/breakpointManager');
     var eventHub = require('services/eventHub');
-    var Tween = require('gsap-tween');
-    var $ = require('jquery');
-
-    var SPEEDS = require('appConfig').animationSpeeds;
 
     /**
      * A view for displaying main menu
@@ -141,10 +137,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onTriggerClick = function(event) {
-        var bp = breakpointManager.getBreakpoint();
-        var isMobile = bp === 'BASE' || bp === 'SM';
-
-        if (!isMobile) {
+        if (!breakpointManager.isMobile) {
             return;
         }
 

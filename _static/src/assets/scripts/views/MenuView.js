@@ -107,8 +107,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.open = function() {
-        var bp = breakpointManager.getBreakpoint();
-        var isMobile = bp === 'BASE' || bp === 'SM';
         var wrapperOpts = {};
         var panelOpts = {};
 
@@ -124,7 +122,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$element.on('click', this._handleBgClick);
         $win.on('keyup', this._handleEscPress);
 
-        if (isMobile) {
+        if (breakpointManager.isMobile) {
             wrapperOpts.transform = 'scale(0.85)';
             wrapperOpts.opacity = 0;
         } else {
@@ -145,8 +143,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.close = function() {
-        var bp = breakpointManager.getBreakpoint();
-        var isMobile = bp === 'BASE' || bp === 'SM';
         var wrapperTween;
         var panelTween;
         var wrapperOpts = {
@@ -173,7 +169,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$element.off('click', this._handleBgClick);
         $win.off('keyup', this._handleEscPress);
 
-        if (isMobile) {
+        if (breakpointManager.isMobile) {
             wrapperOpts.transform = 'scale(0.85)';
             wrapperOpts.opacity = 0;
         } else {
