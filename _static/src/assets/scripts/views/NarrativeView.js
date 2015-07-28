@@ -7,7 +7,9 @@ define(function(require, exports, module) { // jshint ignore:line
     require('gsap-tween');
     require('gsap-timeline');
 
-    var CONFIG = {};
+    var CONFIG = {
+        PROGRESS: '.narrative-progress'
+    };
 
     /**
      * A view for transitioning display panels
@@ -167,7 +169,6 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.setupHandlers = function() {
         this._onWheelEventHandler = this._onWheelEvent.bind(this);
-
         this._onPrevSlideClickHandler = this._onPrevSlideClick.bind(this);
         this._onNextSlideClickHandler = this._onNextSlideClick.bind(this);
 
@@ -184,6 +185,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.createChildren = function() {
         this.$narrativeSections = this.$element.find('> *');
+        this.$progress = $(CONFIG.PROGRESS, this.$element);
 
         return this;
     };
@@ -474,9 +476,22 @@ define(function(require, exports, module) { // jshint ignore:line
 
     proto._onSectionComplete = function(position) {
         this._position = position;
+        this._updateIndicators();
         $(window).on('wheel', this._onWheelEventHandler);
         this._isAnimating = false;
-    }
+    };
+
+    proto._updateIndicators = function() {
+        var $progressIndicators = this.$progress.find('> *');
+        var i = 0;
+        var l = $progressIndicators.length;
+        for (; i < l; i++) {
+            var $progressIndicator = $progressIndicators.eq(i);
+            // this.$progress.find('> *')
+            // this.$progress.find('> *').eq(this._position).addClass('isActive');
+        }
+
+    };
 
     module.exports = NarrativeView;
 
