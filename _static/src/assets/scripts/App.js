@@ -94,7 +94,8 @@ define(function(require, exports, module) { // jshint ignore:line
             // navigating forward
             console.log('forward', states[states.length - 1]);
             this.states.push(PanelState, {
-                stateName: states[states.length - 1]
+                stateName: states[states.length - 1],
+                image: 'http://placehold.it/400x800?text=' + encodeURIComponent(states[states.length - 1])
             });
         } else if (states.length < previousStates.length) {
             console.log('backward');
@@ -102,14 +103,15 @@ define(function(require, exports, module) { // jshint ignore:line
         } else {
             console.log('swap');
             this.states.swap(PanelState, {
-                stateName: states[states.length - 1]
+                stateName: states[states.length - 1],
+                image: 'http://placehold.it/400x800?text=' + encodeURIComponent(states[states.length - 1])
             });
         }
         console.log(this.states);
 
         // if going to or from home we need to shift over
         if (states.length === 0 || previousStates.length === 0) {
-            viewWindow.shift()
+            viewWindow.shift();
         }
     };
 

@@ -15,7 +15,7 @@ define(function(require, exports, module) { // jshint ignore:line
         '/approach': '/pages/approach.html',
         '/impact': '/pages/impact.html',
         '404': '/pages/not-found.html'
-    }
+    };
 
     var APIService = {
 
@@ -30,23 +30,17 @@ define(function(require, exports, module) { // jshint ignore:line
                     setTimeout(function() {
                         resolve(data);
                     }, 1000);
-                }).fail(function(error) {
-                    reject(error);
-                });
+                }).fail(reject);
             });
         },
 
         /**
-         * Returns example html for a given basic route
+         * Returns html for a given basic route
          */
         getPanelContent: function(route) {
             return new Promise(function(resolve, reject) {
                 var path = PATHS[route] || PATHS['404'];
-                $.get(BASE_URL + path).done(function(data) {
-                    resolve(data);
-                }).fail(function(error) {
-                    reject(error);
-                });
+                $.get(BASE_URL + path).done(resolve).fail(reject);
             });
         }
 

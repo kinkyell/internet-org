@@ -39,7 +39,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._activeStates[this._activeStates.length - 2].deactivate({
                 method: 'push',
                 states: this._activeStates
-            })
+            });
         }
 
         /**
@@ -74,7 +74,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._activeStates[this._activeStates.length - 1].activate({
                 method: 'pop',
                 states: this._activeStates
-            })
+            });
         }
 
         /**
