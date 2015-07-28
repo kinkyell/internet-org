@@ -123,6 +123,16 @@ define(function(require, exports, module) { // jshint ignore:line
          */
         this._slidesLength = null;
 
+        /**
+         * Buffer for scroll jacking (ms)
+         *
+         * @default 0
+         * @property _scrollBuffer
+         * @type {bool}
+         * @private
+         */
+        this._scrollBuffer = 400;
+
         this.init();
     };
 
@@ -220,7 +230,7 @@ define(function(require, exports, module) { // jshint ignore:line
         }
         this.isEnabled = true;
 
-        $(window).on('wheel', this._onWheelEventHandler);
+        $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
 
         $('.js-prev').on('click', this._onPrevSlideClickHandler);
         $('.js-next').on('click', this._onNextSlideClickHandler);
@@ -273,15 +283,27 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onWheelEvent = function(event) {
-        event.preventDefault();
-        var originalEvent = event.originalEvent;
-        var deltaY = this._normalizeDelta(originalEvent.deltaY);
 
-        if(this._direction === 'down' && deltaY > this._factor) {
+        var delta = event.originalEvent.wheelDelta / 30 || -event.originalEvent.detail;
+
+        if (delta < -1) {
             this._scrollDown();
-        } else if(this._direction === 'up' && deltaY > this._factor) {
+        } else if (delta > 1) {
             this._scrollUp();
         }
+
+        event.preventDefault();
+
+        // var originalEvent = event.originalEvent;
+        // var deltaY = this._normalizeDelta(originalEvent.deltaY);
+
+        // if(this._direction === 'down' && deltaY > this._factor) {
+        //     this._scrollDown();
+        // } else if(this._direction === 'up' && deltaY > this._factor) {
+        //     this._scrollUp();
+        // }
+
+        // event.preventDefault();
     };
 
     proto._onPrevSlideClick = function() {
@@ -340,8 +362,6 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
 
-        console.log('up');
-
         var prevSlidePos = this._position - 1;
         this._gotoSection(prevSlidePos);
     };
@@ -357,8 +377,6 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
 
-        console.log('down');
-
         var nextSlidePos = this._position + 1;
         this._gotoSection(nextSlidePos);
     };
@@ -373,7 +391,7 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     proto._gotoNextSlide = function(forward) {
-        if (this._isAnimatingSlide) {
+        if (this._isAnimating) {
             return;
         }
 
@@ -398,7 +416,7 @@ define(function(require, exports, module) { // jshint ignore:line
             return false;
         }
 
-        this._isAnimatingSlide = true;
+        this._isAnimating = true;
 
         var offsetY = 0;
         var i = 0;
@@ -408,11 +426,15 @@ define(function(require, exports, module) { // jshint ignore:line
 
         var tl = new TimelineLite();
         tl.to($slidesContainer, 0.35, { scrollTo: { y: offsetY }, onComplete: function() {
-            this._slidePosition = (forward) ? this._slidePosition += 1 : this._slidePosition -= 1;
-            this._isAnimatingSlide = false;
+            window.setTimeout(this._onSlideComplete.bind(this, forward), this._scrollBuffer);
         }.bind(this) });
 
         return true;
+    };
+
+    proto._onSlideComplete = function(forward) {
+        this._slidePosition = (forward) ? this._slidePosition += 1 : this._slidePosition -= 1;
+        this._isAnimating = false;
     };
 
     proto._gotoSection = function(position) {
@@ -446,12 +468,15 @@ define(function(require, exports, module) { // jshint ignore:line
         }
 
         tl.to($('.narrative'), 0.35, { scrollTo: { y: offsetY }, onComplete: function() {
-            this._position = position;
-            $(window).on('wheel', this._onWheelEventHandler);
-            this._isAnimating = false;
-            console.log('complete');
+            window.setTimeout(this._onSectionComplete.bind(this, position), this._scrollBuffer);
         }.bind(this) }, '-=0.5');
     };
+
+    proto._onSectionComplete = function(position) {
+        this._position = position;
+        $(window).on('wheel', this._onWheelEventHandler);
+        this._isAnimating = false;
+    }
 
     module.exports = NarrativeView;
 

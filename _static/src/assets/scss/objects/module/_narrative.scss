@@ -2,11 +2,6 @@
  Narrative
 ------------------------------------------------------------------------ */
 @warn "for testing only";
-.tmpControls {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-}
 
 .narrative {
     position: fixed;
@@ -49,10 +44,31 @@
     left: 0;
     box-sizing: border-box;
     width: 100%;
-    height: 40%;
+    height: 48%;
     padding: 24px;
     background-color: #efede5;
 }
+
+.narrative-progress {
+    position: fixed;
+    bottom: 48px;
+    left: 48px;
+}
+
+.narrative-progress > * {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.narrative-progress > * + * {
+    margin-top: 12px;
+}
+
+.narrative-progress > *.isActive:nth-child(2) { background-color: #9d25a0; }
+.narrative-progress > *.isActive:nth-child(3) { background-color: #fa5cb6; }
+.narrative-progress > *.isActive:nth-child(4) { background-color: #ff6b00; }
 
 @include breakpoint(MD) {
     .narrative-section-bd {
