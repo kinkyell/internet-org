@@ -25,6 +25,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var appConfig = {
         classes: new ClassDict(classes),
         apiBase: '',
+        searchPath: '/search', // include prefix '/'
         animationSpeeds: {
             SLIDE_IN: 0.3, // panel sliding in
             SLIDE_OUT: 0.3, // panel sliding out
@@ -34,7 +35,9 @@ define(function(require, exports, module) { // jshint ignore:line
             CONTENT_IN: 0.4, // content fade in
             MENU_IN: 0.25, // menu in speed
             MENU_DELAY: 0.175, // delay between menu and shade
-            MENU_OUT: 0.25 // menu out speed
+            MENU_OUT: 0.25, // menu out speed
+            SLIDERS_IN: 0.2, // speed menu sliders come in
+            SLIDERS_STAGGER: 0.1 // offset between menu sliders
         }
     };
 

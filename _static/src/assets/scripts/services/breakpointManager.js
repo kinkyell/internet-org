@@ -8,8 +8,19 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var Breakpoint = require('stark/micro/Breakpoint');
 
-    return new Breakpoint({
+    var bp = new Breakpoint({
         eventDelay: 0
     });
+
+    // convenience flag for mobile
+    var setMobile = function() {
+        var current = bp.getBreakpoint();
+        bp.isMobile = current === 'BASE' || current === 'SM';
+    };
+
+    bp.subscribe(setMobile);
+    setMobile();
+
+    return bp;
 
 });
