@@ -2,14 +2,10 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     var BasicState = require('./BasicState');
-    var $ = require('jquery');
     var apiService = require('services/apiService');
-    var Tween = require('gsap-tween');
-    var spread = require('stark/promise/spread')
+    var spread = require('stark/promise/spread');
 
     var viewWindow = require('services/viewWindow');
-
-    var SPEEDS = require('appConfig').animationSpeeds;
 
     /**
      * Manages the stack of active states
@@ -33,7 +29,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * Activate state
      *  - request panel content from server
      *  - create panel markup
-     *  - tween in panel
      *
      * @method activate
      * @fires State:activate
@@ -61,10 +56,16 @@ define(function(require, exports, module) { // jshint ignore:line
             transition = 'left';
         }
 
-        Promise.all([
+        var tasks = [
             apiService.getPanelContent(this._options.stateName),
             viewWindow.replaceStoryContent('<div>Story</div>', transition)
-        ]).then(spread(this._handlePanelContentLoad), this._handlePanelContentError);
+        ];
+
+        if (this._options.image) {
+            tasks.push(viewWindow.replaceFeatureImage(this._options.image, transition));
+        }
+
+        Promise.all(tasks).then(spread(this._handlePanelContentLoad), this._handlePanelContentError);
 
         BasicState.prototype.activate.call(this, event);
     };
@@ -99,8 +100,6 @@ define(function(require, exports, module) { // jshint ignore:line
 
     /**
      * Deactivate the panel
-     *  - Animate tween out
-     *  - Remove markup
      *
      * @method deactivate
      * @fires State:deactivate

@@ -55,10 +55,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @method replaceFeatureImage
      * @param {String} imagePath path for image to set as background image
      * @param {String} direction Direction to animate to/from
-     * @param {Boolean} under True will animate the current image out, false will overlap
      * @return {Promise} will fail if animation fails (alread animating) or resolve when complete
      */
-    ViewWindow.prototype.replaceFeatureImage = function(imagePath, direction, under) {
+    ViewWindow.prototype.replaceFeatureImage = function(imagePath, direction) {
         if (this._isFeatureAnimating) {
             return Promise.reject();
         }
@@ -69,8 +68,7 @@ define(function(require, exports, module) { // jshint ignore:line
         return this._updatePanel(
             $panel,
             this.$feature,
-            direction,
-            under
+            direction
         ).then(_stopAnimating('_isFeatureAnimating', this));
     };
 
@@ -80,10 +78,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @method replaceFeatureContent
      * @param {String} html HTML content to add
      * @param {String} direction Direction to animate to/from
-     * @param {Boolean} under True will animate the current image out, false will overlap
      * @return {Promise} will fail if animation fails (alread animating) or resolve when complete
      */
-    ViewWindow.prototype.replaceFeatureContent = function(html, direction, under) {
+    ViewWindow.prototype.replaceFeatureContent = function(html, direction) {
         if (this._isFeatureAnimating) {
             return Promise.reject();
         }
@@ -94,8 +91,7 @@ define(function(require, exports, module) { // jshint ignore:line
         return this._updatePanel(
             $panel,
             this.$feature,
-            direction,
-            under
+            direction
         ).then(_stopAnimating('_isFeatureAnimating', this));
     };
 
@@ -105,10 +101,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @method replaceStoryContent
      * @param {String} html HTML content to add
      * @param {String} direction Direction to animate to/from
-     * @param {Boolean} under True will animate the current image out, false will overlap
      * @return {Promise} will fail if animation fails (alread animating) or resolve when complete
      */
-    ViewWindow.prototype.replaceStoryContent = function(html, direction, under) {
+    ViewWindow.prototype.replaceStoryContent = function(html, direction) {
         if (this._isStoryAnimating) {
             return Promise.reject();
         }
@@ -119,8 +114,7 @@ define(function(require, exports, module) { // jshint ignore:line
         return this._updatePanel(
             $panel,
             this.$story,
-            direction,
-            under
+            direction
         ).then(_stopAnimating('_isStoryAnimating', this));
     };
 
@@ -249,7 +243,7 @@ define(function(require, exports, module) { // jshint ignore:line
             onComplete: function() {
                 this.$panels
                     .removeClass('isActive')
-                    .filter(':last-child')
+                    .filter(activeSelector)
                     .addClass('isActive');
                 this._isShiftAnimating = false;
             },
