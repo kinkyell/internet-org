@@ -13,9 +13,15 @@ get_header(); ?>
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'internet_org' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+				<h1 class="page-title"><?php printf( esc_html__( '%s', 'internet_org' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 			</header><!-- .page-header -->
 
+			<?php
+
+			// display result count multi-lingual should provide the appropriate location of the post count
+			printf( __( '%d Results Found', 'internet_org' ) , $wp_query->found_posts );
+
+			?>
 			<?php /* Start the Loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 

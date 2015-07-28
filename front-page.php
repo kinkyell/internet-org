@@ -2,8 +2,6 @@
 /**
  * This is the home page template
  *
- * Template Name: Home Page
- *
  * @package Internet_org
  * @author arichard <arichard@nerdery.com>
  */
@@ -11,7 +9,7 @@
 // Header
 get_header();
 
-$after_title_custom_fields = get_post_meta( get_the_ID(), 'after_title_fm_fields', false );
+$after_title_custom_fields = get_post_meta( get_the_ID(), 'after_title_fm_fields', true );
 
 var_dump( $after_title_custom_fields );
 
@@ -32,7 +30,7 @@ var_dump( $after_title_custom_fields );
 			<?php
 
 
-			$custom_fields = get_post_meta( get_the_ID(), 'home_content_section', false );
+			$custom_fields = get_post_meta( get_the_ID(), 'home-content-section', false );
 			var_dump( $custom_fields );
 
 			?>
