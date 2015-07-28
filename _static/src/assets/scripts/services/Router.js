@@ -73,6 +73,11 @@ define(function(require, exports, module) { // jshint ignore:line
     Router.prototype._onPopState = function(state) {
         var prevStates = this._currentStates.slice(0);
         this._currentStates = state || [];
+
+        if (!prevStates.length && !this._currentStates.length) {
+            return;
+        }
+
         eventHub.publish('Router:stateChange', this._currentStates, prevStates);
     };
 
