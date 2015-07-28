@@ -5,14 +5,37 @@ Common media layout construct
 ------------------------------------------------------------------------ */
 .media {
     overflow: hidden; /* clear floated children */
+    display: block;
 }
 
 .media-figure {
     float: left;
-    margin: 0 10px 0 0;
+    margin: 0 $SPACE_x4 0 0;
 }
 
 .media-bd {
     overflow: hidden; /* trigger block formatting context */
-    padding: 2px; /*Adjust to prevent type being cut off at overflow */
+    padding: 2px; /* Adjust to prevent type being cut off at overflow */
+}
+
+
+// Using display: inline-block to leverage vertical-align: middle
+.media_inline {
+	font-size: 0;
+}
+
+.media_inline > * {
+	display: inline-block;
+	vertical-align: middle;
+	float: none;
+	padding: 0;
+	margin: 0;
+}
+
+.media_inline > .media-figure {
+	width: 52%;
+}
+
+.media_inline > .media-bd {
+	width: 48%;
 }

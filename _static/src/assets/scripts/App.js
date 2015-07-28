@@ -11,7 +11,6 @@ define(function(require, exports, module) { // jshint ignore:line
 
     require('gsap-cssPlugin');
     require('gsap-timeline');
-    var Tween = require('gsap-tween');
 
     var Router = require('services/Router');
 
@@ -19,6 +18,10 @@ define(function(require, exports, module) { // jshint ignore:line
     var PanelState = require('states/PanelState');
     var NarrativeView = require('views/NarrativeView');
     var eventHub = require('services/eventHub');
+    var viewWindow = require('services/viewWindow');
+
+    var FastClick = require('fastclick');
+    FastClick.attach(document.body);
 
     // TODO: Setup modules
     //     - Asset Loader
@@ -51,49 +54,10 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handleStateChange = this._onStateChange.bind(this);
         this.router = new Router();
         this.headerView = new HeaderView($('.js-headerView'));
-        //this.viewController = new ViewController('.js-view');
+        this.viewWindow = viewWindow;
 
         this._setupStates();
-
         this.narrativeView = new NarrativeView($('.js-narrativeView'));
-
-        var viewWindow = $('.js-viewWindow');
-        var isShifted = false;
-        var $panel = $('<div class="viewWindow-panel-content" style="background: #dddddd;">Hello</div>');
-
-        viewWindow.on('click', function() {
-            viewWindow.toggleClass('isShifted');
-            var feat = viewWindow.find('.viewWindow-panel_feature');
-            var isMobile = require('services/breakpointManager').isMobile;
-
-            if (isShifted) {
-                Tween.from(viewWindow[0], 0.5, {
-                    xPercent: isMobile ? -50 : -33.333
-                });
-
-                Tween.to($panel[0], 0.5, {
-                    xPercent: 100,
-                    onComplete: function() {
-                        $panel.detach();
-                    }
-                });
-            } else {
-                feat.append($panel);
-
-                Tween.from(viewWindow[0], 0.5, {
-                    xPercent: isMobile ? 50 : 33.333
-                });
-
-                Tween.set($panel[0], {
-                    xPercent: 0
-                });
-                Tween.from($panel[0], 0.5, {
-                    xPercent: 100
-                });
-            }
-
-            isShifted = !isShifted;
-        })
     };
 
     /**
@@ -136,7 +100,8 @@ define(function(require, exports, module) { // jshint ignore:line
             // navigating forward
             console.log('forward', states[states.length - 1]);
             this.states.push(PanelState, {
-                stateName: states[states.length - 1]
+                stateName: states[states.length - 1],
+                image: 'http://placehold.it/400x800?text=' + encodeURIComponent(states[states.length - 1])
             });
         } else if (states.length < previousStates.length) {
             console.log('backward');
@@ -144,10 +109,16 @@ define(function(require, exports, module) { // jshint ignore:line
         } else {
             console.log('swap');
             this.states.swap(PanelState, {
-                stateName: states[states.length - 1]
+                stateName: states[states.length - 1],
+                image: 'http://placehold.it/400x800?text=' + encodeURIComponent(states[states.length - 1])
             });
         }
         console.log(this.states);
+
+        // if going to or from home we need to shift over
+        if (states.length === 0 || previousStates.length === 0) {
+            viewWindow.shift();
+        }
     };
 
     return App;

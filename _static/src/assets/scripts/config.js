@@ -43,7 +43,8 @@ require.config({
         'gsap-cssPlugin': '../vendor/gsap/src/uncompressed/plugins/CSSPlugin',
         'gsap-scrollToPlugin': '../vendor/gsap/src/uncompressed/plugins/ScrollToPlugin',
         'gsap-tween': '../vendor/gsap/src/uncompressed/TweenLite',
-        'gsap-timeline': '../vendor/gsap/src/uncompressed/TimelineLite'
+        'gsap-timeline': '../vendor/gsap/src/uncompressed/TimelineLite',
+        'fastclick': '../vendor/fastclick/lib/fastclick'
     },
 
     map: {
