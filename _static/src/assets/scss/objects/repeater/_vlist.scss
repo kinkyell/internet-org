@@ -6,8 +6,14 @@
     margin-bottom: $SPACE_x1;
 }
 
-.vList_divided > * + * {
+.vList_divided > * {
+    padding: $SPACE_x1 0;
+    border-top: 1px solid #cccccc;
+}
+
+.vList_footBox > * + * {
     padding-top: $SPACE_x2;
+    margin-top: $SPACE_x5;
     border-top: 1px solid #cccccc;
 }
 

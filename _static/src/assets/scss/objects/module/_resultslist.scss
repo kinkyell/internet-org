@@ -1,0 +1,19 @@
+/* ---------------------------------------------------------------------
+ Results List
+
+ Search results styles
+------------------------------------------------------------------------ */
+
+.resultsList {
+	padding-top: $SPACE_x1;
+}
+
+.resultsList-hd {
+	border-bottom: 1px solid $CLR_GRAY_LIGHT;
+	padding-bottom: $SPACE_x1;
+}
+
+.resultsList-list > * {
+	padding: $SPACE_x1 0 $SPACE_DEFAULT;
+	border-bottom: 1px solid $CLR_GRAY_LIGHT;
+}

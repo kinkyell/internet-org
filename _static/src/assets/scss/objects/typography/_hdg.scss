@@ -17,31 +17,31 @@
 
 .hdg_2 {
     font-size: 32px;
-    line-height: 0.64;
+    line-height: 1.5625;
 }
 
 .hdg_3 {
     font-size: 26px;
-    line-height: 0.65;
+    line-height: 1.4565384;
 }
 
 .hdg_4 {
     font-size: 22px;
-    line-height: 0.7333333;
+    line-height: 1.3636363;
 }
 
 .hdg_5 {
     font-size: 20px;
-    line-height: 0.6666667;
+    line-height: 1.5;
 }
 
 .hdg_subHdg {
 	font-family: $FONT_SANS;
 	font-size: 28px;
-	line-height: 0.7;
+	line-height: 1.4285714;
 }
 
 /* Heading Mixins */
 .mix-hdg_white 	{ color: white; }
 .mix-hdg_gray 	{ color: $CLR_GRAY; }
-.mix-hdg_italic { font-family: $FONT_SERIF_ITALIC; }
+.mix-hdg_italic { font-style: italic; }

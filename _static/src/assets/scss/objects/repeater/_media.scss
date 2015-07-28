@@ -8,10 +8,11 @@ Common media layout construct
 }
 
 .media-figure {
-    float:left;
+    float: left;
     margin: 0 10px 0 0;
 }
 
 .media-bd {
     overflow: hidden; /* trigger block formatting context */
+    padding: 2px; /*Adjust to prevent type being cut off at overflow */
 }
