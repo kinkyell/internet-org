@@ -9,15 +9,19 @@ Feature content module
 }
 
 .feature > * + * {
-    margin-top: $SPACE_x2; // TODO: Not sure what the panel styles will be. This may need to be removed.
+    margin-top: $SPACE_x1; // TODO: Not sure what the panel styles will be. This may need to be removed.
 }
 
 .feature-hd {
     // margin-bottom: 34px;
 }
 
+.feature-media {
+    margin-bottom: $SPACE_x2;
+}
+
 .feature-media > * {
-    max-width: 100%;
+    // max-width: 100%;
     width: 100%;
     height: auto;
 }
