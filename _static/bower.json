@@ -9,6 +9,7 @@
     "nerdery-function-bind": "./tools/cache/nerdery-function-bind"
   },
   "devDependencies": {
-    "gsap": "~1.17.0"
+    "gsap": "~1.17.0",
+    "fastclick": "~1.0.6"
   }
 }

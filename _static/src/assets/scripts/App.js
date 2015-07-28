@@ -11,7 +11,6 @@ define(function(require, exports, module) { // jshint ignore:line
 
     require('gsap-cssPlugin');
     require('gsap-timeline');
-    var Tween = require('gsap-tween');
 
     var Router = require('services/Router');
 
@@ -20,6 +19,10 @@ define(function(require, exports, module) { // jshint ignore:line
     var HeaderView = require('views/HeaderView');
 
     var eventHub = require('services/eventHub');
+    var viewWindow = require('services/viewWindow');
+
+    var FastClick = require('fastclick');
+    FastClick.attach(document.body);
 
     /**
      * Initial application setup. Runs once upon every page load.
@@ -46,47 +49,31 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handleStateChange = this._onStateChange.bind(this);
         this.router = new Router();
         this.headerView = new HeaderView($('.js-headerView'));
-        //this.viewController = new ViewController('.js-view');
+        this.viewWindow = viewWindow;
 
         this._setupStates();
 
-        var viewWindow = $('.js-viewWindow');
+        var vw = $('.js-viewWindow');
         var isShifted = false;
-        var $panel = $('<div class="viewWindow-panel-content" style="background: #dddddd;">Hello</div>');
 
-        viewWindow.on('click', function() {
-            viewWindow.toggleClass('isShifted');
-            var feat = viewWindow.find('.viewWindow-panel_feature');
-            var isMobile = require('services/breakpointManager').isMobile;
+        vw.on('click', function() {
+            var prom;
+            var img;
 
             if (isShifted) {
-                Tween.from(viewWindow[0], 0.5, {
-                    xPercent: isMobile ? -50 : -33.333
-                });
-
-                Tween.to($panel[0], 0.5, {
-                    xPercent: 100,
-                    onComplete: function() {
-                        $panel.detach();
-                    }
-                });
+                img = 'http://placehold.it/400x801/eeeeee/888888?text=first+panel';
+                prom = viewWindow.replaceFeatureImage(img, 'right', true);
+                viewWindow.shift();
             } else {
-                feat.append($panel);
-
-                Tween.from(viewWindow[0], 0.5, {
-                    xPercent: isMobile ? 50 : 33.333
-                });
-
-                Tween.set($panel[0], {
-                    xPercent: 0
-                });
-                Tween.from($panel[0], 0.5, {
-                    xPercent: 100
-                });
+                img = 'http://placehold.it/400x800?text=second+panel';
+                prom = viewWindow.replaceFeatureImage(img, 'right', false);
+                viewWindow.shift();
             }
 
-            isShifted = !isShifted;
-        })
+            prom.then(function() {
+                isShifted = !isShifted;
+            });
+        });
     };
 
     /**

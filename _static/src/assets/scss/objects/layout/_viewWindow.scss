@@ -27,11 +27,7 @@ Layout for paneled views
     top: 0;
     left: 0;
     overflow-y: auto;
-}
-
-.viewWindow-panel-content_left {
-    width: 200%;
-    padding-right: calc(100% + 20px);
+    -webkit-overflow-scrolling: touch;
 }
 
 .viewWindow.isShifted {
@@ -41,10 +37,13 @@ Layout for paneled views
 .viewWindow-panel_feature {
     display: none;
     overflow: hidden;
+    z-index: -1;
 }
 
-.viewWindow-panel_feature {
-    z-index: -1;
+.viewWindow-panel_feature > .viewWindow-panel-content {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 @include breakpoint(MD) {
@@ -62,5 +61,16 @@ Layout for paneled views
 
     .viewWindow.isShifted {
         left: -50%;
+    }
+
+    .viewWindow-panel:first-child.isActive > .viewWindow-panel-content {
+        width: 200%;
+        padding-right: calc(100% + 20px);
+    }
+
+    .viewWindow-panel:last-child.isActive > .viewWindow-panel-content {
+        width: 200%;
+        left: -100%;
+        padding-left: calc(100% + 20px);
     }
 }
