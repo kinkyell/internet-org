@@ -8,7 +8,8 @@ define(function(require, exports, module) { // jshint ignore:line
     require('gsap-timeline');
 
     var CONFIG = {
-        PROGRESS: '.narrative-progress'
+        PROGRESS: '.narrative-progress',
+        PROGRESS_HIDDEN: 'narrative-progress_isHidden'
     };
 
     /**
@@ -64,16 +65,6 @@ define(function(require, exports, module) { // jshint ignore:line
          * @private
          */
         this._isAnimating = false;
-
-        /**
-         * Tracks whether there is an active slide animation
-         *
-         * @default false
-         * @property _isAnimatingSlide
-         * @type {bool}
-         * @private
-         */
-        this._isAnimatingSlide = false;
 
         /**
          * Threashold for wheel delta normalization
@@ -135,6 +126,11 @@ define(function(require, exports, module) { // jshint ignore:line
          */
         this._scrollBuffer = 400;
 
+        /**
+         * @type String
+         */
+        this._eventTouchNamespace = '.scrolltrackertouch';
+
         this.init();
     };
 
@@ -169,8 +165,6 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.setupHandlers = function() {
         this._onWheelEventHandler = this._onWheelEvent.bind(this);
-        this._onPrevSlideClickHandler = this._onPrevSlideClick.bind(this);
-        this._onNextSlideClickHandler = this._onNextSlideClick.bind(this);
 
         return this;
     };
@@ -184,6 +178,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto.createChildren = function() {
+        this.$body = $(document.body);
         this.$narrativeSections = this.$element.find('> *');
         this.$progress = $(CONFIG.PROGRESS, this.$element);
 
@@ -233,9 +228,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.isEnabled = true;
 
         $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
-
-        $('.js-prev').on('click', this._onPrevSlideClickHandler);
-        $('.js-next').on('click', this._onNextSlideClickHandler);
+        this.$body.on('touchstart', this._onTouchStart.bind(this));
 
         return this;
     };
@@ -285,7 +278,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onWheelEvent = function(event) {
-
         var delta = event.originalEvent.wheelDelta / 30 || -event.originalEvent.detail;
 
         if (delta < -1) {
@@ -306,28 +298,6 @@ define(function(require, exports, module) { // jshint ignore:line
         // }
 
         // event.preventDefault();
-    };
-
-    proto._onPrevSlideClick = function() {
-        event.preventDefault();
-
-        if (this._gotoNextSlide()) {
-            return;
-        }
-
-        var prevSlidePos = this._position - 1;
-        this._gotoSection(prevSlidePos);
-    };
-
-    proto._onNextSlideClick = function(event) {
-        event.preventDefault();
-
-        if (this._gotoNextSlide(true)) {
-            return;
-        }
-
-        var nextSlidePos = this._position + 1;
-        this._gotoSection(nextSlidePos);
     };
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -470,13 +440,14 @@ define(function(require, exports, module) { // jshint ignore:line
         }
 
         tl.to($('.narrative'), 0.35, { scrollTo: { y: offsetY }, onComplete: function() {
+            this._position = position;
+            this._displayIndicators();
+            this._updateIndicators();
             window.setTimeout(this._onSectionComplete.bind(this, position), this._scrollBuffer);
         }.bind(this) }, '-=0.5');
     };
 
     proto._onSectionComplete = function(position) {
-        this._position = position;
-        this._updateIndicators();
         $(window).on('wheel', this._onWheelEventHandler);
         this._isAnimating = false;
     };
@@ -487,10 +458,41 @@ define(function(require, exports, module) { // jshint ignore:line
         var l = $progressIndicators.length;
         for (; i < l; i++) {
             var $progressIndicator = $progressIndicators.eq(i);
-            // this.$progress.find('> *')
-            // this.$progress.find('> *').eq(this._position).addClass('isActive');
+            $progressIndicator.removeClass('isActive');
+            this.$progress.find('> *').eq(this._position).addClass('isActive');
         }
+    };
 
+    proto._displayIndicators = function() {
+        var slidesLength = this._slidesLength;
+
+        if (this._position === 0 || this._position === (slidesLength - 1)) {
+            this.$progress.addClass(CONFIG.PROGRESS_HIDDEN);
+        } else {
+            this.$progress.removeClass(CONFIG.PROGRESS_HIDDEN);
+        }
+    };
+
+
+    proto._onTouchStart = function(e) {
+        this.$body
+            .on('touchmove' + this._eventTouchNamespace, this._onTouchMove)
+            .on('touchend' + this._eventTouchNamespace, this._onTouchEnd)
+            .on('touchcancel' + this._eventTouchNamespace, this._onTouchEnd);
+    };
+
+    proto._onTouchMove = function(e) {
+        e.preventDefault();
+        var y = e.originalEvent.touches[0].pageY;
+        var delta = -(y -this._touchTracker.y);
+
+        console.log(y, delta);
+    };
+
+    proto._onTouchEnd = function(e) {
+        this.$body.off(this._eventTouchNamespace);
+
+        console.log('complete');
     };
 
     module.exports = NarrativeView;

@@ -51,24 +51,31 @@
 
 .narrative-progress {
     position: fixed;
-    bottom: 48px;
-    left: 48px;
+    bottom: 24px;
+    left: 24px;
+    opacity: 1;
+    transition: opacity 0.25s ease-out;
 }
 
 .narrative-progress > * {
-    width: 8px;
-    height: 8px;
+    width: 4px;
+    height: 4px;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.4);
+    transition: background-color 0.25s ease-out;
 }
 
 .narrative-progress > * + * {
-    margin-top: 12px;
+    margin-top: 6px;
 }
 
 .narrative-progress > *.isActive:nth-child(2) { background-color: #9d25a0; }
 .narrative-progress > *.isActive:nth-child(3) { background-color: #fa5cb6; }
 .narrative-progress > *.isActive:nth-child(4) { background-color: #ff6b00; }
+
+.narrative-progress_isHidden {
+    opacity: 0;
+}
 
 @include breakpoint(MD) {
     .narrative-section-bd {
