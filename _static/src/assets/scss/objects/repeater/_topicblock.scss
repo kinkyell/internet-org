@@ -6,11 +6,11 @@
 
 .topicBlock {
 	text-align: center;
-	margin-top: $SPACE_x4;
+	margin-top: $SPACE_x2;
 }
 
-.topicBlock > * + * {
-	margin-bottom: $SPACE_x4;
+.footBox > .topicBlock {
+	margin-top: 0;
 }
 
 .topicBlock-hd {
@@ -41,6 +41,7 @@
 	line-height: 1.363636;
 	color: $CLR_GRAY;
 	padding-top: 10px;
+	margin-bottom: $SPACE_x1;
 }
 
 .topicBlock-bd {
@@ -50,10 +51,12 @@
 	color: $CLR_GRAY;
 }
 
-// .topicBlock-cta {
+.topicBlock-cta {
+	margin-top: $SPACE_x4;
+}
 
-// }
-
-// .topicBlock-ft {
-
-// }
+.topicBlock-ft {
+	border-top: 1px solid $CLR_GRAY_LIGHTER;
+	padding: $SPACE_x3;
+	margin-top: $SPACE_x4;
+}

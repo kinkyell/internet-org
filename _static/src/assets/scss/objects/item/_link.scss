@@ -13,66 +13,128 @@
     text-decoration: none;
     text-transform: uppercase;
     color: $CLR_ACCENT;
+    position: relative;
+    padding-right: 35px;
+}
+
+.link:after,
+.link:before {
+    @include transition(all 0.15s ease-in-out);
+    content: "";
+    display: block;
+    position: absolute;
+    right: -8px;
 }
 
 .link:after {
-    @include transition(margin 0.1s ease-in-out);
-    content: " \xE2 ";
-    font-family: 'Arial', sans-serif;
-    font-size: 24px;
-    margin-left: 0;
+    top: calc(50% - 5px);
+    height: 10px;
+    width: 10px;
+    border-bottom: 1px solid $CLR_ACCENT;
+    border-right: 1px solid $CLR_ACCENT;
+    transform: rotate(-45deg);
+}
+
+.link:before {
+    top: 50%;
+    height: 1px;
+    width: 30px;
+    background-color: $CLR_ACCENT;
 }
 
 .link:hover,
 .link:active {
-    color: $CLR_ACCENT;
+    color: $CLR_ACCENT_ACTIVE;
 }
 
-.link:hover:after {
-    margin-left: 3px;
+.link:hover:after,
+.link:hover:before {
+    right: -15px;
 }
+
+.link:hover:after { border-color: $CLR_ACCENT_ACTIVE; }
+
+.link:hover:before { background-color: $CLR_ACCENT_ACTIVE; }
+
+.link_twoArrows {
+    font-size: 16px;
+    color: $CLR_GRAY;
+    padding-right: 15px;
+}
+
+.link_twoArrows:after,
+.link_twoArrows:before {
+    top: calc(50% - 3px);
+    right: 0px;
+    height: 6px;
+    width: 6px;
+    border-bottom: 2px solid $CLR_ACCENT;
+    border-right: 2px solid $CLR_ACCENT;
+    transform: rotate(-45deg);
+    background-color: transparent;
+}
+
+.link_twoArrows:before {
+    right: -5px;
+}
+
+.link_twoArrows:hover:before { background-color: transparent; }
 
 // THEME CLASSES by contectual or chain selection
+
+//IMPACT
 .theme-impact .link,
-.link_themeImpact {
-    color: $CLR_IMPACT;
-}
+.link_themeImpact { color: $CLR_IMPACT; }
 
-.theme-impact .link:hover, 
-.theme-impact .link:active,
-.link_themeImpact:hover,
-.link_themeImpact:active {
-    color: $CLR_IMPACT_ACTIVE;
-}
+.theme-impact .link:after,
+.link_themeImpact:after, { border-color: $CLR_IMPACT; }
 
+.theme-impact .link:before,
+.link_themeImpact:before { background-color: $CLR_IMPACT; }
+
+.theme-impact .link:hover,
+.link_themeImpact:hover { color: $CLR_IMPACT_ACTIVE; }
+
+.theme-impact .link:hover:after,
+.link_themeImpact:hover:after, { border-color: $CLR_IMPACT_ACTIVE; }
+
+.theme-impact .link:hover:before, 
+.link_themeImpact:hover:before { background-color: $CLR_IMPACT_ACTIVE; }
+
+//APPROACH
 .theme-approach .link,
-.link_themeApproach {
-    color: $CLR_APPROACH;
-}
+.link_themeApproach { color: $CLR_APPROACH; }
 
-.theme-approach .link:hover, 
-.theme-approach .link:active,
-.link_themeApproach:hover,
-.link_themeApproach:active {
-    color: $CLR_APPROACH_ACTIVE;
-}
+.theme-approach .link:after,
+.link_themeApproach:after, { border-color: $CLR_APPROACH; }
 
+.theme-approach .link:before,
+.link_themeApproach:before { background-color: $CLR_APPROACH; }
+
+.theme-approach .link:hover,
+.link_themeApproach:hover { color: $CLR_APPROACH_ACTIVE; }
+
+.theme-approach .link:hover:after,
+.link_themeApproach:hover:after, { border-color: $CLR_APPROACH_ACTIVE; }
+
+.theme-approach .link:hover:before, 
+.link_themeApproach:hover:before { background-color: $CLR_APPROACH_ACTIVE; }
+
+//MISSION
 .theme-mission .link,
-.link_themeMission {
-    color: $CLR_MISSION;
-}
+.link_themeMission { color: $CLR_MISSION; }
 
-.theme-mission .link:hover, 
-.theme-mission .link:active,
-.link_themeMission:hover,
-.link_themeMission:active {
-    color: $CLR_MISSION_ACTIVE;
-}
+.theme-mission .link:after,
+.link_themeMission:after, { border-color: $CLR_MISSION; }
 
-.link:hover {
-    color: $CLR_ACCENT;
-}
+.theme-mission .link:before,
+.link_themeMission:before { background-color: $CLR_MISSION; }
 
-.link:hover:after {
-    margin-left: 3px;
-}
+.theme-mission .link:hover,
+.link_themeMission:hover { color: $CLR_MISSION_ACTIVE; }
+
+.theme-mission .link:hover:after,
+.link_themeMission:hover:after, { border-color: $CLR_MISSION_ACTIVE; }
+
+.theme-mission .link:hover:before, 
+.link_themeMission:hover:before { background-color: $CLR_MISSION_ACTIVE; }
