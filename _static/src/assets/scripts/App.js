@@ -53,6 +53,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         this._setupStates();
 
+        //TODO: remove test code
         var vw = $('.js-viewWindow');
         var isShifted = false;
 
