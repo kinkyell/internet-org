@@ -180,7 +180,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.createChildren = function() {
         this.$body = $(document.body);
         this.$narrativeSections = this.$element.find('> *');
-        this.$progress = $(CONFIG.PROGRESS, this.$element);
+        this.$progress = $(CONFIG.PROGRESS);
 
         return this;
     };

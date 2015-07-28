@@ -69,9 +69,11 @@
     margin-top: 6px;
 }
 
+.narrative-progress > *.isActive:nth-child(1) { background-color: #ffcc02; }
 .narrative-progress > *.isActive:nth-child(2) { background-color: #9d25a0; }
 .narrative-progress > *.isActive:nth-child(3) { background-color: #fa5cb6; }
 .narrative-progress > *.isActive:nth-child(4) { background-color: #ff6b00; }
+.narrative-progress > *.isActive:nth-child(5) { background-color: #ffcc02; }
 
 .narrative-progress_isHidden {
     opacity: 0;
