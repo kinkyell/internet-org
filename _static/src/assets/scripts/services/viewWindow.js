@@ -6,12 +6,20 @@
 define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
-    var Tween = require('gsap-tween');
+    var tweenAsync = require('util/tweenAsync');
     var $ = require('jquery');
     var breakpointManager = require('services/breakpointManager');
 
     // speed of shift and feature transitions
     var TRANSITION_SPEED = 0.5; // in seconds
+
+    // util function
+    var _stopAnimating = function(propName, scope) {
+        return function(arg) {
+            scope[propName] = false;
+            return arg;
+        };
+    };
 
     /**
      * Constructor for ViewWindow
@@ -34,8 +42,10 @@ define(function(require, exports, module) { // jshint ignore:line
         this.element = this.$element[0];
         this.$panels = this.$element.children();
         this.$feature = this.$element.find('.viewWindow-panel_feature');
+        this.$story = this.$element.find('.viewWindow-panel_story');
         this._isShifted = false;
         this._isFeatureAnimating = false;
+        this._isStoryAnimating = false;
         this._isShiftAnimating = false;
     };
 
@@ -55,14 +65,19 @@ define(function(require, exports, module) { // jshint ignore:line
         this._isFeatureAnimating = true;
 
         var $panel = this._getPanelWrap();
-        $panel.css('background-image', 'url(' + imagePath + ')');
-        return this._updateFeaturePanel($panel, direction, under);
+        $panel.children().css('background-image', 'url(' + imagePath + ')');
+        return this._updatePanel(
+            $panel,
+            this.$feature,
+            direction,
+            under
+        ).then(_stopAnimating('_isFeatureAnimating', this));
     };
 
     /**
      * Replace feature area with an html
      *
-     * @method replaceFeatureFreature
+     * @method replaceFeatureContent
      * @param {String} html HTML content to add
      * @param {String} direction Direction to animate to/from
      * @param {Boolean} under True will animate the current image out, false will overlap
@@ -75,8 +90,38 @@ define(function(require, exports, module) { // jshint ignore:line
         this._isFeatureAnimating = true;
 
         var $panel = this._getPanelWrap();
-        $panel.append(html);
-        return this._updateFeaturePanel($panel, direction, under);
+        $panel.children().append(html);
+        return this._updatePanel(
+            $panel,
+            this.$feature,
+            direction,
+            under
+        ).then(_stopAnimating('_isFeatureAnimating', this));
+    };
+
+    /**
+     * Replace story area with an html
+     *
+     * @method replaceStoryContent
+     * @param {String} html HTML content to add
+     * @param {String} direction Direction to animate to/from
+     * @param {Boolean} under True will animate the current image out, false will overlap
+     * @return {Promise} will fail if animation fails (alread animating) or resolve when complete
+     */
+    ViewWindow.prototype.replaceStoryContent = function(html, direction, under) {
+        if (this._isStoryAnimating) {
+            return Promise.reject();
+        }
+        this._isStoryAnimating = true;
+
+        var $panel = this._getPanelWrap();
+        $panel.children().append(html);
+        return this._updatePanel(
+            $panel,
+            this.$story,
+            direction,
+            under
+        ).then(_stopAnimating('_isStoryAnimating', this));
     };
 
     /**
@@ -87,68 +132,86 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     ViewWindow.prototype._getPanelWrap = function() {
-        return $('<div class="viewWindow-panel-content"></div>');
+        var content = $('<div class="viewWindow-panel-content"></div>');
+        content.append('<div class="viewWindow-panel-content-inner"></div>');
+        return content;
     };
 
     /**
-     * Slide panel based on configuration
+     * Get properties for animation
      *
-     * @method _updateFeaturePanel
-     * @param {jQuery} $panel Content to add
-     * @param {String} direction Direction to animate to/from
-     * @param {Boolean} under True will animate the current image out, false will overlap
-     * @return {Promise} will fail if animation fails (alread animating) or resolve when complete
+     * @method _getAnimProps
+     * @return {jQuery} content wrapper element
      * @private
      */
-    ViewWindow.prototype._updateFeaturePanel = function($panel, direction, under) {
-        var animOpts = {};
-        var self = this;
-        var $animatedPanel;
-        var $removedPanel;
-
-        if (under) {
-            self.$feature.prepend($panel);
-            $animatedPanel = $panel.next();
-            $removedPanel = $animatedPanel;
-        } else {
-            self.$feature.append($panel);
-            $animatedPanel = $panel;
-            $removedPanel = $panel.prev();
-        }
+    ViewWindow.prototype._getAnimProps = function(direction) {
+        var inOpts = {};
+        var outOpts = {};
 
         switch (direction.toLowerCase()) {
         case 'top':
-            animOpts.yPercent = -100;
+            inOpts.yPercent = -100;
+            outOpts.yPercent = 100;
             break;
         case 'bottom':
-            animOpts.yPercent = 100;
+            inOpts.yPercent = 100;
+            outOpts.yPercent = -100;
             break;
         case 'left':
-            animOpts.xPercent = -100;
+            inOpts.xPercent = -100;
+            outOpts.xPercent = 100;
             break;
         case 'right':
-            animOpts.xPercent = 100;
+            inOpts.xPercent = 100;
+            outOpts.xPercent = -100;
             break;
         case 'none':
             break;
         default:
         }
 
-        return new Promise(function(resolve, reject) {
-            var method = under ? 'to' : 'from';
-            animOpts.onComplete = function() {
-                self._isFeatureAnimating = false;
+        return {
+            in: inOpts,
+            out: outOpts
+        };
+    };
 
-                $removedPanel.remove();
-                resolve();
-            };
+    /**
+     * Slide panel based on configuration
+     *
+     * @method _updatePanel
+     * @param {jQuery} $panel Content to add
+     * @param {jQuery} $target Target panel to update
+     * @param {String} direction Direction to animate from
+     * @return {Promise} will fail if animation fails (alread animating) or resolve when complete
+     * @private
+     */
+    ViewWindow.prototype._updatePanel = function($panel, $target, direction) {
+        var opts = this._getAnimProps(direction);
+        var $newPanel;
+        var $removedPanel;
 
-            if (direction === 'none') {
-                self._isFeatureAnimating = false;
-                resolve();
-            } else {
-                Tween[method]($animatedPanel[0], TRANSITION_SPEED, animOpts);
-            }
+        $target.append($panel);
+        $newPanel = $panel;
+        $removedPanel = $panel.prev();
+
+        $target.addClass('isAnimating');
+
+        var cleanup = function() {
+            $removedPanel.remove();
+            $target.removeClass('isAnimating');
+        };
+
+        if (direction.toLowerCase() === 'none') {
+            cleanup();
+            return Promise.resolve($newPanel.children());
+        }
+
+        return Promise.all([
+            tweenAsync.from($newPanel[0], TRANSITION_SPEED, opts.in),
+            tweenAsync.to($removedPanel[0], TRANSITION_SPEED, opts.out)
+        ]).then(cleanup).then(function() {
+            return $newPanel.children();
         });
     };
 
@@ -160,15 +223,14 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     ViewWindow.prototype.shift = function() {
         var percent = breakpointManager.isMobile ? 50 : 33.333;
-        var self = this;
-        var shiftOn = !self._isShifted;
+        var shiftOn = !this._isShifted;
         var sign;
         var activeSelector;
 
-        if (self._isShiftAnimating) {
+        if (this._isShiftAnimating) {
             return Promise.reject();
         }
-        self._isShiftAnimating = true;
+        this._isShiftAnimating = true;
 
         if (shiftOn) {
             sign = 1;
@@ -178,22 +240,20 @@ define(function(require, exports, module) { // jshint ignore:line
             activeSelector = ':first-child';
         }
 
-        self.$element.toggleClass('isShifted', shiftOn);
+        this.$element.toggleClass('isShifted', shiftOn);
 
-        self._isShifted = !self._isShifted;
+        this._isShifted = !this._isShifted;
 
-        return new Promise(function(resolve, reject) {
-            Tween.from(self.element, TRANSITION_SPEED, {
-                xPercent: sign * percent,
-                onComplete: function() {
-                    self.$panels
-                        .removeClass('isActive')
-                        .filter(':last-child')
-                        .addClass('isActive');
-                    self._isShiftAnimating = false;
-                    resolve();
-                }
-            });
+        return tweenAsync.from(this.element, TRANSITION_SPEED, {
+            xPercent: sign * percent,
+            onComplete: function() {
+                this.$panels
+                    .removeClass('isActive')
+                    .filter(':last-child')
+                    .addClass('isActive');
+                this._isShiftAnimating = false;
+            },
+            callbackScope: this
         });
 
     };
