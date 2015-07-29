@@ -5,49 +5,49 @@
 ------------------------------------------------------------------------ */
 
 .topicBlock {
-	text-align: center;
-	margin-top: $SPACE_x4;
+    text-align: center;
+    margin-top: $SPACE_x4;
 }
 
 .topicBlock > * + * {
-	margin-bottom: $SPACE_x4;
+    margin-bottom: $SPACE_x4;
 }
 
 .topicBlock-hd {
-	font-family: $FONT_SERIF;
-	font-size: 40px;
-	line-height: 1.145833;
+    font-family: $FONT_SERIF;
+    font-size: 40px;
+    line-height: 1.145833;
 }
 
 .topicBlock-hd_plus {
-	font-size: 48px;
+    font-size: 48px;
 }
 
 .topicBlock-hd:after {
-	content: "";
-	display: inline-block;
-	height: 4px;
-	width: 40px;
-	position: relative;
-	top: -15px;
-	text-align: center;
-	background-color: $CLR_ACCENT;
+    content: "";
+    display: inline-block;
+    height: 4px;
+    width: 40px;
+    position: relative;
+    top: -15px;
+    text-align: center;
+    background-color: $CLR_ACCENT;
 }
 
 .topicBlock-date {
-	font-family: $FONT_SERIF;
-	font-style: italic;
-	font-size: 22px;
-	line-height: 1.363636;
-	color: $CLR_GRAY;
-	padding-top: 10px;
+    font-family: $FONT_SERIF;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.363636;
+    color: $CLR_GRAY;
+    padding-top: 10px;
 }
 
 .topicBlock-bd {
-	font-family: $FONT_SANS;
-	font-size: 18px;
-	line-height: 1.666667;
-	color: $CLR_GRAY;
+    font-family: $FONT_SANS;
+    font-size: 18px;
+    line-height: 1.666667;
+    color: $CLR_GRAY;
 }
 
 // .topicBlock-cta {
