@@ -6,7 +6,7 @@ Sections of content that introduce landing and story pages
 .introBlock {
 	display: table;
 	min-height: 620px;
-	max-width: 640px;
+	width: 100%;
 	position: relative;
 	background: url(../media/images/icons/io-mark-bg.svg) no-repeat $CLR_GRAY_LIGHTER;
 	background-position: -725px top;
@@ -14,15 +14,14 @@ Sections of content that introduce landing and story pages
 }
 
 .introBlock_fill {
-	height: 100%;
-	width: 100%;
+	height: 100vh;
 	background-position: -300px top;
 }
 
 .introBlock-inner {
 	display: table-cell;
 	vertical-align: middle;
-	padding: $SPACE_x4 80px;
+	padding: $SPACE_x4 40px;
 }
 
 .introBlock-inner > .topicBlock {
@@ -42,3 +41,9 @@ Sections of content that introduce landing and story pages
 	left: 12.5%;
 	width: 75%;
 }
+
+@include breakpoint(MD) {
+	.introBlock-inner {
+		padding: $SPACE_x4 80px;
+	}
+} 
