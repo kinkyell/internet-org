@@ -171,8 +171,10 @@ require get_template_directory() . '/inc/customizer.php';
  */
 require get_template_directory() . '/inc/jetpack.php';
 
-
-
+/**
+ * Language related functionality
+ */
+require get_template_directory() . '/inc/language.php';
 
 
 
