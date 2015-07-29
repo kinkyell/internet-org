@@ -50,10 +50,12 @@
     color: $CLR_GRAY;
 }
 
-// .topicBlock-cta {
+.topicBlock-cta {
+	margin-top: $SPACE_x4;
+}
 
-// }
-
-// .topicBlock-ft {
-
-// }
+.topicBlock-ft {
+	border-top: 1px solid $CLR_GRAY_LIGHTER;
+	padding: $SPACE_x3;
+	margin-top: $SPACE_x4;
+}
