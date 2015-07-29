@@ -56,18 +56,10 @@
 
 .link:hover:before { background-color: $CLR_ACCENT_ACTIVE; }
 
-<<<<<<< HEAD
-.theme-impact .link:hover,
-.theme-impact .link:active,
-.link_themeImpact:hover,
-.link_themeImpact:active {
-    color: $CLR_IMPACT_ACTIVE;
-=======
 .link_twoArrows {
     font-size: 16px;
     color: $CLR_GRAY;
     padding-right: 15px;
->>>>>>> 03f5208cb99dc49266564366a1be9a8da35588c7
 }
 
 .link_twoArrows:after,
@@ -82,16 +74,8 @@
     background-color: transparent;
 }
 
-<<<<<<< HEAD
-.theme-approach .link:hover,
-.theme-approach .link:active,
-.link_themeApproach:hover,
-.link_themeApproach:active {
-    color: $CLR_APPROACH_ACTIVE;
-=======
 .link_twoArrows:before {
     right: -5px;
->>>>>>> 03f5208cb99dc49266564366a1be9a8da35588c7
 }
 
 .link_twoArrows:hover:before { background-color: transparent; }
@@ -114,7 +98,7 @@
 .theme-impact .link:hover:after,
 .link_themeImpact:hover:after, { border-color: $CLR_IMPACT_ACTIVE; }
 
-.theme-impact .link:hover:before, 
+.theme-impact .link:hover:before,
 .link_themeImpact:hover:before { background-color: $CLR_IMPACT_ACTIVE; }
 
 //APPROACH
@@ -133,7 +117,7 @@
 .theme-approach .link:hover:after,
 .link_themeApproach:hover:after, { border-color: $CLR_APPROACH_ACTIVE; }
 
-.theme-approach .link:hover:before, 
+.theme-approach .link:hover:before,
 .link_themeApproach:hover:before { background-color: $CLR_APPROACH_ACTIVE; }
 
 //MISSION
@@ -152,5 +136,5 @@
 .theme-mission .link:hover:after,
 .link_themeMission:hover:after, { border-color: $CLR_MISSION_ACTIVE; }
 
-.theme-mission .link:hover:before, 
+.theme-mission .link:hover:before,
 .link_themeMission:hover:before { background-color: $CLR_MISSION_ACTIVE; }
