@@ -15,6 +15,8 @@ define(function(require, exports, module) { // jshint ignore:line
         if (thisProto === AbstractState.prototype) {
             throw new TypeError('AbstractState should not be initialized directly.');
         }
+
+        this.active = false;
     };
 
     /**
@@ -30,6 +32,7 @@ define(function(require, exports, module) { // jshint ignore:line
          * @event State:activate
          * @param {AbstractState} state State instance that is activated
          */
+        this.active = true;
         eventHub.publish('State:activate', this);
     };
 
@@ -46,6 +49,7 @@ define(function(require, exports, module) { // jshint ignore:line
          * @event State:deactivate
          * @param {AbstractState} state State instance that is deactivated
          */
+        this.active = false;
         eventHub.publish('State:deactivate', this);
     };
 

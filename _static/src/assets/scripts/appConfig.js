@@ -24,7 +24,7 @@ define(function(require, exports, module) { // jshint ignore:line
     // Additional Variables
     var appConfig = {
         classes: new ClassDict(classes),
-        apiBase: 'http://localhost'
+        apiBase: ''
     };
 
     return appConfig;

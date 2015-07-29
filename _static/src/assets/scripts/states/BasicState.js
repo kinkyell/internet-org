@@ -9,7 +9,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @class BasicState
      * @constructor
      */
-    var BasicState = function() {
+    var BasicState = function(options) {
         AbstractState.call(this);
     };
 
