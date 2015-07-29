@@ -126,6 +126,10 @@ define(function(require, exports, module) { // jshint ignore:line
          */
         this._scrollBuffer = 400;
 
+        this._touchTracker = {
+            y: 0
+        };
+
         /**
          * @type String
          */
@@ -475,18 +479,25 @@ define(function(require, exports, module) { // jshint ignore:line
 
 
     proto._onTouchStart = function(e) {
+        this._touchTracker.y = e.originalEvent.touches[0].pageY;
+
         this.$body
-            .on('touchmove' + this._eventTouchNamespace, this._onTouchMove)
-            .on('touchend' + this._eventTouchNamespace, this._onTouchEnd)
-            .on('touchcancel' + this._eventTouchNamespace, this._onTouchEnd);
+            .on('touchmove' + this._eventTouchNamespace, this._onTouchMove.bind(this))
+            .on('touchend' + this._eventTouchNamespace, this._onTouchEnd.bind(this))
+            .on('touchcancel' + this._eventTouchNamespace, this._onTouchEnd.bind(this));
     };
 
     proto._onTouchMove = function(e) {
         e.preventDefault();
+
         var y = e.originalEvent.touches[0].pageY;
         var delta = -(y -this._touchTracker.y);
 
-        console.log(y, delta);
+        if (delta < -1) {
+            this._scrollUp();
+        } else if (delta > 1) {
+            this._scrollDown();
+        }
     };
 
     proto._onTouchEnd = function(e) {
