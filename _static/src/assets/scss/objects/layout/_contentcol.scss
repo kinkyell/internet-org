@@ -1,0 +1,16 @@
+/* ---------------------------------------------------------------------
+Content Col
+
+Layout for padded columns of content.
+------------------------------------------------------------------------ */
+
+.contentCol {
+	padding: 80px 27px;
+}
+
+
+@include breakpoint(MD) {
+	.contentCol {
+		padding: 80px;
+	}
+}
