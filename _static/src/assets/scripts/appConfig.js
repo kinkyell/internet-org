@@ -31,7 +31,7 @@ define(function(require, exports, module) { // jshint ignore:line
             SWAP_IN: 0.5, // panel overlapping
             SWAP_OUT: 0.5, // panel fading out
             CONTENT_IN: 0.4 // content fade in
-        }
+       }
     };
 
     return appConfig;
