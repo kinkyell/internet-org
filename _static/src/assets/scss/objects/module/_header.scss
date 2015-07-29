@@ -6,7 +6,7 @@
     top: 28px;
     left: 29px;
     right: 34px;
-    z-index: 100;
+    z-index: $Z-header;
 }
 
 .header_static {
@@ -15,7 +15,13 @@
 
 .header-logo {
     display: block;
-    width: 243px;
+    width: 125px;
+    overflow: hidden;
+}
+
+.header-logo > svg {
+    width: 191px;
+    height: auto;
 }
 
 .header-logo path,
@@ -58,4 +64,11 @@
 .header-logo_invert path,
 .header-menuBtn_invert path {
     fill: #ffffff;
+}
+
+@include breakpoint(MD) {
+    .header-logo,
+    .header-logo > svg {
+        width: 243px;
+    }
 }

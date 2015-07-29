@@ -2,33 +2,35 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     var AbstractView = require('./AbstractView');
+    var MenuView = require('./MenuView');
     var breakpointManager = require('services/breakpointManager');
     var eventHub = require('services/eventHub');
 
     /**
      * A view for transitioning display panels
      *
-     * @class MenuView
+     * @class HeaderView
      * @param {jQuery} $element A reference to the containing DOM element.
      * @constructor
      */
-    var MenuView = function($element) {
+    var HeaderView = function($element) {
         AbstractView.call(this, $element);
     };
 
-    var proto = AbstractView.createChild(MenuView);
+    var proto = AbstractView.createChild(HeaderView);
 
     /**
      * Binds the scope of any handler functions.
      * Should only be run on initialization of the view.
      *
      * @method setupHandlers
-     * @returns {MenuView}
+     * @returns {HeaderView}
      * @private
      */
     proto.setupHandlers = function() {
         this._handleStateChange = this._onStateChange.bind(this);
         this._handleBreakpointChange = this._onBreakpointChange.bind(this);
+        this._handleMenuBtnClick = this._onMenuBtnClick.bind(this);
         return this;
     };
 
@@ -37,24 +39,27 @@ define(function(require, exports, module) { // jshint ignore:line
      * Should only be run on initialization of the view.
      *
      * @method createChildren
-     * @returns {MenuView}
+     * @returns {HeaderView}
      * @private
      */
     proto.createChildren = function() {
         this._numStates = 0; //TODO: update with initial states load
         this.$logo = this.$('.js-headerView-logo');
         this.$menuBtn = this.$('.js-headerView-menuBtn');
+
+        this.menuView = new MenuView($('.js-menuView'));
     };
 
     /**
      * Remove any child objects or references to DOM elements.
      *
      * @method removeChildren
-     * @returns {MenuView}
+     * @returns {HeaderView}
      * @public
      */
     proto.removeChildren = function() {
-        return this;
+        this.$menuView.destroy();
+        this.$menuView = null;
     };
 
     /**
@@ -62,7 +67,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * Should be run anytime the parent layout changes.
      *
      * @method layout
-     * @returns {MenuView}
+     * @returns {HeaderView}
      * @public
      */
     proto.layout = function() {
@@ -74,24 +79,26 @@ define(function(require, exports, module) { // jshint ignore:line
      * Performs any event binding to handlers.
      *
      * @method onEnable
-     * @returns {MenuView}
+     * @returns {HeaderView}
      * @public
      */
     proto.onEnable = function() {
         eventHub.subscribe('StateStack:change', this._handleStateChange);
         breakpointManager.subscribe(this._handleBreakpointChange);
+        this.$menuBtn.on('click', this._handleMenuBtnClick);
     };
 
     /**
      * Tears down any event binding to handlers.
      *
      * @method onDisable
-     * @returns {MenuView}
+     * @returns {HeaderView}
      * @public
      */
     proto.onDisable = function() {
         eventHub.unsubscribe('StateStack:change', this._handleStateChange);
         breakpointManager.unsubscribe(this._handleBreakpointChange);
+        this.$menuBtn.off('click', this._handleMenuBtnClick);
     };
 
     /**
@@ -136,12 +143,22 @@ define(function(require, exports, module) { // jshint ignore:line
         this._render();
     };
 
+    /**
+     * Sets the menu state after breakpoint change
+     *
+     * @method _onMenuBtnClick
+     * @private
+     */
+    proto._onMenuBtnClick = function() {
+        this.menuView.toggle();
+    };
+
 
     //////////////////////////////////////////////////////////////////////////////////
     // HELPERS
     //////////////////////////////////////////////////////////////////////////////////
 
 
-    module.exports = MenuView;
+    module.exports = HeaderView;
 
 });
