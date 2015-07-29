@@ -165,7 +165,8 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._onTriggerClick = function(event) {
         if (
             breakpointManager.isMobile ||
-            (event.type === 'keydown' && event.keyCode !== 32) // SPACE
+            (event.type === 'keydown' && event.keyCode !== 32) || // SPACE
+            (event.type === 'mousedown' && event.which !== 1) // left click
         ) {
             return;
         }
@@ -290,8 +291,8 @@ define(function(require, exports, module) { // jshint ignore:line
             });
             Tween.to($menu, animSpeeds.SELECT_MENU, tweenOpts);
         } else {
-            Tween.from($menu, animSpeeds.SELECT_MENU, tweenOpts);
             this._onMenuOpen();
+            Tween.from($menu, animSpeeds.SELECT_MENU, tweenOpts);
         }
 
         this._isMenuOpen = !this._isMenuOpen;

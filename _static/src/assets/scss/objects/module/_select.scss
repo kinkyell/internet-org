@@ -43,7 +43,18 @@
     position: absolute;
     top: 29px;
     right: 31px;
+    transform: rotate(180deg);
+    transform-origin: center center;
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" viewBox="0 0 11 7"><path d="M5.500,-0.005 L0.015,5.630 L1.357,7.009 L5.500,2.753 L9.643,7.009 L10.985,5.630 L5.500,-0.005 Z" /></svg>');
+}
+
+.isOpen > .select-label:after,
+.isAbove > .select-label:after {
+    transform: rotate(0deg);
+}
+
+.isOpen.isAbove > .select-label:after {
+    transform: rotate(180deg);
 }
 
 select:hover + .select-label,
@@ -60,13 +71,19 @@ select:hover + .select-label,
     display: none;
     max-height: 325px;
     border: 1px solid #c7c7bf;
-    border-top: 0;
+    border-width: 1px 1px 0 1px;
     position: absolute;
     left: 0;
     right: 0;
     top: 100%;
     background: #ffffff;
     overflow: auto;
+}
+
+.isAbove > .select-menu {
+    top: auto;
+    bottom: 100%;
+    border-width: 0 1px 1px 1px;
 }
 
 .select-menu-item {
@@ -82,15 +99,24 @@ select:hover + .select-label,
 /* INLINE variant */
 .select_inline {
     border: 1px solid #c7c7bf;
-    border-bottom: 0;
+    border-width: 1px 1px 0 1px;
+}
+
+.select_inline.isAbove {
+    border: 1px solid #c7c7bf;
+    border-width: 0 1px 1px 1px;
 }
 
 .select_inline > .select-menu {
     padding-top: 1px;
     border: 1px solid #c7c7bf;
-    border-top: 0;
+    border-width: 0 1px 1px 1px;
     left: -1px;
     right: -1px;
+}
+
+.select_inline.isAbove > .select-menu {
+    border-width: 1px 1px 0 1px;
 }
 
 .select_inline:after {
@@ -101,6 +127,11 @@ select:hover + .select-label,
     top: 100%;
     left: 0;
     right: 0;
+}
+
+.select_inline.isAbove:after {
+    top: auto;
+    bottom: 100%;
 }
 
 .select_inline.isOpen:after {
