@@ -34,23 +34,11 @@ define(function(require, exports, module) { // jshint ignore:line
      * @fires State:activate
      */
     PanelState.prototype.activate = function(event) {
-        var tweenOpts = {};
-        var tweenSpeed;
+       var transition = 'right';
 
-        this.$panelShade = $(SHADE_TEMPLATE).appendTo('body');
-        this.$panelContent = $(PANEL_TEMPLATE).appendTo('body');
-
-        apiService.getExamplePage().then(this._handlePanelContentLoad, this._handlePanelContentError);
-        Tween.set(this.$panelShade[0], { opacity: 0 });
-
-        if (event.method === 'push') {
-            tweenOpts.xPercent = 100;
-            tweenSpeed = SPEEDS.SLIDE_IN;
-            Tween.to(this.$panelShade[0], tweenSpeed, { opacity: 1 });
-        } else if (event.method === 'swap') {
-            tweenOpts.yPercent = 100;
-            tweenSpeed = SPEEDS.SWAP_IN;
-       }
+        if (event.method === 'push' && event.states.length === 1) {
+            transition = 'none';
+        }
 
         if (event.method === 'pop') {
             transition = 'left';

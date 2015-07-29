@@ -56,11 +56,18 @@
 
 .link:hover:before { background-color: $CLR_ACCENT_ACTIVE; }
 
+<<<<<<< HEAD
 .theme-impact .link:hover,
 .theme-impact .link:active,
 .link_themeImpact:hover,
 .link_themeImpact:active {
     color: $CLR_IMPACT_ACTIVE;
+=======
+.link_twoArrows {
+    font-size: 16px;
+    color: $CLR_GRAY;
+    padding-right: 15px;
+>>>>>>> 03f5208cb99dc49266564366a1be9a8da35588c7
 }
 
 .link_twoArrows:after,
@@ -75,11 +82,16 @@
     background-color: transparent;
 }
 
+<<<<<<< HEAD
 .theme-approach .link:hover,
 .theme-approach .link:active,
 .link_themeApproach:hover,
 .link_themeApproach:active {
     color: $CLR_APPROACH_ACTIVE;
+=======
+.link_twoArrows:before {
+    right: -5px;
+>>>>>>> 03f5208cb99dc49266564366a1be9a8da35588c7
 }
 
 .link_twoArrows:hover:before { background-color: transparent; }
@@ -128,9 +140,11 @@
 .theme-mission .link,
 .link_themeMission { color: $CLR_MISSION; }
 
-.link:hover {
-    color: $CLR_ACCENT;
-}
+.theme-mission .link:after,
+.link_themeMission:after, { border-color: $CLR_MISSION; }
+
+.theme-mission .link:before,
+.link_themeMission:before { background-color: $CLR_MISSION; }
 
 .theme-mission .link:hover,
 .link_themeMission:hover { color: $CLR_MISSION_ACTIVE; }
