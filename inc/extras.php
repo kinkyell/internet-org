@@ -69,3 +69,31 @@ if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
 	}
 	add_action( 'wp_head', 'internet_org_render_title' );
 endif;
+
+
+if ( ! function_exists( 'iorg_change_excerpt_length' ) ) :
+	/**
+	 * Change the default length of the excerpts to 25 words (from default 55)
+	 *
+	 * @param int $length original length
+	 * @return int new length
+	 */
+	function iorg_change_excerpt_length( $length ) {
+		return 25;
+	}
+	add_action( 'excerpt_length', 'iorg_change_excerpt_length' );
+endif;
+
+if ( ! function_exists( 'iorg_change_excerpt_more' ) ) :
+	/**
+	 * Change the default "more" indicator
+	 *
+	 * @param string $more current more indicator
+	 * @return string new more indicator
+	 */
+	function iorg_change_excerpt_more( $more ) {
+		return '&hellip;';
+	}
+	add_action( 'excerpt_more', 'iorg_change_excerpt_more' );
+endif;
+
