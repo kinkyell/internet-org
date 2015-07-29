@@ -11,7 +11,8 @@ module.exports = function(grunt) {
                 },
                 src: [
                     'Gruntfile.js',
-                    '<%= env.DIR_SRC %>/assets/scripts/**/*.js'
+                    '<%= env.DIR_SRC %>/assets/scripts/**/*.js',
+                    '!<%= env.DIR_SRC %>/assets/scripts/**/*.build.js'
                 ]
             }
         }
