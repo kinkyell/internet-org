@@ -34,7 +34,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @fires State:activate
      */
     PanelState.prototype.activate = function(event) {
-        var transition = 'right';
+       var transition = 'right';
 
         if (event.method === 'push' && event.states.length === 1) {
             transition = 'none';

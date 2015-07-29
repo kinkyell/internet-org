@@ -7,6 +7,7 @@
 .topicBlock {
 	text-align: center;
 	margin-top: $SPACE_x2;
+	position: relative;
 }
 
 .footBox > .topicBlock {
@@ -17,10 +18,16 @@
 	font-family: $FONT_SERIF;
 	font-size: 40px;
 	line-height: 1.145833;
+	font-weight: 500;
 }
 
 .topicBlock-hd_plus {
 	font-size: 48px;
+}
+
+.topicBlock-hd_mega {
+	font-size: 58px;
+	line-height: 0.85;
 }
 
 .topicBlock-hd:after {
@@ -33,6 +40,10 @@
 	text-align: center;
 	background-color: $CLR_ACCENT;
 }
+
+.topicBlock-hd_themeImpact:after { background-color: $CLR_IMPACT; }
+.topicBlock-hd_themeMission:after { background-color: $CLR_MISSION; }
+.topicBlock-hd_themeApproach:after { background-color: $CLR_APPROACH; }
 
 .topicBlock-date {
 	font-family: $FONT_SERIF;
@@ -56,7 +67,7 @@
 }
 
 .topicBlock-ft {
-	border-top: 1px solid $CLR_GRAY_LIGHTER;
+	border-top: 1px solid #d0cfc6;
 	padding: $SPACE_x3;
 	margin-top: $SPACE_x4;
 }

@@ -11,13 +11,7 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<?php the_title( sprintf( '<h1 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
-
-		<?php if ( 'post' == get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php internet_org_posted_on(); ?>
-		</div><!-- .entry-meta -->
-		<?php endif; ?>
+		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-summary">
@@ -25,7 +19,7 @@
 	</div><!-- .entry-summary -->
 
 	<footer class="entry-footer">
-		<?php internet_org_entry_footer(); ?>
+		<?php internet_org_entry_footer_archive(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
 
