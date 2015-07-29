@@ -165,9 +165,11 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onTriggerClick = function(event) {
+        var openKey = event.keyCode === 32 || event.keyCode === 38 || event.keyCode === 40;
+
         if (
             breakpointManager.isMobile ||
-            (event.type === 'keydown' && (event.keyCode !== 32 || this._isMenuOpen)) || // SPACE
+            (event.type === 'keydown' && (!openKey || this._isMenuOpen)) || // SPACE
             (event.type === 'mousedown' && event.which !== 1) // left click
         ) {
             return;
@@ -241,13 +243,17 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._onBodyKey = function(event) {
         var key = event.keyCode;
 
+        if (this._isAnimating) {
+            return;
+        }
+
         if (key === 27) { // ESC
             event.preventDefault();
             this._toggleMenu();
             return;
         }
 
-        if (!this._isAnimating && (key === 32 || key === 13)) { // SPACE || ENTER
+        if (key === 32 || key === 13) { // SPACE || ENTER
             event.preventDefault();
             this._onOptionConfirm();
             return;
