@@ -7,6 +7,9 @@ define(function(require, exports, module) { // jshint ignore:line
     var Tween = require('gsap-tween');
     var $ = require('jquery');
 
+    var SearchFormView = require('./SearchFormView');
+    var SelectView = require('./SelectView');
+
     var SPEEDS = require('appConfig').animationSpeeds;
 
     /**
@@ -51,6 +54,9 @@ define(function(require, exports, module) { // jshint ignore:line
         this.isOpen = false;
         this.$panel = this.$('.js-menuView-panel');
         this.$sliders = this.$('.js-menuView-slider');
+
+        this.searchFormView = new SearchFormView(this.$('.js-searchFormView'));
+        this.selectView = new SelectView(this.$('.js-select'));
     };
 
     /**
