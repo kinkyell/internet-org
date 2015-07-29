@@ -4,7 +4,7 @@
 @warn "for testing only";
 
 .narrative {
-    position: fixed;
+    position: relative;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -42,11 +42,18 @@
     position: absolute;
     top: 0;
     left: 0;
-    box-sizing: border-box;
+    display: table;
     width: 100%;
     height: 48%;
-    padding: 24px;
-    background-color: #efede5;
+    background: url(../media/images/icons/io-mark-bg.svg) no-repeat $CLR_GRAY_LIGHTER;
+    background-position: -725px top;
+    background-size: 1450px 2035px;
+}
+
+.narrative-section-bd-inner {
+    display: table-cell;
+    vertical-align: middle;
+    padding: $SPACE_x4 80px;
 }
 
 .narrative-progress {
@@ -86,5 +93,9 @@
         padding: 24px;
         background-color: #efede5;
         box-sizing: border-box;
+    }
+
+    .narrative-section-slides-item {
+        display: none;
     }
 }

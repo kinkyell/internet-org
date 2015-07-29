@@ -6,6 +6,8 @@ define(function(require, exports, module) { // jshint ignore:line
     require('gsap-scrollToPlugin');
     require('gsap-tween');
     require('gsap-timeline');
+    var ViewWindow = require('services/viewWindow');
+    var breakpointManager = require('services/breakpointManager');
 
     var CONFIG = {
         PROGRESS: '.narrative-progress',
@@ -234,6 +236,8 @@ define(function(require, exports, module) { // jshint ignore:line
         $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
         this.$body.on('touchstart', this._onTouchStart.bind(this));
 
+        this.viewWindow = ViewWindow;
+
         return this;
     };
 
@@ -283,6 +287,8 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._onWheelEvent = function(event) {
         var delta = event.originalEvent.wheelDelta / 30 || -event.originalEvent.detail;
+
+        // console.log(breakpointManager.isMobile);
 
         if (delta < -1) {
             this._scrollDown();
@@ -338,6 +344,8 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
 
+        this.viewWindow.replaceFeatureImage('/web/assets/media/uploads/home.jpg', 'top');
+
         var prevSlidePos = this._position - 1;
         this._gotoSection(prevSlidePos);
     };
@@ -352,6 +360,8 @@ define(function(require, exports, module) { // jshint ignore:line
         if (this._gotoNextSlide(true) || this._isAnimating) {
             return;
         }
+
+        this.viewWindow.replaceFeatureImage('/assets/media/uploads/home.jpg', 'bottom');
 
         var nextSlidePos = this._position + 1;
         this._gotoSection(nextSlidePos);
