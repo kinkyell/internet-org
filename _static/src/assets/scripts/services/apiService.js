@@ -10,6 +10,13 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var BASE_URL = require('appConfig').apiBase;
 
+    var PATHS = {
+        '/mission': '/pages/mission.html',
+        '/approach': '/pages/approach.html',
+        '/impact': '/pages/impact.html',
+        '404': '/pages/not-found.html'
+    };
+
     var APIService = {
 
         //TODO: remove example
@@ -23,9 +30,17 @@ define(function(require, exports, module) { // jshint ignore:line
                     setTimeout(function() {
                         resolve(data);
                     }, 1000);
-                }).fail(function(error) {
-                    reject(error);
-                });
+                }).fail(reject);
+            });
+        },
+
+        /**
+         * Returns html for a given basic route
+         */
+        getPanelContent: function(route) {
+            return new Promise(function(resolve, reject) {
+                var path = PATHS[route] || PATHS['404'];
+                $.get(BASE_URL + path).done(resolve).fail(reject);
             });
         }
 

@@ -127,6 +127,29 @@ function internet_org_entry_footer() {
 }
 endif;
 
+if ( ! function_exists( 'internet_org_entry_footer_archive' ) ) :
+	/**
+	 * display necessary html for post footer suitable for archive listing
+	 *
+	 * Less information is displayed than is used on default entry footer, no
+	 * date, author, comment count, comment link, etc.
+	 *
+	 * @see internet_org_entry_footer
+	 *
+	 * @return void
+	 */
+	function internet_org_entry_footer_archive() {
+
+		// read more link
+		echo '<span class="read-more-link">';
+		printf( sanitize_text_field( __( 'Read More &rarr;', 'internet_org' ) ) );
+		echo '</span>';
+
+		// display the edit link if an authorized user is logged in.
+		edit_post_link( esc_html__( 'Edit', 'internet_org' ), '<span class="edit-link">', '</span>' );
+	}
+endif;
+
 if ( ! function_exists( 'the_archive_title' ) ) :
 /**
  * Shim for `the_archive_title()`.

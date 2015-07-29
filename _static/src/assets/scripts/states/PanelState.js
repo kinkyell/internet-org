@@ -2,14 +2,10 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     var BasicState = require('./BasicState');
-    var $ = require('jquery');
     var apiService = require('services/apiService');
-    var Tween = require('gsap-tween');
+    var spread = require('stark/promise/spread');
 
-    var SHADE_TEMPLATE = '<div class="shade"></div>';
-    var PANEL_TEMPLATE = '<div class="panel panel_isLoading"><button type="button" class="js-stateBack">Back</button><a href="/deeper" class="js-stateLink">Go deeper</a><a href="/swap" class="js-stateSwap">Swap me</a></div>'; //jshint ignore:line
-
-    var SPEEDS = require('appConfig').animationSpeeds;
+    var viewWindow = require('services/viewWindow');
 
     /**
      * Manages the stack of active states
@@ -19,6 +15,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @constructor
      */
     var PanelState = function(options) {
+        this._options = options;
         this._handlePanelContentLoad = this._onPanelContentLoad.bind(this);
         this._handlePanelContentError = this._onPanelContentError.bind(this);
 
@@ -32,32 +29,31 @@ define(function(require, exports, module) { // jshint ignore:line
      * Activate state
      *  - request panel content from server
      *  - create panel markup
-     *  - tween in panel
      *
      * @method activate
      * @fires State:activate
      */
     PanelState.prototype.activate = function(event) {
-        var tweenOpts = {};
-        var tweenSpeed;
+       var transition = 'right';
 
-        this.$panelShade = $(SHADE_TEMPLATE).appendTo('body');
-        this.$panelContent = $(PANEL_TEMPLATE).appendTo('body');
-
-        apiService.getExamplePage().then(this._handlePanelContentLoad, this._handlePanelContentError);
-        Tween.set(this.$panelShade[0], { opacity: 0 });
-
-        if (event.method === 'push') {
-            tweenOpts.xPercent = 100;
-            tweenSpeed = SPEEDS.SLIDE_IN;
-            Tween.to(this.$panelShade[0], tweenSpeed, { opacity: 1 });
-        } else if (event.method === 'swap') {
-            tweenOpts.yPercent = 100;
-            tweenOpts.delay = SPEEDS.SWAP_IN_DELAY;
-            tweenSpeed = SPEEDS.SWAP_IN;
+        if (event.method === 'push' && event.states.length === 1) {
+            transition = 'none';
         }
 
-        Tween.from(this.$panelContent[0], tweenSpeed, tweenOpts);
+        if (event.method === 'pop') {
+            transition = 'left';
+        }
+
+        var tasks = [
+            apiService.getPanelContent(this._options.stateName),
+            viewWindow.replaceStoryContent('<div>Story</div>', transition)
+        ];
+
+        if (this._options.image) {
+            tasks.push(viewWindow.replaceFeatureImage(this._options.image, transition));
+        }
+
+        Promise.all(tasks).then(spread(this._handlePanelContentLoad), this._handlePanelContentError);
 
         BasicState.prototype.activate.call(this, event);
     };
@@ -69,13 +65,11 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {String} markup HTML content from ajax request
      * @private
      */
-    PanelState.prototype._onPanelContentLoad = function(markup) {
+    PanelState.prototype._onPanelContentLoad = function(markup, $panel) {
         if (!this.active) {
             return;
         }
-        var $markup = $('<div></div>').append(markup);
-        this.$panelContent.append($markup).removeClass('panel_isLoading');
-        Tween.from($markup[0], SPEEDS.CONTENT_IN, { opacity: 0 });
+        $panel.append(markup);
     };
 
     /**
@@ -90,42 +84,15 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
         console.log(error);
-        this.$panelContent.append('<div class="error">An error occurred.</div>');
     };
 
     /**
      * Deactivate the panel
-     *  - Animate tween out
-     *  - Remove markup
      *
      * @method deactivate
      * @fires State:deactivate
      */
     PanelState.prototype.deactivate = function(event) {
-        var tweenOpts = {
-            onComplete: function() {
-                this.$panelContent.remove();
-                this.$panelShade.remove();
-            },
-            callbackScope: this
-        };
-        var tweenSpeed;
-
-        Tween.set(this.$panelShade[0], { opacity: 1 });
-
-        if (event.method === 'pop') {
-            tweenOpts.xPercent = 100;
-            tweenSpeed = SPEEDS.SLIDE_OUT;
-            Tween.to(this.$panelShade[0], tweenSpeed, { opacity: 0 });
-        } else if (event.method === 'swap') {
-            tweenOpts.opacity = 0.5;
-            tweenOpts.transformOrigin = 'center top';
-            tweenOpts.transform = 'scale(0.75) translateY(-25vh)';
-            tweenSpeed = SPEEDS.SWAP_OUT;
-        }
-
-        Tween.to(this.$panelContent[0], tweenSpeed, tweenOpts);
-
         BasicState.prototype.deactivate.call(this, event);
     };
 

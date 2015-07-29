@@ -12,6 +12,8 @@ define( 'IO_DIR', __DIR__ );
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
 wpcom_vip_load_plugin( 'babble', 'internet_org-plugins' );
+wpcom_vip_load_plugin( 'iorg-custom-posttypes', 'internet_org-plugins' );
+wpcom_vip_load_plugin( 'iorg-custom-fields', 'internet_org-plugins' );
 wpcom_vip_load_plugin( 'fieldmanager' );
 wpcom_vip_load_plugin( 'wp-google-analytics' );
 wpcom_vip_load_plugin( 'responsive-images' );
@@ -22,6 +24,8 @@ wpcom_vip_load_plugin( 'lazy-load' );
 // Not sure how to include this one yet, need to work with VIP team
 // wpcom_vip_load_plugin( 'vip-search-add-on' );
 
+// MANUAL INCLUSION (Multiple Plugins in one dir)
+require_once(__DIR__ . '/../internet_org-plugins/babble/translation-fields.php');
 
 if ( ! function_exists( 'internet_org_setup' ) ) :
 /**
@@ -166,3 +170,11 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/**
+ * Language related functionality
+ */
+require get_template_directory() . '/inc/language.php';
+
+
+
