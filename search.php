@@ -19,7 +19,7 @@ get_header(); ?>
 			<?php
 
 			// display result count multi-lingual should provide the appropriate location of the post count
-			printf( __( '%d Results Found', 'internet_org' ) , $wp_query->found_posts );
+			printf( esc_html__( '%d Results Found', 'internet_org' ) , $wp_query->found_posts );
 
 			?>
 			<?php /* Start the Loop */ ?>
