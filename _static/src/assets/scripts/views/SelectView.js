@@ -35,6 +35,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handleTriggerClick = this._onTriggerClick.bind(this);
         this._handleBodyClick = this._onBodyClick.bind(this);
         this._handleBodyKey = this._onBodyKey.bind(this);
+        this._handleBreakpointChange = this._onBreakpointChange.bind(this);
     };
 
     /**
@@ -49,12 +50,12 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$element.wrap('<div class="select"></div>');
         this.$wrap = this.$element.parent();
         this.$label = $('<div class="select-label"></div>');
-        this._isMenuOpen = this.$element.hasClass('isOpen');
+        this._isMenuOpen = false;
         this._isAnimating = false;
 
         this.$menu = $('<div class="select-menu"></div>');
         Array.prototype.forEach.call(this.element.options, function(el) {
-            var $el = $('<div class="select-menu-item"></div>');
+            var $el = $('<div class="select-menu-item" tabIndex="0"></div>');
             var displayText = el.getAttribute('data-display');
 
             // set text
@@ -112,6 +113,7 @@ define(function(require, exports, module) { // jshint ignore:line
             .on('change', this._handleChange)
             .on('mousedown keydown', this._handleTriggerClick);
         this.$menu.on('click', '.select-menu-item', this._handleItemClick);
+        breakpointManager.subscribe(this._handleBreakpointChange);
         this._render();
     };
 
@@ -165,13 +167,15 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._onTriggerClick = function(event) {
         if (
             breakpointManager.isMobile ||
-            (event.type === 'keydown' && event.keyCode !== 32) || // SPACE
+            (event.type === 'keydown' && (event.keyCode !== 32 || this._isMenuOpen)) || // SPACE
             (event.type === 'mousedown' && event.which !== 1) // left click
         ) {
             return;
         }
 
         event.preventDefault();
+
+
         this._toggleMenu();
     };
 
@@ -205,6 +209,10 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._onMenuOpen = function() {
         this.$wrap.addClass('isOpen');
 
+        var idx = this.element.selectedOptions[0].index;
+        this.$menu.children().eq(idx)[0].focus();
+        this._highlightedIdx = idx;
+
         $(document.body)
             .on('click', this._handleBodyClick)
             .on('keydown', this._handleBodyKey);
@@ -231,7 +239,60 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onBodyKey = function(event) {
-        if (event.keyCode === 27) { // ESC
+        var key = event.keyCode;
+
+        if (key === 27) { // ESC
+            event.preventDefault();
+            this._toggleMenu();
+            return;
+        }
+
+        if (!this._isAnimating && (key === 32 || key === 13)) { // SPACE || ENTER
+            event.preventDefault();
+            this._onOptionConfirm();
+            return;
+        }
+
+        var movements = {
+            37: -1, // LEFT ARROW
+            38: -1, // UP ARROW
+            39: 1, // RIGHT ARROW
+            40: 1, // DOWN ARROW
+            9: event.shiftKey ? -1 : 1, // TAB
+            33: -5, // PAGE UP
+            34: 5, // PAGE DOWN
+            35: Infinity, // END
+            36: -Infinity // HOME
+        };
+        if (key in movements) {
+            event.preventDefault();
+            this._advanceOption(movements[key]);
+        }
+    };
+
+    /**
+     * Handle select confirmation
+     *
+     * @method _onOptionConfirm
+     * @param {ChangeEvent} event Select change event
+     * @private
+     */
+    proto._onOptionConfirm = function() {
+        var idx = this._highlightedIdx;
+        this.$element.children().removeAttr('selected');
+        this.element.options[idx].setAttribute('selected', '');
+        this._render();
+        this._toggleMenu();
+    };
+
+    /**
+     * Close menu if going to mobile size
+     *
+     * @method _onBreakpointChange
+     * @private
+     */
+    proto._onBreakpointChange = function() {
+        if (this._isMenuOpen) {
             this._toggleMenu();
         }
     };
@@ -297,6 +358,21 @@ define(function(require, exports, module) { // jshint ignore:line
 
         this._isMenuOpen = !this._isMenuOpen;
 
+    };
+
+    /**
+     * Advance selected option
+     *
+     * @method _advanceOption
+     * @param {Number} num Number to advance the options
+     * @private
+     */
+    proto._advanceOption = function(num) {
+        var tryIdx = this._highlightedIdx + num;
+        var max = this.element.options.length - 1;
+        var min = 0;
+        this._highlightedIdx = Math.max(Math.min(tryIdx, max), min);
+        this.$menu.children().eq(this._highlightedIdx)[0].focus();
     };
 
 

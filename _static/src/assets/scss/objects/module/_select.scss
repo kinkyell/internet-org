@@ -58,7 +58,9 @@
 }
 
 select:hover + .select-label,
-.select-menu-item:hover {
+select:focus + .select-label,
+.select-menu-item:hover,
+.select-menu-item:focus {
     background: #efede4;
 }
 
@@ -86,7 +88,7 @@ select:hover + .select-label,
     border-width: 0 1px 1px 1px;
 }
 
-.select-menu-item {
+.select-menu-item:not(:focus) {
     font-family: $FONT_SANS;
     font-weight: normal;
 }
@@ -149,6 +151,7 @@ select:hover + .select-label,
     position: static;
 }
 
-.select_dark > select:hover + .select-label {
+.select_dark > select:hover + .select-label,
+.select_dark > select:focus + .select-label {
     background: #ccc8bc;
 }
