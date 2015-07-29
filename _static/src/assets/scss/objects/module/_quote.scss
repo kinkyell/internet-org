@@ -1,0 +1,47 @@
+/* ---------------------------------------------------------------------
+Quote
+
+Quote Styles outside of WYSIWYG areas
+------------------------------------------------------------------------ */
+
+.quote {
+    border-left: 4px solid $CLR_ACCENT;
+    padding: $SPACE_x1 $SPACE_x2;
+}
+
+.quote-statement {
+    font-family: $FONT_SERIF_ITALIC;
+    font-style: italic; // TODO: REMOVE ONCE Web Fonts are in place
+    font-size: 22px;
+    line-height: 1.363636;
+    color: $CLR_BLACK;
+    margin-bottom: $SPACE_x1;
+}
+
+.quote-author:before {
+    content: ' – ';
+}
+
+.quote-author {
+    font-family: $FONT_SANS;
+    font-weight: 200; // TODO: REMOVE ONCE Web Fonts are in place
+    font-size: 18px;
+    line-height: 1;
+    color: $CLR_GRAY;
+}
+
+// THEME CLASSES by contectual or chain selection
+.theme-impact .quote,
+.quote_themeImpact {
+    border-left: 4px solid $CLR_IMPACT;
+}
+
+.theme-approach .quote,
+.quote_themeApproach {
+    border-left: 4px solid $CLR_APPROACH;
+}
+
+.theme-mission .quote,
+.quote_themeMission {
+    border-left: 4px solid $CLR_MISSION;
+}

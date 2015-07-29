@@ -1,0 +1,41 @@
+/* ---------------------------------------------------------------------
+Media
+
+Feature content module
+------------------------------------------------------------------------ */
+
+.feature {
+    padding: $SPACE_x2 0; // TODO: Not sure what the panel styles will be. This may need to be removed.
+}
+
+.feature > * + * {
+    margin-top: $SPACE_x2; // TODO: Not sure what the panel styles will be. This may need to be removed.
+}
+
+.feature-hd {
+    // margin-bottom: 34px;
+}
+
+.feature-media > *  {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+
+.feature-media-caption > * {
+    font-family: $FONT_SERIF_ITALIC;
+    font-style: italic;  // TODO: REMOVE ONCE Web Fonts are in place
+    font-size: 22px;
+    line-height: 1.3636363;
+    color: $CLR_GRAY;
+    background-color: $CLR_GRAY_LIGHT;
+    padding: $SPACE_x2;
+}
+
+.feature-cta {
+    margin-top: 14px; // To compensate for the extra white space added
+}
+.feature-bd {}
+    // sub heading, lists, etc..
+
+.feature-ft {}
