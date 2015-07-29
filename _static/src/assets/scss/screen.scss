@@ -19,6 +19,7 @@
 ------------------------------------------------------------------------ */
 @import "objects/item/btn";
 @import "objects/item/link";
+@import "objects/item/arrowcta";
 
 /* ---------------------------------------------------------------------
  Objects: layout
@@ -37,11 +38,19 @@
 @import "objects/module/narrative";
 @import "objects/module/panel";
 @import "objects/module/quarentine";
+@import "objects/module/quote";
+@import "objects/module/contentonmedia";
+@import "objects/module/menutrigger";
 
 /* ---------------------------------------------------------------------
  Objects: repeater
 ------------------------------------------------------------------------ */
 @import "objects/repeater/media";
+@import "objects/repeater/feature";
+@import "objects/repeater/topicblock";
+@import "objects/repeater/footbox";
+@import "objects/repeater/blocks";
+@import "objects/repeater/vlist";
 
 /* ---------------------------------------------------------------------
  Objects: item
