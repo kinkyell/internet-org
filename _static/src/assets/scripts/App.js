@@ -52,29 +52,6 @@ define(function(require, exports, module) { // jshint ignore:line
         this.viewWindow = viewWindow;
 
         this._setupStates();
-
-        //TODO: remove test code
-        var vw = $('.js-viewWindow');
-        var isShifted = false;
-
-        vw.on('click', function() {
-            var prom;
-            var img;
-
-            if (isShifted) {
-                img = 'http://placehold.it/400x801/eeeeee/888888?text=first+panel';
-                prom = viewWindow.replaceFeatureImage(img, 'right', true);
-                viewWindow.shift();
-            } else {
-                img = 'http://placehold.it/400x800?text=second+panel';
-                prom = viewWindow.replaceFeatureImage(img, 'right', false);
-                viewWindow.shift();
-            }
-
-            prom.then(function() {
-                isShifted = !isShifted;
-            });
-        });
     };
 
     /**
@@ -129,6 +106,11 @@ define(function(require, exports, module) { // jshint ignore:line
             });
         }
         console.log(this.states);
+
+        // if going to or from home we need to shift over
+        if (states.length === 0 || previousStates.length === 0) {
+            viewWindow.shift()
+        }
     };
 
     return App;

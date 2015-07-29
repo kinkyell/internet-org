@@ -32,7 +32,15 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     StateStack.prototype.push = function(StateCtor, options) {
         var stateInstance = new StateCtor(options);
+
         this._activeStates.push(stateInstance);
+
+        if (this._activeStates.length > 1) {
+            this._activeStates[this._activeStates.length - 2].deactivate({
+                method: 'push',
+                states: this._activeStates
+            })
+        }
 
         /**
          * State pushed event
@@ -45,7 +53,8 @@ define(function(require, exports, module) { // jshint ignore:line
 
         // activate the new state
         stateInstance.activate({
-            method: 'push'
+            method: 'push',
+            states: this._activeStates
         });
     };
 
@@ -61,6 +70,13 @@ define(function(require, exports, module) { // jshint ignore:line
     StateStack.prototype.pop = function() {
         var stateInstance = this._activeStates.pop();
 
+        if (this._activeStates.length) {
+            this._activeStates[this._activeStates.length - 1].activate({
+                method: 'pop',
+                states: this._activeStates
+            })
+        }
+
         /**
          * State popped event
          *
@@ -71,7 +87,8 @@ define(function(require, exports, module) { // jshint ignore:line
         eventHub.publish('StateStack:change', this._activeStates);
 
         stateInstance.deactivate({
-            method: 'pop'
+            method: 'pop',
+            states: this._activeStates
         });
 
         return stateInstance;
@@ -103,12 +120,14 @@ define(function(require, exports, module) { // jshint ignore:line
 
         // deactivate old instance
         prevInstance.deactivate({
-            method: 'swap'
+            method: 'swap',
+            states: this._activeStates
         });
 
         // activate the new state
         stateInstance.activate({
-            method: 'swap'
+            method: 'swap',
+            states: this._activeStates
         });
     };
 
