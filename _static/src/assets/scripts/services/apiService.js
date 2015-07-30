@@ -15,6 +15,7 @@ define(function(require, exports, module) { // jshint ignore:line
         '/approach': '/pages/approach.html',
         '/approach-tertiary': '/pages/approach-tertiary.html',
         '/impact': '/pages/impact.html',
+        'searchResults': '/pages/search-results.html',
         '404': '/pages/not-found.html'
     };
 
@@ -42,6 +43,15 @@ define(function(require, exports, module) { // jshint ignore:line
             return new Promise(function(resolve, reject) {
                 var path = PATHS[route] || PATHS['404'];
                 $.get(BASE_URL + path).done(resolve).fail(reject);
+            });
+        },
+
+        /**
+         * Returns html for a given basic route
+         */
+        getSearchResults: function(searchText) {
+            return new Promise(function(resolve, reject) {
+                $.get(BASE_URL + PATHS.searchResults).done(resolve).fail(reject);
             });
         }
 

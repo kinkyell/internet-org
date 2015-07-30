@@ -11,7 +11,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @constructor
      */
     var BasicState = function(options) {
-        AbstractState.call(this);
+        AbstractState.call(this, options);
     };
 
     BasicState.prototype = Object.create(AbstractState.prototype);

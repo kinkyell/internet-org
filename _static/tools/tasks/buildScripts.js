@@ -127,6 +127,23 @@ module.exports = function(grunt) {
                 // https://github.com/Modernizr/modernizr.com/blob/gh-pages/i/js/modulizr.js#L15-157
                 tests: grunt.file.readJSON('modernizr-tests.json').tests
             }
+        },
+
+        handlebars: {
+            buildScripts: {
+                options: {
+                    namespace: 'JST',
+                    amd: true,
+                    processName: function(filePath) {
+                        return filePath.replace(/^src\/jst\//, '').replace(/\.hbs$/, '');
+                    }
+                },
+                files: {
+                    '<%= env.DIR_SRC %>/assets/scripts/templates.build.js': [
+                        '<%= env.DIR_SRC %>/jst/**/*.hbs'
+                    ]
+                }
+            }
         }
     });
 
@@ -141,6 +158,7 @@ module.exports = function(grunt) {
                 'uglify:generated'
             ]
             : [
+                'handlebars:buildScripts',
                 'modernizr:buildScripts',
                 'copy:buildScripts'
             ]

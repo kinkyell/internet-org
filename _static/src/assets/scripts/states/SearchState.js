@@ -2,28 +2,33 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     var BasicState = require('./BasicState');
+    var viewWindow = require('services/viewWindow');
     var apiService = require('services/apiService');
     var spread = require('stark/promise/spread');
 
-    var viewWindow = require('services/viewWindow');
     var templates = require('templates');
 
     /**
-     * Manages the stack of active states
+     * Manages search state
      *
-     * @class PanelState
+     * @class SearchState
      * @extends BasicState
      * @constructor
      */
-    var PanelState = function(options) {
+    var SearchState = function(options) {
         this._handlePanelContentLoad = this._onPanelContentLoad.bind(this);
         this._handlePanelContentError = this._onPanelContentError.bind(this);
-
         BasicState.call(this, options);
     };
 
-    PanelState.prototype = Object.create(BasicState.prototype);
-    PanelState.prototype.constructor = PanelState;
+    SearchState.prototype = Object.create(BasicState.prototype);
+    SearchState.prototype.constructor = SearchState;
+
+    SearchState.prototype.activate = function(event) {
+        var searchText = this._options.searchText;
+        viewWindow.replaceStoryContent('<div>Search Results for "' + searchText + '"</div>', 'right');
+        BasicState.prototype.activate.call(this, event);
+    };
 
     /**
      * Activate state
@@ -33,8 +38,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @method activate
      * @fires State:activate
      */
-    PanelState.prototype.activate = function(event) {
+    SearchState.prototype.activate = function(event) {
        var transition = 'right';
+       var searchText = this._options.searchText;
 
         if (event.method === 'push' && event.states.length === 1) {
             transition = 'none';
@@ -45,16 +51,11 @@ define(function(require, exports, module) { // jshint ignore:line
         }
 
         var tasks = [
-            apiService.getPanelContent(this._options.path),
-            viewWindow.replaceStoryContent(templates['article-header']({
-                title: this._options.title,
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse es suscipit euante lorepehicula nulla, suscipit dela eu ante vel vehicula.'
-            }), transition)
+            apiService.getSearchResults(searchText),
+            viewWindow.replaceStoryContent('<div>Search Results for "' + searchText + '"</div>', 'right')
         ];
 
-        if (this._options.image) {
-            tasks.push(viewWindow.replaceFeatureImage(this._options.image, transition));
-        }
+        viewWindow.replaceFeatureContent('<input value="' + searchText + '" />', 'right');
 
         Promise.all(tasks).then(spread(this._handlePanelContentLoad), this._handlePanelContentError);
 
@@ -68,7 +69,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {String} markup HTML content from ajax request
      * @private
      */
-    PanelState.prototype._onPanelContentLoad = function(markup, $panel) {
+    SearchState.prototype._onPanelContentLoad = function(markup, $panel) {
         if (!this.active) {
             return;
         }
@@ -82,23 +83,13 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {Object} error Ajax error object
      * @private
      */
-    PanelState.prototype._onPanelContentError = function(error) {
+    SearchState.prototype._onPanelContentError = function(error) {
         if (!this.active) {
             return;
         }
         console.log(error);
     };
 
-    /**
-     * Deactivate the panel
-     *
-     * @method deactivate
-     * @fires State:deactivate
-     */
-    PanelState.prototype.deactivate = function(event) {
-        BasicState.prototype.deactivate.call(this, event);
-    };
-
-    return PanelState;
+    return SearchState;
 
 });
