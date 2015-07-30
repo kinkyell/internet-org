@@ -17,3 +17,7 @@
 	padding: $SPACE_x1 0 $SPACE_DEFAULT;
 	border-bottom: 1px solid $CLR_GRAY_LIGHT;
 }
+
+.resultsList-list-item img {
+	max-width: 210px;
+}

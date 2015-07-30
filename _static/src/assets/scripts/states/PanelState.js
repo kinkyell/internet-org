@@ -46,7 +46,8 @@ define(function(require, exports, module) { // jshint ignore:line
 
         var tasks = [
             apiService.getPanelContent(this._options.stateName),
-            viewWindow.replaceStoryContent('<div>Story</div>', transition)
+            viewWindow.replaceStoryContent('', transition)
+            // viewWindow.replaceStoryContent('<div>Story</div>', transition)
         ];
 
         if (this._options.image) {
