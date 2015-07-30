@@ -288,8 +288,6 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._onWheelEvent = function(event) {
         var delta = event.originalEvent.wheelDelta / 30 || -event.originalEvent.detail;
 
-        // console.log(breakpointManager.isMobile);
-
         if (delta < -1) {
             this._scrollDown();
         } else if (delta > 1) {
@@ -344,10 +342,12 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
 
-        this.viewWindow.replaceFeatureImage('/web/assets/media/uploads/home.jpg', 'top');
-
-        var prevSlidePos = this._position - 1;
-        this._gotoSection(prevSlidePos);
+        if (breakpointManager.isMobile) {
+            var prevSlidePos = this._position - 1;
+            this._gotoSection(prevSlidePos);
+        } else {
+            this.viewWindow.replaceFeatureImage('/assets/media/uploads/home.jpg', 'top');
+        }
     };
 
     /**
@@ -361,10 +361,12 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
 
-        this.viewWindow.replaceFeatureImage('/assets/media/uploads/home.jpg', 'bottom');
-
-        var nextSlidePos = this._position + 1;
-        this._gotoSection(nextSlidePos);
+        if (breakpointManager.isMobile) {
+            var nextSlidePos = this._position + 1;
+            this._gotoSection(nextSlidePos);
+        } else {
+            this.viewWindow.replaceFeatureImage('/assets/media/uploads/home.jpg', 'bottom');
+        }
     };
 
     proto._hasMultiple = function(position) {

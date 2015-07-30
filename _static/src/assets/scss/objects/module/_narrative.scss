@@ -12,6 +12,7 @@
 
 .narrative-section {
     position: relative;
+    width: 100%;
     height: 100%;
 }
 
@@ -45,9 +46,7 @@
     display: table;
     width: 100%;
     height: 48%;
-    background: url(../media/images/icons/io-mark-bg.svg) no-repeat $CLR_GRAY_LIGHTER;
-    background-position: -725px top;
-    background-size: 1450px 2035px;
+    background-color: #efede4;
 }
 
 .narrative-section-bd-inner {
@@ -87,11 +86,20 @@
 }
 
 @include breakpoint(MD) {
+    .narrative {
+        background: url(../media/images/icons/io-mark-bg.svg) no-repeat $CLR_GRAY_LIGHTER;
+        background-position: -725px top;
+        background-size: 1450px 2035px;
+    }
+
+    .narrative-section {
+        position: absolute;
+    }
+
     .narrative-section-bd {
         width: 100%;
         height: 100%;
         padding: 24px;
-        background-color: #efede5;
         box-sizing: border-box;
     }
 
