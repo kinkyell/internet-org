@@ -1,0 +1,33 @@
+/* ---------------------------------------------------------------------
+ Statement Block
+
+ Content structure used in narrative sections
+------------------------------------------------------------------------ */
+.statementBlock {}
+
+.statementBlock-pre {
+
+}
+
+.statementBlock-pre:before {
+    content: "";
+    display: inline-block;
+    height: 4px;
+    width: 40px;
+    position: relative;
+    top: -15px;
+    text-align: center;
+    background-color: $CLR_ACCENT;
+}
+
+.statementBlock-pre_themeImpact:before { background-color: $CLR_IMPACT; }
+.statementBlock-pre_themeMission:before { background-color: $CLR_MISSION; }
+.statementBlock-pre_themeApproach:before { background-color: $CLR_APPROACH; }
+
+.statementBlock-hd {
+
+}
+
+.statementBlock-bd {
+
+}
