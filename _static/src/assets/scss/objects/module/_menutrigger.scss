@@ -52,7 +52,8 @@
 // TODO: Need to add js hooks. Reference: http://codepen.io/patrickjannette/pen/vOVYXm
 
 .menuTrigger-icon.isOpen {
-  border: 0 solid transparent;
+  border: none;
+  padding-bottom: 6px;
 }
 
 .menuTrigger-icon.isOpen:before {
@@ -70,12 +71,12 @@
 }
 
 .menuTrigger:hover .menuTrigger-icon.isOpen:before {
-  transform: rotate(405deg);
+  transform: rotate(45deg); //405
   transform-origin: middle middle;
 }
 
 .menuTrigger:hover .menuTrigger-icon.isOpen:after {
-  transform: rotate(495deg);
+  transform: rotate(-45deg); //495
   transform-origin: middle middle;
 }
 

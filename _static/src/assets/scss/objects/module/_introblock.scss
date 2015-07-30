@@ -1,0 +1,49 @@
+/* ---------------------------------------------------------------------
+Introduction Block
+
+Sections of content that introduce landing and story pages
+------------------------------------------------------------------------ */
+.introBlock {
+	display: table;
+	min-height: 620px;
+	width: 100%;
+	position: relative;
+	background: url(../media/images/icons/io-mark-bg.svg) no-repeat $CLR_GRAY_LIGHTER;
+	background-position: -725px top;
+	background-size: 1450px 2035px;
+}
+
+.introBlock_fill {
+	height: 100vh;
+	background-position: -300px top;
+}
+
+.introBlock-inner {
+	display: table-cell;
+	vertical-align: middle;
+	padding: $SPACE_x4 40px;
+}
+
+.introBlock-inner > .topicBlock {
+	margin-top: 0;
+}
+
+.introBlock-inner_narrow {
+	padding: 0 150px;
+}
+
+.introBlock-ft {
+	border-top: 1px solid #d0cfc6;
+	padding: $SPACE_x3 0;
+	margin-top: $SPACE_x4;
+	position: absolute;
+	bottom: 0;
+	left: 12.5%;
+	width: 75%;
+}
+
+@include breakpoint(MD) {
+	.introBlock-inner {
+		padding: $SPACE_x4 80px;
+	}
+} 

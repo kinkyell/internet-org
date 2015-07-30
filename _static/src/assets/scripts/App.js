@@ -17,6 +17,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var StateStack = require('services/StateStack');
     var PanelState = require('states/PanelState');
     var HeaderView = require('views/HeaderView');
+    var SelectView = require('views/SelectView');
 
     var eventHub = require('services/eventHub');
     var viewWindow = require('services/viewWindow');
@@ -52,6 +53,10 @@ define(function(require, exports, module) { // jshint ignore:line
         this.viewWindow = viewWindow;
 
         this._setupStates();
+
+        $('select.js-select').each(function(idx, el) {
+            return new SelectView($(el));
+        });
     };
 
     /**
