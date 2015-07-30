@@ -16,6 +16,10 @@
     height: 100%;
 }
 
+.narrative-section.isActive {
+    z-index: 1;
+}
+
 .narrative-section-slides {
     height: 100%;
     overflow: hidden;
@@ -96,11 +100,16 @@
         position: absolute;
     }
 
+    .narrative-section:not(.isActive) {
+        display: none;
+    }
+
     .narrative-section-bd {
         width: 100%;
         height: 100%;
         padding: 24px;
         box-sizing: border-box;
+        background-color: transparent;
     }
 
     .narrative-section-slides-item {

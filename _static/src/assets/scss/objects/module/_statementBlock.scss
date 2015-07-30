@@ -3,31 +3,36 @@
 
  Content structure used in narrative sections
 ------------------------------------------------------------------------ */
-.statementBlock {}
+.transformBlock {}
 
-.statementBlock-pre {
-
+.transformBlock-pre {
+    position: relative; // For pseudo positioning
+    font-family: $FONT_SANS;
+    font-weight: 400; // TODO: REMOVE ONCE Web Fonts are in place
+    font-size: 28px;
+    line-height: 1.875;
+    color: $CLR_GRAY;
 }
 
-.statementBlock-pre:before {
+.transformBlock-pre:before {
     content: "";
+    position: absolute;
     display: inline-block;
     height: 4px;
     width: 40px;
-    position: relative;
-    top: -15px;
+    top: -24px;
     text-align: center;
     background-color: $CLR_ACCENT;
 }
 
-.statementBlock-pre_themeImpact:before { background-color: $CLR_IMPACT; }
-.statementBlock-pre_themeMission:before { background-color: $CLR_MISSION; }
-.statementBlock-pre_themeApproach:before { background-color: $CLR_APPROACH; }
+.transformBlock-pre_themeImpact:before { background-color: $CLR_IMPACT; }
+.transformBlock-pre_themeMission:before { background-color: $CLR_MISSION; }
+.transformBlock-pre_themeApproach:before { background-color: $CLR_APPROACH; }
 
-.statementBlock-hd {
+.transformBlock-hd {
 
 }
 
-.statementBlock-bd {
+.transformBlock-bd {
 
 }
