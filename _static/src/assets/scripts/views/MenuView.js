@@ -56,7 +56,10 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$sliders = this.$('.js-menuView-slider');
 
         this.searchFormView = new SearchFormView(this.$('.js-searchFormView'));
-        this.selectView = new SelectView(this.$('.js-select'));
+        this.selectView = new SelectView(this.$('.js-select'), {
+            prefix: 'langSelect',
+            anchorBottom: true
+        });
     };
 
     /**

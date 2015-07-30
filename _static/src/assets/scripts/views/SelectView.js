@@ -15,7 +15,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {jQuery} $element A reference to the containing DOM element.
      * @constructor
      */
-    var SelectView = function($element) {
+    var SelectView = function($element, options) {
+        this._options = options || {};
+        this._options.prefix = this._options.prefix || 'select';
         AbstractView.call(this, $element);
     };
 
@@ -47,15 +49,15 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto.createChildren = function() {
-        this.$element.wrap('<div class="select"></div>');
+        this.$element.wrap('<div class="' + this._options.prefix + '"></div>');
         this.$wrap = this.$element.parent();
-        this.$label = $('<div class="select-label"></div>');
+        this.$label = $('<div class="' + this._options.prefix + '-label"></div>');
         this._isMenuOpen = false;
         this._isAnimating = false;
 
-        this.$menu = $('<div class="select-menu"></div>');
+        this.$menu = $('<div class="' + this._options.prefix + '-menu"></div>');
         Array.prototype.forEach.call(this.element.options, function(el) {
-            var $el = $('<div class="select-menu-item" tabIndex="0"></div>');
+            var $el = $('<div class="' + this._options.prefix + '-menu-item" tabIndex="0"></div>');
             var displayText = el.getAttribute('data-display');
 
             // set text
@@ -112,7 +114,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$element
             .on('change', this._handleChange)
             .on('mousedown keydown', this._handleTriggerClick);
-        this.$menu.on('click', '.select-menu-item', this._handleItemClick);
+        this.$menu.on('click', '.' + this._options.prefix + '-menu-item', this._handleItemClick);
         breakpointManager.subscribe(this._handleBreakpointChange);
         this._render();
     };
