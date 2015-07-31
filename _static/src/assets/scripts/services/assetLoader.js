@@ -8,6 +8,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @constructor
      */
     var AssetLoader = function() {
+        this._loaded = [];
     };
 
     /**
@@ -18,14 +19,17 @@ define(function(require, exports, module) { // jshint ignore:line
      * @returns {Promise} promise representing image load state
      */
     AssetLoader.prototype.loadImage = function(url) {
+        var loaded = this._loaded;
+
+        if (loaded.indexOf(url) !== -1) {
+            return Promise.resolve({ url: url });
+        }
         return new Promise(function(resolve, reject) {
             var img = new Image();
 
             img.onload = function() {
-                resolve({
-                    url: url,
-                    img: img
-                });
+                loaded.push(url);
+                resolve({ url: url });
             };
 
             img.onerror = function(error) {
@@ -39,10 +43,8 @@ define(function(require, exports, module) { // jshint ignore:line
 
             // if already complete
             if (img.complete) {
-                resolve({
-                    url: url,
-                    img: img
-                });
+                loaded.push(url);
+                resolve({ url: url });
             }
         });
     };
@@ -55,7 +57,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @returns {Promise} promise representing image load state
      */
     AssetLoader.prototype.loadImages = function(urls) {
-        var promises = urls.map(this.loadImage);
+        var promises = urls.map(this.loadImage, this);
         return Promise.all(promises);
     };
 

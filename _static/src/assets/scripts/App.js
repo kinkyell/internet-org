@@ -22,7 +22,10 @@ define(function(require, exports, module) { // jshint ignore:line
     var SelectView = require('views/SelectView');
 
     var eventHub = require('services/eventHub');
+    var assetLoader = require('services/assetLoader');
     var viewWindow = require('services/viewWindow');
+
+    var identity = require('stark/function/identity');
 
     var FastClick = require('fastclick');
     FastClick.attach(document.body);
@@ -65,6 +68,8 @@ define(function(require, exports, module) { // jshint ignore:line
         $('select.js-select').each(function(idx, el) {
             return new SelectView($(el));
         });
+
+        this._preloadImages();
     };
 
     /**
@@ -128,6 +133,22 @@ define(function(require, exports, module) { // jshint ignore:line
         if (fromHome || toHome) {
             viewWindow.shift();
         }
+
+        this._preloadImages();
+    };
+
+    /**
+     * Preload page images
+     *
+     * @method _preloadImages
+     * @private
+     */
+    proto._preloadImages = function(states, previousStates) {
+        var stateLinkImgs = Array.prototype.map.call($('.js-stateLink'), function(el) {
+            return el.getAttribute('data-image');
+        }).filter(identity);
+
+        assetLoader.loadImages(stateLinkImgs);
     };
 
     return App;
