@@ -41,8 +41,13 @@
 	background-color: $CLR_ACCENT;
 }
 
+.theme-impact .topicBlock-hd:after,
 .topicBlock-hd_themeImpact:after { background-color: $CLR_IMPACT; }
+
+.theme-mission .topicBlock-hd:after,
 .topicBlock-hd_themeMission:after { background-color: $CLR_MISSION; }
+
+.theme-appraoch .topicBlock-hd:after,
 .topicBlock-hd_themeApproach:after { background-color: $CLR_APPROACH; }
 
 .topicBlock-subHd {
