@@ -21,6 +21,9 @@ define(function(require, exports, module) { // jshint ignore:line
     var eventHub = require('services/eventHub');
     var viewWindow = require('services/viewWindow');
 
+    var CarouselView = require('views/CarouselView');
+    var Dragdealer = require('dragdealer');
+
     var FastClick = require('fastclick');
     FastClick.attach(document.body);
 
@@ -50,6 +53,20 @@ define(function(require, exports, module) { // jshint ignore:line
         this.router = new Router();
         this.headerView = new HeaderView($('.js-headerView'));
         this.viewWindow = viewWindow;
+
+        // alt carousels
+        $('.carousel').each(function(idx, el) {
+            return new Dragdealer(el.id, {
+                steps: 5,
+                x: 0.5,
+                slide: true,
+                speed: 0.1,
+                loose: true,
+                requestAnimationFrame: true,
+                vertical: false,
+                horizontal: true
+            });
+        });
 
         this._setupStates();
     };
