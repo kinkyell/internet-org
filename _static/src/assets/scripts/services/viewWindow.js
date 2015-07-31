@@ -69,7 +69,7 @@ define(function(require, exports, module) { // jshint ignore:line
             $panel,
             this.$feature,
             direction
-        ).then(_stopAnimating('_isFeatureAnimating', this));
+        ).then(_stopAnimating('_isFeatureAnimating', this, 'anExtraArgument'));
     };
 
     /**

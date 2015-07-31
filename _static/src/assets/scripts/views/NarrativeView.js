@@ -342,12 +342,8 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
 
-        if (breakpointManager.isMobile) {
-            var prevSlidePos = this._position - 1;
-            this._gotoSection(prevSlidePos);
-        } else {
-            this.viewWindow.replaceFeatureImage('/assets/media/uploads/home.jpg', 'top');
-        }
+        var prevSlidePos = this._position - 1;
+        this._gotoSection(prevSlidePos);
     };
 
     /**
@@ -361,12 +357,8 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
 
-        if (breakpointManager.isMobile) {
-            var nextSlidePos = this._position + 1;
-            this._gotoSection(nextSlidePos);
-        } else {
-            this.viewWindow.replaceFeatureImage('/assets/media/uploads/home.jpg', 'bottom');
-        }
+        var nextSlidePos = this._position + 1;
+        this._gotoSection(nextSlidePos);
     };
 
     proto._hasMultiple = function(position) {
@@ -381,6 +373,10 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._gotoNextSlide = function(forward) {
         if (this._isAnimating) {
             return;
+        }
+
+        if (!breakpointManager.isMobile) {
+            return false;
         }
 
         var $currentSection = $('.narrative-section').eq(this._position);
@@ -432,16 +428,23 @@ define(function(require, exports, module) { // jshint ignore:line
 
         this._isAnimating = true;
 
+        if (breakpointManager.isMobile) {
+            this._sectionTransitionMobile(position);
+        } else {
+            this._sectionTransitionDesktop(position)
+        }
+    };
+
+    proto._sectionTransitionMobile = function(position) {
         var $destinationSection = $('.narrative-section').eq(position);
         var $sectionBody = $destinationSection.find('.narrative-section-bd');
+        this._slidePosition = (position > this._position) ? 0 : $destinationSection.find('.narrative-section-slides-item:last-child').index();
 
         var i = 0
         var offsetY = 0;
         for (; i < position; i++) {
             offsetY += $('.narrative-section').eq(i).height();
         }
-
-        this._slidePosition = (position > this._position) ? 0 : $destinationSection.find('.narrative-section-slides-item:last-child').index();
 
         var bdTwnPos = (position > this._position) ? '50%' : '-50%';
         var bdTwn = TweenLite.from($sectionBody, 0.5, {top: bdTwnPos});
@@ -459,8 +462,31 @@ define(function(require, exports, module) { // jshint ignore:line
             this._position = position;
             this._displayIndicators();
             this._updateIndicators();
+            this._updateSlideHooks();
             window.setTimeout(this._onSectionComplete.bind(this, position), this._scrollBuffer);
         }.bind(this) }, '-=0.5');
+    }
+
+    proto._sectionTransitionDesktop = function(position) {
+        var $destinationSection = $('.narrative-section').eq(position);
+        var $sectionBody = $destinationSection.find('.narrative-section-bd');
+        var direction = (this._position < position) ? 'bottom' : 'top';
+
+        this.viewWindow.replaceFeatureImage('/assets/media/uploads/home.jpg', direction).then(function() {
+            this._position = position;
+            this._updateSlideHooks();
+            this._isAnimating = false;
+        }.bind(this));
+    }
+
+    proto._updateSlideHooks = function() {
+        var i = 0;
+        var l = this.$narrativeSections.length;
+        for (; i < l; i++) {
+            this.$narrativeSections.eq(i).removeClass('isActive');
+        }
+
+        this.$narrativeSections.eq(this._position).addClass('isActive');
     };
 
     proto._onSectionComplete = function(position) {
@@ -475,8 +501,9 @@ define(function(require, exports, module) { // jshint ignore:line
         for (; i < l; i++) {
             var $progressIndicator = $progressIndicators.eq(i);
             $progressIndicator.removeClass('isActive');
-            this.$progress.find('> *').eq(this._position).addClass('isActive');
         }
+
+        this.$progress.find('> *').eq(this._position).addClass('isActive');
     };
 
     proto._displayIndicators = function() {
