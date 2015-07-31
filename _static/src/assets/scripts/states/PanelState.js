@@ -9,6 +9,8 @@ define(function(require, exports, module) { // jshint ignore:line
     var viewWindow = require('services/viewWindow');
     var templates = require('templates');
 
+    var CarouselView = require('views/CarouselAltView');
+
     /**
      * Manages the stack of active states
      *
@@ -25,6 +27,12 @@ define(function(require, exports, module) { // jshint ignore:line
 
     PanelState.prototype = Object.create(BasicState.prototype);
     PanelState.prototype.constructor = PanelState;
+
+
+
+    PanelState.prototype.COMPONENTS = {
+        '.js-carouselView': CarouselView
+    };
 
     /**
      * Activate state
@@ -72,6 +80,8 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
         $panel.append(markup);
+        debugger;
+        this.refreshComponents($panel);
     };
 
     /**

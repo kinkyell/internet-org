@@ -66,20 +66,6 @@ define(function(require, exports, module) { // jshint ignore:line
         this.headerView = new HeaderView($('.js-headerView'));
         this.viewWindow = viewWindow;
 
-        // alt carousels
-        $('.carousel').each(function(idx, el) {
-            return new Dragdealer(el.id, {
-                steps: 5,
-                x: 0.5,
-                slide: true,
-                speed: 0.1,
-                loose: true,
-                requestAnimationFrame: true,
-                vertical: false,
-                horizontal: true
-            });
-        });
-
         this._setupStates();
 
         $('select.js-select').each(function(idx, el) {

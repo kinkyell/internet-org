@@ -193,8 +193,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.destroy = function() {
-        this.disable()
-            .removeChildren();
+        this.disable();
+        this.removeChildren();
 
         return this;
     };

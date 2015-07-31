@@ -7,6 +7,8 @@ define(function(require, exports, module) { // jshint ignore:line
     var apiService = require('services/apiService');
     var spread = require('stark/promise/spread');
 
+    var SearchFormView = require('views/SearchFormView');
+
     var templates = require('templates');
 
     /**
@@ -19,16 +21,17 @@ define(function(require, exports, module) { // jshint ignore:line
     var SearchState = function(options) {
         this._handlePanelContentLoad = this._onPanelContentLoad.bind(this);
         this._handlePanelContentError = this._onPanelContentError.bind(this);
+        this._handleSearchFormCreation = this._onSearchFormCreation.bind(this);
         BasicState.call(this, options);
+
+        this.doublePanel = true;
     };
 
     SearchState.prototype = Object.create(BasicState.prototype);
     SearchState.prototype.constructor = SearchState;
 
-    SearchState.prototype.activate = function(event) {
-        var searchText = this._options.searchText;
-        viewWindow.replaceStoryContent('<div>Search Results for "' + searchText + '"</div>', 'right');
-        BasicState.prototype.activate.call(this, event);
+    SearchState.prototype.COMPONENTS = {
+        '.js-searchFormView': SearchFormView
     };
 
     /**
@@ -44,10 +47,7 @@ define(function(require, exports, module) { // jshint ignore:line
        var searchText = this._options.searchText;
        var stateLen = event.states.length;
        var fromHome = stateLen > 1 && (event.states[stateLen - 2] instanceof HomeState);
-
-        if (event.method === 'push' && fromHome) {
-            transition = 'none';
-        }
+       var tmplArgs = { searchText: searchText };
 
         if (event.method === 'pop') {
             transition = 'left';
@@ -55,10 +55,13 @@ define(function(require, exports, module) { // jshint ignore:line
 
         var tasks = [
             apiService.getSearchResults(searchText),
-            viewWindow.replaceStoryContent('<div>Search Results for "' + searchText + '"</div>', transition)
+            viewWindow.replaceStoryContent(
+                templates['search-results-header'](tmplArgs),
+                event.method === 'push' && fromHome ? 'none' : transition
+            )
         ];
 
-        viewWindow.replaceFeatureContent('<input value="' + searchText + '" />', 'right');
+        viewWindow.replaceFeatureContent(templates['search-input-panel'](tmplArgs), transition).then(this.refreshComponents);
 
         Promise.all(tasks).then(spread(this._handlePanelContentLoad), this._handlePanelContentError);
 
@@ -77,6 +80,7 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
         $panel.append(markup);
+        this.refreshComponents($panel);
     };
 
     /**
@@ -91,6 +95,18 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
         console.log(error);
+    };
+
+    /**
+     * Add search functionality
+     *
+     * @method _onSearchFormCreation
+     * @param {jQuery} $panel Created panel
+     * @private
+     */
+    SearchState.prototype._onSearchFormCreation = function($panel) {
+        var $formView = $panel.find('.js-searchFormView');
+        this._searchFormView =  new SearchFormView($formView);
     };
 
     return SearchState;
