@@ -3,7 +3,9 @@
 
  Content structure used in narrative sections
 ------------------------------------------------------------------------ */
-.transformBlock {}
+.transformBlock {
+    position: relative;
+}
 
 .transformBlock-pre {
     position: relative; // For pseudo positioning

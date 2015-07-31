@@ -468,9 +468,22 @@ define(function(require, exports, module) { // jshint ignore:line
     }
 
     proto._sectionTransitionDesktop = function(position) {
+        var $currentSection = $('.narrative-section').eq(this._position);
         var $destinationSection = $('.narrative-section').eq(position);
         var $sectionBody = $destinationSection.find('.narrative-section-bd');
+        var $transformBlock = $currentSection.find('.transformBlock');
+        var $linePre = $transformBlock.find('.transformBlock-pre');
         var direction = (this._position < position) ? 'bottom' : 'top';
+
+        var movement = (direction === 'bottom') ? '-=90px' : '+=90px';
+        var tl = new TimelineLite();
+        tl.to($transformBlock, 0.35, {
+            top: movement
+        });
+
+        tl.to($linePre, 0.35, {
+            opacity: 0
+        }, '-=0.35');
 
         this.viewWindow.replaceFeatureImage('/assets/media/uploads/home.jpg', direction).then(function() {
             this._position = position;

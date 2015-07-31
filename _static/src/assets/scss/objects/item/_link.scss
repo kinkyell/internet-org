@@ -80,6 +80,30 @@
 
 .link_twoArrows:hover:before { background-color: transparent; }
 
+.link_preArrows {
+    font-size: 12px;
+    color: $CLR_GRAY;
+    padding-left: 15px;
+}
+
+.link_preArrows:after,
+.link_preArrows:before {
+    top: calc(50% - 2px);
+    left: 0px;
+    height: 4px;
+    width: 4px;
+    border-bottom: 2px solid $CLR_ACCENT;
+    border-right: 2px solid $CLR_ACCENT;
+    transform: rotate(-45deg);
+    background-color: transparent;
+}
+
+.link_preArrows:before {
+    left: -5px;
+}
+
+.link_preArrows:hover:before { background-color: transparent; }
+
 // THEME CLASSES by contectual or chain selection
 
 //IMPACT
