@@ -37,7 +37,8 @@ define(function(require, exports, module) { // jshint ignore:line
             MENU_DELAY: 0.175, // delay between menu and shade
             MENU_OUT: 0.25, // menu out speed
             SLIDERS_IN: 0.2, // speed menu sliders come in
-            SLIDERS_STAGGER: 0.1 // offset between menu sliders
+            SLIDERS_STAGGER: 0.1, // offset between menu sliders
+            SELECT_MENU: 0.2 // select menu speed
         }
     };
 

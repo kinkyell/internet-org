@@ -43,14 +43,17 @@ require.config({
         'gsap-cssPlugin': '../vendor/gsap/src/uncompressed/plugins/CSSPlugin',
         'gsap-tween': '../vendor/gsap/src/uncompressed/TweenLite',
         'gsap-timeline': '../vendor/gsap/src/uncompressed/TimelineLite',
+
         'jquery-touchswipe': '../vendor/jquery-touchswipe/jquery.touchSwipe',
         'dragdealer': '../vendor/skidding--dragdealer/src/dragdealer',
-        'fastclick': '../vendor/fastclick/lib/fastclick'
+
+        'handlebars': '../vendor/handlebars/handlebars.runtime'
     },
 
     map: {
         '*': {
             'modernizr': 'modernizr.build',
+            'templates': 'templates.build',
             'TweenLite': 'gsap-tween',
             'TimelineLite': 'gsap-timeline'
         }
@@ -66,6 +69,9 @@ require.config({
          },
         'gsap-tween': {
             exports: 'TweenLite'
+        },
+        'handlebars': {
+            exports: 'Handlebars'
         }
     },
 
