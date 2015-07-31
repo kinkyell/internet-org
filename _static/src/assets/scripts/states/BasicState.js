@@ -36,7 +36,6 @@ define(function(require, exports, module) { // jshint ignore:line
         var componentSelectors = Object.keys(this.COMPONENTS);
         componentSelectors.forEach(function(selector) {
             Array.prototype.forEach.call($element.find(selector), function(el) {
-                debugger;
                 var $el = $(el);
                 if ($el.data('_initialized')) {
                     return;

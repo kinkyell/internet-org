@@ -80,7 +80,6 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
         $panel.append(markup);
-        debugger;
         this.refreshComponents($panel);
     };
 
