@@ -10,13 +10,14 @@ define(function(require, exports, module) { // jshint ignore:line
      * @throws {Error} Errors if instantiated directly
      * @constructor
      */
-    var AbstractState = function() {
+    var AbstractState = function(options) {
         var thisProto = Object.getPrototypeOf(this);
         if (thisProto === AbstractState.prototype) {
             throw new TypeError('AbstractState should not be initialized directly.');
         }
 
         this.active = false;
+        this._options = options || {};
     };
 
     /**

@@ -226,6 +226,8 @@ define(function(require, exports, module) { // jshint ignore:line
         }
         this._isShiftAnimating = true;
 
+        this.$panels.addClass('isAnimating');
+
         if (shiftOn) {
             sign = 1;
             activeSelector = ':last-child';
@@ -242,6 +244,7 @@ define(function(require, exports, module) { // jshint ignore:line
             xPercent: sign * percent,
             onComplete: function() {
                 this.$panels
+                    .removeClass('isAnimating')
                     .removeClass('isActive')
                     .filter(activeSelector)
                     .addClass('isActive');

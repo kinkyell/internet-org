@@ -85,4 +85,8 @@ Layout for paneled views
     .viewWindow-panel.isAnimating {
         overflow: hidden;
     }
+
+    .isAnimating .viewWindow-panel-content {
+        overflow-y: hidden;
+    }
 }

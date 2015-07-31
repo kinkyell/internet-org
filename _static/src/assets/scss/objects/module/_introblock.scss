@@ -33,13 +33,17 @@ Sections of content that introduce landing and story pages
 }
 
 .introBlock-ft {
-	border-top: 1px solid #d0cfc6;
 	padding: $SPACE_x3 0;
 	margin-top: $SPACE_x4;
 	position: absolute;
 	bottom: 0;
 	left: 12.5%;
 	width: 75%;
+	text-align: center;
+}
+
+.introBlock-ft_rule {
+	border-top: 1px solid #d0cfc6;
 }
 
 @include breakpoint(MD) {
