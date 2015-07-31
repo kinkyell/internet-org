@@ -11,6 +11,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var CarouselView = require('views/CarouselAltView');
 
+    var log = console.log.bind(console);
     /**
      * Manages the stack of active states
      *
@@ -20,7 +21,6 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     var PanelState = function(options) {
         this._handlePanelContentLoad = this._onPanelContentLoad.bind(this);
-        this._handlePanelContentError = this._onPanelContentError.bind(this);
 
         BasicState.call(this, options);
     };
@@ -63,7 +63,9 @@ define(function(require, exports, module) { // jshint ignore:line
             tasks.push(viewWindow.replaceFeatureImage(this._options.image, transition));
         }
 
-        Promise.all(tasks).then(spread(this._handlePanelContentLoad), this._handlePanelContentError);
+        Promise.all(tasks)
+            .then(spread(this._handlePanelContentLoad))
+            .catch(log);
 
         BasicState.prototype.activate.call(this, event);
     };
@@ -81,20 +83,6 @@ define(function(require, exports, module) { // jshint ignore:line
         }
         $panel.append(markup);
         this.refreshComponents($panel);
-    };
-
-    /**
-     * Append error message when content fails to load
-     *
-     * @method _onPanelContentError
-     * @param {Object} error Ajax error object
-     * @private
-     */
-    PanelState.prototype._onPanelContentError = function(error) {
-        if (!this.active) {
-            return;
-        }
-        console.log(error);
     };
 
     /**

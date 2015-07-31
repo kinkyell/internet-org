@@ -11,6 +11,8 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var templates = require('templates');
 
+    var log = console.log.bind(console);
+
     /**
      * Manages search state
      *
@@ -20,7 +22,6 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     var SearchState = function(options) {
         this._handlePanelContentLoad = this._onPanelContentLoad.bind(this);
-        this._handlePanelContentError = this._onPanelContentError.bind(this);
         this._handleSearchFormCreation = this._onSearchFormCreation.bind(this);
         BasicState.call(this, options);
 
@@ -61,9 +62,13 @@ define(function(require, exports, module) { // jshint ignore:line
             )
         ];
 
-        viewWindow.replaceFeatureContent(templates['search-input-panel'](tmplArgs), transition).then(this.refreshComponents);
+        viewWindow.replaceFeatureContent(templates['search-input-panel'](tmplArgs), transition)
+            .then(this.refreshComponents)
+            .catch(log);
 
-        Promise.all(tasks).then(spread(this._handlePanelContentLoad), this._handlePanelContentError);
+        Promise.all(tasks)
+            .then(spread(this._handlePanelContentLoad))
+            .catch(log);
 
         BasicState.prototype.activate.call(this, event);
     };
@@ -81,20 +86,6 @@ define(function(require, exports, module) { // jshint ignore:line
         }
         $panel.append(markup);
         this.refreshComponents($panel);
-    };
-
-    /**
-     * Append error message when content fails to load
-     *
-     * @method _onPanelContentError
-     * @param {Object} error Ajax error object
-     * @private
-     */
-    SearchState.prototype._onPanelContentError = function(error) {
-        if (!this.active) {
-            return;
-        }
-        console.log(error);
     };
 
     /**
