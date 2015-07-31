@@ -2,6 +2,7 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     var BasicState = require('./BasicState');
+    var HomeState = require('./HomeState');
     var apiService = require('services/apiService');
     var spread = require('stark/promise/spread');
 
@@ -35,10 +36,8 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     PanelState.prototype.activate = function(event) {
        var transition = 'right';
-
-        if (event.method === 'push' && event.states.length === 1) {
-            transition = 'none';
-        }
+       var stateLen = event.states.length;
+       var fromHome = stateLen > 1 && (event.states[stateLen - 2] instanceof HomeState);
 
         if (event.method === 'pop') {
             transition = 'left';
@@ -49,7 +48,7 @@ define(function(require, exports, module) { // jshint ignore:line
             viewWindow.replaceStoryContent(templates['article-header']({
                 title: this._options.title,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse es suscipit euante lorepehicula nulla, suscipit dela eu ante vel vehicula.'
-            }), transition)
+            }), event.method === 'push' && fromHome ? 'none' : transition)
         ];
 
         if (this._options.image) {

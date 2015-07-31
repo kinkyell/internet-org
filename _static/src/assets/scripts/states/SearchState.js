@@ -2,6 +2,7 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     var BasicState = require('./BasicState');
+    var HomeState = require('./HomeState');
     var viewWindow = require('services/viewWindow');
     var apiService = require('services/apiService');
     var spread = require('stark/promise/spread');
@@ -41,8 +42,10 @@ define(function(require, exports, module) { // jshint ignore:line
     SearchState.prototype.activate = function(event) {
        var transition = 'right';
        var searchText = this._options.searchText;
+       var stateLen = event.states.length;
+       var fromHome = stateLen > 1 && (event.states[stateLen - 2] instanceof HomeState);
 
-        if (event.method === 'push' && event.states.length === 1) {
+        if (event.method === 'push' && fromHome) {
             transition = 'none';
         }
 
@@ -52,7 +55,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         var tasks = [
             apiService.getSearchResults(searchText),
-            viewWindow.replaceStoryContent('<div>Search Results for "' + searchText + '"</div>', 'right')
+            viewWindow.replaceStoryContent('<div>Search Results for "' + searchText + '"</div>', transition)
         ];
 
         viewWindow.replaceFeatureContent('<input value="' + searchText + '" />', 'right');
