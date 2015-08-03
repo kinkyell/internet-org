@@ -1,0 +1,105 @@
+/* ---------------------------------------------------------------------
+ Select Menu
+------------------------------------------------------------------------ */
+.langSelect {
+    position: relative;
+    transition: opacity 0.3s linear;
+    background: #e4e0d1;
+}
+
+.langSelect > select {
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 16px; // for mobile zooming
+}
+
+.langSelect-label,
+.langSelect-menu-item {
+    font-size: 13px;
+    line-height: 1;
+    font-family: $FONT_SANS_BLACK;
+    font-weight: bolder;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.langSelect-label {
+    padding: 23px 20px 23px;
+    background: #e4e0d1;
+    font-size: 13px;
+    text-align: center;
+}
+
+.langSelect-label:after, {
+    content: "";
+    display: inline-block;
+    width: 11px;
+    height: 7px;
+    margin: -2px 0 0 5px;
+    vertical-align: middle;
+    transform: rotate(180deg);
+    transform-origin: center center;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" viewBox="0 0 11 7"><path d="M5.500,-0.005 L0.015,5.630 L1.357,7.009 L5.500,2.753 L9.643,7.009 L10.985,5.630 L5.500,-0.005 Z" /></svg>');
+}
+
+.isOpen > .langSelect-label:after {
+    transform: rotate(0deg);
+}
+
+// select:hover + .langSelect-label,
+// select:focus + .langSelect-label,
+// .langSelect-menu-item:hover,
+// .langSelect-menu-item:focus {
+//     background: #ccc8bc;
+// }
+
+.langSelect.isOpen > select {
+    max-height: 59px; 
+}
+
+.langSelect-label-light {
+    font-family: $FONT_SANS;
+    font-weight: normal;
+}
+
+.langSelect-menu {
+    display: none;
+    overflow: hidden;
+    position: relative;
+    padding: 0 0 $SPACE_x2;
+    width: 85%;
+    margin: 0 auto;
+    border-top: 1px solid $CLR_GRAY_LIGHT;
+}
+
+.langSelect-menu-item {
+    display: inline-block;
+    width: 40%;
+    padding: 20px 0 0 30px;
+    font-family: $FONT_SANS;
+    font-weight: bold;
+}
+
+.langSelect-menu-item > * {
+    border-bottom: 2px solid transparent;
+    transition: border 0.2s ease-in-out;
+}
+
+.langSelect-menu-item:hover > * {
+    border-bottom: 2px solid $CLR_ACCENT;
+}
+
+/* OPEN state */
+.langSelect.isOpen > .langSelect-menu {
+    display: block;
+}
+

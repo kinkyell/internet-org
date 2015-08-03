@@ -48,6 +48,10 @@ Layout for paneled views
     z-index: -1;
 }
 
+.viewWindow-panel_feature.isDouble {
+    z-index: 1;
+}
+
 .viewWindow-panel_feature .viewWindow-panel-content-inner {
     background-position: center center;
     background-size: cover;
@@ -84,5 +88,9 @@ Layout for paneled views
 
     .viewWindow-panel.isAnimating {
         overflow: hidden;
+    }
+
+    .isAnimating .viewWindow-panel-content {
+        overflow-y: hidden;
     }
 }

@@ -15,19 +15,27 @@ define(function(require, exports, module) { // jshint ignore:line
     var Router = require('services/Router');
 
     var StateStack = require('services/StateStack');
+    var HomeState = require('states/HomeState');
     var PanelState = require('states/PanelState');
+    var SearchState = require('states/SearchState');
+    var HeaderView = require('views/HeaderView');
+    var SelectView = require('views/SelectView');
     var NarrativeView = require('views/NarrativeView');
+
     var eventHub = require('services/eventHub');
+    var assetLoader = require('services/assetLoader');
     var viewWindow = require('services/viewWindow');
+
+    var identity = require('stark/function/identity');
 
     var FastClick = require('fastclick');
     FastClick.attach(document.body);
 
-    // TODO: Setup modules
-    //     - Asset Loader
-    //     - Router
-
-    var HeaderView = require('views/HeaderView');
+    var STATE_TYPES = {
+        panel: PanelState,
+        home: HomeState,
+        search: SearchState
+    };
 
     /**
      * Initial application setup. Runs once upon every page load.
@@ -57,7 +65,16 @@ define(function(require, exports, module) { // jshint ignore:line
         this.viewWindow = viewWindow;
 
         this._setupStates();
+<<<<<<< HEAD
         this.narrativeView = new NarrativeView($('.js-narrativeView'));
+=======
+
+        $('select.js-select').each(function(idx, el) {
+            return new SelectView($(el));
+        });
+
+        this._preloadImages();
+>>>>>>> develop
     };
 
     /**
@@ -84,7 +101,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._setupStates = function() {
-        this.states = new StateStack();
+        this.states = new StateStack(HomeState);
 
         eventHub.subscribe('Router:stateChange', this._handleStateChange);
     };
@@ -96,29 +113,47 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onStateChange = function(states, previousStates) {
+        var lastState = states[states.length - 1] || {
+            type: 'home'
+        };
+        var fromHome = this.states.getTop() instanceof HomeState;
+        var toHome;
+        var stateCtor = STATE_TYPES[lastState.type] || PanelState;
+
         if (states.length > previousStates.length) {
             // navigating forward
-            console.log('forward', states[states.length - 1]);
-            this.states.push(PanelState, {
-                stateName: states[states.length - 1],
-                image: 'http://placehold.it/400x800?text=' + encodeURIComponent(states[states.length - 1])
-            });
+            console.log('forward', lastState.path);
+            this.states.push(stateCtor, lastState);
         } else if (states.length < previousStates.length) {
             console.log('backward');
             this.states.pop();
         } else {
             console.log('swap');
-            this.states.swap(PanelState, {
-                stateName: states[states.length - 1],
-                image: 'http://placehold.it/400x800?text=' + encodeURIComponent(states[states.length - 1])
-            });
+            this.states.swap(stateCtor, lastState);
         }
         console.log(this.states);
 
         // if going to or from home we need to shift over
-        if (states.length === 0 || previousStates.length === 0) {
+        toHome = this.states.getTop() instanceof HomeState;
+        if (fromHome || toHome) {
             viewWindow.shift();
         }
+
+        this._preloadImages();
+    };
+
+    /**
+     * Preload page images
+     *
+     * @method _preloadImages
+     * @private
+     */
+    proto._preloadImages = function(states, previousStates) {
+        var stateLinkImgs = Array.prototype.map.call($('.js-stateLink'), function(el) {
+            return el.getAttribute('data-image');
+        }).filter(identity);
+
+        assetLoader.loadImages(stateLinkImgs);
     };
 
     return App;

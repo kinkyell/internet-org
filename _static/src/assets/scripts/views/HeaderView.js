@@ -7,6 +7,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var breakpointManager = require('services/breakpointManager');
     var eventHub = require('services/eventHub');
     var $ = require('jquery');
+    var HomeState = require('states/HomeState');
 
     /**
      * A view for transitioning display panels
@@ -46,10 +47,13 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto.createChildren = function() {
-        this._numStates = 0; //TODO: update with initial states load
+        this._isHome = true;
+        this._invertLeft = false;
+        this._invertRight = true;
         this.isLogoCentered = false; //TODO: update based on page
         this.$logo = this.$('.js-headerView-logo');
         this.$menuBtn = this.$('.js-headerView-menuBtn');
+        this.$menuBtnIcon = this.$menuBtn.find('.menuTrigger');
         this.$menuText = this.$('.js-headerView-menuBtn-text');
         this.$menuIcon = this.$('.js-headerView-menuBtn-icon');
         this.$backBtn = this.$('.js-headerView-backBtn');
@@ -125,18 +129,18 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._render = function() {
         var isNarrow = breakpointManager.isMobile;
-        var isHome = this._numStates < 1;
+        var isHome = this._isHome;
         var isMenuOpen = this.menuView.isOpen;
         var shouldBeCentered = (isMenuOpen || !isHome);
         var shouldBeRaised = (isMenuOpen && this.searchView.isOpen);
         var shouldHaveBackBtn = (isNarrow && !isMenuOpen && !isHome);
 
         // invert logo when over imagery
-        this.$logo.toggleClass('header-logo_invert', false);
+        this.$logo.toggleClass('header-logo_invert', !isMenuOpen && !isNarrow && this._invertLeft);
         this.$backBtn.toggleClass('header-backBtn_invert', false);
 
         // invert menu button over imagery
-        this.$menuBtn.toggleClass('header-menuBtn_invert', !isMenuOpen && !isNarrow && isHome);
+        this.$menuBtnIcon.toggleClass('menuTrigger_onDark', !isMenuOpen && !isNarrow && this._invertRight);
 
         // hide menu text when open
         this.$menuText.toggleClass('u-isVisuallyHidden', isMenuOpen);
@@ -167,7 +171,10 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onStateChange = function(states) {
-        this._numStates = states.length;
+        var topState = states[states.length - 1];
+        this._isHome = (topState instanceof HomeState);
+        this._invertLeft = topState.invertLeft || false;
+        this._invertRight = topState.invertRight || false;
         this._render();
     };
 

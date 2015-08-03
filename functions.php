@@ -21,82 +21,79 @@ wpcom_vip_load_plugin( 'cache-nav-menu' );
 wpcom_vip_load_plugin( 'facebook' );
 wpcom_vip_load_plugin( 'lazy-load' );
 
-// Not sure how to include this one yet, need to work with VIP team
-// wpcom_vip_load_plugin( 'vip-search-add-on' );
-
 // MANUAL INCLUSION (Multiple Plugins in one dir)
 require_once(__DIR__ . '/../internet_org-plugins/babble/translation-fields.php');
 
 if ( ! function_exists( 'internet_org_setup' ) ) :
-/**
- * Sets up theme defaults and registers support for various WordPress features.
- *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
- */
-function internet_org_setup() {
-	/*
-	 * Make theme available for translation.
-	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on Internet.org, use a find and replace
-	 * to change 'internet_org' to the name of your theme in all the template files
-	 */
-	load_theme_textdomain( 'internet_org', get_template_directory() . '/languages' );
-
-	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
-
-	/*
-	 * Let WordPress manage the document title.
-	 * By adding theme support, we declare that this theme does not use a
-	 * hard-coded <title> tag in the document head, and expect WordPress to
-	 * provide it for us.
-	 */
-	add_theme_support( 'title-tag' );
-
-	/*
-	 * Enable support for Post Thumbnails on posts and pages.
+	/**
+	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
-	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
+	 * Note that this function is hooked into the after_setup_theme hook, which
+	 * runs before the init hook. The init hook is too late for some features, such
+	 * as indicating support for post thumbnails.
 	 */
-	add_theme_support( 'post-thumbnails' );
+	function internet_org_setup() {
+		/*
+		 * Make theme available for translation.
+		 * Translations can be filed in the /languages/ directory.
+		 * If you're building a theme based on Internet.org, use a find and replace
+		 * to change 'internet_org' to the name of your theme in all the template files
+		 */
+		load_theme_textdomain( 'internet_org', get_template_directory() . '/languages' );
 
-	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary Menu', 'internet_org' ),
-	) );
+		// Add default posts and comments RSS feed links to head.
+		add_theme_support( 'automatic-feed-links' );
 
-	/*
-	 * Switch default core markup for search form, comment form, and comments
-	 * to output valid HTML5.
-	 */
-	add_theme_support( 'html5', array(
-		'search-form',
-		'comment-form',
-		'comment-list',
-		'gallery',
-		'caption',
-	) );
+		/*
+		 * Let WordPress manage the document title.
+		 * By adding theme support, we declare that this theme does not use a
+		 * hard-coded <title> tag in the document head, and expect WordPress to
+		 * provide it for us.
+		 */
+		add_theme_support( 'title-tag' );
 
-	/*
-	 * Enable support for Post Formats.
-	 * See http://codex.wordpress.org/Post_Formats
-	 */
-	add_theme_support( 'post-formats', array(
-		'aside',
-		'image',
-		'video',
-		'quote',
-		'link',
-	) );
+		/*
+		 * Enable support for Post Thumbnails on posts and pages.
+		 *
+		 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
+		 */
+		add_theme_support( 'post-thumbnails' );
 
-	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'internet_org_custom_background_args', array(
-		'default-color' => 'ffffff',
-		'default-image' => '',
-	) ) );
-}
+		// This theme uses wp_nav_menu() in one location.
+		register_nav_menus( array(
+			'primary' => esc_html__( 'Primary Menu', 'internet_org' ),
+		) );
+
+		/*
+		 * Switch default core markup for search form, comment form, and comments
+		 * to output valid HTML5.
+		 */
+		add_theme_support( 'html5', array(
+			'search-form',
+			'comment-form',
+			'comment-list',
+			'gallery',
+			'caption',
+		) );
+
+		/*
+		 * Enable support for Post Formats.
+		 * See http://codex.wordpress.org/Post_Formats
+		 */
+		add_theme_support( 'post-formats', array(
+			'aside',
+			'image',
+			'video',
+			'quote',
+			'link',
+		) );
+
+		// Set up the WordPress core custom background feature.
+		add_theme_support( 'custom-background', apply_filters( 'internet_org_custom_background_args', array(
+			'default-color' => 'ffffff',
+			'default-image' => '',
+		) ) );
+	}
 endif; // internet_org_setup
 add_action( 'after_setup_theme', 'internet_org_setup' );
 
@@ -129,6 +126,35 @@ function internet_org_widgets_init() {
 	) );
 }
 add_action( 'widgets_init', 'internet_org_widgets_init' );
+
+/**
+ * This will fix the template being used to render content, there are instances
+ * where single.php is being used for page (mainly the home page) when it should
+ * be using the page.php (or front-page.php) template
+ *
+ * @param string $singleTemplate initial template to be used (default)
+ * @return string single template
+ */
+function iorg_correct_template_selection( $singleTemplate ) {
+	global $post;
+
+	switch ( $post->post_type ) {
+		case 'page':
+			$singleTemplate = dirname( __FILE__ ) . '/page.php';
+			if ( 'home' === $post->post_name ) {
+				$singleTemplate = dirname( __FILE__ ) . '/front-page.php';
+			}
+			break;
+		default:
+			//template remains unchanged
+			break;
+	}
+
+	return $singleTemplate;
+}
+add_filter( 'single_template', 'iorg_correct_template_selection' );
+
+
 
 /**
  * Enqueue scripts and styles.

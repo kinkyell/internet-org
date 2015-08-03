@@ -58,13 +58,21 @@ define(function(require, exports, module) { // jshint ignore:line
      * @return {Promise} will fail if animation fails (alread animating) or resolve when complete
      */
     ViewWindow.prototype.replaceFeatureImage = function(imagePath, direction) {
+        var $panel;
+
         if (this._isFeatureAnimating) {
             return Promise.reject();
         }
         this._isFeatureAnimating = true;
 
-        var $panel = this._getPanelWrap();
+        if (this._featureImage === imagePath) {
+            return Promise.resolve(this.$feature.children());
+        }
+
+        $panel = this._getPanelWrap();
         $panel.children().css('background-image', 'url(' + imagePath + ')');
+        this._featureImage = imagePath;
+
         return this._updatePanel(
             $panel,
             this.$feature,
@@ -85,13 +93,15 @@ define(function(require, exports, module) { // jshint ignore:line
             return Promise.reject();
         }
         this._isFeatureAnimating = true;
+        this._featureImage = null;
 
         var $panel = this._getPanelWrap();
         $panel.children().append(html);
         return this._updatePanel(
             $panel,
             this.$feature,
-            direction
+            direction,
+            true
         ).then(_stopAnimating('_isFeatureAnimating', this));
     };
 
@@ -150,6 +160,12 @@ define(function(require, exports, module) { // jshint ignore:line
         case 'bottom':
             inOpts.yPercent = 100;
             outOpts.yPercent = -100;
+            if (breakpointManager.isMobile) {
+                outOpts.yPercent = -50;
+                outOpts.opacity = 0.5;
+                outOpts.transform = 'scale(0.85)';
+                // inOpts.transform = 'scale()';
+            }
             break;
         case 'left':
             inOpts.xPercent = -100;
@@ -177,23 +193,27 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {jQuery} $panel Content to add
      * @param {jQuery} $target Target panel to update
      * @param {String} direction Direction to animate from
-     * @return {Promise} will fail if animation fails (alread animating) or resolve when complete
+     * @return {Promise} will fail if animation fails (already animating) or resolve when complete
      * @private
      */
-    ViewWindow.prototype._updatePanel = function($panel, $target, direction) {
+    ViewWindow.prototype._updatePanel = function($panel, $target, direction, doublePanel) {
         var opts = this._getAnimProps(direction);
         var $newPanel;
         var $removedPanel;
 
+
         $target.append($panel);
         $newPanel = $panel;
         $removedPanel = $panel.prev();
+        doublePanel = doublePanel || false;
 
         $target.addClass('isAnimating');
 
         var cleanup = function() {
             $removedPanel.remove();
-            $target.removeClass('isAnimating');
+            $target
+                .removeClass('isAnimating')
+                .toggleClass('isDouble', doublePanel);
         };
 
         if (direction.toLowerCase() === 'none') {
@@ -226,6 +246,8 @@ define(function(require, exports, module) { // jshint ignore:line
         }
         this._isShiftAnimating = true;
 
+        this.$panels.addClass('isAnimating');
+
         if (shiftOn) {
             sign = 1;
             activeSelector = ':last-child';
@@ -242,6 +264,7 @@ define(function(require, exports, module) { // jshint ignore:line
             xPercent: sign * percent,
             onComplete: function() {
                 this.$panels
+                    .removeClass('isAnimating')
                     .removeClass('isActive')
                     .filter(activeSelector)
                     .addClass('isActive');

@@ -12,6 +12,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var ROUTER_LINK_SELECTOR = '.js-stateLink';
     var ROUTER_BACK_SELECTOR = '.js-stateBack';
     var ROUTER_SWAP_SELECTOR = '.js-stateSwap';
+    var ROUTER_HOME_SELECTOR = '.js-stateHome';
 
     /**
      * Manages the stack of active states
@@ -34,6 +35,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handleStateTrigger = this._onStateTrigger.bind(this);
         this._handleStateBack = this._onStateBack.bind(this);
         this._handleStateSwap = this._onStateSwap.bind(this);
+        this._handleStateHome = this._onStateHome.bind(this);
         this._handleSearch = this._onSearch.bind(this);
 
         /**
@@ -61,6 +63,7 @@ define(function(require, exports, module) { // jshint ignore:line
         $(document.body).on('click', ROUTER_LINK_SELECTOR, this._handleStateTrigger);
         $(document.body).on('click', ROUTER_BACK_SELECTOR, this._handleStateBack);
         $(document.body).on('click', ROUTER_SWAP_SELECTOR, this._handleStateSwap);
+        $(document.body).on('click', ROUTER_HOME_SELECTOR, this._handleStateHome);
     };
 
     /**
@@ -91,7 +94,13 @@ define(function(require, exports, module) { // jshint ignore:line
     Router.prototype._onStateTrigger = function(event) {
         var prevStates = this._currentStates.slice(0);
         event.preventDefault();
-        this._currentStates.push(event.currentTarget.pathname);
+        this._currentStates.push({
+            path: event.currentTarget.pathname,
+            type: event.currentTarget.getAttribute('data-type'),
+            image: event.currentTarget.getAttribute('data-image'),
+            title: event.currentTarget.getAttribute('data-title'),
+            theme: event.currentTarget.getAttribute('data-theme')
+        });
         this.historyManager.pushState(this._currentStates, null, event.currentTarget.pathname);
         eventHub.publish('Router:stateChange', this._currentStates, prevStates);
     };
@@ -106,7 +115,13 @@ define(function(require, exports, module) { // jshint ignore:line
     Router.prototype._onStateSwap = function(event) {
         var prevStates = this._currentStates.slice(0);
         event.preventDefault();
-        this._currentStates[this._currentStates.length - 1] = event.currentTarget.pathname;
+        this._currentStates[this._currentStates.length - 1] = {
+            path: event.currentTarget.pathname,
+            type: event.currentTarget.getAttribute('data-type'),
+            image: event.currentTarget.getAttribute('data-image'),
+            title: event.currentTarget.getAttribute('data-title'),
+            theme: event.currentTarget.getAttribute('data-theme')
+        };
         this.historyManager.replaceState(this._currentStates, null, event.currentTarget.pathname);
         eventHub.publish('Router:stateChange', this._currentStates, prevStates);
     };
@@ -124,6 +139,31 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
+     * Handle home link click in UI
+     *
+     * @method _onStateHome
+     * @param {ClickEvent} event Click event from router link
+     * @private
+     */
+    Router.prototype._onStateHome = function(event) {
+        var prevStates = this._currentStates.slice(0);
+        var len = prevStates.length;
+        var url = '/';
+        event.preventDefault();
+
+        if (!len || prevStates[len - 1].type === 'home') {
+            return;
+        }
+
+        this._currentStates.push({
+            path: url,
+            type: 'home'
+        });
+        this.historyManager.pushState(this._currentStates, null, url);
+        eventHub.publish('Router:stateChange', this._currentStates, prevStates);
+    };
+
+    /**
      * Handle back link click in UI
      *
      * @method _onSearch
@@ -132,8 +172,12 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     Router.prototype._onSearch = function(event) {
         var prevStates = this._currentStates.slice(0);
-        var url = appConfig.searchPath + '/' + encodeURIComponent(event.searchText);
-        this._currentStates.push(url);
+        var url = appConfig.searchPath + '/' + encodeURIComponent(event.searchText).replace(/%20/g, '+');
+        this._currentStates.push({
+            path: url,
+            type: 'search',
+            searchText: event.searchText
+        });
         this.historyManager.pushState(this._currentStates, null, url);
         eventHub.publish('Router:stateChange', this._currentStates, prevStates);
     };
@@ -156,20 +200,6 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     Router.prototype.getTopState = function(event) {
         return this._currentStates[this._currentStates.length - 1];
-    };
-
-    /**
-     * Navigate to route
-     *
-     * @method navigateTo
-     * @returns {String} The top state identifier
-     */
-    Router.prototype.navigateTo = function(stateName, silent) {
-        var prevStates = this._currentStates.slice(0);
-        this._currentStates.push(stateName);
-        if (!silent) {
-            eventHub.publish('Router:stateChange', this._currentStates, prevStates);
-        }
     };
 
     return Router;
