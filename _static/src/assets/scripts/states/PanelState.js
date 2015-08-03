@@ -28,8 +28,6 @@ define(function(require, exports, module) { // jshint ignore:line
     PanelState.prototype = Object.create(BasicState.prototype);
     PanelState.prototype.constructor = PanelState;
 
-
-
     PanelState.prototype.COMPONENTS = {
         '.js-carouselView': CarouselView
     };

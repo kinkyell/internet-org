@@ -23,15 +23,33 @@ define(function(require, exports, module) { // jshint ignore:line
 
     BasicState.prototype.COMPONENTS = {};
 
+    /**
+     * Activate state
+     *
+     * @method activate
+     * @fires State:activate
+     */
     BasicState.prototype.activate = function(event) {
         AbstractState.prototype.activate.call(this, event);
     };
 
+    /**
+     * Deactivate State
+     *
+     * @method deactivate
+     * @fires State:activate
+     */
     BasicState.prototype.deactivate = function() {
         this.destroyComponents();
         AbstractState.prototype.deactivate.call(this);
     };
 
+    /**
+     * Set up components for state
+     *
+     * @method refreshComponents
+     * @param {jQuery} $element Element to search for components
+     */
     BasicState.prototype.refreshComponents = function($element) {
         var componentSelectors = Object.keys(this.COMPONENTS);
         componentSelectors.forEach(function(selector) {
@@ -46,6 +64,11 @@ define(function(require, exports, module) { // jshint ignore:line
         }, this);
     };
 
+    /**
+     * Destroy all components initialized in state
+     *
+     * @method destroyComponents
+     */
     BasicState.prototype.destroyComponents = function($element) {
         this._activeComponents.forEach(function(component) {
             component.$element.data('_initialized', false);
