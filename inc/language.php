@@ -22,10 +22,10 @@ if ( ! function_exists( 'iorg_language_switcher' ) ) :
 
 		echo '<select onchange="document.location.href=this.options[this.selectedIndex].value;">';
 
-		foreach ( $list as $item ) :
+		foreach ( $list as $item ) {
 
 			// this will skip any languages for which there is no translation
-			if ( in_array( 'bbl-add',$item['classes'] ) ) {
+			if ( in_array( 'bbl-add', $item['classes'] ) ) {
 				continue;
 			}
 
@@ -38,7 +38,7 @@ if ( ! function_exists( 'iorg_language_switcher' ) ) :
 			if ( $item['href'] ) {
 				echo '<option ' . $selected . 'class="' . esc_attr( $item['class'] ) . '" value="' . esc_url( $item['href'] ) . '">' . esc_html( $item['lang']->display_name ) . '</option>';
 			}
-		endforeach;
+		}
 
 		echo '</select>';
 	}
@@ -115,6 +115,7 @@ if ( ! function_exists( 'iorg_save_meta_for_content' ) ) :
 endif;
 add_action( 'save_post', 'iorg_save_meta_for_content' );
 
+
 if ( ! function_exists( 'iorg_save_meta_for_page' ) ) :
 	/**
 	 * save translated post meta data
@@ -140,6 +141,7 @@ if ( ! function_exists( 'iorg_save_meta_for_page' ) ) :
 	}
 endif;
 
+
 if ( ! function_exists( 'iorg_check_nonce' ) ) :
 	function iorg_check_nonce( $key, $method = 'post' ) {
 		if ( ! in_array( $method, array( 'post', 'get' ) ) ) {
@@ -160,6 +162,7 @@ if ( ! function_exists( 'iorg_check_nonce' ) ) :
 	}
 endif;
 
+
 if ( ! function_exists( 'iorg_translated_meta_fields' ) ) :
 	/**
 	 * Tell Babble how to handle the meta fields we have
@@ -169,15 +172,16 @@ if ( ! function_exists( 'iorg_translated_meta_fields' ) ) :
 	 * @return array list of Babble_Meta_Field_* objects
 	 */
 	function iorg_translated_meta_fields( array $fields, WP_Post $post) {
-		$fields['page_subtitle'] = new Babble_Meta_Field_Text( $post, 'page_subtitle', 'Subtitle' );
+		$fields['Subtitle'] = new Babble_Meta_Field_Text( $post, 'Subtitle', 'Subtitle' );
 
-		// hook here to add out Fieldmanager Custom Fields -- instead of relying
+		// hook here to add our Fieldmanager Custom Fields -- instead of relying
 		// on the Babble built in types
 
 		return $fields;
 	}
 endif;
 add_filter( 'bbl_translated_meta_fields', 'iorg_translated_meta_fields', 10, 2 );
+
 
 if ( ! function_exists( 'iorg_bbl_sync_meta_key' ) ) :
 	/**
@@ -191,7 +195,7 @@ if ( ! function_exists( 'iorg_bbl_sync_meta_key' ) ) :
 		// this is the list of items that should not be auto synced across translations
 		$sync_not = array(
 			'home-content-section',
-			'page_subtitle',
+			'Subtitle',
 			// 'after_title_fm_fields',
 		);
 
