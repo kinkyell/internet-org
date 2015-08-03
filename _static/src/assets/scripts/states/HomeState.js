@@ -4,6 +4,8 @@ define(function(require, exports, module) { // jshint ignore:line
     var BasicState = require('./BasicState');
     var viewWindow = require('services/viewWindow');
 
+    var CarouselView = require('views/CarouselView');
+
     /**
      * Manages home state
      *
@@ -19,12 +21,17 @@ define(function(require, exports, module) { // jshint ignore:line
     HomeState.prototype = Object.create(BasicState.prototype);
     HomeState.prototype.constructor = HomeState;
 
+    HomeState.prototype.COMPONENTS = {
+        '.js-carouselView': CarouselView
+    }
+
     HomeState.prototype.activate = function(event) {
         if (event.method !== 'init') {
             //TODO: replace image with narrative stuff
             viewWindow.replaceFeatureImage('http://placehold.it/400x801/eeeeee/888888?text=HOME', 'left');
         }
         BasicState.prototype.activate.call(this, event);
+        this.refreshComponents($(document.body));
     };
 
     return HomeState;
