@@ -41,19 +41,24 @@ define(function(require, exports, module) { // jshint ignore:line
      * @fires State:activate
      */
     PanelState.prototype.activate = function(event) {
-       var transition = 'right';
-       var stateLen = event.states.length;
-       var fromHome = stateLen > 1 && (event.states[stateLen - 2] instanceof HomeState);
+        var transition = 'right';
+        var stateLen = event.states.length;
+        var fromHome = stateLen > 1 && (event.states[stateLen - 2] instanceof HomeState);
 
         if (event.method === 'pop') {
             transition = 'left';
+        }
+
+        if (event.method === 'swap') {
+            transition = 'bottom';
         }
 
         var tasks = [
             apiService.getPanelContent(this._options.path),
             viewWindow.replaceStoryContent(templates['article-header']({
                 title: this._options.title,
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse es suscipit euante lorepehicula nulla, suscipit dela eu ante vel vehicula.'
+                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse es suscipit euante lorepehicula nulla, suscipit dela eu ante vel vehicula.', //jshint ignore:line
+                theme: this._options.theme
             }), event.method === 'push' && fromHome ? 'none' : transition)
         ];
 

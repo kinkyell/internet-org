@@ -58,13 +58,21 @@ define(function(require, exports, module) { // jshint ignore:line
      * @return {Promise} will fail if animation fails (alread animating) or resolve when complete
      */
     ViewWindow.prototype.replaceFeatureImage = function(imagePath, direction) {
+        var $panel;
+
         if (this._isFeatureAnimating) {
             return Promise.reject();
         }
         this._isFeatureAnimating = true;
 
-        var $panel = this._getPanelWrap();
+        if (this._featureImage === imagePath) {
+            return Promise.resolve(this.$feature.children());
+        }
+
+        $panel = this._getPanelWrap();
         $panel.children().css('background-image', 'url(' + imagePath + ')');
+        this._featureImage = imagePath;
+
         return this._updatePanel(
             $panel,
             this.$feature,
@@ -85,6 +93,7 @@ define(function(require, exports, module) { // jshint ignore:line
             return Promise.reject();
         }
         this._isFeatureAnimating = true;
+        this._featureImage = null;
 
         var $panel = this._getPanelWrap();
         $panel.children().append(html);
@@ -151,6 +160,12 @@ define(function(require, exports, module) { // jshint ignore:line
         case 'bottom':
             inOpts.yPercent = 100;
             outOpts.yPercent = -100;
+            if (breakpointManager.isMobile) {
+                outOpts.yPercent = -50;
+                outOpts.opacity = 0.5;
+                outOpts.transform = 'scale(0.85)';
+                // inOpts.transform = 'scale()';
+            }
             break;
         case 'left':
             inOpts.xPercent = -100;
