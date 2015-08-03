@@ -160,6 +160,12 @@ define(function(require, exports, module) { // jshint ignore:line
         case 'bottom':
             inOpts.yPercent = 100;
             outOpts.yPercent = -100;
+            if (breakpointManager.isMobile) {
+                outOpts.yPercent = -50;
+                outOpts.opacity = 0.5;
+                outOpts.transform = 'scale(0.85)';
+                // inOpts.transform = 'scale()';
+            }
             break;
         case 'left':
             inOpts.xPercent = -100;
