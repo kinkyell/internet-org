@@ -58,13 +58,14 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$menu = $('<div class="' + this._options.prefix + '-menu"></div>');
         Array.prototype.forEach.call(this.element.options, function(el) {
             var $el = $('<div class="' + this._options.prefix + '-menu-item" tabIndex="0"></div>');
+            var $textWrap = $('<span></span>').appendTo($el);
             var displayText = el.getAttribute('data-display');
 
             // set text
             if (displayText) {
-                $el.html(displayText);
+                $textWrap.html(displayText);
             } else {
-                $el.text(el.innerText);
+                $textWrap.text(el.innerText);
             }
 
             if (el === this.element.selectedOptions[0]) {
