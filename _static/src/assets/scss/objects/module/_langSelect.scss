@@ -55,12 +55,12 @@
     transform: rotate(0deg);
 }
 
-select:hover + .langSelect-label,
-select:focus + .langSelect-label,
-.langSelect-menu-item:hover,
-.langSelect-menu-item:focus {
-    // background: #ccc8bc;
-}
+// select:hover + .langSelect-label,
+// select:focus + .langSelect-label,
+// .langSelect-menu-item:hover,
+// .langSelect-menu-item:focus {
+//     background: #ccc8bc;
+// }
 
 .langSelect.isOpen > select {
     max-height: 59px; 
@@ -75,15 +75,10 @@ select:focus + .langSelect-label,
     display: none;
     overflow: hidden;
     position: relative;
-    // height: 220px;
     padding: 0 0 $SPACE_x2;
     width: 85%;
     margin: 0 auto;
-    overflow: hidden;
     border-top: 1px solid $CLR_GRAY_LIGHT;
-    // display: table;
-    // padding: 20px 30%;
-    // column-count: 2;
 }
 
 .langSelect-menu-item {
@@ -92,8 +87,6 @@ select:focus + .langSelect-label,
     padding: 20px 0 0 30px;
     font-family: $FONT_SANS;
     font-weight: bold;
-    opacity: 0;
-    transition: opacity 3s linear;
 }
 
 .langSelect-menu-item > * {
@@ -109,8 +102,4 @@ select:focus + .langSelect-label,
 .langSelect.isOpen > .langSelect-menu {
     display: block;
 }
-.langSelect.isOpen > .langSelect-menu > .langSelect-menu-item {
-    opacity: 1;
-}
-
 
