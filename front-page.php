@@ -9,31 +9,22 @@
 // Header
 get_header();
 
-$after_title_custom_fields = get_post_meta( get_the_ID(), 'after_title_fm_fields', true );
-
-var_dump( $after_title_custom_fields );
-
 // content
 ?>
-
-<h1>HOME!!!</h1>
-
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php get_template_part( 'template-parts/content', 'page' ); ?>
+				<?php get_template_part( 'template-parts/content', 'page-entry-start' ); ?>
+
+				<?php get_template_part( 'template-parts/content', 'page-entry-content' ); ?>
+
+				<?php get_template_part( 'template-parts/content', 'page-home-blocks' ); ?>
+
+				<?php get_template_part( 'template-parts/content', 'page-entry-end' ); ?>
 
 			<?php endwhile; // End of the loop. ?>
-
-			<?php
-
-
-			$custom_fields = get_post_meta( get_the_ID(), 'home-content-section', false );
-			var_dump( $custom_fields );
-
-			?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->

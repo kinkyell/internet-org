@@ -14,6 +14,9 @@ if ( 'page' == get_option('show_on_front') && $page_on_front = get_option('page_
 	$custom_fields = get_post_meta( get_the_ID(), 'home-content-section', false );
 }
 
+
+iorg_language_switcher();
+
 ?>
 
 	<div id="primary" class="content-area">
