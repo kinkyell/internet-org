@@ -98,7 +98,8 @@ define(function(require, exports, module) { // jshint ignore:line
             path: event.currentTarget.pathname,
             type: event.currentTarget.getAttribute('data-type'),
             image: event.currentTarget.getAttribute('data-image'),
-            title: event.currentTarget.getAttribute('data-title')
+            title: event.currentTarget.getAttribute('data-title'),
+            theme: event.currentTarget.getAttribute('data-theme')
         });
         this.historyManager.pushState(this._currentStates, null, event.currentTarget.pathname);
         eventHub.publish('Router:stateChange', this._currentStates, prevStates);
@@ -118,7 +119,8 @@ define(function(require, exports, module) { // jshint ignore:line
             path: event.currentTarget.pathname,
             type: event.currentTarget.getAttribute('data-type'),
             image: event.currentTarget.getAttribute('data-image'),
-            title: event.currentTarget.getAttribute('data-title')
+            title: event.currentTarget.getAttribute('data-title'),
+            theme: event.currentTarget.getAttribute('data-theme')
         };
         this.historyManager.replaceState(this._currentStates, null, event.currentTarget.pathname);
         eventHub.publish('Router:stateChange', this._currentStates, prevStates);
