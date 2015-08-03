@@ -3,6 +3,8 @@
 ------------------------------------------------------------------------ */
 .langSelect {
     position: relative;
+    transition: opacity 0.3s linear;
+    background: #e4e0d1;
 }
 
 .langSelect > select {
@@ -22,20 +24,19 @@
 
 .langSelect-label,
 .langSelect-menu-item {
-    padding: 24px 20px 23px;
-    background: #ffffff;
-    font-size: 18px;
+    font-size: 13px;
     line-height: 1;
     font-family: $FONT_SANS_BLACK;
     font-weight: bolder;
     text-transform: uppercase;
-    text-align: center;
     cursor: pointer;
 }
 
 .langSelect-label {
+    padding: 23px 20px 23px;
     background: #e4e0d1;
     font-size: 13px;
+    text-align: center;
 }
 
 .langSelect-label:after, {
@@ -54,11 +55,15 @@
     transform: rotate(0deg);
 }
 
-select:hover + .langSelect-label,
-select:focus + .langSelect-label,
-.langSelect-menu-item:hover,
-.langSelect-menu-item:focus {
-    background: #ccc8bc;
+// select:hover + .langSelect-label,
+// select:focus + .langSelect-label,
+// .langSelect-menu-item:hover,
+// .langSelect-menu-item:focus {
+//     background: #ccc8bc;
+// }
+
+.langSelect.isOpen > select {
+    max-height: 59px; 
 }
 
 .langSelect-label-light {
@@ -68,19 +73,33 @@ select:focus + .langSelect-label,
 
 .langSelect-menu {
     display: none;
-    max-height: 325px;
-    border: 1px solid #c7c7bf;
-    border-width: 1px 1px 0 1px;
-    background: #ffffff;
-    overflow: auto;
+    overflow: hidden;
+    position: relative;
+    padding: 0 0 $SPACE_x2;
+    width: 85%;
+    margin: 0 auto;
+    border-top: 1px solid $CLR_GRAY_LIGHT;
 }
 
-.langSelect-menu-item:not(:focus) {
+.langSelect-menu-item {
+    display: inline-block;
+    width: 40%;
+    padding: 20px 0 0 30px;
     font-family: $FONT_SANS;
-    font-weight: normal;
+    font-weight: bold;
+}
+
+.langSelect-menu-item > * {
+    border-bottom: 2px solid transparent;
+    transition: border 0.2s ease-in-out;
+}
+
+.langSelect-menu-item:hover > * {
+    border-bottom: 2px solid $CLR_ACCENT;
 }
 
 /* OPEN state */
 .langSelect.isOpen > .langSelect-menu {
     display: block;
 }
+
