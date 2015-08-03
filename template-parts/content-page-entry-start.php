@@ -10,9 +10,21 @@ $after_title_custom_fields = get_post_meta( get_the_ID(), 'after_title_fm_fields
 
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+	<?php /*
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 		<?php if ( ! empty( $after_title_custom_fields['Subtitle'] ) ) : ?>
 		<?php echo '<h2>' . esc_html__( $after_title_custom_fields['Subtitle'] , 'internet_org' ) . '</h2>'; ?>
 		<?php endif; ?>
 	</header><!-- .entry-header -->
+	*/ ?>
+
+	<div class="narrative-section">
+		<div class="narrative-section-bd">
+			<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
+			<?php if ( ! empty( $after_title_custom_fields['Subtitle'] ) ) : ?>
+				<?php echo __( $after_title_custom_fields['Subtitle'] , 'internet_org' ); ?>
+			<?php endif; ?>
+		</div>
+	</div>
