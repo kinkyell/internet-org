@@ -6,7 +6,7 @@
 ------------------------------------------------------------------------ */
 
 .arrowCta {
-  display: block;
+  display: inline-block;
   height: 13px;
   width: 13px;
   border: 11px solid transparent;
@@ -54,6 +54,6 @@
 @keyframes top-arrow {
   0%   { transform: translate(-6px,-6px); }
   35%  { transform: translate(0,0); }
-  90%  { opacity: 1; transform: translate(0,0); }
-  100% { opacity: 1; transform: translate(0,0); }
+  90%  { transform: translate(0,0); }
+  100% { transform: translate(0,0); }
 }

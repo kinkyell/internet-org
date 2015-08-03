@@ -7,6 +7,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var breakpointManager = require('services/breakpointManager');
     var eventHub = require('services/eventHub');
     var $ = require('jquery');
+    var HomeState = require('states/HomeState');
 
     /**
      * A view for transitioning display panels
@@ -46,7 +47,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto.createChildren = function() {
-        this._numStates = 0; //TODO: update with initial states load
+        this._isHome = true;
         this.isLogoCentered = false; //TODO: update based on page
         this.$logo = this.$('.js-headerView-logo');
         this.$menuBtn = this.$('.js-headerView-menuBtn');
@@ -125,7 +126,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._render = function() {
         var isNarrow = breakpointManager.isMobile;
-        var isHome = this._numStates < 1;
+        var isHome = this._isHome;
         var isMenuOpen = this.menuView.isOpen;
         var shouldBeCentered = (isMenuOpen || !isHome);
         var shouldBeRaised = (isMenuOpen && this.searchView.isOpen);
@@ -167,7 +168,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onStateChange = function(states) {
-        this._numStates = states.length;
+        var topState = states[states.length - 1];
+        this._isHome = (topState instanceof HomeState);
         this._render();
     };
 

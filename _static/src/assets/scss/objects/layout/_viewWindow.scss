@@ -45,6 +45,10 @@ Layout for paneled views
     z-index: -1;
 }
 
+.viewWindow-panel_feature.isDouble {
+    z-index: 1;
+}
+
 .viewWindow-panel_feature .viewWindow-panel-content-inner {
     background-position: center center;
     background-size: cover;

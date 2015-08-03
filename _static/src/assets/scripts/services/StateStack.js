@@ -9,7 +9,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * @class StateStack
      * @constructor
      */
-    var StateStack = function() {
+    var StateStack = function(InitialState) {
+        var init;
         /**
          * The list of active states
          *
@@ -19,6 +20,15 @@ define(function(require, exports, module) { // jshint ignore:line
          * @default []
          */
         this._activeStates = [];
+
+        if (InitialState) {
+            init = new InitialState();
+            this._activeStates.push(init);
+            init.activate({
+                method: 'init',
+                states: this._activeStates
+            });
+        }
     };
 
     /**
@@ -139,6 +149,20 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     StateStack.prototype.size = function() {
         return this._activeStates.length;
+    };
+
+    /**
+     * Get top state
+     *
+     * @method getTop
+     * @returns {AbstractState} the top state
+     */
+    StateStack.prototype.getTop = function() {
+        var len = this.size();
+        if (!len) {
+            return null;
+        }
+        return this._activeStates[len - 1];
     };
 
     return StateStack;

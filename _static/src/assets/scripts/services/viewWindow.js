@@ -91,7 +91,8 @@ define(function(require, exports, module) { // jshint ignore:line
         return this._updatePanel(
             $panel,
             this.$feature,
-            direction
+            direction,
+            true
         ).then(_stopAnimating('_isFeatureAnimating', this));
     };
 
@@ -177,23 +178,27 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {jQuery} $panel Content to add
      * @param {jQuery} $target Target panel to update
      * @param {String} direction Direction to animate from
-     * @return {Promise} will fail if animation fails (alread animating) or resolve when complete
+     * @return {Promise} will fail if animation fails (already animating) or resolve when complete
      * @private
      */
-    ViewWindow.prototype._updatePanel = function($panel, $target, direction) {
+    ViewWindow.prototype._updatePanel = function($panel, $target, direction, doublePanel) {
         var opts = this._getAnimProps(direction);
         var $newPanel;
         var $removedPanel;
 
+
         $target.append($panel);
         $newPanel = $panel;
         $removedPanel = $panel.prev();
+        doublePanel = doublePanel || false;
 
         $target.addClass('isAnimating');
 
         var cleanup = function() {
             $removedPanel.remove();
-            $target.removeClass('isAnimating');
+            $target
+                .removeClass('isAnimating')
+                .toggleClass('isDouble', doublePanel);
         };
 
         if (direction.toLowerCase() === 'none') {
