@@ -10,6 +10,8 @@ define(function(require, exports, module) { // jshint ignore:line
     var templates = require('templates');
 
     var CarouselView = require('views/CarouselAltView');
+    var $ = require('jquery');
+    var Tween = require('gsap-tween');
 
     var log = console.log.bind(console);
     /**
@@ -21,6 +23,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     var PanelState = function(options) {
         this._handlePanelContentLoad = this._onPanelContentLoad.bind(this);
+        this.invertLeft = true;
 
         BasicState.call(this, options);
     };
@@ -84,7 +87,9 @@ define(function(require, exports, module) { // jshint ignore:line
         if (!this.active) {
             return;
         }
-        $panel.append(markup);
+        var $markup = $(markup);
+        $panel.append($markup);
+        Tween.from($markup[0], 0.25, { opacity: 0 });
         this.refreshComponents($panel);
     };
 

@@ -12,6 +12,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @constructor
      */
     var HomeState = function(options) {
+        this.invertRight = true;
         BasicState.call(this);
     };
 
