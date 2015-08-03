@@ -155,6 +155,32 @@ function iorg_correct_template_selection( $singleTemplate ) {
 add_filter( 'single_template', 'iorg_correct_template_selection' );
 
 
+if ( ! function_exists( 'iorg_extend_search_post_type_range' ) ) :
+	/**
+	 * Add our custom post types to the search query
+	 *
+	 * @param WP_Query $query the current query object
+	 * @return mixed the possibly updated search query
+	 */
+	function iorg_extend_search_post_type_range( $query ) {
+		if ( $query->is_post ) {
+			$query->set(
+				'post_type',
+				array(
+					'post',
+					'page',
+					'iorg_press',
+					'iorg_story',
+					'iorg_freesvc',
+					'iorg_campaign',
+				)
+			);
+		}
+
+		return $query;
+	}
+endif;
+add_filter( 'pre_get_posts', 'iorg_extend_search_post_type_range' );
 
 /**
  * Enqueue scripts and styles.
