@@ -5,7 +5,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var viewWindow = require('services/viewWindow');
     var $ = require('jquery');
 
-    var CarouselView = require('views/CarouselView');
+    var CarouselView = require('views/CarouselAltView');
 
     /**
      * Manages home state

@@ -61,7 +61,6 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handleStateChange = this._onStateChange.bind(this);
         this.headerView = new HeaderView($('.js-headerView'));
         this.viewWindow = viewWindow;
-        this.viewWindow.init();
         this._setupStates();
         this.router = new Router();
 

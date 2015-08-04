@@ -21,14 +21,16 @@ define(function(require, exports, module) { // jshint ignore:line
      * @constructor
      */
     var ViewWindow = function() {
+        this._init()
     };
 
     /**
      * Set up instance
      *
-     * @method init
+     * @method _init
+     * @private
      */
-    ViewWindow.prototype.init = function() {
+    ViewWindow.prototype._init = function() {
         this.$element = $('.js-viewWindow');
         this.element = this.$element[0];
         this.$panels = this.$element.children();
@@ -38,22 +40,6 @@ define(function(require, exports, module) { // jshint ignore:line
         this._lastFeatureAnimation = Promise.resolve();
         this._lastStoryAnimation = Promise.resolve();
         this._isShiftAnimating = false;
-
-        this._configRoute();
-    };
-
-    /**
-     * Replace feature area with an image
-     *
-     * @method _configRoute
-     * @private
-     */
-    ViewWindow.prototype._configRoute = function(imagePath, direction) {
-        var initialRoute = this.element.getAttribute('data-route');
-        var initialType = this.element.getAttribute('data-type');
-        if (initialType && initialType !== 'home') {
-            eventHub.publish('ViewWindow:configRoute', initialRoute, initialType);
-        }
     };
 
     /**
