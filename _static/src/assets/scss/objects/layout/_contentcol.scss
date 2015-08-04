@@ -8,9 +8,21 @@ Layout for padded columns of content.
 	padding: 80px 27px;
 }
 
+.contentCol_hasGallery {
+	padding: 0 27px;
+	overflow: hidden;
+	margin-bottom: 80px;
+}
+
+.contentCol + .contentCol_hasGallery {
+	margin-top: -80px;
+}
 
 @include breakpoint(MD) {
 	.contentCol {
 		padding: 80px;
+	}
+	.contentCol_hasGallery {
+		padding: 0 80px;
 	}
 }

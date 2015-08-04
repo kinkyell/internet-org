@@ -31,13 +31,27 @@ define(function(require, exports, module) { // jshint ignore:line
         // alt carousels
         this.inst = new Dragdealer(this.element.id, {
             steps: 5,
-            x: 0.5,
+            x: 0,
             slide: true,
             speed: 0.1,
             loose: true,
             requestAnimationFrame: true,
             vertical: false,
-            horizontal: true
+            horizontal: true,
+
+            callback: function() {
+                var currentStep = this.inst.getStep()[0] - 1;
+                var $captions = this.$element.find('.carousel-captionBox > *');
+                var $currentCaption = $captions.eq(currentStep);
+
+                $captions.each(function() {
+                    var $caption = $(this);
+                    $caption.removeClass('isActive').addClass('isNotActive');
+                });
+
+                $currentCaption.removeClass('isNotActive').addClass('isActive');
+
+            }.bind(this)
         });
     };
 
@@ -49,6 +63,24 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onDisable = function() {
+    };
+
+
+    proto.layout = function() {
+        var $captionBox = $('.carousel-captionBox');
+        var $slides = this.$element.find('.carousel-handle-slide');
+        var i = 0;
+        var l = $slides.length;
+
+        for (; i < l; i++) {
+            var $slide = $slides.eq(i);
+            var $slideCaption = $slide.find('.carousel-handle-slide-caption');            
+            $captionBox.append($slideCaption);
+            $slideCaption.addClass('isNotActive');
+        }
+
+        this.$element.find('.carousel-captionBox > *:first-child').removeClass('isNotActive').addClass('isActive');
+
     };
 
     module.exports = CarouselView;
