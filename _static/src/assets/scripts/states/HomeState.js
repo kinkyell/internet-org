@@ -3,6 +3,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var BasicState = require('./BasicState');
     var viewWindow = require('services/viewWindow');
+    var $ = require('jquery');
 
     var CarouselView = require('views/CarouselView');
 
@@ -23,7 +24,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     HomeState.prototype.COMPONENTS = {
         '.js-carouselView': CarouselView
-    }
+    };
 
     HomeState.prototype.activate = function(event) {
         if (event.method !== 'init') {

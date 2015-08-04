@@ -13,6 +13,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var ROUTER_BACK_SELECTOR = '.js-stateBack';
     var ROUTER_SWAP_SELECTOR = '.js-stateSwap';
     var ROUTER_HOME_SELECTOR = '.js-stateHome';
+    var ROUTER_DEFAULT_SELECTOR = '.js-stateDefault';
 
     /**
      * Manages the stack of active states
@@ -37,6 +38,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handleStateSwap = this._onStateSwap.bind(this);
         this._handleStateHome = this._onStateHome.bind(this);
         this._handleSearch = this._onSearch.bind(this);
+        this._handleRouteConfig = this._onRouteConfig.bind(this);
 
         /**
          * Current list of state data
@@ -60,10 +62,41 @@ define(function(require, exports, module) { // jshint ignore:line
 
         eventHub.subscribe('HistoryManager:popState', this._handlePopState);
         eventHub.subscribe('Search:submit', this._handleSearch);
+        //eventHub.subscribe('ViewWindow:configRoute', this._handleRouteConfig);
         $(document.body).on('click', ROUTER_LINK_SELECTOR, this._handleStateTrigger);
         $(document.body).on('click', ROUTER_BACK_SELECTOR, this._handleStateBack);
         $(document.body).on('click', ROUTER_SWAP_SELECTOR, this._handleStateSwap);
         $(document.body).on('click', ROUTER_HOME_SELECTOR, this._handleStateHome);
+
+        this._loadDefaultRoute();
+    };
+
+    /**
+     * Loads default route info
+     *
+     * @method _loadDefaultRoute
+     * @param {Object} state State info from previous _currentStates
+     * @private
+     */
+    Router.prototype._loadDefaultRoute = function() {
+        var routeEl = $(ROUTER_DEFAULT_SELECTOR)[0];
+
+        if (!routeEl) {
+            return;
+        }
+
+        var routePath = routeEl.getAttribute('data-route');
+
+        this._currentStates.push({
+            path: routePath,
+            type: routeEl.getAttribute('data-type'),
+            image: routeEl.getAttribute('data-image'),
+            title: routeEl.getAttribute('data-title'),
+            theme: routeEl.getAttribute('data-theme')
+        });
+
+        this.historyManager.replaceState(this._currentStates, null, routePath);
+        eventHub.publish('Router:stateChange', this._currentStates, [], true);
     };
 
     /**
@@ -151,7 +184,10 @@ define(function(require, exports, module) { // jshint ignore:line
         var url = '/';
         event.preventDefault();
 
-        if (!len || prevStates[len - 1].type === 'home') {
+        if (
+            (len && prevStates[len - 1].type === 'home') ||
+            (!len && !this._initialState)
+        ) {
             return;
         }
 
@@ -161,6 +197,24 @@ define(function(require, exports, module) { // jshint ignore:line
         });
         this.historyManager.pushState(this._currentStates, null, url);
         eventHub.publish('Router:stateChange', this._currentStates, prevStates);
+    };
+
+    /**
+     * Handle initial route config
+     *
+     * @method _onRouteConfig
+     * @param {String} initialRoute Route page was loaded with
+     * @param {String} initialType Type of route page loaded
+     * @private
+     */
+    Router.prototype._onRouteConfig = function(initialRoute, initialType) {
+        var prevStates = this._currentStates.slice(0);
+        this._initialState = {
+            path: initialRoute,
+            type: initialType
+        };
+        this._currentStates.push(this._initialState);
+        eventHub.publish('Router:stateChange', this._currentStates, prevStates, true);
     };
 
     /**

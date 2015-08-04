@@ -23,7 +23,11 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     var PanelState = function(options) {
         this._handlePanelContentLoad = this._onPanelContentLoad.bind(this);
+        this._handleStaticContent = this._onStaticContent.bind(this);
+        this._handlePanelScroll = this._onPanelScroll.bind(this);
         this.invertLeft = true;
+        this._lastScrollTop = 0;
+        this.refreshScrollerInfo = this._refreshScrollerInfo.bind(this);
 
         BasicState.call(this, options);
     };
@@ -47,6 +51,11 @@ define(function(require, exports, module) { // jshint ignore:line
         var transition = 'right';
         var stateLen = event.states.length;
         var fromHome = stateLen > 1 && (event.states[stateLen - 2] instanceof HomeState);
+
+        if (event.silent) {
+            viewWindow.getCurrentStory().then(this._handleStaticContent);
+            return BasicState.prototype.activate.call(this, event);
+        }
 
         if (event.method === 'pop') {
             transition = 'left';
@@ -91,6 +100,22 @@ define(function(require, exports, module) { // jshint ignore:line
         $panel.append($markup);
         Tween.from($markup[0], 0.25, { opacity: 0 });
         this.refreshComponents($panel);
+        this._initializeScrollWatcher($panel);
+    };
+
+    /**
+     * Append markup to panel when loaded
+     *
+     * @method _onStaticContent
+     * @param {String} markup HTML content from ajax request
+     * @private
+     */
+    PanelState.prototype._onStaticContent = function($panel) {
+        if (!this.active) {
+            return;
+        }
+        this.refreshComponents($panel);
+        this._initializeScrollWatcher($panel);
     };
 
     /**
@@ -100,7 +125,86 @@ define(function(require, exports, module) { // jshint ignore:line
      * @fires State:deactivate
      */
     PanelState.prototype.deactivate = function(event) {
+        this._destroyScrollWatcher();
         BasicState.prototype.deactivate.call(this, event);
+    };
+
+    /**
+     * Look for images to scroll
+     *
+     * @method _initializeScrollWatcher
+     */
+    PanelState.prototype._initializeScrollWatcher = function($panel) {
+        this._scrollPanel = $panel.parent();
+        this._panelImages = $panel.find('.js-scrollImage');
+
+        this.refreshScrollerInfo();
+
+        this._scrollPanel
+            .on('scroll', this._handlePanelScroll)
+            .find('img')
+            .on('load', this.refreshScrollerInfo);
+    };
+
+    /**
+     * Look for images to scroll
+     *
+     * @method _destroyScrollWatcher
+     */
+    PanelState.prototype._destroyScrollWatcher = function(event) {
+        this._scrollPanel
+            .off('scroll', this._handlePanelScroll)
+            .find('img')
+            .off('load', this.refreshScrollerInfo);
+        this._scrollImages = null;
+    };
+
+    /**
+     * Look for images to scroll
+     *
+     * @method _onPanelScroll
+     */
+    PanelState.prototype._onPanelScroll = function(event) {
+        var scrollTop = this._scrollPanel[0].scrollTop;
+        var view = scrollTop + this._windowHeight;
+        var image = null;
+        var direction = scrollTop > this._lastScrollTop ? 'bottom' : 'top';
+
+        this._lastScrollTop = scrollTop;
+
+        this._scrollBlocks.forEach(function(block) {
+            if (view >= block.top && view <= block.bottom) {
+                image = block.img;
+            }
+        });
+
+        viewWindow.replaceFeatureImage(image, direction);
+    };
+
+    /**
+     * Look for images to scroll
+     *
+     * @method _refreshScrollerInfo
+     */
+    PanelState.prototype._refreshScrollerInfo = function(event) {
+        var OFFSET = 0.25;
+        this._scrollBlocks = this._panelImages.map(function(idx, el) {
+            var url = el.getAttribute('data-image');
+            var fromTop = $(el).offset().top;
+            var height = el.offsetHeight;
+
+            return {
+                img: url,
+                top: fromTop + (OFFSET * height),
+                bottom: fromTop + height + (OFFSET * height)
+            };
+        }).toArray();
+        this._scrollBlocks.unshift({
+            img: this._options.image,
+            top: 0,
+            bottom: Infinity
+        });
+        this._windowHeight = $(window).height();
     };
 
     return PanelState;
