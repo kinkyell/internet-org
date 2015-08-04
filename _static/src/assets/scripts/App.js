@@ -25,8 +25,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var assetLoader = require('services/assetLoader');
     var viewWindow = require('services/viewWindow');
 
-    var CarouselView = require('views/CarouselView');
-    var Dragdealer = require('dragdealer');
+    // var Dragdealer = require('dragdealer');
 
     var identity = require('stark/function/identity');
 

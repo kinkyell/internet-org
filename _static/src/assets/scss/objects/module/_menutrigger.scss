@@ -10,7 +10,19 @@
   min-width: 80px;
   position: relatve;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+}
+
+.menuTrigger_onDark .menuTrigger-label {
+  color: $CLR_WHITE;
+}
+
+.menuTrigger_onDark .menuTrigger-icon {
+  border-bottom: 2px solid $CLR_WHITE;
+}
+
+.menuTrigger_onDark .menuTrigger-icon:before,
+.menuTrigger_onDark .menuTrigger-icon:after {
+    background-color: $CLR_WHITE;
 }
 
 .menuTrigger-label {
@@ -49,11 +61,14 @@
   top: 3px;
 }
 
-// TODO: Need to add js hooks. Reference: http://codepen.io/patrickjannette/pen/vOVYXm
-
 .menuTrigger-icon.isOpen {
   border: none;
   padding-bottom: 6px;
+}
+
+.menuTrigger-icon.isOpen:before,
+.menuTrigger-icon.isOpen:after {
+  background-color: $CLR_BLACK;
 }
 
 .menuTrigger-icon.isOpen:before {
@@ -79,4 +94,3 @@
   transform: rotate(-45deg); //495
   transform-origin: middle middle;
 }
-
