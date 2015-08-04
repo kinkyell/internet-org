@@ -163,18 +163,20 @@ if ( ! function_exists( 'iorg_extend_search_post_type_range' ) ) :
 	 * @return mixed the possibly updated search query
 	 */
 	function iorg_extend_search_post_type_range( $query ) {
-		if ( $query->is_post ) {
+		if ( isset( $_GET['s'] ) && $query->is_main_query() ) {
 			$query->set(
 				'post_type',
 				array(
-					'post',
-					'page',
-					'iorg_press',
-					'iorg_story',
-					'iorg_freesvc',
-					'iorg_campaign',
+					'post', // default PT
+					'page', // default PT
+					'iorg_press', // CPT
+					'iorg_story', // CPT
+					'iorg_freesvc', // CPT
+					'iorg_campaign', // CPT
 				)
 			);
+			$query->is_search = true;
+			$query->is_home   = false;
 		}
 
 		return $query;
