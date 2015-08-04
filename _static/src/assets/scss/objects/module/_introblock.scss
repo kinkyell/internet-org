@@ -23,6 +23,7 @@ Sections of content that introduce landing and story pages
 	display: table-cell;
 	vertical-align: middle;
 	padding: $SPACE_x4 40px;
+	@include contain();
 }
 
 .introBlock-inner > .topicBlock {
