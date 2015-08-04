@@ -11,8 +11,13 @@ get_header();
 
 // content
 ?>
+<?php /*
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+		<main id="main" class="site-main" role="main"> */ ?>
+
+	<div class="stage">
+		<div class="stage-panel">
+			<div class="narrative">
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
@@ -26,8 +31,13 @@ get_header();
 
 			<?php endwhile; // End of the loop. ?>
 
+			</div>
+		</div>
+	</div>
+
+<?php /*
 		</main><!-- #main -->
-	</div><!-- #primary -->
+	</div><!-- #primary --> */ ?>
 
 <?php
 
