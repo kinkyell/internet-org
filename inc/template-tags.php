@@ -141,9 +141,9 @@ if ( ! function_exists( 'internet_org_entry_footer_archive' ) ) :
 	function internet_org_entry_footer_archive() {
 
 		// read more link
-		echo '<span class="read-more-link">';
+		echo '<div class="feature-cta">';
 		printf( sanitize_text_field( __( 'Read More &rarr;', 'internet_org' ) ) );
-		echo '</span>';
+		echo '</div>';
 
 		// display the edit link if an authorized user is logged in.
 		edit_post_link( esc_html__( 'Edit', 'internet_org' ), '<span class="edit-link">', '</span>' );

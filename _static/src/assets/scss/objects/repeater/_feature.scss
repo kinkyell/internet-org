@@ -4,12 +4,12 @@ Media
 Feature content module
 ------------------------------------------------------------------------ */
 
-.feature {
-    padding: $SPACE_x2 0; // TODO: Not sure what the panel styles will be. This may need to be removed.
+.feature + .feature {
+    padding: $SPACE_x2 0;
 }
 
 .feature > * + * {
-    margin-top: $SPACE_x2; // TODO: Not sure what the panel styles will be. This may need to be removed.
+    margin-top: $SPACE_x2;
 }
 
 .feature_tight {

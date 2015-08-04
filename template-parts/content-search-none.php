@@ -1,0 +1,23 @@
+<?php
+/**
+ * Used for when there are no results
+ *
+ * @package Internet.org
+ * @author arichard <arichard@nerdery.com>
+ */
+
+?>
+
+<div class="resultsList-hd">
+	<div class="hdg hdg_5 mix-hdg_italic mix-hdg_gray"><?php printf( esc_html__( 'No Results Found', 'internet_org' ) , $wp_query->found_posts ); ?></div>
+</div>
+<div class="resultsList-list">
+	<div class="resultsList-list-item">
+		<div class="feature feature_tight">
+			<div class="feature-bd">
+				<p class="bdcpy"><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'internet_org' ); ?></p>
+				<?php /* get_search_form(); */ ?>
+			</div>
+		</div>
+	</div>
+</div>
