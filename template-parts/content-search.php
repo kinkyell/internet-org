@@ -9,17 +9,14 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
-
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
-
-	<footer class="entry-footer">
+<div id="post-<?php the_ID(); ?>" class="resultsList-list-item">
+	<div class="feature feature_tight">
+		<div class="feature-hd">
+			<?php the_title( '<h2 class="hdg hdg_3">', '</h2>' ); ?>
+		</div>
+		<div class="feature-bd">
+			<p class="bdcpy"><?php the_excerpt(); ?></p>
+		</div>
 		<?php internet_org_entry_footer_archive(); ?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-## -->
-
+	</div>
+</div>

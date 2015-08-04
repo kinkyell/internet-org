@@ -10,6 +10,8 @@ define(function(require, exports, module) { // jshint ignore:line
     var templates = require('templates');
 
     var CarouselView = require('views/CarouselAltView');
+    var $ = require('jquery');
+    var Tween = require('gsap-tween');
 
     var log = console.log.bind(console);
     /**
@@ -21,6 +23,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     var PanelState = function(options) {
         this._handlePanelContentLoad = this._onPanelContentLoad.bind(this);
+        this.invertLeft = true;
 
         BasicState.call(this, options);
     };
@@ -41,19 +44,24 @@ define(function(require, exports, module) { // jshint ignore:line
      * @fires State:activate
      */
     PanelState.prototype.activate = function(event) {
-       var transition = 'right';
-       var stateLen = event.states.length;
-       var fromHome = stateLen > 1 && (event.states[stateLen - 2] instanceof HomeState);
+        var transition = 'right';
+        var stateLen = event.states.length;
+        var fromHome = stateLen > 1 && (event.states[stateLen - 2] instanceof HomeState);
 
         if (event.method === 'pop') {
             transition = 'left';
+        }
+
+        if (event.method === 'swap') {
+            transition = 'bottom';
         }
 
         var tasks = [
             apiService.getPanelContent(this._options.path),
             viewWindow.replaceStoryContent(templates['article-header']({
                 title: this._options.title,
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse es suscipit euante lorepehicula nulla, suscipit dela eu ante vel vehicula.'
+                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse es suscipit euante lorepehicula nulla, suscipit dela eu ante vel vehicula.', //jshint ignore:line
+                theme: this._options.theme
             }), event.method === 'push' && fromHome ? 'none' : transition)
         ];
 
@@ -79,7 +87,9 @@ define(function(require, exports, module) { // jshint ignore:line
         if (!this.active) {
             return;
         }
-        $panel.append(markup);
+        var $markup = $(markup);
+        $panel.append($markup);
+        Tween.from($markup[0], 0.25, { opacity: 0 });
         this.refreshComponents($panel);
     };
 

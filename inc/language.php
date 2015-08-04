@@ -22,10 +22,10 @@ if ( ! function_exists( 'iorg_language_switcher' ) ) :
 
 		echo '<select onchange="document.location.href=this.options[this.selectedIndex].value;">';
 
-		foreach ( $list as $item ) :
+		foreach ( $list as $item ) {
 
 			// this will skip any languages for which there is no translation
-			if ( in_array( 'bbl-add',$item['classes'] ) ) {
+			if ( in_array( 'bbl-add', $item['classes'] ) ) {
 				continue;
 			}
 
@@ -35,10 +35,10 @@ if ( ! function_exists( 'iorg_language_switcher' ) ) :
 				$selected = '';
 			}
 
-			if ( $item[ 'href'] ) {
-				echo '<option ' . $selected . 'class="' . esc_attr( $item[ 'class' ] ) . '" value="' . esc_url( $item[ 'href' ] ) . '">' . esc_html( $item[ 'lang' ]->display_name ) . '</option>';
+			if ( $item['href'] ) {
+				echo '<option ' . $selected . 'class="' . esc_attr( $item['class'] ) . '" value="' . esc_url( $item['href'] ) . '">' . esc_html( $item['lang']->display_name ) . '</option>';
 			}
-		endforeach;
+		}
 
 		echo '</select>';
 	}
@@ -64,11 +64,11 @@ if ( ! function_exists( 'iorg_save_meta_common_verify' ) ) {
 		}
 
 		// check / verify nonce
-		if ( empty( $_POST[$nonce_key] ) ) {
+		if ( empty( $_POST[ $nonce_key ] ) ) {
 			return false;
 		}
 
-		if ( ! wp_verify_nonce( $_POST[$nonce_key], $form_name ) ) {
+		if ( ! wp_verify_nonce( $_POST[ $nonce_key ], $form_name ) ) {
 			return false;
 		}
 
@@ -84,117 +84,81 @@ if ( ! function_exists( 'iorg_save_meta_common_verify' ) ) {
 
 if ( ! function_exists( 'iorg_save_meta_for_content' ) ) :
 	/**
-	 * Save meta for content, farms out labor when necessary
+	 * Save meta for content
 	 *
 	 * @param int $post_id id of post being saved
 	 * @return void
 	 */
 	function iorg_save_meta_for_content( $post_id ) {
+		// If this is an autosave, our form has not been submitted, so we don't want to do anything.
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
 
+		// makes sure the post id is for a real post
 		$post = get_post( $post_id );
 
-		if ( 'post' != $post->post_type ) {
+		if ( ! current_user_can( 'edit_post', $post->ID ) ) {
 			return;
 		}
 
-		$nonce_field = null;
-		$form_name   = null;
 		switch ( $post->post_type ) {
-			case 'post':
-				$nonce_field = 'some_nonce_field';
-				$form_name   = 'some_form_name';
-				break;
 			case 'page':
-				$nonce_field = 'some_nonce_field';
-				$form_name   = 'some_form_name';
-				break;
-			case 'iorg_story':
-				$nonce_field = 'some_nonce_field';
-				$form_name   = 'some_form_name';
-				break;
-			case 'iorg_campaign':
-				$nonce_field = 'some_nonce_field';
-				$form_name   = 'some_form_name';
-				break;
-			case 'iorg_press':
-				$nonce_field = 'some_nonce_field';
-				$form_name   = 'some_form_name';
-				break;
-			case 'iorg_freeservice':
-				$nonce_field = 'some_nonce_field';
-				$form_name   = 'some_form_name';
+			case 'bbl_job':
+				iorg_save_meta_for_page( $post_id );
 				break;
 			default:
-				// no-op
+				return;
 				break;
 		}
-
-		if ( ! iorg_save_meta_common_verified( $nonce_field, $form_name, $post->ID ) ) {
-			return;
-		}
-
-		// do process data for this post type
-		switch ( $post->post_type ) {
-			case 'post':
-				iorg_save_meta_for_post();
-				break;
-			case 'page':
-				iorg_save_meta_for_page();
-				break;
-			case 'iorg_story':
-				iorg_save_meta_for_story();
-				break;
-			case 'iorg_campaign':
-				iorg_save_meta_for_campaign();
-				break;
-			case 'iorg_press':
-				iorg_save_meta_for_press();
-				break;
-			case 'iorg_freeservice':
-				iorg_save_meta_for_freeservices();
-				break;
-			default:
-				// no-op
-				break;
-		}
-
-	}
-	add_action( 'save_post', 'iorg_save_meta_for_content' );
-endif;
-
-if ( ! function_exists( 'iorg_save_meta_for_post' ) ) :
-	function iorg_save_meta_for_post() {
-
 	}
 endif;
+add_action( 'save_post', 'iorg_save_meta_for_content' );
+
 
 if ( ! function_exists( 'iorg_save_meta_for_page' ) ) :
-	function iorg_save_meta_for_page() {
+	/**
+	 * save translated post meta data
+	 *
+	 * @param int $post_id id of the post being updated
+	 * @return void
+	 */
+	function iorg_save_meta_for_page( $post_id ) {
+		// verify nonces
+		if ( ! iorg_check_nonce( 'fieldmanager-after_title_fm_fields-nonce' ) ) {
+			return;
+		}
+
+		if ( ! iorg_check_nonce( 'fieldmanager-home-content-section-nonce' ) ) {
+			return;
+		}
+
+		// sanitize the data
+
+
+		// update the meta
 
 	}
 endif;
 
-if ( ! function_exists( 'iorg_save_meta_for_story' ) ) :
-	function iorg_save_meta_for_story() {
 
-	}
-endif;
+if ( ! function_exists( 'iorg_check_nonce' ) ) :
+	function iorg_check_nonce( $key, $method = 'post' ) {
+		if ( ! in_array( $method, array( 'post', 'get' ) ) ) {
+			$method = 'post';
+		}
 
-if ( ! function_exists( 'iorg_save_meta_for_campaign' ) ) :
-	function iorg_save_meta_for_campaign() {
+		if ( empty( ${ '_' . strtoupper( $method ) }[ $key ] ) ) {
+			return false;
+		}
 
-	}
-endif;
+		$nonce = ${ '_' . strtoupper( $method ) }[ $key ];
 
-if ( ! function_exists( 'iorg_save_meta_for_press' ) ) :
-	function iorg_save_meta_for_press() {
+		if ( wp_verify_nonce( $nonce, $key ) ) {
+			return true;
+		}
 
-	}
-endif;
-
-if ( ! function_exists( 'iorg_save_meta_for_freeservice' ) ) :
-	function iorg_save_meta_for_freeservice() {
-
+		return false;
 	}
 endif;
 
@@ -208,10 +172,16 @@ if ( ! function_exists( 'iorg_translated_meta_fields' ) ) :
 	 * @return array list of Babble_Meta_Field_* objects
 	 */
 	function iorg_translated_meta_fields( array $fields, WP_Post $post) {
+		$fields['Subtitle'] = new Babble_Meta_Field_Text( $post, 'Subtitle', 'Subtitle' );
 
+		// hook here to add our Fieldmanager Custom Fields -- instead of relying
+		// on the Babble built in types
+
+		return $fields;
 	}
-	add_filter( 'bbl_translated_meta_fields', 'iorg_translated_meta_fields', 10, 2 );
 endif;
+add_filter( 'bbl_translated_meta_fields', 'iorg_translated_meta_fields', 10, 2 );
+
 
 if ( ! function_exists( 'iorg_bbl_sync_meta_key' ) ) :
 	/**
@@ -223,7 +193,11 @@ if ( ! function_exists( 'iorg_bbl_sync_meta_key' ) ) :
 	 */
 	function iorg_bbl_sync_meta_key( $sync, $meta_key ) {
 		// this is the list of items that should not be auto synced across translations
-		$sync_not = array();
+		$sync_not = array(
+			'home-content-section',
+			'Subtitle',
+			// 'after_title_fm_fields',
+		);
 
 		if ( in_array( $meta_key, $sync_not ) ) {
 			return false;
@@ -231,5 +205,5 @@ if ( ! function_exists( 'iorg_bbl_sync_meta_key' ) ) :
 
 		return $sync;
 	}
-	add_filter( 'bbl_sync_meta_key', 'iorg_bbl_sync_meta_key', 10, 2 );
 endif;
+add_filter( 'bbl_sync_meta_key', 'iorg_bbl_sync_meta_key', 99, 2 );
