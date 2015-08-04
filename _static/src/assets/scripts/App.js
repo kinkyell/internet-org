@@ -17,8 +17,8 @@ define(function(require, exports, module) { // jshint ignore:line
     var StateStack = require('services/StateStack');
     var HomeState = require('states/HomeState');
     var PanelState = require('states/PanelState');
-    var NarrativeView = require('views/NarrativeView');
     var SearchState = require('states/SearchState');
+    var NarrativeView = require('views/NarrativeView');
     var HeaderView = require('views/HeaderView');
     var SelectView = require('views/SelectView');
     var eventHub = require('services/eventHub');
