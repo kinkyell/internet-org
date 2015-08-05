@@ -36,7 +36,6 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.setupHandlers = function() {
         this._handleStateChange = this._onStateChange.bind(this);
-        this._handleBreakpointChange = this._onBreakpointChange.bind(this);
         this._handleBgClick = this._onBgClick.bind(this);
         this._handleEscPress = this._onEscPress.bind(this);
         return this;
@@ -75,17 +74,6 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Performs measurements and applys any positioning style logic.
-     * Should be run anytime the parent layout changes.
-     *
-     * @method layout
-     * @returns {MenuView}
-     * @public
-     */
-    proto.layout = function() {
-    };
-
-    /**
      * Performs any event binding to handlers.
      *
      * @method onEnable
@@ -94,7 +82,6 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.onEnable = function() {
         eventHub.subscribe('StateStack:change', this._handleStateChange);
-        breakpointManager.subscribe(this._handleBreakpointChange);
     };
 
     /**
@@ -106,7 +93,6 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.onDisable = function() {
         eventHub.unsubscribe('StateStack:change', this._handleStateChange);
-        breakpointManager.unsubscribe(this._handleBreakpointChange);
     };
 
     /**
@@ -230,19 +216,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onStateChange = function(states) {
-        if (this.isOpen) {
-            this.close();
-        }
-    };
-
-    /**
-     * Sets the menu state after breakpoint change
-     *
-     * @method _onBreakpointChange
-     * @private
-     */
-    proto._onBreakpointChange = function() {
-
+        this.close();
     };
 
     /**

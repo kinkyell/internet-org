@@ -58,17 +58,6 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Performs measurements and applys any positioning style logic.
-     * Should be run anytime the parent layout changes.
-     *
-     * @method layout
-     * @returns {SearchView}
-     * @public
-     */
-    proto.layout = function() {
-    };
-
-    /**
      * Performs any event binding to handlers.
      *
      * @method onEnable
@@ -96,6 +85,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * Toggles menu
      *
      * @method toggle
+     * @fires Search:toggle
      * @public
      */
     proto.toggle = function() {
@@ -110,7 +100,7 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Toggles menu
+     * Clears menu input and closes
      *
      * @method clear
      * @public
@@ -127,10 +117,10 @@ define(function(require, exports, module) { // jshint ignore:line
     //////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * Sets the menu state after state change
+     * Toggle search menu on click
      *
      * @method _onTriggerClick
-     * @param {Array} states Active states
+     * @param {ClickEvent} event Click event
      * @private
      */
     proto._onTriggerClick = function(event) {
@@ -143,7 +133,7 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Sets the menu state after breakpoint change
+     * Clear the input when menu closes
      *
      * @method _onMenuClose
      * @private

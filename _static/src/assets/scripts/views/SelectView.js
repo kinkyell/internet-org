@@ -57,6 +57,8 @@ define(function(require, exports, module) { // jshint ignore:line
         this._isAnimating = false;
 
         this.$menu = $('<div class="' + this._options.prefix + '-menu"></div>');
+
+        // create options
         Array.prototype.forEach.call(this.element.options, function(el) {
             var $el = $('<div class="' + this._options.prefix + '-menu-item" tabIndex="0"></div>');
             var $textWrap = $('<span></span>').appendTo($el);
@@ -129,6 +131,11 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onDisable = function() {
+        this.$element
+            .off('change', this._handleChange)
+            .off('mousedown keydown', this._handleTriggerClick);
+        this.$menu.off('click', '.' + this._options.prefix + '-menu-item', this._handleItemClick);
+        breakpointManager.unsubscribe(this._handleBreakpointChange);
     };
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -140,6 +147,7 @@ define(function(require, exports, module) { // jshint ignore:line
      *
      * @method _onChange
      * @param {ChangeEvent} event Select change event
+     * @fires SelectView:change
      * @private
      */
     proto._onChange = function(event) {
@@ -151,7 +159,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * Rerender after item click
      *
      * @method _onItemClick
-     * @param {ChangeEvent} event Select change event
+     * @param {ClickEvent} event Item click event
+     * @fires SelectView:change
      * @private
      */
     proto._onItemClick = function(event) {
@@ -167,7 +176,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * Rerender after trigger click
      *
      * @method _onTriggerClick
-     * @param {ChangeEvent} event Select change event
+     * @param {ClickEvent} event Trigger click event
      * @private
      */
     proto._onTriggerClick = function(event) {
@@ -186,10 +195,9 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Rerender after trigger click
+     * Cleanup after menu is closed
      *
      * @method _onMenuClose
-     * @param {ChangeEvent} event Select change event
      * @private
      */
     proto._onMenuClose = function() {
@@ -206,10 +214,9 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Rerender after trigger click
+     * Setup after menu is open
      *
      * @method _onMenuOpen
-     * @param {ChangeEvent} event Select change event
      * @private
      */
     proto._onMenuOpen = function() {
@@ -225,10 +232,10 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Rerender after trigger click
+     * Close select if body is clicked
      *
      * @method _onBodyClick
-     * @param {ChangeEvent} event Select change event
+     * @param {ClickEvent} event Body click event
      * @private
      */
     proto._onBodyClick = function(event) {
@@ -238,10 +245,10 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Rerender after trigger click
+     * Handle key presses while open
      *
      * @method _onBodyKey
-     * @param {ChangeEvent} event Select change event
+     * @param {KeyboardEvent} event Key press event
      * @private
      */
     proto._onBodyKey = function(event) {
@@ -285,6 +292,7 @@ define(function(require, exports, module) { // jshint ignore:line
      *
      * @method _onOptionConfirm
      * @param {ChangeEvent} event Select change event
+     * @fires SelectView:change
      * @private
      */
     proto._onOptionConfirm = function() {

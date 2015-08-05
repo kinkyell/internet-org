@@ -8,6 +8,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var tween = require('gsap-tween');
 
+    // construct a promise that resolves on tween complete
     function getPromise(method) {
         return function(element, duration, opts) {
             var complete = opts.onComplete;
@@ -23,6 +24,7 @@ define(function(require, exports, module) { // jshint ignore:line
         };
     }
 
+    // enable to and from methods
     return {
         to: getPromise('to'),
         from: getPromise('from')
