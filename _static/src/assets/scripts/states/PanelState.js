@@ -19,6 +19,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * Manages the stack of active states
      *
      * @class PanelState
+     * @param {Object} options State configuration options
      * @extends BasicState
      * @constructor
      */

@@ -14,6 +14,8 @@ define(function(require, exports, module) { // jshint ignore:line
      *
      * @class SelectView
      * @param {jQuery} $element A reference to the containing DOM element.
+     * @param {Object} options Select configuration options
+     * @param {String} options.prefix Css selector prefix
      * @constructor
      */
     var SelectView = function($element, options) {

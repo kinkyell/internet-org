@@ -17,6 +17,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * Manages search state
      *
      * @class SearchState
+     * @param {Object} options State configuration options
      * @extends BasicState
      * @constructor
      */

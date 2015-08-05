@@ -11,12 +11,13 @@ define(function(require, exports, module) { // jshint ignore:line
      * Manages home state
      *
      * @class HomeState
+     * @param {Object} options State configuration options
      * @extends BasicState
      * @constructor
      */
     var HomeState = function(options) {
         this.invertRight = true;
-        BasicState.call(this);
+        BasicState.call(this, options);
     };
 
     HomeState.prototype = Object.create(BasicState.prototype);
