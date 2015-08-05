@@ -29,7 +29,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onEnable = function() {
-        // alt carousels
+        // [Docs](http://skidding.github.io/dragdealer/)
         this.inst = new Dragdealer(this.element.id, {
             steps: 5,
             x: 0,
