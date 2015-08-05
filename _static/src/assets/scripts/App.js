@@ -20,6 +20,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var SearchState = require('states/SearchState');
     var HeaderView = require('views/HeaderView');
     var SelectView = require('views/SelectView');
+    var LanguageView = require('views/LanguageView');
 
     var eventHub = require('services/eventHub');
     var assetLoader = require('services/assetLoader');
@@ -68,6 +69,8 @@ define(function(require, exports, module) { // jshint ignore:line
         $('select.js-select').each(function(idx, el) {
             return new SelectView($(el));
         });
+
+        this.langView = new LanguageView($('#js-LanguageView'));
 
         this._preloadImages();
     };

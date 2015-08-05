@@ -9,7 +9,6 @@ define(function(require, exports, module) { // jshint ignore:line
     var tweenAsync = require('util/tweenAsync');
     var $ = require('jquery');
     var breakpointManager = require('services/breakpointManager');
-    var eventHub = require('services/eventHub');
 
     // speed of shift and feature transitions
     var TRANSITION_SPEED = 0.5; // in seconds
@@ -21,7 +20,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @constructor
      */
     var ViewWindow = function() {
-        this._init()
+        this._init();
     };
 
     /**
