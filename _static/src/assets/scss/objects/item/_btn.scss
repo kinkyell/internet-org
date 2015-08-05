@@ -7,7 +7,6 @@
     display: inline-block;
     border: 0;
     padding: 22px;
-    max-width: 480px;
     width: 100%;
     box-sizing: border-box;
     font-family: $FONT_SANS;
@@ -194,4 +193,10 @@
     background-size: cover;
     background-repeat: no-repeat;
 
+}
+
+@include breakpoint(MD) {
+    .btn {
+        max-width: 480px;
+    }
 }

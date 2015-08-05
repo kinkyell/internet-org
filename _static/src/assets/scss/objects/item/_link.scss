@@ -17,6 +17,10 @@
     padding-right: 35px;
 }
 
+.link_sm {
+    font-size: 16px;
+}
+
 .link:after,
 .link:before {
     @include transition(all 0.15s ease-in-out);
@@ -79,6 +83,17 @@
 }
 
 .link_twoArrows:hover:before { background-color: transparent; }
+
+.link_inline {
+    text-transform: none;
+    padding-right: 0;
+}
+
+.link_inline:after,
+.link_inline:before {
+    content: none;
+}
+
 
 // THEME CLASSES by contectual or chain selection
 
