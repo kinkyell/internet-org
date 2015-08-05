@@ -3,10 +3,8 @@
 
  common content structure useded throughout
 ------------------------------------------------------------------------ */
-
 .topicBlock {
 	text-align: center;
-	margin-top: $SPACE_x2;
 	position: relative;
 }
 
@@ -15,19 +13,7 @@
 }
 
 .topicBlock-hd {
-	font-family: $FONT_SERIF;
-	font-size: 40px;
-	line-height: 1.145833;
-	font-weight: 500;
-}
-
-.topicBlock-hd_plus {
-	font-size: 48px;
-}
-
-.topicBlock-hd_mega {
-	font-size: 58px;
-	line-height: 0.85;
+	margin-bottom: $SPACE_x2;
 }
 
 .topicBlock-hd:after {
@@ -36,7 +22,6 @@
 	height: 4px;
 	width: 40px;
 	position: relative;
-	top: -15px;
 	text-align: center;
 	background-color: $CLR_ACCENT;
 }
@@ -50,21 +35,12 @@
 .theme-appraoch .topicBlock-hd:after,
 .topicBlock-hd_themeApproach:after { background-color: $CLR_APPROACH; }
 
-.topicBlock-subHd {
-	font-family: $FONT_SERIF;
-	font-style: italic;
-	font-size: 22px;
-	line-height: 1.363636;
-	color: $CLR_GRAY;
-	padding-top: 10px;
+.topicBlock-preHd {
 	margin-bottom: $SPACE_x1;
 }
 
-.topicBlock-bd {
-	font-family: $FONT_SANS;
-	font-size: 18px;
-	line-height: 1.666667;
-	color: $CLR_GRAY;
+.topicBlock-subHd {
+	margin-bottom: $SPACE_x1;
 }
 
 .topicBlock-cta {

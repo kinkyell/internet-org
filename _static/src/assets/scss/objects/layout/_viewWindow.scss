@@ -32,8 +32,11 @@ Layout for paneled views
 
 .viewWindow-panel-content-inner {
     min-height: 100%;
-    // padding: 80px 20px 20px;
     box-sizing: border-box;
+}
+
+.viewWindow-panel-content-inner_home {
+    height: 100%;
 }
 
 .viewWindow.isShifted {

@@ -12,3 +12,18 @@
         @media (min-width: $BP_LG) { @content; } // 768px
     }
 }
+
+@mixin vertical-align() {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@mixin contain() {
+    width: 82.5%;
+    margin: 0 auto;
+
+    @include breakpoint(MD) {
+        width: 75%;
+    }
+}

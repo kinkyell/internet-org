@@ -1,31 +1,118 @@
 /* ---------------------------------------------------------------------
  Narrative
 ------------------------------------------------------------------------ */
+@warn "for testing only";
+
 .narrative {
-    width: 100vw;
-    height: 100vh;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .narrative-section {
-    width: 100vw;
-    height: 100vh;
-    background-image: url("http://placehold.it/400x700");
-    background-size: cover;
-    background-repeat: no-repeat;
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
-.narrative-section-bd {
-    height: 40vh;
+.narrative-section.isActive {
+    z-index: 1;
+}
+
+.narrative-section-slides {
+    height: 100%;
+    overflow: hidden;
+}
+
+.narrative-section-slides-item {
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("http://placekitten.com/g/800");
+}
+
+.narrative-section-slides-item-bd {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 60%;
     padding: 24px;
     background-color: #efede5;
 }
 
+.narrative-section-bd {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: table;
+    width: 100%;
+    height: 48%;
+    background-color: #efede4;
+}
+
+.narrative-section-bd-inner {
+    display: table-cell;
+    vertical-align: middle;
+    padding: $SPACE_x4 80px;
+}
+
+.narrative-progress {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    opacity: 1;
+    transition: opacity 0.25s ease-out;
+}
+
+.narrative-progress > * {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    transition: background-color 0.25s ease-out;
+}
+
+.narrative-progress > * + * {
+    margin-top: 6px;
+}
+
+.narrative-progress > *.isActive:nth-child(1) { background-color: #ffcc02; }
+.narrative-progress > *.isActive:nth-child(2) { background-color: #9d25a0; }
+.narrative-progress > *.isActive:nth-child(3) { background-color: #fa5cb6; }
+.narrative-progress > *.isActive:nth-child(4) { background-color: #ff6b00; }
+.narrative-progress > *.isActive:nth-child(5) { background-color: #ffcc02; }
+
+.narrative-progress_isHidden {
+    opacity: 0;
+}
+
 @include breakpoint(MD) {
+    .narrative {
+        background: url(../media/images/icons/io-mark-bg.svg) no-repeat $CLR_GRAY_LIGHTER;
+        background-position: -725px top;
+        background-size: 1450px 2035px;
+    }
+
+    .narrative-section {
+        position: absolute;
+    }
+
+    .narrative-section:not(.isActive) {
+        display: none;
+    }
+
     .narrative-section-bd {
-        width: 50vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         padding: 24px;
-        background-color: #efede5;
         box-sizing: border-box;
+        background-color: transparent;
+    }
+
+    .narrative-section-slides-item {
+        display: none;
     }
 }

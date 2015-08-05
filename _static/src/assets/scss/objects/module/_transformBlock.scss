@@ -1,0 +1,40 @@
+/* ---------------------------------------------------------------------
+ Statement Block
+
+ Content structure used in narrative sections
+------------------------------------------------------------------------ */
+.transformBlock {
+    position: relative;
+}
+
+.transformBlock-pre {
+    position: relative; // For pseudo positioning
+    font-family: $FONT_SANS;
+    font-weight: 400; // TODO: REMOVE ONCE Web Fonts are in place
+    font-size: 28px;
+    line-height: 1.875;
+    color: $CLR_GRAY;
+}
+
+.transformBlock-pre:before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    height: 4px;
+    width: 40px;
+    top: -24px;
+    text-align: center;
+    background-color: $CLR_ACCENT;
+}
+
+.transformBlock-pre_themeImpact:before { background-color: $CLR_IMPACT; }
+.transformBlock-pre_themeMission:before { background-color: $CLR_MISSION; }
+.transformBlock-pre_themeApproach:before { background-color: $CLR_APPROACH; }
+
+.transformBlock-hd {
+
+}
+
+.transformBlock-bd {
+
+}

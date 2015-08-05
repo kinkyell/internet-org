@@ -41,6 +41,7 @@ require.config({
         stark: '../vendor/starkjs/dist/amd',
         promise: '../vendor/es6-promise/promise',
         'gsap-cssPlugin': '../vendor/gsap/src/uncompressed/plugins/CSSPlugin',
+        'gsap-scrollToPlugin': '../vendor/gsap/src/uncompressed/plugins/ScrollToPlugin',
         'gsap-tween': '../vendor/gsap/src/uncompressed/TweenLite',
         'gsap-timeline': '../vendor/gsap/src/uncompressed/TimelineLite',
         'jquery-touchswipe': '../vendor/jquery-touchswipe/jquery.touchSwipe',

@@ -3,16 +3,38 @@
 
  Body Copy styles
 ------------------------------------------------------------------------ */
-
 .bdcpy {
     font-family: $FONT_SANS;
     font-weight: 400; // TODO: REMOVE ONCE Web Fonts are in place
-    font-size: 18px;
-    line-height: 1.875;
+    font-size: 14px;
+    line-height: 1.666666667;
     color: $CLR_GRAY;
 }
 
+.bdcpy_lg {
+    font-size: 21px;
+    line-height: 1.714285714;
+}
+
 .bdcpy_sm {
-    font-size: 16px;
+    font-size: 12px;
     line-height: 1.666667;
+}
+
+.mix-bdcpy_light {
+    color: $CLR_GRAY_LIGHT;
+}
+
+@include breakpoint(MD) {
+    .bdcpy {
+        font-size: 18px;
+    }
+
+    .bdcpy_lg {
+        font-size: 28px;
+    }
+
+    .bdcpy_sm {
+        font-size: 16px;
+    }
 }
