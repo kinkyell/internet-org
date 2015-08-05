@@ -11,7 +11,7 @@ module.exports = function(grunt) {
                 version: '<%= pkg.version %>',
                 url: '<%= pkg.homepage %>',
                 options: {
-                    paths: '<%= env.DIR_SRC %>',
+                    paths: '<%= env.DIR_SRC %>/assets/scripts',
                     outdir: '<%= env.DIR_DOCS %>',
                     themedir: './node_modules/nerdery-yuidoc-theme'
                 }
