@@ -18,10 +18,9 @@ define(function(require, exports, module) { // jshint ignore:line
     var HomeState = require('states/HomeState');
     var PanelState = require('states/PanelState');
     var SearchState = require('states/SearchState');
+    var NarrativeView = require('views/NarrativeView');
     var HeaderView = require('views/HeaderView');
     var SelectView = require('views/SelectView');
-    var NarrativeView = require('views/NarrativeView');
-
     var eventHub = require('services/eventHub');
     var assetLoader = require('services/assetLoader');
     var viewWindow = require('services/viewWindow');
@@ -65,6 +64,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.viewWindow = viewWindow;
 
         this._setupStates();
+
         this.narrativeView = new NarrativeView($('.js-narrativeView'));
 
         $('select.js-select').each(function(idx, el) {

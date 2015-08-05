@@ -12,3 +12,10 @@
         @media (min-width: $BP_LG) { @content; } // 768px
     }
 }
+
+@mixin contain() {
+    width: 75%;
+    max-width: 480px;
+    margin: 0 auto;
+    border: 1px solid red;
+}
