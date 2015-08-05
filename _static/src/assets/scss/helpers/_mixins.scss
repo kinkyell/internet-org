@@ -13,9 +13,17 @@
     }
 }
 
+@mixin vertical-align() {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 @mixin contain() {
-    width: 75%;
-    max-width: 480px;
+    width: 82.5%;
     margin: 0 auto;
-    border: 1px solid red;
+
+    @include breakpoint(MD) {
+        width: 75%;
+    }
 }
