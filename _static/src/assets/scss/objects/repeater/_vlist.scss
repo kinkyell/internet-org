@@ -3,7 +3,11 @@
 ------------------------------------------------------------------------ */
 .vList > * {
     display: block;
-    margin-bottom: $SPACE_x1;
+    // margin-bottom: $SPACE_x1;
+}
+
+.vList > * + * {
+	margin-top: $SPACE_x1;	
 }
 
 .vList_divided > * {
