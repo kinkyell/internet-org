@@ -61,7 +61,8 @@ if ( ! function_exists( 'internet_org_setup' ) ) :
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'primary' => esc_html__( 'Primary Menu', 'internet_org' ),
+			'primary'         => esc_html__( 'Primary Menu', 'internet_org' ),
+			'primary-sub-nav' => esc_html__( 'Primary Menu Sub Nav', 'internet_org' ),
 		) );
 
 		/*
@@ -127,34 +128,6 @@ function internet_org_widgets_init() {
 }
 add_action( 'widgets_init', 'internet_org_widgets_init' );
 
-/**
- * This will fix the template being used to render content, there are instances
- * where single.php is being used for page (mainly the home page) when it should
- * be using the page.php (or front-page.php) template
- *
- * @param string $singleTemplate initial template to be used (default)
- * @return string single template
- */
-function iorg_correct_template_selection( $singleTemplate ) {
-	global $post;
-
-	switch ( $post->post_type ) {
-		case 'page':
-			$singleTemplate = dirname( __FILE__ ) . '/page.php';
-			if ( 'home' === $post->post_name ) {
-				$singleTemplate = dirname( __FILE__ ) . '/front-page.php';
-			}
-			break;
-		default:
-			//template remains unchanged
-			break;
-	}
-
-	return $singleTemplate;
-}
-add_filter( 'single_template', 'iorg_correct_template_selection' );
-
-
 if ( ! function_exists( 'iorg_extend_search_post_type_range' ) ) :
 	/**
 	 * Add our custom post types to the search query
@@ -163,7 +136,10 @@ if ( ! function_exists( 'iorg_extend_search_post_type_range' ) ) :
 	 * @return mixed the possibly updated search query
 	 */
 	function iorg_extend_search_post_type_range( $query ) {
-		if ( isset( $_GET['s'] ) && $query->is_main_query() ) {
+		global $wp_query;
+
+		$search = get_query_var( 's', null );
+		if ( ! empty( $search ) && $query->is_main_query() ) {
 			$query->set(
 				'post_type',
 				array(
