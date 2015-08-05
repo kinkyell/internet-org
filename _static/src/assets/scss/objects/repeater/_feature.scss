@@ -20,8 +20,8 @@ Feature content module
     margin-top: $SPACE_x1;   
 }
 
-.feature-hd {
-    // margin-bottom: 34px;
+.feature-date {
+    margin-top: 5px;
 }
 
 .feature-media {
@@ -45,7 +45,7 @@ Feature content module
 }
 
 .feature-cta {
-    margin-top: 14px; // To compensate for the extra white space added
+    margin-top: 14px; /* To compensate for the extra white space added */
 }
 
 .feature-bd {}
