@@ -5,23 +5,97 @@ carousel layout
 ------------------------------------------------------------------------ */
 .carousel {
     position: relative;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
-    max-width: 350px;
+    // max-width: 490px;
+    // max-height: 340px;
 }
 
 .carousel-handle {
     position: relative;
     width: 500%;
     overflow: hidden;
+    font-size: 0;
 }
 
 .carousel-handle-slide {
-    float: left;
+    display: inline-block; // Seting up vertical and horizontal alignment
+    vertical-align: middle; // Vertically align landscape ratio images
+    text-align: center; // Center align portrait ratio images
     width: 20%;
     box-sizing: border-box;
     padding: 0 5px;
 }
+
+.carousel-handle-slide-media {
+    background-color: $CLR_GRAY_LIGHTER;
+}
+
+.carousel-handle-slide-media > img {
+    // width: 100%;
+    // max-width: 480px;
+    max-height: 250px;
+}
+
+.carousel-handle-slide-media > img {
+    display: inline-block;
+    vertical-align: middle;
+    width: auto;
+    margin: 0 auto;
+}
+
+.carousel-handle-slide-media {
+    height: 280px;
+    line-height: 280px;
+}
+
+.carousel-handle-slide-caption {
+    font-family: $FONT_SANS;
+    font-size: 18px;
+    line-height: 1.666667;
+    text-align: left;
+    color: $CLR_GRAY;
+}
+
+.carousel-captionBox {
+    position: relative;
+    overflow: hidden;
+    margin-top: 18px;
+}
+
+.carousel-captionBox > * {
+    top: 100px;
+    // transition: opacity 0.5s ease-in-out, top 1s ease-in-out;
+    // transition: all 1s ease-in-out;
+}
+
+.carousel-captionBox > *.isNotActive {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    animation: fadeOut 1s;
+}
+
+.carousel-captionBox > *.isActive {
+    // position: absolute;
+    top: 0;
+    opacity: 1;
+    animation: fadeIn 2s;
+}
+
+
+@keyframes fadeOut {
+  0%   { opacity: 1; }
+  50%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  0%   { opacity: 0; }
+  25%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 .carousel_active {
     white-space: nowrap;
 }
@@ -41,3 +115,28 @@ carousel layout
 .carousel[data-cols="1"] .carousel-slide { width: calc(100% / 1); }
 .carousel[data-cols="2"] .carousel-slide { width: calc(100% / 2); }
 .carousel[data-cols="3"] .carousel-slide { width: calc(100% / 3); }
+
+@include breakpoint(SM) {
+    .carousel-handle-slide-media > img {
+        max-height: 280px;
+    }
+}
+
+@include breakpoint(MD) {
+    .carousel {
+        position: relative;
+        width: 490px;
+    }
+    .carousel-handle-slide-media {
+        height: 340px;
+        line-height: 340px;
+    }
+    .carousel-handle-slide-media > img {
+        max-width: 480px;
+        max-height: 340px;
+        // display: inline-block;
+        // vertical-align: middle;
+        // width: auto;
+        // margin: 0 auto;
+    }
+}

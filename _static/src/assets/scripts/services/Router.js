@@ -13,6 +13,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var ROUTER_BACK_SELECTOR = '.js-stateBack';
     var ROUTER_SWAP_SELECTOR = '.js-stateSwap';
     var ROUTER_HOME_SELECTOR = '.js-stateHome';
+    var ROUTER_DEFAULT_SELECTOR = '.js-stateDefault';
 
     /**
      * Manages the stack of active states
@@ -64,6 +65,36 @@ define(function(require, exports, module) { // jshint ignore:line
         $(document.body).on('click', ROUTER_BACK_SELECTOR, this._handleStateBack);
         $(document.body).on('click', ROUTER_SWAP_SELECTOR, this._handleStateSwap);
         $(document.body).on('click', ROUTER_HOME_SELECTOR, this._handleStateHome);
+
+        this._loadDefaultRoute();
+    };
+
+    /**
+     * Loads default route info
+     *
+     * @method _loadDefaultRoute
+     * @param {Object} state State info from previous _currentStates
+     * @private
+     */
+    Router.prototype._loadDefaultRoute = function() {
+        var routeEl = $(ROUTER_DEFAULT_SELECTOR)[0];
+
+        if (!routeEl) {
+            return;
+        }
+
+        var routePath = routeEl.getAttribute('data-route');
+
+        this._currentStates.push({
+            path: routePath,
+            type: routeEl.getAttribute('data-type'),
+            image: routeEl.getAttribute('data-image'),
+            title: routeEl.getAttribute('data-title'),
+            theme: routeEl.getAttribute('data-theme')
+        });
+
+        this.historyManager.replaceState(this._currentStates, null, routePath);
+        eventHub.publish('Router:stateChange', this._currentStates, [], true);
     };
 
     /**
@@ -151,7 +182,10 @@ define(function(require, exports, module) { // jshint ignore:line
         var url = '/';
         event.preventDefault();
 
-        if (!len || prevStates[len - 1].type === 'home') {
+        if (
+            (len && prevStates[len - 1].type === 'home') ||
+            (!len && !this._initialState)
+        ) {
             return;
         }
 

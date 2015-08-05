@@ -7,6 +7,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var breakpointManager = require('services/breakpointManager');
     var extend = require('stark/object/extend');
     var animSpeeds = require('appConfig').animationSpeeds;
+    var eventHub = require('services/eventHub');
 
     /**
      * A view for displaying main menu
@@ -68,7 +69,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 $textWrap.text(el.innerText);
             }
 
-            if (el === this.element.selectedOptions[0]) {
+            if (el === this._getSelected()) {
                 $el.addClass('isSelected');
             }
 
@@ -143,6 +144,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._onChange = function(event) {
         this._render();
+        eventHub.publish('SelectView:change', this.element, this._getSelected().value);
     };
 
     /**
@@ -157,6 +159,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$element.children().removeAttr('selected');
         this.element.options[idx].setAttribute('selected', '');
         this._render();
+        eventHub.publish('SelectView:change', this.element, this._getSelected().value);
         this._toggleMenu();
     };
 
@@ -179,8 +182,6 @@ define(function(require, exports, module) { // jshint ignore:line
         }
 
         event.preventDefault();
-
-
         this._toggleMenu();
     };
 
@@ -214,7 +215,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._onMenuOpen = function() {
         this.$wrap.addClass('isOpen');
 
-        var idx = this.element.selectedOptions[0].index;
+        var idx = this._getSelected().index;
         this.$menu.children().eq(idx)[0].focus();
         this._highlightedIdx = idx;
 
@@ -291,6 +292,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$element.children().removeAttr('selected');
         this.element.options[idx].setAttribute('selected', '');
         this._render();
+        eventHub.publish('SelectView:change', this.element, this._getSelected().value);
         this._toggleMenu();
     };
 
@@ -318,7 +320,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._render = function() {
-        var option = this.element.selectedOptions[0];
+        var option = this._getSelected();
         var displayText = option.getAttribute('data-display');
 
         if (displayText) {
@@ -382,6 +384,17 @@ define(function(require, exports, module) { // jshint ignore:line
         var min = 0;
         this._highlightedIdx = Math.max(Math.min(tryIdx, max), min);
         this.$menu.children().eq(this._highlightedIdx)[0].focus();
+    };
+
+    /**
+     * Get selected option
+     *
+     * @method _getSelected
+     * @returns {HTMLOptionElement} the selected option
+     * @private
+     */
+    proto._getSelected = function() {
+        return this.element.selectedOptions[0] || null;
     };
 
 
