@@ -43,7 +43,7 @@
 
     <!-- STYLESHEETS -->
     {{#block "styles"}}
-        <link rel="stylesheet" media="screen, projection" href="assets/styles/screen.css" />
+        <link rel="stylesheet" media="screen, projection" href="{{ env.URL_BASE }}assets/styles/screen.css" />
     {{/block}}
 
     <!-- POLYFILLS -->
@@ -63,10 +63,10 @@
 
     <!-- JAVASCRIPT -->
     {{#block "scriptsBody"}}
-        <script src="assets/vendor/jquery/jquery.min.js"></script><!-- replace by WP version -->
+        <script src="{{ env.URL_BASE }}assets/vendor/jquery/jquery.min.js"></script><!-- replace by WP version -->
         <!-- build:js assets/scripts/require.js -->
-        <script src="assets/vendor/requirejs/require.js"></script>
-        <script src="assets/scripts/config.js"></script>
+        <script src="{{ env.URL_BASE }}assets/vendor/requirejs/require.js"></script>
+        <script src="{{ env.URL_BASE }}assets/scripts/config.js"></script>
         <!-- endbuild -->
         <script>
             /**
@@ -127,7 +127,7 @@
              * @type String
              * @final
              */
-            SETTINGS.SCRIPT_PATH = 'assets/scripts/';
+            SETTINGS.SCRIPT_PATH = '{{ env.URL_BASE }}assets/scripts/';
 
             /**
              * Set any RequireJs configuration that is dependent on dynamic

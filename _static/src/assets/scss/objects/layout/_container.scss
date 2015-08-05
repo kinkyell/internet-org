@@ -4,7 +4,5 @@ Container
 wrapper for constraining content to a max width
 ------------------------------------------------------------------------ */
 .container {
-    width: 84%;
-    max-width: 1024px;
-    margin: 0 auto;
+    @include contain();
 }

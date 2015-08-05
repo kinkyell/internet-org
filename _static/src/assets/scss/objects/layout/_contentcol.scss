@@ -14,8 +14,13 @@ Layout for padded columns of content.
 	margin-bottom: 80px;
 }
 
-.contentCol + .contentCol_hasGallery {
-	margin-top: -80px;
+.contentCol + .contentCol_hasGallery,
+.contentCol_hasGallery + .contentCol {
+	margin-top: -10px; // Shimming to compensate for the padding of the hdg class's line-height
+}
+
+.contentCol_hasGallery + .contentCol {
+	padding-top: 0;
 }
 
 @include breakpoint(MD) {

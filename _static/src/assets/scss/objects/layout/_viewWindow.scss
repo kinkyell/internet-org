@@ -27,12 +27,16 @@ Layout for paneled views
     left: 0;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    transform: translateZ(0); // for smoother scrolling on webkit
 }
 
 .viewWindow-panel-content-inner {
     min-height: 100%;
-    // padding: 80px 20px 20px;
     box-sizing: border-box;
+}
+
+.viewWindow-panel-content-inner_home {
+    height: 100%;
 }
 
 .viewWindow.isShifted {

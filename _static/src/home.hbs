@@ -1,50 +1,315 @@
+
 {{#extend "layout"}}
 
     {{#content "body" mode="append"}}
 
-        <div class="stage">
-            <div class="stage-panel">
-                <div class="narrative">
-                    <div class="narrative-section">
-                        <div class="narrative-section-bd">
-                            <h2>HOME</h2>
-                            <span>Connecting the world</span>
-                            <p>Means conncecting the whole world, not just some of us</p>
+        <div class="viewWindow js-viewWindow">
+            <div class="viewWindow-panel isActive">
+                <div class="viewWindow-panel-content">
+                    <div class="viewWindow-panel-content-inner viewWindow-panel-content-inner_home">
+
+                        <div class="narrative js-narrativeView">
+                            <div class="narrative-section">
+                                <div class="narrative-section-slides">
+                                    <div class="narrative-section-slides-item" style="background-image: url('assets/media/uploads/home.jpg')"></div>
+                                </div>
+                                <div class="narrative-section-bd">
+                                    <div class="narrative-section-bd-inner">
+
+                                        <div class="transformBlock">
+                                            <div class="transformBlock-pre">
+                                                <span>Internet.org is about</span>
+                                            </div>
+                                            <div class="transformBlock-hd">
+                                                <h2 class="hdg hdg_1">Connecting <br />the world</h2>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="narrative-section">
+                                <div class="narrative-section-slides">
+                                    <div class="narrative-section-slides-item" style="background-image: url('assets/media/uploads/mission.jpg')"></div>
+                                </div>
+                                <div class="narrative-section-bd">
+                                    <div class="narrative-section-bd-inner">
+
+                                        <div class="transformBlock">
+                                            <div class="transformBlock-hd">
+                                                <div class="vr vr_x1">
+                                                    <h2 class="hdg hdg_1">Connecting <br />the world</h2>
+                                                </div>
+                                            </div>
+                                            <div class="transformBlock-bd">
+                                                <div class="vr_x5">
+                                                    <p class="bdcpy bdcpy_lg">means connecting the whole <br />world, not just some of us</p>
+                                                </div>
+                                                <a href="/mission" class="link link_themeMission js-stateLink">Our Mission</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="narrative-section">
+                                <div class="narrative-section-slides">
+                                    <div class="narrative-section-slides-item" style="background-image: url('assets/media/uploads/approach.jpg')"></div>
+                                    <div class="narrative-section-slides-item" style="background-image: url('assets/media/uploads/approach_02.jpg')"></div>
+                                    <div class="narrative-section-slides-item" style="background-image: url('assets/media/uploads/approach_03.jpg')"></div>
+                                </div>
+                                <div class="narrative-section-bd">
+                                    <div class="narrative-section-bd-inner">
+
+                                        <div class="transformBlock">
+                                            <div class="transformBlock-hd">
+                                                <div class="vr vr_x1">
+                                                    <h2 class="hdg hdg_1">Connecting <br />the world</h2>
+                                                </div>
+                                            </div>
+                                            <div class="transformBlock-bd">
+                                                <div class="vr_x5">
+                                                    <p class="bdcpy bdcpy_lg">takes inventing new ways <br />of doing things</p>
+                                                </div>
+                                                <a href="/approach" class="link link_themeApproach js-stateLink">Our Approach</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="narrative-section">
+                                <div class="narrative-section-slides">
+                                    <div class="narrative-section-slides-item" style="background-image: url('assets/media/uploads/impact.jpg')"></div>
+                                    <div class="narrative-section-slides-item" style="background-image: url('assets/media/uploads/impact_02.jpg')"></div>
+                                    <div class="narrative-section-slides-item" style="background-image: url('assets/media/uploads/impact_03.jpg')"></div>
+                                </div>
+                                <div class="narrative-section-bd">
+                                    <div class="narrative-section-bd-inner">
+
+                                        <div class="transformBlock">
+                                            <div class="transformBlock-hd">
+                                                <div class="vr vr_x1">
+                                                    <h2 class="hdg hdg_1">Connecting <br />the world</h2>
+                                                </div>
+                                            </div>
+                                            <div class="transformBlock-bd">
+                                                <div class="vr_x5">
+                                                    <p class="bdcpy bdcpy_lg">is already making a <br />difference</p>
+                                                </div>
+                                                <a href="/impact" class="link link_themeImpact js-stateLink">Our Impact</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="narrative-section">
+                                <div class="narrative-section-slides">
+                                    <div class="narrative-section-slides-item" style="background-image: url('assets/media/uploads/contact.jpg')"></div>
+                                </div>
+                                <div class="narrative-section-bd">
+                                    <div class="narrative-section-bd-inner">
+
+                                        <div class="transformBlock">
+                                            <div class="transformBlock-pre">
+                                                <span>Join us in</span>
+                                            </div>
+                                            <div class="transformBlock-hd">
+                                                <div class="vr vr_x1">
+                                                    <h2 class="hdg hdg_1">Connecting <br />the world</h2>
+                                                </div>
+                                            </div>
+                                            <div class="transformBlock-bd">
+                                                <div class="vr vr_x3">
+                                                    <div class="vr vr_x1">
+                                                        <h3 class="hdg hdg_3">Get involved</h3>
+                                                    </div>
+                                                    <ul class="vList">
+                                                        <li>
+                                                            <a href="#" class="link link_preArrows">Develop for Internet.org Platform</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="link link_preArrows">See our Careers</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="vr vr_x3">
+                                                    <div class="vr vr_x1">
+                                                        <h3 class="hdg hdg_3">Get the latest</h3>
+                                                    </div>
+                                                    <ul class="vList">
+                                                        <li>
+                                                            <a href="#" class="link link_preArrows">Read the Press</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="link link_preArrows">Visit the Facebook Page</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="vr vr_x3">
+                                                    <div class="vr vr_x1">
+                                                        <h3 class="hdg hdg_3">Get in touch</h3>
+                                                    </div>
+                                                    <ul class="vList">
+                                                        <li>
+                                                            <a href="#" class="link link_preArrows">Contact the Internet.org Team</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
-                    <div class="narrative-section">
-                        <div class="narrative-section-bd">
-                            <h2>Mission</h2>
-                            <span>Connecting the world</span>
-                            <p>Means conncecting the whole world, not just some of us</p>
-                        </div>
-                    </div>
-                    <div class="narrative-section">
-                        <div class="narrative-section-bd">
-                            <h2>Approach</h2>
-                            <span>Connecting the world</span>
-                            <p>Means conncecting the whole world, not just some of us</p>
-                        </div>
-                    </div>
-                    <div class="narrative-section">
-                        <div class="narrative-section-bd">
-                            <h2>Impact</h2>
-                            <span>Connecting the world</span>
-                            <p>Means conncecting the whole world, not just some of us</p>
-                        </div>
-                    </div>
-                    <div class="narrative-section">
-                        <div class="narrative-section-bd">
-                            <h2>CONTACT</h2>
-                            <span>Connecting the world</span>
-                            <p>Means conncecting the whole world, not just some of us</p>
+                </div>
+            </div>
+            <div class="viewWindow-panel viewWindow-panel_feature">
+                <div class="viewWindow-panel-content">
+                    <div class="viewWindow-panel-content-inner" style="background-image: url(assets/media/uploads/home.jpg);"></div>
+                </div>
+            </div>
+            <div class="viewWindow-panel viewWindow-panel_story">
+                <div class="viewWindow-panel-content">
+                    <div class="viewWindow-panel-content-inner" style="background-color: #dddddd;">
+                        <div class="vr_x5 theme-approach">
+
+                            <div class="feature"> <!-- TEXT -->
+                                <div class="feature-hd">
+                                    <div class="hdg hdg_2">Text Block</div>
+                                </div>
+                                <div class="feature-bd">
+                                    <p class="bdcpy">
+                                        Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Sus pendisse est nulla, suscipit eu ante vel, vehicula finibus nisi. Integer ut felis purus. Etiam vehicula, ipsum non venenatis feugiat, lorem tellus euismod mi, eu bibendum ligula.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="feature"> <!-- TEXT IMAGE -->
+                                <div class="feature-hd">
+                                    <div class="hdg hdg_2">Text Block with Image</div>
+                                </div>
+                                <div class="feature-bd">
+                                    <p class="bdcpy">
+                                        Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Sus pendisse est nulla, suscipit eu ante vel, vehicula finibus nisi.
+                                    </p>
+                                </div>
+                                <div class="feature-media">
+                                    <img src="//www.placehold.it/480x280" alt="FPO">
+                                </div>
+                            </div>
+
+                            <div class="feature"> <!-- IMAGE TEXT QUOTE -->
+                                <div class="feature-hd">
+                                    <div class="hdg hdg_2">Image, Text and Quote</div>
+                                </div>
+                                <div class="feature-media">
+                                    <img src="//www.placehold.it/480x280" alt="FPO">
+                                </div>
+                                <div class="feature-bd">
+                                    <p class="bdcpy">
+                                        Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Sus pendisse est nulla, suscipit eu ante vel, vehicula finibus nisi.
+                                    </p>
+                                </div>
+                                <blockquote class="quote">
+                                    <div class="quote-statement">
+                                        <p>This is a quote adipiscing elitasie sus pendisse est nulla, suscipit eante finibus nisipiscing lorem ipsum.</p>
+                                    </div>
+                                    <div class="quote-author">Jenny Johannesson</div>
+                                </blockquote>
+                            </div>
+
+                            <div class="feature"> <!-- VIDEO TEXT LINK -->
+                                <div class="feature-hd">
+                                    <div class="hdg hdg_2">Video, Text and Link</div>
+                                </div>
+                                <div class="feature-media">
+                                    <img src="//www.placehold.it/480x280" alt="FPO">
+                                </div>
+                                <div class="feature-bd">
+                                    <p class="bdcpy">
+                                        Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Sus pendisse est nulla, suscipit eu ante vel, vehicula finibus nisi.
+                                    </p>
+                                </div>
+                                <div class="feature-cta">
+                                    <a class="link" href="">Link</a>
+                                </div>
+                            </div>
+
+                            <div class="feature"> <!-- IMAGE w/CAPTION -->
+                                <div class="feature-hd">
+                                    <div class="hdg hdg_2">Image with Caption</div>
+                                </div>
+                                <div class="feature-media">
+                                    <img src="//www.placehold.it/480x280" alt="FPO">
+                                    <div class="feature-media-caption">
+                                       <p>Caption lorem ipsum dolor sit amet, consectetur adipiscing elit suspendisse. </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="feature"> <!-- VIDEO TEXT LINK -->
+                                <div class="feature-hd">
+                                    <div class="hdg hdg_2">Video, Text and Link</div>
+                                </div>
+                                <div class="feature-media">
+                                    <div class="contentOnMedia">
+                                        <img class="contentOnMedia-media" src="//www.placehold.it/480x280">
+                                        <div class="contentOnMedia-details">
+                                            <div class="contentOnMedia-details-title">Video Title</div>
+                                            <div class="contentOnMedia-details-duration">00:00</div>
+                                        </div>
+                                        <a href="" class="contentOnMedia-link contentOnMedia-link_ct">
+                                            <span class="circleBtn circleBtn_play"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="feature-bd">
+                                    <p class="bdcpy">
+                                        Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Sus pendisse est nulla, suscipit eu ante vel, vehicula finibus nisi.
+                                    </p>
+                                </div>
+                                <div class="feature-cta">
+                                    <a class="link" href="">Link</a>
+                                </div>
+                            </div>
+
+                            <!-- TODO: Define and build gallery Module
+                                Functionality:
+                                    - Auto rotate?
+                                    - Text and Images or just Images rotate?
+                                    - Limit on nuber of slides? (2 shown in layout)
+                                    - Media types: Images and/or Videos?
+                                    -
+                            -->
+                            <div class="feature"> <!-- GALLERY -->
+                                <div class="feature-hd">
+                                    <div class="hdg hdg_2">Gallery <span class="hdg hdg_5 mix-hdg_gray">(TODO: Define Features)</span></div>
+                                </div>
+                                <div class="feature-media">
+                                    <div class="gallery">
+                                        <img src="//www.placehold.it/480x280" alt="FPO">
+                                    </div>
+                                </div>
+
+                                <div class="feature-bd">
+                                    <p class="bdcpy">
+                                        Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Sus pendisse est nulla, suscipit eu ante vel, vehicula finibus nisi.
+                                    </p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <a href="/test" class="js-stateLink">asdfasdf</a>
 
     {{/content}}
 

@@ -5,11 +5,11 @@ Feature content module
 ------------------------------------------------------------------------ */
 
 .feature + .feature {
-    padding: $SPACE_x2 0;
+    padding: $SPACE_x5 0 0;
 }
 
 .feature > * + * {
-    margin-top: $SPACE_x2;
+    margin-top: $SPACE_x1;
 }
 
 .feature_tight {
@@ -20,8 +20,8 @@ Feature content module
     margin-top: $SPACE_x1;   
 }
 
-.feature-hd {
-    // margin-bottom: 34px;
+.feature-date {
+    margin-top: 5px;
 }
 
 .feature-media {
@@ -45,7 +45,7 @@ Feature content module
 }
 
 .feature-cta {
-    margin-top: 14px; // To compensate for the extra white space added
+    margin-top: 14px; /* To compensate for the extra white space added */
 }
 
 .feature-bd {}

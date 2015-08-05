@@ -11,15 +11,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var breakpointManager = require('services/breakpointManager');
 
     // speed of shift and feature transitions
-    var TRANSITION_SPEED = 0.5; // in seconds
-
-    // util function
-    var _stopAnimating = function(propName, scope) {
-        return function(arg) {
-            scope[propName] = false;
-            return arg;
-        };
-    };
+    var TRANSITION_SPEED = require('appConfig').animationSpeeds.PANEL_SHIFT;
 
     /**
      * Constructor for ViewWindow
@@ -38,15 +30,18 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     ViewWindow.prototype._init = function() {
+        // DOM refs
         this.$element = $('.js-viewWindow');
         this.element = this.$element[0];
         this.$panels = this.$element.children();
         this.$feature = this.$element.find('.viewWindow-panel_feature');
         this.$story = this.$element.find('.viewWindow-panel_story');
+
+        // init properties
+        this._lastFeatureAnimation = Promise.resolve();
+        this._lastStoryAnimation = Promise.resolve();
+        this._lastShiftAnimation = Promise.resolve();
         this._isShifted = false;
-        this._isFeatureAnimating = false;
-        this._isStoryAnimating = false;
-        this._isShiftAnimating = false;
     };
 
     /**
@@ -55,29 +50,29 @@ define(function(require, exports, module) { // jshint ignore:line
      * @method replaceFeatureImage
      * @param {String} imagePath path for image to set as background image
      * @param {String} direction Direction to animate to/from
-     * @return {Promise} will fail if animation fails (alread animating) or resolve when complete
+     * @return {Promise} resolves when finished
      */
     ViewWindow.prototype.replaceFeatureImage = function(imagePath, direction) {
-        var $panel;
+        var self = this;
+        self._lastFeatureAnimation = self._lastFeatureAnimation.then(function() {
+            var $panel;
 
-        if (this._isFeatureAnimating) {
-            return Promise.reject();
-        }
-        this._isFeatureAnimating = true;
+            if (self._featureImage === imagePath) {
+                return Promise.resolve(self.$feature.children());
+            }
 
-        if (this._featureImage === imagePath) {
-            return Promise.resolve(this.$feature.children());
-        }
+            $panel = self._getPanelWrap();
+            $panel.children().css('background-image', 'url(' + imagePath + ')');
+            self._featureImage = imagePath;
 
-        $panel = this._getPanelWrap();
-        $panel.children().css('background-image', 'url(' + imagePath + ')');
-        this._featureImage = imagePath;
+            return self._updatePanel(
+                $panel,
+                self.$feature,
+                direction
+            );
+        });
 
-        return this._updatePanel(
-            $panel,
-            this.$feature,
-            direction
-        ).then(_stopAnimating('_isFeatureAnimating', this));
+        return self._lastFeatureAnimation;
     };
 
     /**
@@ -86,23 +81,25 @@ define(function(require, exports, module) { // jshint ignore:line
      * @method replaceFeatureContent
      * @param {String} html HTML content to add
      * @param {String} direction Direction to animate to/from
-     * @return {Promise} will fail if animation fails (alread animating) or resolve when complete
+     * @return {Promise} resolves when finished
      */
     ViewWindow.prototype.replaceFeatureContent = function(html, direction) {
-        if (this._isFeatureAnimating) {
-            return Promise.reject();
-        }
-        this._isFeatureAnimating = true;
-        this._featureImage = null;
+        var self = this;
+        self._lastFeatureAnimation =  self._lastFeatureAnimation.then(function() {
+            var $panel = self._getPanelWrap();
 
-        var $panel = this._getPanelWrap();
-        $panel.children().append(html);
-        return this._updatePanel(
-            $panel,
-            this.$feature,
-            direction,
-            true
-        ).then(_stopAnimating('_isFeatureAnimating', this));
+            $panel.children().append(html);
+            self._featureImage = html;
+
+            return self._updatePanel(
+                $panel,
+                self.$feature,
+                direction,
+                true
+            );
+        });
+
+        return self._lastFeatureAnimation;
     };
 
     /**
@@ -111,21 +108,23 @@ define(function(require, exports, module) { // jshint ignore:line
      * @method replaceStoryContent
      * @param {String} html HTML content to add
      * @param {String} direction Direction to animate to/from
-     * @return {Promise} will fail if animation fails (alread animating) or resolve when complete
+     * @return {Promise} resolves when finished
      */
     ViewWindow.prototype.replaceStoryContent = function(html, direction) {
-        if (this._isStoryAnimating) {
-            return Promise.reject();
-        }
-        this._isStoryAnimating = true;
+        var self = this;
+        self._lastStoryAnimation = self._lastStoryAnimation.then(function() {
 
-        var $panel = this._getPanelWrap();
-        $panel.children().append(html);
-        return this._updatePanel(
-            $panel,
-            this.$story,
-            direction
-        ).then(_stopAnimating('_isStoryAnimating', this));
+            var $panel = self._getPanelWrap();
+            $panel.children().append(html);
+
+            return self._updatePanel(
+                $panel,
+                self.$story,
+                direction
+            );
+        });
+
+        return self._lastStoryAnimation;
     };
 
     /**
@@ -164,7 +163,6 @@ define(function(require, exports, module) { // jshint ignore:line
                 outOpts.yPercent = -50;
                 outOpts.opacity = 0.5;
                 outOpts.transform = 'scale(0.85)';
-                // inOpts.transform = 'scale()';
             }
             break;
         case 'left':
@@ -193,7 +191,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {jQuery} $panel Content to add
      * @param {jQuery} $target Target panel to update
      * @param {String} direction Direction to animate from
-     * @return {Promise} will fail if animation fails (already animating) or resolve when complete
+     * @param {Boolean} doublePanel Flag for setting interaction on both panels
+     * @return {Promise} resolves when complete with animation
      * @private
      */
     ViewWindow.prototype._updatePanel = function($panel, $target, direction, doublePanel) {
@@ -233,46 +232,50 @@ define(function(require, exports, module) { // jshint ignore:line
      * Toggle shift of 3up container
      *
      * @method shift
+     * @param {Boolean} silent Flag to skip animation
      * @return {Promise} rejects if already animating, resolves when complete
      */
-    ViewWindow.prototype.shift = function() {
-        var percent = breakpointManager.isMobile ? 50 : 33.333;
-        var shiftOn = !this._isShifted;
-        var sign;
-        var activeSelector;
+    ViewWindow.prototype.shift = function(silent) {
+        var self = this;
 
-        if (this._isShiftAnimating) {
-            return Promise.reject();
-        }
-        this._isShiftAnimating = true;
+        self._lastShiftAnimation = self._lastShiftAnimation.then(function() {
+            var percent = breakpointManager.isMobile ? 50 : 33.333;
+            var shiftOn = !self._isShifted;
+            var sign;
+            var activeSelector;
 
-        this.$panels.addClass('isAnimating');
+            self.$panels.addClass('isAnimating');
 
-        if (shiftOn) {
-            sign = 1;
-            activeSelector = ':last-child';
-        } else {
-            sign = -1;
-            activeSelector = ':first-child';
-        }
+            if (shiftOn) {
+                sign = 1;
+                activeSelector = ':last-child';
+            } else {
+                sign = -1;
+                activeSelector = ':first-child';
+            }
 
-        this.$element.toggleClass('isShifted', shiftOn);
+            self.$element.toggleClass('isShifted', shiftOn);
 
-        this._isShifted = !this._isShifted;
+            self._isShifted = !self._isShifted;
 
-        return tweenAsync.from(this.element, TRANSITION_SPEED, {
-            xPercent: sign * percent,
-            onComplete: function() {
-                this.$panels
-                    .removeClass('isAnimating')
-                    .removeClass('isActive')
-                    .filter(activeSelector)
-                    .addClass('isActive');
-                this._isShiftAnimating = false;
-            },
-            callbackScope: this
+            if (silent) {
+                self.$panels.removeClass('isAnimating');
+                return Promise.resolve();
+            }
+
+            return tweenAsync.from(self.element, TRANSITION_SPEED, {
+                xPercent: sign * percent,
+                onComplete: function() {
+                    self.$panels
+                        .removeClass('isAnimating')
+                        .removeClass('isActive')
+                        .filter(activeSelector)
+                        .addClass('isActive');
+                }
+            });
         });
 
+        return self._lastShiftAnimation;
     };
 
     /**
@@ -283,6 +286,16 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     ViewWindow.prototype.isShifted = function() {
         return this._isShifted;
+    };
+
+    /**
+     * Get current content panel
+     *
+     * @method getCurrentStory
+     * @return {jQuery} content panel
+     */
+    ViewWindow.prototype.getCurrentStory = function() {
+        return Promise.resolve(this.$story.children().children());
     };
 
     return new ViewWindow();

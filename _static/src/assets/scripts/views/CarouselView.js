@@ -15,6 +15,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @constructor
      */
     var CarouselView = function($element) {
+        this._handleDragRelease = this._onDragRelease.bind(this);
         AbstractView.call(this, $element);
     };
 
@@ -28,7 +29,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onEnable = function() {
-        // alt carousels
+        // [Docs](http://skidding.github.io/dragdealer/)
         this.inst = new Dragdealer(this.element.id, {
             steps: 5,
             x: 0,
@@ -38,21 +39,17 @@ define(function(require, exports, module) { // jshint ignore:line
             requestAnimationFrame: true,
             vertical: false,
             horizontal: true,
-
-            callback: function() {
-                var currentStep = this.inst.getStep()[0] - 1;
-                var $captions = this.$element.find('.carousel-captionBox > *');
-                var $currentCaption = $captions.eq(currentStep);
-
-                $captions.each(function() {
-                    var $caption = $(this);
-                    $caption.removeClass('isActive').addClass('isNotActive');
-                });
-
-                $currentCaption.removeClass('isNotActive').addClass('isActive');
-
-            }.bind(this)
+            callback: this._handleDragRelease
         });
+    };
+
+    proto._onDragRelease = function() {
+        var currentStep = this.inst.getStep()[0] - 1;
+        var $captions = this.$element.find('.carousel-captionBox').children();
+        var $currentCaption = $captions.eq(currentStep);
+
+        $captions.removeClass('isActive').addClass('isNotActive');
+        $currentCaption.removeClass('isNotActive').addClass('isActive');
     };
 
     /**
@@ -63,6 +60,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onDisable = function() {
+        this.inst = null;
     };
 
 
@@ -74,7 +72,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         for (; i < l; i++) {
             var $slide = $slides.eq(i);
-            var $slideCaption = $slide.find('.carousel-handle-slide-caption');            
+            var $slideCaption = $slide.find('.carousel-handle-slide-caption');
             $captionBox.append($slideCaption);
             $slideCaption.addClass('isNotActive');
         }

@@ -18,9 +18,10 @@ define(function(require, exports, module) { // jshint ignore:line
     var HomeState = require('states/HomeState');
     var PanelState = require('states/PanelState');
     var SearchState = require('states/SearchState');
+    var NarrativeView = require('views/NarrativeView');
     var HeaderView = require('views/HeaderView');
     var SelectView = require('views/SelectView');
-
+    var LanguageView = require('views/LanguageView');
     var eventHub = require('services/eventHub');
     var assetLoader = require('services/assetLoader');
     var viewWindow = require('services/viewWindow');
@@ -59,15 +60,18 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.init = function() {
         this._handleStateChange = this._onStateChange.bind(this);
-        this.router = new Router();
         this.headerView = new HeaderView($('.js-headerView'));
         this.viewWindow = viewWindow;
-
         this._setupStates();
+        this.router = new Router();
 
+        this.narrativeView = new NarrativeView($('.js-narrativeView'));
+
+        // register global components
         $('select.js-select').each(function(idx, el) {
             return new SelectView($(el));
         });
+        this.langView = new LanguageView($('#js-LanguageView'));
 
         this._preloadImages();
     };
@@ -90,7 +94,7 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Checks if browser has necessary features to run application
+     * Set up state stack
      *
      * @method _setupStates
      * @private
@@ -102,12 +106,15 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Checks if browser has necessary features to run application
+     * Make updates to state stack on router changes
      *
      * @method _onStateChange
+     * @param {Array} states Array of current state objects
+     * @param {Array} previousStates Array of previous state objects
+     * @param {Boolean} silent Run without animation flag
      * @private
      */
-    proto._onStateChange = function(states, previousStates) {
+    proto._onStateChange = function(states, previousStates, silent) {
         var lastState = states[states.length - 1] || {
             type: 'home'
         };
@@ -118,7 +125,7 @@ define(function(require, exports, module) { // jshint ignore:line
         if (states.length > previousStates.length) {
             // navigating forward
             console.log('forward', lastState.path);
-            this.states.push(stateCtor, lastState);
+            this.states.push(stateCtor, lastState, silent);
         } else if (states.length < previousStates.length) {
             console.log('backward');
             this.states.pop();
@@ -131,7 +138,7 @@ define(function(require, exports, module) { // jshint ignore:line
         // if going to or from home we need to shift over
         toHome = this.states.getTop() instanceof HomeState;
         if (fromHome || toHome) {
-            viewWindow.shift();
+            viewWindow.shift(silent);
         }
 
         this._preloadImages();
@@ -143,7 +150,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @method _preloadImages
      * @private
      */
-    proto._preloadImages = function(states, previousStates) {
+    proto._preloadImages = function() {
         var stateLinkImgs = Array.prototype.map.call($('.js-stateLink'), function(el) {
             return el.getAttribute('data-image');
         }).filter(identity);

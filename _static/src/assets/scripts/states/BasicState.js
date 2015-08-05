@@ -8,6 +8,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * Manages the stack of active states
      *
      * @class BasicState
+     * @param {Object} options State configuration options
      * @extends AbstractState
      * @constructor
      */
@@ -21,6 +22,12 @@ define(function(require, exports, module) { // jshint ignore:line
     BasicState.prototype = Object.create(AbstractState.prototype);
     BasicState.prototype.constructor = BasicState;
 
+    /**
+     * List of components to initialize
+     * @property COMPONENTS
+     * @static
+     * @type {Object}
+     */
     BasicState.prototype.COMPONENTS = {};
 
     /**

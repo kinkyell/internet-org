@@ -5,12 +5,18 @@ Sections of content that introduce landing and story pages
 ------------------------------------------------------------------------ */
 .introBlock {
 	display: table;
-	min-height: 620px;
-	width: 100%;
 	position: relative;
+	box-sizing: border-box;
+	width: 100%;
+	min-height: 620px;
+	padding: 45px 0;
 	background: url(../media/images/icons/io-mark-bg.svg) no-repeat $CLR_GRAY_LIGHTER;
 	background-position: -725px top;
 	background-size: 1450px 2035px;
+}
+
+.introBlock_social {
+	padding: 45px 0 150px;
 }
 
 .introBlock_fill {
@@ -21,20 +27,15 @@ Sections of content that introduce landing and story pages
 .introBlock-inner {
 	display: table-cell;
 	vertical-align: middle;
-	padding: $SPACE_x4 40px;
 }
 
-.introBlock-inner > .topicBlock {
-	margin-top: 0;
-}
-
+@warn 'needed?';
 .introBlock-inner_narrow {
 	padding: 0 150px;
 }
 
 .introBlock-ft {
 	padding: $SPACE_x3 0;
-	margin-top: $SPACE_x4;
 	position: absolute;
 	bottom: 0;
 	left: 12.5%;
@@ -45,9 +46,3 @@ Sections of content that introduce landing and story pages
 .introBlock-ft_rule {
 	border-top: 1px solid #d0cfc6;
 }
-
-@include breakpoint(MD) {
-	.introBlock-inner {
-		padding: $SPACE_x4 80px;
-	}
-} 

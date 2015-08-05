@@ -8,6 +8,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var PubSub = require('stark/micro/PubSub');
 
+    // eventHub is just a pubsub instance
     return new PubSub();
 
 });

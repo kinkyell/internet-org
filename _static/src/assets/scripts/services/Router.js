@@ -5,6 +5,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var Modernizr = require('modernizr');
     var eventHub = require('services/eventHub');
     var appConfig = require('appConfig');
+    var extend = require('stark/object/extend');
 
     var UrlHistoryManager = require('util/history/UrlHistoryManager');
     var FallbackHistoryManager = require('util/history/FallbackHistoryManager');
@@ -13,6 +14,16 @@ define(function(require, exports, module) { // jshint ignore:line
     var ROUTER_BACK_SELECTOR = '.js-stateBack';
     var ROUTER_SWAP_SELECTOR = '.js-stateSwap';
     var ROUTER_HOME_SELECTOR = '.js-stateHome';
+    var ROUTER_DEFAULT_SELECTOR = '.js-stateDefault';
+
+    // scrape these attributes from links
+    var SCRAPE_ATTRS = [
+        'type',
+        'image',
+        'title',
+        'theme',
+        'route'
+    ];
 
     /**
      * Manages the stack of active states
@@ -60,10 +71,38 @@ define(function(require, exports, module) { // jshint ignore:line
 
         eventHub.subscribe('HistoryManager:popState', this._handlePopState);
         eventHub.subscribe('Search:submit', this._handleSearch);
-        $(document.body).on('click', ROUTER_LINK_SELECTOR, this._handleStateTrigger);
-        $(document.body).on('click', ROUTER_BACK_SELECTOR, this._handleStateBack);
-        $(document.body).on('click', ROUTER_SWAP_SELECTOR, this._handleStateSwap);
-        $(document.body).on('click', ROUTER_HOME_SELECTOR, this._handleStateHome);
+        $(document.body)
+            .on('click', ROUTER_LINK_SELECTOR, this._handleStateTrigger)
+            .on('click', ROUTER_BACK_SELECTOR, this._handleStateBack)
+            .on('click', ROUTER_SWAP_SELECTOR, this._handleStateSwap)
+            .on('click', ROUTER_HOME_SELECTOR, this._handleStateHome);
+
+        this._loadDefaultRoute();
+    };
+
+    /**
+     * Loads default route info
+     *
+     * @method _loadDefaultRoute
+     * @param {Object} state State info from previous _currentStates
+     * @private
+     */
+    Router.prototype._loadDefaultRoute = function() {
+        var routeEl = $(ROUTER_DEFAULT_SELECTOR)[0];
+
+        if (!routeEl) {
+            return;
+        }
+
+        var routePath = routeEl.getAttribute('data-route');
+        var stateData = extend({
+            path: routePath
+        }, this._scrapeDataAttrs(routeEl));
+
+        this._currentStates.push(stateData);
+
+        this.historyManager.replaceState(this._currentStates, null, routePath);
+        eventHub.publish('Router:stateChange', this._currentStates, [], true);
     };
 
     /**
@@ -92,15 +131,13 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     Router.prototype._onStateTrigger = function(event) {
-        var prevStates = this._currentStates.slice(0);
         event.preventDefault();
-        this._currentStates.push({
-            path: event.currentTarget.pathname,
-            type: event.currentTarget.getAttribute('data-type'),
-            image: event.currentTarget.getAttribute('data-image'),
-            title: event.currentTarget.getAttribute('data-title'),
-            theme: event.currentTarget.getAttribute('data-theme')
-        });
+        var prevStates = this._currentStates.slice(0);
+        var stateData = extend({
+            path: event.currentTarget.pathname
+        }, this._scrapeDataAttrs(event.currentTarget));
+
+        this._currentStates.push(stateData);
         this.historyManager.pushState(this._currentStates, null, event.currentTarget.pathname);
         eventHub.publish('Router:stateChange', this._currentStates, prevStates);
     };
@@ -115,13 +152,11 @@ define(function(require, exports, module) { // jshint ignore:line
     Router.prototype._onStateSwap = function(event) {
         var prevStates = this._currentStates.slice(0);
         event.preventDefault();
-        this._currentStates[this._currentStates.length - 1] = {
-            path: event.currentTarget.pathname,
-            type: event.currentTarget.getAttribute('data-type'),
-            image: event.currentTarget.getAttribute('data-image'),
-            title: event.currentTarget.getAttribute('data-title'),
-            theme: event.currentTarget.getAttribute('data-theme')
-        };
+
+        this._currentStates[this._currentStates.length - 1] = extend({
+            path: event.currentTarget.pathname
+        }, this._scrapeDataAttrs(event.currentTarget));
+
         this.historyManager.replaceState(this._currentStates, null, event.currentTarget.pathname);
         eventHub.publish('Router:stateChange', this._currentStates, prevStates);
     };
@@ -151,7 +186,10 @@ define(function(require, exports, module) { // jshint ignore:line
         var url = '/';
         event.preventDefault();
 
-        if (!len || prevStates[len - 1].type === 'home') {
+        if (
+            (len && prevStates[len - 1].type === 'home') ||
+            (!len && !this._initialState)
+        ) {
             return;
         }
 
@@ -164,10 +202,10 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Handle back link click in UI
+     * Handle search form submit
      *
      * @method _onSearch
-     * @param {ClickEvent} event Click event from router link
+     * @param {SubmitEvent} event Submit event from search form
      * @private
      */
     Router.prototype._onSearch = function(event) {
@@ -200,6 +238,23 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     Router.prototype.getTopState = function(event) {
         return this._currentStates[this._currentStates.length - 1];
+    };
+
+    /**
+     * Gets data from attributes
+     *
+     * @method _scrapeDataAttrs
+     * @returns {Object} attributes and values scraped
+     * @private
+     */
+    Router.prototype._scrapeDataAttrs = function(el) {
+        return SCRAPE_ATTRS.reduce(function(scraped, currentAttr) {
+            var val = el.getAttribute('data-' + currentAttr);
+            if (val !== null) {
+                scraped[currentAttr] = val;
+            }
+            return scraped;
+        }, {});
     };
 
     return Router;

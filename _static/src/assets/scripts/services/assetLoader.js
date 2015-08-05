@@ -2,12 +2,18 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     /**
-     * Manages the stack of active states
+     * Manages loading of remote assets
      *
      * @class AssetLoader
      * @constructor
      */
     var AssetLoader = function() {
+        /**
+         * Array of already loaded image paths
+         * @property _loaded
+         * @default []
+         * @type {Array}
+         */
         this._loaded = [];
     };
 

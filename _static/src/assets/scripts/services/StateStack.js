@@ -40,7 +40,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @fires StateStack:push
      * @returns {Object}
      */
-    StateStack.prototype.push = function(StateCtor, options) {
+    StateStack.prototype.push = function(StateCtor, options, silent) {
         var stateInstance = new StateCtor(options);
 
         this._activeStates.push(stateInstance);
@@ -64,7 +64,8 @@ define(function(require, exports, module) { // jshint ignore:line
         // activate the new state
         stateInstance.activate({
             method: 'push',
-            states: this._activeStates
+            states: this._activeStates,
+            silent: silent
         });
     };
 

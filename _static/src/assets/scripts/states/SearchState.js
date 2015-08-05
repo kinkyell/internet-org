@@ -17,6 +17,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * Manages search state
      *
      * @class SearchState
+     * @param {Object} options State configuration options
      * @extends BasicState
      * @constructor
      */
@@ -31,6 +32,12 @@ define(function(require, exports, module) { // jshint ignore:line
     SearchState.prototype = Object.create(BasicState.prototype);
     SearchState.prototype.constructor = SearchState;
 
+    /**
+     * List of components to initialize
+     * @property COMPONENTS
+     * @static
+     * @type {Object}
+     */
     SearchState.prototype.COMPONENTS = {
         '.js-searchFormView': SearchFormView
     };

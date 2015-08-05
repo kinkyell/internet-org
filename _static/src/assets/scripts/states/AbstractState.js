@@ -7,6 +7,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * Abstract Base State
      *
      * @class AbstractState
+     * @param {Object} options State configuration options
      * @throws {Error} Errors if instantiated directly
      * @constructor
      */

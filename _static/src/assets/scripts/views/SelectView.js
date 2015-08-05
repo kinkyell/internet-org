@@ -7,12 +7,15 @@ define(function(require, exports, module) { // jshint ignore:line
     var breakpointManager = require('services/breakpointManager');
     var extend = require('stark/object/extend');
     var animSpeeds = require('appConfig').animationSpeeds;
+    var eventHub = require('services/eventHub');
 
     /**
      * A view for displaying main menu
      *
      * @class SelectView
      * @param {jQuery} $element A reference to the containing DOM element.
+     * @param {Object} options Select configuration options
+     * @param {String} options.prefix Css selector prefix
      * @constructor
      */
     var SelectView = function($element, options) {
@@ -56,6 +59,8 @@ define(function(require, exports, module) { // jshint ignore:line
         this._isAnimating = false;
 
         this.$menu = $('<div class="' + this._options.prefix + '-menu"></div>');
+
+        // create options
         Array.prototype.forEach.call(this.element.options, function(el) {
             var $el = $('<div class="' + this._options.prefix + '-menu-item" tabIndex="0"></div>');
             var $textWrap = $('<span></span>').appendTo($el);
@@ -68,7 +73,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 $textWrap.text(el.innerText);
             }
 
-            if (el === this.element.selectedOptions[0]) {
+            if (el === this._getSelected()) {
                 $el.addClass('isSelected');
             }
 
@@ -128,6 +133,11 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onDisable = function() {
+        this.$element
+            .off('change', this._handleChange)
+            .off('mousedown keydown', this._handleTriggerClick);
+        this.$menu.off('click', '.' + this._options.prefix + '-menu-item', this._handleItemClick);
+        breakpointManager.unsubscribe(this._handleBreakpointChange);
     };
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -139,17 +149,20 @@ define(function(require, exports, module) { // jshint ignore:line
      *
      * @method _onChange
      * @param {ChangeEvent} event Select change event
+     * @fires SelectView:change
      * @private
      */
     proto._onChange = function(event) {
         this._render();
+        eventHub.publish('SelectView:change', this.element, this._getSelected().value);
     };
 
     /**
      * Rerender after item click
      *
      * @method _onItemClick
-     * @param {ChangeEvent} event Select change event
+     * @param {ClickEvent} event Item click event
+     * @fires SelectView:change
      * @private
      */
     proto._onItemClick = function(event) {
@@ -157,6 +170,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$element.children().removeAttr('selected');
         this.element.options[idx].setAttribute('selected', '');
         this._render();
+        eventHub.publish('SelectView:change', this.element, this._getSelected().value);
         this._toggleMenu();
     };
 
@@ -164,7 +178,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * Rerender after trigger click
      *
      * @method _onTriggerClick
-     * @param {ChangeEvent} event Select change event
+     * @param {ClickEvent} event Trigger click event
      * @private
      */
     proto._onTriggerClick = function(event) {
@@ -179,16 +193,13 @@ define(function(require, exports, module) { // jshint ignore:line
         }
 
         event.preventDefault();
-
-
         this._toggleMenu();
     };
 
     /**
-     * Rerender after trigger click
+     * Cleanup after menu is closed
      *
      * @method _onMenuClose
-     * @param {ChangeEvent} event Select change event
      * @private
      */
     proto._onMenuClose = function() {
@@ -205,16 +216,15 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Rerender after trigger click
+     * Setup after menu is open
      *
      * @method _onMenuOpen
-     * @param {ChangeEvent} event Select change event
      * @private
      */
     proto._onMenuOpen = function() {
         this.$wrap.addClass('isOpen');
 
-        var idx = this.element.selectedOptions[0].index;
+        var idx = this._getSelected().index;
         this.$menu.children().eq(idx)[0].focus();
         this._highlightedIdx = idx;
 
@@ -224,10 +234,10 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Rerender after trigger click
+     * Close select if body is clicked
      *
      * @method _onBodyClick
-     * @param {ChangeEvent} event Select change event
+     * @param {ClickEvent} event Body click event
      * @private
      */
     proto._onBodyClick = function(event) {
@@ -237,10 +247,10 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Rerender after trigger click
+     * Handle key presses while open
      *
      * @method _onBodyKey
-     * @param {ChangeEvent} event Select change event
+     * @param {KeyboardEvent} event Key press event
      * @private
      */
     proto._onBodyKey = function(event) {
@@ -284,6 +294,7 @@ define(function(require, exports, module) { // jshint ignore:line
      *
      * @method _onOptionConfirm
      * @param {ChangeEvent} event Select change event
+     * @fires SelectView:change
      * @private
      */
     proto._onOptionConfirm = function() {
@@ -291,6 +302,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$element.children().removeAttr('selected');
         this.element.options[idx].setAttribute('selected', '');
         this._render();
+        eventHub.publish('SelectView:change', this.element, this._getSelected().value);
         this._toggleMenu();
     };
 
@@ -318,7 +330,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._render = function() {
-        var option = this.element.selectedOptions[0];
+        var option = this._getSelected();
         var displayText = option.getAttribute('data-display');
 
         if (displayText) {
@@ -382,6 +394,17 @@ define(function(require, exports, module) { // jshint ignore:line
         var min = 0;
         this._highlightedIdx = Math.max(Math.min(tryIdx, max), min);
         this.$menu.children().eq(this._highlightedIdx)[0].focus();
+    };
+
+    /**
+     * Get selected option
+     *
+     * @method _getSelected
+     * @returns {HTMLOptionElement} the selected option
+     * @private
+     */
+    proto._getSelected = function() {
+        return this.element.selectedOptions[0] || null;
     };
 
 
