@@ -8,6 +8,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var Breakpoint = require('stark/micro/Breakpoint');
 
+    // instance of breakpoint listener
     var bp = new Breakpoint({
         eventDelay: 0
     });
@@ -18,6 +19,7 @@ define(function(require, exports, module) { // jshint ignore:line
         bp.isMobile = current === 'BASE' || current === 'SM';
     };
 
+    // reset flag on breakpoint change
     bp.subscribe(setMobile);
     setMobile();
 

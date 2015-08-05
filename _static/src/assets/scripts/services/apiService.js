@@ -8,8 +8,13 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var $ = require('jquery');
 
+    // api base url for ajax requests
     var BASE_URL = require('appConfig').apiBase;
 
+    /*
+     * Matches path keys to ajax source.
+     * TODO: update to point to WP endpoints
+     */
     var PATHS = {
         '/mission': '/pages/mission.html',
         '/approach': '/pages/approach.html',
@@ -21,38 +26,23 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var APIService = {
 
-        //TODO: remove example
-        /**
-         * Returns example html for demo
-         */
-        getExamplePage: function() {
-            return new Promise(function(resolve, reject) {
-                $.get(BASE_URL + '/pages/example-content.html').done(function(data) {
-                    // simulate network requests
-                    setTimeout(function() {
-                        resolve(data);
-                    }, 1000);
-                }).fail(reject);
-            });
-        },
-
         /**
          * Returns html for a given basic route
+         * @param {String} route Route name
+         * @returns {Promise} represents value of html returned
          */
         getPanelContent: function(route) {
-            return new Promise(function(resolve, reject) {
-                var path = PATHS[route] || PATHS['404'];
-                $.get(BASE_URL + path).done(resolve).fail(reject);
-            });
+            var path = PATHS[route] || PATHS['404'];
+            return Promise.resolve($.get(BASE_URL + path));
         },
 
         /**
-         * Returns html for a given basic route
+         * Returns html for search results
+         * @param {String} searchText Text from search box
+         * @returns {Promise} represents value of search result html returned
          */
         getSearchResults: function(searchText) {
-            return new Promise(function(resolve, reject) {
-                $.get(BASE_URL + PATHS.searchResults).done(resolve).fail(reject);
-            });
+            return Promise.resolve($.get(BASE_URL + PATHS.searchResults));
         }
 
     };

@@ -219,7 +219,15 @@ define(function(require, exports, module) { // jshint ignore:line
     // HELPERS
     //////////////////////////////////////////////////////////////////////////////////
 
-
+    /**
+     * Create a child view
+     *
+     * @method createChild
+     * @static
+     * @param {AbstractView} ChildView Constructor for child view subclass
+     * @returns {Object} new prototype of child view
+     * @public
+     */
     AbstractView.createChild = function createChild(ChildView) {
         ChildView.prototype = Object.create(AbstractView.prototype);
         ChildView.prototype.constructor = ChildView;

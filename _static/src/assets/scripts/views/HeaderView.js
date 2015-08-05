@@ -50,7 +50,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._isHome = true;
         this._invertLeft = false;
         this._invertRight = true;
-        this.isLogoCentered = false; //TODO: update based on page
+        this.isLogoCentered = false;
         this.$logo = this.$('.js-headerView-logo');
         this.$menuBtn = this.$('.js-headerView-menuBtn');
         this.$menuBtnIcon = this.$menuBtn.find('.menuTrigger');

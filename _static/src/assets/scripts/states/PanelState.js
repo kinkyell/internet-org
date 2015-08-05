@@ -9,11 +9,12 @@ define(function(require, exports, module) { // jshint ignore:line
     var viewWindow = require('services/viewWindow');
     var templates = require('templates');
 
-    var CarouselView = require('views/CarouselAltView');
+    var CarouselView = require('views/CarouselView');
     var $ = require('jquery');
     var Tween = require('gsap-tween');
 
     var log = console.log.bind(console);
+
     /**
      * Manages the stack of active states
      *
@@ -35,6 +36,12 @@ define(function(require, exports, module) { // jshint ignore:line
     PanelState.prototype = Object.create(BasicState.prototype);
     PanelState.prototype.constructor = PanelState;
 
+    /**
+     * List of components to initialize
+     * @property COMPONENTS
+     * @static
+     * @type {Object}
+     */
     PanelState.prototype.COMPONENTS = {
         '.js-carouselView': CarouselView
     };
@@ -104,10 +111,10 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Append markup to panel when loaded
+     * Handle static content when loaded
      *
      * @method _onStaticContent
-     * @param {String} markup HTML content from ajax request
+     * @param {jQuery} $panel Panel that wraps static content
      * @private
      */
     PanelState.prototype._onStaticContent = function($panel) {
@@ -133,6 +140,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * Look for images to scroll
      *
      * @method _initializeScrollWatcher
+     * @param {jQuery} $panel Panel to listen for scrolling upon
+     * @private
      */
     PanelState.prototype._initializeScrollWatcher = function($panel) {
         this._scrollPanel = $panel.parent();
@@ -147,11 +156,12 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Look for images to scroll
+     * Destroy event listeners for scroll watching
      *
      * @method _destroyScrollWatcher
+     * @private
      */
-    PanelState.prototype._destroyScrollWatcher = function(event) {
+    PanelState.prototype._destroyScrollWatcher = function() {
         this._scrollPanel
             .off('scroll', this._handlePanelScroll)
             .find('img')
@@ -160,11 +170,12 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Look for images to scroll
+     * Update scrolled image based on position
      *
      * @method _onPanelScroll
+     * @private
      */
-    PanelState.prototype._onPanelScroll = function(event) {
+    PanelState.prototype._onPanelScroll = function() {
         var scrollTop = this._scrollPanel[0].scrollTop;
         var view = scrollTop + this._windowHeight;
         var image = null;
@@ -182,12 +193,15 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Look for images to scroll
+     * Refresh info about scroll positions and cues
      *
      * @method _refreshScrollerInfo
+     * @private
      */
-    PanelState.prototype._refreshScrollerInfo = function(event) {
+    PanelState.prototype._refreshScrollerInfo = function() {
         var OFFSET = 0.25;
+
+        // add child elements
         this._scrollBlocks = this._panelImages.map(function(idx, el) {
             var url = el.getAttribute('data-image');
             var fromTop = $(el).offset().top;
@@ -199,11 +213,14 @@ define(function(require, exports, module) { // jshint ignore:line
                 bottom: fromTop + height + (OFFSET * height)
             };
         }).toArray();
+
+        // add default image
         this._scrollBlocks.unshift({
             img: this._options.image,
             top: 0,
             bottom: Infinity
         });
+
         this._windowHeight = $(window).height();
     };
 

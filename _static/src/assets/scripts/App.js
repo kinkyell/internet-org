@@ -65,13 +65,12 @@ define(function(require, exports, module) { // jshint ignore:line
         this._setupStates();
         this.router = new Router();
 
-
         this.narrativeView = new NarrativeView($('.js-narrativeView'));
 
+        // register global components
         $('select.js-select').each(function(idx, el) {
             return new SelectView($(el));
         });
-
         this.langView = new LanguageView($('#js-LanguageView'));
 
         this._preloadImages();
@@ -95,7 +94,7 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Checks if browser has necessary features to run application
+     * Set up state stack
      *
      * @method _setupStates
      * @private
@@ -107,9 +106,12 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Checks if browser has necessary features to run application
+     * Make updates to state stack on router changes
      *
      * @method _onStateChange
+     * @param {Array} states Array of current state objects
+     * @param {Array} previousStates Array of previous state objects
+     * @param {Boolean} silent Run without animation flag
      * @private
      */
     proto._onStateChange = function(states, previousStates, silent) {
@@ -148,7 +150,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @method _preloadImages
      * @private
      */
-    proto._preloadImages = function(states, previousStates) {
+    proto._preloadImages = function() {
         var stateLinkImgs = Array.prototype.map.call($('.js-stateLink'), function(el) {
             return el.getAttribute('data-image');
         }).filter(identity);

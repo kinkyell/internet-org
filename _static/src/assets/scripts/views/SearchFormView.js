@@ -53,17 +53,6 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Performs measurements and applys any positioning style logic.
-     * Should be run anytime the parent layout changes.
-     *
-     * @method layout
-     * @returns {SearchFormView}
-     * @public
-     */
-    proto.layout = function() {
-    };
-
-    /**
      * Performs any event binding to handlers.
      *
      * @method onEnable
@@ -90,10 +79,11 @@ define(function(require, exports, module) { // jshint ignore:line
     //////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * Sets the menu state after state change
+     * Gather search text and submit form
      *
      * @method _onSubmit
-     * @param {Array} states Active states
+     * @param {SubmitEvent} event Submit event
+     * @fires Search:submit
      * @private
      */
     proto._onSubmit = function(event) {
