@@ -65,16 +65,13 @@ define(function(require, exports, module) { // jshint ignore:line
         this.viewWindow = viewWindow;
 
         this._setupStates();
-<<<<<<< HEAD
         this.narrativeView = new NarrativeView($('.js-narrativeView'));
-=======
 
         $('select.js-select').each(function(idx, el) {
             return new SelectView($(el));
         });
 
         this._preloadImages();
->>>>>>> develop
     };
 
     /**
