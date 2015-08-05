@@ -7,7 +7,7 @@
     font-family: $FONT_SANS;
     font-weight: 400; // TODO: REMOVE ONCE Web Fonts are in place
     font-size: 14px;
-    line-height: 1.875;
+    line-height: 1.666666667;
     color: $CLR_GRAY;
 }
 
@@ -19,6 +19,10 @@
 .bdcpy_sm {
     font-size: 12px;
     line-height: 1.666667;
+}
+
+.mix-bdcpy_light {
+    color: $CLR_GRAY_LIGHT;
 }
 
 @include breakpoint(MD) {

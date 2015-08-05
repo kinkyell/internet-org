@@ -4,11 +4,19 @@ Introduction Block
 Sections of content that introduce landing and story pages
 ------------------------------------------------------------------------ */
 .introBlock {
+	display: table;
 	position: relative;
-	height: 620px;
+	box-sizing: border-box;
+	width: 100%;
+	min-height: 620px;
+	padding: 45px 0;
 	background: url(../media/images/icons/io-mark-bg.svg) no-repeat $CLR_GRAY_LIGHTER;
 	background-position: -725px top;
 	background-size: 1450px 2035px;
+}
+
+.introBlock_social {
+	padding: 45px 0 150px;
 }
 
 .introBlock_fill {
@@ -17,12 +25,8 @@ Sections of content that introduce landing and story pages
 }
 
 .introBlock-inner {
-	@include vertical-align();
-	@include contain();
-}
-
-.introBlock-inner > .topicBlock {
-	margin-top: 0;
+	display: table-cell;
+	vertical-align: middle;
 }
 
 @warn 'needed?';
@@ -32,7 +36,6 @@ Sections of content that introduce landing and story pages
 
 .introBlock-ft {
 	padding: $SPACE_x3 0;
-	margin-top: $SPACE_x4;
 	position: absolute;
 	bottom: 0;
 	left: 12.5%;
