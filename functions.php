@@ -171,7 +171,6 @@ if ( ! function_exists( 'iorg_extend_search_post_type_range' ) ) :
 					'page', // default PT
 					'iorg_press', // CPT
 					'iorg_story', // CPT
-					'iorg_freesvc', // CPT
 					'iorg_campaign', // CPT
 				)
 			);
@@ -183,6 +182,66 @@ if ( ! function_exists( 'iorg_extend_search_post_type_range' ) ) :
 	}
 endif;
 add_filter( 'pre_get_posts', 'iorg_extend_search_post_type_range' );
+
+
+if ( ! function_exists( 'get_free_services' ) ) :
+	/**
+	 * Get a list of the free services offered
+	 *
+	 * This method will return an empty array if there are no services, if there
+	 * are services your array will look similar to:
+	 *
+	 * array(
+	 *     array(
+	 *         'post_id' => #,
+	 *         'title'   => String,
+	 *         'excerpt' => String,
+	 *         'image'   => String:URL|false
+	 *     ),
+	 *     ...
+	 * )
+	 *
+	 * @note This function uses caching functions (wp_cache_get, wp_cache_set)
+	 *
+	 * @see wp_get_attachment_image_src
+	 * @see wp_reset_postdata
+	 *
+	 * @return array of free services or empty array if there are no services
+	 */
+	function get_free_services() {
+		// check the cache first
+		$services = wp_cache_get( 'iorg_free_services_list' );
+
+		// no cache, query
+		if ( false === $services ) {
+			$args = array(
+				'post_type' => 'iorg_freesvc',
+			);
+
+			$services = array();
+			$svcqry = new WP_Query( $args );
+
+			// build array of services so we are not passing around a query object
+			while ( $svcqry->have_posts() ) : $svcqry->the_post();
+				$postId = get_the_ID();
+				$services[] = array(
+					'post_id' => $postId,
+					'title'   => get_the_title(),
+					'excerpt' => get_the_excerpt(),
+					'image'   => wp_get_attachment_image_src( get_post_thumbnail_id( $postId ), 'thumbnail' ),
+				);
+			endwhile;
+
+			// caching the compiled array and not the query
+			wp_cache_set( 'iorg_free_services_list', $services );
+
+			// reset the query to before we started mucking with it
+			wp_reset_postdata();
+		}
+
+		return $services;
+	}
+endif;
 
 /**
  * Enqueue scripts and styles.
