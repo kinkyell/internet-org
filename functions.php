@@ -12,6 +12,12 @@ define( 'IO_DIR', __DIR__ );
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
 wpcom_vip_load_plugin( 'babble', 'internet_org-plugins' );
+
+// do this manually since we include the plugin long after the plugins_loaded
+// hook. (Babble_Locale::plugins_loaded)
+global $bbl_locale;
+add_filter( 'after_setup_theme', array( $bbl_locale, 'plugins_loaded' ) );
+
 wpcom_vip_load_plugin( 'iorg-custom-posttypes', 'internet_org-plugins' );
 wpcom_vip_load_plugin( 'iorg-custom-fields', 'internet_org-plugins' );
 wpcom_vip_load_plugin( 'fieldmanager' );
@@ -265,5 +271,7 @@ require get_template_directory() . '/inc/jetpack.php';
  */
 require get_template_directory() . '/inc/language.php';
 
-
-
+/**
+ * Custom menu walkers
+ */
+require_once( get_template_directory() . '/inc/menu-walkers.php' );

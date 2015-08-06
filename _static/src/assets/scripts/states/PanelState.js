@@ -10,6 +10,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var templates = require('templates');
 
     var CarouselView = require('views/CarouselView');
+    var SelectView = require('views/SelectView');
     var $ = require('jquery');
     var Tween = require('gsap-tween');
 
@@ -44,7 +45,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * @type {Object}
      */
     PanelState.prototype.COMPONENTS = {
-        '.js-carouselView': CarouselView
+        '.js-carouselView': CarouselView,
+        '.js-select': SelectView
     };
 
     /**
@@ -66,7 +68,7 @@ define(function(require, exports, module) { // jshint ignore:line
         }
 
         if (event.method === 'pop') {
-            transition = 'left';
+            transition = fromHome ? 'right' : 'left';
         }
 
         if (event.method === 'swap') {
@@ -79,7 +81,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 title: this._options.title,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse es suscipit euante lorepehicula nulla, suscipit dela eu ante vel vehicula.', //jshint ignore:line
                 theme: this._options.theme
-            }), event.method === 'push' && fromHome ? 'none' : transition)
+            }), fromHome ? 'none' : transition)
         ];
 
         if (this._options.image) {

@@ -20,6 +20,7 @@ define(function(require, exports, module) { // jshint ignore:line
         '/approach': '/pages/approach.html',
         '/approach-tertiary': '/pages/approach-tertiary.html',
         '/impact': '/pages/impact.html',
+        '/press': '/pages/press-content.html',
         'searchResults': '/pages/search-results.html',
         '404': '/pages/not-found.html'
     };
