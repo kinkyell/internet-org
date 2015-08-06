@@ -81,7 +81,7 @@ define(function(require, exports, module) { // jshint ignore:line
         }, this);
 
         // move classes to wrapper
-        this.$wrap.addClass(this.element.className);
+        this.$wrap.addClass(this.element.className).removeClass('js-select');
         this.element.className = '';
     };
 

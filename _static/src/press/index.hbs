@@ -1,0 +1,41 @@
+{{#extend "layout"}}
+
+    {{#content "body" mode="append"}}
+
+    <div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="/press" data-type="titled" data-title="Press">
+        <div class="viewWindow-panel">
+            <div class="viewWindow-panel-content">
+                <div class="viewWindow-panel-content-inner">
+
+                        {{>homepage-content}}
+
+                </div>
+            </div>
+        </div>
+        <div class="viewWindow-panel viewWindow-panel_feature">
+            <div class="viewWindow-panel-content">
+                <div class="viewWindow-panel-content-inner">
+                    <div class="introBlock introBlock_fill">
+                        <div class="introBlock-inner">
+                            <div class="topicBlock">
+                                <div class="topicBlock-hd topicBlock-hd_plus">
+                                    <h2 class="hdg hdg_3">Press</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="viewWindow-panel viewWindow-panel_story isActive">
+            <div class="viewWindow-panel-content">
+                <div class="viewWindow-panel-content-inner">
+                    {{>press-content}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{/content}}
+
+{{/extend}}

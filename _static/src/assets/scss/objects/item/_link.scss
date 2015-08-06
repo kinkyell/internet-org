@@ -70,7 +70,9 @@
 
 .link_twoArrows:after,
 .link_twoArrows:before {
-    top: calc(50% - 3px);
+    // top: calc(50% - 3px);
+    top: initial;
+    bottom: 4px;
     right: 0px;
     height: 6px;
     width: 6px;
@@ -82,6 +84,11 @@
 
 .link_twoArrows:before {
     right: -5px;
+}
+
+.link_twoArrows:after {
+    top: initial;
+    bottom: 4px;
 }
 
 .link_twoArrows:hover:before { background-color: transparent; }

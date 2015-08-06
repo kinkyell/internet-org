@@ -18,6 +18,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var HomeState = require('states/HomeState');
     var PanelState = require('states/PanelState');
     var SearchState = require('states/SearchState');
+    var TitledState = require('states/TitledState');
     var NarrativeView = require('views/NarrativeView');
     var HeaderView = require('views/HeaderView');
     var SelectView = require('views/SelectView');
@@ -34,7 +35,8 @@ define(function(require, exports, module) { // jshint ignore:line
     var STATE_TYPES = {
         panel: PanelState,
         home: HomeState,
-        search: SearchState
+        search: SearchState,
+        titled: TitledState
     };
 
     /**

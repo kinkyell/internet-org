@@ -200,9 +200,3 @@
     background-repeat: no-repeat;
 
 }
-
-@include breakpoint(MD) {
-    .btn {
-        max-width: 480px;
-    }
-}

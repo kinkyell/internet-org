@@ -22,7 +22,9 @@ define(function(require, exports, module) { // jshint ignore:line
         'image',
         'title',
         'theme',
-        'route'
+        'route',
+        'desc',
+        'date'
     ];
 
     /**

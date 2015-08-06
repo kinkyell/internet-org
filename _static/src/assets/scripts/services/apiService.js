@@ -20,6 +20,8 @@ define(function(require, exports, module) { // jshint ignore:line
         '/approach': '/pages/approach.html',
         '/approach-tertiary': '/pages/approach-tertiary.html',
         '/impact': '/pages/impact.html',
+        '/press': '/pages/press-content.html',
+        'pressResults': '/pages/press-content-addl.html',
         'searchResults': '/pages/search-results.html',
         '404': '/pages/not-found.html'
     };
@@ -43,6 +45,19 @@ define(function(require, exports, module) { // jshint ignore:line
          */
         getSearchResults: function(searchText) {
             return Promise.resolve($.get(BASE_URL + PATHS.searchResults));
+        },
+
+        /**
+         * Returns html for lists of content
+         * @param {String} contentType Content type
+         * @param {Number} page Page Number
+         * @returns {Promise} represents value of html returned
+         */
+        getMoreContent: function(contentType, page) {
+            var resultsPath = PATHS[contentType + 'Results'];
+            return Promise.resolve($.get(BASE_URL + resultsPath, {
+                page: page
+            }));
         }
 
     };
