@@ -3,6 +3,8 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var AbstractView = require('./AbstractView');
     var apiService = require('services/apiService');
+    var tweenAsync = require('util/tweenAsync');
+    var animationSpeeds = require('appConfig').animationSpeeds;
 
     /**
      * A view for displaying main menu
@@ -106,8 +108,15 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {ClickEvent} event Click event
      * @private
      */
-    proto._onContentLoad = function(content) {
-        this.targetEl.innerHTML += content;
+    proto._onContentLoad = function(html) {
+        var newContent = document.createElement('div');
+        newContent.innerHTML = html;
+        this.targetEl.appendChild(newContent)
+
+        return tweenAsync.from(newContent, animationSpeeds.ADDL_CONTENT, {
+            height: 0,
+            opacity: 0
+        });
     };
 
 
