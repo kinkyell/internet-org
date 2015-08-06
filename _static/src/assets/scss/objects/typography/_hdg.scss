@@ -44,6 +44,11 @@
     line-height: 1.2;
 }
 
+.hdg_8 {
+    font-size: 27px;
+    line-height: 1.25;
+}
+
 .hdg_subHdg {
 	font-family: $FONT_SANS;
 	font-size: 17px;
@@ -54,6 +59,7 @@
 .mix-hdg_white 	{ color: white; }
 .mix-hdg_gray 	{ color: $CLR_GRAY; }
 .mix-hdg_italic { font-style: italic; }
+.mix-hdg_bold   { font-weight: 500; }
 
 @include breakpoint(MD) {
     .hdg_1 {
@@ -82,6 +88,10 @@
 
     .hdg_7 {
         font-size: 18px;
+    }
+
+    .hdg_8 {
+        font-size: 40px;
     }
 
     .hdg_subHdg {

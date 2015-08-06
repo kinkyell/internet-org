@@ -39,6 +39,10 @@
 	color: $CLR_ACCENT;
 }
 
+.vList_bullets > * + * {
+	margin-top: 22px;
+}
+
 // THEME CLASSES by contectual or chain selection
 .theme-impact .vList_bullets > *:before,
 .vList_bullets_themeImpact > *:before {

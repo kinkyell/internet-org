@@ -97,6 +97,7 @@ select:focus + .select-label,
     border: 1px solid #c7c7bf;
     border-width: 1px 1px 0 1px;
     position: absolute;
+    z-index: 1;
     left: 0;
     right: 0;
     top: 100%;

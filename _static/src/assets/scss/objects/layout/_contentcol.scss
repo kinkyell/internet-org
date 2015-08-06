@@ -10,13 +10,13 @@ Layout for padded columns of content.
 
 .contentCol_flush {
 	padding: 0 27px;
-	overflow: hidden;
+	// overflow: hidden;
 	margin-bottom: 80px;
 }
 
 .contentCol + .contentCol_flush,
 .contentCol_flush + .contentCol {
-	margin-top: -10px; // Shimming to compensate for the padding of the hdg class's line-height
+	padding-top: 0;
 }
 
 .contentCol_fluch + .contentCol {
