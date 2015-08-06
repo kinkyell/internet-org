@@ -5,11 +5,11 @@ Feature content module
 ------------------------------------------------------------------------ */
 
 .feature + .feature {
-    padding: $SPACE_x5 0 0;
+    padding: 58px 0 0;
 }
 
 .feature > * + * {
-    margin-top: $SPACE_x1;
+    margin-top: 19px;
 }
 
 .feature_tight {
@@ -25,7 +25,7 @@ Feature content module
 }
 
 .feature-media {
-    // margin-bottom: $SPACE_x2;
+    margin-top: 30px;
 }
 
 .feature-media > * {
@@ -48,7 +48,13 @@ Feature content module
     margin-top: 14px; /* To compensate for the extra white space added */
 }
 
-.feature-bd {}
-    // sub heading, lists, etc..
+.feature-subHd {
+    margin-top: 32px;
+}
+
+.feature-gallery {
+    margin-top: 28px;
+}
+    
 
 .feature-ft {}
