@@ -11,7 +11,6 @@ $custom_fields = get_post_meta( get_the_ID(), 'home-content-section', false );
 if ( ! empty( $custom_fields ) ) : ?>
 	<?php foreach ( $custom_fields as $group ) : ?>
 		<?php if ( ! empty( $group ) ) : ?>
-			<div class="narrative js-narrativeView">
 				<?php foreach ( $group as $fieldset ) : ?>
 				<div class="narrative-section">
 					<div class="narrative-section-slides">
@@ -65,7 +64,6 @@ if ( ! empty( $custom_fields ) ) : ?>
 
 
 				<?php endforeach; ?>
-			</div>
 		<?php endif; ?>
 	<?php endforeach; ?>
 <?php endif;

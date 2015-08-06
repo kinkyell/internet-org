@@ -1,6 +1,6 @@
 <?php
 /**
- * The template used for displaying page content "content" section in page.php
+ * The template used for displaying page content "content" section in front-page.php
  *
  * @package Internet.org
  * @author arichard <arichard@nerdery.com>
