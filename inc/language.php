@@ -18,9 +18,20 @@ if ( ! function_exists( 'iorg_language_switcher' ) ) :
 	 * @return void
 	 */
 	function iorg_language_switcher() {
+
+		// check if Babble is installed/active, if not trigger a notice as a
+		// developer should already know but shouldn't be hindered by it and a
+		// user shouldn't be impacted.
+		if ( ! function_exists( 'bbl_get_switcher_links' ) ) {
+			error_log( 'Babble plugin not active', LOG_NOTICE );
+			return;
+		}
+
 		$list = bbl_get_switcher_links();
 
-		echo '<select onchange="document.location.href=this.options[this.selectedIndex].value;">';
+		$optionsList  = array();
+		$divList      = array();
+		$selectedLang = null;
 
 		foreach ( $list as $item ) {
 
@@ -29,18 +40,30 @@ if ( ! function_exists( 'iorg_language_switcher' ) ) :
 				continue;
 			}
 
+			// check if this is the current language
+			$selected = false;
 			if ( $item['active'] ) {
-				$selected = 'selected="selected" ';
-			} else {
-				$selected = '';
+				$selected = true;
+				$selectedLang = $item;
 			}
 
 			if ( $item['href'] ) {
-				echo '<option ' . $selected . 'class="' . esc_attr( $item['class'] ) . '" value="' . esc_url( $item['href'] ) . '">' . esc_html( $item['lang']->display_name ) . '</option>';
+				$optionsList[] = '<option ' . ( $selected ? 'selected="selected" ' : '') . 'class="' . esc_attr( $item['class'] ) . '" value="' . esc_url( $item['href'] ) . '">' . esc_html( $item['lang']->display_name ) . '</option>';
+
+				$divList[] = '<div class="langSelect-menu-item' . ( $selected ? 'isSelected' : '' ) . '" tabindex="0"><span>' . esc_html( $item['lang']->display_name ) . '</span></div>';
 			}
 		}
 
+		// display the selector, NOTE: we are not caching here because each user
+		// will need their own selection
+		echo '<select onchange="document.location.href=this.options[this.selectedIndex].value;">';
+		echo implode( "\n", $optionsList );
 		echo '</select>';
+		echo '<div class="langSelect-label">' . esc_html( $selectedLang['lang']->display_name ) . '</div>';
+		echo '<div class="langSelect-menu" style="height: auto;">';
+		echo implode( "\n", $divList );
+		echo '</div>';
+
 	}
 endif;
 

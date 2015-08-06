@@ -124,23 +124,46 @@
 					<input type="search" id="mainMenu-search" class="searchBox-input js-searchView-input" name="s" placeholder="Search">
 				</form>
 			</div>
-			<div class="mainMenu-panel-primary">
+			<?php
 
-				<?php wp_nav_menu( array(
-					'theme-location' => 'primary',
-					'walker'         => new IOrg_Main_Nav_Walker(),
-				) ); ?>
+			// Configure and build the main portion of the menu (Our Mission, etc.)
+			$main_menu_config = array(
+				'container_class' => 'mainMenu-panel-primary',
+				'container_id'    => '',
+				'menu_class'      => '',
+				'menu_id'         => '',
+				'before'          => '',
+				'after'           => '',
+				'link_before'     => '',
+				'link_after'      => '',
+				'theme_location'  => 'primary',
+				'walker'          => new IOrg_Main_Nav_Walker(),
+			);
+			wp_nav_menu( $main_menu_config );
 
-			</div>
-			<div class="mainMenu-panel-secondary">
+			// Configure and build the secondary portion of the menu (Careers, etc.)
+			$submenu_config = array(
+				'container_class' => 'mainMenu-panel-secondary',
+				'container_id'    => '',
+				'menu_class'      => 'borderBlocks borderBlocks_2up',
+				'menu_id'         => '',
+				'before'          => '',
+				'after'           => '',
+				'link_before'     => '',
+				'link_after'      => '',
+				'theme_location'  => 'primary-sub-nav',
+				'walker'          => new IOrg_Main_SubNav_Walker(),
+			);
+			wp_nav_menu( $submenu_config );
 
-				<?php wp_nav_menu( array(
-					'theme-location' => 'primary-sub-nav',
-					'walker'         => new IOrg_Main_SubNav_Walker(),
-				) ); ?>
+			?>
 
-			</div>
 			<div class="mainMenu-panel-lang">
+
+				<!-- Internal Lang. Sel. Function -->
+				<?php iorg_language_switcher(); ?>
+
+				<?php /*
 				<div class="langSelect js-select">
 					<select class="">
 						<option value="">English</option>
@@ -172,6 +195,7 @@
 						<div class="langSelect-menu-item" tabindex="0"><span>Punjabi</span></div>
 					</div>
 				</div>
+				*/ ?>
 			</div>
 		</div>
 	</div>
