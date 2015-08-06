@@ -41,8 +41,8 @@ get_header();
 
 <?php
 
-// Sidebar
-get_sidebar();
+// Sidebar -- no sidebar on the front page
+// get_sidebar();
 
 // Footer
 get_footer();
