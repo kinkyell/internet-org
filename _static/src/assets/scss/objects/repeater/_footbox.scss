@@ -7,7 +7,7 @@
 
 .footBox {
 	// max-width: 480px;
-	padding: 80px 40px;
+	padding: 80px 0;
     background-color: $CLR_GRAY_LIGHTER;
 }
 
@@ -20,11 +20,12 @@
     color: $CLR_GRAY;
     padding-bottom: 10px;
     border-bottom: 1px solid $CLR_GRAY_LIGHT;
+    margin-bottom: $SPACE_x2;
 }
 
 
 @include breakpoint(MD) {
     .footBox {
-        padding: 80px;
+        padding: 80px 0;
     }
 }
