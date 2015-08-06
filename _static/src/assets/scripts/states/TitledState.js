@@ -11,6 +11,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var CarouselView = require('views/CarouselView');
     var SelectView = require('views/SelectView');
+    var ShowMoreView = require('views/ShowMoreView');
     var $ = require('jquery');
     var Tween = require('gsap-tween');
 
@@ -42,7 +43,8 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     TitledState.prototype.COMPONENTS = {
         '.js-carouselView': CarouselView,
-        '.js-select': SelectView
+        '.js-select': SelectView,
+        '.js-ShowMoreView': ShowMoreView
     };
 
     /**
@@ -59,7 +61,7 @@ define(function(require, exports, module) { // jshint ignore:line
         var fromHome = stateLen > 1 && (event.states[stateLen - 2] instanceof HomeState);
 
         if (event.silent) {
-            viewWindow.getCurrentStory().then(this._handleStaticContent);
+            viewWindow.getCurrentStory().then(this._handleStaticContent, log);
             return BasicState.prototype.activate.call(this, event);
         }
 
@@ -75,7 +77,9 @@ define(function(require, exports, module) { // jshint ignore:line
             apiService.getPanelContent(this._options.path),
             viewWindow.replaceFeatureContent(templates['page-title-panel']({
                 title: this._options.title,
-                theme: this._options.theme
+                theme: this._options.theme,
+                desc: this._options.desc,
+                date: this._options.date
             }), transition),
             viewWindow.replaceStoryContent('', fromHome ? 'none' : transition)
         ];
