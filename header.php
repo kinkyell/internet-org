@@ -260,4 +260,4 @@
 
 	<!-- /header -->
 
-	<div id="content" class="site-content">
+	<div id="content" class="site-content viewWindow js-viewWindow">
