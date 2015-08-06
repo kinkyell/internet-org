@@ -5,11 +5,11 @@ Sections of content that introduce landing and story pages
 ------------------------------------------------------------------------ */
 .introBlock {
 	display: table;
-	position: relative;
 	box-sizing: border-box;
 	width: 100%;
 	min-height: 620px;
 	padding: 45px 0;
+	position: relative;
 	background: url(../media/images/icons/io-mark-bg.svg) no-repeat $CLR_GRAY_LIGHTER;
 	background-position: -725px top;
 	background-size: 1450px 2035px;

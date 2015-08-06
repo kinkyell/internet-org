@@ -433,6 +433,8 @@ define(function(require, exports, module) { // jshint ignore:line
         } else {
             this._sectionTransitionDesktop(position)
         }
+
+        return this;
     };
 
     proto._sectionTransitionMobile = function(position) {
@@ -451,7 +453,9 @@ define(function(require, exports, module) { // jshint ignore:line
 
         var tl = new TimelineLite();
 
-        tl.add(bdTwn);
+        if (position !== (this._slidesLength - 1)) {
+            tl.add(bdTwn);
+        }
 
         if (position === 1 && this._position === 0) {
             var opacTwn = TweenLite.from($sectionBody, 0.5, {opacity: 0});
@@ -554,8 +558,6 @@ define(function(require, exports, module) { // jshint ignore:line
 
     proto._onTouchEnd = function(e) {
         this.$body.off(this._eventTouchNamespace);
-
-        console.log('complete');
     };
 
     module.exports = NarrativeView;

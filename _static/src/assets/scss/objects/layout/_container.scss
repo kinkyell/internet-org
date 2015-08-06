@@ -6,3 +6,7 @@ wrapper for constraining content to a max width
 .container {
     @include contain();
 }
+
+.container_wide {
+    @include contain(wide);
+}

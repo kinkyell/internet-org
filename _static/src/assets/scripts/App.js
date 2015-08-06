@@ -66,6 +66,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.router = new Router();
 
         this.narrativeView = new NarrativeView($('.js-narrativeView'));
+        debugger;
 
         // register global components
         $('select.js-select').each(function(idx, el) {

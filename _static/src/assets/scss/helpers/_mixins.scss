@@ -19,11 +19,20 @@
     transform: translateY(-50%);
 }
 
-@mixin contain() {
-    width: 82.5%;
+@mixin contain($type:"") {
     margin: 0 auto;
 
-    @include breakpoint(MD) {
-        width: 75%;
+    @if $type == wide {
+        width: 85.3125%;
+
+        @include breakpoint(MD) {
+            width: 78.125%;
+        }
+    } @else {
+        width: 82.5%;
+
+        @include breakpoint(MD) {
+            width: 75%;
+        }
     }
 }
