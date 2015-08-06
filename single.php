@@ -9,7 +9,7 @@ get_header();
 
 
 // NOTE: $wp_query->found_posts should also == 1
-if ( 'page' == get_option('show_on_front') && $page_on_front = get_option('page_on_front') ) {
+if ( 'page' == get_option( 'show_on_front' ) && $page_on_front = get_option( 'page_on_front' ) ) {
 	$after_title_custom_fields = get_post_meta( get_the_ID(), 'after_title_fm_fields', true );
 	$custom_fields = get_post_meta( get_the_ID(), 'home-content-section', false );
 }
@@ -26,10 +26,10 @@ if ( 'page' == get_option('show_on_front') && $page_on_front = get_option('page_
 			<?php the_post_navigation(); ?>
 
 			<?php
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
+			// If comments are open or we have at least one comment, load up the comment template.
+			if ( comments_open() || get_comments_number() ) :
+				comments_template();
+			endif;
 			?>
 
 		<?php endwhile; // End of the loop. ?>
