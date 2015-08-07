@@ -3,12 +3,11 @@
 
  common links styling
 ------------------------------------------------------------------------ */
-
 .link {
     @include transition(all 0.3s ease-in-out);
     font-family: $FONT_SANS_BLACK;
     font-weight: bolder; @warn 'REMOVE ONCE Web Fonts are in place';
-    font-size: 18px;
+    font-size: 13px;
     line-height: 1.222222;
     text-decoration: none;
     text-transform: uppercase;
@@ -18,7 +17,7 @@
 }
 
 .link_sm {
-    font-size: 16px;
+    font-size: 13px; //same as base on mobile
 }
 
 .link:after,
@@ -94,7 +93,7 @@
 .link_twoArrows:hover:before { background-color: transparent; }
 
 .link_preArrows {
-    font-size: 12px;
+    font-size: 10px;
     color: $CLR_GRAY;
     padding-left: 15px;
 }
@@ -185,3 +184,17 @@
 
 .theme-mission .link:hover:before,
 .link_themeMission:hover:before { background-color: $CLR_MISSION_ACTIVE; }
+
+@include breakpoint(MD) {
+    .link {
+        font-size: 18px;
+    }
+
+    .link_sm {
+        font-size: 16px;
+    }
+
+    .link_preArrows {
+        font-size: 12px;
+    }
+}

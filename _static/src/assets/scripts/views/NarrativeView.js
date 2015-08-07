@@ -433,13 +433,12 @@ define(function(require, exports, module) { // jshint ignore:line
         } else {
             this._sectionTransitionDesktop(position)
         }
-
-        return this;
     };
 
     proto._sectionTransitionMobile = function(position) {
         var $destinationSection = $('.narrative-section').eq(position);
         var $sectionBody = $destinationSection.find('.narrative-section-bd');
+        var $sectionBodyCnt = $sectionBody.find('.transformBlock');
         this._slidePosition = (position > this._position) ? 0 : $destinationSection.find('.narrative-section-slides-item:last-child').index();
 
         var i = 0
@@ -448,14 +447,19 @@ define(function(require, exports, module) { // jshint ignore:line
             offsetY += $('.narrative-section').eq(i).height();
         }
 
-        var bdTwnPos = (position > this._position) ? '50%' : '-50%';
-        var bdTwn = TweenLite.from($sectionBody, 0.5, {top: bdTwnPos});
+        var bdTwnOffset = 50;
+        var bdTwnPos = (position > this._position) ? bdTwnOffset : (0 - bdTwnOffset);
+        var bdCntPos = bdTwnPos * 2;
+        var bdTwn = TweenLite.from($sectionBody, 0.5, {top: bdTwnPos + '%'});
+        var bdCntTwn = TweenLite.from($sectionBodyCnt, 0.65, {y: bdCntPos + '%'});
 
         var tl = new TimelineLite();
 
         if (position !== (this._slidesLength - 1)) {
             tl.add(bdTwn);
         }
+
+        tl.add(bdCntTwn, '-=0.5');
 
         if (position === 1 && this._position === 0) {
             var opacTwn = TweenLite.from($sectionBody, 0.5, {opacity: 0});
@@ -468,7 +472,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._updateIndicators();
             this._updateSlideHooks();
             window.setTimeout(this._onSectionComplete.bind(this, position), this._scrollBuffer);
-        }.bind(this) }, '-=0.5');
+        }.bind(this) }, '-=0.65');
     }
 
     proto._sectionTransitionDesktop = function(position) {
