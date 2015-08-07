@@ -83,7 +83,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', 'Run default tasks for the target environment.',
         // Ran `grunt`
-        grunt.option('dev')   ? ['build'] :
+        grunt.option('dev')   ? ['lint', 'build'] :
         // Ran `grunt --stage`
         grunt.option('stage') ? ['lint', 'build'] :
         // Ran `grunt --prod`
