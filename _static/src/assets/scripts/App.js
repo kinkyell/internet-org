@@ -126,16 +126,16 @@ define(function(require, exports, module) { // jshint ignore:line
 
         if (states.length > previousStates.length) {
             // navigating forward
-            console.log('forward', lastState.path);
+            // console.log('forward', lastState.path);
             this.states.push(stateCtor, lastState, silent);
         } else if (states.length < previousStates.length) {
-            console.log('backward');
+            // console.log('backward');
             this.states.pop();
         } else {
-            console.log('swap');
+            // console.log('swap');
             this.states.swap(stateCtor, lastState);
         }
-        console.log(this.states);
+        // console.log(this.states);
 
         // if going to or from home we need to shift over
         toHome = this.states.getTop() instanceof HomeState;

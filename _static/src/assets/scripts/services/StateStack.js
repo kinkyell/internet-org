@@ -48,7 +48,8 @@ define(function(require, exports, module) { // jshint ignore:line
         if (this._activeStates.length > 1) {
             this._activeStates[this._activeStates.length - 2].deactivate({
                 method: 'push',
-                states: this._activeStates
+                states: this._activeStates,
+                nextState: stateInstance
             });
         }
 
@@ -65,6 +66,7 @@ define(function(require, exports, module) { // jshint ignore:line
         stateInstance.activate({
             method: 'push',
             states: this._activeStates,
+            prevState: this._activeStates.length > 1 ? this._activeStates[this._activeStates.length - 2] : null,
             silent: silent
         });
     };
@@ -84,7 +86,8 @@ define(function(require, exports, module) { // jshint ignore:line
         if (this._activeStates.length) {
             this._activeStates[this._activeStates.length - 1].activate({
                 method: 'pop',
-                states: this._activeStates
+                states: this._activeStates,
+                prevState: stateInstance
             });
         }
 
@@ -99,7 +102,8 @@ define(function(require, exports, module) { // jshint ignore:line
 
         stateInstance.deactivate({
             method: 'pop',
-            states: this._activeStates
+            states: this._activeStates,
+            nextState: this._activeStates[this._activeStates.length - 1]
         });
 
         return stateInstance;
@@ -132,13 +136,15 @@ define(function(require, exports, module) { // jshint ignore:line
         // deactivate old instance
         prevInstance.deactivate({
             method: 'swap',
-            states: this._activeStates
+            states: this._activeStates,
+            nextState: stateInstance
         });
 
         // activate the new state
         stateInstance.activate({
             method: 'swap',
-            states: this._activeStates
+            states: this._activeStates,
+            prevState: prevInstance
         });
     };
 
