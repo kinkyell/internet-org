@@ -5,13 +5,13 @@
 ------------------------------------------------------------------------ */
 .quarentine {
     h1 {
-        font-size: 18px;
+        @include remify(font-size, 18px);
         font-weight: bold;
         margin-bottom: 4px;
     }
 
     h2 {
-        font-size: 14px;
+        @include remify(font-size, 14px);
         font-weight: bold;
         margin-bottom: 4px;
     }

@@ -37,7 +37,7 @@ Feature content module
 .feature-media-caption > * {
     font-family: $FONT_SERIF_ITALIC;
     font-style: italic;  // TODO: REMOVE ONCE Web Fonts are in place
-    font-size: 22px;
+    @include remify(font-size, 22px);
     line-height: 1.3636363;
     color: $CLR_GRAY;
     background-color: $CLR_GRAY_LIGHT;

@@ -51,7 +51,7 @@ carousel layout
 
 .carousel-handle-slide-caption {
     font-family: $FONT_SANS;
-    font-size: 18px;
+    @include remify(font-size, 18px);
     line-height: 1.666667;
     text-align: left;
     color: $CLR_GRAY;
