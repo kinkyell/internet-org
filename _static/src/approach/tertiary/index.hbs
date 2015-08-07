@@ -1,0 +1,47 @@
+{{#extend "layout"}}
+
+    {{#content "body" mode="append"}}
+
+        <div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="/approach/tertiary" data-type="titled" data-theme="Approach">
+            <div class="viewWindow-panel">
+                <div class="viewWindow-panel-content">
+                    <div class="viewWindow-panel-content-inner">
+
+                            {{>homepage-content}}
+
+                    </div>
+                </div>
+            </div>
+            <div class="viewWindow-panel viewWindow-panel_feature isDouble">
+                <div class="viewWindow-panel-content">
+                    <div class="viewWindow-panel-content-inner">
+                        <div class="introBlock introBlock_fill">
+                            <div class="introBlock-inner">
+                                <div class="topicBlock">
+                                    <div class="topicBlock-hd topicBlock-hd_plus">
+                                        <h2 class="hdg hdg_3">Video, Text and Link</h2>
+                                    </div>
+                                    <div class="topicBlock-subHd">
+                                        <div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray">May 25, 2015</div>
+                                    </div>
+                                    <div class="topicBlock-bd">
+                                        <p class="bdcpy">Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Sus pendisse est nulla, suscipit eu ante vel, vehicula finibus nisi.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="viewWindow-panel viewWindow-panel_story isActive">
+                <div class="viewWindow-panel-content">
+
+                    {{>approach-tertiary}}
+
+                </div>
+            </div>
+        </div>
+
+    {{/content}}
+
+{{/extend}}

@@ -28,7 +28,7 @@
 .menuTrigger-label {
   font-family: Arial, sans-serif;
   font-weight: bold;
-  font-size: 14px;
+  @include remify(font-size, 14px);
   color: $CLR_BLACK;
   text-transform: uppercase;
   display: inline-block;

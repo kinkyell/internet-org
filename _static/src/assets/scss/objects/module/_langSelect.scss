@@ -19,12 +19,12 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    font-size: 16px; // for mobile zooming
+    @include remify(font-size, 16px); // for mobile zooming
 }
 
 .langSelect-label,
 .langSelect-menu-item {
-    font-size: 13px;
+    @include remify(font-size, 13px);
     line-height: 1;
     font-family: $FONT_SANS_BLACK;
     font-weight: bolder;
@@ -35,7 +35,7 @@
 .langSelect-label {
     padding: 23px 20px 23px;
     background: #e4e0d1;
-    font-size: 13px;
+    @include remify(font-size, 13px);
     text-align: center;
 }
 

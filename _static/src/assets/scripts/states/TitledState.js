@@ -2,7 +2,6 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     var BasicState = require('./BasicState');
-    var HomeState = require('./HomeState');
     var apiService = require('services/apiService');
     var spread = require('stark/promise/spread');
 
@@ -56,21 +55,11 @@ define(function(require, exports, module) { // jshint ignore:line
      * @fires State:activate
      */
     TitledState.prototype.activate = function(event) {
-        var transition = 'right';
-        var stateLen = event.states.length;
-        var fromHome = stateLen > 1 && (event.states[stateLen - 2] instanceof HomeState);
+        var transitions = this.getAnimationDirections(event);
 
         if (event.silent) {
             viewWindow.getCurrentStory().then(this._handleStaticContent, log);
             return BasicState.prototype.activate.call(this, event);
-        }
-
-        if (event.method === 'pop') {
-            transition = fromHome ? 'right' : 'left';
-        }
-
-        if (event.method === 'swap') {
-            transition = 'bottom';
         }
 
         var tasks = [
@@ -80,8 +69,8 @@ define(function(require, exports, module) { // jshint ignore:line
                 theme: this._options.theme,
                 desc: this._options.desc,
                 date: this._options.date
-            }), transition),
-            viewWindow.replaceStoryContent('', fromHome ? 'none' : transition)
+            }), transitions.feature),
+            viewWindow.replaceStoryContent('', transitions.content)
         ];
 
         Promise.all(tasks)

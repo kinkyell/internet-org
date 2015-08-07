@@ -111,7 +111,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._onContentLoad = function(html) {
         var newContent = document.createElement('div');
         newContent.innerHTML = html;
-        this.targetEl.appendChild(newContent)
+        this.targetEl.appendChild(newContent);
 
         return tweenAsync.from(newContent, animationSpeeds.ADDL_CONTENT, {
             height: 0,

@@ -298,6 +298,16 @@ define(function(require, exports, module) { // jshint ignore:line
         return Promise.resolve(this.$story.children().children());
     };
 
+    /**
+     * Get current feature panel
+     *
+     * @method getCurrentFeature
+     * @return {jQuery} content panel
+     */
+    ViewWindow.prototype.getCurrentFeature = function() {
+        return Promise.resolve(this.$feature.children().children());
+    };
+
     return new ViewWindow();
 
 });

@@ -18,7 +18,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var PATHS = {
         '/mission': '/pages/mission.html',
         '/approach': '/pages/approach.html',
-        '/approach-tertiary': '/pages/approach-tertiary.html',
+        '/approach/tertiary': '/pages/approach-tertiary.html',
         '/impact': '/pages/impact.html',
         '/press': '/pages/press-content.html',
         'pressResults': '/pages/press-content-addl.html',

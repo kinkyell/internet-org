@@ -4,8 +4,8 @@ define(function(require, exports, module) { // jshint ignore:line
     var $ = require('jquery');
     require('gsap-cssPlugin');
     require('gsap-scrollToPlugin');
-    require('gsap-tween');
-    require('gsap-timeline');
+    var Tween = require('gsap-tween');
+    var Timeline = require('gsap-timeline');
     var ViewWindow = require('services/viewWindow');
     var breakpointManager = require('services/breakpointManager');
 
@@ -325,7 +325,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._direction = 'up';
         } else {
             this._direction = 'down';
-            var _deltaY = _deltaY * -1;
+            _deltaY = _deltaY * -1;
         }
 
         return _deltaY;
@@ -383,15 +383,15 @@ define(function(require, exports, module) { // jshint ignore:line
         var $slidesContainer = $currentSection.find('.narrative-section-slides');
         var $slides = $currentSection.find('.narrative-section-slides-item');
         var slideCount = $slides.length;
-        var $currentSlide = $currentSection.find('.narrative-section-slides-item').eq(this._slidePosition);
         var destinationSlidePos = this._slidePosition;
+        var atEnd;
 
         if (forward) {
             destinationSlidePos += 1;
-            var atEnd = destinationSlidePos >= slideCount;
+            atEnd = destinationSlidePos >= slideCount;
         } else {
             destinationSlidePos -= 1;
-            var atEnd = destinationSlidePos < 0;
+            atEnd = destinationSlidePos < 0;
         }
 
         var hasMultiple = this._hasMultiple(this._position);
@@ -408,7 +408,7 @@ define(function(require, exports, module) { // jshint ignore:line
             offsetY += $slides.eq(i).height();
         }
 
-        var tl = new TimelineLite();
+        var tl = new Timeline();
         tl.to($slidesContainer, 0.35, { scrollTo: { y: offsetY }, onComplete: function() {
             window.setTimeout(this._onSlideComplete.bind(this, forward), this._scrollBuffer);
         }.bind(this) });
@@ -431,30 +431,31 @@ define(function(require, exports, module) { // jshint ignore:line
         if (breakpointManager.isMobile) {
             this._sectionTransitionMobile(position);
         } else {
-            this._sectionTransitionDesktop(position)
+            this._sectionTransitionDesktop(position);
         }
     };
 
     proto._sectionTransitionMobile = function(position) {
         var $destinationSection = $('.narrative-section').eq(position);
         var $sectionBody = $destinationSection.find('.narrative-section-bd');
-        this._slidePosition = (position > this._position) ? 0 : $destinationSection.find('.narrative-section-slides-item:last-child').index();
+        var slideItemSel = '.narrative-section-slides-item:last-child';
+        this._slidePosition = (position > this._position) ? 0 : $destinationSection.find(slideItemSel).index();
 
-        var i = 0
+        var i = 0;
         var offsetY = 0;
         for (; i < position; i++) {
             offsetY += $('.narrative-section').eq(i).height();
         }
 
         var bdTwnPos = (position > this._position) ? '50%' : '-50%';
-        var bdTwn = TweenLite.from($sectionBody, 0.5, {top: bdTwnPos});
+        var bdTwn = Tween.from($sectionBody, 0.5, {top: bdTwnPos});
 
-        var tl = new TimelineLite();
+        var tl = new Timeline();
 
         tl.add(bdTwn);
 
         if (position === 1 && this._position === 0) {
-            var opacTwn = TweenLite.from($sectionBody, 0.5, {opacity: 0});
+            var opacTwn = Tween.from($sectionBody, 0.5, {opacity: 0});
             tl.add(opacTwn, 0);
         }
 
@@ -465,18 +466,16 @@ define(function(require, exports, module) { // jshint ignore:line
             this._updateSlideHooks();
             window.setTimeout(this._onSectionComplete.bind(this, position), this._scrollBuffer);
         }.bind(this) }, '-=0.5');
-    }
+    };
 
     proto._sectionTransitionDesktop = function(position) {
         var $currentSection = $('.narrative-section').eq(this._position);
-        var $destinationSection = $('.narrative-section').eq(position);
-        var $sectionBody = $destinationSection.find('.narrative-section-bd');
         var $transformBlock = $currentSection.find('.transformBlock');
         var $linePre = $transformBlock.find('.transformBlock-pre');
         var direction = (this._position < position) ? 'bottom' : 'top';
 
         var movement = (direction === 'bottom') ? '-=90px' : '+=90px';
-        var tl = new TimelineLite();
+        var tl = new Timeline();
         tl.to($transformBlock, 0.35, {
             top: movement
         });
@@ -490,7 +489,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._updateSlideHooks();
             this._isAnimating = false;
         }.bind(this));
-    }
+    };
 
     proto._updateSlideHooks = function() {
         var i = 0;

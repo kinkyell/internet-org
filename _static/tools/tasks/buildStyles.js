@@ -23,7 +23,7 @@ module.exports = function(grunt) {
         postcss: {
             options: {
                 processors: [
-                    require('pixrem')(), // add fallbacks for rem units
+                    // require('pixrem')(), // add fallbacks for rem units
                     require('autoprefixer-core')({
                         browsers: ['ie >= 9', 'iOS >= 7', 'Safari >= 7', 'Android >= 4', 'last 2 versions']
                     }), // add vendor prefixes

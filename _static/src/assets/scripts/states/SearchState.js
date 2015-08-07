@@ -2,7 +2,6 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     var BasicState = require('./BasicState');
-    var HomeState = require('./HomeState');
     var viewWindow = require('services/viewWindow');
     var apiService = require('services/apiService');
     var spread = require('stark/promise/spread');
@@ -23,6 +22,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     var SearchState = function(options) {
         this._handlePanelContentLoad = this._onPanelContentLoad.bind(this);
+            this._handleStaticContent = this._onStaticContent.bind(this);
         this._handleSearchFormCreation = this._onSearchFormCreation.bind(this);
         BasicState.call(this, options);
 
@@ -51,25 +51,23 @@ define(function(require, exports, module) { // jshint ignore:line
      * @fires State:activate
      */
     SearchState.prototype.activate = function(event) {
-       var transition = 'right';
-       var searchText = this._options.searchText;
-       var stateLen = event.states.length;
-       var fromHome = stateLen > 1 && (event.states[stateLen - 2] instanceof HomeState);
-       var tmplArgs = { searchText: searchText };
+        var transitions = this.getAnimationDirections(event);
+        var tmplArgs = { searchText: event.searchText };
 
-        if (event.method === 'pop') {
-            transition = 'left';
+        if (event.silent) {
+            viewWindow.getCurrentFeature().then(this._handleStaticContent);
+            return BasicState.prototype.activate.call(this, event);
         }
 
         var tasks = [
-            apiService.getSearchResults(searchText),
+            apiService.getSearchResults(event.searchText),
             viewWindow.replaceStoryContent(
                 templates['search-results-header'](tmplArgs),
-                event.method === 'push' && fromHome ? 'none' : transition
+                transitions.content
             )
         ];
 
-        viewWindow.replaceFeatureContent(templates['search-input-panel'](tmplArgs), transition)
+        viewWindow.replaceFeatureContent(templates['search-input-panel'](tmplArgs), transitions.feature)
             .then(this.refreshComponents)
             .catch(log);
 
@@ -92,6 +90,20 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
         $panel.append(markup);
+        this.refreshComponents($panel);
+    };
+
+    /**
+     * Handle static content when loaded
+     *
+     * @method _onStaticContent
+     * @param {jQuery} $panel Panel that wraps static content
+     * @private
+     */
+    SearchState.prototype._onStaticContent = function($panel) {
+        if (!this.active) {
+            return;
+        }
         this.refreshComponents($panel);
     };
 
