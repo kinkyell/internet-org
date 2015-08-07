@@ -23,6 +23,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     var SearchState = function(options) {
         this._handlePanelContentLoad = this._onPanelContentLoad.bind(this);
+            this._handleStaticContent = this._onStaticContent.bind(this);
         this._handleSearchFormCreation = this._onSearchFormCreation.bind(this);
         BasicState.call(this, options);
 
@@ -56,6 +57,11 @@ define(function(require, exports, module) { // jshint ignore:line
        var stateLen = event.states.length;
        var fromHome = stateLen > 1 && (event.states[stateLen - 2] instanceof HomeState);
        var tmplArgs = { searchText: searchText };
+
+       if (event.silent) {
+           viewWindow.getCurrentFeature().then(this._handleStaticContent);
+           return BasicState.prototype.activate.call(this, event);
+       }
 
         if (event.method === 'pop') {
             transition = 'left';
@@ -92,6 +98,20 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
         $panel.append(markup);
+        this.refreshComponents($panel);
+    };
+
+    /**
+     * Handle static content when loaded
+     *
+     * @method _onStaticContent
+     * @param {jQuery} $panel Panel that wraps static content
+     * @private
+     */
+    SearchState.prototype._onStaticContent = function($panel) {
+        if (!this.active) {
+            return;
+        }
         this.refreshComponents($panel);
     };
 
