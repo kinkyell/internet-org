@@ -214,8 +214,8 @@ if ( ! function_exists( 'get_free_services' ) ) :
 				);
 			endwhile;
 
-			// caching the compiled array and not the query
-			wp_cache_set( 'iorg_free_services_list', $services );
+			// caching the compiled array and not the query (86400 == 1 day)
+			wp_cache_set( 'iorg_free_services_list', $services, null, 86400 );
 
 			// reset the query to before we started mucking with it
 			wp_reset_postdata();

@@ -10,48 +10,48 @@
 }
 
 .hdg_1 {
-    font-size: 30px;
+    @include remify(font-size, 30px);
     line-height: 1.28;
 }
 
 .hdg_2 {
-    font-size: 30px;
+    @include remify(font-size, 30px);
     line-height: 1.28;
 }
 
 .hdg_3 {
-    font-size: 20px;
+    @include remify(font-size, 20px);
     line-height: 1.2625;
 }
 
 .hdg_4 {
-    font-size: 16px;
+    @include remify(font-size, 16px);
     line-height: 1.4565384;
 }
 
 .hdg_5 {
-    font-size: 13px;
+    @include remify(font-size, 13px);
     line-height: 1.3636363;
 }
 
 .hdg_6 {
-    font-size: 16px;
+    @include remify(font-size, 16px);
     line-height: 1.5;
 }
 
 .hdg_7 {
-    font-size: 13px;
+    @include remify(font-size, 13px);
     line-height: 1.2;
 }
 
 .hdg_8 {
-    font-size: 27px;
+    @include remify(font-size, 27px);
     line-height: 1.25;
 }
 
 .hdg_subHdg {
 	font-family: $FONT_SANS;
-	font-size: 17px;
+	@include remify(font-size, 17px);
 	line-height: 1.4285714;
 }
 
@@ -63,38 +63,38 @@
 
 @include breakpoint(MD) {
     .hdg_1 {
-        font-size: 64px;
+        @include remify(font-size, 64px);
     }
 
     .hdg_2 {
-        font-size: 48px;
+        @include remify(font-size, 48px);
     }
 
     .hdg_3 {
-        font-size: 32px;
+        @include remify(font-size, 32px);
     }
 
     .hdg_4 {
-        font-size: 26px;
+        @include remify(font-size, 26px);
     }
 
     .hdg_5 {
-        font-size: 22px;
+        @include remify(font-size, 22px);
     }
 
     .hdg_6 {
-        font-size: 20px;
+        @include remify(font-size, 20px);
     }
 
     .hdg_7 {
-        font-size: 18px;
+        @include remify(font-size, 18px);
     }
 
     .hdg_8 {
-        font-size: 40px;
+        @include remify(font-size, 40px);
     }
 
     .hdg_subHdg {
-        font-size: 28px;
+        @include remify(font-size, 28px);
     }
 }

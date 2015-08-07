@@ -56,3 +56,17 @@
         @include isVisuallyHidden();
     }
 }
+
+
+/* Converts font size to rem equivalent and includes pixel fallback */
+// $BASE_FONT_SIZE is set in the _vars.scss partial
+
+// Usage: @include remify(font-size, 16px);
+@mixin remify(
+    $PROPERTY,
+    $SIZE,
+    $BASE_FONT_SIZE: $BASE_FONT_SIZE
+) {
+    #{$PROPERTY}: $SIZE;
+    #{$PROPERTY}: #{$SIZE / $BASE_FONT_SIZE}rem;
+}

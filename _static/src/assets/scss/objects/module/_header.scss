@@ -82,7 +82,7 @@
 
 .header-menuBtn-text {
     margin-right: 10px;
-    font-size: 16px;
+    @include remify(font-size, 16px);
     text-transform: uppercase;
 }
 

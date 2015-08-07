@@ -11,7 +11,7 @@
     position: relative; // For pseudo positioning
     font-family: $FONT_SANS;
     font-weight: 400; // TODO: REMOVE ONCE Web Fonts are in place
-    font-size: 28px;
+    @include remify(font-size, 28px);
     line-height: 1.875;
     color: $CLR_GRAY;
 }

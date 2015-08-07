@@ -6,18 +6,18 @@
 .bdcpy {
     font-family: $FONT_SANS;
     font-weight: 400; // TODO: REMOVE ONCE Web Fonts are in place
-    font-size: 14px;
+    @include remify(font-size, 14px);
     line-height: 1.666666667;
     color: $CLR_GRAY;
 }
 
 .bdcpy_lg {
-    font-size: 21px;
+    @include remify(font-size, 21px);
     line-height: 1.714285714;
 }
 
 .bdcpy_sm {
-    font-size: 12px;
+    @include remify(font-size, 12px);
     line-height: 1.666667;
 }
 
@@ -27,14 +27,14 @@
 
 @include breakpoint(MD) {
     .bdcpy {
-        font-size: 18px;
+        @include remify(font-size, 18px);
     }
 
     .bdcpy_lg {
-        font-size: 28px;
+        @include remify(font-size, 28px);
     }
 
     .bdcpy_sm {
-        font-size: 16px;
+        @include remify(font-size, 16px);
     }
 }
