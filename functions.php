@@ -198,6 +198,7 @@ if ( ! function_exists( 'get_free_services' ) ) :
 		if ( false === $services ) {
 			$args = array(
 				'post_type' => 'iorg_freesvc',
+				'post_status' => 'publish',
 			);
 
 			$services = array();
@@ -208,6 +209,7 @@ if ( ! function_exists( 'get_free_services' ) ) :
 				$postId = get_the_ID();
 				$services[] = array(
 					'post_id' => $postId,
+					'slug'    => $svcqry->post->post_name,
 					'title'   => get_the_title(),
 					'excerpt' => get_the_excerpt(),
 					'image'   => wp_get_attachment_image_src( get_post_thumbnail_id( $postId ), 'thumbnail' ),
