@@ -37,7 +37,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * @fires State:activate
      */
     BasicState.prototype.activate = function(event) {
-        console.log(event.method);
         AbstractState.prototype.activate.call(this, event);
     };
 
