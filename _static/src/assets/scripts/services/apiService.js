@@ -21,6 +21,7 @@ define(function(require, exports, module) { // jshint ignore:line
         '/approach/tertiary': '/pages/approach-tertiary.html',
         '/impact': '/pages/impact.html',
         '/press': '/pages/press-content.html',
+        '/contact': '/pages/contact-content.html',
         'pressResults': '/pages/press-content-addl.html',
         'searchResults': '/pages/search-results.html',
         '404': '/pages/not-found.html'
