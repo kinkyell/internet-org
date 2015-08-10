@@ -14,7 +14,11 @@ define(function(require, exports, module) { // jshint ignore:line
     var $ = require('jquery');
     var Tween = require('gsap-tween');
 
-    var log = console.log.bind(console);
+    var log = function() {
+        if (console.log) {
+            console.log.apply(console, arguments);
+        }
+    };
 
     /**
      * Manages the stack of active states

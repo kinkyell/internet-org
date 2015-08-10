@@ -85,8 +85,21 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._cutsTheMustard = function() {
+        // polyfill getPrototype of
+        if ( typeof Object.getPrototypeOf !== 'function' ) {
+            if ( typeof 'test'.__proto__ === 'object' ) { //jshint ignore:line
+                Object.getPrototypeOf = function(object){
+                    return object.__proto__; //jshint ignore:line
+                };
+            } else {
+                Object.getPrototypeOf = function(object){
+                    // May break if the constructor has been tampered with
+                    return object.constructor.prototype;
+                };
+            }
+        }
+
         if (
-            (typeof Object.getPrototypeOf !== 'function') ||
             (typeof Function.prototype.bind !== 'function')
         ) {
             return false;

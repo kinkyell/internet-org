@@ -16,16 +16,18 @@ define(function(require, exports, module) { // jshint ignore:line
      * TODO: update to point to WP endpoints
      */
     var PATHS = {
-        '/mission': '/pages/mission.html',
-        '/approach': '/pages/approach.html',
-        '/approach/tertiary': '/pages/approach-tertiary.html',
-        '/impact': '/pages/impact.html',
-        '/press': '/pages/press-content.html',
-        '/contact': '/pages/contact-content.html',
+        'mission': '/pages/mission.html',
+        'approach': '/pages/approach.html',
+        'approach/tertiary': '/pages/approach-tertiary.html',
+        'impact': '/pages/impact.html',
+        'press': '/pages/press-content.html',
+        'contact': '/pages/contact-content.html',
         'pressResults': '/pages/press-content-addl.html',
         'searchResults': '/pages/search-results.html',
         '404': '/pages/not-found.html'
     };
+
+    var PREFIX_STRIPPER = /^\//;
 
     var APIService = {
 
@@ -35,6 +37,7 @@ define(function(require, exports, module) { // jshint ignore:line
          * @returns {Promise} represents value of html returned
          */
         getPanelContent: function(route) {
+            route = route.replace(PREFIX_STRIPPER, '');
             var path = PATHS[route] || PATHS['404'];
             return Promise.resolve($.get(BASE_URL + path));
         },
