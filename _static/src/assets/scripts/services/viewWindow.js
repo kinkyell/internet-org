@@ -13,6 +13,8 @@ define(function(require, exports, module) { // jshint ignore:line
     // speed of shift and feature transitions
     var TRANSITION_SPEED = require('appConfig').animationSpeeds.PANEL_SHIFT;
 
+    var BG_IMG_REGEX = /^url\((.+)\)$/;
+
     /**
      * Constructor for ViewWindow
      *
@@ -42,6 +44,13 @@ define(function(require, exports, module) { // jshint ignore:line
         this._lastStoryAnimation = Promise.resolve();
         this._lastShiftAnimation = Promise.resolve();
         this._isShifted = false;
+        this._featureImage = null;
+
+        // get bg image if available
+        var childImg = this.$feature.find('.viewWindow-panel-content-inner').css('background-image');
+        if (BG_IMG_REGEX.test(childImg)) {
+            this._featureImage = childImg.match(BG_IMG_REGEX)[1];
+        }
     };
 
     /**

@@ -10,7 +10,11 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var templates = require('templates');
 
-    var log = console.log.bind(console);
+    var log = function() {
+        if (console.log) {
+            console.log.apply(console, arguments);
+        }
+    };
 
     /**
      * Manages search state
@@ -22,7 +26,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     var SearchState = function(options) {
         this._handlePanelContentLoad = this._onPanelContentLoad.bind(this);
-            this._handleStaticContent = this._onStaticContent.bind(this);
+        this._handleStaticContent = this._onStaticContent.bind(this);
         this._handleSearchFormCreation = this._onSearchFormCreation.bind(this);
         BasicState.call(this, options);
 
