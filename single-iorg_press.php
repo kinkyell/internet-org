@@ -16,10 +16,10 @@
 					<div class="container">
 						<div class="topicBlock">
 							<div class="topicBlock-hd topicBlock-hd_plus">
-								<h2 class="hdg hdg_2 mix-hdg_bold"><?php echo esc_html__( get_the_title(), 'internet_org' ); ?></h2>
+								<h2 class="hdg hdg_2 mix-hdg_bold"><?php echo esc_html__( get_the_title(), 'internetorg' ); ?></h2>
 							</div>
 							<div class="topicBlock-subHd">
-								<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray"><?php internet_org_posted_on(); ?></div>
+								<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray"><?php internetorg_posted_on(); ?></div>
 							</div>
 							<div class="topicBlock-bd">
 								<p class="bdcpy">
@@ -28,7 +28,7 @@
 									/**
 									 * @todo fix escaping of this output
 									 */
-									echo __( get_the_content(), 'internet_org' ); ?>
+									echo __( get_the_content(), 'internetorg' ); ?>
 								</p>
 							</div>
 						</div>
@@ -36,9 +36,9 @@
 				</div>
 				<div class="introBlock-ft introBlock-ft_rule">
 					<ul class="socialParade">
-						<li><a class="socialParade-icon socialParade-icon_fb" href=""><?php echo esc_html__( 'Facebook', 'internet_org' ); ?></a></li>
-						<li><a class="socialParade-icon socialParade-icon_tw" href=""><?php echo esc_html__( 'Twitter', 'internet_org' ); ?></a></li>
-						<li><a class="socialParade-icon socialParade-icon_li" href=""><?php echo esc_html__( 'LinkedIn', 'internet_org' ); ?></a></li>
+						<li><a class="socialParade-icon socialParade-icon_fb" href=""><?php echo esc_html__( 'Facebook', 'internetorg' ); ?></a></li>
+						<li><a class="socialParade-icon socialParade-icon_tw" href=""><?php echo esc_html__( 'Twitter', 'internetorg' ); ?></a></li>
+						<li><a class="socialParade-icon socialParade-icon_li" href=""><?php echo esc_html__( 'LinkedIn', 'internetorg' ); ?></a></li>
 					</ul>
 				</div>
 			</div>
@@ -58,11 +58,11 @@
 				<div class="container">
 					<div class="feature">
 						<div class="feature-hd">
-							<h2 class="hdg hdg_3"><?php esc_html__( 'Full List of Free Services', 'internet_org' ); ?></h2>
+							<h2 class="hdg hdg_3"><?php esc_html__( 'Full List of Free Services', 'internetorg' ); ?></h2>
 						</div>
 							<div class="feature-bd">
 								<ul class="servicesList">
-								<?php $freeServices = get_free_services(); ?>
+								<?php $freeServices = internetorg_get_free_services(); ?>
 								<?php if ( ! empty( $freeServices )  ) : ?>
 									<?php foreach ( $freeServices as $service ) : ?>
 										<li>
@@ -70,12 +70,12 @@
 												<div class="servicesList-item">
 													<?php if ( ! empty( $service['image'] ) ) : ?>
 													<div class="servicesList-item-icon">
-														<img src="<?php echo esc_attr( $service['image'] ); ?>" alt="<?php echo esc_attr__( $service['title'], 'internet_org' ); ?>" />
+														<img src="<?php echo esc_attr( $service['image'] ); ?>" alt="<?php echo esc_attr__( $service['title'], 'internetorg' ); ?>" />
 													</div>
 													<?php endif; ?>
 													<div class="servicesList-item-bd">
-														<div class="hdg hdg_5"><?php echo esc_html__( $service['title'], 'internet_org' ); ?></div>
-														<div class="bdcpy bdcpy_sm"><?php echo esc_html__( $service['excerpt'], 'internet_org' ); ?></div>
+														<div class="hdg hdg_5"><?php echo esc_html__( $service['title'], 'internetorg' ); ?></div>
+														<div class="bdcpy bdcpy_sm"><?php echo esc_html__( $service['excerpt'], 'internetorg' ); ?></div>
 													</div>
 												</div>
 											</a>

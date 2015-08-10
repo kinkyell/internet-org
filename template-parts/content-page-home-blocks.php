@@ -25,7 +25,7 @@ if ( ! empty( $custom_fields ) ) : ?>
 							<?php if ( ! empty( $fieldset['title'] ) ) : ?>
 								<div class="transformBlock-hd">
 									<div class="vr vr_x1">
-										<h2 class="hdg hdg_1"><?php echo esc_html__( $fieldset['title'], 'internet_org' ); ?></h2>
+										<h2 class="hdg hdg_1"><?php echo esc_html__( $fieldset['title'], 'internetorg' ); ?></h2>
 									</div>
 								</div>
 							<?php endif; ?>
@@ -33,7 +33,7 @@ if ( ! empty( $custom_fields ) ) : ?>
 								<div class="transformBlock-bd">
 									<?php if ( ! empty( $fieldset['content'] ) ) : ?>
 									<div class="vr_x5">
-										<p class="bdcpy bdcpy_lg"><?php echo __( $fieldset['content'], 'internet_org' ); ?></p>
+										<p class="bdcpy bdcpy_lg"><?php echo __( $fieldset['content'], 'internetorg' ); ?></p>
 									</div>
 									<?php endif; ?>
 
@@ -42,11 +42,11 @@ if ( ! empty( $custom_fields ) ) : ?>
 										<?php foreach ( $fieldset['call-to-action'] as $cta ) : ?>
 											<div class="cta">
 											<?php if ( ! empty( $cta['link'] ) ) : ?>
-												<a href="<?php echo esc_attr__( $cta['link'], 'internet_org' ); ?>"><?php
+												<a href="<?php echo esc_attr__( $cta['link'], 'internetorg' ); ?>"><?php
 													if ( ! empty( $cta['image'] ) ) : ?>
 														<?php echo wp_get_attachment_image( $cta['image'], array( 32, 32 ) ); ?>
 													<?php else : ?>
-														<?php echo esc_html__( $cta['link'], 'internet_org' ); ?>
+														<?php echo esc_html__( $cta['link'], 'internetorg' ); ?>
 													<?php endif;
 												?></a>
 											<?php endif; ?>
@@ -54,7 +54,7 @@ if ( ! empty( $custom_fields ) ) : ?>
 										<?php endforeach; ?>
 										</div>
 									<?php endif; ?>
-									<a href="<?php echo ( ! empty( $fieldset['slug'] ) ? '/' . strtolower( $fieldset['slug'] ) : '#' ); ?>" class="link link_theme<?php echo ( ! empty( $fieldset['slug'] ) ? ucwords( $fieldset['slug'] ) : '' ); ?> js-stateLink"><?php echo esc_html__( $fieldset['title'], 'internet_org' ); ?></a>
+									<a href="<?php echo ( ! empty( $fieldset['slug'] ) ? '/' . strtolower( $fieldset['slug'] ) : '#' ); ?>" class="link link_theme<?php echo ( ! empty( $fieldset['slug'] ) ? ucwords( $fieldset['slug'] ) : '' ); ?> js-stateLink"><?php echo esc_html__( $fieldset['title'], 'internetorg' ); ?></a>
 								</div>
 							</div>
 						</div>

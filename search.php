@@ -12,13 +12,13 @@ get_header(); ?>
 
 			<div class="narrative-section-bd">
 				<header class="page-header">
-					<h1 class="page-title"><?php printf( esc_html__( '%s', 'internet_org' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+					<h1 class="page-title"><?php printf( esc_html__( '%s', 'internetorg' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 				</header><!-- .page-header -->
 
 				<?php if ( have_posts() ) : ?>
 
 					<div class="resultsList-hd">
-						<div class="hdg hdg_5 mix-hdg_italic mix-hdg_gray"><?php printf( esc_html__( '%d Results Found', 'internet_org' ) , $wp_query->found_posts ); ?></div>
+						<div class="hdg hdg_5 mix-hdg_italic mix-hdg_gray"><?php printf( esc_html__( '%d Results Found', 'internetorg' ) , $wp_query->found_posts ); ?></div>
 					</div>
 
 

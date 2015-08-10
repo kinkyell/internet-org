@@ -2,7 +2,7 @@
 /**
  * This is the home page template
  *
- * @package Internet_org
+ * @package internetorg
  * @author arichard <arichard@nerdery.com>
  */
 
@@ -44,7 +44,7 @@ get_header();
 
 <div class="viewWindow-panel viewWindow-panel_feature">
 	<div class="viewWindow-panel-content">
-		<div class="viewWindow-panel-content-inner" style="background-image: url('/wp-content/themes/vip/internet_org/_static/web/assets/media/uploads/home.jpg');"></div>
+		<div class="viewWindow-panel-content-inner" style="background-image: url('/wp-content/themes/vip/internetorg/_static/web/assets/media/uploads/home.jpg');"></div>
 	</div>
 </div>
 

@@ -12,6 +12,8 @@
 	</div><!-- #content -->
 
 <?php wp_footer(); ?>
+<?php echo vip_powered_wpcom(); ?>
+
 
 <?php
 
@@ -24,10 +26,10 @@
 ?>
 
 <!-- JAVASCRIPT -->
-    <script src="/wp-content/themes/vip/internet_org/_static/web/assets/vendor/jquery/jquery.min.js"></script><!-- replace by WP version -->
+    <script src="/wp-content/themes/vip/internetorg/_static/web/assets/vendor/jquery/jquery.min.js"></script><!-- replace by WP version -->
     <!-- build:js assets/scripts/require.js -->
-    <script src="/wp-content/themes/vip/internet_org/_static/web/assets/vendor/requirejs/require.js"></script>
-    <script src="/wp-content/themes/vip/internet_org/_static/web/assets/scripts/config.js"></script>
+    <script src="/wp-content/themes/vip/internetorg/_static/web/assets/vendor/requirejs/require.js"></script>
+    <script src="/wp-content/themes/vip/internetorg/_static/web/assets/scripts/config.js"></script>
     <!-- endbuild -->
     <script>
         /**
@@ -88,7 +90,7 @@
          * @type String
          * @final
          */
-        SETTINGS.SCRIPT_PATH = '/wp-content/themes/vip/internet_org/_static/web/assets/scripts/';
+        SETTINGS.SCRIPT_PATH = '/wp-content/themes/vip/internetorg/_static/web/assets/scripts/';
 
         /**
          * Set any RequireJs configuration that is dependent on dynamic

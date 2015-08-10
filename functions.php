@@ -11,15 +11,15 @@
 define( 'IO_DIR', __DIR__ );
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
-wpcom_vip_load_plugin( 'babble', 'internet_org-plugins' );
+wpcom_vip_load_plugin( 'babble', 'internetorg-plugins' );
 
 // do this manually since we include the plugin long after the plugins_loaded
 // hook. (Babble_Locale::plugins_loaded)
 global $bbl_locale;
 add_filter( 'after_setup_theme', array( $bbl_locale, 'plugins_loaded' ) );
 
-wpcom_vip_load_plugin( 'iorg-custom-posttypes', 'internet_org-plugins' );
-wpcom_vip_load_plugin( 'iorg-custom-fields', 'internet_org-plugins' );
+wpcom_vip_load_plugin( 'internetorg-custom-posttypes', 'internetorg-plugins' );
+wpcom_vip_load_plugin( 'internetorg-custom-fields', 'internetorg-plugins' );
 wpcom_vip_load_plugin( 'fieldmanager' );
 wpcom_vip_load_plugin( 'wp-google-analytics' );
 wpcom_vip_load_plugin( 'responsive-images' );
@@ -28,9 +28,9 @@ wpcom_vip_load_plugin( 'facebook' );
 wpcom_vip_load_plugin( 'lazy-load' );
 
 // MANUAL INCLUSION (Multiple Plugins in one dir)
-require_once(__DIR__ . '/../internet_org-plugins/babble/translation-fields.php');
+require_once(__DIR__ . '/../internetorg-plugins/babble/translation-fields.php');
 
-if ( ! function_exists( 'internet_org_setup' ) ) :
+if ( ! function_exists( 'internetorg_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -38,14 +38,14 @@ if ( ! function_exists( 'internet_org_setup' ) ) :
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function internet_org_setup() {
+	function internetorg_setup() {
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
 		 * If you're building a theme based on Internet.org, use a find and replace
-		 * to change 'internet_org' to the name of your theme in all the template files
+		 * to change 'internetorg' to the name of your theme in all the template files
 		 */
-		load_theme_textdomain( 'internet_org', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'internetorg', get_template_directory() . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -67,8 +67,8 @@ if ( ! function_exists( 'internet_org_setup' ) ) :
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'primary'         => esc_html__( 'Primary Menu', 'internet_org' ),
-			'primary-sub-nav' => esc_html__( 'Primary Menu Sub Nav', 'internet_org' ),
+			'primary'         => esc_html__( 'Primary Menu', 'internetorg' ),
+			'primary-sub-nav' => esc_html__( 'Primary Menu Sub Nav', 'internetorg' ),
 		) );
 
 		/*
@@ -96,13 +96,13 @@ if ( ! function_exists( 'internet_org_setup' ) ) :
 		) );
 
 		// Set up the WordPress core custom background feature.
-		add_theme_support( 'custom-background', apply_filters( 'internet_org_custom_background_args', array(
+		add_theme_support( 'custom-background', apply_filters( 'internetorg_custom_background_args', array(
 			'default-color' => 'ffffff',
 			'default-image' => '',
 		) ) );
 	}
-endif; // internet_org_setup
-add_action( 'after_setup_theme', 'internet_org_setup' );
+endif; // internetorg_setup
+add_action( 'after_setup_theme', 'internetorg_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -111,19 +111,19 @@ add_action( 'after_setup_theme', 'internet_org_setup' );
  *
  * @global int $content_width
  */
-function internet_org_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'internet_org_content_width', 640 );
+function internetorg_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'internetorg_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'internet_org_content_width', 0 );
+add_action( 'after_setup_theme', 'internetorg_content_width', 0 );
 
 /**
  * Register widget area.
  *
  * @link http://codex.wordpress.org/Function_Reference/register_sidebar
  */
-function internet_org_widgets_init() {
+function internetorg_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'internet_org' ),
+		'name'          => esc_html__( 'Sidebar', 'internetorg' ),
 		'id'            => 'sidebar-1',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -132,16 +132,16 @@ function internet_org_widgets_init() {
 		'after_title'   => '</h1>',
 	) );
 }
-add_action( 'widgets_init', 'internet_org_widgets_init' );
+add_action( 'widgets_init', 'internetorg_widgets_init' );
 
-if ( ! function_exists( 'iorg_extend_search_post_type_range' ) ) :
+if ( ! function_exists( 'internetorg_extend_search_post_type_range' ) ) :
 	/**
 	 * Add our custom post types to the search query
 	 *
 	 * @param WP_Query $query the current query object
 	 * @return mixed the possibly updated search query
 	 */
-	function iorg_extend_search_post_type_range( $query ) {
+	function internetorg_extend_search_post_type_range( $query ) {
 		global $wp_query;
 
 		$search = get_query_var( 's', null );
@@ -151,9 +151,9 @@ if ( ! function_exists( 'iorg_extend_search_post_type_range' ) ) :
 				array(
 					'post', // default PT
 					'page', // default PT
-					'iorg_press', // CPT
-					'iorg_story', // CPT
-					'iorg_campaign', // CPT
+					'internetorg_press', // CPT
+					'internetorg_story', // CPT
+					'internetorg_campaign', // CPT
 				)
 			);
 			$query->is_search = true;
@@ -163,10 +163,10 @@ if ( ! function_exists( 'iorg_extend_search_post_type_range' ) ) :
 		return $query;
 	}
 endif;
-add_filter( 'pre_get_posts', 'iorg_extend_search_post_type_range' );
+add_filter( 'pre_get_posts', 'internetorg_extend_search_post_type_range' );
 
 
-if ( ! function_exists( 'get_free_services' ) ) :
+if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 	/**
 	 * Get a list of the free services offered
 	 *
@@ -190,14 +190,14 @@ if ( ! function_exists( 'get_free_services' ) ) :
 	 *
 	 * @return array of free services or empty array if there are no services
 	 */
-	function get_free_services() {
+	function internetorg_get_free_services() {
 		// check the cache first
-		$services = wp_cache_get( 'iorg_free_services_list' );
+		$services = wp_cache_get( 'internetorg_free_services_list' );
 
 		// no cache, query
 		if ( false === $services ) {
 			$args = array(
-				'post_type' => 'iorg_freesvc',
+				'post_type' => 'internetorg_freesvc',
 				'post_status' => 'publish',
 			);
 
@@ -217,7 +217,7 @@ if ( ! function_exists( 'get_free_services' ) ) :
 			endwhile;
 
 			// caching the compiled array and not the query (86400 == 1 day)
-			wp_cache_set( 'iorg_free_services_list', $services, null, 86400 );
+			wp_cache_set( 'internetorg_free_services_list', $services, null, 86400 );
 
 			// reset the query to before we started mucking with it
 			wp_reset_postdata();
@@ -230,18 +230,18 @@ endif;
 /**
  * Enqueue scripts and styles.
  */
-function internet_org_scripts() {
-	wp_enqueue_style( 'internet_org-style', get_stylesheet_uri() );
+function internetorg_scripts() {
+	wp_enqueue_style( 'internetorg-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'internet_org-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
+	wp_enqueue_script( 'internetorg-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
-	wp_enqueue_script( 'internet_org-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+	wp_enqueue_script( 'internetorg-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'internet_org_scripts' );
+add_action( 'wp_enqueue_scripts', 'internetorg_scripts' );
 
 /**
  * Implement the Custom Header feature.
@@ -276,4 +276,4 @@ require get_template_directory() . '/inc/language.php';
 /**
  * Custom menu walkers
  */
-require_once( get_template_directory() . '/inc/menu-walkers.php' );
+require get_template_directory() . '/inc/menu-walkers.php';

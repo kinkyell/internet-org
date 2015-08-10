@@ -29,7 +29,7 @@ get_header(); ?>
 
 			<div class="narrative-section-bd">
 				<header class="page-header">
-					<h1 class="page-title"><?php esc_html__( 'Search Internet.org', 'internet_org' ); ?></h1>
+					<h1 class="page-title"><?php esc_html__( 'Search Internet.org', 'internetorg' ); ?></h1>
 				</header>
 				<!-- .page-header -->
 			</div>

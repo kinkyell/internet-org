@@ -20,15 +20,15 @@ function the_posts_navigation() {
 	}
 	?>
 	<nav class="navigation posts-navigation" role="navigation">
-		<h2 class="screen-reader-text"><?php esc_html_e( 'Posts navigation', 'internet_org' ); ?></h2>
+		<h2 class="screen-reader-text"><?php esc_html_e( 'Posts navigation', 'internetorg' ); ?></h2>
 		<div class="nav-links">
 
 			<?php if ( get_next_posts_link() ) : ?>
-			<div class="nav-previous"><?php next_posts_link( esc_html__( 'Older posts', 'internet_org' ) ); ?></div>
+			<div class="nav-previous"><?php next_posts_link( esc_html__( 'Older posts', 'internetorg' ) ); ?></div>
 			<?php endif; ?>
 
 			<?php if ( get_previous_posts_link() ) : ?>
-			<div class="nav-next"><?php previous_posts_link( esc_html__( 'Newer posts', 'internet_org' ) ); ?></div>
+			<div class="nav-next"><?php previous_posts_link( esc_html__( 'Newer posts', 'internetorg' ) ); ?></div>
 			<?php endif; ?>
 
 		</div><!-- .nav-links -->
@@ -53,7 +53,7 @@ function the_post_navigation() {
 	}
 	?>
 	<nav class="navigation post-navigation" role="navigation">
-		<h2 class="screen-reader-text"><?php esc_html_e( 'Post navigation', 'internet_org' ); ?></h2>
+		<h2 class="screen-reader-text"><?php esc_html_e( 'Post navigation', 'internetorg' ); ?></h2>
 		<div class="nav-links">
 			<?php
 				previous_post_link( '<div class="nav-previous">%link</div>', '%title' );
@@ -65,24 +65,24 @@ function the_post_navigation() {
 }
 endif;
 
-if ( ! function_exists( 'internet_org_posted_on' ) ) :
+if ( ! function_exists( 'internetorg_posted_on' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time and author.
 	 *
-	 * @see internet_org_get_post_publish_time_string
+	 * @see internetorg_get_post_publish_time_string
 	 *
 	 * @return void
 	 */
-	function internet_org_posted_on() {
-		$time_string = internet_org_get_post_publish_time_string();
+	function internetorg_posted_on() {
+		$time_string = internetorg_get_post_publish_time_string();
 
 		$posted_on = sprintf(
-			esc_html_x( 'Posted on %s', 'post date', 'internet_org' ),
+			esc_html_x( 'Posted on %s', 'post date', 'internetorg' ),
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
 		$byline = sprintf(
-			esc_html_x( 'by %s', 'post author', 'internet_org' ),
+			esc_html_x( 'by %s', 'post author', 'internetorg' ),
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 
@@ -91,13 +91,13 @@ if ( ! function_exists( 'internet_org_posted_on' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'internet_org_get_post_publish_time_string' ) ) :
+if ( ! function_exists( 'internetorg_get_post_publish_time_string' ) ) :
 	/**
 	 * get formatted data/time string for the current post
 	 *
 	 * @return string formatted time/date post was published
 	 */
-	function internet_org_get_post_publish_time_string() {
+	function internetorg_get_post_publish_time_string() {
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
@@ -114,73 +114,73 @@ if ( ! function_exists( 'internet_org_get_post_publish_time_string' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'internet_org_posted_on_date' ) ) :
+if ( ! function_exists( 'internetorg_posted_on_date' ) ) :
 	/**
 	 * No frills way to print (translated) the post's publish date
 	 *
-	 * @see internet_org_get_post_publish_time_string
+	 * @see internetorg_get_post_publish_time_string
 	 *
 	 * @note this method echos content directly to the screen
 	 *
 	 * @return void
 	 */
-	function internet_org_posted_on_date() {
-		$time_string = internet_org_get_post_publish_time_string();
+	function internetorg_posted_on_date() {
+		$time_string = internetorg_get_post_publish_time_string();
 
-		printf( esc_html_x( '%s', 'post date', 'internet_org' ), $time_string );
+		printf( esc_html_x( '%s', 'post date', 'internetorg' ), $time_string );
 	}
 endif;
 
-if ( ! function_exists( 'internet_org_entry_footer' ) ) :
+if ( ! function_exists( 'internetorg_entry_footer' ) ) :
 /**
  * Prints HTML with meta information for the categories, tags and comments.
  */
-function internet_org_entry_footer() {
+function internetorg_entry_footer() {
 	// Hide category and tag text for pages.
 	if ( 'post' == get_post_type() ) {
 		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( esc_html__( ', ', 'internet_org' ) );
-		if ( $categories_list && internet_org_categorized_blog() ) {
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'internet_org' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+		$categories_list = get_the_category_list( esc_html__( ', ', 'internetorg' ) );
+		if ( $categories_list && internetorg_categorized_blog() ) {
+			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'internetorg' ) . '</span>', $categories_list ); // WPCS: XSS OK.
 		}
 
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'internet_org' ) );
+		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'internetorg' ) );
 		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'internet_org' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'internetorg' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 		}
 	}
 
 	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 		echo '<span class="comments-link">';
-		comments_popup_link( esc_html__( 'Leave a comment', 'internet_org' ), esc_html__( '1 Comment', 'internet_org' ), esc_html__( '% Comments', 'internet_org' ) );
+		comments_popup_link( esc_html__( 'Leave a comment', 'internetorg' ), esc_html__( '1 Comment', 'internetorg' ), esc_html__( '% Comments', 'internetorg' ) );
 		echo '</span>';
 	}
 
-	edit_post_link( esc_html__( 'Edit', 'internet_org' ), '<span class="edit-link">', '</span>' );
+	edit_post_link( esc_html__( 'Edit', 'internetorg' ), '<span class="edit-link">', '</span>' );
 }
 endif;
 
-if ( ! function_exists( 'internet_org_entry_footer_archive' ) ) :
+if ( ! function_exists( 'internetorg_entry_footer_archive' ) ) :
 	/**
 	 * display necessary html for post footer suitable for archive listing
 	 *
 	 * Less information is displayed than is used on default entry footer, no
 	 * date, author, comment count, comment link, etc.
 	 *
-	 * @see internet_org_entry_footer
+	 * @see internetorg_entry_footer
 	 *
 	 * @return void
 	 */
-	function internet_org_entry_footer_archive() {
+	function internetorg_entry_footer_archive() {
 
 		// read more link
 		echo '<div class="feature-cta">';
-		printf( sanitize_text_field( __( 'Read More &rarr;', 'internet_org' ) ) );
+		printf( sanitize_text_field( __( 'Read More &rarr;', 'internetorg' ) ) );
 		echo '</div>';
 
 		// display the edit link if an authorized user is logged in.
-		edit_post_link( esc_html__( 'Edit', 'internet_org' ), '<span class="edit-link">', '</span>' );
+		edit_post_link( esc_html__( 'Edit', 'internetorg' ), '<span class="edit-link">', '</span>' );
 	}
 endif;
 
@@ -197,45 +197,45 @@ if ( ! function_exists( 'the_archive_title' ) ) :
  */
 function the_archive_title( $before = '', $after = '' ) {
 	if ( is_category() ) {
-		$title = sprintf( esc_html__( 'Category: %s', 'internet_org' ), single_cat_title( '', false ) );
+		$title = sprintf( esc_html__( 'Category: %s', 'internetorg' ), single_cat_title( '', false ) );
 	} elseif ( is_tag() ) {
-		$title = sprintf( esc_html__( 'Tag: %s', 'internet_org' ), single_tag_title( '', false ) );
+		$title = sprintf( esc_html__( 'Tag: %s', 'internetorg' ), single_tag_title( '', false ) );
 	} elseif ( is_author() ) {
-		$title = sprintf( esc_html__( 'Author: %s', 'internet_org' ), '<span class="vcard">' . get_the_author() . '</span>' );
+		$title = sprintf( esc_html__( 'Author: %s', 'internetorg' ), '<span class="vcard">' . get_the_author() . '</span>' );
 	} elseif ( is_year() ) {
-		$title = sprintf( esc_html__( 'Year: %s', 'internet_org' ), get_the_date( esc_html_x( 'Y', 'yearly archives date format', 'internet_org' ) ) );
+		$title = sprintf( esc_html__( 'Year: %s', 'internetorg' ), get_the_date( esc_html_x( 'Y', 'yearly archives date format', 'internetorg' ) ) );
 	} elseif ( is_month() ) {
-		$title = sprintf( esc_html__( 'Month: %s', 'internet_org' ), get_the_date( esc_html_x( 'F Y', 'monthly archives date format', 'internet_org' ) ) );
+		$title = sprintf( esc_html__( 'Month: %s', 'internetorg' ), get_the_date( esc_html_x( 'F Y', 'monthly archives date format', 'internetorg' ) ) );
 	} elseif ( is_day() ) {
-		$title = sprintf( esc_html__( 'Day: %s', 'internet_org' ), get_the_date( esc_html_x( 'F j, Y', 'daily archives date format', 'internet_org' ) ) );
+		$title = sprintf( esc_html__( 'Day: %s', 'internetorg' ), get_the_date( esc_html_x( 'F j, Y', 'daily archives date format', 'internetorg' ) ) );
 	} elseif ( is_tax( 'post_format' ) ) {
 		if ( is_tax( 'post_format', 'post-format-aside' ) ) {
-			$title = esc_html_x( 'Asides', 'post format archive title', 'internet_org' );
+			$title = esc_html_x( 'Asides', 'post format archive title', 'internetorg' );
 		} elseif ( is_tax( 'post_format', 'post-format-gallery' ) ) {
-			$title = esc_html_x( 'Galleries', 'post format archive title', 'internet_org' );
+			$title = esc_html_x( 'Galleries', 'post format archive title', 'internetorg' );
 		} elseif ( is_tax( 'post_format', 'post-format-image' ) ) {
-			$title = esc_html_x( 'Images', 'post format archive title', 'internet_org' );
+			$title = esc_html_x( 'Images', 'post format archive title', 'internetorg' );
 		} elseif ( is_tax( 'post_format', 'post-format-video' ) ) {
-			$title = esc_html_x( 'Videos', 'post format archive title', 'internet_org' );
+			$title = esc_html_x( 'Videos', 'post format archive title', 'internetorg' );
 		} elseif ( is_tax( 'post_format', 'post-format-quote' ) ) {
-			$title = esc_html_x( 'Quotes', 'post format archive title', 'internet_org' );
+			$title = esc_html_x( 'Quotes', 'post format archive title', 'internetorg' );
 		} elseif ( is_tax( 'post_format', 'post-format-link' ) ) {
-			$title = esc_html_x( 'Links', 'post format archive title', 'internet_org' );
+			$title = esc_html_x( 'Links', 'post format archive title', 'internetorg' );
 		} elseif ( is_tax( 'post_format', 'post-format-status' ) ) {
-			$title = esc_html_x( 'Statuses', 'post format archive title', 'internet_org' );
+			$title = esc_html_x( 'Statuses', 'post format archive title', 'internetorg' );
 		} elseif ( is_tax( 'post_format', 'post-format-audio' ) ) {
-			$title = esc_html_x( 'Audio', 'post format archive title', 'internet_org' );
+			$title = esc_html_x( 'Audio', 'post format archive title', 'internetorg' );
 		} elseif ( is_tax( 'post_format', 'post-format-chat' ) ) {
-			$title = esc_html_x( 'Chats', 'post format archive title', 'internet_org' );
+			$title = esc_html_x( 'Chats', 'post format archive title', 'internetorg' );
 		}
 	} elseif ( is_post_type_archive() ) {
-		$title = sprintf( esc_html__( 'Archives: %s', 'internet_org' ), post_type_archive_title( '', false ) );
+		$title = sprintf( esc_html__( 'Archives: %s', 'internetorg' ), post_type_archive_title( '', false ) );
 	} elseif ( is_tax() ) {
 		$tax = get_taxonomy( get_queried_object()->taxonomy );
 		/* translators: 1: Taxonomy singular name, 2: Current taxonomy term */
-		$title = sprintf( esc_html__( '%1$s: %2$s', 'internet_org' ), $tax->labels->singular_name, single_term_title( '', false ) );
+		$title = sprintf( esc_html__( '%1$s: %2$s', 'internetorg' ), $tax->labels->singular_name, single_term_title( '', false ) );
 	} else {
-		$title = esc_html__( 'Archives', 'internet_org' );
+		$title = esc_html__( 'Archives', 'internetorg' );
 	}
 
 	/**
@@ -283,8 +283,8 @@ endif;
  *
  * @return bool
  */
-function internet_org_categorized_blog() {
-	if ( false === ( $all_the_cool_cats = get_transient( 'internet_org_categories' ) ) ) {
+function internetorg_categorized_blog() {
+	if ( false === ( $all_the_cool_cats = get_transient( 'internetorg_categories' ) ) ) {
 		// Create an array of all the categories that are attached to posts.
 		$all_the_cool_cats = get_categories( array(
 			'fields'     => 'ids',
@@ -297,27 +297,27 @@ function internet_org_categorized_blog() {
 		// Count the number of categories that are attached to the posts.
 		$all_the_cool_cats = count( $all_the_cool_cats );
 
-		set_transient( 'internet_org_categories', $all_the_cool_cats );
+		set_transient( 'internetorg_categories', $all_the_cool_cats );
 	}
 
 	if ( $all_the_cool_cats > 1 ) {
-		// This blog has more than 1 category so internet_org_categorized_blog should return true.
+		// This blog has more than 1 category so internetorg_categorized_blog should return true.
 		return true;
 	} else {
-		// This blog has only 1 category so internet_org_categorized_blog should return false.
+		// This blog has only 1 category so internetorg_categorized_blog should return false.
 		return false;
 	}
 }
 
 /**
- * Flush out the transients used in internet_org_categorized_blog.
+ * Flush out the transients used in internetorg_categorized_blog.
  */
-function internet_org_category_transient_flusher() {
+function internetorg_category_transient_flusher() {
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return;
 	}
 	// Like, beat it. Dig?
-	delete_transient( 'internet_org_categories' );
+	delete_transient( 'internetorg_categories' );
 }
-add_action( 'edit_category', 'internet_org_category_transient_flusher' );
-add_action( 'save_post',     'internet_org_category_transient_flusher' );
+add_action( 'edit_category', 'internetorg_category_transient_flusher' );
+add_action( 'save_post',     'internetorg_category_transient_flusher' );

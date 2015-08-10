@@ -17,7 +17,7 @@ get_header();
 				<div class="introBlock-inner">
 					<div class="topicBlock">
 						<div class="topicBlock-hd topicBlock-hd_plus">
-							<h2 class="hdg hdg_2 mix-hdg_bold"><?php echo esc_html__( 'Press', 'internet_org' ); ?></h2>
+							<h2 class="hdg hdg_2 mix-hdg_bold"><?php echo esc_html__( 'Press', 'internetorg' ); ?></h2>
 						</div>
 					</div>
 				</div>
@@ -52,7 +52,7 @@ get_header();
 								<?php if ( $is_media ) : ?>
 								<div class="media media_inline">
 									<div class="media-figure">
-										<?php the_post_thumbnail( array( 210, 260 ), array( 'title' => __( get_the_title(), 'internet_org' ) ) ); ?>
+										<?php the_post_thumbnail( array( 210, 260 ), array( 'title' => __( get_the_title(), 'internetorg' ) ) ); ?>
 									</div>
 									<div class="media-bd">
 								<?php endif; ?>
@@ -64,13 +64,13 @@ get_header();
 									<div class="feature feature_tight">
 
 										<div class="feature-hd">
-											<h2 class="hdg hdg_3"><?php echo __( get_the_title(), 'internet_org' ); ?></h2>
+											<h2 class="hdg hdg_3"><?php echo __( get_the_title(), 'internetorg' ); ?></h2>
 										</div>
 										<div class="feature-date">
-											<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray"><?php internet_org_posted_on_date(); ?></div>
+											<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray"><?php internetorg_posted_on_date(); ?></div>
 										</div>
 										<div class="feature-bd">
-											<p class="bdcpy"><?php echo __( get_the_excerpt(), 'internet_org' ); ?></p>
+											<p class="bdcpy"><?php echo __( get_the_excerpt(), 'internetorg' ); ?></p>
 										</div>
 										<div class="feature-cta">
 											<a href="<?php the_permalink(); ?>" class="link link_sm" title="<?php the_title_attribute(); ?>">Read More</a>
@@ -92,7 +92,7 @@ get_header();
 					<div class="resultsList-ft">
 						<div class="resultsList-list resultsList-list_spread">
 							<div class="resultsList-list-item">
-								<button type="button" class="btn js-ShowMoreView" data-src="press" data-target="addl-results"><?php echo esc_html__( 'Show More', 'internet_org' ); ?></button>
+								<button type="button" class="btn js-ShowMoreView" data-src="press" data-target="addl-results"><?php echo esc_html__( 'Show More', 'internetorg' ); ?></button>
 							</div>
 							<div class="resultsList-list-item">
 								<select class="js-select select_inline">
@@ -114,16 +114,6 @@ get_header();
 								?>
 								</select>
 
-								<?php /*
-								<select class="js-select select_inline">
-									<option value="2015">2015</option>
-									<option value="2014">2014</option>
-									<option value="2013">2013</option>
-									<option value="2012">2012</option>
-									<option value="2011">2011</option>
-								</select>
-								*/ ?>
-
 							</div>
 						</div>
 					</div>
@@ -137,8 +127,8 @@ get_header();
 				<?php
 				/*  content widgets */
 				$contentWidgets = array(
-					'contact'   => iorg_get_content_widget_by_slug( 'contact' ),
-					'media-kit' => iorg_get_content_widget_by_slug( 'media-kit' ),
+					'contact'   => internetorg_get_content_widget_by_slug( 'contact' ),
+					'media-kit' => internetorg_get_content_widget_by_slug( 'media-kit' ),
 				);
 				?>
 
@@ -160,16 +150,16 @@ get_header();
 							<div>
 								<div class="topicBlock">
 									<div class="topicBlock-hd">
-										<h2 class="hdg hdg_8 mix-hdg_bold"><?php echo esc_html__( $post->post_title, 'internet_org' ); ?></h2>
+										<h2 class="hdg hdg_8 mix-hdg_bold"><?php echo esc_html__( $post->post_title, 'internetorg' ); ?></h2>
 									</div>
-									<div class="topicBlock-bd"><p class="bdcpy"><?php echo esc_html__( $post->post_content, 'internet_org' ); ?></p></div>
+									<div class="topicBlock-bd"><p class="bdcpy"><?php echo esc_html__( $post->post_content, 'internetorg' ); ?></p></div>
 
 							<?php
 
 							if ( ! empty( $meta ) ) :
-								$label = ( ! empty( $meta['widget-data']['label'] ) ? __( $meta['widget-data']['label'], 'internet_org' ) : '' );
-								$url   = ( ! empty( $meta['widget-data']['url'] ) ? __( $meta['widget-data']['url'], 'internet_org' ) : '' );
-								$file  = ( ! empty( $meta['widget-data']['image'] ) ? __( $meta['widget-data']['image'], 'internet_org' ) : '' );
+								$label = ( ! empty( $meta['widget-data']['label'] ) ? __( $meta['widget-data']['label'], 'internetorg' ) : '' );
+								$url   = ( ! empty( $meta['widget-data']['url'] ) ? __( $meta['widget-data']['url'], 'internetorg' ) : '' );
+								$file  = ( ! empty( $meta['widget-data']['image'] ) ? __( $meta['widget-data']['image'], 'internetorg' ) : '' );
 
 								$link = $url ? $url : $file;
 								?>
