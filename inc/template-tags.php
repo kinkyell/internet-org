@@ -66,35 +66,69 @@ function the_post_navigation() {
 endif;
 
 if ( ! function_exists( 'internet_org_posted_on' ) ) :
-/**
- * Prints HTML with meta information for the current post-date/time and author.
- */
-function internet_org_posted_on() {
-	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+	/**
+	 * Prints HTML with meta information for the current post-date/time and author.
+	 *
+	 * @see internet_org_get_post_publish_time_string
+	 *
+	 * @return void
+	 */
+	function internet_org_posted_on() {
+		$time_string = internet_org_get_post_publish_time_string();
+
+		$posted_on = sprintf(
+			esc_html_x( 'Posted on %s', 'post date', 'internet_org' ),
+			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+		);
+
+		$byline = sprintf(
+			esc_html_x( 'by %s', 'post author', 'internet_org' ),
+			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+		);
+
+		echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
+
 	}
+endif;
 
-	$time_string = sprintf( $time_string,
-		esc_attr( get_the_date( 'c' ) ),
-		esc_html( get_the_date() ),
-		esc_attr( get_the_modified_date( 'c' ) ),
-		esc_html( get_the_modified_date() )
-	);
+if ( ! function_exists( 'internet_org_get_post_publish_time_string' ) ) :
+	/**
+	 * get formatted data/time string for the current post
+	 *
+	 * @return string formatted time/date post was published
+	 */
+	function internet_org_get_post_publish_time_string() {
+		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+		}
 
-	$posted_on = sprintf(
-		esc_html_x( 'Posted on %s', 'post date', 'internet_org' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-	);
+		$time_string = sprintf( $time_string,
+			esc_attr( get_the_date( 'c' ) ),
+			esc_html( get_the_date() ),
+			esc_attr( get_the_modified_date( 'c' ) ),
+			esc_html( get_the_modified_date() )
+		);
 
-	$byline = sprintf(
-		esc_html_x( 'by %s', 'post author', 'internet_org' ),
-		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
-	);
+		return $time_string;
+	}
+endif;
 
-	echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
+if ( ! function_exists( 'internet_org_posted_on_date' ) ) :
+	/**
+	 * No frills way to print (translated) the post's publish date
+	 *
+	 * @see internet_org_get_post_publish_time_string
+	 *
+	 * @note this method echos content directly to the screen
+	 *
+	 * @return void
+	 */
+	function internet_org_posted_on_date() {
+		$time_string = internet_org_get_post_publish_time_string();
 
-}
+		printf( esc_html_x( '%s', 'post date', 'internet_org' ), $time_string );
+	}
 endif;
 
 if ( ! function_exists( 'internet_org_entry_footer' ) ) :
