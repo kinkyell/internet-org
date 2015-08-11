@@ -33,6 +33,11 @@
     color: $CLR_WHITE;
 }
 
+// One-off mixin used in heading narrative-section
+.mix-bdcpy_mobileOnly {
+    color: $CLR_WHITE;
+}
+
 @include breakpoint(MD) {
     .bdcpy {
         font-size: 18px;
@@ -48,5 +53,9 @@
 
     .bdcpy_narrative {
         font-size: 28px;
+    }
+
+    .mix-bdcpy_mobileOnly {
+        color: $CLR_GRAY;
     }
 }

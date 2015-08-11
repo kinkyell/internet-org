@@ -61,6 +61,11 @@
 .mix-hdg_italic { font-style: italic; }
 .mix-hdg_bold   { font-weight: 500; }
 
+// One-off mixin used in heading narrative-section
+.mix-hdg_mobileOnly {
+    color: $CLR_WHITE;
+}
+
 @include breakpoint(MD) {
     .hdg_1 {
         font-size: 64px;
@@ -96,5 +101,9 @@
 
     .hdg_subHdg {
         font-size: 28px;
+    }
+
+    .mix-hdg_mobileOnly {
+        color: $CLR_BLACK;
     }
 }
