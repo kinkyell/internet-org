@@ -25,7 +25,7 @@ if ( ! empty( $custom_fields ) ) : ?>
 							<?php if ( ! empty( $fieldset['title'] ) ) : ?>
 								<div class="transformBlock-hd">
 									<div class="vr vr_x1">
-										<h2 class="hdg hdg_1"><?php echo esc_html__( $fieldset['title'], 'internetorg' ); ?></h2>
+										<h2 class="hdg hdg_1"><?php echo esc_html( $fieldset['title'] ); ?></h2>
 									</div>
 								</div>
 							<?php endif; ?>
@@ -33,7 +33,7 @@ if ( ! empty( $custom_fields ) ) : ?>
 								<div class="transformBlock-bd">
 									<?php if ( ! empty( $fieldset['content'] ) ) : ?>
 									<div class="vr_x5">
-										<p class="bdcpy bdcpy_lg"><?php echo __( $fieldset['content'], 'internetorg' ); ?></p>
+										<p class="bdcpy bdcpy_lg"><?php echo esc_html( $fieldset['content'] ); ?></p>
 									</div>
 									<?php endif; ?>
 
@@ -42,19 +42,32 @@ if ( ! empty( $custom_fields ) ) : ?>
 										<?php foreach ( $fieldset['call-to-action'] as $cta ) : ?>
 											<div class="cta">
 											<?php if ( ! empty( $cta['link'] ) ) : ?>
-												<a href="<?php echo esc_attr__( $cta['link'], 'internetorg' ); ?>"><?php
-													if ( ! empty( $cta['image'] ) ) : ?>
-														<?php echo wp_get_attachment_image( $cta['image'], array( 32, 32 ) ); ?>
-													<?php else : ?>
-														<?php echo esc_html__( $cta['link'], 'internetorg' ); ?>
-													<?php endif;
+												<a href="<?php echo esc_attr( $cta['link'] ); ?>"><?php
+												if ( ! empty( $cta['image'] ) ) : ?>
+													<?php echo wp_get_attachment_image( $cta['image'], array( 32, 32 ) ); ?>
+												<?php else : ?>
+													<?php echo esc_html( $cta['link'] ); ?>
+												<?php endif;
 												?></a>
 											<?php endif; ?>
 											</div>
 										<?php endforeach; ?>
 										</div>
 									<?php endif; ?>
-									<a href="<?php echo ( ! empty( $fieldset['slug'] ) ? '/' . strtolower( $fieldset['slug'] ) : '#' ); ?>" class="link link_theme<?php echo ( ! empty( $fieldset['slug'] ) ? ucwords( $fieldset['slug'] ) : '' ); ?> js-stateLink"><?php echo esc_html__( $fieldset['title'], 'internetorg' ); ?></a>
+
+									<?php
+									$sectionHref = '#';
+									if ( ! empty( $fieldset['slug'] ) ) {
+										$sectionHref = '/' . strtolower( $fieldset['slug'] );
+									}
+
+									$sectionSlug = '';
+									if ( ! empty( $fieldset['slug'] ) ) {
+										$sectionSlug = ucwords( $fieldset['slug'] );
+									}
+									?>
+
+									<a href="<?php echo esc_attr( $sectionHref ); ?>" class="link link_theme<?php echo esc_attr( $sectionSlug ); ?> js-stateLink"><?php echo esc_html( $fieldset['name'] ); ?></a>
 								</div>
 							</div>
 						</div>
