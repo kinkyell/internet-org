@@ -1,0 +1,23 @@
+/* ---------------------------------------------------------------------
+Image Wrapper
+
+For loading placeholder
+------------------------------------------------------------------------ */
+
+.imgWrap {
+    background: $CLR_GRAY_LIGHTER;
+}
+
+.imgWrap:not(.isLoaded) { // specificity needed for undoing areas where images are expected
+    height: 0;
+}
+
+.imgWrap.isLoading > img {
+    opacity: 0;
+    transition: none; // class added transition
+}
+
+.imgWrap > img {
+    opacity: 1;
+    transition: opacity 0.3s ease; // class removed transition
+}
