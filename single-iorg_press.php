@@ -16,14 +16,19 @@
 					<div class="container">
 						<div class="topicBlock">
 							<div class="topicBlock-hd topicBlock-hd_plus">
-								<h2 class="hdg hdg_2 mix-hdg_bold"><?php __( the_title(), 'internet_org' ); ?></h2>
+								<h2 class="hdg hdg_2 mix-hdg_bold"><?php echo esc_html__( get_the_title(), 'internet_org' ); ?></h2>
 							</div>
 							<div class="topicBlock-subHd">
 								<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray"><?php internet_org_posted_on(); ?></div>
 							</div>
 							<div class="topicBlock-bd">
 								<p class="bdcpy">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse es suscipit euante lorepehicula nulla, suscipit dela  eu ante vel vehicula dolor sit amet, consectetur adipiscing elit.
+									<?php
+
+									/**
+									 * @todo fix escaping of this output
+									 */
+									echo __( get_the_content(), 'internet_org' ); ?>
 								</p>
 							</div>
 						</div>

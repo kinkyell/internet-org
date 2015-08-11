@@ -13,7 +13,11 @@ define(function(require, exports, module) { // jshint ignore:line
     var $ = require('jquery');
     var Tween = require('gsap-tween');
 
-    var log = console.log.bind(console);
+    var log = function() {
+        if (console.log) {
+            console.log.apply(console, arguments);
+        }
+    };
 
     /**
      * Manages the stack of active states
@@ -154,6 +158,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     PanelState.prototype._destroyScrollWatcher = function() {
+        if (!this._scrollPanel) {
+            return;
+        }
         this._scrollPanel
             .off('scroll', this._handlePanelScroll)
             .find('img')

@@ -31,20 +31,108 @@ get_header();
 	<div class="viewWindow-panel-content">
 		<div class="viewWindow-panel-content-inner">
 			<div>
-<?php
+<?php if ( have_posts() ) : ?>
 
-if ( have_posts() ) :
-	while ( have_posts() ) : the_post();
+	<div class="contentCol">
+		<div class="container">
+			<div class="resultsList">
+				<div id="addl-results" class="resultsList-list">
+					<div id="addl-results" class="resultsList-list">
+	<?php while ( have_posts() ) : the_post(); ?>
+						<div class="resultsList-list-item">
 
-		the_title();
+							<?php
 
-		echo '<div class="press-content">';
-		the_content();
-		echo '</div>';
+							$is_media = has_post_thumbnail();
 
-	endwhile;
-endif;
-?>
+							$type = $is_media ? 'media' : 'feature';
+
+							?>
+
+								<?php if ( $is_media ) : ?>
+								<div class="media media_inline">
+									<div class="media-figure">
+										<?php the_post_thumbnail( array( 210, 260 ), array( 'title' => __( get_the_title(), 'internet_org' ) ) ); ?>
+									</div>
+									<div class="media-bd">
+								<?php endif; ?>
+
+
+
+
+
+									<div class="feature feature_tight">
+
+										<div class="feature-hd">
+											<h2 class="hdg hdg_3"><?php echo __( get_the_title(), 'internet_org' ); ?></h2>
+										</div>
+										<div class="feature-date">
+											<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray"><?php internet_org_posted_on_date(); ?></div>
+										</div>
+										<div class="feature-bd">
+											<p class="bdcpy"><?php echo __( get_the_excerpt(), 'internet_org' ); ?></p>
+										</div>
+										<div class="feature-cta">
+											<a href="<?php the_permalink(); ?>" class="link link_sm" title="<?php the_title_attribute(); ?>">Read More</a>
+										</div>
+									</div>
+
+
+
+
+								<?php if ( $is_media ) : ?>
+									</div>
+								</div>
+								<?php endif; ?>
+
+							</div>
+						</div>
+	<?php endwhile; ?>
+					</div>
+					<div class="resultsList-ft">
+						<div class="resultsList-list resultsList-list_spread">
+							<div class="resultsList-list-item">
+								<button type="button" class="btn js-ShowMoreView" data-src="press" data-target="addl-results"><?php echo esc_html__( 'Show More', 'internet_org' ); ?></button>
+							</div>
+							<div class="resultsList-list-item">
+								<select class="js-select select_inline">
+								<?php
+								// display a select list of archive years
+								$args = array(
+									'type'            => 'yearly',
+									'limit'           => '',
+									'format'          => 'option',
+									'before'          => '',
+									'after'           => '',
+									'show_post_count' => 0,
+									'echo'            => 1,
+									'order'           => 'DESC',
+								);
+
+								wp_get_archives( $args );
+
+								?>
+								</select>
+
+								<?php /*
+								<select class="js-select select_inline">
+									<option value="2015">2015</option>
+									<option value="2014">2014</option>
+									<option value="2013">2013</option>
+									<option value="2012">2012</option>
+									<option value="2011">2011</option>
+								</select>
+								*/ ?>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<?php endif; ?>
 
 				<?php
 				/*  content widgets */

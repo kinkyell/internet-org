@@ -60,6 +60,12 @@
 .mix-hdg_gray 	{ color: $CLR_GRAY; }
 .mix-hdg_italic { font-style: italic; }
 .mix-hdg_bold   { font-weight: 500; }
+.mix-hdg_splash { color: $CLR_WHITE; }
+
+// One-off mixin used in heading narrative-section
+.mix-hdg_mobileOnly {
+    color: $CLR_WHITE;
+}
 
 @include breakpoint(MD) {
     .hdg_1 {
@@ -96,5 +102,9 @@
 
     .hdg_subHdg {
         @include remify(font-size, 28px);
+    }
+
+    .mix-hdg_splash {
+        color: $CLR_BLACK;
     }
 }

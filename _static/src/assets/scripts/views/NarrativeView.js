@@ -6,6 +6,7 @@ define(function(require, exports, module) { // jshint ignore:line
     require('gsap-scrollToPlugin');
     var Tween = require('gsap-tween');
     var Timeline = require('gsap-timeline');
+    var AbstractView = require('./AbstractView');
     var ViewWindow = require('services/viewWindow');
     var breakpointManager = require('services/breakpointManager');
 
@@ -22,12 +23,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * @constructor
      */
     var NarrativeView = function($element) {
-        if ($element.length === 0) { return; }
-
-        if (!($element instanceof $)) {
-            throw new TypeError('MenuView: jQuery object is required');
-        }
-
         /**
          * A reference to the containing DOM element.
          *
@@ -137,28 +132,10 @@ define(function(require, exports, module) { // jshint ignore:line
          */
         this._eventTouchNamespace = '.scrolltrackertouch';
 
-        this.init();
+        AbstractView.call(this, $element);
     };
 
-    var proto = NarrativeView.prototype;
-
-    /**
-     * Initializes the UI Component View.
-     * Runs a single setupHandlers call, followed by createChildren and layout.
-     * Exits early if it is already initialized.
-     *
-     * @method init
-     * @returns {NarrativeView}
-     * @private
-     */
-    proto.init = function() {
-        this.setupHandlers()
-           .createChildren()
-           .layout()
-           .enable();
-
-        return this;
-    };
+    var proto = AbstractView.createChild(NarrativeView);
 
 
     /**
@@ -171,8 +148,6 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.setupHandlers = function() {
         this._onWheelEventHandler = this._onWheelEvent.bind(this);
-
-        return this;
     };
 
     /**
@@ -187,8 +162,6 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$body = $(document.body);
         this.$narrativeSections = this.$element.find('> *');
         this.$progress = $(CONFIG.PROGRESS);
-
-        return this;
     };
 
     /**
@@ -198,10 +171,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @returns {NarrativeView}
      * @public
      */
-    proto.removeChildren = function() {
-
-        return this;
-    };
+    proto.removeChildren = function() {};
 
     /**
      * Performs measurements and applys any positioning style logic.
@@ -214,8 +184,6 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.layout = function() {
         this.$narrativeSections.eq(0).addClass('isActive');
         this._slidesLength = this.$narrativeSections.length;
-
-        return this;
     };
 
     /**
@@ -227,18 +195,11 @@ define(function(require, exports, module) { // jshint ignore:line
      * @returns {NarrativeView}
      * @public
      */
-    proto.enable = function() {
-        if (this.isEnabled) {
-            return this;
-        }
-        this.isEnabled = true;
-
+    proto.onEnable = function() {
         $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
         this.$body.on('touchstart', this._onTouchStart.bind(this));
 
         this.viewWindow = ViewWindow;
-
-        return this;
     };
 
     /**
@@ -250,30 +211,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @returns {NarrativeView}
      * @public
      */
-    proto.disable = function() {
-        if (!this.isEnabled) {
-            return this;
-        }
-        this.isEnabled = false;
-
-        return this;
-    };
-
-    /**
-     * Destroys the component.
-     * Tears down any events, handlers, elements.
-     * Should be called when the object should be left unused.
-     *
-     * @method destroy
-     * @returns {NarrativeView}
-     * @public
-     */
-    proto.destroy = function() {
-        this.disable()
-            .removeChildren();
-
-        return this;
-    };
+    proto.onDisable = function() {};
 
     //////////////////////////////////////////////////////////////////////////////////
     // EVENT HANDLERS
@@ -438,8 +376,8 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._sectionTransitionMobile = function(position) {
         var $destinationSection = $('.narrative-section').eq(position);
         var $sectionBody = $destinationSection.find('.narrative-section-bd');
-        var slideItemSel = '.narrative-section-slides-item:last-child';
-        this._slidePosition = (position > this._position) ? 0 : $destinationSection.find(slideItemSel).index();
+        var $sectionBodyCnt = $sectionBody.find('.transformBlock');
+        this._slidePosition = (position > this._position) ? 0 : $destinationSection.find('.narrative-section-slides-item:last-child').index(); // jshint ignore:line
 
         var i = 0;
         var offsetY = 0;
@@ -447,12 +385,23 @@ define(function(require, exports, module) { // jshint ignore:line
             offsetY += $('.narrative-section').eq(i).height();
         }
 
-        var bdTwnPos = (position > this._position) ? '50%' : '-50%';
-        var bdTwn = Tween.from($sectionBody, 0.5, {top: bdTwnPos});
+        var bdTwnOffset = 50;
+        var bdTwnPos = (position > this._position) ? bdTwnOffset : (0 - bdTwnOffset);
+        var bdCntPos = bdTwnPos * 2;
+        var bdTwn = Tween.from($sectionBody, 0.5, {top: bdTwnPos + '%', paused: false});
+        var bdCntTwn = Tween.from($sectionBodyCnt, 0.65, {y: bdCntPos + '%', paused: false});
 
         var tl = new Timeline();
 
+        // if (this._position === (this._slidesLength - 1) && position === (this._slidesLength - 2)) {
+        //    console.log('second to last');
+        // }
+        // if (position !== (this._slidesLength - 1)) {
+        //
+        // }
+
         tl.add(bdTwn);
+        tl.add(bdCntTwn, '-=0.5');
 
         if (position === 1 && this._position === 0) {
             var opacTwn = Tween.from($sectionBody, 0.5, {opacity: 0});
@@ -465,7 +414,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._updateIndicators();
             this._updateSlideHooks();
             window.setTimeout(this._onSectionComplete.bind(this, position), this._scrollBuffer);
-        }.bind(this) }, '-=0.5');
+        }.bind(this) }, '-=0.65');
     };
 
     proto._sectionTransitionDesktop = function(position) {
@@ -553,8 +502,6 @@ define(function(require, exports, module) { // jshint ignore:line
 
     proto._onTouchEnd = function(e) {
         this.$body.off(this._eventTouchNamespace);
-
-        console.log('complete');
     };
 
     module.exports = NarrativeView;
