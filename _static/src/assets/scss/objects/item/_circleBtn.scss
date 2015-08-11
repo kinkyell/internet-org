@@ -1,0 +1,123 @@
+/* ---------------------------------------------------------------------
+ Circle Btn
+
+ Circular button styling
+------------------------------------------------------------------------ */
+.circleBtn {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    height: 80px;
+    width: 80px;
+    text-align: center;
+    background-color: $CLR_ACCENT;
+    border-radius: 50%;
+    @include remify(font-size, 22px);
+    @include transition(all 0.2s ease-in-out);
+    transform: scale(0.65);
+}
+
+.contentOnMedia-link:hover > .circleBtn,
+.circleBtn:hover,
+.circleBtn:active {
+    background-color: $CLR_ACCENT_ACTIVE;
+}
+
+.circleBtn:after,
+.circleBtn:before {
+    content: "";
+    display: block;
+    height: 12px;
+    width: 13px;
+    position: absolute;
+    top: 33px;
+    left: 0;
+    border-bottom: 3px solid white;
+    border-right: 3px solid white;
+    transform: rotate(-45deg);
+    transition: transform 0.2s ease-in-out;
+}
+
+.circleBtn:after {
+    transform: translateX(33px) rotate(-45deg);
+}
+
+.circleBtn:before {
+    transform: translateX(25px) rotate(-45deg);
+}
+
+.contentOnMedia-link:hover > .circleBtn:after,
+.circleBtn:hover:after,
+.circleBtn:active:after, {
+    transform: translateX(36px) rotate(-45deg);
+}
+
+.contentOnMedia-link:hover > .circleBtn:before,
+.circleBtn:hover:before,
+.circleBtn:active:before, {
+    transform: translateX(27px) rotate(-45deg);
+}
+
+.circleBtn_play:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border: none;
+    transform: translateX(33px);
+    top: calc(50% - 12px);
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 20px solid white;
+}
+
+.circleBtn_play:before {
+    content: none;
+}
+
+.contentOnMedia-link:hover > .circleBtn_play:after,
+.circleBtn_play:hover:after {
+    transform: translateX(36px);
+}
+
+// THEME CLASSES by contectual or chain selection
+.theme-impact .circleBtn,
+.circleBtn_themeImpact {
+    background-color: $CLR_IMPACT;
+}
+
+.theme-impact .circleBtn:hover,
+.theme-impact .circleBtn:active,
+.circleBtn_themeImpact:hover,
+.circleBtn_themeImpact:active {
+    background-color: $CLR_IMPACT_ACTIVE;
+}
+
+.theme-approach .circleBtn,
+.circleBtn_themeApproach {
+    background-color: $CLR_APPROACH;
+}
+
+.theme-approach .circleBtn:hover,
+.theme-approach .circleBtn:active,
+.circleBtn_themeApproach:hover,
+.circleBtn_themeApproach:active {
+    background-color: $CLR_APPROACH_ACTIVE;
+}
+
+.theme-mission .circleBtn,
+.circleBtn_themeMission {
+    background-color: $CLR_MISSION;
+}
+
+.theme-mission .circleBtn:hover,
+.theme-mission .circleBtn:active,
+.circleBtn_themeMission:hover,
+.circleBtn_themeMission:active {
+    background-color: $CLR_MISSION_ACTIVE;
+}
+
+@include breakpoint(MD) {
+    .circleBtn {
+        transform: scale(1);
+    }
+}

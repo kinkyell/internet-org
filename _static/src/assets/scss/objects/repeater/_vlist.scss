@@ -7,7 +7,7 @@
 }
 
 .vList > * + * {
-	margin-top: $SPACE_x1;	
+	margin-top: $SPACE_x1;
 }
 
 .vList_divided > * {
@@ -41,6 +41,10 @@
 
 .vList_bullets > * + * {
 	margin-top: 22px;
+}
+
+.vList_spread > * + * {
+	margin-top: 28px;
 }
 
 // THEME CLASSES by contectual or chain selection

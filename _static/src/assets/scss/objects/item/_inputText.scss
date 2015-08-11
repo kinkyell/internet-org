@@ -1,13 +1,23 @@
 /* ---------------------------------------------------------------------
  InputText
 ------------------------------------------------------------------------ */
+
 .inputText {
+	font-family: $FONT_SANS;
+	font-weight: 200;
+	font-style: normal;
+	@include remify(font-size, 18px);
     box-sizing: border-box;
     width: 100%;
-    padding: 11px 8px;
+    padding: 14px 8px;
     color: #000000;
     @include remify(font-size, 12px);
-    border-style: solid;
-    border-color: #d4d4ca;
-    border-width: 0 0 2px 0;
+    border-width: 0; /* reseting border */
+	border-bottom: 1px solid $CLR_GRAY_LIGHT;
+}
+
+.inputText[placeholder] {
+	@include remify(font-size, 18px);
+	font-style: italic;
+	font-weight: 200;
 }

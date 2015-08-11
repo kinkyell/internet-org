@@ -1,8 +1,6 @@
 /* ---------------------------------------------------------------------
  Narrative
 ------------------------------------------------------------------------ */
-@warn "for testing only";
-
 .narrative {
     position: relative;
     width: 100%;
@@ -44,19 +42,29 @@
 }
 
 .narrative-section-bd {
-    position: absolute;
-    top: 0;
-    left: 0;
     display: table;
     width: 100%;
     height: 48%;
+    position: absolute;
+    top: 0;
+    left: 0;
     background-color: #efede4;
+}
+
+.narrative-section:nth-child(1) .narrative-section-bd {
+    background-color: transparent;
+}
+
+.narrative-section-bd_low {
+    top: auto;
+    bottom: 0;
+    background-color: transparent;
 }
 
 .narrative-section-bd-inner {
     display: table-cell;
     vertical-align: middle;
-    padding: $SPACE_x4 80px;
+    padding: $SPACE_x4 0;
 }
 
 .narrative-progress {
@@ -107,8 +115,6 @@
     .narrative-section-bd {
         width: 100%;
         height: 100%;
-        padding: 24px;
-        box-sizing: border-box;
         background-color: transparent;
     }
 

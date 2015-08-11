@@ -21,8 +21,25 @@
     line-height: 1.666667;
 }
 
+.bdcpy_narrative {
+    font-size: 17px;
+}
+
+.mix-bdcpy_splash {
+    color: $CLR_WHITE;
+}
+
 .mix-bdcpy_light {
     color: $CLR_GRAY_LIGHT;
+}
+
+.mix-bdcpy_white {
+    color: $CLR_WHITE;
+}
+
+// One-off mixin used in heading narrative-section
+.mix-bdcpy_mobileOnly {
+    color: $CLR_WHITE;
 }
 
 @include breakpoint(MD) {
@@ -36,5 +53,13 @@
 
     .bdcpy_sm {
         @include remify(font-size, 16px);
+    }
+
+    .bdcpy_narrative {
+        font-size: 28px;
+    }
+
+    .mix-bdcpy_splash {
+        color: $CLR_GRAY;
     }
 }
