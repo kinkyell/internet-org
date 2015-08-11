@@ -1,0 +1,59 @@
+/* ---------------------------------------------------------------------
+RTL Test
+
+Styles to compensate the dir="rtl" attribute through layout adjustments.
+------------------------------------------------------------------------ */
+
+// NOTE: 
+
+html:lang(ar) {
+	color: red;
+    direction: rtl;
+}
+
+body[dir="rtl"] {
+    direction: rtl;
+    font-size: 125%;
+
+    .viewWindow-panel 
+    .viewWindow-panel-content {
+        right: 0;
+        left: initial;
+    }
+
+    .viewWindow.isShifted {
+        left: initial;
+        right: -50%;
+    }
+
+    .viewWindow-panel:not(.isAnimating):last-child.isActive > .viewWindow-panel-content {
+        left: initial;
+        right: -100%;
+        padding-left: 0;
+        padding-right: 100%;
+    }
+
+    .viewWindow-panel {
+        float: right;
+    }
+
+	.header-logo {
+    	left: 0;
+    	right: 12px;
+    }
+	.header-menuBtn {
+	    left: 0;
+	}
+	.menuTrigger,
+	.menuTrigger-icon {
+	    text-align: left;
+    }
+    .mainMenu-panel {
+    	float: left;
+    }
+
+	.searchBox-icon {
+    	right: 0;
+    }
+}
+
