@@ -43,6 +43,10 @@
 	margin-top: 22px;
 }
 
+.vList_spread > * + * {
+	margin-top: 28px;
+}
+
 // THEME CLASSES by contectual or chain selection
 .theme-impact .vList_bullets > *:before,
 .vList_bullets_themeImpact > *:before {
