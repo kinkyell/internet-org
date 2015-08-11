@@ -24,7 +24,7 @@
 
 .contentOnMedia-details-title {
     font-family: $FONT_SANS;
-    @include remify(font-size, 18px);
+    @include remify(font-size, 14px);
     line-height: 1;
     font-weight: bold;
     text-transform: uppercase;
@@ -32,12 +32,12 @@
 }
 
 .contentOnMedia-details-title + .contentOnMedia-details-duration {
-    margin-top: 8px;
+    margin-top: 2px;
 }
 
 .contentOnMedia-details-duration {
     font-family: $FONT_SANS;
-    @include remify(font-size, 14px);
+    @include remify(font-size, 9px);
     line-height: 1;
     color: white;
 }
@@ -48,16 +48,36 @@
 }
 
 .contentOnMedia-link_br {
-    bottom: $SPACE_x4;
-    right: $SPACE_x4;
+    bottom: 0;
+    right: 0;
 }
 
 .contentOnMedia-link-cta {
     display: inline-block;
     vertical-align: middle;
     font-family: $FONT_SERIF;
-    @include remify(font-size, 26px);
+    @include remify(font-size, 16px);
     line-height: 1;
     color: white;
-    margin-right: 20px;
+    margin-right: 0;
+}
+
+@include breakpoint(MD) {
+    .contentOnMedia-details-title {
+        @include remify(font-size, 18px);
+    }
+    .contentOnMedia-details-title + .contentOnMedia-details-duration {
+        margin-top: 4px;
+    }
+    .contentOnMedia-details-duration {
+        @include remify(font-size, 14px);
+    }
+    .contentOnMedia-link-cta {
+        @include remify(font-size, 26px);
+        margin-right: 20px;
+    }
+    .contentOnMedia-link_br {
+        bottom: $SPACE_x4;
+        right: $SPACE_x4;
+    }
 }
