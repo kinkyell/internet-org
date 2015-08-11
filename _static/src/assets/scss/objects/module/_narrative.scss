@@ -51,6 +51,10 @@
     background-color: #efede4;
 }
 
+.narrative-section:nth-child(1) .narrative-section-bd {
+    background-color: transparent;
+}
+
 .narrative-section-bd_low {
     top: auto;
     bottom: 0;

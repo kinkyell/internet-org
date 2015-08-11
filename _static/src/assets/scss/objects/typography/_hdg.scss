@@ -62,6 +62,11 @@
 .mix-hdg_bold   { font-weight: 500; }
 .mix-hdg_splash { color: $CLR_WHITE; }
 
+// One-off mixin used in heading narrative-section
+.mix-hdg_mobileOnly {
+    color: $CLR_WHITE;
+}
+
 @include breakpoint(MD) {
     .hdg_1 {
         font-size: 64px;
