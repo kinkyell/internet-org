@@ -151,9 +151,9 @@ if ( ! function_exists( 'internetorg_extend_search_post_type_range' ) ) :
 				array(
 					'post', // default PT
 					'page', // default PT
-					'internetorg_press', // CPT
-					'internetorg_story', // CPT
-					'internetorg_campaign', // CPT
+					'io_press', // CPT
+					'io_story', // CPT
+					'io_campaign', // CPT
 				)
 			);
 			$query->is_search = true;
@@ -197,7 +197,7 @@ if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 		// no cache, query
 		if ( false === $services ) {
 			$args = array(
-				'post_type' => 'internetorg_freesvc',
+				'post_type' => 'io_freesvc',
 				'post_status' => 'publish',
 			);
 
