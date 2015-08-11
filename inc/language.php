@@ -6,7 +6,7 @@
  * @author arichard <arichard@nerdery.com>
  */
 
-if ( ! function_exists( 'iorg_language_switcher' ) ) :
+if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 	/**
 	 * Builds the language switcher needed for the FE of the site
 	 *
@@ -17,7 +17,7 @@ if ( ! function_exists( 'iorg_language_switcher' ) ) :
 	 *
 	 * @return void
 	 */
-	function iorg_language_switcher() {
+	function internetorg_language_switcher() {
 
 		// check if Babble is installed/active, if not trigger a notice as a
 		// developer should already know but shouldn't be hindered by it and a
@@ -69,14 +69,14 @@ endif;
 
 
 // handle the translation bits
-if ( ! function_exists( 'iorg_save_meta_common_verify' ) ) {
+if ( ! function_exists( 'internetorg_save_meta_common_verify' ) ) {
 	/**
 	 * @param string $nonce_key field name of the nonce field
 	 * @param string $form_name name of the form
 	 * @param int $post_id id of post being saved
 	 * @return bool true if verified false if not
 	 */
-	function iorg_save_meta_common_verified( $nonce_key, $form_name, $post_id ) {
+	function internetorg_save_meta_common_verified( $nonce_key, $form_name, $post_id ) {
 		// if this is an autosave, our form has not been submitted, so we don't want to do anything.
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return false;
@@ -105,14 +105,14 @@ if ( ! function_exists( 'iorg_save_meta_common_verify' ) ) {
 }
 
 
-if ( ! function_exists( 'iorg_save_meta_for_content' ) ) :
+if ( ! function_exists( 'internetorg_save_meta_for_content' ) ) :
 	/**
 	 * Save meta for content
 	 *
 	 * @param int $post_id id of post being saved
 	 * @return void
 	 */
-	function iorg_save_meta_for_content( $post_id ) {
+	function internetorg_save_meta_for_content( $post_id ) {
 		// If this is an autosave, our form has not been submitted, so we don't want to do anything.
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;
@@ -128,7 +128,7 @@ if ( ! function_exists( 'iorg_save_meta_for_content' ) ) :
 		switch ( $post->post_type ) {
 			case 'page':
 			case 'bbl_job':
-				iorg_save_meta_for_page( $post_id );
+				internetorg_save_meta_for_page( $post_id );
 				break;
 			default:
 				return;
@@ -136,23 +136,23 @@ if ( ! function_exists( 'iorg_save_meta_for_content' ) ) :
 		}
 	}
 endif;
-add_action( 'save_post', 'iorg_save_meta_for_content' );
+add_action( 'save_post', 'internetorg_save_meta_for_content' );
 
 
-if ( ! function_exists( 'iorg_save_meta_for_page' ) ) :
+if ( ! function_exists( 'internetorg_save_meta_for_page' ) ) :
 	/**
 	 * save translated post meta data
 	 *
 	 * @param int $post_id id of the post being updated
 	 * @return void
 	 */
-	function iorg_save_meta_for_page( $post_id ) {
+	function internetorg_save_meta_for_page( $post_id ) {
 		// verify nonces
-		if ( ! iorg_check_nonce( 'fieldmanager-after_title_fm_fields-nonce' ) ) {
+		if ( ! internetorg_check_nonce( 'fieldmanager-after_title_fm_fields-nonce' ) ) {
 			return;
 		}
 
-		if ( ! iorg_check_nonce( 'fieldmanager-home-content-section-nonce' ) ) {
+		if ( ! internetorg_check_nonce( 'fieldmanager-home-content-section-nonce' ) ) {
 			return;
 		}
 
@@ -165,8 +165,8 @@ if ( ! function_exists( 'iorg_save_meta_for_page' ) ) :
 endif;
 
 
-if ( ! function_exists( 'iorg_check_nonce' ) ) :
-	function iorg_check_nonce( $key, $method = 'post' ) {
+if ( ! function_exists( 'internetorg_check_nonce' ) ) :
+	function internetorg_check_nonce( $key, $method = 'post' ) {
 		if ( ! in_array( $method, array( 'post', 'get' ) ) ) {
 			$method = 'post';
 		}
@@ -186,7 +186,7 @@ if ( ! function_exists( 'iorg_check_nonce' ) ) :
 endif;
 
 
-if ( ! function_exists( 'iorg_translated_meta_fields' ) ) :
+if ( ! function_exists( 'internetorg_translated_meta_fields' ) ) :
 	/**
 	 * Tell Babble how to handle the meta fields we have
 	 *
@@ -194,7 +194,7 @@ if ( ! function_exists( 'iorg_translated_meta_fields' ) ) :
 	 * @param WP_Post $post current post
 	 * @return array list of Babble_Meta_Field_* objects
 	 */
-	function iorg_translated_meta_fields( array $fields, WP_Post $post) {
+	function internetorg_translated_meta_fields( array $fields, WP_Post $post) {
 		$fields['Subtitle'] = new Babble_Meta_Field_Text( $post, 'Subtitle', 'Subtitle' );
 
 		// hook here to add our Fieldmanager Custom Fields -- instead of relying
@@ -203,10 +203,10 @@ if ( ! function_exists( 'iorg_translated_meta_fields' ) ) :
 		return $fields;
 	}
 endif;
-add_filter( 'bbl_translated_meta_fields', 'iorg_translated_meta_fields', 10, 2 );
+add_filter( 'bbl_translated_meta_fields', 'internetorg_translated_meta_fields', 10, 2 );
 
 
-if ( ! function_exists( 'iorg_bbl_sync_meta_key' ) ) :
+if ( ! function_exists( 'internetorg_bbl_sync_meta_key' ) ) :
 	/**
 	 * Determine if specified meta should be synced across translations
 	 *
@@ -214,7 +214,7 @@ if ( ! function_exists( 'iorg_bbl_sync_meta_key' ) ) :
 	 * @param string $meta_key name of hte post meta field being checked
 	 * @return bool true if meta should be synced otherwise false
 	 */
-	function iorg_bbl_sync_meta_key( $sync, $meta_key ) {
+	function internetorg_bbl_sync_meta_key( $sync, $meta_key ) {
 		// this is the list of items that should not be auto synced across translations
 		$sync_not = array(
 			'home-content-section',
@@ -229,4 +229,4 @@ if ( ! function_exists( 'iorg_bbl_sync_meta_key' ) ) :
 		return $sync;
 	}
 endif;
-add_filter( 'bbl_sync_meta_key', 'iorg_bbl_sync_meta_key', 99, 2 );
+add_filter( 'bbl_sync_meta_key', 'internetorg_bbl_sync_meta_key', 99, 2 );

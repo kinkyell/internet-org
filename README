@@ -12,4 +12,4 @@ Change directory to the vip-quickstart directory: cd vip-quickstart
 Run vagrant up
 Go to http://vip.local in your browser, login with username: wordpress, password: wordpress
 
-There is a secondary repo for plugins (repo url in mainframe). Checkout the repo as internet_org-plugins, this will ensure the plugins are found and loaded correctly (see theme functions.php file for inclusions). This is a requried structure by VIP, all custom functions must be included in the theme, however, having them in a separate directory (and ultimately, repo) they can be included using wpcom_vip_plugin_load instead of a require_once.
+There is a secondary repo for plugins (repo url in mainframe). Checkout the repo as internetorg-plugins, this will ensure the plugins are found and loaded correctly (see theme functions.php file for inclusions). This is a requried structure by VIP, all custom functions must be included in the theme, however, having them in a separate directory (and ultimately, repo) they can be included using wpcom_vip_plugin_load instead of a require_once.

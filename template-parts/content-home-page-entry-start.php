@@ -29,7 +29,7 @@ if ( ! empty( $after_title_custom_fields['Subtitle'] ) ) {
 								<?php the_title( '<span>', '</span>' ); ?>
 							</div>
 							<div class="transformBlock-hd">
-								<h2 class="hdg hdg_1"><?php echo esc_html__( $subtitle, 'internet_org' ); ?></h2>
+								<h2 class="hdg hdg_1"><?php echo esc_html__( $subtitle, 'internetorg' ); ?></h2>
 							</div>
 						</div>
 					</div>

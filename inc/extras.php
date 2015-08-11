@@ -13,7 +13,7 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
-function internet_org_body_classes( $classes ) {
+function internetorg_body_classes( $classes ) {
 	// Adds a class of group-blog to blogs with more than 1 published author.
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
@@ -21,7 +21,7 @@ function internet_org_body_classes( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', 'internet_org_body_classes' );
+add_filter( 'body_class', 'internetorg_body_classes' );
 
 if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
 	/**
@@ -31,7 +31,7 @@ if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
 	 * @param string $sep Optional separator.
 	 * @return string The filtered title.
 	 */
-	function internet_org_wp_title( $title, $sep ) {
+	function internetorg_wp_title( $title, $sep ) {
 		if ( is_feed() ) {
 			return $title;
 		}
@@ -49,12 +49,12 @@ if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
 
 		// Add a page number if necessary.
 		if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
-			$title .= " $sep " . sprintf( esc_html__( 'Page %s', 'internet_org' ), max( $paged, $page ) );
+			$title .= " $sep " . sprintf( esc_html__( 'Page %s', 'internetorg' ), max( $paged, $page ) );
 		}
 
 		return $title;
 	}
-	add_filter( 'wp_title', 'internet_org_wp_title', 10, 2 );
+	add_filter( 'wp_title', 'internetorg_wp_title', 10, 2 );
 
 	/**
 	 * Title shim for sites older than WordPress 4.1.
@@ -62,38 +62,38 @@ if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
 	 * @link https://make.wordpress.org/core/2014/10/29/title-tags-in-4-1/
 	 * @todo Remove this function when WordPress 4.3 is released.
 	 */
-	function internet_org_render_title() {
+	function internetorg_render_title() {
 		?>
 		<title><?php wp_title( '|', true, 'right' ); ?></title>
 		<?php
 	}
-	add_action( 'wp_head', 'internet_org_render_title' );
+	add_action( 'wp_head', 'internetorg_render_title' );
 endif;
 
 
-if ( ! function_exists( 'iorg_change_excerpt_length' ) ) :
+if ( ! function_exists( 'internetorg_change_excerpt_length' ) ) :
 	/**
 	 * Change the default length of the excerpts to 25 words (from default 55)
 	 *
 	 * @param int $length original length
 	 * @return int new length
 	 */
-	function iorg_change_excerpt_length( $length ) {
+	function internetorg_change_excerpt_length( $length ) {
 		return 25;
 	}
-	add_action( 'excerpt_length', 'iorg_change_excerpt_length' );
+	add_action( 'excerpt_length', 'internetorg_change_excerpt_length' );
 endif;
 
-if ( ! function_exists( 'iorg_change_excerpt_more' ) ) :
+if ( ! function_exists( 'internetorg_change_excerpt_more' ) ) :
 	/**
 	 * Change the default "more" indicator
 	 *
 	 * @param string $more current more indicator
 	 * @return string new more indicator
 	 */
-	function iorg_change_excerpt_more( $more ) {
+	function internetorg_change_excerpt_more( $more ) {
 		return '&hellip;';
 	}
-	add_action( 'excerpt_more', 'iorg_change_excerpt_more' );
+	add_action( 'excerpt_more', 'internetorg_change_excerpt_more' );
 endif;
 
