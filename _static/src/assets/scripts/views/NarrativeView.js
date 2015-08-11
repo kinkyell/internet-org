@@ -393,9 +393,9 @@ define(function(require, exports, module) { // jshint ignore:line
 
         var tl = new Timeline();
 
-        if (this._position === (this._slidesLength - 1) && position === (this._slidesLength - 2)) {
-           console.log('second to last');
-        }
+        // if (this._position === (this._slidesLength - 1) && position === (this._slidesLength - 2)) {
+        //    console.log('second to last');
+        // }
         // if (position !== (this._slidesLength - 1)) {
         //
         // }
