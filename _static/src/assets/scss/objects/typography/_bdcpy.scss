@@ -25,6 +25,10 @@
     font-size: 17px;
 }
 
+.mix-bdcpy_splash {
+    color: $CLR_WHITE;
+}
+
 .mix-bdcpy_light {
     color: $CLR_GRAY_LIGHT;
 }
@@ -48,5 +52,9 @@
 
     .bdcpy_narrative {
         font-size: 28px;
+    }
+
+    .mix-bdcpy_splash {
+        color: $CLR_GRAY;
     }
 }

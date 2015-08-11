@@ -60,6 +60,7 @@
 .mix-hdg_gray 	{ color: $CLR_GRAY; }
 .mix-hdg_italic { font-style: italic; }
 .mix-hdg_bold   { font-weight: 500; }
+.mix-hdg_splash { color: $CLR_WHITE; }
 
 @include breakpoint(MD) {
     .hdg_1 {
@@ -96,5 +97,9 @@
 
     .hdg_subHdg {
         font-size: 28px;
+    }
+
+    .mix-hdg_splash {
+        color: $CLR_BLACK;
     }
 }
