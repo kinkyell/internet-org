@@ -377,7 +377,7 @@ define(function(require, exports, module) { // jshint ignore:line
         var $destinationSection = $('.narrative-section').eq(position);
         var $sectionBody = $destinationSection.find('.narrative-section-bd');
         var $sectionBodyCnt = $sectionBody.find('.transformBlock');
-        this._slidePosition = (position > this._position) ? 0 : $destinationSection.find('.narrative-section-slides-item:last-child').index();
+        this._slidePosition = (position > this._position) ? 0 : $destinationSection.find('.narrative-section-slides-item:last-child').index(); // jshint ignore:line
 
         var i = 0;
         var offsetY = 0;
@@ -415,7 +415,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._updateSlideHooks();
             window.setTimeout(this._onSectionComplete.bind(this, position), this._scrollBuffer);
         }.bind(this) }, '-=0.65');
-    }
+    };
 
     proto._sectionTransitionDesktop = function(position) {
         var $currentSection = $('.narrative-section').eq(this._position);
