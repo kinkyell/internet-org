@@ -4,8 +4,8 @@ define(function(require, exports, module) { // jshint ignore:line
     var $ = require('jquery');
     require('gsap-cssPlugin');
     require('gsap-scrollToPlugin');
-    require('gsap-tween');
-    require('gsap-timeline');
+    var Tween = require('gsap-tween');
+    var Timeline = require('gsap-timeline');
     var AbstractView = require('./AbstractView');
     var ViewWindow = require('services/viewWindow');
     var breakpointManager = require('services/breakpointManager');
@@ -263,7 +263,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._direction = 'up';
         } else {
             this._direction = 'down';
-            var _deltaY = _deltaY * -1;
+            _deltaY = _deltaY * -1;
         }
 
         return _deltaY;
@@ -321,15 +321,15 @@ define(function(require, exports, module) { // jshint ignore:line
         var $slidesContainer = $currentSection.find('.narrative-section-slides');
         var $slides = $currentSection.find('.narrative-section-slides-item');
         var slideCount = $slides.length;
-        var $currentSlide = $currentSection.find('.narrative-section-slides-item').eq(this._slidePosition);
         var destinationSlidePos = this._slidePosition;
+        var atEnd;
 
         if (forward) {
             destinationSlidePos += 1;
-            var atEnd = destinationSlidePos >= slideCount;
+            atEnd = destinationSlidePos >= slideCount;
         } else {
             destinationSlidePos -= 1;
-            var atEnd = destinationSlidePos < 0;
+            atEnd = destinationSlidePos < 0;
         }
 
         var hasMultiple = this._hasMultiple(this._position);
@@ -346,7 +346,7 @@ define(function(require, exports, module) { // jshint ignore:line
             offsetY += $slides.eq(i).height();
         }
 
-        var tl = new TimelineLite();
+        var tl = new Timeline();
         tl.to($slidesContainer, 0.35, { scrollTo: { y: offsetY }, onComplete: function() {
             window.setTimeout(this._onSlideComplete.bind(this, forward), this._scrollBuffer);
         }.bind(this) });
@@ -369,7 +369,7 @@ define(function(require, exports, module) { // jshint ignore:line
         if (breakpointManager.isMobile) {
             this._sectionTransitionMobile(position);
         } else {
-            this._sectionTransitionDesktop(position)
+            this._sectionTransitionDesktop(position);
         }
     };
 
@@ -379,7 +379,7 @@ define(function(require, exports, module) { // jshint ignore:line
         var $sectionBodyCnt = $sectionBody.find('.transformBlock');
         this._slidePosition = (position > this._position) ? 0 : $destinationSection.find('.narrative-section-slides-item:last-child').index();
 
-        var i = 0
+        var i = 0;
         var offsetY = 0;
         for (; i < position; i++) {
             offsetY += $('.narrative-section').eq(i).height();
@@ -388,10 +388,10 @@ define(function(require, exports, module) { // jshint ignore:line
         var bdTwnOffset = 50;
         var bdTwnPos = (position > this._position) ? bdTwnOffset : (0 - bdTwnOffset);
         var bdCntPos = bdTwnPos * 2;
-        var bdTwn = TweenLite.from($sectionBody, 0.5, {top: bdTwnPos + '%', paused: false});
-        var bdCntTwn = TweenLite.from($sectionBodyCnt, 0.65, {y: bdCntPos + '%', paused: false});
+        var bdTwn = Tween.from($sectionBody, 0.5, {top: bdTwnPos + '%', paused: false});
+        var bdCntTwn = Tween.from($sectionBodyCnt, 0.65, {y: bdCntPos + '%', paused: false});
 
-        var tl = new TimelineLite();
+        var tl = new Timeline();
 
         if (this._position === (this._slidesLength - 1) && position === (this._slidesLength - 2)) {
            console.log('second to last');
@@ -404,7 +404,7 @@ define(function(require, exports, module) { // jshint ignore:line
         tl.add(bdCntTwn, '-=0.5');
 
         if (position === 1 && this._position === 0) {
-            var opacTwn = TweenLite.from($sectionBody, 0.5, {opacity: 0});
+            var opacTwn = Tween.from($sectionBody, 0.5, {opacity: 0});
             tl.add(opacTwn, 0);
         }
 
@@ -419,14 +419,12 @@ define(function(require, exports, module) { // jshint ignore:line
 
     proto._sectionTransitionDesktop = function(position) {
         var $currentSection = $('.narrative-section').eq(this._position);
-        var $destinationSection = $('.narrative-section').eq(position);
-        var $sectionBody = $destinationSection.find('.narrative-section-bd');
         var $transformBlock = $currentSection.find('.transformBlock');
         var $linePre = $transformBlock.find('.transformBlock-pre');
         var direction = (this._position < position) ? 'bottom' : 'top';
 
         var movement = (direction === 'bottom') ? '-=90px' : '+=90px';
-        var tl = new TimelineLite();
+        var tl = new Timeline();
         tl.to($transformBlock, 0.35, {
             top: movement
         });
@@ -440,7 +438,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._updateSlideHooks();
             this._isAnimating = false;
         }.bind(this));
-    }
+    };
 
     proto._updateSlideHooks = function() {
         var i = 0;

@@ -20,7 +20,7 @@
 
 .topicLink-link {
     font-family: $FONT_SERIF;
-    font-size: 21px;
+    @include remify(font-size, 21px);
     line-height: 1.145833;
     color: inherit;
 }
@@ -48,6 +48,6 @@
     }
 
     .topicLink-link {
-        font-size: 34px;
+        @include remify(font-size, 34px);
     }
 }

@@ -86,8 +86,21 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._cutsTheMustard = function() {
+        // polyfill getPrototype of
+        if ( typeof Object.getPrototypeOf !== 'function' ) {
+            if ( typeof 'test'.__proto__ === 'object' ) { //jshint ignore:line
+                Object.getPrototypeOf = function(object){
+                    return object.__proto__; //jshint ignore:line
+                };
+            } else {
+                Object.getPrototypeOf = function(object){
+                    // May break if the constructor has been tampered with
+                    return object.constructor.prototype;
+                };
+            }
+        }
+
         if (
-            (typeof Object.getPrototypeOf !== 'function') ||
             (typeof Function.prototype.bind !== 'function')
         ) {
             return false;
@@ -121,25 +134,20 @@ define(function(require, exports, module) { // jshint ignore:line
         var lastState = states[states.length - 1] || {
             type: 'home'
         };
-        var fromHome = this.states.getTop() instanceof HomeState;
+        var fromHome = this.states.getTop().isHomeState();
         var toHome;
         var stateCtor = STATE_TYPES[lastState.type] || PanelState;
 
         if (states.length > previousStates.length) {
-            // navigating forward
-            console.log('forward', lastState.path);
             this.states.push(stateCtor, lastState, silent);
         } else if (states.length < previousStates.length) {
-            console.log('backward');
             this.states.pop();
         } else {
-            console.log('swap');
             this.states.swap(stateCtor, lastState);
         }
-        console.log(this.states);
 
         // if going to or from home we need to shift over
-        toHome = this.states.getTop() instanceof HomeState;
+        toHome = this.states.getTop().isHomeState();
         if (fromHome || toHome) {
             viewWindow.shift(silent);
         }

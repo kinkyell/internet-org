@@ -31,7 +31,7 @@
     visibility: hidden;
     width: 100%;
     padding: 5px 0;
-    font-size: 16px;
+    @include remify(font-size, 16px);
     background: transparent;
     border: 0;
 }
@@ -39,7 +39,7 @@
 .searchBox-input_tall {
     font-family: $FONT_SERIF;
     font-weight: 500;
-    font-size: 58px;
+    @include remify(font-size, 58px);
     border-bottom: 1px solid $CLR_GRAY_LIGHT;
     width: 95%;
     margin-left: 5%;

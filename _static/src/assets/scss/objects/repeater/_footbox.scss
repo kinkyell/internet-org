@@ -14,7 +14,7 @@
 .footBox-hd {
     font-family: $FONT_SERIF;
     font-style: italic;
-    font-size: 22px;
+    @include remify(font-size, 22px);
     line-height: 1.363636;
     text-align: center;
     color: $CLR_GRAY;

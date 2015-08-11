@@ -198,6 +198,7 @@ if ( ! function_exists( 'get_free_services' ) ) :
 		if ( false === $services ) {
 			$args = array(
 				'post_type' => 'iorg_freesvc',
+				'post_status' => 'publish',
 			);
 
 			$services = array();
@@ -208,14 +209,15 @@ if ( ! function_exists( 'get_free_services' ) ) :
 				$postId = get_the_ID();
 				$services[] = array(
 					'post_id' => $postId,
+					'slug'    => $svcqry->post->post_name,
 					'title'   => get_the_title(),
 					'excerpt' => get_the_excerpt(),
 					'image'   => wp_get_attachment_image_src( get_post_thumbnail_id( $postId ), 'thumbnail' ),
 				);
 			endwhile;
 
-			// caching the compiled array and not the query
-			wp_cache_set( 'iorg_free_services_list', $services );
+			// caching the compiled array and not the query (86400 == 1 day)
+			wp_cache_set( 'iorg_free_services_list', $services, null, 86400 );
 
 			// reset the query to before we started mucking with it
 			wp_reset_postdata();

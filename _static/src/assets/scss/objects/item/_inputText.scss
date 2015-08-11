@@ -6,7 +6,7 @@
     width: 100%;
     padding: 11px 8px;
     color: #000000;
-    font-size: 12px;
+    @include remify(font-size, 12px);
     border-style: solid;
     border-color: #d4d4ca;
     border-width: 0 0 2px 0;

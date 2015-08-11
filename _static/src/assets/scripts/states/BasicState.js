@@ -84,6 +84,62 @@ define(function(require, exports, module) { // jshint ignore:line
         this._activeComponents.length = 0;
     };
 
+    /**
+     * Get directions for animation panels
+     *
+     * Rules:
+     *  - going forward comes from the right side
+     *  - going backward comes from the left
+     *  - coming to or from the homepage does not animate the far right panel
+     *
+     * @method getAnimationDirections
+     */
+    BasicState.prototype.getAnimationDirections = function(event) {
+        var featureTransition;
+        var contentTransition;
+
+        switch (event.method) {
+        case 'pop':
+            featureTransition = 'left';
+            contentTransition = 'left';
+            if (event.prevState && event.prevState.isHomeState()) {
+                featureTransition = 'right';
+                contentTransition = 'none';
+            }
+            break;
+        case 'swap':
+            featureTransition = 'bottom';
+            contentTransition = 'bottom';
+            break;
+        case 'push':
+            featureTransition = 'right';
+            contentTransition = 'right';
+            if (event.states[event.states.length - 1].isHomeState()) {
+                featureTransition = 'left';
+                contentTransition = 'none';
+            }
+            if (event.prevState && event.prevState.isHomeState()) {
+                contentTransition = 'none';
+            }
+            break;
+        }
+
+        return {
+            feature: featureTransition,
+            content: contentTransition
+        };
+    };
+
+    /**
+     * Checks for home state
+     *
+     * @method isHomeState
+     * @returns {Boolean}
+     */
+    BasicState.prototype.isHomeState = function() {
+        return false;
+    };
+
     return BasicState;
 
 });

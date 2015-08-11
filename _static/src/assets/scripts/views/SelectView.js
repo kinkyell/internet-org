@@ -404,7 +404,11 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._getSelected = function() {
-        return this.element.selectedOptions[0] || null;
+        var sel = this.element;
+        if (sel.selectedIndex < 0) {
+            return null;
+        }
+        return sel.options[sel.selectedIndex];
     };
 
 

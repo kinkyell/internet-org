@@ -39,14 +39,14 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    font-size: 16px; // for mobile zooming
+    @include remify(font-size, 16px); // for mobile zooming
 }
 
 .select-label,
 .select-menu-item {
     padding: 24px 20px 23px;
     background: #ffffff;
-    font-size: 18px;
+    @include remify(font-size, 18px);
     line-height: 1;
     font-family: $FONT_SANS_BLACK;
     font-weight: bolder;

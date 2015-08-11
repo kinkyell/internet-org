@@ -18,13 +18,10 @@ get_header();
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php get_template_part( 'template-parts/content', 'page-entry-start' ); ?>
-
-				<?php get_template_part( 'template-parts/content', 'page-entry-content' ); ?>
-
+				<?php get_template_part( 'template-parts/content', 'home-page-entry-start' ); ?>
+				<?php get_template_part( 'template-parts/content', 'home-page-entry-content' ); ?>
 				<?php get_template_part( 'template-parts/content', 'page-home-blocks' ); ?>
-
-				<?php get_template_part( 'template-parts/content', 'page-entry-end' ); ?>
+				<?php get_template_part( 'template-parts/content', 'home-page-entry-end' ); ?>
 
 			<?php endwhile; // End of the loop. ?>
 
@@ -180,6 +177,7 @@ get_header();
 
 
 
+<?php
 
 // Sidebar -- no sidebar on the front page
 // get_sidebar();

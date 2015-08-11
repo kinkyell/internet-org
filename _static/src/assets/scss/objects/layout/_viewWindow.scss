@@ -26,6 +26,7 @@ Layout for paneled views
     top: 0;
     left: 0;
     overflow-y: auto;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     transform: translateZ(0); // for smoother scrolling on webkit
 }

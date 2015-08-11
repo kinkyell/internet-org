@@ -40,12 +40,24 @@ define(function(require, exports, module) { // jshint ignore:line
      * @fires State:activate
      */
     HomeState.prototype.activate = function(event) {
+        var transitions;
         if (event.method !== 'init') {
             //TODO: replace image with narrative stuff
-            viewWindow.replaceFeatureImage('http://placehold.it/400x801/eeeeee/888888?text=HOME', 'left');
+            transitions = this.getAnimationDirections(event);
+            viewWindow.replaceFeatureImage('http://placehold.it/400x801/eeeeee/888888?text=HOME', transitions.feature);
         }
         BasicState.prototype.activate.call(this, event);
         this.refreshComponents($(document.body));
+    };
+
+    /**
+     * Checks for home state
+     *
+     * @method isHomeState
+     * @returns {Boolean}
+     */
+    HomeState.prototype.isHomeState = function() {
+        return true;
     };
 
     return HomeState;

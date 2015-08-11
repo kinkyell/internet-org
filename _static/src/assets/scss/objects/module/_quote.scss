@@ -12,7 +12,7 @@ Quote Styles outside of WYSIWYG areas
 .quote-statement {
     font-family: $FONT_SERIF_ITALIC;
     font-style: italic; // TODO: REMOVE ONCE Web Fonts are in place
-    font-size: 22px;
+    @include remify(font-size, 22px);
     line-height: 1.363636;
     color: $CLR_BLACK;
     margin-bottom: $SPACE_x1;
@@ -25,7 +25,7 @@ Quote Styles outside of WYSIWYG areas
 .quote-author {
     font-family: $FONT_SANS;
     font-weight: 200; // TODO: REMOVE ONCE Web Fonts are in place
-    font-size: 18px;
+    @include remify(font-size, 18px);
     line-height: 1;
     color: $CLR_GRAY;
 }

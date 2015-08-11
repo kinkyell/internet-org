@@ -35,7 +35,7 @@
 	top: -8px;
 	left: 8px;
 	font-family: Arial, 'Arial', sans-serif;
-	font-size: 28px;
+	@include remify(font-size, 28px);
 	color: $CLR_ACCENT;
 }
 

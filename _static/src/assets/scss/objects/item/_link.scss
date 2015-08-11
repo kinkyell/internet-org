@@ -7,17 +7,13 @@
     @include transition(all 0.3s ease-in-out);
     font-family: $FONT_SANS_BLACK;
     font-weight: bolder; @warn 'REMOVE ONCE Web Fonts are in place';
-    font-size: 13px;
+    @include remify(font-size, 13px);
     line-height: 1.222222;
     text-decoration: none;
     text-transform: uppercase;
     color: $CLR_ACCENT;
     position: relative;
     padding-right: 35px;
-}
-
-.link_sm {
-    font-size: 13px; //same as base on mobile
 }
 
 .link:after,
@@ -59,10 +55,10 @@
 
 .link:hover:before { background-color: $CLR_ACCENT_ACTIVE; }
 
-.mix-link_small { font-size: 16px; }
+.mix-link_small { @include remify(font-size, 13px); }
 
 .link_twoArrows {
-    font-size: 16px;
+    @include remify(font-size, 16px);
     color: $CLR_GRAY;
     padding-right: 15px;
 }
@@ -93,7 +89,7 @@
 .link_twoArrows:hover:before { background-color: transparent; }
 
 .link_preArrows {
-    font-size: 10px;
+    @include remify(font-size, 10px);
     color: $CLR_GRAY;
     padding-left: 15px;
 }
@@ -187,14 +183,14 @@
 
 @include breakpoint(MD) {
     .link {
-        font-size: 18px;
+        @include remify(font-size, 18px);
     }
 
-    .link_sm {
-        font-size: 16px;
+    .mix-link_small {
+        @include remify(font-size, 16px);
     }
 
     .link_preArrows {
-        font-size: 12px;
+        @include remify(font-size, 12px);
     }
 }

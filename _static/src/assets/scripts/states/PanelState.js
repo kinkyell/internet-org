@@ -2,7 +2,6 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     var BasicState = require('./BasicState');
-    var HomeState = require('./HomeState');
     var apiService = require('services/apiService');
     var spread = require('stark/promise/spread');
 
@@ -14,7 +13,11 @@ define(function(require, exports, module) { // jshint ignore:line
     var $ = require('jquery');
     var Tween = require('gsap-tween');
 
-    var log = console.log.bind(console);
+    var log = function() {
+        if (console.log) {
+            console.log.apply(console, arguments);
+        }
+    };
 
     /**
      * Manages the stack of active states
@@ -58,21 +61,11 @@ define(function(require, exports, module) { // jshint ignore:line
      * @fires State:activate
      */
     PanelState.prototype.activate = function(event) {
-        var transition = 'right';
-        var stateLen = event.states.length;
-        var fromHome = stateLen > 1 && (event.states[stateLen - 2] instanceof HomeState);
+        var transitions = this.getAnimationDirections(event);
 
         if (event.silent) {
             viewWindow.getCurrentStory().then(this._handleStaticContent);
             return BasicState.prototype.activate.call(this, event);
-        }
-
-        if (event.method === 'pop') {
-            transition = fromHome ? 'right' : 'left';
-        }
-
-        if (event.method === 'swap') {
-            transition = 'bottom';
         }
 
         var tasks = [
@@ -81,11 +74,11 @@ define(function(require, exports, module) { // jshint ignore:line
                 title: this._options.title,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse es suscipit euante lorepehicula nulla, suscipit dela eu ante vel vehicula.', //jshint ignore:line
                 theme: this._options.theme
-            }), fromHome ? 'none' : transition)
+            }), transitions.content)
         ];
 
         if (this._options.image) {
-            tasks.push(viewWindow.replaceFeatureImage(this._options.image, transition));
+            tasks.push(viewWindow.replaceFeatureImage(this._options.image, transitions.feature));
         }
 
         Promise.all(tasks)
@@ -165,6 +158,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     PanelState.prototype._destroyScrollWatcher = function() {
+        if (!this._scrollPanel) {
+            return;
+        }
         this._scrollPanel
             .off('scroll', this._handlePanelScroll)
             .find('img')
