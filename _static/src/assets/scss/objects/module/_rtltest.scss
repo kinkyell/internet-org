@@ -4,33 +4,26 @@ RTL Test
 Styles to compensate the dir="rtl" attribute through layout adjustments.
 ------------------------------------------------------------------------ */
 
-// NOTE: 
+// NOTE:
 
 html:lang(ar) {
 	color: red;
     direction: rtl;
+    font-size: 125%;
 }
 
-body[dir="rtl"] {
+html[dir="rtl"] {
     direction: rtl;
-    font-size: 125%;
 
-    .viewWindow-panel 
+    .viewWindow-panel
     .viewWindow-panel-content {
         right: 0;
-        left: initial;
+        left: auto;
     }
 
     .viewWindow.isShifted {
-        left: initial;
-        right: -50%;
-    }
-
-    .viewWindow-panel:not(.isAnimating):last-child.isActive > .viewWindow-panel-content {
-        left: initial;
+        left: auto;
         right: -100%;
-        padding-left: 0;
-        padding-right: 100%;
     }
 
     .viewWindow-panel {
@@ -38,11 +31,27 @@ body[dir="rtl"] {
     }
 
 	.header-logo {
-    	left: 0;
-    	right: 12px;
-    }
+		left: auto;
+		right: 5px;
+		margin-left: 0;
+		margin-right: -12px;
+	}
+
+	.mix-header-logo_center {
+		left: auto;
+		right: 50%;
+	}
+
 	.header-menuBtn {
 	    left: 0;
+	}
+	.header-backBtn {
+		left: auto;
+	    right: -100px;
+		transform: rotate(180deg);
+	}
+	.header-backBtn.isActive {
+	    right: 0;
 	}
 	.menuTrigger,
 	.menuTrigger-icon {
@@ -57,3 +66,30 @@ body[dir="rtl"] {
     }
 }
 
+@include breakpoint(MD) {
+	html[dir="rtl"] {
+
+		.header-logo {
+			left: auto;
+			right: 12px;
+		}
+
+		.viewWindow.isShifted {
+	        right: -50%;
+	    }
+
+	    .viewWindow-panel:not(.isAnimating):first-child.isActive > .viewWindow-panel-content {
+	        width: 200%;
+	        padding-right: 0;
+			padding-left: 100%;
+			left: -100%;
+	    }
+
+	    .viewWindow-panel:not(.isAnimating):last-child.isActive > .viewWindow-panel-content {
+	        left: auto;
+	        right: -100%;
+	        padding-left: 0;
+	        padding-right: 100%;
+	    }
+	}
+}

@@ -159,6 +159,7 @@ define(function(require, exports, module) { // jshint ignore:line
     ViewWindow.prototype._getAnimProps = function(direction) {
         var inOpts = {};
         var outOpts = {};
+        var directionInvert = document.documentElement.dir === 'ltr' ? 1 : -1;
 
         switch (direction.toLowerCase()) {
         case 'top':
@@ -175,12 +176,12 @@ define(function(require, exports, module) { // jshint ignore:line
             }
             break;
         case 'left':
-            inOpts.xPercent = -100;
-            outOpts.xPercent = 100;
+            inOpts.xPercent = directionInvert * -100;
+            outOpts.xPercent = directionInvert * 100;
             break;
         case 'right':
-            inOpts.xPercent = 100;
-            outOpts.xPercent = -100;
+            inOpts.xPercent = directionInvert * 100;
+            outOpts.xPercent = directionInvert * -100;
             break;
         case 'none':
             break;
@@ -252,6 +253,7 @@ define(function(require, exports, module) { // jshint ignore:line
             var shiftOn = !self._isShifted;
             var sign;
             var activeSelector;
+            var directionInvert = document.documentElement.dir === 'ltr' ? 1 : -1;
 
             self.$panels.addClass('isAnimating');
 
@@ -273,7 +275,7 @@ define(function(require, exports, module) { // jshint ignore:line
             }
 
             return tweenAsync.from(self.element, TRANSITION_SPEED, {
-                xPercent: sign * percent,
+                xPercent: directionInvert * sign * percent,
                 onComplete: function() {
                     self.$panels
                         .removeClass('isAnimating')
