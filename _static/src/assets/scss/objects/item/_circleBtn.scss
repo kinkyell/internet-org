@@ -12,7 +12,7 @@
     text-align: center;
     background-color: $CLR_ACCENT;
     border-radius: 50%;
-    @include remify(font-size, 22px);
+    font-size: 0;
     @include transition(all 0.2s ease-in-out);
     transform: scale(0.65);
 }
