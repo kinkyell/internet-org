@@ -9,6 +9,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var SearchFormView = require('./SearchFormView');
     var SelectView = require('./SelectView');
+    var LanguageView = require('./LanguageView');
 
     var SPEEDS = require('appConfig').animationSpeeds;
 
@@ -59,6 +60,7 @@ define(function(require, exports, module) { // jshint ignore:line
             prefix: 'langSelect',
             anchorBottom: true
         });
+        this.langView = new LanguageView($('#js-LanguageView'));
     };
 
     /**

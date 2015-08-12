@@ -15,11 +15,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var $ = require('jquery');
     var Tween = require('gsap-tween');
 
-    var log = function() {
-        if (console.log) {
-            console.log.apply(console, arguments);
-        }
-    };
+    var log = require('util/log');
 
     /**
      * Manages the stack of active states
@@ -57,33 +53,26 @@ define(function(require, exports, module) { // jshint ignore:line
      *  - request panel content from server
      *  - create panel markup
      *
-     * @method activate
+     * @method onActivate
      * @fires State:activate
      */
-    TitledState.prototype.activate = function(event) {
+    TitledState.prototype.onActivate = function(event) {
         var transitions = this.getAnimationDirections(event);
 
         if (event.silent) {
             viewWindow.getCurrentStory().then(this._handleStaticContent, log);
-            return BasicState.prototype.activate.call(this, event);
+            return;
         }
 
         var tasks = [
             apiService.getPanelContent(this._options.path),
-            viewWindow.replaceFeatureContent(templates['page-title-panel']({
-                title: this._options.title,
-                theme: this._options.theme,
-                desc: this._options.desc,
-                date: this._options.date
-            }), transitions.feature),
+            viewWindow.replaceFeatureContent(templates['page-title-panel'](this._options), transitions.feature),
             viewWindow.replaceStoryContent('', transitions.content)
         ];
 
         Promise.all(tasks)
             .then(spread(this._handlePanelContentLoad))
             .catch(log);
-
-        BasicState.prototype.activate.call(this, event);
     };
 
     /**

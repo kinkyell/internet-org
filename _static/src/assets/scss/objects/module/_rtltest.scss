@@ -7,7 +7,7 @@ Styles to compensate the dir="rtl" attribute through layout adjustments.
 // NOTE:
 
 html:lang(ar) {
-	color: red;
+    color: red;
     direction: rtl;
     font-size: 125%;
 }
@@ -30,66 +30,66 @@ html[dir="rtl"] {
         float: right;
     }
 
-	.header-logo {
-		left: auto;
-		right: 5px;
-		margin-left: 0;
-		margin-right: -12px;
-	}
+    .header-logo {
+        left: auto;
+        right: 5px;
+        margin-left: 0;
+        margin-right: -12px;
+    }
 
-	.mix-header-logo_center {
-		left: auto;
-		right: 50%;
-	}
+    .mix-header-logo_center {
+        left: auto;
+        right: 50%;
+    }
 
-	.header-menuBtn {
-	    left: 0;
-	}
-	.header-backBtn {
-		left: auto;
-	    right: -100px;
-		transform: rotate(180deg);
-	}
-	.header-backBtn.isActive {
-	    right: 0;
-	}
-	.menuTrigger,
-	.menuTrigger-icon {
-	    text-align: left;
+    .header-menuBtn {
+        left: 0;
+    }
+    .header-backBtn {
+        left: auto;
+        right: -100px;
+        transform: rotate(180deg);
+    }
+    .header-backBtn.isActive {
+        right: 0;
+    }
+    .menuTrigger,
+    .menuTrigger-icon {
+        text-align: left;
     }
     .mainMenu-panel {
-    	float: left;
+        float: left;
     }
 
-	.searchBox-icon {
-    	right: 0;
+    .searchBox-icon {
+        right: 0;
     }
 }
 
 @include breakpoint(MD) {
-	html[dir="rtl"] {
+    html[dir="rtl"] {
 
-		.header-logo {
-			left: auto;
-			right: 12px;
-		}
+        .header-logo {
+            left: auto;
+            right: 12px;
+        }
 
-		.viewWindow.isShifted {
-	        right: -50%;
-	    }
+        .viewWindow.isShifted {
+            right: -50%;
+        }
 
-	    .viewWindow-panel:not(.isAnimating):first-child.isActive > .viewWindow-panel-content {
-	        width: 200%;
-	        padding-right: 0;
-			padding-left: 100%;
-			left: -100%;
-	    }
+        .viewWindow-panel:not(.isAnimating):first-child.isActive > .viewWindow-panel-content {
+            width: 200%;
+            padding-right: 0;
+            padding-left: 100%;
+            left: -100%;
+        }
 
-	    .viewWindow-panel:not(.isAnimating):last-child.isActive > .viewWindow-panel-content {
-	        left: auto;
-	        right: -100%;
-	        padding-left: 0;
-	        padding-right: 100%;
-	    }
-	}
+        .viewWindow-panel:not(.isAnimating):last-child.isActive > .viewWindow-panel-content {
+            left: auto;
+            right: -100%;
+            padding-left: 0;
+            padding-right: 100%;
+        }
+    }
 }

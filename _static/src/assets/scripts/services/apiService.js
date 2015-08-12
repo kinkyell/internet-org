@@ -29,7 +29,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var PREFIX_STRIPPER = /^\//;
 
-    var APIService = {
+    var apiService = {
 
         /**
          * Returns html for a given basic route
@@ -66,6 +66,6 @@ define(function(require, exports, module) { // jshint ignore:line
 
     };
 
-    return APIService;
+    return apiService;
 
 });

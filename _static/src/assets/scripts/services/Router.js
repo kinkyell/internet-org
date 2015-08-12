@@ -116,9 +116,14 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     Router.prototype._onPopState = function(state) {
         var prevStates = this._currentStates.slice(0);
-        this._currentStates = state || [];
 
-        if (!prevStates.length && !this._currentStates.length) {
+        if (!Array.isArray(state)) {
+            state = [];
+        }
+
+        this._currentStates = state;
+
+        if (prevStates.length === 0 && this._currentStates.length === 0) {
             return;
         }
 

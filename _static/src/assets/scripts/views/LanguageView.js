@@ -69,6 +69,19 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
 
+        this._setLanguage(value);
+    };
+
+    /**
+     * Update the lang attribute
+     *
+     * @method _setLanguage
+     * @param {HTMLSelectElement} select Language switcher select
+     * @param {String} value Country code
+     * @fires LanguageView:change
+     * @private
+     */
+    proto._setLanguage = function(value) {
         document.documentElement.lang = value;
         eventHub.publish('LanguageView:change', value);
     };

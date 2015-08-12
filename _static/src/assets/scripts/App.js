@@ -4,6 +4,7 @@ define(function(require, exports, module) { // jshint ignore:line
     // polyfill promises
     var ES6Promise = require('promise');
     ES6Promise.polyfill();
+    require('util/polyfills/index');
 
     require('modernizr');
     require('services/apiService');
@@ -22,7 +23,6 @@ define(function(require, exports, module) { // jshint ignore:line
     var NarrativeView = require('views/NarrativeView');
     var HeaderView = require('views/HeaderView');
     var SelectView = require('views/SelectView');
-    var LanguageView = require('views/LanguageView');
     var eventHub = require('services/eventHub');
     var assetLoader = require('services/assetLoader');
     var viewWindow = require('services/viewWindow');
@@ -61,20 +61,13 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto.init = function() {
+        // bind methods
         this._handleStateChange = this._onStateChange.bind(this);
-        this.headerView = new HeaderView($('.js-headerView'));
-        this.viewWindow = viewWindow;
+
+        this._setupLayout();
         this._setupStates();
-        this.router = new Router();
 
-        this.narrativeView = new NarrativeView($('.js-narrativeView'));
-
-        // register global components
-        $('select.js-select').each(function(idx, el) {
-            return new SelectView($(el));
-        });
-        this.langView = new LanguageView($('#js-LanguageView'));
-
+        // load images initially on the page
         this._preloadImages();
     };
 
@@ -85,20 +78,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._cutsTheMustard = function() {
-        // polyfill getPrototype of
-        if ( typeof Object.getPrototypeOf !== 'function' ) {
-            if ( typeof 'test'.__proto__ === 'object' ) { //jshint ignore:line
-                Object.getPrototypeOf = function(object){
-                    return object.__proto__; //jshint ignore:line
-                };
-            } else {
-                Object.getPrototypeOf = function(object){
-                    // May break if the constructor has been tampered with
-                    return object.constructor.prototype;
-                };
-            }
-        }
-
         if (
             (typeof Function.prototype.bind !== 'function')
         ) {
@@ -109,15 +88,30 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
+     * Set up view window
+     *
+     * @method _setupLayout
+     * @private
+     */
+    proto._setupLayout = function() {
+        this.headerView = new HeaderView($('.js-headerView'));
+        this.viewWindow = viewWindow;
+
+        //TODO: move this to home state
+        this.narrativeView = new NarrativeView($('.js-narrativeView'));
+    };
+
+    /**
      * Set up state stack
      *
      * @method _setupStates
      * @private
      */
     proto._setupStates = function() {
-        this.states = new StateStack(HomeState);
+        this.stateStack = new StateStack(HomeState);
 
         eventHub.subscribe('Router:stateChange', this._handleStateChange);
+        this.router = new Router();
     };
 
     /**
@@ -133,21 +127,21 @@ define(function(require, exports, module) { // jshint ignore:line
         var lastState = states[states.length - 1] || {
             type: 'home'
         };
-        var fromHome = this.states.getTop().isHomeState();
-        var toHome;
-        var stateCtor = STATE_TYPES[lastState.type] || PanelState;
+        var isFromHome = this.stateStack.getTop().isHomeState();
+        var isToHome;
+        var stateConstructor = STATE_TYPES[lastState.type] || PanelState;
 
         if (states.length > previousStates.length) {
-            this.states.push(stateCtor, lastState, silent);
+            this.stateStack.push(stateConstructor, lastState, silent);
         } else if (states.length < previousStates.length) {
-            this.states.pop();
+            this.stateStack.pop();
         } else {
-            this.states.swap(stateCtor, lastState);
+            this.stateStack.swap(stateConstructor, lastState);
         }
 
         // if going to or from home we need to shift over
-        toHome = this.states.getTop().isHomeState();
-        if (fromHome || toHome) {
+        isToHome = this.stateStack.getTop().isHomeState();
+        if (isFromHome || isToHome) {
             viewWindow.shift(silent);
         }
 
@@ -165,6 +159,7 @@ define(function(require, exports, module) { // jshint ignore:line
             return el.getAttribute('data-image');
         }).filter(identity);
 
+        // assetLoader filters out already loaded images, don't worry
         assetLoader.loadImages(stateLinkImgs);
     };
 

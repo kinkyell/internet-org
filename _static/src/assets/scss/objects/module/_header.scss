@@ -82,8 +82,8 @@
 }
 
 .header-menuBtn-text {
-    margin-right: 10px;
     @include remify(font-size, 16px);
+    margin-right: 10px;
     text-transform: uppercase;
 }
 

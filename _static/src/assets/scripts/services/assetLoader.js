@@ -26,11 +26,11 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     AssetLoader.prototype.loadImage = function(url) {
         var loaded = this._loaded;
-
-        if (loaded.indexOf(url) !== -1) {
-            return Promise.resolve({ url: url });
-        }
         return new Promise(function(resolve, reject) {
+            if (loaded.indexOf(url) !== -1) {
+                return resolve({ url: url });
+            }
+
             var img = new Image();
 
             img.onload = function() {

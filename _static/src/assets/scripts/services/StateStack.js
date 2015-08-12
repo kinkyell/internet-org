@@ -42,11 +42,13 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     StateStack.prototype.push = function(StateCtor, options, silent) {
         var stateInstance = new StateCtor(options);
+        var prevState = null;
 
         this._activeStates.push(stateInstance);
 
         if (this._activeStates.length > 1) {
-            this._activeStates[this._activeStates.length - 2].deactivate({
+            prevState = this._activeStates[this._activeStates.length - 2];
+            prevState.deactivate({
                 method: 'push',
                 states: this._activeStates,
                 nextState: stateInstance
@@ -66,7 +68,7 @@ define(function(require, exports, module) { // jshint ignore:line
         stateInstance.activate({
             method: 'push',
             states: this._activeStates,
-            prevState: this._activeStates.length > 1 ? this._activeStates[this._activeStates.length - 2] : null,
+            prevState: prevState,
             silent: silent
         });
     };

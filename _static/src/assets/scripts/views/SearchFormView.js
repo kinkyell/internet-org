@@ -89,7 +89,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._onSubmit = function(event) {
         event.preventDefault();
         var searchText = this.$input.val().trim();
-        if (!searchText) {
+        if (searchText === '') {
             return;
         }
         eventHub.publish('Search:submit', {
