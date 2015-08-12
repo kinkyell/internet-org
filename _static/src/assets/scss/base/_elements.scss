@@ -14,3 +14,12 @@ body {
     height: 100%;
     overflow-x: hidden;
 }
+
+/* Right to Left Language support */
+[dir="rtl"] {
+    direction: rtl;
+    
+    br {
+    	display: none;
+    }
+}

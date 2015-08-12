@@ -138,3 +138,16 @@
         top: 0;
     }
 }
+
+/* Right to Left Language support */
+[dir="rtl"] {
+
+    .header-logo {
+        left: 0;
+        right: 12px;
+    }
+    .header-menuBtn {
+        left: 0;
+    }
+
+}

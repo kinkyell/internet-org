@@ -45,3 +45,29 @@ Quote Styles outside of WYSIWYG areas
 .quote_themeMission {
     border-left: 4px solid $CLR_MISSION;
 }
+
+/* Right to Left Language support */
+[dir="rtl"] {
+
+    .quote {
+        border-left: none;
+        border-right: 4px solid $CLR_ACCENT;
+    }
+
+    // THEME CLASSES by contectual or chain selection
+    .theme-impact .quote,
+    .quote_themeImpact {
+        border-right: 4px solid $CLR_IMPACT;
+    }
+
+    .theme-approach .quote,
+    .quote_themeApproach {
+        border-right: 4px solid $CLR_APPROACH;
+    }
+
+    .theme-mission .quote,
+    .quote_themeMission {
+        border-right: 4px solid $CLR_MISSION;
+    }
+
+}

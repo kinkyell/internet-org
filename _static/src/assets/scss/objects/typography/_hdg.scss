@@ -5,13 +5,13 @@
 ------------------------------------------------------------------------ */
 .hdg {
 	font-family: $FONT_SERIF;
-    font-weight: 400; // TODO: REMOVE ONCE Web Fonts are in place
+    font-weight: 400; @warn 'REMOVE ONCE Web Fonts are in place';
 	color: $CLR_BLACK;
 }
 
 .hdg_1 {
-    @include remify(font-size, 30px);
-    line-height: 1.28;
+    @include remify(font-size, 29px);
+    line-height: 1.2;
 }
 
 .hdg_2 {
@@ -55,12 +55,26 @@
 	line-height: 1.4285714;
 }
 
+.hdg_heavy {
+    color: $CLR_ACCENT;
+    font-family: $FONT_SANS_BLACK;
+    font-weight: bolder; @warn 'REMOVE ONCE Web Fonts are in place';
+    @include remify(font-size, 13px);
+    line-height: 1.222222;
+    text-transform: uppercase;
+}
+
 /* Heading Mixins */
 .mix-hdg_white 	{ color: white; }
 .mix-hdg_gray 	{ color: $CLR_GRAY; }
 .mix-hdg_italic { font-style: italic; }
 .mix-hdg_bold   { font-weight: 500; }
 .mix-hdg_splash { color: $CLR_WHITE; }
+
+/* Theme Mixins */
+.mix-hdg_themeImpact { color: $CLR_IMPACT; }
+.mix-hdg_themeApproach { color: $CLR_APPROACH; }
+.mix-hdg_themeMission { color: $CLR_MISSION; }
 
 // One-off mixin used in heading narrative-section
 .mix-hdg_mobileOnly {
@@ -70,6 +84,7 @@
 @include breakpoint(MD) {
     .hdg_1 {
         @include remify(font-size, 64px);
+        line-height: 1.28;
     }
 
     .hdg_2 {

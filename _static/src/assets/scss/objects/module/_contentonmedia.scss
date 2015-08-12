@@ -80,4 +80,40 @@
         bottom: $SPACE_x4;
         right: $SPACE_x4;
     }
+
+}
+
+/* Right to Left Language support */
+[dir="rtl"] {
+    
+    .contentOnMedia-details {
+        left: initial;
+        right: 20px;
+    }
+
+    .contentOnMedia-link_br {
+        bottom: 0;
+        right: initial;
+        left: 0;
+    }
+
+}
+
+@include breakpoint(MD) {
+
+    /* Right to Left Language support */
+    [dir="rtl"] {
+
+        .contentOnMedia-link-cta {
+            margin-right: 0;
+            margin-left: 20px;
+        }
+
+        .contentOnMedia-link_br {
+            bottom: $SPACE_x4;
+            right: initial;
+            left: $SPACE_x4;
+        }
+    }
+
 }

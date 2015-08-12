@@ -55,13 +55,6 @@
     transform: rotate(0deg);
 }
 
-// select:hover + .langSelect-label,
-// select:focus + .langSelect-label,
-// .langSelect-menu-item:hover,
-// .langSelect-menu-item:focus {
-//     background: #ccc8bc;
-// }
-
 .langSelect.isOpen > select {
     max-height: 59px; 
 }
@@ -103,3 +96,11 @@
     display: block;
 }
 
+/* Right to Left Language support */
+[dir="rtl"] {
+
+    .langSelect-label:after {
+        margin: -2px 5px 0 0;
+    }
+
+}

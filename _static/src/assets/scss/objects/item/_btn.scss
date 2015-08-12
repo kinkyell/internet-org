@@ -91,3 +91,13 @@
     padding: 22px;
     @include remify(font-size, 18px);
 }
+
+/* Right to Left Language support */
+[dir="rtl"] {
+
+    .btn_facebook:before {
+        margin-right: 0;
+        margin-left: 18px;
+    }
+
+}

@@ -70,3 +70,12 @@
         bottom: 100px;
     }
 }
+
+/* Right to Left Language support */
+[dir="rtl"] {
+
+    .mainMenu-panel {
+        float: left;
+    }
+
+}

@@ -1,59 +1,72 @@
-
 /* ---------------------------------------------------------------------
  Arrow CTA
 
  Looping Arrow Call-To-Action Animation. Can be placed on any html element.
 ------------------------------------------------------------------------ */
-
 .arrowCta {
-  display: inline-block;
-  height: 13px;
-  width: 13px;
-  border: 11px solid transparent;
-  /*background-color: red;*/
-  transform: rotate(45deg);
-  position: relative;
+    display: inline-block;
+    height: 12px;
+    width: 12px;
+    transform: scale(0.65) rotate(45deg);
+    position: relative;
 }
 
 .arrowCta:after,
 .arrowCta:before {
-  content: "";
-  display: block;
-  height: inherit;
-  width: inherit;
-  position: absolute;
-  top: 0;
-  left: 0;
+    content: "";
+    display: block;
+    height: inherit;
+    width: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .arrowCta:after {
-  border-bottom: 3px solid black;
-  border-right: 3px solid black;
-  top: 0;
-  left: 0;
-  opacity: 1;
-  animation: bottom-arrow 1.65s infinite;
+    border-width: 0;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-style: solid;
+    border-color: $CLR_BLACK;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    animation: bottom-arrow 1.65s infinite;
 }
 
 @keyframes bottom-arrow {
-  0%   { opacity: 1; transform: translate(0,0); }
-  45%  { opacity: 0; transform: translate(12px,12px); }
-  46%  { opacity: 0; transform: translate(-16px,-16px); }
-  90%  { opacity: 1; transform: translate(-6px,-6px); }
-  100% { opacity: 1; transform: translate(-6px,-6px); }
+    0%   { opacity: 1; transform: translate(0,0); }
+    45%  { opacity: 0; transform: translate(12px,12px); }
+    46%  { opacity: 0; transform: translate(-16px,-16px); }
+    90%  { opacity: 1; transform: translate(-6px,-6px); }
+    100% { opacity: 1; transform: translate(-6px,-6px); }
 }
 
 .arrowCta:before {
-  top: 0;
-  left: 0;
-  border-bottom: 3px solid black;
-  border-right: 3px solid black;
-  animation: top-arrow 1.65s infinite;
+    border-width: 0;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-style: solid;
+    border-color: $CLR_BLACK;
+    top: 0;
+    left: 0;
+    animation: top-arrow 1.65s infinite;
 }
 
 @keyframes top-arrow {
-  0%   { transform: translate(-6px,-6px); }
-  35%  { transform: translate(0,0); }
-  90%  { transform: translate(0,0); }
-  100% { transform: translate(0,0); }
+    0%   { transform: translate(-6px,-6px); }
+    35%  { transform: translate(0,0); }
+    90%  { transform: translate(0,0); }
+    100% { transform: translate(0,0); }
+}
+
+.arrowCta_light:before,
+.arrowCta_light:after {
+    border-color: $CLR_WHITE;
+}
+
+@include breakpoint(MD) {
+    .arrowCta {
+        transform: scale(1) rotate(45deg);
+    }
 }

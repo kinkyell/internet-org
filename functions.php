@@ -13,9 +13,9 @@ require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
 wpcom_vip_load_plugin( 'babble', 'internetorg-plugins' );
 
-// do this manually since we include the plugin long after the plugins_loaded
-// hook. (Babble_Locale::plugins_loaded)
+// do this manually since we include the plugin long after the plugins_loaded hook. (Babble_Locale::plugins_loaded)
 global $bbl_locale;
+
 add_filter( 'after_setup_theme', array( $bbl_locale, 'plugins_loaded' ) );
 
 wpcom_vip_load_plugin( 'internetorg-custom-posttypes', 'internetorg-plugins' );
@@ -28,7 +28,7 @@ wpcom_vip_load_plugin( 'facebook' );
 wpcom_vip_load_plugin( 'lazy-load' );
 
 // MANUAL INCLUSION (Multiple Plugins in one dir)
-require_once(__DIR__ . '/../internetorg-plugins/babble/translation-fields.php');
+require_once( __DIR__ . '/../internetorg-plugins/babble/translation-fields.php' );
 
 if ( ! function_exists( 'internetorg_setup' ) ) :
 	/**
@@ -66,42 +66,57 @@ if ( ! function_exists( 'internetorg_setup' ) ) :
 		add_theme_support( 'post-thumbnails' );
 
 		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus( array(
-			'primary'         => esc_html__( 'Primary Menu', 'internetorg' ),
-			'primary-sub-nav' => esc_html__( 'Primary Menu Sub Nav', 'internetorg' ),
-		) );
+		register_nav_menus(
+			array(
+				'primary'         => esc_html__( 'Primary Menu', 'internetorg' ),
+				'primary-sub-nav' => esc_html__( 'Primary Menu Sub Nav', 'internetorg' ),
+		    )
+		);
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments
 		 * to output valid HTML5.
 		 */
-		add_theme_support( 'html5', array(
-			'search-form',
-			'comment-form',
-			'comment-list',
-			'gallery',
-			'caption',
-		) );
+		add_theme_support(
+			'html5',
+			array(
+				'search-form',
+				'comment-form',
+				'comment-list',
+				'gallery',
+				'caption',
+			)
+		);
 
 		/*
 		 * Enable support for Post Formats.
 		 * See http://codex.wordpress.org/Post_Formats
 		 */
-		add_theme_support( 'post-formats', array(
-			'aside',
-			'image',
-			'video',
-			'quote',
-			'link',
-		) );
+		add_theme_support(
+			'post-formats',
+			array(
+				'aside',
+				'image',
+				'video',
+				'quote',
+				'link',
+			)
+		);
 
 		// Set up the WordPress core custom background feature.
-		add_theme_support( 'custom-background', apply_filters( 'internetorg_custom_background_args', array(
-			'default-color' => 'ffffff',
-			'default-image' => '',
-		) ) );
+		add_theme_support(
+			'custom-background',
+			apply_filters(
+				'internetorg_custom_background_args',
+				array(
+					'default-color' => 'ffffff',
+					'default-image' => '',
+				)
+			)
+		);
 	}
 endif; // internetorg_setup
+
 add_action( 'after_setup_theme', 'internetorg_setup' );
 
 /**
@@ -114,6 +129,7 @@ add_action( 'after_setup_theme', 'internetorg_setup' );
 function internetorg_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'internetorg_content_width', 640 );
 }
+
 add_action( 'after_setup_theme', 'internetorg_content_width', 0 );
 
 /**
@@ -122,30 +138,46 @@ add_action( 'after_setup_theme', 'internetorg_content_width', 0 );
  * @link http://codex.wordpress.org/Function_Reference/register_sidebar
  */
 function internetorg_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'internetorg' ),
-		'id'            => 'sidebar-1',
-		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
-	) );
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Sidebar', 'internetorg' ),
+			'id'            => 'sidebar-1',
+			'description'   => '',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h1 class="widget-title">',
+			'after_title'   => '</h1>',
+		)
+	);
 }
+
 add_action( 'widgets_init', 'internetorg_widgets_init' );
 
 if ( ! function_exists( 'internetorg_extend_search_post_type_range' ) ) :
 	/**
 	 * Add our custom post types to the search query
 	 *
-	 * @param WP_Query $query the current query object
-	 * @return mixed the possibly updated search query
+	 * The pre_get_posts hook is called after the query variable object is created,
+	 * but before the actual DB query is run.
+	 * The $query object is passed by reference.
+	 * Technically uou do not need to declare globals or return a value.
+	 * Any changes to the $query object are made to the original WP_Query immediately.
+	 *
+	 * @action   pre_get_posts
+	 * @priority default (10)
+	 *
+	 * @link     http://goo.gl/UI9Yyj pre_get_posts action reference
+	 * @link     http://goo.gl/8QQlj1 WP_Query class reference
+	 *
+	 * @param WP_Query $query the WP_Query object to operate on
+	 *
+	 * @return WP_Query
 	 */
 	function internetorg_extend_search_post_type_range( $query ) {
-		global $wp_query;
 
-		$search = get_query_var( 's', null );
-		if ( ! empty( $search ) && $query->is_main_query() ) {
+		$search = $query->get( 's', null );
+
+		if ( ! empty( $search ) ) {
 			$query->set(
 				'post_type',
 				array(
@@ -157,14 +189,14 @@ if ( ! function_exists( 'internetorg_extend_search_post_type_range' ) ) :
 				)
 			);
 			$query->is_search = true;
-			$query->is_home   = false;
 		}
 
 		return $query;
 	}
-endif;
-add_filter( 'pre_get_posts', 'internetorg_extend_search_post_type_range' );
 
+endif;
+
+add_filter( 'pre_get_posts', 'internetorg_extend_search_post_type_range' );
 
 if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 	/**
@@ -185,28 +217,29 @@ if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 	 *
 	 * @note This function uses caching functions (wp_cache_get, wp_cache_set)
 	 *
-	 * @see wp_get_attachment_image_src
-	 * @see wp_reset_postdata
+	 * @see  wp_get_attachment_image_src
+	 * @see  wp_reset_postdata
 	 *
 	 * @return array of free services or empty array if there are no services
 	 */
 	function internetorg_get_free_services() {
+
 		// check the cache first
 		$services = wp_cache_get( 'internetorg_free_services_list' );
 
 		// no cache, query
 		if ( false === $services ) {
 			$args = array(
-				'post_type' => 'io_freesvc',
+				'post_type'   => 'io_freesvc',
 				'post_status' => 'publish',
 			);
 
 			$services = array();
-			$svcqry = new WP_Query( $args );
+			$svcqry   = new WP_Query( $args );
 
 			// build array of services so we are not passing around a query object
 			while ( $svcqry->have_posts() ) : $svcqry->the_post();
-				$postId = get_the_ID();
+				$postId     = get_the_ID();
 				$services[] = array(
 					'post_id' => $postId,
 					'slug'    => $svcqry->post->post_name,
@@ -228,20 +261,14 @@ if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 endif;
 
 /**
- * Enqueue scripts and styles.
+ * Enqueue Scripts and Styles.
  */
-function internetorg_scripts() {
-	wp_enqueue_style( 'internetorg-style', get_stylesheet_uri() );
+require get_template_directory() . '/inc/enqueue-scripts.php';
 
-	wp_enqueue_script( 'internetorg-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
-
-	wp_enqueue_script( 'internetorg-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'internetorg_scripts' );
+/**
+ * Print the Requirejs bootstrap markup before closing body tag.
+ */
+require get_template_directory() . '/inc/requirejs-shim.php';
 
 /**
  * Implement the Custom Header feature.

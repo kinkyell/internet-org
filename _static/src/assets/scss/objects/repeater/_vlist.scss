@@ -62,3 +62,18 @@
 .vList_bullets_themeMission > *:before {
     color: $CLR_MISSION;
 }
+
+/* Right to Left Language support */
+[dir="rtl"] {
+
+	.vList_bullets > *  {
+		padding-left: 0;
+		padding-right: $SPACE_x3;
+	}
+
+	.vList_bullets > *:before {
+		left: initial;
+		right: 8px;
+	}
+
+}

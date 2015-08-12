@@ -96,3 +96,29 @@ Layout for paneled views
         overflow-y: hidden;
     }
 }
+
+/* Right to Left Language support */
+[dir="rtl"] {
+
+    .viewWindow-panel 
+    .viewWindow-panel-content {
+        right: 0;
+        left: initial;
+    }
+
+    .viewWindow.isShifted {
+        left: initial;
+        right: -50%;
+    }
+
+    .viewWindow-panel:not(.isAnimating):last-child.isActive > .viewWindow-panel-content {
+        left: initial;
+        right: -100%;
+        padding-left: 0;
+        padding-right: 100%;
+    }
+
+    .viewWindow-panel {
+        float: right;
+    }
+}

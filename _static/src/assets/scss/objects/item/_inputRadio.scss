@@ -35,3 +35,14 @@
     border-color: transparent;
     background-color: #ffcc01;
 }
+
+
+/* Right to Left Language support */
+[dir="rtl"] {
+
+    .inputRadio-label-inner {
+        margin-right: 0;
+        margin-left: 20px;
+    }
+
+}
