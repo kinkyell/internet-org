@@ -386,12 +386,25 @@ define(function(require, exports, module) { // jshint ignore:line
         }
 
         var bdTwnOffset = 50;
-        var bdTwnPos = (position > this._position) ? bdTwnOffset : (0 - bdTwnOffset);
+        var bdTwnPos = null;
+
+        if (position === 0) {
+            bdTwnPos = 0;
+        } else if (this._position < position) {
+            bdTwnPos = bdTwnOffset;
+        } else {
+            bdTwnPos = 0 - bdTwnOffset;
+        }
+
         var bdCntPos = bdTwnPos * 2;
-        var bdTwn = Tween.from($sectionBody, 0.5, {top: bdTwnPos + '%', paused: false});
-        var bdCntTwn = Tween.from($sectionBodyCnt, 0.65, {y: bdCntPos + '%', paused: false});
+
+
+        var bdTwn = Tween.from($sectionBody, 0.5, {y: bdTwnPos + '%'});
+        var bdCntTwn = Tween.from($sectionBodyCnt, 0.65, {y: bdCntPos + '%'});
 
         var tl = new Timeline();
+        tl.add(bdTwn);
+        tl.add(bdCntTwn, '-=0.5');
 
         // if (this._position === (this._slidesLength - 1) && position === (this._slidesLength - 2)) {
         //    console.log('second to last');
@@ -400,10 +413,8 @@ define(function(require, exports, module) { // jshint ignore:line
         //
         // }
 
-        tl.add(bdTwn);
-        tl.add(bdCntTwn, '-=0.5');
 
-        if (position === 1 && this._position === 0) {
+        if (this._position === 0 && position === 1) {
             var opacTwn = Tween.from($sectionBody, 0.5, {opacity: 0});
             tl.add(opacTwn, 0);
         }

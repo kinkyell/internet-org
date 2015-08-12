@@ -9,20 +9,18 @@
 
 .transformBlock-pre {
     position: relative; // For pseudo positioning
-    font-family: $FONT_SANS;
-    font-weight: 400; // TODO: REMOVE ONCE Web Fonts are in place
-    @include remify(font-size, 28px);
-    line-height: 1.875;
-    color: $CLR_GRAY;
+    margin-bottom: 6px;
 }
 
-.transformBlock-pre:before {
+// .transformBlock-pre_divide {}
+
+.transformBlock-pre_divide:before {
     content: "";
-    position: absolute;
     display: inline-block;
-    height: 4px;
-    width: 40px;
-    top: -24px;
+    height: 3px;
+    width: 20px;
+    position: absolute;
+    top: -16px;
     text-align: center;
     background-color: $CLR_ACCENT;
 }
@@ -34,3 +32,7 @@
 .transformBlock-hd {}
 
 .transformBlock-bd {}
+
+@include breakpoint(MD) {
+
+}

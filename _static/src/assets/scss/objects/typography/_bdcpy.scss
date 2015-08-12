@@ -7,7 +7,7 @@
     font-family: $FONT_SANS;
     font-weight: 400; // TODO: REMOVE ONCE Web Fonts are in place
     @include remify(font-size, 14px);
-    line-height: 1.666666667;
+    line-height: 1.714285714;
     color: $CLR_GRAY;
 }
 
@@ -23,6 +23,7 @@
 
 .bdcpy_narrative {
     font-size: 17px;
+    line-height: 1.411764706;
 }
 
 .mix-bdcpy_splash {
@@ -45,6 +46,7 @@
 @include breakpoint(MD) {
     .bdcpy {
         @include remify(font-size, 18px);
+        line-height: 1.666666667;
     }
 
     .bdcpy_lg {
