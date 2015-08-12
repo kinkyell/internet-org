@@ -69,21 +69,23 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
 
-        this._setLanguage(value);
+        var opt = select.options[select.selectedIndex];
+        var isRtl = (opt.getAttribute('data-dir') === 'rtl');
+        this._setLanguage(value, isRtl);
     };
 
     /**
-     * Update the lang attribute
+     * Set the new language
      *
      * @method _setLanguage
-     * @param {HTMLSelectElement} select Language switcher select
      * @param {String} value Country code
-     * @fires LanguageView:change
+     * @param {Boolean} isRtl Flag for right to left rendering
      * @private
      */
-    proto._setLanguage = function(value) {
-        document.documentElement.lang = value;
-        eventHub.publish('LanguageView:change', value);
+    proto._setLanguage = function(value, isRtl) {
+        document.documentElement.setAttribute('lang', value);
+        document.documentElement.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
+        eventHub.publish('LanguageView:change', value, !!isRtl);
     };
 
 
