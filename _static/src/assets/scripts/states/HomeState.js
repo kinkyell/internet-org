@@ -36,17 +36,16 @@ define(function(require, exports, module) { // jshint ignore:line
     /**
      * Activate state
      *
-     * @method activate
+     * @method onActivate
      * @fires State:activate
      */
-    HomeState.prototype.activate = function(event) {
+    HomeState.prototype.onActivate = function(event) {
         var transitions;
         if (event.method !== 'init') {
             //TODO: replace image with narrative stuff
             transitions = this.getAnimationDirections(event);
             viewWindow.replaceFeatureImage('http://placehold.it/400x801/eeeeee/888888?text=HOME', transitions.feature);
         }
-        BasicState.prototype.activate.call(this, event);
         this.refreshComponents($(document.body));
     };
 

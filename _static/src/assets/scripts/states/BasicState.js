@@ -31,22 +31,13 @@ define(function(require, exports, module) { // jshint ignore:line
     BasicState.prototype.COMPONENTS = {};
 
     /**
-     * Activate state
-     *
-     * @method activate
-     * @fires State:activate
-     */
-    BasicState.prototype.activate = function(event) {
-        AbstractState.prototype.activate.call(this, event);
-    };
-
-    /**
      * Deactivate State
      *
      * @method deactivate
      * @fires State:activate
      */
     BasicState.prototype.deactivate = function() {
+        // adds to inheritance chain. Use onActivate for state-specific tasks.
         this.destroyComponents();
         AbstractState.prototype.deactivate.call(this);
     };

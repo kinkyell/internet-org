@@ -9,6 +9,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var SearchFormView = require('./SearchFormView');
     var SelectView = require('./SelectView');
+    var LanguageView = require('./LanguageView');
 
     var SPEEDS = require('appConfig').animationSpeeds;
 
@@ -59,6 +60,7 @@ define(function(require, exports, module) { // jshint ignore:line
             prefix: 'langSelect',
             anchorBottom: true
         });
+        this.langView = new LanguageView($('#js-LanguageView'));
     };
 
     /**
@@ -104,6 +106,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.open = function() {
         var wrapperOpts = {};
         var panelOpts = {};
+        var directionInvert = document.documentElement.dir === 'ltr' ? 1 : -1;
 
         if (this.isOpen) {
             return;
@@ -122,7 +125,7 @@ define(function(require, exports, module) { // jshint ignore:line
             wrapperOpts.opacity = 0;
         } else {
             wrapperOpts.backgroundColor = 'rgba(0, 0, 0, 0)';
-            panelOpts.xPercent = 100;
+            panelOpts.xPercent = directionInvert * 100;
             panelOpts.delay = SPEEDS.MENU_DELAY;
             Tween.from(this.$panel[0], SPEEDS.MENU_IN, panelOpts);
         }
@@ -153,6 +156,7 @@ define(function(require, exports, module) { // jshint ignore:line
             callbackScope: this
         };
         var panelOpts = {};
+        var directionInvert = document.documentElement.dir === 'ltr' ? 1 : -1;
 
         if (!this.isOpen) {
             return;
@@ -170,7 +174,7 @@ define(function(require, exports, module) { // jshint ignore:line
         } else {
             wrapperOpts.backgroundColor = 'rgba(0, 0, 0, 0)';
             wrapperOpts.delay = SPEEDS.MENU_DELAY;
-            panelOpts.xPercent = 100;
+            panelOpts.xPercent = directionInvert * 100;
             panelTween = Tween.to(this.$panel[0], SPEEDS.MENU_OUT, panelOpts);
         }
 

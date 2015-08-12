@@ -69,8 +69,23 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
 
-        document.documentElement.lang = value;
-        eventHub.publish('LanguageView:change', value);
+        var opt = select.options[select.selectedIndex];
+        var isRtl = (opt.getAttribute('data-dir') === 'rtl');
+        this._setLanguage(value, isRtl);
+    };
+
+    /**
+     * Set the new language
+     *
+     * @method _setLanguage
+     * @param {String} value Country code
+     * @param {Boolean} isRtl Flag for right to left rendering
+     * @private
+     */
+    proto._setLanguage = function(value, isRtl) {
+        document.documentElement.setAttribute('lang', value);
+        document.documentElement.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
+        eventHub.publish('LanguageView:change', value, !!isRtl);
     };
 
 

@@ -7,7 +7,6 @@ define(function(require, exports, module) { // jshint ignore:line
     var breakpointManager = require('services/breakpointManager');
     var eventHub = require('services/eventHub');
     var $ = require('jquery');
-    var HomeState = require('states/HomeState');
 
     /**
      * A view for transitioning display panels
@@ -134,13 +133,15 @@ define(function(require, exports, module) { // jshint ignore:line
         var shouldBeCentered = (isMenuOpen || !isHome);
         var shouldBeRaised = (isMenuOpen && this.searchView.isOpen);
         var shouldHaveBackBtn = (isNarrow && !isMenuOpen && !isHome);
+        var shouldHaveInvertLogo = (!isMenuOpen && !isNarrow && this._invertLeft);
+        var shouldHaveInvertMenu = (!isMenuOpen && !isNarrow && this._invertRight);
 
         // invert logo when over imagery
-        this.$logo.toggleClass('header-logo_invert', !isMenuOpen && !isNarrow && this._invertLeft);
+        this.$logo.toggleClass('header-logo_invert', shouldHaveInvertLogo);
         this.$backBtn.toggleClass('header-backBtn_invert', false);
 
         // invert menu button over imagery
-        this.$menuBtnIcon.toggleClass('menuTrigger_onDark', !isMenuOpen && !isNarrow && this._invertRight);
+        this.$menuBtnIcon.toggleClass('menuTrigger_onDark', shouldHaveInvertMenu);
 
         // hide menu text when open
         this.$menuText.toggleClass('u-isVisuallyHidden', isMenuOpen);
@@ -172,7 +173,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._onStateChange = function(states) {
         var topState = states[states.length - 1];
-        this._isHome = (topState instanceof HomeState);
+        this._isHome = topState.isHomeState();
         this._invertLeft = topState.invertLeft || false;
         this._invertRight = topState.invertRight || false;
         this._render();

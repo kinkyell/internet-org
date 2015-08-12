@@ -14,11 +14,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var $ = require('jquery');
     var Tween = require('gsap-tween');
 
-    var log = function() {
-        if (console.log) {
-            console.log.apply(console, arguments);
-        }
-    };
+    var log = require('util/log');
 
     /**
      * Manages the stack of active states
@@ -59,15 +55,15 @@ define(function(require, exports, module) { // jshint ignore:line
      *  - request panel content from server
      *  - create panel markup
      *
-     * @method activate
+     * @method onActivate
      * @fires State:activate
      */
-    PanelState.prototype.activate = function(event) {
+    PanelState.prototype.onActivate = function(event) {
         var transitions = this.getAnimationDirections(event);
 
         if (event.silent) {
             viewWindow.getCurrentStory().then(this._handleStaticContent);
-            return BasicState.prototype.activate.call(this, event);
+            return;
         }
 
         var tasks = [
@@ -86,8 +82,6 @@ define(function(require, exports, module) { // jshint ignore:line
         Promise.all(tasks)
             .then(spread(this._handlePanelContentLoad))
             .catch(log);
-
-        BasicState.prototype.activate.call(this, event);
     };
 
     /**
@@ -126,12 +120,11 @@ define(function(require, exports, module) { // jshint ignore:line
     /**
      * Deactivate the panel
      *
-     * @method deactivate
+     * @method onDeactivate
      * @fires State:deactivate
      */
-    PanelState.prototype.deactivate = function(event) {
+    PanelState.prototype.onDeactivate = function(event) {
         this._destroyScrollWatcher();
-        BasicState.prototype.deactivate.call(this, event);
     };
 
     /**
