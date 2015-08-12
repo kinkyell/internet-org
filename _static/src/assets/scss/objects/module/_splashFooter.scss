@@ -1,0 +1,18 @@
+/* ---------------------------------------------------------------------
+ Splash Footer
+
+ Content structure used in last narrative section
+------------------------------------------------------------------------ */
+.splashFooter {
+    @include contain();
+}
+
+.splashFooter-section {
+    margin-bottom: 24px;
+}
+
+.splashFooter-section-hd {
+    margin-bottom: 4px;
+}
+
+.splashFooter-section-bd {}

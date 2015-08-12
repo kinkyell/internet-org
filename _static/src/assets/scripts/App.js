@@ -99,6 +99,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         //TODO: move this to home state
         this.narrativeView = new NarrativeView($('.js-narrativeView'));
+        debugger;
     };
 
     /**

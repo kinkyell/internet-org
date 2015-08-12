@@ -142,6 +142,6 @@
     }
 
     .narrative-section-slides-item {
-        display: none;
+        background-image: none!important; //overwrite inline style
     }
 }
