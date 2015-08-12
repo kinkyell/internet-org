@@ -11,11 +11,11 @@
 
 	</div><!-- #content -->
 
-<?php wp_footer(); ?>
+	<?php echo vip_powered_wpcom(); /* required */ ?>
 
-<?php echo vip_powered_wpcom(); ?>
+	<?php wp_footer(); /* required */ ?>
 
-<?php do_action( 'internetorg_body_bottom' ); ?>
+	<?php do_action( 'internetorg_body_bottom' ); ?>
 
 </body>
 
