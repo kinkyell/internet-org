@@ -59,3 +59,13 @@
         visibility: visible;
     }
 }
+
+
+/* Right to Left Language support */
+[dir="rtl"] {
+
+    .searchBox-icon {
+        right: 0;
+    }
+
+}

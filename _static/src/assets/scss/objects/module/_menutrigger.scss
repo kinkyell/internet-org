@@ -99,3 +99,13 @@
         display: inline-block;
     }
 }
+
+/* Right to Left Language support */
+[dir="rtl"] {
+
+    .menuTrigger,
+    .menuTrigger-icon {
+        text-align: left;
+    }
+
+}

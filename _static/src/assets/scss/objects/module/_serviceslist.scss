@@ -30,3 +30,13 @@ Free Services List layout styles
     // margin-top: 20px;
     border-bottom: 1px solid $CLR_GRAY_LIGHT;
 }
+
+/* Right to Left Language support */
+[dir="rtl"] {
+
+    .servicesList-item-icon {
+        margin-right: 0;
+        margin-left: 4%;
+    }
+    
+}

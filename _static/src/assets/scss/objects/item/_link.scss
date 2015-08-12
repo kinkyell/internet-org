@@ -68,7 +68,7 @@
     // top: calc(50% - 3px);
     top: initial;
     bottom: 4px;
-    right: 0px;
+    right: 0;
     height: 6px;
     width: 6px;
     border-bottom: 2px solid $CLR_ACCENT;
@@ -97,7 +97,7 @@
 .link_preArrows:after,
 .link_preArrows:before {
     top: calc(50% - 2px);
-    left: 0px;
+    left: 0;
     height: 4px;
     width: 4px;
     border-bottom: 2px solid $CLR_ACCENT;
@@ -193,4 +193,74 @@
     .link_preArrows {
         @include remify(font-size, 12px);
     }
+}
+
+/* Right to Left Language support */
+[dir="rtl"] {
+
+    .link {
+        padding-right: initial;
+        padding-left: 35px;
+    }
+
+    .link:after,
+    .link:before {
+        right: initial;
+        left: -8px;
+    }
+
+    .link:after {
+        border: none;
+        border-top: 1px solid;
+        border-left: 1px solid;
+    }
+
+    .link:hover:after,
+    .link:hover:before {
+        left: -15px;
+    }
+
+    .link_twoArrows {
+        padding-right: 0;
+        padding-left: 15px;
+    }
+
+    .link_twoArrows:after,
+    .link_twoArrows:before {
+        top: calc(50% - 4px);
+        right: initial;
+        left: 0;
+        border-bottom: none;
+        border-right: none;
+        border-top: 2px solid $CLR_ACCENT;
+        border-left: 2px solid $CLR_ACCENT;
+    }
+
+    .link_twoArrows:before {
+        right: initial;
+        left: -5px;
+    }
+
+    .link_preArrows {
+        padding-left: 0;
+        padding-right: 15px;
+    }
+
+    .link_preArrows:after,
+    .link_preArrows:before {
+        top: 2px;
+        left: initial;
+        right: 0;
+        border-bottom: none;
+        border-right: none;
+        border-top: 2px solid;
+        border-left: 2px solid;
+        transform: rotate(135deg);
+    }
+
+    .link_preArrows:before {
+        left: initial;
+        right: -5px;
+    }
+
 }
