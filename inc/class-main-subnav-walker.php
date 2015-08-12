@@ -8,12 +8,12 @@
  */
 
 /**
- * Class IOrg_Main_SubNav_Walker used to use our own html with the menu
+ * Class Internetorg_Main_SubNav_Walker used to use our own html with the menu
  *
  * @package Internet.org
  * @author arichard <arichard@nerdery.com>
  */
-class IOrg_Main_SubNav_Walker extends Walker_Nav_Menu
+class Internetorg_Main_SubNav_Walker extends Walker_Nav_Menu
 {
 	/**
 	 * display content to start the menu

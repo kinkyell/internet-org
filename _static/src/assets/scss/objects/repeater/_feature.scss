@@ -5,7 +5,7 @@ Feature content module
 ------------------------------------------------------------------------ */
 
 .feature + .feature {
-    padding: 58px 0 0;
+    padding: 45px 0 0;
 }
 
 .feature > * + * {
@@ -37,11 +37,11 @@ Feature content module
 .feature-media-caption > * {
     font-family: $FONT_SERIF_ITALIC;
     font-style: italic;  // TODO: REMOVE ONCE Web Fonts are in place
-    @include remify(font-size, 22px);
+    @include remify(font-size, 14px);
     line-height: 1.3636363;
     color: $CLR_GRAY;
     background-color: $CLR_GRAY_LIGHT;
-    padding: $SPACE_x2;
+    padding: $SPACE_x1;
 }
 
 .feature-cta {
@@ -58,3 +58,13 @@ Feature content module
     
 
 .feature-ft {}
+
+@include breakpoint(MD) {
+    .feature + .feature {
+        padding: 58px 0 0;
+    }
+    .feature-media-caption > * {
+        @include remify(font-size, 22px);
+        padding: $SPACE_x2;
+    }
+}

@@ -10,7 +10,7 @@
  * @package Internet.org
  */
 
-get_header(); iorg_language_switcher(); ?>
+get_header(); internetorg_language_switcher(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">

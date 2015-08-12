@@ -16,22 +16,22 @@ if ( ! empty( $custom_fields ) ) : ?>
 				<?php foreach ( $group as $fieldset ) : ?>
 					<?php if ( ! empty( $fieldset['title'] ) ) : ?>
 						<div class="section-title">
-							<h2><?php echo __( $fieldset['title'], 'internet_org' ); ?></h2>
+							<h2><?php echo __( $fieldset['title'], 'internetorg' ); ?></h2>
 						</div>
 					<?php endif; ?>
 					<?php if ( ! empty( $fieldset['content'] ) ) : ?>
-						<div class="section-title"><?php echo __( $fieldset['content'], 'internet_org' ); ?></div>
+						<div class="section-title"><?php echo __( $fieldset['content'], 'internetorg' ); ?></div>
 					<?php endif; ?>
 					<?php if ( ! empty( $fieldset['call-to-action'] ) ) : ?>
 						<div class="section-cta">
 						<?php foreach ( $fieldset['call-to-action'] as $cta ) : ?>
 							<div class="cta">
 							<?php if ( ! empty( $cta['link'] ) ) : ?>
-								<a href="<?php echo esc_attr__( $cta['link'], 'internet_org' ); ?>">
+								<a href="<?php echo esc_attr__( $cta['link'], 'internetorg' ); ?>">
 									<?php if ( ! empty( $cta['image'] ) ) : ?>
 										<?php echo wp_get_attachment_image( $cta['image'], 'full' ); ?>
 									<?php else : ?>
-										<?php echo __( $cta['link'], 'internet_org' ); ?>
+										<?php echo __( $cta['link'], 'internetorg' ); ?>
 									<?php endif; ?>
 								</a>
 							<?php endif; ?>

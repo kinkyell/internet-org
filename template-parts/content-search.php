@@ -17,6 +17,6 @@
 		<div class="feature-bd">
 			<p class="bdcpy"><?php the_excerpt(); ?></p>
 		</div>
-		<?php internet_org_entry_footer_archive(); ?>
+		<?php internetorg_entry_footer_archive(); ?>
 	</div>
 </div>

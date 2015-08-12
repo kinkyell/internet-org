@@ -29,21 +29,21 @@
  <!--[if IE]><meta http-equiv="cleartype" content="on" /><![endif]-->
 
  <!-- ICONS -->
- <link rel="apple-touch-icon" sizes="57x57" href="/wp-content/themes/vip/internet_org/_static/web/assets/media/images/apple-touch-icon-57x57.png">
- <link rel="apple-touch-icon" sizes="60x60" href="/wp-content/themes/vip/internet_org/_static/web/assets/media/images/apple-touch-icon-60x60.png">
- <link rel="apple-touch-icon" sizes="72x72" href="/wp-content/themes/vip/internet_org/_static/web/assets/media/images/apple-touch-icon-72x72.png">
- <link rel="apple-touch-icon" sizes="76x76" href="/wp-content/themes/vip/internet_org/_static/web/assets/media/images/apple-touch-icon-76x76.png">
- <link rel="apple-touch-icon" sizes="114x114" href="/wp-content/themes/vip/internet_org/_static/web/assets/media/images/apple-touch-icon-114x114.png">
- <link rel="apple-touch-icon" sizes="120x120" href="/wp-content/themes/vip/internet_org/_static/web/assets/media/images/apple-touch-icon-120x120.png">
- <link rel="apple-touch-icon" sizes="144x144" href="/wp-content/themes/vip/internet_org/_static/web/assets/media/images/apple-touch-icon-144x144.png">
- <link rel="apple-touch-icon" sizes="152x152" href="/wp-content/themes/vip/internet_org/_static/web/assets/media/images/apple-touch-icon-152x152.png">
- <link rel="apple-touch-icon" sizes="180x180" href="/wp-content/themes/vip/internet_org/_static/web/assets/media/images/apple-touch-icon-180x180.png">
- <link rel="icon" type="image/png" sizes="192x192" href="/wp-content/themes/vip/internet_org/_static/web/assets/media/images/favicon-192x192.png">
- <link rel="icon" type="image/png" sizes="160x160" href="/wp-content/themes/vip/internet_org/_static/web/assets/media/images/favicon-160x160.png">
- <link rel="icon" type="image/png" sizes="96x96" href="/wp-content/themes/vip/internet_org/_static/web/assets/media/images/favicon-96x96.png">
- <link rel="icon" type="image/png" sizes="32x32" href="/wp-content/themes/vip/internet_org/_static/web/assets/media/images/favicon-32x32.png">
- <link rel="icon" type="image/png" sizes="16x16" href="/wp-content/themes/vip/internet_org/_static/web/assets/media/images/favicon-16x16.png">
- <meta name="msapplication-TileImage" content="/wp-content/themes/vip/internet_org/_static/web/assets/media/images/mstile-144x144.png">
+ <link rel="apple-touch-icon" sizes="57x57" href="/wp-content/themes/vip/internetorg/_static/web/assets/media/images/apple-touch-icon-57x57.png">
+ <link rel="apple-touch-icon" sizes="60x60" href="/wp-content/themes/vip/internetorg/_static/web/assets/media/images/apple-touch-icon-60x60.png">
+ <link rel="apple-touch-icon" sizes="72x72" href="/wp-content/themes/vip/internetorg/_static/web/assets/media/images/apple-touch-icon-72x72.png">
+ <link rel="apple-touch-icon" sizes="76x76" href="/wp-content/themes/vip/internetorg/_static/web/assets/media/images/apple-touch-icon-76x76.png">
+ <link rel="apple-touch-icon" sizes="114x114" href="/wp-content/themes/vip/internetorg/_static/web/assets/media/images/apple-touch-icon-114x114.png">
+ <link rel="apple-touch-icon" sizes="120x120" href="/wp-content/themes/vip/internetorg/_static/web/assets/media/images/apple-touch-icon-120x120.png">
+ <link rel="apple-touch-icon" sizes="144x144" href="/wp-content/themes/vip/internetorg/_static/web/assets/media/images/apple-touch-icon-144x144.png">
+ <link rel="apple-touch-icon" sizes="152x152" href="/wp-content/themes/vip/internetorg/_static/web/assets/media/images/apple-touch-icon-152x152.png">
+ <link rel="apple-touch-icon" sizes="180x180" href="/wp-content/themes/vip/internetorg/_static/web/assets/media/images/apple-touch-icon-180x180.png">
+ <link rel="icon" type="image/png" sizes="192x192" href="/wp-content/themes/vip/internetorg/_static/web/assets/media/images/favicon-192x192.png">
+ <link rel="icon" type="image/png" sizes="160x160" href="/wp-content/themes/vip/internetorg/_static/web/assets/media/images/favicon-160x160.png">
+ <link rel="icon" type="image/png" sizes="96x96" href="/wp-content/themes/vip/internetorg/_static/web/assets/media/images/favicon-96x96.png">
+ <link rel="icon" type="image/png" sizes="32x32" href="/wp-content/themes/vip/internetorg/_static/web/assets/media/images/favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="/wp-content/themes/vip/internetorg/_static/web/assets/media/images/favicon-16x16.png">
+ <meta name="msapplication-TileImage" content="/wp-content/themes/vip/internetorg/_static/web/assets/media/images/mstile-144x144.png">
  <meta name="msapplication-TileColor" content="#ff0000">
 
  <script>
@@ -52,15 +52,15 @@
 !function(){function e(e,n,t,o){"use strict";var a=window.document.createElement("link"),i=n||window.document.getElementsByTagName("script")[0],d=window.document.styleSheets;return a.rel="stylesheet",a.href=e,a.media="only x",o&&(a.onload=o),i.parentNode.insertBefore(a,i),a.onloadcssdefined=function(n){for(var t,o=0;o<d.length;o++)d[o].href&&d[o].href.indexOf(e)>-1&&(t=!0);t?n():setTimeout(function(){a.onloadcssdefined(n)})},a.onloadcssdefined(function(){a.media=t||"all"}),a}function n(e,n){e.onload=function(){e.onload=null,n&&n.call(e)},"isApplicationInstalled"in navigator&&"onloadcssdefined"in e&&e.onloadcssdefined(n)}!function(t){var o=function(a,i){"use strict";if(a&&3===a.length){var d=t.navigator,r=t.document,l=t.Image,s=!(!r.createElementNS||!r.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect||!r.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image","1.1")||t.opera&&-1===d.userAgent.indexOf("Chrome")||-1!==d.userAgent.indexOf("Series40")),c=new l;c.onerror=function(){o.method="png",o.href=a[2],e(a[2])},c.onload=function(){var t=1===c.width&&1===c.height,d=a[t&&s?0:t?1:2];t&&s?o.method="svg":t?o.method="datapng":o.method="png",o.href=d,n(e(d),i)},c.src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==",r.documentElement.className+=" grunticon"}};o.loadCSS=e,o.onloadCSS=n,t.grunticon=o}(this)}();
 
      grunticon([
-         "/wp-content/themes/vip/internet_org/_static/web/assets/media/images/icons/icons.data.svg.css",
-         "/wp-content/themes/vip/internet_org/_static/web/assets/media/images/icons/icons.data.png.css",
-         "/wp-content/themes/vip/internet_org/_static/web/assets/media/images/icons/icons.fallback.css"
+         "/wp-content/themes/vip/internetorg/_static/web/assets/media/images/icons/icons.data.svg.css",
+         "/wp-content/themes/vip/internetorg/_static/web/assets/media/images/icons/icons.data.png.css",
+         "/wp-content/themes/vip/internetorg/_static/web/assets/media/images/icons/icons.fallback.css"
      ], grunticon.svgLoadedCallback);
  </script>
- <noscript><link href="/wp-content/themes/vip/internet_org/_static/web/assets/media/images/icons/icons.fallback.css" rel="stylesheet"></noscript>
+ <noscript><link href="/wp-content/themes/vip/internetorg/_static/web/assets/media/images/icons/icons.fallback.css" rel="stylesheet"></noscript>
 
  <!-- STYLESHEETS -->
-     <link rel="stylesheet" media="screen, projection" href="/wp-content/themes/vip/internet_org/_static/web/assets/styles/screen.css" />
+     <link rel="stylesheet" media="screen, projection" href="/wp-content/themes/vip/internetorg/_static/web/assets/styles/screen.css" />
 
 <?php
 
@@ -199,7 +199,7 @@
 				'link_before'     => '',
 				'link_after'      => '',
 				'theme_location'  => 'primary',
-				'walker'          => new IOrg_Main_Nav_Walker(),
+				'walker'          => new Internetorg_Main_Nav_Walker(),
 			);
 			wp_nav_menu( $main_menu_config );
 
@@ -214,7 +214,7 @@
 				'link_before'     => '',
 				'link_after'      => '',
 				'theme_location'  => 'primary-sub-nav',
-				'walker'          => new IOrg_Main_SubNav_Walker(),
+				'walker'          => new Internetorg_Main_SubNav_Walker(),
 			);
 			wp_nav_menu( $submenu_config );
 
@@ -223,7 +223,7 @@
 			<div class="mainMenu-panel-lang">
 
 				<!-- Internal Lang. Sel. Function -->
-				<?php iorg_language_switcher(); ?>
+				<?php internetorg_language_switcher(); ?>
 
 				<?php /*
 				<div class="langSelect js-select">

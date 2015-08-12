@@ -5,14 +5,14 @@ Layout for padded columns of content.
 ------------------------------------------------------------------------ */
 
 .contentCol {
-	padding: 80px 27px;
+	padding: 22px 0;
 }
 
 .contentCol_flush {
-	padding: 0 27px;
+	padding: 0;
 	overflow: hidden;
-	margin-bottom: 80px;
-}
+	// margin-bottom: 40px;
+} 
 
 .contentCol + .contentCol_flush,
 .contentCol_flush + .contentCol {
@@ -21,6 +21,10 @@ Layout for padded columns of content.
 
 .contentCol_fluch + .contentCol {
 	padding-top: 0;
+}
+
+.contentCol_divided {
+	border-bottom: 1px solid $CLR_GRAY_LIGHT;
 }
 
 @include breakpoint(MD) {

@@ -12,19 +12,19 @@ get_header(); ?>
 
 			<section class="error-404 not-found">
 				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'internet_org' ); ?></h1>
+					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'internetorg' ); ?></h1>
 				</header><!-- .page-header -->
 
 				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'internet_org' ); ?></p>
+					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'internetorg' ); ?></p>
 
 					<?php get_search_form(); ?>
 
 					<?php the_widget( 'WP_Widget_Recent_Posts' ); ?>
 
-					<?php if ( internet_org_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
+					<?php if ( internetorg_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
 					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'internet_org' ); ?></h2>
+						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'internetorg' ); ?></h2>
 						<ul>
 						<?php
 							wp_list_categories( array(
@@ -41,7 +41,7 @@ get_header(); ?>
 
 					<?php
 						/* translators: %1$s: smiley */
-						$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'internet_org' ), convert_smilies( ':)' ) ) . '</p>';
+						$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'internetorg' ), convert_smilies( ':)' ) ) . '</p>';
 						the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
 					?>
 
