@@ -399,7 +399,7 @@ define(function(require, exports, module) { // jshint ignore:line
         var bdCntPos = bdTwnPos * 2;
 
 
-        var bdTwn = Tween.from($sectionBody, 0.5, {top: bdTwnPos + '%'});
+        var bdTwn = Tween.from($sectionBody, 0.5, {y: bdTwnPos + '%'});
         var bdCntTwn = Tween.from($sectionBodyCnt, 0.65, {y: bdCntPos + '%'});
 
         var tl = new Timeline();
