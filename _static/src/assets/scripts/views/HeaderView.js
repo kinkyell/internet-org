@@ -136,9 +136,12 @@ define(function(require, exports, module) { // jshint ignore:line
         var shouldHaveInvertedLogo = (!isMenuOpen && !isNarrow && this._invertLeft);
         var shouldHaveInvertedMenu = (!isMenuOpen && !isNarrow && this._invertRight);
 
+        // headerVisiblility
+        this.$element.toggleClass('isVisible', !isHome && !isMenuOpen);
+
         // update back btn
         this.$backBtn
-            .toggleClass('header-backBtn_invert', false)
+            .toggleClass('header-backBtn_invert', shouldHaveInvertedLogo)
             .toggleClass('isActive', shouldHaveBackBtn);
 
         // update menu btn icon
