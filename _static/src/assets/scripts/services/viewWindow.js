@@ -168,12 +168,16 @@ define(function(require, exports, module) { // jshint ignore:line
             }
             break;
         case 'left':
-            inOpts.xPercent = directionInvert * -100;
             outOpts.xPercent = directionInvert * 100;
+            if (!breakpointManager.isMobile) {
+                inOpts.xPercent = directionInvert * -100;
+            }
             break;
         case 'right':
             inOpts.xPercent = directionInvert * 100;
-            outOpts.xPercent = directionInvert * -100;
+            if (!breakpointManager.isMobile) {
+                outOpts.xPercent = directionInvert * -100;
+            }
             break;
         case 'none':
             break;
@@ -201,11 +205,16 @@ define(function(require, exports, module) { // jshint ignore:line
         var opts = this._getAnimProps(direction);
         var $newPanel;
         var $removedPanel;
+        var addMethod = direction === 'left' ? 'prepend' : 'append';
 
-
-        $target.append($panel);
+        if (direction === 'left') {
+            $target.prepend($panel);
+            $removedPanel = $panel.next();
+        } else {
+            $target.append($panel);
+            $removedPanel = $panel.prev();
+        }
         $newPanel = $panel;
-        $removedPanel = $panel.prev();
         doublePanel = doublePanel || false;
 
         $target.addClass('isAnimating');
