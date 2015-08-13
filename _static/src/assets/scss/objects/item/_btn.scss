@@ -88,8 +88,10 @@
 }
 
 @include breakpoint(MD) {
-    padding: 22px;
-    @include remify(font-size, 18px);
+    .btn {
+        padding: 22px;
+        @include remify(font-size, 18px);
+    }
 }
 
 /* Right to Left Language support */
