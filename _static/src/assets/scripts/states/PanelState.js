@@ -28,11 +28,20 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handlePanelContentLoad = this._onPanelContentLoad.bind(this);
         this._handleStaticContent = this._onStaticContent.bind(this);
         this._handlePanelScroll = this._onPanelScroll.bind(this);
-        this.invertLeft = true;
-        this._lastScrollTop = 0;
         this.refreshScrollerInfo = this._refreshScrollerInfo.bind(this);
 
+        /**
+         * The last saved scroll top value
+         *
+         * @default 0
+         * @property _lastScrollTop
+         * @type {Number}
+         * @private
+         */
+        this._lastScrollTop = 0;
+
         BasicState.call(this, options);
+        this.invertLeft = true;
     };
 
     PanelState.prototype = Object.create(BasicState.prototype);

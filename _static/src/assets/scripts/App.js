@@ -66,9 +66,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         this._setupLayout();
         this._setupStates();
-
-        // load images initially on the page
-        this._preloadImages();
+        this._preloadImages(); // load images initially on the page
     };
 
     /**
@@ -79,7 +77,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._cutsTheMustard = function() {
         if (
-            (typeof Function.prototype.bind !== 'function')
+            (typeof Function.prototype.bind !== 'function') //TODO: add more? polyfill?
         ) {
             return false;
         }

@@ -13,9 +13,49 @@ define(function(require, exports, module) { // jshint ignore:line
      * @constructor
      */
     var BasicState = function(options) {
+        /**
+         * List of active component views
+         *
+         * @default []
+         * @property _activeComponents
+         * @type {Array}
+         * @private
+         */
         this._activeComponents = [];
+
+        /**
+         * Tracks if menu should be inverted on the right
+         *
+         * @default false
+         * @property invertRight
+         * @type {bool}
+         * @public
+         */
+        this.invertRight = false;
+
+        /**
+         * Tracks if menu should be inverted on the left
+         *
+         * @default false
+         * @property invertLeft
+         * @type {bool}
+         * @public
+         */
+        this.invertLeft = false;
+
+        /**
+         * Determines if feature panel should be interactive
+         *
+         * @default false
+         * @property doublePanel
+         * @type {bool}
+         * @public
+         */
+        this.doublePanel = false;
+
         this.refreshComponents = this.refreshComponents.bind(this);
         this.destroyComponents = this.destroyComponents.bind(this);
+
         AbstractState.call(this, options);
     };
 
