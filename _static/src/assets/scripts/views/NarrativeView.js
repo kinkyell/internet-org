@@ -8,6 +8,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var Timeline = require('gsap-timeline');
     var AbstractView = require('./AbstractView');
     var ViewWindow = require('services/viewWindow');
+    var eventHub = require('services/eventHub');
     var breakpointManager = require('services/breakpointManager');
 
     var CONFIG = {
@@ -406,14 +407,6 @@ define(function(require, exports, module) { // jshint ignore:line
         tl.add(bdTwn);
         tl.add(bdCntTwn, '-=0.5');
 
-        // if (this._position === (this._slidesLength - 1) && position === (this._slidesLength - 2)) {
-        //    console.log('second to last');
-        // }
-        // if (position !== (this._slidesLength - 1)) {
-        //
-        // }
-
-
         if (this._position === 0 && position === 1) {
             var opacTwn = Tween.from($sectionBody, 0.5, {opacity: 0});
             tl.add(opacTwn, 0);
@@ -435,19 +428,19 @@ define(function(require, exports, module) { // jshint ignore:line
         var direction = (this._position < position) ? 'bottom' : 'top';
 
         var movement = (direction === 'bottom') ? '-=90px' : '+=90px';
-        var tl = new Timeline();
-        tl.to($transformBlock, 0.35, {
-            top: movement
-        });
+        // var tl = new Timeline();
+        // tl.to($transformBlock, 0.35, {
+        //     top: movement
+        // });
 
-        tl.to($linePre, 0.35, {
-            opacity: 0
-        }, '-=0.35');
+        // tl.to($linePre, 0.35, {
+        //     opacity: 0
+        // }, '-=0.35');
 
         this.viewWindow.replaceFeatureImage('/assets/media/uploads/home.jpg', direction).then(function() {
             this._position = position;
             this._updateSlideHooks();
-            this._isAnimating = false;
+            window.setTimeout(this._onSectionComplete.bind(this, position), this._scrollBuffer);
         }.bind(this));
     };
 
@@ -464,6 +457,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._onSectionComplete = function(position) {
         $(window).on('wheel', this._onWheelEventHandler);
         this._isAnimating = false;
+        eventHub.publish('Narrative:sectionChange', position);
     };
 
     proto._updateIndicators = function() {
