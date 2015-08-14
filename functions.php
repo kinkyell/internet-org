@@ -257,11 +257,6 @@ endif;
 require get_template_directory() . '/inc/enqueue-scripts.php';
 
 /**
- * Print the Requirejs bootstrap markup before closing body tag.
- */
-require get_template_directory() . '/inc/requirejs-shim.php';
-
-/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';
