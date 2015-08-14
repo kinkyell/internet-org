@@ -3,7 +3,7 @@
  * The template used for displaying page content start/header in page.php
  *
  * @package Internet.org
- * @author arichard <arichard@nerdery.com>
+ * @author  arichard <arichard@nerdery.com>
  */
 
 $after_title_custom_fields = get_post_meta( get_the_ID(), 'after_title_fm_fields', true );
@@ -15,7 +15,7 @@ $after_title_custom_fields = get_post_meta( get_the_ID(), 'after_title_fm_fields
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 		<?php if ( ! empty( $after_title_custom_fields['Subtitle'] ) ) : ?>
-		<?php echo '<h2>' . esc_html__( $after_title_custom_fields['Subtitle'] , 'internetorg' ) . '</h2>'; ?>
+		<?php echo '<h2>' . esc_html( $after_title_custom_fields['Subtitle'] ) . '</h2>'; ?>
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 	*/ ?>
@@ -24,7 +24,7 @@ $after_title_custom_fields = get_post_meta( get_the_ID(), 'after_title_fm_fields
 		<div class="narrative-section-bd">
 			<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
 			<?php if ( ! empty( $after_title_custom_fields['Subtitle'] ) ) : ?>
-				<?php echo __( $after_title_custom_fields['Subtitle'] , 'internetorg' ); ?>
+				<?php echo esc_html( $after_title_custom_fields['Subtitle'] ); ?>
 			<?php endif; ?>
 		</div>
 	</div>
