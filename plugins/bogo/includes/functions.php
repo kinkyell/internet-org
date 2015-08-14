@@ -419,7 +419,9 @@ function bogo_get_url_with_lang( $url = null, $lang = null, $args = '' ) {
 		$lang = $default_locale;
 	}
 
-	$home = set_url_scheme( home_url() );
+	// avoid recursion
+	remove_filter( 'home_url', 'bogo_home_url' );
+	$home = set_url_scheme( get_option( 'home' ) );
 	$home = trailingslashit( $home );
 
 	$url = remove_query_arg( 'lang', $url );
