@@ -11,24 +11,15 @@
 define( 'IO_DIR', __DIR__ );
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
-wpcom_vip_load_plugin( 'babble', 'internetorg-plugins' );
-
-// do this manually since we include the plugin long after the plugins_loaded hook. (Babble_Locale::plugins_loaded)
-global $bbl_locale;
-
-add_filter( 'after_setup_theme', array( $bbl_locale, 'plugins_loaded' ) );
-
-wpcom_vip_load_plugin( 'internetorg-custom-posttypes', 'internetorg-plugins' );
-wpcom_vip_load_plugin( 'internetorg-custom-fields', 'internetorg-plugins' );
+require IO_DIR . '/plugins/internetorg-custom-posttypes/internetorg-custom-posttypes.php';
+require IO_DIR . '/plugins/internetorg-custom-fields/internetorg-custom-fields.php';
+require IO_DIR . '/plugins/bogo/bogo.php';
 wpcom_vip_load_plugin( 'fieldmanager' );
 wpcom_vip_load_plugin( 'wp-google-analytics' );
 wpcom_vip_load_plugin( 'responsive-images' );
 wpcom_vip_load_plugin( 'cache-nav-menu' );
 wpcom_vip_load_plugin( 'facebook' );
 wpcom_vip_load_plugin( 'lazy-load' );
-
-// MANUAL INCLUSION (Multiple Plugins in one dir)
-require_once( __DIR__ . '/../internetorg-plugins/babble/translation-fields.php' );
 
 if ( ! function_exists( 'internetorg_setup' ) ) :
 	/**
