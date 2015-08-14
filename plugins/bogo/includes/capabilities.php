@@ -32,4 +32,3 @@ function bogo_map_meta_cap( $caps, $cap, $user_id, $args ) {
 	return $caps;
 }
 
-?>

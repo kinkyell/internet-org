@@ -47,17 +47,21 @@ function bogo_is_localizable_post_type( $post_type ) {
 }
 
 function bogo_get_post_translations( $post_id = 0 ) {
+	$request = ( strtolower( $_SERVER['REQUEST_METHOD'] ) == 'post' ? $_POST : $_GET );
+
 	$post = get_post( $post_id );
 
-	if ( ! $post )
+	if ( ! $post ) {
 		return false;
+	}
 
 	if ( 'auto-draft' == $post->post_status ) {
-		if ( ! empty( $_REQUEST['original_post'] ) ) {
-			$original = get_post_meta( $_REQUEST['original_post'], '_original_post', true );
+		if ( ! empty( $request['original_post'] ) ) {
+			$original = get_post_meta( $request['original_post'], '_original_post', true );
 
-			if ( empty( $original ) )
-				$original = (int) $_REQUEST['original_post'];
+			if ( empty( $original ) ) {
+				$original = (int) $request['original_post'];
+			}
 		} else {
 			return false;
 		}
@@ -65,16 +69,18 @@ function bogo_get_post_translations( $post_id = 0 ) {
 		$original = get_post_meta( $post->ID, '_original_post', true );
 	}
 
-	if ( empty( $original ) )
+	if ( empty( $original ) ) {
 		$original = $post->ID;
+	}
 
 	$args = array(
 		'bogo_suppress_locale_query' => true,
-		'posts_per_page' => -1,
+		'posts_per_page' => 10,
 		'post_status' => 'any',
 		'post_type' => $post->post_type,
 		'meta_key' => '_original_post',
-		'meta_value' => $original );
+		'meta_value' => $original,
+	);
 
 	$q = new WP_Query();
 	$posts = $q->query( $args );
@@ -85,7 +91,7 @@ function bogo_get_post_translations( $post_id = 0 ) {
 
 	if ( $original != $post->ID && $original_post_status && 'trash' != $original_post_status ) {
 		$locale = bogo_get_post_locale( $original );
-		$translations[$locale] = get_post( $original );
+		$translations[ $locale ] = get_post( $original );
 	}
 
 	foreach ( $posts as $p ) {
@@ -97,8 +103,8 @@ function bogo_get_post_translations( $post_id = 0 ) {
 		if ( ! bogo_is_available_locale( $locale ) )
 			continue;
 
-		if ( ! isset( $translations[$locale] ) )
-			$translations[$locale] = $p;
+		if ( ! isset( $translations[ $locale ] ) )
+			$translations[ $locale ] = $p;
 	}
 
 	return array_filter( $translations );
@@ -164,9 +170,8 @@ function bogo_get_page_by_path( $page_path, $locale = null, $post_type = 'page' 
 	}
 
 	if ( $foundid )
-		return get_page( $foundid );
+		return get_post( $foundid );
 
 	return null;
 }
 
-?>

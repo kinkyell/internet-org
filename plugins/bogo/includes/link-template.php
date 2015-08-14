@@ -38,7 +38,7 @@ function bogo_page_link( $permalink, $id, $sample ) {
 
 		if ( ! empty( $translations[$locale] ) ) {
 			if ( $translations[$locale]->ID == $id ) {
-				$home = set_url_scheme( get_option( 'home' ) );
+				$home = set_url_scheme( home_url() );
 				$home = trailingslashit( $home );
 				return bogo_url( $home, $locale );
 			}

@@ -9,19 +9,19 @@ function bogo_update_user_option( $user_id ) {
 	$meta_key = $wpdb->get_blog_prefix() . 'accessible_locale';
 
 	if ( ! empty( $_POST['setting_bogo_accessible_locales'] ) ) {
-		delete_user_meta( $user_id, $meta_key );
+		delete_user_attribute( $user_id, $meta_key );
 
 		if ( isset( $_POST['bogo_accessible_locales'] ) ) {
 			$locales = (array) $_POST['bogo_accessible_locales'];
 			$locales = bogo_filter_locales( $locales );
 
 			foreach ( $locales as $locale ) {
-				add_user_meta( $user_id, $meta_key, $locale );
+				add_user_attribute( $user_id, $meta_key, $locale );
 			}
 		}
 
 		if ( ! metadata_exists( 'user', $user_id, $meta_key ) ) {
-			add_user_meta( $user_id, $meta_key, 'zxx' );
+			add_user_attribute( $user_id, $meta_key, 'zxx' );
 			// zxx is a special code in ISO 639-2
 		}
 	}
@@ -70,15 +70,15 @@ function bogo_set_accessible_locales( $profileuser ) {
 <fieldset class="bogo-locale-options">
 
 <?php
-	foreach ( $available_languages as $locale => $language ) :
-		$checked = in_array( $locale, $accessible_locales );
-		$id_attr = 'bogo_accessible_locale-' . $locale;
+foreach ( $available_languages as $locale => $language ) :
+	$checked = in_array( $locale, $accessible_locales );
+	$id_attr = 'bogo_accessible_locale-' . $locale;
 ?>
-<label class="bogo-locale-option<?php echo $checked ? ' checked' : ''; ?>" for="<?php echo $id_attr; ?>">
-<input type="checkbox" id="<?php echo $id_attr; ?>" name="bogo_accessible_locales[]" value="<?php echo esc_attr( $locale ); ?>"<?php echo $checked ? ' checked="checked"' : ''; ?> /><?php echo esc_html( $language ); ?>
+<label class="bogo-locale-option<?php echo checked( $checked ); ?>" for="<?php echo esc_attr( $id_attr ); ?>">
+<input type="checkbox" id="<?php echo esc_attr( $id_attr ); ?>" name="bogo_accessible_locales[]" value="<?php echo esc_attr( $locale ); ?>"<?php echo checked( $checked ); ?> /><?php echo esc_html( $language ); ?>
 </label>
 <?php
-	endforeach;
+endforeach;
 ?>
 </fieldset>
 </td>
@@ -111,4 +111,3 @@ function bogo_select_own_locale( $profileuser ) {
 <?php
 }
 
-?>

@@ -40,4 +40,3 @@ function bogo_setup_nav_menu_item( $menu_item ) {
 	return $menu_item;
 }
 
-?>

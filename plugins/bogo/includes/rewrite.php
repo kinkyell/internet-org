@@ -295,7 +295,16 @@ function bogo_generate_rewrite_rules( $permalink_structure, $args = '' ) {
 
 	$args = wp_parse_args( $args, $defaults );
 
-	extract( $args, EXTR_SKIP );
+	// instead of 'extract'ing, using the defaults array to build our vars
+	$ep_mask = null;
+	$paged = null;
+	$feed = null;
+	$forcomments = null;
+	$walk_dirs = null;
+	$endpoints = null;
+	foreach ( $defaults as $var => $val ) {
+		${$var} = ( isset( $args[ $var ] ) ? $args[ $var ] : $val );
+	}
 
 	$feedregex2 = '(' . implode( '|', $wp_rewrite->feeds ) . ')/?$';
 	$feedregex = $wp_rewrite->feed_base . '/' . $feedregex2;
@@ -523,4 +532,3 @@ function bogo_generate_rewrite_rules( $permalink_structure, $args = '' ) {
 	return $post_rewrite;
 }
 
-?>

@@ -67,15 +67,11 @@ function bogo_restrict_manage_posts() {
 
 	echo '<select name="lang">';
 
-	$selected = ( '' == $current_locale ) ? ' selected="selected"' : '';
-
-	echo '<option value=""' . $selected . '>'
+	echo '<option value=""' . selected( '', $current_locale ) . '>'
 		. esc_html( __( 'Show all locales', 'bogo' ) ) . '</option>';
 
 	foreach ( $available_languages as $locale => $lang ) {
-		$selected = ( $locale == $current_locale ) ? ' selected="selected"' : '';
-
-		echo '<option value="' . esc_attr( $locale ) . '"' . $selected . '>'
+		echo '<option value="' . esc_attr( $locale ) . '"' . selected( $locale, $current_locale )  . '>'
 			. esc_html( $lang ) . '</option>';
 	}
 
@@ -151,25 +147,30 @@ function bogo_add_l10n_meta_boxes( $post_type, $post ) {
 function bogo_l10n_meta_box( $post ) {
 	$initial = ( 'auto-draft' == $post->post_status );
 
+	$request = ( strtolower( $_SERVER['REQUEST_METHOD'] ) == 'post' ? $_POST : $_GET );
+
 	if ( $initial ) {
-		$locale = isset( $_REQUEST['locale'] ) ? $_REQUEST['locale'] : '';
+		$locale = isset( $request['locale'] ) ? $request['locale'] : '';
 
-		if ( ! bogo_is_available_locale( $locale ) )
+		if ( ! bogo_is_available_locale( $locale ) ) {
 			$locale = bogo_get_user_locale();
+		}
 
-		$original_post = empty( $_REQUEST['original_post'] ) ? '' : $_REQUEST['original_post'];
+		$original_post = empty( $request['original_post'] ) ? '' : $request['original_post'];
 	} else {
 		$locale = bogo_get_post_locale( $post->ID );
 		$original_post = get_post_meta( $post->ID, '_original_post', true );
 
-		if ( empty( $original_post ) )
+		if ( empty( $original_post ) ) {
 			$original_post = $post->ID;
+		}
 	}
 
 	$lang = bogo_get_language( $locale );
 
-	if ( empty( $lang ) )
+	if ( empty( $lang ) ) {
 		$lang = $locale;
+	}
 
 ?>
 <div class="hidden">
@@ -257,9 +258,12 @@ add_filter( 'default_content', 'bogo_translation_default', 10, 2 );
 add_filter( 'default_excerpt', 'bogo_translation_default', 10, 2 );
 
 function bogo_translation_default( $value, $post ) {
+
+	$request = ( strtolower( $_SERVER['REQUEST_METHOD'] ) == 'post' ? $_POST : $_GET );
+
 	if ( ! empty( $value )
-	|| empty( $_REQUEST['original_post'] )
-	|| ! $original = get_post( $_REQUEST['original_post'] ) ) {
+	|| empty( $request['original_post'] )
+	|| ! $original = get_post( $request['original_post'] ) ) {
 		return $value;
 	}
 
@@ -277,36 +281,45 @@ function bogo_translation_default( $value, $post ) {
 add_action( 'save_post', 'bogo_save_post', 10, 2 );
 
 function bogo_save_post( $post_id, $post ) {
-	if ( did_action( 'import_start' ) && ! did_action( 'import_end' ) ) // Importing
-		return;
 
-	if ( ! bogo_is_localizable_post_type( $post->post_type ) )
+	$request = ( strtolower( $_SERVER['REQUEST_METHOD'] ) == 'post' ? $_POST : $_GET );
+
+	if ( did_action( 'import_start' ) && ! did_action( 'import_end' ) ) { // Importing
 		return;
+	}
+
+	if ( ! bogo_is_localizable_post_type( $post->post_type ) ){
+		return;
+	}
 
 	$old_locale = get_post_meta( $post_id, '_locale', true );
 
 	if ( empty( $old_locale ) ) {
-		if ( ! empty( $_REQUEST['locale'] ) && bogo_is_available_locale( $_REQUEST['locale'] ) )
-			$locale = $_REQUEST['locale'];
-		elseif ( 'auto-draft' == get_post_status( $post_id ) )
+		if ( ! empty( $request['locale'] ) && bogo_is_available_locale( $request['locale'] ) ) {
+			$locale = $request['locale'];
+		} elseif ( 'auto-draft' == get_post_status( $post_id ) ) {
 			$locale = bogo_get_user_locale();
-		else
+		} else {
 			$locale = bogo_get_default_locale();
+		}
 	}
 
-	if ( ! empty( $locale ) && $locale != $old_locale )
+	if ( ! empty( $locale ) && $locale != $old_locale ) {
 		update_post_meta( $post_id, '_locale', $locale );
-	else
+	} else {
 		$locale = $old_locale;
+	}
 
-	if ( $original = get_post_meta( $post_id, '_original_post', true ) )
+	if ( $original = get_post_meta( $post_id, '_original_post', true ) ) {
 		return;
+	}
 
-	if ( ! empty( $_REQUEST['original_post'] ) ) {
-		$original = get_post_meta( $_REQUEST['original_post'], '_original_post', true );
+	if ( ! empty( $request['original_post'] ) ) {
+		$original = get_post_meta( $request['original_post'], '_original_post', true );
 
-		if ( empty( $original ) )
-			$original = (int) $_REQUEST['original_post'];
+		if ( empty( $original ) ) {
+			$original = (int) $request['original_post'];
+		}
 
 		update_post_meta( $post_id, '_original_post', $original );
 		return;
@@ -382,4 +395,3 @@ function bogo_unique_post_slug( $slug, $post_id, $status, $type, $parent, $origi
 	return $slug;
 }
 
-?>

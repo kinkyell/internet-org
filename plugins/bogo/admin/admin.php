@@ -193,4 +193,3 @@ function bogo_tools_page() {
 <?php
 }
 
-?>

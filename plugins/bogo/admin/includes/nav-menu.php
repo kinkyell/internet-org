@@ -19,4 +19,3 @@ function bogo_update_nav_menu_item( $menu_id, $menu_item_id ) {
 	}
 }
 
-?>

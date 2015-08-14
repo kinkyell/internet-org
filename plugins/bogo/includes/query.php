@@ -197,4 +197,3 @@ function bogo_get_local_post( $post_id ) {
 	return $post_id;
 }
 
-?>

@@ -22,8 +22,8 @@ function bogo_in_widget_form( $widget, $return, $instance ) {
 	$checked = in_array( $locale, $selected_languages );
 	$id_attr = $widget->get_field_id( 'bogo_locales' ) . '-' . $locale;
 ?>
-<label class="bogo-locale-option<?php echo $checked ? ' checked' : ''; ?>" for="<?php echo $id_attr; ?>">
-<input type="checkbox" id="<?php echo $id_attr; ?>" name="<?php echo $widget->get_field_name( 'bogo_locales' ); ?>[]" value="<?php echo esc_attr( $locale ); ?>"<?php echo $checked ? ' checked="checked"' : ''; ?> /><?php echo esc_html( $language ); ?>
+<label class="bogo-locale-option<?php echo esc_attr( $checked ? ' checked' : '' ); ?>" for="<?php echo esc_attr( $id_attr ); ?>">
+<input type="checkbox" id="<?php echo esc_attr( $id_attr ); ?>" name="<?php echo esc_attr( $widget->get_field_name( 'bogo_locales' ) ); ?>[]" value="<?php echo esc_attr( $locale ); ?>"<?php echo checked( $checked ); ?> /><?php echo esc_html( $language ); ?>
 </label>
 <?php endforeach; ?>
 </fieldset>
@@ -33,12 +33,12 @@ function bogo_in_widget_form( $widget, $return, $instance ) {
 add_filter( 'widget_update_callback', 'bogo_widget_update_callback', 10, 4 );
 
 function bogo_widget_update_callback( $instance, $new_instance, $old_instance, $widget ) {
-	if ( isset( $new_instance['bogo_locales'] ) && is_array( $new_instance['bogo_locales'] ) )
+	if ( isset( $new_instance['bogo_locales'] ) && is_array( $new_instance['bogo_locales'] ) ) {
 		$instance['bogo_locales'] = $new_instance['bogo_locales'];
-	else
+	} else {
 		$instance['bogo_locales'] = array();
+	}
 
 	return $instance;
 }
 
-?>

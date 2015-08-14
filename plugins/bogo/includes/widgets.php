@@ -18,20 +18,28 @@ class Bogo_Widget_Language_Switcher extends WP_Widget {
 
 		WP_Widget::__construct( 'bogo_language_switcher',
 			__( 'Language Switcher', 'bogo' ),
-			$widget_ops, $control_ops );
+			$widget_ops,
+			$control_ops
+		);
 	}
 
 	function widget( $args, $instance ) {
-		extract( $args );
+		$before_widget = $args['before_widget'];
+		$after_widget  = $args['after_widget'];
+		$before_title  = $args['before_title'];
+		$after_title   = $args['after_title'];
 
 		$title = apply_filters( 'widget_title',
 			empty( $instance['title'] ) ? __( 'Language Switcher', 'bogo' ) : $instance['title'],
-			$instance, $this->id_base );
+			$instance,
+			$this->id_base
+		);
 
 		echo $before_widget;
 
-		if ( $title )
+		if ( $title ) {
 			echo $before_title . $title . $after_title;
+		}
 
 		echo bogo_language_switcher();
 
@@ -63,11 +71,11 @@ function bogo_widget_display_callback( $instance, $widget, $args ) {
 	if ( isset( $instance['bogo_locales'] ) ) {
 		$locale = get_locale();
 
-		if ( ! in_array( $locale, (array) $instance['bogo_locales'] ) )
+		if ( ! in_array( $locale, (array) $instance['bogo_locales'] ) ) {
 			$instance = false;
+		}
 	}
 
 	return $instance;
 }
 
-?>

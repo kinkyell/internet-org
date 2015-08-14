@@ -40,20 +40,24 @@ function bogo_admin_bar_menu( $wp_admin_bar ) {
 add_action( 'admin_init', 'bogo_switch_user_locale' );
 
 function bogo_switch_user_locale() {
-	if ( empty( $_REQUEST['action'] ) || 'bogo-switch-locale' != $_REQUEST['action'] )
+	$request = ( strtolower( $_SERVER['REQUEST_METHOD'] ) == 'post' ? $_POST : $_GET );
+
+	if ( empty( $request['action'] ) || 'bogo-switch-locale' != $request['action'] ) {
 		return;
+	}
 
 	check_admin_referer( 'bogo-switch-locale' );
 
-	$locale = isset( $_REQUEST['locale'] ) ? $_REQUEST['locale'] : '';
+	$locale = isset( $request['locale'] ) ? $request['locale'] : '';
 
-	if ( ! bogo_is_available_locale( $locale ) || $locale == bogo_get_user_locale() )
+	if ( ! bogo_is_available_locale( $locale ) || $locale == bogo_get_user_locale() ) {
 		return;
+	}
 
 	update_user_option( get_current_user_id(), 'locale', $locale, true );
 
-	if ( ! empty( $_REQUEST['redirect_to'] ) ) {
-		wp_safe_redirect( $_REQUEST['redirect_to'] );
+	if ( ! empty( $request['redirect_to'] ) ) {
+		wp_safe_redirect( $request['redirect_to'] );
 		exit();
 	}
 }
@@ -98,7 +102,6 @@ function bogo_get_user_accessible_locales( $user_id ) {
 	$user_id = absint( $user_id );
 	$meta_key = $wpdb->get_blog_prefix() . 'accessible_locale';
 
-	return get_user_meta( $user_id, $meta_key );
+	return get_user_attribute( $user_id, $meta_key );
 }
 
-?>
