@@ -52,7 +52,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     SearchState.prototype.onActivate = function(event) {
         var transitions = this.getAnimationDirections(event);
-        var tmplArgs = { searchText: event.searchText };
+        var tmplArgs = { searchText: this._options.searchText };
 
         if (event.silent) {
             viewWindow.getCurrentFeature().then(this._handleStaticContent);

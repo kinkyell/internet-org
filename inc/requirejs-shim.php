@@ -13,6 +13,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Print the Requirejs bootstrap markup before closing body tag.
  *
+ * WPCOM_IS_VIP_ENV constant used to determine if we are on production or not for FED build.
+ * Adapted from VIP documentation regarding loading plugins, same concept applies.
+ *
+ * @see https://vip.wordpress.com/documentation/quickstart/#loading-plugins
+ *
  * @action   internetorg_body_bottom
  * @priority default (10)
  */
@@ -35,7 +40,7 @@ function internetorg_requirejs_shim() {
 		 * @type Boolean
 		 * @final
 		 */
-		SETTINGS.IS_PRODUCTION = <?php echo 'production' === APP_ENV ? 'true' : 'false'; ?>;
+		SETTINGS.IS_PRODUCTION = <?php echo esc_html( defined( 'WPCOM_IS_VIP_ENV' ) && true === WPCOM_IS_VIP_ENV ? 'true' : 'false' ); ?>;
 		/**
 		 * Appended to query string for versioning of network resources (CSS,
 		 * JavaScript, etc). This version number should be updated in production

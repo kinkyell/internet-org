@@ -70,12 +70,12 @@
 												<div class="servicesList-item">
 													<?php if ( ! empty( $service['image'] ) ) : ?>
 													<div class="servicesList-item-icon">
-														<img src="<?php echo esc_attr( $service['image'] ); ?>" alt="<?php echo esc_attr__( $service['title'], 'internetorg' ); ?>" />
+														<img src="<?php echo esc_attr( $service['image'] ); ?>" alt="<?php echo esc_attr( $service['title'] ); ?>" />
 													</div>
 													<?php endif; ?>
 													<div class="servicesList-item-bd">
-														<div class="hdg hdg_5"><?php echo esc_html__( $service['title'], 'internetorg' ); ?></div>
-														<div class="bdcpy bdcpy_sm"><?php echo esc_html__( $service['excerpt'], 'internetorg' ); ?></div>
+														<div class="hdg hdg_5"><?php echo esc_html( $service['title'] ); ?></div>
+														<div class="bdcpy bdcpy_sm"><?php echo esc_html( $service['excerpt'] ); ?></div>
 													</div>
 												</div>
 											</a>

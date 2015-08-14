@@ -7,7 +7,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var animationSpeeds = require('appConfig').animationSpeeds;
 
     /**
-     * A view for displaying main menu
+     * A view to load in more content
      *
      * @class ShowMoreView
      * @param {jQuery} $element A reference to the containing DOM element.
@@ -64,7 +64,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * Performs any event binding to handlers.
      *
      * @method onEnable
-     * @returns {ShowMoreView}
      * @public
      */
     proto.onEnable = function() {
@@ -75,7 +74,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * Tears down any event binding to handlers.
      *
      * @method onDisable
-     * @returns {ShowMoreView}
      * @public
      */
     proto.onDisable = function() {
@@ -87,7 +85,7 @@ define(function(require, exports, module) { // jshint ignore:line
     //////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * Toggle search menu on click
+     * Handle click event, load more content
      *
      * @method _onTriggerClick
      * @param {ClickEvent} event Click event
@@ -102,10 +100,10 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Toggle search menu on click
+     * Handle content load, append content and animate
      *
      * @method _onContentLoad
-     * @param {ClickEvent} event Click event
+     * @param {String} html HTML string content
      * @private
      */
     proto._onContentLoad = function(html) {
@@ -127,10 +125,10 @@ define(function(require, exports, module) { // jshint ignore:line
 
 
     /**
-     * Toggle search menu on click
+     * Load the next section of content from apiService
      *
      * @method _loadAddlContent
-     * @param {ClickEvent} event Click event
+     * @returns {Promise} content promise
      * @private
      */
     proto._loadAddlContent = function() {
@@ -140,24 +138,22 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Toggle search menu on click
+     * Enable button clicks
      *
      * @method enableButton
-     * @param {ClickEvent} event Click event
      * @private
      */
-    proto.enableButton = function(content) {
+    proto.enableButton = function() {
         this.$element.removeClass('isLoading').removeAttr('disabled');
     };
 
     /**
-     * Toggle search menu on click
+     * Disable button clicks
      *
      * @method disableButton
-     * @param {ClickEvent} event Click event
      * @private
      */
-    proto.disableButton = function(content) {
+    proto.disableButton = function() {
         this.$element.addClass('isLoading').attr('disabled', '');
     };
 

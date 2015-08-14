@@ -16,8 +16,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * @constructor
      */
     var HomeState = function(options) {
-        this.invertRight = true;
         BasicState.call(this, options);
+        this.invertRight = true;
     };
 
     HomeState.prototype = Object.create(BasicState.prototype);

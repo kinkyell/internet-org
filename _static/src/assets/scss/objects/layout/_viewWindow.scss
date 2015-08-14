@@ -34,6 +34,7 @@ Layout for paneled views
 .viewWindow-panel-content-inner {
     min-height: 100%;
     box-sizing: border-box;
+    background: #ffffff;
 }
 
 .viewWindow-panel-content-inner_home {
@@ -100,7 +101,7 @@ Layout for paneled views
 /* Right to Left Language support */
 [dir="rtl"] {
 
-    .viewWindow-panel 
+    .viewWindow-panel
     .viewWindow-panel-content {
         right: 0;
         left: initial;

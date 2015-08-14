@@ -18,7 +18,24 @@ define(function(require, exports, module) { // jshint ignore:line
             throw new TypeError('AbstractState should not be initialized directly.');
         }
 
+        /**
+         * Tracks whether component is active
+         *
+         * @default false
+         * @property active
+         * @type {bool}
+         * @public
+         */
         this.active = false;
+
+        /**
+         * Holds options passed into state
+         *
+         * @default {}
+         * @property _options
+         * @type {Object}
+         * @private
+         */
         this._options = options || {};
     };
 

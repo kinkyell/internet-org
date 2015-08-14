@@ -21,14 +21,14 @@ $services = internetorg_get_free_services();
 			<div class="servicesList-item">
 				<?php if ( ! empty( $service['image'] ) ) : ?>
 				<div class="servicesList-item-icon">
-					<img src="<?php echo esc_attr( $service['image'] ); ?>" alt="<?php esc_attr_e( $service['title'], 'internetorg' ); ?>">
+					<img src="<?php echo esc_attr( $service['image'] ); ?>" alt="<?php echo esc_attr( $service['title'] ); ?>">
 				</div>
 				<?php endif; ?>
 				<div class="servicesList-item-bd">
-					<div class="hdg hdg_4"><?php esc_html_e( $service['title'], 'internetorg' ); ?></div>
+					<div class="hdg hdg_4"><?php esc_html( $service['title'] ); ?></div>
 					<div class="bdcpy bdcpy_sm">
 						<?php if ( ! empty( $service['excerpt'] ) ) : ?>
-							<?php esc_html_e( $service['excerpt'] ); ?>
+							<?php esc_html( $service['excerpt'] ); ?>
 						<?php endif; ?>
 					</div>
 				</div>
@@ -39,5 +39,3 @@ $services = internetorg_get_free_services();
 		</div>
 	</div>
 <?php endif;
-
-
