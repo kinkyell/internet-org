@@ -423,21 +423,57 @@ define(function(require, exports, module) { // jshint ignore:line
 
     proto._sectionTransitionDesktop = function(position) {
         var $currentSection = $('.narrative-section').eq(this._position);
+        var $nextSection = $('.narrative-section').eq(position);
         var $transformBlock = $currentSection.find('.transformBlock');
+        var $transformBlockNext = $nextSection.find('.transformBlock');
         var $linePre = $transformBlock.find('.transformBlock-pre');
+        var $bd = $transformBlockNext.find('.transformBlock-bd');
         var direction = (this._position < position) ? 'bottom' : 'top';
 
         var movement = (direction === 'bottom') ? '-=90px' : '+=90px';
-        // var tl = new Timeline();
-        // tl.to($transformBlock, 0.35, {
-        //     top: movement
-        // });
+        var tl = new Timeline();
 
-        // tl.to($linePre, 0.35, {
-        //     opacity: 0
-        // }, '-=0.35');
+        if (this._position === 0) {
+            tl.to($transformBlock, 0.35, {
+                y: '-90px'
+            });
 
-        this.viewWindow.replaceFeatureImage('/assets/media/uploads/home.jpg', direction).then(function() {
+            tl.to($linePre, 0.35, {
+                opacity: 0
+            }, '-=0.35');
+        }
+
+        tl.from($bd, 0.35, {
+            y: '90px',
+            opacity: 0
+        });
+
+        var featureImage = null;
+
+        switch (position) {
+            case 0:
+                var featureImage = '/assets/media/uploads/home.jpg';
+                break;
+            case 1:
+                var featureImage = '/assets/media/uploads/mission.jpg';
+                break;
+            case 2:
+                var featureImage = '/assets/media/uploads/approach.jpg';
+                break;
+            case 3:
+                var featureImage = '/assets/media/uploads/impact.jpg';
+                break;
+            case 4:
+                var featureImage = '/assets/media/uploads/contact.jpg';
+                break;
+            default:
+                var featureImage = '/assets/media/uploads/home.jpg';
+                break;
+        }
+
+
+
+        this.viewWindow.replaceFeatureImage(featureImage, direction).then(function() {
             this._position = position;
             this._updateSlideHooks();
             window.setTimeout(this._onSectionComplete.bind(this, position), this._scrollBuffer);

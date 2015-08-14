@@ -42,7 +42,7 @@
 }
 
 .narrative-section-bd {
-    display: table;
+//     display: table;
     width: 100%;
     height: 48%;
     position: absolute;
@@ -59,19 +59,11 @@
     background-color: transparent;
 }
 
-// .narrative-section-bd_foot {
-//     top: auto;
-//     bottom: 0;
-//     height: 38%;
-//     padding-bottom: 50px; // added space for absolute footer
-//     background-color: transparent;
+// .narrative-section-bd-inner {
+//     display: table-cell;
+//     vertical-align: middle;
+//     padding: 68px 0 24px;
 // }
-
-.narrative-section-bd-inner {
-    display: table-cell;
-    vertical-align: middle;
-    padding: 68px 0 24px;
-}
 
 .narrative-section-bd-link {
     position: absolute;

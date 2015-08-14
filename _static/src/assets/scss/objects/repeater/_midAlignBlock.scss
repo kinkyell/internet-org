@@ -1,0 +1,32 @@
+/* ---------------------------------------------------------------------
+Middle Vertical Alignment Block
+------------------------------------------------------------------------ */
+.midAlignBlock {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.midAlignBlock-inner {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.midAlignBlock_dtOnly {
+    display: block;
+}
+
+.midAlignBlock_dtOnly .midAlignBlock-inner {
+    display: block;
+    height: 100%;
+}
+
+@include breakpoint(MD) {
+    .midAlignBlock_dtOnly {
+        display: table;
+    }
+
+    .midAlignBlock_dtOnly .midAlignBlock-inner {
+        display: table-cell;
+    }
+}

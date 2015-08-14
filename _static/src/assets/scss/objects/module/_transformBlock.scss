@@ -39,6 +39,10 @@
 
 // .transformBlock-bd {}
 
+.transformBlock-bd-link {
+    padding-top: 12px;
+}
+
 .transformBlock_end .transformBlock-pre,
 .transformBlock_end .transformBlock-hd {
     @include contain(wide);
@@ -55,10 +59,12 @@
 }
 
 @include breakpoint(MD) {
+    .transformBlock {
+        top: -55px;
+    }
 
-    .transformBlock_end .transformBlock-pre,
-    .transformBlock_end .transformBlock-hd {
-        @include unContain();
+    .transformBlock_start {
+        top: 0;
     }
 
     .transformBlock_end {
@@ -76,5 +82,4 @@
         bottom: initial;
         background-color: initial;
     }
-
 }
