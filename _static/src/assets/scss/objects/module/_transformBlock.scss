@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------------------
- Statement Block
+ Transform Block
 
  Content structure used in narrative sections
 ------------------------------------------------------------------------ */
@@ -7,20 +7,20 @@
     position: relative;
 }
 
-.transformBlock_end {
-    height: 100%;
-    padding-top: 92px;
-    box-sizing: border-box;
-}
-
 .transformBlock-pre {
     position: relative; // For pseudo positioning
     margin-bottom: 6px;
 }
 
-// .transformBlock-pre_divide {}
+.transformBlock-pre-item {
+    display: none;
+}
 
-.transformBlock-pre_divide:before {
+.transformBlock-pre-item.isActive {
+    display: block;
+}
+
+.transformBlock-pre-item_divide:before {
     content: "";
     display: inline-block;
     height: 3px;
@@ -31,55 +31,14 @@
     background-color: $CLR_ACCENT;
 }
 
-.transformBlock-pre_themeImpact:before { background-color: $CLR_IMPACT; }
-.transformBlock-pre_themeMission:before { background-color: $CLR_MISSION; }
-.transformBlock-pre_themeApproach:before { background-color: $CLR_APPROACH; }
+.transformBlock-stmnt {}
 
-// .transformBlock-hd {}
+.transformBlock-post {}
 
-// .transformBlock-bd {}
-
-.transformBlock-bd-link {
-    padding-top: 12px;
+.transformBlock-post-item {
+    display: none;
 }
 
-.transformBlock_end .transformBlock-pre,
-.transformBlock_end .transformBlock-hd {
-    @include contain(wide);
-}
-
-.transformBlock_end .transformBlock-bd {
-    width: 100%;
-    height: 58%;
-    padding: 28px 0;
-    box-sizing: border-box;
-    position: absolute;
-    bottom: 0;
-    background-color: #efede5;
-}
-
-@include breakpoint(MD) {
-    .transformBlock {
-        top: -55px;
-    }
-
-    .transformBlock_start {
-        top: 0;
-    }
-
-    .transformBlock_end {
-        height: auto;
-        padding-top: initial;
-        box-sizing: content-box;
-    }
-
-    .transformBlock_end .transformBlock-bd {
-        width: initial;
-        height: initial;
-        padding: initial;
-        box-sizing: initial;
-        position: initial;
-        bottom: initial;
-        background-color: initial;
-    }
+.transformBlock-post-item.isActive {
+    display: block;
 }

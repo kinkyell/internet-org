@@ -185,6 +185,12 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.layout = function() {
         this.$narrativeSections.eq(0).addClass('isActive');
         this._slidesLength = this.$narrativeSections.length;
+
+
+        // if Desktop
+        if (!breakpointManager.isMobile) {
+            $('.narrativeDT')
+        }
     };
 
     /**
@@ -422,62 +428,57 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     proto._sectionTransitionDesktop = function(position) {
-        var $currentSection = $('.narrative-section').eq(this._position);
-        var $nextSection = $('.narrative-section').eq(position);
-        var $transformBlock = $currentSection.find('.transformBlock');
-        var $transformBlockNext = $nextSection.find('.transformBlock');
-        var $linePre = $transformBlock.find('.transformBlock-pre');
-        var $bd = $transformBlockNext.find('.transformBlock-bd');
         var direction = (this._position < position) ? 'bottom' : 'top';
-
         var movement = (direction === 'bottom') ? '-=90px' : '+=90px';
+
+        var $transformBlock = $('.js-transformBlock');
+        var $transformBlockPre = $transformBlock.find('.transformBlock-pre');
+        var $transformBlockStmnt = $transformBlock.find('.transformBlock-stmnt');
+        var $transformBlockPost = $transformBlock.find('.transformBlock-post');
+
         var tl = new Timeline();
 
-        if (this._position === 0) {
-            tl.to($transformBlock, 0.35, {
-                y: '-90px'
-            });
-
-            tl.to($linePre, 0.35, {
-                opacity: 0
-            }, '-=0.35');
-        }
-
-        tl.from($bd, 0.35, {
-            y: '90px',
-            opacity: 0
+        tl.to($transformBlock, 0.35, {
+            y: '-90px',
+            onComplete: function() {
+                this._position = position;
+                window.setTimeout(this._onSectionComplete.bind(this, position), this._scrollBuffer);
+            }.bind(this)
         });
+
+        tl.to($transformBlockPre, 0.35, {
+            opacity: 0
+        }, '-=0.35');
+
+        tl.from($transformBlockPost, 0.35, {
+            y: '90px',
+        }, '-=0.35');
+
 
         var featureImage = null;
 
         switch (position) {
             case 0:
-                var featureImage = '/assets/media/uploads/home.jpg';
+                featureImage = '/assets/media/uploads/home.jpg';
                 break;
             case 1:
-                var featureImage = '/assets/media/uploads/mission.jpg';
+                featureImage = '/assets/media/uploads/mission.jpg';
                 break;
             case 2:
-                var featureImage = '/assets/media/uploads/approach.jpg';
+                featureImage = '/assets/media/uploads/approach.jpg';
                 break;
             case 3:
-                var featureImage = '/assets/media/uploads/impact.jpg';
+                featureImage = '/assets/media/uploads/impact.jpg';
                 break;
             case 4:
-                var featureImage = '/assets/media/uploads/contact.jpg';
+                featureImage = '/assets/media/uploads/contact.jpg';
                 break;
             default:
-                var featureImage = '/assets/media/uploads/home.jpg';
+                featureImage = '/assets/media/uploads/home.jpg';
                 break;
         }
 
-
-
-        this.viewWindow.replaceFeatureImage(featureImage, direction).then(function() {
-            this._position = position;
-            this._updateSlideHooks();
-            window.setTimeout(this._onSectionComplete.bind(this, position), this._scrollBuffer);
-        }.bind(this));
+        this.viewWindow.replaceFeatureImage(featureImage, direction);
     };
 
     proto._updateSlideHooks = function() {
@@ -493,6 +494,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._onSectionComplete = function(position) {
         $(window).on('wheel', this._onWheelEventHandler);
         this._isAnimating = false;
+        this._updateSlideHooks();
         eventHub.publish('Narrative:sectionChange', position);
     };
 
