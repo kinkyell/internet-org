@@ -16,7 +16,8 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
-	<?php do_action( 'internetorg_head_bottom' ); ?>
+	<?php get_template_part( 'template-parts/header', 'icons' ); ?>
+	<?php get_template_part( 'template-parts/header', 'grunticon' ); ?>
 
 	<?php wp_head(); ?>
 
@@ -34,7 +35,7 @@
 			<div class="mainMenu-panel-hd">
 				<?php get_template_part( 'template-parts/header', 'search' ); ?>
 			</div>
-			<div class="mainMenu-panel-primary">
+
 				<?php
 				$main_menu_config = array(
 					'container_class' => 'mainMenu-panel-primary',
@@ -50,8 +51,7 @@
 				);
 				wp_nav_menu( $main_menu_config );
 				?>
-			</div>
-			<div class="mainMenu-panel-secondary">
+
 				<?php
 				// Configure and build the secondary portion of the menu (Careers, etc.)
 				$submenu_config = array(
@@ -69,7 +69,7 @@
 				wp_nav_menu( $submenu_config );
 
 				?>
-			</div>
+
 			<div class="mainMenu-panel-lang">
 				<?php internetorg_language_switcher(); ?>
 			</div>
