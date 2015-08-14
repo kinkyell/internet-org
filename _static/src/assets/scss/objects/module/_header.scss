@@ -7,12 +7,13 @@
     left: 0;
     right: 0;
     z-index: $Z-header;
-    height: 70px;
+    height: 0;
     background-color: transparent;
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .header.isVisible {
+    height: 70px;
     background-color: $CLR_GRAY_LIGHTER;
 }
 
@@ -112,7 +113,7 @@
 }
 
 @include breakpoint(MD) {
-    .header {
+    .header.isVisible {
         height: 0;
     }
 
