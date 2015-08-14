@@ -17,7 +17,7 @@ get_header();
 				<div class="introBlock-inner">
 					<div class="topicBlock">
 						<div class="topicBlock-hd topicBlock-hd_plus">
-							<h2 class="hdg hdg_2 mix-hdg_bold"><?php echo esc_html__( 'Press', 'internetorg' ); ?></h2>
+							<h2 class="hdg hdg_2 mix-hdg_bold"><?php esc_html_e( 'Press', 'internetorg' ); ?></h2>
 						</div>
 					</div>
 				</div>
@@ -92,7 +92,7 @@ get_header();
 					<div class="resultsList-ft">
 						<div class="resultsList-list resultsList-list_spread">
 							<div class="resultsList-list-item">
-								<button type="button" class="btn js-ShowMoreView" data-src="press" data-target="addl-results"><?php echo esc_html__( 'Show More', 'internetorg' ); ?></button>
+								<button type="button" class="btn js-ShowMoreView" data-src="press" data-target="addl-results"><?php esc_html_e( 'Show More', 'internetorg' ); ?></button>
 							</div>
 							<div class="resultsList-list-item">
 								<select class="js-select select_inline">

@@ -16,19 +16,14 @@
 					<div class="container">
 						<div class="topicBlock">
 							<div class="topicBlock-hd topicBlock-hd_plus">
-								<h2 class="hdg hdg_2 mix-hdg_bold"><?php echo esc_html__( get_the_title(), 'internetorg' ); ?></h2>
+								<h2 class="hdg hdg_2 mix-hdg_bold"><?php the_title(); ?></h2>
 							</div>
 							<div class="topicBlock-subHd">
 								<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray"><?php internetorg_posted_on(); ?></div>
 							</div>
 							<div class="topicBlock-bd">
 								<p class="bdcpy">
-									<?php
-
-									/**
-									 * @todo fix escaping of this output
-									 */
-									echo __( get_the_content(), 'internetorg' ); ?>
+									<?php the_content(); ?>
 								</p>
 							</div>
 						</div>
@@ -36,9 +31,9 @@
 				</div>
 				<div class="introBlock-ft introBlock-ft_rule">
 					<ul class="socialParade">
-						<li><a class="socialParade-icon socialParade-icon_fb" href=""><?php echo esc_html__( 'Facebook', 'internetorg' ); ?></a></li>
-						<li><a class="socialParade-icon socialParade-icon_tw" href=""><?php echo esc_html__( 'Twitter', 'internetorg' ); ?></a></li>
-						<li><a class="socialParade-icon socialParade-icon_li" href=""><?php echo esc_html__( 'LinkedIn', 'internetorg' ); ?></a></li>
+						<li><a class="socialParade-icon socialParade-icon_fb" href=""><?php esc_html_e( 'Facebook', 'internetorg' ); ?></a></li>
+						<li><a class="socialParade-icon socialParade-icon_tw" href=""><?php esc_html_e( 'Twitter', 'internetorg' ); ?></a></li>
+						<li><a class="socialParade-icon socialParade-icon_li" href=""><?php esc_html_e( 'LinkedIn', 'internetorg' ); ?></a></li>
 					</ul>
 				</div>
 			</div>
@@ -91,7 +86,7 @@
 			<?php /* Related Articles */ ?>
 			<div class="footBox">
 				<div class="container">
-					<div class="footBox-hd">More Posts</div>
+					<div class="footBox-hd"><?php esc_html_e( 'More Posts', 'internetorg' ) ?></div>
 					<div class="vList vList_footBox">
 						<div>
 							<div class="topicBlock">
