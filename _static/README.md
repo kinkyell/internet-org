@@ -54,9 +54,41 @@ Icons are created using Grunticon. SVG images in the icons folder will be covert
 into data urls and png fallbacks.
 
 
+### JavaScript Architecture Overview
 
+#### Router (services/Router.js)
 
+The router is in charge of changing the url and saving the history of pages. This
+is done using the history api and falls back to full page refreshes.
 
+#### State Stack (services/StateStack.js)
+
+The State Stack works closely with the router to enable and disable states as
+the route changes. The state stack can be updated with three operations: push,
+pop, and swap. They will add, remove, and replace the top state in the stack.
+
+#### States (states/\*)
+
+States are responsible for setting up and tearing down views
+as they are added and removed from the stack. They all inherit
+from AbstractState which provides the interface for all states.
+All states can define 2 methods: onActive and onDeactivate. If
+defined, they will be called by the State Stack at the
+appropriate time.
+
+#### Views (views/\*)
+
+Views control the DOM interactions when a state is active.
+
+#### API Service (services/apiService.js)
+
+API Service is responsible for communicating with the ajax api.
+It should return promises for all interactions.
+
+#### Event Hub (services/eventHub.js)
+
+The event hub is an instance of the publish-subscribe principal.
+Events can be subscribed to and published to allow interactivity between views and states.
 
 ## Project Resources
 
