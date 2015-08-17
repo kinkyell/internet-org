@@ -8,17 +8,18 @@
 }
 
 .inputRadio-label {
+    display: inline-flex;
     font-family: $FONT_SANS;
     @include remify(font-size, 18px);
     font-weight: 200;
-    line-height: 1;
+    line-height: 1.25;
     color: $CLR_GRAY;
     cursor: pointer;
 }
 
 .inputRadio-label-inner {
     position: relative;
-    top: -1px;
+    top: 1px;
     display: inline-block;
     width: 18px;
     height: 18px;
