@@ -22,7 +22,6 @@ define(function(require, exports, module) { // jshint ignore:line
     var TitledState = require('states/TitledState');
     var NarrativeView = require('views/NarrativeView');
     var HeaderView = require('views/HeaderView');
-    var SelectView = require('views/SelectView');
     var eventHub = require('services/eventHub');
     var assetLoader = require('services/assetLoader');
     var viewWindow = require('services/viewWindow');

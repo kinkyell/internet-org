@@ -205,7 +205,7 @@ define(function(require, exports, module) { // jshint ignore:line
         var opts = this._getAnimProps(direction);
         var $newPanel;
         var $removedPanel;
-        var addMethod = direction === 'left' ? 'prepend' : 'append';
+        // var addMethod = direction === 'left' ? 'prepend' : 'append';
 
         if (direction === 'left') {
             $target.prepend($panel);

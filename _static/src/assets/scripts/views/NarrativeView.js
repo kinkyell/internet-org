@@ -186,9 +186,9 @@ define(function(require, exports, module) { // jshint ignore:line
 
 
         // if Desktop
-        if (!breakpointManager.isMobile) {
-            $('.narrativeDT')
-        }
+        // if (!breakpointManager.isMobile) {
+        //     $('.narrativeDT')
+        // }
     };
 
     /**
@@ -429,40 +429,51 @@ define(function(require, exports, module) { // jshint ignore:line
 
     proto._setupDTtransitions = function() {
         var $transformBlock = $('.js-transformBlock');
-        var $transformBlockPre = $transformBlock.find('.transformBlock-pre');
-        var $transformBlockStmnt = $transformBlock.find('.transformBlock-stmnt');
-        var $transformBlockPost = $transformBlock.find('.transformBlock-post');
         this.tl = new Timeline({ paused: true });
 
+        //  transition 01
+        ///////////////////////
         this.tl.to($transformBlock, 0.35, {
-            y: '-90px',
-            onComplete: function() {
-                // this._position = position;
-                // window.setTimeout(this._onSectionComplete.bind(this, position), this._scrollBuffer);
-            }.bind(this)
+            y: '-90px'
         });
 
-        this.tl.to($transformBlockPre, 0.35, {
+        this.tl.to($('.transformBlock-pre-item').eq(0), 0.35, {
             opacity: 0
         }, '-=0.35');
 
-        this.tl.from($('.transformBlock-post').eq(0), 0.35, {
+        this.tl.from($('.transformBlock-post-item').eq(0), 0.35, {
             y: '90px',
             opacity: 0
         }, '-=0.35')
-        .add(this._onLabelComplete.bind(this, 1));
+        .add(this._onLabelComplete.bind(this, 1))
+        .add(function() {
+            $('.transformBlock-pre-item').eq(0).removeClass('isActive');
+            $('.transformBlock-pre-item').eq(1).addClass('isActive');
+            $('.transformBlock-post').eq(0).removeClass('isActive');
+            $('.transformBlock-post').eq(1).addClass('isActive');
+        });
 
-        this.tl.to($('.transformBlock-post').eq(0), 0.35, {
+        //  transition 02
+        ///////////////////////
+        this.tl.to($('.transformBlock-post-item').eq(0), 0.35, {
             y: '90px',
             opacity: 0
         });
 
-        this.tl.from($('.transformBlock-post').eq(1), 0.35, {
+        this.tl.from($('.transformBlock-post-item').eq(1), 0.35, {
             y: '90px',
             opacity: 0
         }, '-=0.35')
-        .add(this._onLabelComplete.bind(this, 2));
+        .add(this._onLabelComplete.bind(this, 2))
+        .add(function() {
+            $('.transformBlock-pre-item').eq(1).removeClass('isActive');
+            $('.transformBlock-pre-item').eq(2).addClass('isActive');
+            $('.transformBlock-post').eq(1).removeClass('isActive');
+            $('.transformBlock-post').eq(2).addClass('isActive');
+        });
 
+        //  transition 03
+        ///////////////////////
         this.tl.to($('.transformBlock-post').eq(1), 0.35, {
             y: '90px',
             opacity: 0
@@ -499,7 +510,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     proto._sectionTransitionDesktop = function(position) {
         var direction = (this._position < position) ? 'bottom' : 'top';
-        var movement = (direction === 'bottom') ? '-=90px' : '+=90px';
+        // var movement = (direction === 'bottom') ? '-=90px' : '+=90px';
         var featureImage = null;
 
         switch (position) {
