@@ -3,10 +3,18 @@
 ------------------------------------------------------------------------ */
 .header {
     position: fixed;
-    top: 18px;
-    left: 29px;
-    right: 34px;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: $Z-header;
+    height: 0;
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+
+.header.isVisible {
+    height: 70px;
+    background-color: $CLR_GRAY_LIGHTER;
 }
 
 .header_static {
@@ -15,8 +23,8 @@
 
 .header-logo {
     position: absolute;
-    top: 0;
-    left: 12px;
+    top: 18px;
+    left: 41px;
     display: block;
     width: 125px;
     margin-left: -12px;
@@ -53,8 +61,8 @@
 .header-menuBtn {
     display: none; // no use without JS
     position: absolute;
-    top: 7px;
-    right: 0;
+    top: 25px;
+    right: 34px;
     padding: 8px 6px;
     background: none;
     border: 0;
@@ -73,7 +81,7 @@
 }
 
 .header-backBtn.isActive {
-    left: 0;
+    left: 29px;
 }
 
 .header-backBtn > svg {
@@ -105,8 +113,17 @@
 }
 
 @include breakpoint(MD) {
-    .header {
+    .header.isVisible {
+        height: 0;
+    }
+
+    .header-logo {
         top: 28px;
+    }
+
+    .header-backBtn,
+    .header-menuBtn {
+        top: 35px;
     }
 
     .header-logo,
@@ -115,7 +132,7 @@
     }
 
     .mix-header-logo_center {
-        left: 12px;
+        left: 41px;
     }
 
     .mix-header-logo_up {

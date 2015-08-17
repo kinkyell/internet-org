@@ -38,4 +38,4 @@ if ( 'page' == get_option( 'show_on_front' ) && $page_on_front = get_option( 'pa
 	</div><!-- #primary -->
 
 <?php get_sidebar(); ?>
-<?php get_footer(); ?>
+<?php get_footer();

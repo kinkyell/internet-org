@@ -1,0 +1,354 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Internet.org\n"
+"POT-Creation-Date: 2015-08-14 11:16-0500\n"
+"PO-Revision-Date: 2015-08-13 17:37-0500\n"
+"Last-Translator: Richard Aber <raber@nerdery.com>\n"
+"Language-Team: Richard Aber <raber@nerdery.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: 404.php:15
+msgid "Oops! That page can&rsquo;t be found."
+msgstr ""
+
+#: 404.php:19
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+
+#: 404.php:27
+msgid "Most Used Categories"
+msgstr ""
+
+#: 404.php:44
+#, php-format
+msgid "Try looking in the monthly archives. %1$s"
+msgstr ""
+
+#: archive-io_press.php:20
+msgid "Press"
+msgstr ""
+
+#: archive-io_press.php:76
+msgid "Read More"
+msgstr ""
+
+#: archive-io_press.php:95
+msgid "Show More"
+msgstr ""
+
+#: comments.php:29
+#, php-format
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:38 comments.php:59
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:41 comments.php:62
+msgid "Older Comments"
+msgstr ""
+
+#: comments.php:42 comments.php:63
+msgid "Newer Comments"
+msgstr ""
+
+#: comments.php:75
+msgid "Comments are closed."
+msgstr ""
+
+#: functions.php:72
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:73
+msgid "Primary Menu Sub Nav"
+msgstr ""
+
+#: functions.php:144
+msgid "Sidebar"
+msgstr ""
+
+#: inc/extras.php:52
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: inc/template-tags.php:23
+msgid "Posts navigation"
+msgstr ""
+
+#: inc/template-tags.php:27
+msgid "Older posts"
+msgstr ""
+
+#: inc/template-tags.php:31
+msgid "Newer posts"
+msgstr ""
+
+#: inc/template-tags.php:56
+msgid "Post navigation"
+msgstr ""
+
+#: inc/template-tags.php:80
+#, php-format
+msgctxt "post date"
+msgid "Posted on %s"
+msgstr ""
+
+#: inc/template-tags.php:85
+#, php-format
+msgctxt "post author"
+msgid "by %s"
+msgstr ""
+
+#: inc/template-tags.php:130
+#, php-format
+msgctxt "post date"
+msgid "%s"
+msgstr ""
+
+#: inc/template-tags.php:142 inc/template-tags.php:148
+msgid ", "
+msgstr ""
+
+#: inc/template-tags.php:144
+#, php-format
+msgid "Posted in %1$s"
+msgstr ""
+
+#: inc/template-tags.php:150
+#, php-format
+msgid "Tagged %1$s"
+msgstr ""
+
+#: inc/template-tags.php:156
+msgid "Leave a comment"
+msgstr ""
+
+#: inc/template-tags.php:156
+msgid "1 Comment"
+msgstr ""
+
+#: inc/template-tags.php:156
+msgid "% Comments"
+msgstr ""
+
+#: inc/template-tags.php:160 inc/template-tags.php:183
+#: template-parts/content-page-entry-end.php:11
+#: template-parts/content-page.php:26
+msgid "Edit"
+msgstr ""
+
+#: inc/template-tags.php:179
+msgid "Read More &rarr;"
+msgstr ""
+
+#: inc/template-tags.php:200
+#, php-format
+msgid "Category: %s"
+msgstr ""
+
+#: inc/template-tags.php:202
+#, php-format
+msgid "Tag: %s"
+msgstr ""
+
+#: inc/template-tags.php:204
+#, php-format
+msgid "Author: %s"
+msgstr ""
+
+#: inc/template-tags.php:206
+#, php-format
+msgid "Year: %s"
+msgstr ""
+
+#: inc/template-tags.php:206
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr ""
+
+#: inc/template-tags.php:208
+#, php-format
+msgid "Month: %s"
+msgstr ""
+
+#: inc/template-tags.php:208
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr ""
+
+#: inc/template-tags.php:210
+#, php-format
+msgid "Day: %s"
+msgstr ""
+
+#: inc/template-tags.php:210
+msgctxt "daily archives date format"
+msgid "F j, Y"
+msgstr ""
+
+#: inc/template-tags.php:213
+msgctxt "post format archive title"
+msgid "Asides"
+msgstr ""
+
+#: inc/template-tags.php:215
+msgctxt "post format archive title"
+msgid "Galleries"
+msgstr ""
+
+#: inc/template-tags.php:217
+msgctxt "post format archive title"
+msgid "Images"
+msgstr ""
+
+#: inc/template-tags.php:219
+msgctxt "post format archive title"
+msgid "Videos"
+msgstr ""
+
+#: inc/template-tags.php:221
+msgctxt "post format archive title"
+msgid "Quotes"
+msgstr ""
+
+#: inc/template-tags.php:223
+msgctxt "post format archive title"
+msgid "Links"
+msgstr ""
+
+#: inc/template-tags.php:225
+msgctxt "post format archive title"
+msgid "Statuses"
+msgstr ""
+
+#: inc/template-tags.php:227
+msgctxt "post format archive title"
+msgid "Audio"
+msgstr ""
+
+#: inc/template-tags.php:229
+msgctxt "post format archive title"
+msgid "Chats"
+msgstr ""
+
+#: inc/template-tags.php:232
+#, php-format
+msgid "Archives: %s"
+msgstr ""
+
+#: inc/template-tags.php:236
+#, php-format
+msgid "%1$s: %2$s"
+msgstr ""
+
+#: inc/template-tags.php:238
+msgid "Archives"
+msgstr ""
+
+#: search.php:15
+#, php-format
+msgid "%s"
+msgstr ""
+
+#: search.php:21
+#, php-format
+msgid "%d Results Found"
+msgstr ""
+
+#: searchpage.php:32
+msgid "Search Internet.org"
+msgstr ""
+
+#: single-io_press.php:39
+msgid "Facebook"
+msgstr ""
+
+#: single-io_press.php:40
+msgid "Twitter"
+msgstr ""
+
+#: single-io_press.php:41
+msgid "LinkedIn"
+msgstr ""
+
+#: single-io_press.php:61 template-parts/content-free-services.php:15
+msgid "Full List of Free Services"
+msgstr ""
+
+#: template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#: template-parts/content-none.php:20
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: template-parts/content-none.php:24
+#: template-parts/content-search-none.php:18
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: template-parts/content-none.php:29
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: template-parts/content-page-entry-content.php:14
+#: template-parts/content-page.php:19 template-parts/content-single.php:23
+#: template-parts/content.php:32
+msgid "Pages:"
+msgstr ""
+
+#: template-parts/content-search-none.php:12
+msgid "No Results Found"
+msgstr ""
+
+#: template-parts/content.php:25
+#, php-format
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Internet.org"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "http://underscores.me/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Description"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "arichard"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.nerdery.com"
+msgstr ""

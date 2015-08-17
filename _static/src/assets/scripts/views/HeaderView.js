@@ -138,15 +138,23 @@ define(function(require, exports, module) { // jshint ignore:line
         var shouldBeCentered = (isMenuOpen || !isHome);
         var shouldBeRaised = (isMenuOpen && this.searchView.isOpen);
         var shouldHaveBackBtn = (isNarrow && !isMenuOpen && !isHome);
-        var shouldHaveInvertLogo = (!isMenuOpen && ((!isNarrow && this._invertLeft) || isOnFirstNarrative));
-        var shouldHaveInvertMenu = (!isMenuOpen && ((!isNarrow && this._invertRight) || isOnFirstNarrative));
+        var shouldHaveInvertedLogo = (!isMenuOpen && ((!isNarrow && this._invertLeft) || isOnFirstNarrative));
+        var shouldHaveInvertedMenu = (!isMenuOpen && ((!isNarrow && this._invertRight) || isOnFirstNarrative));
+
+        // background bar visibility
+        this.$element.toggleClass('isVisible', !isHome && !isMenuOpen);
 
         // invert logo when over imagery
-        this.$logo.toggleClass('header-logo_invert', shouldHaveInvertLogo);
-        this.$backBtn.toggleClass('header-backBtn_invert', shouldHaveInvertLogo);
+        this.$logo.toggleClass('header-logo_invert', shouldHaveInvertedLogo);
+        this.$backBtn.toggleClass('header-backBtn_invert', shouldHaveInvertedLogo);
 
-        // invert menu button over imagery
-        this.$menuBtnIcon.toggleClass('menuTrigger_onDark', shouldHaveInvertMenu);
+        // update back btn
+        this.$backBtn
+            .toggleClass('header-backBtn_invert', shouldHaveInvertedLogo)
+            .toggleClass('isActive', shouldHaveBackBtn);
+
+        // update menu btn icon
+        this.$menuBtnIcon.toggleClass('menuTrigger_onDark', shouldHaveInvertedMenu);
 
         // hide menu text when open
         this.$menuText.toggleClass('u-isVisuallyHidden', isMenuOpen);
@@ -154,12 +162,9 @@ define(function(require, exports, module) { // jshint ignore:line
         // toggle icon
         this.$menuIcon.toggleClass('isOpen', isMenuOpen);
 
-        // toggle back btn
-        this.$backBtn.toggleClass('isActive', shouldHaveBackBtn);
-
-
-        // move logo if necessary
+        // update logo
         this.$logo
+            .toggleClass('header-logo_invert', shouldHaveInvertedLogo)
             .toggleClass('header-logo_min', shouldBeCentered)
             .toggleClass('mix-header-logo_center', shouldBeCentered)
             .toggleClass('mix-header-logo_up', shouldBeRaised);

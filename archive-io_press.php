@@ -17,7 +17,7 @@ get_header();
 				<div class="introBlock-inner">
 					<div class="topicBlock">
 						<div class="topicBlock-hd topicBlock-hd_plus">
-							<h2 class="hdg hdg_2 mix-hdg_bold"><?php echo esc_html__( 'Press', 'internetorg' ); ?></h2>
+							<h2 class="hdg hdg_2 mix-hdg_bold"><?php esc_html_e( 'Press', 'internetorg' ); ?></h2>
 						</div>
 					</div>
 				</div>
@@ -52,7 +52,7 @@ get_header();
 								<?php if ( $is_media ) : ?>
 								<div class="media media_inline">
 									<div class="media-figure">
-										<?php the_post_thumbnail( array( 210, 260 ), array( 'title' => __( get_the_title(), 'internetorg' ) ) ); ?>
+										<?php the_post_thumbnail( array( 210, 260 ), array( 'title' => get_the_title() ) ); ?>
 									</div>
 									<div class="media-bd">
 								<?php endif; ?>
@@ -64,16 +64,16 @@ get_header();
 									<div class="feature feature_tight">
 
 										<div class="feature-hd">
-											<h2 class="hdg hdg_3"><?php echo __( get_the_title(), 'internetorg' ); ?></h2>
+											<h2 class="hdg hdg_3"><?php echo esc_html( get_the_title() ); ?></h2>
 										</div>
 										<div class="feature-date">
 											<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray"><?php internetorg_posted_on_date(); ?></div>
 										</div>
 										<div class="feature-bd">
-											<p class="bdcpy"><?php echo __( get_the_excerpt(), 'internetorg' ); ?></p>
+											<p class="bdcpy"><?php echo esc_html( get_the_excerpt() ); ?></p>
 										</div>
 										<div class="feature-cta">
-											<a href="<?php the_permalink(); ?>" class="link link_sm" title="<?php the_title_attribute(); ?>">Read More</a>
+											<a href="<?php the_permalink(); ?>" class="link link_sm" title="<?php the_title_attribute(); ?>"><?php esc_html__( 'Read More', 'internetorg' ) ?></a>
 										</div>
 									</div>
 
@@ -92,7 +92,7 @@ get_header();
 					<div class="resultsList-ft">
 						<div class="resultsList-list resultsList-list_spread">
 							<div class="resultsList-list-item">
-								<button type="button" class="btn js-ShowMoreView" data-src="press" data-target="addl-results"><?php echo esc_html__( 'Show More', 'internetorg' ); ?></button>
+								<button type="button" class="btn js-ShowMoreView" data-src="press" data-target="addl-results"><?php esc_html_e( 'Show More', 'internetorg' ); ?></button>
 							</div>
 							<div class="resultsList-list-item">
 								<select class="js-select select_inline">
@@ -150,20 +150,20 @@ get_header();
 							<div>
 								<div class="topicBlock">
 									<div class="topicBlock-hd">
-										<h2 class="hdg hdg_8 mix-hdg_bold"><?php echo esc_html__( $post->post_title, 'internetorg' ); ?></h2>
+										<h2 class="hdg hdg_8 mix-hdg_bold"><?php echo esc_html( $post->post_title ); ?></h2>
 									</div>
-									<div class="topicBlock-bd"><p class="bdcpy"><?php echo esc_html__( $post->post_content, 'internetorg' ); ?></p></div>
+									<div class="topicBlock-bd"><p class="bdcpy"><?php echo esc_html( $post->post_content ); ?></p></div>
 
 							<?php
 
 							if ( ! empty( $meta ) ) :
-								$label = ( ! empty( $meta['widget-data']['label'] ) ? __( $meta['widget-data']['label'], 'internetorg' ) : '' );
-								$url   = ( ! empty( $meta['widget-data']['url'] ) ? __( $meta['widget-data']['url'], 'internetorg' ) : '' );
-								$file  = ( ! empty( $meta['widget-data']['image'] ) ? __( $meta['widget-data']['image'], 'internetorg' ) : '' );
+								$label = ( ! empty( $meta['widget-data']['label'] ) ? $meta['widget-data']['label'] : '' );
+								$url   = ( ! empty( $meta['widget-data']['url'] ) ? $meta['widget-data']['url'] : '' );
+								$file  = ( ! empty( $meta['widget-data']['image'] ) ? $meta['widget-data']['image'] : '' );
 
 								$link = $url ? $url : $file;
 								?>
-									<div class="topicBlock-cta"><a href="<?php echo esc_attr( ! empty( $link ) ? $link : '' ); ?>" class="btn"><?php echo esc_html( $label ); ?></a></div>
+									<div class="topicBlock-cta"><a href="<?php echo esc_url( ! empty( $link ) ? $link : '' ); ?>" class="btn"><?php echo esc_html( $label ); ?></a></div>
 							<?php endif; ?>
 								</div>
 							</div>
