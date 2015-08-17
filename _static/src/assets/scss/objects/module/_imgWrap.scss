@@ -4,12 +4,9 @@ Image Wrapper
 For loading placeholder
 ------------------------------------------------------------------------ */
 
-.imgWrap {
-    background: $CLR_GRAY_LIGHTER;
-}
-
 .imgWrap:not(.isLoaded) { // specificity needed for undoing areas where images are expected
     height: 0;
+    background: $CLR_GRAY_LIGHTER;
 }
 
 .imgWrap.isLoading > img {

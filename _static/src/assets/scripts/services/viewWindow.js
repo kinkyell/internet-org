@@ -168,12 +168,16 @@ define(function(require, exports, module) { // jshint ignore:line
             }
             break;
         case 'left':
-            inOpts.xPercent = directionInvert * -100;
             outOpts.xPercent = directionInvert * 100;
+            if (!breakpointManager.isMobile) {
+                inOpts.xPercent = directionInvert * -100;
+            }
             break;
         case 'right':
             inOpts.xPercent = directionInvert * 100;
-            outOpts.xPercent = directionInvert * -100;
+            if (!breakpointManager.isMobile) {
+                outOpts.xPercent = directionInvert * -100;
+            }
             break;
         case 'none':
             break;
@@ -201,11 +205,16 @@ define(function(require, exports, module) { // jshint ignore:line
         var opts = this._getAnimProps(direction);
         var $newPanel;
         var $removedPanel;
+        var addMethod = direction === 'left' ? 'prepend' : 'append';
 
-
-        $target.append($panel);
+        if (direction === 'left') {
+            $target.prepend($panel);
+            $removedPanel = $panel.next();
+        } else {
+            $target.append($panel);
+            $removedPanel = $panel.prev();
+        }
         $newPanel = $panel;
-        $removedPanel = $panel.prev();
         doublePanel = doublePanel || false;
 
         $target.addClass('isAnimating');
@@ -242,17 +251,18 @@ define(function(require, exports, module) { // jshint ignore:line
             var percent = breakpointManager.isMobile ? 50 : 33.333;
             var shiftOn = !this._isShifted;
             var sign;
-            var activeSelector;
+            var method;
             var directionInvert = document.documentElement.dir === 'ltr' ? 1 : -1;
+            var animateElement = breakpointManager.isMobile ? this.element.lastElementChild : this.element;
 
             this.$panels.addClass('isAnimating');
 
             if (shiftOn) {
                 sign = 1;
-                activeSelector = ':last-child';
+                method = 'last';
             } else {
                 sign = -1;
-                activeSelector = ':first-child';
+                method = 'first';
             }
 
             this.$element.toggleClass('isShifted', shiftOn);
@@ -264,14 +274,11 @@ define(function(require, exports, module) { // jshint ignore:line
                 return Promise.resolve();
             }
 
-            return tweenAsync.from(this.element, TRANSITION_SPEED, {
+            return tweenAsync.from(animateElement, TRANSITION_SPEED, {
                 xPercent: directionInvert * sign * percent,
                 onComplete: function() {
-                    this.$panels
-                        .removeClass('isAnimating')
-                        .removeClass('isActive')
-                        .filter(activeSelector)
-                        .addClass('isActive');
+                    this.$panels.removeClass('isAnimating').removeClass('isActive');
+                    this.$panels[method]().addClass('isActive');
                 },
                 callbackScope: this
             });

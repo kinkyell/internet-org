@@ -65,8 +65,7 @@
 
 .link_twoArrows:after,
 .link_twoArrows:before {
-    // top: calc(50% - 3px);
-    top: initial;
+    top: calc(50% - 4px);
     bottom: 4px;
     right: 0;
     height: 6px;
@@ -82,7 +81,6 @@
 }
 
 .link_twoArrows:after {
-    top: initial;
     bottom: 4px;
 }
 
@@ -227,7 +225,7 @@
 
     .link_twoArrows:after,
     .link_twoArrows:before {
-        top: calc(50% - 4px);
+        // top: calc(50% - 4px);
         right: initial;
         left: 0;
         border-bottom: none;

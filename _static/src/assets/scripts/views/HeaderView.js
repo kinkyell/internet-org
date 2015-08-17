@@ -35,6 +35,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handleMenuBtnClick = this._onMenuBtnClick.bind(this);
         this._handleMenuChange = this._onMenuChange.bind(this);
         this._handleSearchToggle = this._onSearchToggle.bind(this);
+        this._handleNarrativeChange = this._onNarrativeChange.bind(this);
     };
 
     /**
@@ -49,6 +50,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._isHome = true;
         this._invertLeft = false;
         this._invertRight = true;
+        this._isFirstNarrative = true;
         this.isLogoCentered = false;
         this.$logo = this.$('.js-headerView-logo');
         this.$menuBtn = this.$('.js-headerView-menuBtn');
@@ -101,6 +103,7 @@ define(function(require, exports, module) { // jshint ignore:line
         eventHub.subscribe('StateStack:change', this._handleStateChange);
         eventHub.subscribe('MainMenu:change', this._handleMenuChange);
         eventHub.subscribe('Search:toggle', this._handleSearchToggle);
+        eventHub.subscribe('Narrative:sectionChange', this._handleNarrativeChange);
         breakpointManager.subscribe(this._handleBreakpointChange);
         this.$menuBtn.on('click', this._handleMenuBtnClick);
     };
@@ -116,6 +119,7 @@ define(function(require, exports, module) { // jshint ignore:line
         eventHub.unsubscribe('StateStack:change', this._handleStateChange);
         eventHub.unsubscribe('MainMenu:change', this._handleMenuChange);
         eventHub.unsubscribe('Search:toggle', this._handleSearchToggle);
+        eventHub.unsubscribe('Narrative:sectionChange', this._handleNarrativeChange);
         breakpointManager.unsubscribe(this._handleBreakpointChange);
         this.$menuBtn.off('click', this._handleMenuBtnClick);
     };
@@ -130,18 +134,27 @@ define(function(require, exports, module) { // jshint ignore:line
         var isNarrow = breakpointManager.isMobile;
         var isHome = this._isHome;
         var isMenuOpen = this.menuView.isOpen;
+        var isOnFirstNarrative = (isHome && this._isFirstNarrative);
         var shouldBeCentered = (isMenuOpen || !isHome);
         var shouldBeRaised = (isMenuOpen && this.searchView.isOpen);
         var shouldHaveBackBtn = (isNarrow && !isMenuOpen && !isHome);
-        var shouldHaveInvertLogo = (!isMenuOpen && !isNarrow && this._invertLeft);
-        var shouldHaveInvertMenu = (!isMenuOpen && !isNarrow && this._invertRight);
+        var shouldHaveInvertedLogo = (!isMenuOpen && ((!isNarrow && this._invertLeft) || isOnFirstNarrative));
+        var shouldHaveInvertedMenu = (!isMenuOpen && ((!isNarrow && this._invertRight) || isOnFirstNarrative));
+
+        // background bar visibility
+        this.$element.toggleClass('isVisible', !isHome && !isMenuOpen);
 
         // invert logo when over imagery
-        this.$logo.toggleClass('header-logo_invert', shouldHaveInvertLogo);
-        this.$backBtn.toggleClass('header-backBtn_invert', false);
+        this.$logo.toggleClass('header-logo_invert', shouldHaveInvertedLogo);
+        this.$backBtn.toggleClass('header-backBtn_invert', shouldHaveInvertedLogo);
 
-        // invert menu button over imagery
-        this.$menuBtnIcon.toggleClass('menuTrigger_onDark', shouldHaveInvertMenu);
+        // update back btn
+        this.$backBtn
+            .toggleClass('header-backBtn_invert', shouldHaveInvertedLogo)
+            .toggleClass('isActive', shouldHaveBackBtn);
+
+        // update menu btn icon
+        this.$menuBtnIcon.toggleClass('menuTrigger_onDark', shouldHaveInvertedMenu);
 
         // hide menu text when open
         this.$menuText.toggleClass('u-isVisuallyHidden', isMenuOpen);
@@ -149,12 +162,9 @@ define(function(require, exports, module) { // jshint ignore:line
         // toggle icon
         this.$menuIcon.toggleClass('isOpen', isMenuOpen);
 
-        // toggle back btn
-        this.$backBtn.toggleClass('isActive', shouldHaveBackBtn);
-
-
-        // move logo if necessary
+        // update logo
         this.$logo
+            .toggleClass('header-logo_invert', shouldHaveInvertedLogo)
             .toggleClass('header-logo_min', shouldBeCentered)
             .toggleClass('mix-header-logo_center', shouldBeCentered)
             .toggleClass('mix-header-logo_up', shouldBeRaised);
@@ -217,6 +227,18 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._onMenuBtnClick = function() {
         this.menuView.toggle();
+    };
+
+    /**
+     * Handle updates as narrative changes
+     *
+     * @method  _onNarrativeChange
+     * @private
+     * @param   {Number} section Section index
+     */
+    proto._onNarrativeChange = function(section) {
+        this._isFirstNarrative = (section === 0);
+        this._render();
     };
 
 

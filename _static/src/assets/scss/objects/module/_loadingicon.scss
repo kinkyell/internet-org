@@ -1,0 +1,54 @@
+/* ---------------------------------------------------------------------
+Loading Icon
+
+Place class on an empty html tag directly after the opening tag of 
+the targeted element. ex: <div class="loadingIcon"><?div>
+------------------------------------------------------------------------ */
+
+.loadingIcon {
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 98;
+  background-color: $CLR_GRAY;
+  background-color: rgba(239, 237, 228, 0.85);
+}
+
+.loadingIcon:before {  
+  content: '';
+  position: absolute;
+  z-index: 2;
+  top: calc(50% - 20px);
+  left: calc(50% - 20px);
+  width: 40px;
+  height: 40px;
+  background-color: $CLR_GRAY;
+  border-radius: 100%;
+  animation: pulse 1.25s infinite ease-in-out;
+}
+
+.loadingIcon:after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  top: calc(50% - 10px);
+  left: calc(50% - 10px);
+  width: 20px;
+  height: 20px;
+  background-color: $CLR_GRAY_LIGHT;
+  border-radius: 100%;
+  animation: pulse-lg 1.25s infinite linear;
+}
+
+@keyframes pulse-lg {
+  0% { transform: scale(0); }
+  50% { transform: scale(2.0); opacity: 0.5; }
+  100% { transform: scale(1.0); opacity: 0; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(0); }
+  15% { transform: scale(0); }
+  100% { transform: scale(1.0); opacity: 0; }
+}

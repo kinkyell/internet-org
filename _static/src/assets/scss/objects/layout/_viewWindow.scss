@@ -16,6 +16,7 @@ Layout for paneled views
     float: left;
     position: relative;
     z-index: 0;
+    transform: translateZ(0); // for smoother scrolling on webkit
 }
 
 .viewWindow-panel-content {
@@ -34,14 +35,15 @@ Layout for paneled views
 .viewWindow-panel-content-inner {
     min-height: 100%;
     box-sizing: border-box;
+    background: #ffffff;
 }
 
 .viewWindow-panel-content-inner_home {
     height: 100%;
 }
 
-.viewWindow.isShifted {
-    left: -100%;
+.viewWindow.isShifted > .viewWindow-panel:last-child {
+    left: -50%;
 }
 
 .viewWindow-panel_feature {
@@ -77,6 +79,10 @@ Layout for paneled views
         left: -50%;
     }
 
+    .viewWindow.isShifted > .viewWindow-panel:last-child {
+        left: 0;
+    }
+
     .viewWindow-panel:not(.isAnimating):first-child.isActive > .viewWindow-panel-content {
         width: 200%;
         padding-right: 100%;
@@ -100,7 +106,7 @@ Layout for paneled views
 /* Right to Left Language support */
 [dir="rtl"] {
 
-    .viewWindow-panel 
+    .viewWindow-panel
     .viewWindow-panel-content {
         right: 0;
         left: initial;

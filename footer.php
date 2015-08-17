@@ -9,13 +9,11 @@
 
 ?>
 
-	</div><!-- #content -->
-
 	<?php echo vip_powered_wpcom(); /* required */ ?>
 
 	<?php wp_footer(); /* required */ ?>
 
-	<?php do_action( 'internetorg_body_bottom' ); ?>
+	<?php get_template_part( 'template-parts/footer', 'requirejs' ); ?>
 
 </body>
 
