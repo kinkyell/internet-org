@@ -138,13 +138,11 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var proto = AbstractView.createChild(NarrativeView);
 
-
     /**
      * Binds the scope of any handler functions.
      * Should only be run on initialization of the view.
      *
      * @method setupHandlers
-     * @returns {NarrativeView}
      * @private
      */
     proto.setupHandlers = function() {
@@ -205,6 +203,8 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.onEnable = function() {
         $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
         this.$body.on('touchstart', this._onTouchStart.bind(this));
+
+        this._setupDTtransitions();
 
         this.viewWindow = ViewWindow;
     };
@@ -427,35 +427,111 @@ define(function(require, exports, module) { // jshint ignore:line
         }.bind(this) }, '-=0.65');
     };
 
-    proto._sectionTransitionDesktop = function(position) {
-        var direction = (this._position < position) ? 'bottom' : 'top';
-        var movement = (direction === 'bottom') ? '-=90px' : '+=90px';
-
+    proto._setupDTtransitions = function() {
         var $transformBlock = $('.js-transformBlock');
         var $transformBlockPre = $transformBlock.find('.transformBlock-pre');
         var $transformBlockStmnt = $transformBlock.find('.transformBlock-stmnt');
         var $transformBlockPost = $transformBlock.find('.transformBlock-post');
+        this.tl = new Timeline({ paused: true });
 
-        var tl = new Timeline();
-
-        tl.to($transformBlock, 0.35, {
+        this.tl.to($transformBlock, 0.35, {
             y: '-90px',
             onComplete: function() {
-                this._position = position;
-                window.setTimeout(this._onSectionComplete.bind(this, position), this._scrollBuffer);
+                // this._position = position;
+                // window.setTimeout(this._onSectionComplete.bind(this, position), this._scrollBuffer);
             }.bind(this)
         });
 
-        tl.to($transformBlockPre, 0.35, {
+        this.tl.to($transformBlockPre, 0.35, {
             opacity: 0
         }, '-=0.35');
 
-        tl.from($transformBlockPost, 0.35, {
+        this.tl.from($('.transformBlock-post').eq(0), 0.35, {
             y: '90px',
-        }, '-=0.35');
+            opacity: 0
+        }, '-=0.35')
+        .add(this._onLabelComplete.bind(this, 1));
 
+        this.tl.to($('.transformBlock-post').eq(0), 0.35, {
+            y: '90px',
+            opacity: 0
+        });
 
+        this.tl.from($('.transformBlock-post').eq(1), 0.35, {
+            y: '90px',
+            opacity: 0
+        }, '-=0.35')
+        .add(this._onLabelComplete.bind(this, 2));
+
+        this.tl.to($('.transformBlock-post').eq(1), 0.35, {
+            y: '90px',
+            opacity: 0
+        });
+
+        this.tl.from($('.transformBlock-post').eq(2), 0.35, {
+            y: '90px',
+            opacity: 0
+        }, '-=0.35')
+        .add(this._onLabelComplete.bind(this, 3));
+
+        this.tl.to($('.transformBlock-post').eq(2), 0.35, {
+            y: '90px',
+            opacity: 0
+        });
+
+        this.tl.from($('.transformBlock-post').eq(3), 0.35, {
+            y: '90px',
+            opacity: 0
+        }, '-=0.35')
+        .add(this._onLabelComplete.bind(this, 4));
+
+        this.tl.addLabel('section00', 0);
+        this.tl.addLabel('section01', 0.35);
+        this.tl.addLabel('section02', 0.7);
+        this.tl.addLabel('section03', 1.05);
+        this.tl.addLabel('section04', 1.4);
+    };
+
+    proto._onLabelComplete = function(position) {
+        this._position = position;
+        window.setTimeout(this._onSectionComplete.bind(this, position), this._scrollBuffer);
+    };
+
+    proto._sectionTransitionDesktop = function(position) {
+        var direction = (this._position < position) ? 'bottom' : 'top';
+        var movement = (direction === 'bottom') ? '-=90px' : '+=90px';
         var featureImage = null;
+
+        switch (position) {
+            case 1:
+                if (direction === 'bottom') {
+                    this.tl.tweenFromTo('section00', 'section01');
+                } else {
+                    this.tl.tweenFromTo('section02', 'section01');
+                }
+                break;
+            case 2:
+                if (direction === 'bottom') {
+                    this.tl.tweenFromTo('section01', 'section02');
+                } else {
+                    this.tl.tweenFromTo('section03', 'section02');
+                }
+                break;
+            case 3:
+                if (direction === 'bottom') {
+                    this.tl.tweenFromTo('section02', 'section03');
+                } else {
+                    this.tl.tweenFromTo('section04', 'section03');
+                }
+                break;
+            case 4:
+                this.tl.tweenFromTo('section03', 'section04');
+                break;
+            case 5:
+                this.tl.seek('section04');
+                this.tl.play();
+                break;
+        }
 
         switch (position) {
             case 0:
