@@ -5,21 +5,31 @@
  * @package Internet.org
  */
 
-
 // PLUGIN INCLUSION
 // WP VIP Helper Plugin -- gives us access to the VIP only functions
 define( 'IO_DIR', __DIR__ );
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
+/** translation related plugins -- commenting out to continue working on theme without blocker/distraction */
+//require IO_DIR . '/plugins/bogo/bogo.php';
+//require IO_DIR . '/plugins/babble/babble.php';
+//require IO_DIR . '/plugins/babble/translation-show-pre-translation.php';
+//require IO_DIR . '/plugins/babble/translation-group-tool.php';
+//require IO_DIR . '/plugins/babble/translation-fields.php';
+
+/** Other VIP plugins that have caused some wonkiness -- commenting out to continue working on theme without blocker/distraction */
+//wpcom_vip_load_plugin( 'wp-google-analytics' );
+//wpcom_vip_load_plugin( 'responsive-images' );
+//wpcom_vip_load_plugin( 'cache-nav-menu' );
+//wpcom_vip_load_plugin( 'facebook' );
+//wpcom_vip_load_plugin( 'lazy-load' );
+
+/** Custom Post Types */
 require IO_DIR . '/plugins/internetorg-custom-posttypes/internetorg-custom-posttypes.php';
-require IO_DIR . '/plugins/internetorg-custom-fields/internetorg-custom-fields.php';
-require IO_DIR . '/plugins/bogo/bogo.php';
+
+/** Fieldmanager and Fields */
 wpcom_vip_load_plugin( 'fieldmanager' );
-wpcom_vip_load_plugin( 'wp-google-analytics' );
-wpcom_vip_load_plugin( 'responsive-images' );
-wpcom_vip_load_plugin( 'cache-nav-menu' );
-wpcom_vip_load_plugin( 'facebook' );
-wpcom_vip_load_plugin( 'lazy-load' );
+require IO_DIR . '/plugins/internetorg-custom-fields/internetorg-custom-fields.php';
 
 if ( ! function_exists( 'internetorg_setup' ) ) :
 	/**
