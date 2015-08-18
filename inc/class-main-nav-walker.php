@@ -60,6 +60,10 @@ class Internetorg_Main_Nav_Walker extends Walker_Nav_Menu
 		$attributes .= ' data-image="http://placehold.it/400x800?text=' . substr( $item->title, 4 ) . '"';
 		$attributes .= ' data-theme="' . substr( $item->title, 4 ) . '"';
 
+		if ( is_array( $args ) && ! empty( $args ) ) {
+			$args = (object) $args;
+		}
+
 		$item_output = sprintf( '%1$s<a%2$s>%3$s%4$s%5$s</a>%6$s',
 			$args->before,
 			$attributes,
