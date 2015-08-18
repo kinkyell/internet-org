@@ -11,15 +11,22 @@
 <html <?php language_attributes(); ?> class="no-js">
 <head>
 
+	<!-- META DATA -->
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--[if IE]><meta http-equiv="cleartype" content="on" /><![endif]-->
+
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+
+	<?php wp_head(); ?>
 
 	<?php get_template_part( 'template-parts/header', 'icons' ); ?>
 	<?php get_template_part( 'template-parts/header', 'grunticon' ); ?>
 
-	<?php wp_head(); ?>
+	<!-- POLYFILLS -->
+	<!-- build:js <?php echo esc_url( get_stylesheet_directory_uri() ); ?>/_static/web/assets/scripts/head.js -->
+	<!-- endbuild -->
 
 </head>
 
@@ -30,6 +37,7 @@
 		<?php get_template_part( 'template-parts/header', 'logo' ); ?>
 		<?php get_template_part( 'template-parts/header', 'buttons' ); ?>
 	</div>
+
 	<div class="mainMenu js-menuView u-isVisuallyHidden">
 		<div class="mainMenu-panel js-menuView-panel">
 			<div class="mainMenu-panel-hd">
@@ -73,7 +81,8 @@
 			<div class="mainMenu-panel-lang">
 				<?php internetorg_language_switcher(); ?>
 			</div>
-		</div>
-	</div>
 
-	<!-- /header -->
+		</div>
+	</div> <!-- end header -->
+
+	<!-- CONTENT -->
