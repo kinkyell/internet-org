@@ -1,9 +1,9 @@
 /* ---------------------------------------------------------------------
- Quarentine
+ Quarantine
 
  Container for wrapping user-entered-content (WYSIWYG)
 ------------------------------------------------------------------------ */
-.quarentine {
+.quarantine {
 
     * + * {
         margin-top: 19px;
@@ -162,9 +162,9 @@
 }
 
 /* THEME CLASSES for li bullets by contectual selection */
-.theme-impact .quarentine li:before { color: $CLR_IMPACT; }
-.theme-approach .quarentine li:before { color: $CLR_APPROACH; }
-.theme-mission .quarentine li:before { color: $CLR_MISSION; }
+.theme-impact .quarantine li:before { color: $CLR_IMPACT; }
+.theme-approach .quarantine li:before { color: $CLR_APPROACH; }
+.theme-mission .quarantine li:before { color: $CLR_MISSION; }
 
 /* THEME CLASSES for blockquote bullets by contectual selection */
 .theme-impact blockquote { border-left: 4px solid $CLR_IMPACT; }
@@ -196,7 +196,7 @@
 
 @include breakpoint(MD) {
 
-    .quarentine {
+    .quarantine {
         h1,
         h2,
         h3,
@@ -225,7 +225,7 @@
 /* Right to Left Language support */
 [dir="rtl"] {
 
-    .quarentine {
+    .quarantine {
 
         a {
             padding-right: initial;
