@@ -37,7 +37,6 @@ get_header();
 		<div class="container">
 			<div class="resultsList">
 				<div id="addl-results" class="resultsList-list">
-					<div id="addl-results" class="resultsList-list">
 	<?php while ( have_posts() ) : the_post(); ?>
 						<div class="resultsList-list-item">
 
@@ -62,7 +61,6 @@ get_header();
 
 
 									<div class="feature feature_tight">
-
 										<div class="feature-hd">
 											<h2 class="hdg hdg_3"><?php echo esc_html( get_the_title() ); ?></h2>
 										</div>
@@ -73,7 +71,7 @@ get_header();
 											<p class="bdcpy"><?php echo esc_html( get_the_excerpt() ); ?></p>
 										</div>
 										<div class="feature-cta">
-											<a href="<?php the_permalink(); ?>" class="link link_sm" title="<?php the_title_attribute(); ?>"><?php esc_html__( 'Read More', 'internetorg' ) ?></a>
+											<a href="<?php the_permalink(); ?>" class="link link_sm" title="<?php the_title_attribute(); ?>"><?php echo esc_html__( 'Read More', 'internetorg' ) ?></a>
 										</div>
 									</div>
 
@@ -88,8 +86,8 @@ get_header();
 							</div>
 						</div>
 	<?php endwhile; ?>
-					</div>
-					<div class="resultsList-ft">
+				</div>
+				<div class="resultsList-ft">
 						<div class="resultsList-list resultsList-list_spread">
 							<div class="resultsList-list-item">
 								<button type="button" class="btn js-ShowMoreView" data-src="press" data-target="addl-results"><?php esc_html_e( 'Show More', 'internetorg' ); ?></button>
@@ -117,7 +115,6 @@ get_header();
 							</div>
 						</div>
 					</div>
-				</div>
 			</div>
 		</div>
 	</div>
