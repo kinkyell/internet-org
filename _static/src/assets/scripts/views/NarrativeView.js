@@ -441,60 +441,70 @@ define(function(require, exports, module) { // jshint ignore:line
             opacity: 0
         }, '-=0.35');
 
-        this.tl.from($('.transformBlock-post-item').eq(0), 0.35, {
+        this.tl.fromTo($('.transformBlock-post-item').eq(0), 0.35, {
             y: '90px',
             opacity: 0
-        }, '-=0.35')
-        .add(this._onLabelComplete.bind(this, 1))
-        .add(function() {
-            $('.transformBlock-pre-item').eq(0).removeClass('isActive');
-            $('.transformBlock-pre-item').eq(1).addClass('isActive');
-            $('.transformBlock-post').eq(0).removeClass('isActive');
-            $('.transformBlock-post').eq(1).addClass('isActive');
-        });
+        }, {
+            y: '0px',
+            opacity: 1
+        }, '-=0.35');
 
         //  transition 02
         ///////////////////////
         this.tl.to($('.transformBlock-post-item').eq(0), 0.35, {
-            y: '90px',
+            y: '-90px',
             opacity: 0
         });
 
-        this.tl.from($('.transformBlock-post-item').eq(1), 0.35, {
+        this.tl.fromTo($('.transformBlock-post-item').eq(1), 0.35, {
             y: '90px',
             opacity: 0
-        }, '-=0.35')
-        .add(this._onLabelComplete.bind(this, 2))
-        .add(function() {
-            $('.transformBlock-pre-item').eq(1).removeClass('isActive');
-            $('.transformBlock-pre-item').eq(2).addClass('isActive');
-            $('.transformBlock-post').eq(1).removeClass('isActive');
-            $('.transformBlock-post').eq(2).addClass('isActive');
-        });
+        }, {
+            y: '0px',
+            opacity: 1
+        }, '-=0.35');
 
         //  transition 03
         ///////////////////////
-        this.tl.to($('.transformBlock-post').eq(1), 0.35, {
-            y: '90px',
+        this.tl.to($('.transformBlock-post-item').eq(1), 0.35, {
+            y: '-90px',
             opacity: 0
         });
 
-        this.tl.from($('.transformBlock-post').eq(2), 0.35, {
+        this.tl.fromTo($('.transformBlock-post-item').eq(2), 0.35, {
             y: '90px',
             opacity: 0
-        }, '-=0.35')
-        .add(this._onLabelComplete.bind(this, 3));
+        }, {
+            y: '0px',
+            opacity: 1
+        }, '-=0.35');
 
-        this.tl.to($('.transformBlock-post').eq(2), 0.35, {
-            y: '90px',
-            opacity: 0
+        //  transition 04
+        ///////////////////////
+        this.tl.to($transformBlock, 0.35, {
+            y: '-=90px'
         });
 
-        this.tl.from($('.transformBlock-post').eq(3), 0.35, {
+        this.tl.fromTo($('.transformBlock-pre-item').eq(1), 0.35, {
+            opacity: 0,
+            y: '-180px'
+        }, {
+            opacity: 1,
+            y: '0px'
+        }, '-=0.35');
+
+        this.tl.to($('.transformBlock-post-item').eq(2), 0.35, {
+            y: '-90px',
+            opacity: 0
+        }, '-=0.35');
+
+        this.tl.fromTo($('.transformBlock-post-item').eq(3), 0.35, {
             y: '90px',
             opacity: 0
-        }, '-=0.35')
-        .add(this._onLabelComplete.bind(this, 4));
+        }, {
+            y: '0px',
+            opacity: 1
+        }, '-=0.35');
 
         this.tl.addLabel('section00', 0);
         this.tl.addLabel('section01', 0.35);
@@ -510,58 +520,50 @@ define(function(require, exports, module) { // jshint ignore:line
 
     proto._sectionTransitionDesktop = function(position) {
         var direction = (this._position < position) ? 'bottom' : 'top';
-        // var movement = (direction === 'bottom') ? '-=90px' : '+=90px';
         var featureImage = null;
-
-        switch (position) {
-            case 1:
-                if (direction === 'bottom') {
-                    this.tl.tweenFromTo('section00', 'section01');
-                } else {
-                    this.tl.tweenFromTo('section02', 'section01');
-                }
-                break;
-            case 2:
-                if (direction === 'bottom') {
-                    this.tl.tweenFromTo('section01', 'section02');
-                } else {
-                    this.tl.tweenFromTo('section03', 'section02');
-                }
-                break;
-            case 3:
-                if (direction === 'bottom') {
-                    this.tl.tweenFromTo('section02', 'section03');
-                } else {
-                    this.tl.tweenFromTo('section04', 'section03');
-                }
-                break;
-            case 4:
-                this.tl.tweenFromTo('section03', 'section04');
-                break;
-            case 5:
-                this.tl.seek('section04');
-                this.tl.play();
-                break;
-        }
 
         switch (position) {
             case 0:
                 featureImage = '/assets/media/uploads/home.jpg';
+
+                this.tl.tweenFromTo('section01', 'section00', {onComplete: this._onLabelComplete.bind(this, position)});
                 break;
             case 1:
                 featureImage = '/assets/media/uploads/mission.jpg';
+
+                if (direction === 'bottom') {
+                    this.tl.tweenFromTo('section00', 'section01', {onComplete: this._onLabelComplete.bind(this, position)});
+                } else {
+                    this.tl.tweenFromTo('section02', 'section01', {onComplete: this._onLabelComplete.bind(this, position)});
+                }
                 break;
             case 2:
                 featureImage = '/assets/media/uploads/approach.jpg';
+
+                if (direction === 'bottom') {
+                    this.tl.tweenFromTo('section01', 'section02', {onComplete: this._onLabelComplete.bind(this, position)});
+                } else {
+                    this.tl.tweenFromTo('section03', 'section02', {onComplete: this._onLabelComplete.bind(this, position)});
+                }
                 break;
             case 3:
                 featureImage = '/assets/media/uploads/impact.jpg';
+
+                if (direction === 'bottom') {
+                    this.tl.tweenFromTo('section02', 'section03', {onComplete: this._onLabelComplete.bind(this, position)});
+                } else {
+                    this.tl.tweenFromTo('section04', 'section03', {onComplete: this._onLabelComplete.bind(this, position)});
+                }
                 break;
             case 4:
                 featureImage = '/assets/media/uploads/contact.jpg';
+
+                this.tl.tweenFromTo('section03', 'section04', {onComplete: this._onLabelComplete.bind(this, position)});
                 break;
             default:
                 featureImage = '/assets/media/uploads/home.jpg';
+
+                this.tl.tweenFromTo('section01', 'section00', {onComplete: this._onLabelComplete.bind(this, position)});
                 break;
         }
 

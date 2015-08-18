@@ -16,3 +16,9 @@
 }
 
 .splashFooter-section-bd {}
+
+@include breakpoint(MD) {
+    .splashFooter {
+        @include unContain();
+    }
+}

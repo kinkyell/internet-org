@@ -8,16 +8,18 @@
 }
 
 .transformBlock-pre {
-    position: relative; // For pseudo positioning
+    height: 46px;
     margin-bottom: 6px;
+    position: relative; // For pseudo positioning
 }
 
 .transformBlock-pre-item {
-    display: none;
+    position: absolute;
+    opacity: 0;
 }
 
-.transformBlock-pre-item.isActive {
-    display: block;
+.transformBlock-pre-item:nth-child(1) {
+    opacity: 1;
 }
 
 .transformBlock-pre-item_divide:before {
@@ -33,12 +35,11 @@
 
 .transformBlock-stmnt {}
 
-.transformBlock-post {}
-
-.transformBlock-post-item {
-    display: none;
+.transformBlock-post {
+    position: relative;
 }
 
-.transformBlock-post-item.isActive {
-    display: block;
+.transformBlock-post-item {
+    position: absolute;
+    opacity: 0;
 }
