@@ -118,12 +118,12 @@
 
 // THEME CLASSES by contectual or chain selection
 
-//IMPACT
+/* IMPACT */ 
 .theme-impact .link,
 .link_themeImpact { color: $CLR_IMPACT; }
 
 .theme-impact .link:after,
-.link_themeImpact:after, { border-color: $CLR_IMPACT; }
+.link_themeImpact:after { border-color: $CLR_IMPACT; }
 
 .theme-impact .link:before,
 .link_themeImpact:before { background-color: $CLR_IMPACT; }
@@ -132,17 +132,17 @@
 .link_themeImpact:hover { color: $CLR_IMPACT_ACTIVE; }
 
 .theme-impact .link:hover:after,
-.link_themeImpact:hover:after, { border-color: $CLR_IMPACT_ACTIVE; }
+.link_themeImpact:hover:after { border-color: $CLR_IMPACT_ACTIVE; }
 
 .theme-impact .link:hover:before,
 .link_themeImpact:hover:before { background-color: $CLR_IMPACT_ACTIVE; }
 
-//APPROACH
+/* APPROACH */
 .theme-approach .link,
 .link_themeApproach { color: $CLR_APPROACH; }
 
 .theme-approach .link:after,
-.link_themeApproach:after, { border-color: $CLR_APPROACH; }
+.link_themeApproach:after { border-color: $CLR_APPROACH; }
 
 .theme-approach .link:before,
 .link_themeApproach:before { background-color: $CLR_APPROACH; }
@@ -151,12 +151,12 @@
 .link_themeApproach:hover { color: $CLR_APPROACH_ACTIVE; }
 
 .theme-approach .link:hover:after,
-.link_themeApproach:hover:after, { border-color: $CLR_APPROACH_ACTIVE; }
+.link_themeApproach:hover:after { border-color: $CLR_APPROACH_ACTIVE; }
 
 .theme-approach .link:hover:before,
 .link_themeApproach:hover:before { background-color: $CLR_APPROACH_ACTIVE; }
 
-//MISSION
+/* MISSION */
 .theme-mission .link,
 .link_themeMission { color: $CLR_MISSION; }
 
@@ -170,7 +170,7 @@
 .link_themeMission:hover { color: $CLR_MISSION_ACTIVE; }
 
 .theme-mission .link:hover:after,
-.link_themeMission:hover:after, { border-color: $CLR_MISSION_ACTIVE; }
+.link_themeMission:hover:after { border-color: $CLR_MISSION_ACTIVE; }
 
 .theme-mission .link:hover:before,
 .link_themeMission:hover:before { background-color: $CLR_MISSION_ACTIVE; }
