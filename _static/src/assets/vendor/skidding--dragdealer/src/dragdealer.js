@@ -218,9 +218,9 @@ Dragdealer.prototype = {
     tapping: true
   },
   init: function() {
-    if (this.options.css3) {
-      triggerWebkitHardwareAcceleration(this.handle);
-    }
+    // if (this.options.css3) {
+    //   triggerWebkitHardwareAcceleration(this.handle);
+    // }
     this.value = {
       prev: [-1, -1],
       current: [this.options.x || 0, this.options.y || 0],
