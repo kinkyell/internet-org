@@ -4,31 +4,276 @@
  Container for wrapping user-entered-content (WYSIWYG)
 ------------------------------------------------------------------------ */
 .quarentine {
-    h1 {
-        @include remify(font-size, 18px);
-        font-weight: bold;
-        margin-bottom: 4px;
+
+    * + * {
+        margin-top: 19px;
     }
 
-    h2 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: $FONT_SERIF;
+        font-weight: 400; @warn 'REMOVE ONCE Web Fonts are in place';
+        color: $CLR_BLACK;
+        @include remify(font-size, 16px);
+        line-height: 1.4565384;
+    }
+
+    a {
+        @include transition(all 0.3s ease-in-out);
+        font-family: $FONT_SANS_BLACK;
+        font-weight: bolder; @warn 'REMOVE ONCE Web Fonts are in place';
+        @include remify(font-size, 13px);
+        line-height: 1.222222;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: $CLR_ACCENT;
+        position: relative;
+        padding-right: 35px;
+        display: inline-block;
+        margin-top: 14px; /* To compensate for the extra white space added */
+    }
+
+    a:after,
+    a:before {
+        @include transition(all 0.15s ease-in-out);
+        content: "";
+        display: block;
+        position: absolute;
+        right: -8px;
+    }
+
+    a:after {
+        top: calc(50% - 5px);
+        height: 10px;
+        width: 10px;
+        border-bottom: 1px solid $CLR_ACCENT;
+        border-right: 1px solid $CLR_ACCENT;
+        transform: rotate(-45deg);
+    }
+
+    a:before {
+        top: 50%;
+        height: 1px;
+        width: 30px;
+        background-color: $CLR_ACCENT;
+    }
+
+    a:hover,
+    a:active {
+        color: $CLR_ACCENT_ACTIVE;
+    }
+
+    a:hover:after,
+    a:hover:before {
+        right: -10px;
+    }
+
+    a:hover:after { border-color: $CLR_ACCENT_ACTIVE; }
+
+    a:hover:before { background-color: $CLR_ACCENT_ACTIVE; }
+
+    p {
+        font-family: $FONT_SANS;
+        font-weight: 200; // TODO: REMOVE ONCE Web Fonts are in place
         @include remify(font-size, 14px);
-        font-weight: bold;
-        margin-bottom: 4px;
+        line-height: 1.714285714;
+        color: $CLR_GRAY;
     }
 
-    ul {
-        list-style-type: initial;
-        padding-left: 18px;
-        margin-bottom: 12px;
+    ul > * + * {
+        margin-top: 22px;
     }
+
+    // THEME CLASSES by contectual selection
+    .theme-impact li:before { color: $CLR_IMPACT; }
+    .theme-approach li:before { color: $CLR_APPROACH; }
+    .theme-mission li:before { color: $CLR_MISSION; }
 
     li {
-        margin-bottom: 4px;
+        font-family: $FONT_SANS;
+        line-height: 1.666667;
+        color: $CLR_GRAY;
+        position: relative;
+        padding-left: $SPACE_x3;
+    }
+
+    li:before {
+        content: '•';
+        position: absolute;
+        top: -8px;
+        left: 8px;
+        font-family: Arial, 'Arial', sans-serif;
+        @include remify(font-size, 28px);
+        color: $CLR_ACCENT;
     }
 
     blockquote {
-        border-left: 4px solid red;
-        padding-left: 8px;
-        margin: 0 0 12px 6px;
+        border-left: 4px solid $CLR_ACCENT;
+        padding: $SPACE_x1 $SPACE_x2;
+    }
+
+    blockquote > *:first-child {
+        font-family: $FONT_SERIF_ITALIC;
+        font-style: italic; // TODO: REMOVE ONCE Web Fonts are in place
+        @include remify(font-size, 22px);
+        line-height: 1.363636;
+        color: $CLR_BLACK;
+        margin-bottom: $SPACE_x1;
+    }
+
+    blockquote > cite:before {
+        content: ' – ';
+    }
+
+    blockquote > cite {
+        font-family: $FONT_SANS;
+        font-weight: 200; // TODO: REMOVE ONCE Web Fonts are in place
+        @include remify(font-size, 18px);
+        line-height: 1;
+        color: $CLR_GRAY;
+    }
+
+    img {
+        margin-top: 30px;
+    }
+
+    img,
+    figure > img {
+        width: 100%;
+        height: auto;
+    }
+
+    // caption { }
+
+    figcaption {
+        font-family: $FONT_SERIF_ITALIC;
+        font-style: italic;  // TODO: REMOVE ONCE Web Fonts are in place
+        @include remify(font-size, 14px);
+        line-height: 1.3636363;
+        color: $CLR_GRAY;
+        background-color: $CLR_GRAY_LIGHT;
+        padding: $SPACE_x1;
+        margin-top: 0;
     }
 }
+
+/* THEME CLASSES for li bullets by contectual selection */
+.theme-impact .quarentine li:before { color: $CLR_IMPACT; }
+.theme-approach .quarentine li:before { color: $CLR_APPROACH; }
+.theme-mission .quarentine li:before { color: $CLR_MISSION; }
+
+/* THEME CLASSES for blockquote bullets by contectual selection */
+.theme-impact blockquote { border-left: 4px solid $CLR_IMPACT; }
+.theme-approach blockquote { border-left: 4px solid $CLR_APPROACH; }
+.theme-mission blockquote { border-left: 4px solid $CLR_MISSION; }
+
+/* THEME CLASSES for a bullets by contectual selection */
+/* IMPACT */
+.theme-impact a { color: $CLR_IMPACT; }
+.theme-impact a:after { border-color: $CLR_IMPACT; }
+.theme-impact a:before { background-color: $CLR_IMPACT; }
+.theme-impact a:hover { color: $CLR_IMPACT_ACTIVE; }
+.theme-impact a:hover:after { border-color: $CLR_IMPACT_ACTIVE; }
+.theme-impact a:hover:before { background-color: $CLR_IMPACT_ACTIVE; }
+/* APPROACH */
+.theme-approach a { color: $CLR_APPROACH; }
+.theme-approach a:after { border-color: $CLR_APPROACH; }
+.theme-approach a:before { background-color: $CLR_APPROACH; }
+.theme-approach a:hover { color: $CLR_APPROACH_ACTIVE; }
+.theme-approach a:hover:after { border-color: $CLR_APPROACH_ACTIVE; }
+.theme-approach a:hover:before { background-color: $CLR_APPROACH_ACTIVE; }
+/* MISSION */
+.theme-mission a { color: $CLR_MISSION; }
+.theme-mission a:after { border-color: $CLR_MISSION; }
+.theme-mission a:before { background-color: $CLR_MISSION; }
+.theme-mission a:hover { color: $CLR_MISSION_ACTIVE; }
+.theme-mission a:hover:after { border-color: $CLR_MISSION_ACTIVE; }
+.theme-mission a:hover:before { background-color: $CLR_MISSION_ACTIVE; }
+
+@include breakpoint(MD) {
+
+    .quarentine {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            @include remify(font-size, 26px);
+        }
+
+        a {
+            @include remify(font-size, 18px);
+        }
+
+        p {
+            @include remify(font-size, 18px);
+            line-height: 1.666666667;
+        }
+
+        figcaption {
+            @include remify(font-size, 22px);
+            padding: $SPACE_x2;
+        }
+    }
+}
+
+/* Right to Left Language support */
+[dir="rtl"] {
+
+    .quarentine {
+
+        a {
+            padding-right: initial;
+            padding-left: 35px;
+        }
+
+        a:after,
+        a:before {
+            right: initial;
+            left: -8px;
+        }
+
+        a:after {
+            border: none;
+            border-top: 1px solid;
+            border-left: 1px solid;
+        }
+
+        a:hover:after,
+        a:hover:before {
+            left: -15px;
+        }
+
+        li  {
+            padding-left: 0;
+            padding-right: $SPACE_x3;
+        }
+
+        li:before {
+            left: initial;
+            right: 8px;
+        }
+
+        blockquote {
+            border-left: none;
+            border-right: 4px solid $CLR_ACCENT;
+        }
+
+    }
+
+    /* THEME CLASSES for blockquote bullets by contectual selection */
+    .theme-impact blockquote { border-right: 4px solid $CLR_IMPACT; }
+    .theme-approach blockquote { border-right: 4px solid $CLR_APPROACH; }
+    .theme-mission blockquote { border-right: 4px solid $CLR_MISSION; }
+
+}
+
+
+
+
+
