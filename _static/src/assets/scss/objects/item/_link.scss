@@ -48,7 +48,7 @@
 
 .link:hover:after,
 .link:hover:before {
-    right: -15px;
+    right: -10px;
 }
 
 .link:hover:after { border-color: $CLR_ACCENT_ACTIVE; }
@@ -65,23 +65,19 @@
 
 .link_twoArrows:after,
 .link_twoArrows:before {
-    top: calc(50% - 4px);
-    bottom: 4px;
+    top: initial;
+    bottom: 5px;
     right: 0;
-    height: 6px;
-    width: 6px;
-    border-bottom: 2px solid $CLR_ACCENT;
-    border-right: 2px solid $CLR_ACCENT;
+    height: 4px;
+    width: 4px;
+    border-bottom: 2px solid #dcb421;
+    border-right: 2px solid #dcb421;
     transform: rotate(-45deg);
     background-color: transparent;
 }
 
 .link_twoArrows:before {
-    right: -5px;
-}
-
-.link_twoArrows:after {
-    bottom: 4px;
+    right: -4px;
 }
 
 .link_twoArrows:hover:before { background-color: transparent; }
@@ -94,7 +90,7 @@
 
 .link_preArrows:after,
 .link_preArrows:before {
-    top: calc(50% - 2px);
+    top: calc(50% - 3px);
     left: 0;
     height: 4px;
     width: 4px;
@@ -184,6 +180,10 @@
         @include remify(font-size, 18px);
     }
 
+    .link_twoArrows {
+        @include remify(font-size, 16px);
+    }
+
     .mix-link_small {
         @include remify(font-size, 16px);
     }
@@ -191,6 +191,11 @@
     .link_preArrows {
         @include remify(font-size, 12px);
     }
+    .link_twoArrows:after,
+    .link_twoArrows:before {
+        bottom: 6px;
+    }
+
 }
 
 /* Right to Left Language support */
@@ -225,7 +230,6 @@
 
     .link_twoArrows:after,
     .link_twoArrows:before {
-        // top: calc(50% - 4px);
         right: initial;
         left: 0;
         border-bottom: none;
@@ -251,9 +255,8 @@
         right: 0;
         border-bottom: none;
         border-right: none;
-        border-top: 2px solid;
-        border-left: 2px solid;
-        transform: rotate(135deg);
+        border-top: 2px solid #dbaf00;
+        border-left: 2px solid #dbaf00;
     }
 
     .link_preArrows:before {
