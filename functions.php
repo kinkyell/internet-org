@@ -290,3 +290,83 @@ require get_template_directory() . '/inc/language.php';
  * Custom menu walkers
  */
 require get_template_directory() . '/inc/menu-walkers.php';
+
+// @todo: Move these custom functions to an include and load in functions.php file
+
+/**
+ * Get the "subtitle" from the page_subtitle custom field.
+ *
+ * @see internetorg_create_after_title_fields_internetorg_page_home()
+ *
+ * @param int $post_id
+ *
+ * @return string
+ */
+function internetorg_get_the_subtitle( $post_id = 0 ) {
+
+	$post_id = absint( $post_id );
+
+	if ( empty( $post_id ) ) {
+		$post_id = get_the_ID();
+	}
+
+	if ( empty( $post_id ) ) {
+		return '';
+	}
+
+	$subtitle = get_post_meta( get_the_ID(), 'page_subtitle', true );
+
+	return $subtitle;
+}
+
+/**
+ * @param int $post_id
+ *
+ * @return string
+ */
+function internetorg_get_post_thumbnail( $post_id = 0 ) {
+
+	$post_id = absint( $post_id );
+
+	if ( empty( $post_id ) ) {
+		$post_id = get_the_ID();
+	}
+
+	if ( empty( $post_id ) ) {
+		return '';
+	}
+
+	$post_thumbnail_id = get_post_thumbnail_id( $post_id );
+
+	if ( empty( $post_thumbnail_id ) ) {
+		return '';
+	}
+
+	$attachment_image_src = wp_get_attachment_image_src( $post_thumbnail_id, 'full' );
+
+	if ( empty( $attachment_image_src ) ) {
+		return '';
+	}
+
+	return $attachment_image_src[0];
+}
+
+/**
+ * Apply WP's WYSIWYG text transformation functions using the_content filter.
+ *
+ * @todo this doesn't seem to handle video media embeds? Investigate.
+ *
+ * @param string $section_content The string to texturize.
+ *
+ * @return string
+ */
+function ineternetorg_the_section_content( $section_content = '' ){
+
+	if ( empty( $section_content ) ) {
+		return '';
+	}
+
+	$section_content = apply_filters( 'the_content', $section_content );
+
+	return $section_content;
+}
