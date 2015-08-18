@@ -14,6 +14,10 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 	 */
 	function internetorg_language_switcher() {
 
+		if ( ! function_exists( 'bogo_language_switcher_links' ) ) {
+			return '';
+		}
+
 		$list = bogo_language_switcher_links();
 
 		$optionsList  = array();
