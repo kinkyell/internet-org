@@ -23,3 +23,4 @@
 <link rel="icon" type="image/png" sizes="32x32" href="<?php echo esc_url( get_template_directory_uri() ); ?>/_static/web/assets/media/images/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="<?php echo esc_url( get_template_directory_uri() ); ?>/_static/web/assets/media/images/favicon-16x16.png">
 <meta name="msapplication-TileImage" content="<?php echo esc_url( get_template_directory_uri() ); ?>/_static/web/assets/media/images/mstile-144x144.png">
+<meta name="msapplication-TileColor" content="#ff0000">
