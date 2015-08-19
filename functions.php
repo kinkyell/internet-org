@@ -460,3 +460,143 @@ function internetorg_bbl_sync_meta_key( $sync, $meta_key ) {
 }
 
 add_filter( 'bbl_sync_meta_key', 'internetorg_bbl_sync_meta_key', 10, 2 );
+
+/**
+ * Filter the WP Native Gallery to modify markup to match what our FEDs expect.
+ *
+ * If the filtered output isn't empty... we're going to ignore it and use roll own anyway.
+ *
+ * @param string $output   The gallery output. Default empty.
+ * @param array  $attr     Attributes of the gallery shortcode.
+ * @param int    $instance Unique numeric ID of this gallery shortcode instance.
+ *
+ * @return string
+ */
+function internetorg_post_gallery_filter( $output, $attr, $instance ) {
+
+	$atts = shortcode_atts(
+		array(
+			'order'      => 'ASC',
+			'orderby'    => 'menu_order ID',
+			'id'         => $post ? $post->ID : 0,
+			'itemtag'    => 'li',
+			'icontag'    => 'div',
+			'captiontag' => 'div',
+			'columns'    => 1,
+			'size'       => 'full',
+			'include'    => '',
+			'exclude'    => '',
+			'link'       => '',
+		),
+		$attr,
+		'gallery'
+	);
+
+	$id = intval( $atts['id'] );
+
+	if ( ! empty( $atts['include'] ) ) {
+		$_attachments = get_posts(
+			array(
+				'include'        => $atts['include'],
+				'post_status'    => 'inherit',
+				'post_type'      => 'attachment',
+				'post_mime_type' => 'image',
+				'order'          => $atts['order'],
+				'orderby'        => $atts['orderby'],
+			)
+		);
+
+		$attachments = array();
+		foreach ( $_attachments as $key => $val ) {
+			$attachments[ $val->ID ] = $_attachments[ $key ];
+		}
+	} elseif ( ! empty( $atts['exclude'] ) ) {
+		$attachments = get_children(
+			array(
+				'post_parent'    => $id,
+				'exclude'        => $atts['exclude'],
+				'post_status'    => 'inherit',
+				'post_type'      => 'attachment',
+				'post_mime_type' => 'image',
+				'order'          => $atts['order'],
+				'orderby'        => $atts['orderby'],
+			)
+		);
+	} else {
+		$attachments = get_children(
+			array(
+				'post_parent'    => $id,
+				'post_status'    => 'inherit',
+				'post_type'      => 'attachment',
+				'post_mime_type' => 'image',
+				'order'          => $atts['order'],
+				'orderby'        => $atts['orderby'],
+			)
+		);
+	}
+
+	if ( empty( $attachments ) ) {
+		return '';
+	}
+
+	if ( is_feed() ) {
+		$output = "\n";
+		foreach ( $attachments as $att_id => $attachment ) {
+			$output .= wp_get_attachment_link( $att_id, $atts['size'], true ) . "\n";
+		}
+
+		return $output;
+	}
+
+	$itemtag    = tag_escape( $atts['itemtag'] );
+	$captiontag = tag_escape( $atts['captiontag'] );
+	$icontag    = tag_escape( $atts['icontag'] );
+	$valid_tags = wp_kses_allowed_html( 'post' );
+	if ( ! isset( $valid_tags[ $itemtag ] ) ) {
+		$itemtag = 'li';
+	}
+	if ( ! isset( $valid_tags[ $captiontag ] ) ) {
+		$captiontag = 'div';
+	}
+	if ( ! isset( $valid_tags[ $icontag ] ) ) {
+		$icontag = 'div';
+	}
+
+	$gallery_style = '';
+
+	$gallery_div = "<div id='js-carouselView{$instance}' class='carousel js-carouselView'>"
+	               . "<ul class='handle carousel-handle'>";
+
+	$output = $gallery_style . $gallery_div;
+
+	foreach ( $attachments as $id => $attachment ) {
+
+		$attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "$selector-$id" ) : '';
+		if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
+			$image_output = wp_get_attachment_link( $id, $atts['size'], false, false, false, $attr );
+		} elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
+			$image_output = wp_get_attachment_image( $id, $atts['size'], false, $attr );
+		} else {
+			$image_output = wp_get_attachment_link( $id, $atts['size'], true, false, false, $attr );
+		}
+
+		$output .= "<{$itemtag} class='carousel-handle-slide'>";
+		$output .= "
+			<{$icontag} class='carousel-handle-slide-media'>
+				$image_output
+			</{$icontag}>";
+		if ( $captiontag && trim( $attachment->post_excerpt ) ) {
+			$output .= "
+				<{$captiontag} class='carousel-handle-slide-caption'>
+				" . wptexturize( $attachment->post_excerpt ) . "
+				</{$captiontag}>";
+		}
+		$output .= "</{$itemtag}>";
+	}
+
+	$output .= "</ul></div>\n";
+
+	return $output;
+}
+
+add_filter( 'post_gallery', 'internetorg_post_gallery_filter', 10, 3 );
