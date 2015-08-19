@@ -98,7 +98,7 @@ get_header();
 									<div class="feature-hd">
 										<div class="hdg hdg_3"><?php echo esc_html( $section_fields['title'] ); ?></div>
 									</div>
-									<div class="feature-bd wysiwyg">
+									<div class="feature-bd wysiwyg quarantine">
 										<?php echo wp_kses_post( ineternetorg_the_section_content( $section_fields['content'] ) ); ?>
 									</div>
 								</div>
