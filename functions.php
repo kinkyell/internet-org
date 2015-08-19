@@ -442,7 +442,7 @@ add_filter( 'bbl_sync_meta_key', 'internetorg_bbl_sync_meta_key', 10, 2 );
 /**
  * Filter the WP Native Gallery to modify markup to match what our FEDs expect.
  *
- * If the filtered output isn't empty... we're going to ignore it and use roll own anyway.
+ * If the filtered output isn't empty... we're going to ignore it and roll own anyway.
  *
  * @param string $output   The gallery output. Default empty.
  * @param array  $attr     Attributes of the gallery shortcode.
@@ -542,7 +542,9 @@ function internetorg_post_gallery_filter( $output, $attr, $instance ) {
 
 	$gallery_style = '';
 
-	$gallery_div = "<div id='js-carouselView{$instance}' class='carousel js-carouselView'>"
+	$selector = "js-carouselView{$instance}";
+
+	$gallery_div = "<div id='{$selector}' class='carousel js-carouselView'>"
 	               . "<ul class='handle carousel-handle'>";
 
 	$output = $gallery_style . $gallery_div;
@@ -578,3 +580,19 @@ function internetorg_post_gallery_filter( $output, $attr, $instance ) {
 }
 
 add_filter( 'post_gallery', 'internetorg_post_gallery_filter', 10, 3 );
+
+/**
+ * Filter the image caption shortcode output to remove the inline width style and image width/height attributes.
+ *
+ * @param  string $output The image caption markup to filter.
+ *
+ * @return string
+ */
+function internetorg_img_caption_filter( $output ) {
+	$output = preg_replace( '/style=\"width: [0-9]{1,}px\"/', '', $output );
+	$output = preg_replace( '/(width|height)=\"\d{1,}\"\s/', '', $output );
+
+	return $output;
+}
+
+add_filter( 'img_caption_shortcode', 'internetorg_img_caption_filter' );
