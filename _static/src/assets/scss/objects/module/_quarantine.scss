@@ -84,16 +84,16 @@
         color: $CLR_GRAY;
     }
 
-    ul > * + * {
+    ul:not(.carousel-handle) > * + * {
         margin-top: 22px;
     }
 
     // THEME CLASSES by contectual selection
-    .theme-impact li:before { color: $CLR_IMPACT; }
-    .theme-approach li:before { color: $CLR_APPROACH; }
-    .theme-mission li:before { color: $CLR_MISSION; }
+    .theme-impact ul:not(.carousel-handle) li:before { color: $CLR_IMPACT; }
+    .theme-approach ul:not(.carousel-handle) li:before { color: $CLR_APPROACH; }
+    .theme-mission ul:not(.carousel-handle) li:before { color: $CLR_MISSION; }
 
-    li {
+    ul:not(.carousel-handle) > li {
         font-family: $FONT_SANS;
         line-height: 1.666667;
         color: $CLR_GRAY;
@@ -101,7 +101,7 @@
         padding-left: $SPACE_x3;
     }
 
-    li:before {
+    ul:not(.carousel-handle) > li:before {
         content: '•';
         position: absolute;
         top: -8px;
@@ -162,9 +162,9 @@
 }
 
 /* THEME CLASSES for li bullets by contectual selection */
-.theme-impact .quarantine li:before { color: $CLR_IMPACT; }
-.theme-approach .quarantine li:before { color: $CLR_APPROACH; }
-.theme-mission .quarantine li:before { color: $CLR_MISSION; }
+.theme-impact .quarantine ul:not(.carousel-handle) li:before { color: $CLR_IMPACT; }
+.theme-approach .quarantine ul:not(.carousel-handle) li:before { color: $CLR_APPROACH; }
+.theme-mission .quarantine ul:not(.carousel-handle) li:before { color: $CLR_MISSION; }
 
 /* THEME CLASSES for blockquote bullets by contectual selection */
 .theme-impact blockquote { border-left: 4px solid $CLR_IMPACT; }
@@ -249,12 +249,12 @@
             left: -15px;
         }
 
-        li  {
+        ul:not(.carousel-handle) > li  {
             padding-left: 0;
             padding-right: $SPACE_x3;
         }
 
-        li:before {
+        ul:not(.carousel-handle) > li:before {
             left: initial;
             right: 8px;
         }
