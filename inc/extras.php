@@ -97,3 +97,42 @@ if ( ! function_exists( 'internetorg_change_excerpt_more' ) ) :
 	add_action( 'excerpt_more', 'internetorg_change_excerpt_more' );
 endif;
 
+/**
+ * Improves the caption shortcode with HTML5 figure & figcaption; microdata & wai-aria attributes
+ *
+ * based off this solution http://joostkiens.com/improving-wp-caption-shortcode/
+ *
+ * @param  string $val     Empty
+ * @param  array  $attr    Shortcode attributes
+ * @param  string $content Shortcode content
+ * @return string          Shortcode output
+ */
+function jk_img_caption_shortcode_filter($val, $attr, $content = null)
+{
+	$cleanedAttributes = shortcode_atts( array(
+		'id'      => '',
+		'align'   => 'aligncenter',
+		'width'   => '',
+		'caption' => '',
+	), $attr );
+
+	$id      = $cleanedAttributes['id'];
+	$width   = $cleanedAttributes['width'];
+	$caption = $cleanedAttributes['caption'];
+	$align   = $cleanedAttributes['align'];
+
+	// No caption, no dice... But why width?
+	if ( 1 > (int) $width || empty( $caption ) ) {
+		return $val;
+	}
+
+	if ( $id ) {
+		$id = esc_attr( $id );
+	}
+
+	// Add itemprop="contentURL" to image - Ugly hack
+	$content = str_replace( '<img', '<img itemprop="contentURL"', $content );
+
+	return '<figure id="' . $id . '" aria-describedby="figcaption_' . $id . '" class="wp-caption ' . esc_attr( $align ) . '" itemscope itemtype="http://schema.org/ImageObject" style="width: ' . ( 0 + (int) $width ) . 'px">' . do_shortcode( $content ) . '<figcaption id="figcaption_'. $id . '" class="wp-caption-text" itemprop="description">' . $caption . '</figcaption></figure>';
+}
+add_filter( 'img_caption_shortcode', 'jk_img_caption_shortcode_filter', 10, 3 );

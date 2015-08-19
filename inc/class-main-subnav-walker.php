@@ -56,6 +56,10 @@ class Internetorg_Main_SubNav_Walker extends Walker_Nav_Menu
 		$attributes .= ' ';
 		$attributes .= ' class="auxLink js-stateLink"';
 
+		if ( is_array( $args ) && ! empty( $args ) ) {
+			$args = (object) $args;
+		}
+
 		$item_output = sprintf( '%1$s<a%2$s>%3$s%4$s%5$s</a>%6$s',
 			$args->before,
 			$attributes,

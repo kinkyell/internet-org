@@ -11,6 +11,7 @@
 /* ---------------------------------------------------------------------
  Base Styles
 ------------------------------------------------------------------------ */
+@import "base/fonts";
 @import "base/reset";
 @import "base/elements";
 
@@ -45,6 +46,7 @@
 @import "objects/module/mainMenu";
 @import "objects/module/menutrigger";
 @import "objects/module/narrative";
+@import "objects/module/narrativeDT";
 @import "objects/module/panel";
 @import "objects/module/quarantine";
 @import "objects/module/quote";
@@ -59,8 +61,10 @@
 @import "objects/module/fbfollowblock";
 @import "objects/module/carousel";
 @import "objects/module/transformBlock";
+@import "objects/module/statementBlock";
 @import "objects/module/socialBlock";
 @import "objects/module/imgWrap";
+@import "objects/module/splashFooter";
 @import "objects/module/loadingicon";
 
 /* ---------------------------------------------------------------------
@@ -73,6 +77,7 @@
 @import "objects/repeater/blocks";
 @import "objects/repeater/borderBlocks";
 @import "objects/repeater/vlist";
+@import "objects/repeater/midAlignBlock";
 
 /* ---------------------------------------------------------------------
  Objects: item

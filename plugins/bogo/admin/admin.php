@@ -12,7 +12,7 @@ function bogo_admin_enqueue_scripts( $hook_suffix ) {
 	|| 'widgets.php' == $hook_suffix
 	|| 'user-edit.php' == $hook_suffix ) {
 		wp_enqueue_style( 'bogo-admin',
-			plugins_url( 'admin/includes/css/admin.css', BOGO_PLUGIN_BASENAME ),
+			plugins_url( 'admin/includes/css/admin.css', '/' . BOGO_PLUGIN_BASENAME ),
 			array(), BOGO_VERSION, 'all' );
 
 		return;
@@ -30,7 +30,7 @@ function bogo_admin_enqueue_scripts( $hook_suffix ) {
 		$prefix = 'menu-item-bogo-locale';
 
 		wp_enqueue_script( 'bogo-admin',
-			plugins_url( 'admin/includes/js/admin.js', BOGO_PLUGIN_BASENAME ),
+			plugins_url( 'admin/includes/js/admin.js', '/' . BOGO_PLUGIN_BASENAME ),
 			array( 'jquery' ),
 			BOGO_VERSION, true );
 
@@ -41,7 +41,7 @@ function bogo_admin_enqueue_scripts( $hook_suffix ) {
 			'cbPrefix' => $prefix ) );
 
 		wp_enqueue_style( 'bogo-admin',
-			plugins_url( 'admin/includes/css/admin.css', BOGO_PLUGIN_BASENAME ),
+			plugins_url( 'admin/includes/css/admin.css', '/' . BOGO_PLUGIN_BASENAME ),
 			array(), BOGO_VERSION, 'all' );
 
 		return;
@@ -49,7 +49,7 @@ function bogo_admin_enqueue_scripts( $hook_suffix ) {
 
 	if ( 'options-general.php' == $hook_suffix ) {
 		wp_enqueue_script( 'bogo-admin',
-			plugins_url( 'admin/includes/js/admin.js', BOGO_PLUGIN_BASENAME ),
+			plugins_url( 'admin/includes/js/admin.js', '/' . BOGO_PLUGIN_BASENAME ),
 			array( 'jquery' ),
 			BOGO_VERSION, true );
 

@@ -36,3 +36,8 @@
         }
     }
 }
+
+@mixin unContain() {
+    width: auto;
+    margin: initial;
+}

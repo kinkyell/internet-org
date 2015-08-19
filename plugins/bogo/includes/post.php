@@ -95,16 +95,19 @@ function bogo_get_post_translations( $post_id = 0 ) {
 	}
 
 	foreach ( $posts as $p ) {
-		if ( $p->ID == $post->ID )
+		if ( $p->ID == $post->ID ) {
 			continue;
+		}
 
 		$locale = bogo_get_post_locale( $p->ID );
 
-		if ( ! bogo_is_available_locale( $locale ) )
+		if ( ! bogo_is_available_locale( $locale ) ) {
 			continue;
+		}
 
-		if ( ! isset( $translations[ $locale ] ) )
+		if ( ! isset( $translations[ $locale ] ) ) {
 			$translations[ $locale ] = $p;
+		}
 	}
 
 	return array_filter( $translations );
@@ -113,8 +116,9 @@ function bogo_get_post_translations( $post_id = 0 ) {
 function bogo_get_page_by_path( $page_path, $locale = null, $post_type = 'page' ) {
 	global $wpdb;
 
-	if ( ! bogo_is_available_locale( $locale ) )
+	if ( ! bogo_is_available_locale( $locale ) ) {
 		$locale = bogo_get_default_locale();
+	}
 
 	$page_path = rawurlencode( urldecode( $page_path ) );
 	$page_path = str_replace( '%2F', '/', $page_path );
@@ -145,32 +149,33 @@ function bogo_get_page_by_path( $page_path, $locale = null, $post_type = 'page' 
 	$foundid = 0;
 
 	foreach ( (array) $pages as $page ) {
-		if ( $page->post_name != $revparts[0] )
+		if ( $page->post_name != $revparts[0] ) {
 			continue;
+		}
 
 		$count = 0;
 		$p = $page;
 
-		while ( $p->post_parent != 0 && isset( $pages[$p->post_parent] ) ) {
+		while ( $p->post_parent != 0 && isset( $pages[ $p->post_parent ] ) ) {
 			$count++;
-			$parent = $pages[$p->post_parent];
+			$parent = $pages[ $p->post_parent ];
 
-			if ( ! isset( $revparts[$count] ) || $parent->post_name != $revparts[$count] )
+			if ( ! isset( $revparts[ $count ] ) || $parent->post_name != $revparts[ $count ] ) {
 				break;
+			}
 
 			$p = $parent;
 		}
 
-		if ( $p->post_parent == 0
-		&& $count + 1 == count( $revparts )
-		&& $p->post_name == $revparts[$count] ) {
+		if ( 0 == $p->post_parent && $count + 1 == count( $revparts ) && $p->post_name == $revparts[ $count ] ) {
 			$foundid = $page->ID;
 			break;
 		}
 	}
 
-	if ( $foundid )
+	if ( $foundid ) {
 		return get_post( $foundid );
+	}
 
 	return null;
 }

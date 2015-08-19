@@ -14,6 +14,10 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 	 */
 	function internetorg_language_switcher() {
 
+		if ( ! function_exists( 'bogo_language_switcher_links' ) ) {
+			return '';
+		}
+
 		$list = bogo_language_switcher_links();
 
 		$optionsList  = array();
@@ -21,10 +25,10 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 		$selectedLang = null;
 
 		foreach ( $list as $item ) {
-			if ( $item['href'] ) {
-				$optionsList[] = '<option value="' . esc_url( $item['href'] ) . '">' . esc_html( $item['lang']->title ) . '</option>';
+			if ( ! empty( $item ) ) {
+				$optionsList[] = '<option value="' . esc_url( $item['href'] ) . '">' . esc_html( $item['title'] ) . '</option>';
 
-				$divList[] = '<div class="langSelect-menu-item"><span>' . esc_html( $item['lang']->title ) . '</span></div>';
+				$divList[] = '<div class="langSelect-menu-item"><span>' . esc_html( $item['native_name'] ) . '</span></div>';
 			}
 		}
 
@@ -33,7 +37,7 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 		echo '<select onchange="document.location.href=this.options[this.selectedIndex].value;">';
 		echo implode( "\n", $optionsList );
 		echo '</select>';
-		echo '<div class="langSelect-label">' . esc_html( $selectedLang['lang']->display_name ) . '</div>';
+		echo '<div class="langSelect-label">' . esc_html( ! empty( $selectedLang ) ? $selectedLang['title'] : '' ) . '</div>';
 		echo '<div class="langSelect-menu" style="height: auto;">';
 		echo implode( "\n", $divList );
 		echo '</div>';
@@ -41,9 +45,31 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'internetorg_add_translatable_posttypes' ) ) :
+	/**
+	 * Add our CPTs to the list of translatable post types
+	 *
+	 * @param array $posttypes current list of translatable post types
+	 * @return array new list of translatable post types
+	 */
+	function internetorg_add_translatable_posttypes( $posttypes ) {
+		if ( ! is_array( $posttypes ) ) {
+			$posttypes = array();
+		}
 
+		$cptlist = array(
+			'io_press',
+			'io_story',
+			'io_campaign',
+			'io_freesvc',
+			'io_ctntwdgt',
+		);
 
-
+		return array_merge( $posttypes, $cptlist );
+	}
+	// hook on to the filter so our CPTs get listed
+	add_filter( 'bogo_localizable_post_types', 'internetorg_add_translatable_posttypes' );
+endif;
 
 
 

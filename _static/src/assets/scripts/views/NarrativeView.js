@@ -8,6 +8,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var Timeline = require('gsap-timeline');
     var AbstractView = require('./AbstractView');
     var ViewWindow = require('services/viewWindow');
+    var eventHub = require('services/eventHub');
     var breakpointManager = require('services/breakpointManager');
 
     var CONFIG = {
@@ -137,13 +138,11 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var proto = AbstractView.createChild(NarrativeView);
 
-
     /**
      * Binds the scope of any handler functions.
      * Should only be run on initialization of the view.
      *
      * @method setupHandlers
-     * @returns {NarrativeView}
      * @private
      */
     proto.setupHandlers = function() {
@@ -184,6 +183,12 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.layout = function() {
         this.$narrativeSections.eq(0).addClass('isActive');
         this._slidesLength = this.$narrativeSections.length;
+
+
+        // if Desktop
+        // if (!breakpointManager.isMobile) {
+        //     $('.narrativeDT')
+        // }
     };
 
     /**
@@ -198,6 +203,8 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.onEnable = function() {
         $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
         this.$body.on('touchstart', this._onTouchStart.bind(this));
+
+        this._setupDTtransitions();
 
         this.viewWindow = ViewWindow;
     };
@@ -376,7 +383,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._sectionTransitionMobile = function(position) {
         var $destinationSection = $('.narrative-section').eq(position);
         var $sectionBody = $destinationSection.find('.narrative-section-bd');
-        var $sectionBodyCnt = $sectionBody.find('.transformBlock');
+        var $sectionBodyCnt = $sectionBody.find('.statementBlock');
         this._slidePosition = (position > this._position) ? 0 : $destinationSection.find('.narrative-section-slides-item:last-child').index(); // jshint ignore:line
 
         var i = 0;
@@ -398,21 +405,12 @@ define(function(require, exports, module) { // jshint ignore:line
 
         var bdCntPos = bdTwnPos * 2;
 
-
         var bdTwn = Tween.from($sectionBody, 0.5, {y: bdTwnPos + '%'});
         var bdCntTwn = Tween.from($sectionBodyCnt, 0.65, {y: bdCntPos + '%'});
 
         var tl = new Timeline();
         tl.add(bdTwn);
         tl.add(bdCntTwn, '-=0.5');
-
-        // if (this._position === (this._slidesLength - 1) && position === (this._slidesLength - 2)) {
-        //    console.log('second to last');
-        // }
-        // if (position !== (this._slidesLength - 1)) {
-        //
-        // }
-
 
         if (this._position === 0 && position === 1) {
             var opacTwn = Tween.from($sectionBody, 0.5, {opacity: 0});
@@ -426,29 +424,181 @@ define(function(require, exports, module) { // jshint ignore:line
             this._updateSlideHooks();
             window.setTimeout(this._onSectionComplete.bind(this, position), this._scrollBuffer);
         }.bind(this) }, '-=0.65');
+
+        tl.timeScale(1.15);
     };
 
-    proto._sectionTransitionDesktop = function(position) {
-        var $currentSection = $('.narrative-section').eq(this._position);
-        var $transformBlock = $currentSection.find('.transformBlock');
-        var $linePre = $transformBlock.find('.transformBlock-pre');
-        var direction = (this._position < position) ? 'bottom' : 'top';
+    proto._setupDTtransitions = function() {
+        var $transformBlock = $('.js-transformBlock');
+        this.tl = new Timeline({ paused: true });
 
-        var movement = (direction === 'bottom') ? '-=90px' : '+=90px';
-        var tl = new Timeline();
-        tl.to($transformBlock, 0.35, {
-            top: movement
+        //  transition 01
+        ///////////////////////
+        this.tl.to($transformBlock, 0.35, {
+            y: '-90px'
         });
 
-        tl.to($linePre, 0.35, {
+        this.tl.to($('.transformBlock-pre-item').eq(0), 0.35, {
             opacity: 0
         }, '-=0.35');
 
-        this.viewWindow.replaceFeatureImage('/assets/media/uploads/home.jpg', direction).then(function() {
-            this._position = position;
-            this._updateSlideHooks();
-            this._isAnimating = false;
-        }.bind(this));
+        this.tl.fromTo($('.transformBlock-post-item').eq(0), 0.35, {
+            y: '90px',
+            opacity: 0
+        }, {
+            y: '0px',
+            opacity: 1
+        }, '-=0.35');
+
+        //  transition 02
+        ///////////////////////
+        this.tl.to($('.transformBlock-post-item').eq(0), 0.35, {
+            y: '-45px',
+            opacity: 0
+        });
+
+        this.tl.fromTo($('.transformBlock-post-item').eq(1), 0.35, {
+            y: '90px',
+            opacity: 0
+        }, {
+            y: '0px',
+            opacity: 1
+        }, '-=0.35');
+
+        //  transition 03
+        ///////////////////////
+        this.tl.to($('.transformBlock-post-item').eq(1), 0.35, {
+            y: '-45px',
+            opacity: 0
+        });
+
+        this.tl.fromTo($('.transformBlock-post-item').eq(2), 0.35, {
+            y: '90px',
+            opacity: 0
+        }, {
+            y: '0px',
+            opacity: 1
+        }, '-=0.35');
+
+        //  transition 04
+        ///////////////////////
+        this.tl.to($transformBlock, 0.35, {
+            y: '-=90px'
+        });
+
+        this.tl.fromTo($('.transformBlock-pre-item').eq(1), 0.35, {
+            opacity: 0,
+            y: '50px'
+        }, {
+            opacity: 1,
+            y: '0px'
+        }, '-=0.35');
+
+        this.tl.to($('.transformBlock-post-item').eq(2), 0.35, {
+            y: '-45px',
+            opacity: 0
+        }, '-=0.35');
+
+        this.tl.fromTo($('.transformBlock-post-item').eq(3), 0.35, {
+            y: '90px',
+            opacity: 0
+        }, {
+            y: '0px',
+            opacity: 1
+        }, '-=0.35');
+
+        this.tl.addLabel('section00', 0);
+        this.tl.addLabel('section01', 0.35);
+        this.tl.addLabel('section02', 0.7);
+        this.tl.addLabel('section03', 1.05);
+        this.tl.addLabel('section04', 1.4);
+
+        this.tl.timeScale(1.5);
+    };
+
+    proto._onLabelComplete = function(position) {
+        this._position = position;
+        var i = 0;
+        var $postItems = $('.transformBlock-post-item');
+        var l = $postItems.length;
+        for (; i < l; i++) {
+            var $postItem = $postItems.eq(i);
+            $postItem.removeClass('transformBlock-post-item_isActive');
+        }
+
+        $('.transformBlock-post-item').eq(position - 1).addClass('transformBlock-post-item_isActive');
+
+        window.setTimeout(this._onSectionComplete.bind(this, position), this._scrollBuffer);
+    };
+
+    proto._sectionTransitionDesktop = function(position) {
+        var direction = (this._position < position) ? 'bottom' : 'top';
+        var featureImage = null;
+
+        switch (position) {
+            case 0:
+                featureImage = '/assets/media/uploads/home.jpg';
+
+                this.tl.tweenFromTo('section01', 'section00', {
+                    onComplete: this._onLabelComplete.bind(this, position)
+                });
+                break;
+            case 1:
+                featureImage = '/assets/media/uploads/mission.jpg';
+
+                if (direction === 'bottom') {
+                    this.tl.tweenFromTo('section00', 'section01', {
+                        onComplete: this._onLabelComplete.bind(this, position)
+                    });
+                } else {
+                    this.tl.tweenFromTo('section02', 'section01', {
+                        onComplete: this._onLabelComplete.bind(this, position)
+                    });
+                }
+                break;
+            case 2:
+                featureImage = '/assets/media/uploads/approach.jpg';
+
+                if (direction === 'bottom') {
+                    this.tl.tweenFromTo('section01', 'section02', {
+                        onComplete: this._onLabelComplete.bind(this, position)
+                    });
+                } else {
+                    this.tl.tweenFromTo('section03', 'section02', {
+                        onComplete: this._onLabelComplete.bind(this, position)
+                    });
+                }
+                break;
+            case 3:
+                featureImage = '/assets/media/uploads/impact.jpg';
+
+                if (direction === 'bottom') {
+                    this.tl.tweenFromTo('section02', 'section03', {
+                        onComplete: this._onLabelComplete.bind(this, position)
+                    });
+                } else {
+                    this.tl.tweenFromTo('section04', 'section03', {
+                        onComplete: this._onLabelComplete.bind(this, position)
+                    });
+                }
+                break;
+            case 4:
+                featureImage = '/assets/media/uploads/contact.jpg';
+
+                this.tl.tweenFromTo('section03', 'section04', {
+                    onComplete: this._onLabelComplete.bind(this, position)
+                });
+                break;
+            default:
+                featureImage = '/assets/media/uploads/home.jpg';
+
+                this.tl.tweenFromTo('section01', 'section00', {
+                    onComplete: this._onLabelComplete.bind(this, position)
+                });
+                break;
+        }
+
+        this.viewWindow.replaceFeatureImage(featureImage, direction);
     };
 
     proto._updateSlideHooks = function() {
@@ -464,6 +614,8 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._onSectionComplete = function(position) {
         $(window).on('wheel', this._onWheelEventHandler);
         this._isAnimating = false;
+        this._updateSlideHooks();
+        eventHub.publish('Narrative:sectionChange', position);
     };
 
     proto._updateIndicators = function() {

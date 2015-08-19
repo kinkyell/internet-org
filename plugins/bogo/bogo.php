@@ -49,8 +49,9 @@ function bogo_init() {
 	if ( ! ( is_admin() || is_robots() || is_feed() || is_trackback() ) ) {
 		$locale = get_locale();
 
-		if ( ! isset( $_COOKIE['lang'] ) || $_COOKIE['lang'] != $locale )
+		if ( ! isset( $_COOKIE['lang'] ) || $_COOKIE['lang'] != $locale ) {
 			setcookie( 'lang', $locale, 0, '/' );
+		}
 	}
 }
 
@@ -59,19 +60,22 @@ add_filter( 'locale', 'bogo_locale' );
 function bogo_locale( $locale ) {
 	global $wp_rewrite, $wp_query;
 
-	if ( ! did_action( 'plugins_loaded' ) )
+	if ( ! did_action( 'plugins_loaded' ) ) {
 		return $locale;
+	}
 
-	if ( is_admin() )
+	if ( is_admin() ) {
 		return bogo_get_user_locale();
+	}
 
 	$default_locale = bogo_get_default_locale();
 
 	if ( ! empty( $wp_query->query_vars ) ) {
-		if ( ( $lang = get_query_var( 'lang' ) ) && $closest = bogo_get_closest_locale( $lang ) )
+		if ( ( $lang = get_query_var( 'lang' ) ) && $closest = bogo_get_closest_locale( $lang ) ) {
 			return $closest;
-		else
+		} else {
 			return $default_locale;
+		}
 	}
 
 	if ( isset( $wp_rewrite ) && $wp_rewrite->using_permalinks() ) {
@@ -87,15 +91,16 @@ function bogo_locale( $locale ) {
 		$available_languages = implode( '|', $available_languages );
 		$pattern = '#^' . preg_quote( $home ) . '(' . $available_languages . ')(/|$)#';
 
-		if ( preg_match( $pattern, $url, $matches )
-		&& $closest = bogo_get_closest_locale( $matches[1] ) )
+		if ( preg_match( $pattern, $url, $matches ) && $closest = bogo_get_closest_locale( $matches[1] ) ) {
 			return $closest;
+		}
 	}
 
 	$lang = bogo_get_lang_from_url();
 
-	if ( $lang && $closest = bogo_get_closest_locale( $lang ) )
+	if ( $lang && $closest = bogo_get_closest_locale( $lang ) ) {
 		return $closest;
+	}
 
 	$locale = $default_locale;
 
@@ -115,13 +120,9 @@ add_shortcode( 'bogo', 'bogo_language_switcher' );
 add_action( 'wp_enqueue_scripts', 'bogo_enqueue_scripts' );
 
 function bogo_enqueue_scripts() {
-	wp_enqueue_style( 'bogo',
-		plugins_url( 'includes/css/main.css', BOGO_PLUGIN_BASENAME ),
-		array(), BOGO_VERSION, 'all' );
+	wp_enqueue_style( 'bogo', plugins_url( 'includes/css/main.css', '/' . BOGO_PLUGIN_BASENAME ), array(), BOGO_VERSION, 'all' );
 
 	if ( is_rtl() ) {
-		wp_enqueue_style( 'bogo-rtl',
-			plugins_url( 'includes/css/main-rtl.css', BOGO_PLUGIN_BASENAME ),
-			array(), BOGO_VERSION, 'all' );
+		wp_enqueue_style( 'bogo-rtl', plugins_url( 'includes/css/main-rtl.css', '/' . BOGO_PLUGIN_BASENAME ), array(), BOGO_VERSION, 'all' );
 	}
 }

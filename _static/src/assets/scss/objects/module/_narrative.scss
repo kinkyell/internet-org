@@ -2,6 +2,7 @@
  Narrative
 ------------------------------------------------------------------------ */
 .narrative {
+    display: block;
     position: relative;
     width: 100%;
     height: 100%;
@@ -12,10 +13,6 @@
     position: relative;
     width: 100%;
     height: 100%;
-}
-
-.narrative-section.isActive {
-    z-index: 1;
 }
 
 .narrative-section-slides {
@@ -42,9 +39,10 @@
 }
 
 .narrative-section-bd {
-    display: table;
     width: 100%;
-    height: 48%;
+    min-height: 48%;
+    padding: 70px 0 24px;
+    box-sizing: border-box;
     position: absolute;
     top: 0;
     left: 0;
@@ -54,23 +52,9 @@
 .narrative-section-bd_low {
     top: auto;
     bottom: 0;
-    height: 38%;
-    padding-bottom: 50px; // added space for absolute footer
+    min-height: 38%;
+    padding: 0 0 50px; // added space for absolute footer
     background-color: transparent;
-}
-
-// .narrative-section-bd_foot {
-//     top: auto;
-//     bottom: 0;
-//     height: 38%;
-//     padding-bottom: 50px; // added space for absolute footer
-//     background-color: transparent;
-// }
-
-.narrative-section-bd-inner {
-    display: table-cell;
-    vertical-align: middle;
-    padding: 68px 0 24px;
 }
 
 .narrative-section-bd-link {
@@ -118,30 +102,6 @@
 
 @include breakpoint(MD) {
     .narrative {
-        background: url(../media/images/icons/io-mark-bg.svg) no-repeat $CLR_GRAY_LIGHTER;
-        background-position: -725px top;
-        background-size: 1450px 2035px;
-    }
-
-    .narrative-section {
-        position: absolute;
-    }
-
-    .narrative-section:not(.isActive) {
-        display: none;
-    }
-
-    .narrative-section-bd {
-        width: 100%;
-        height: 100%;
-        background-color: transparent;
-    }
-
-    .narrative-section-bd-ft {
-        display: none;
-    }
-
-    .narrative-section-slides-item {
         display: none;
     }
 }

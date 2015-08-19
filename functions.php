@@ -5,21 +5,31 @@
  * @package Internet.org
  */
 
-
 // PLUGIN INCLUSION
 // WP VIP Helper Plugin -- gives us access to the VIP only functions
 define( 'IO_DIR', __DIR__ );
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
+/** translation related plugins -- commenting out to continue working on theme without blocker/distraction */
+//require IO_DIR . '/plugins/bogo/bogo.php';
+require IO_DIR . '/plugins/babble/babble.php';
+require IO_DIR . '/plugins/babble/translation-show-pre-translation.php';
+require IO_DIR . '/plugins/babble/translation-group-tool.php';
+require IO_DIR . '/plugins/babble/translation-fields.php';
+
+/** Other VIP plugins that have caused some wonkiness -- commenting out to continue working on theme without blocker/distraction */
+//wpcom_vip_load_plugin( 'wp-google-analytics' );
+//wpcom_vip_load_plugin( 'responsive-images' );
+//wpcom_vip_load_plugin( 'cache-nav-menu' );
+//wpcom_vip_load_plugin( 'facebook' );
+//wpcom_vip_load_plugin( 'lazy-load' );
+
+/** Custom Post Types */
 require IO_DIR . '/plugins/internetorg-custom-posttypes/internetorg-custom-posttypes.php';
-require IO_DIR . '/plugins/internetorg-custom-fields/internetorg-custom-fields.php';
-require IO_DIR . '/plugins/bogo/bogo.php';
+
+/** Fieldmanager and Fields */
 wpcom_vip_load_plugin( 'fieldmanager' );
-wpcom_vip_load_plugin( 'wp-google-analytics' );
-wpcom_vip_load_plugin( 'responsive-images' );
-wpcom_vip_load_plugin( 'cache-nav-menu' );
-wpcom_vip_load_plugin( 'facebook' );
-wpcom_vip_load_plugin( 'lazy-load' );
+require IO_DIR . '/plugins/internetorg-custom-fields/internetorg-custom-fields.php';
 
 if ( ! function_exists( 'internetorg_setup' ) ) :
 	/**
@@ -370,3 +380,223 @@ function ineternetorg_the_section_content( $section_content = '' ){
 
 	return $section_content;
 }
+
+/**
+ * Make custom meta fields available for Babble translation.
+ *
+ * Hooks the bbl_translated_meta_fields Babble filter to add our fields to
+ * the list of fields which have translation configurations and so will show
+ * up in the translation UI.
+ * It should be noted that this is based on the demonstration of translating WPSEO meta fields in Babble plugin.
+ * It "works," however, it appears there is a bug in Babble, see issues 257 and 260 in the Babble Github project.
+ * When you update the translated post, the meta for the original is overwritten as well.
+ * There are some suggestions in the Babble Github project, issue 257.
+ * Two possible solutions:
+ * 1. The developer should both filter bbl_translated_meta_fields to specify the translation config for each field AND
+ * filter bbl_sync_meta_key to stop those keys being filtered
+ * 2. Babble should stop a meta_key which has a translation config (e.g. in bbl_translated_meta_fields) from syncing
+ *
+ * @see  bbl_wpseo_meta_fields
+ *
+ * @link https://github.com/Automattic/babble/blob/develop/translation-fields.php Demonstration of translating meta.
+ * @link https://github.com/Automattic/babble/issues/257 Clashing keys when using the `bbl_translated_meta_fields`
+ *       filter #257
+ * @link https://github.com/Automattic/babble/issues/260 Filtering `bbl_translated_meta_fields` doesn't stop
+ *       `meta_keys` from syncing #260
+ *
+ * @param array    $fields An array of instances of the Babble_Meta_Field_* classes
+ * @param \WP_Post $post   The WP_Post object which is to be translated
+ *
+ * @return array An array of instances of the Babble_Meta_Field_* classes
+ */
+function internetorg_bbl_fm_fields( array $fields, WP_Post $post ) {
+
+	error_log( '$fields = ' . print_r( $fields, true ) );
+	error_log( '$post = ' . print_r( $post, true ) );
+
+	$fields['page_subtitle'] = new Babble_Meta_Field_Textarea(
+		$post,
+		'page_subtitle',
+		_x(
+			'Subtitle',
+			'Fieldmanager plugin meta field',
+			'internetorg'
+		)
+	);
+
+	return $fields;
+}
+
+add_filter( 'bbl_translated_meta_fields', 'internetorg_bbl_fm_fields', 10, 2 );
+
+/**
+ * Hooks the bbl_sync_meta_key Babble filter to specify when a meta_key
+ * should not be translated. If a key is NOT to be translated, normally
+ * you will want Babble to sync the same value to all translations, e.g.
+ * for a meta_key which specifies the same custom header colour for a post
+ * whichever language it is in. If you want a meta_key to be translated, e.g.
+ * for a meta_key which specifies the text for a subheading, then you will
+ * want to specify a translation configuration AND stop the key from being
+ * synced by returning false in this filter when the $meta_key value is
+ * the name of your meta_key.
+ *
+ * @param bool   $sync     True if the meta_key is NOT to be translated and SHOULD be synced
+ * @param string $meta_key The name of the post meta meta_key
+ *
+ * @return bool True if the meta_key is NOT to be translated and SHOULD be synced
+ */
+function internetorg_bbl_sync_meta_key( $sync, $meta_key ) {
+
+	error_log( '$sync = ' . print_r( $sync, true ) );
+	error_log( '$meta_key = ' . print_r( $meta_key, true ) );
+
+	$sync_not = array( 'page_subtitle' );
+
+	if ( in_array( $meta_key, $sync_not ) ) {
+		return false;
+	}
+
+	return $sync;
+}
+
+add_filter( 'bbl_sync_meta_key', 'internetorg_bbl_sync_meta_key', 10, 2 );
+
+/**
+ * Filter the WP Native Gallery to modify markup to match what our FEDs expect.
+ *
+ * If the filtered output isn't empty... we're going to ignore it and use roll own anyway.
+ *
+ * @param string $output   The gallery output. Default empty.
+ * @param array  $attr     Attributes of the gallery shortcode.
+ * @param int    $instance Unique numeric ID of this gallery shortcode instance.
+ *
+ * @return string
+ */
+function internetorg_post_gallery_filter( $output, $attr, $instance ) {
+
+	$atts = shortcode_atts(
+		array(
+			'order'      => 'ASC',
+			'orderby'    => 'menu_order ID',
+			'id'         => $post ? $post->ID : 0,
+			'itemtag'    => 'li',
+			'icontag'    => 'div',
+			'captiontag' => 'div',
+			'columns'    => 1,
+			'size'       => 'full',
+			'include'    => '',
+			'exclude'    => '',
+			'link'       => '',
+		),
+		$attr,
+		'gallery'
+	);
+
+	$id = intval( $atts['id'] );
+
+	if ( ! empty( $atts['include'] ) ) {
+		$_attachments = get_posts(
+			array(
+				'include'        => $atts['include'],
+				'post_status'    => 'inherit',
+				'post_type'      => 'attachment',
+				'post_mime_type' => 'image',
+				'order'          => $atts['order'],
+				'orderby'        => $atts['orderby'],
+			)
+		);
+
+		$attachments = array();
+		foreach ( $_attachments as $key => $val ) {
+			$attachments[ $val->ID ] = $_attachments[ $key ];
+		}
+	} elseif ( ! empty( $atts['exclude'] ) ) {
+		$attachments = get_children(
+			array(
+				'post_parent'    => $id,
+				'exclude'        => $atts['exclude'],
+				'post_status'    => 'inherit',
+				'post_type'      => 'attachment',
+				'post_mime_type' => 'image',
+				'order'          => $atts['order'],
+				'orderby'        => $atts['orderby'],
+			)
+		);
+	} else {
+		$attachments = get_children(
+			array(
+				'post_parent'    => $id,
+				'post_status'    => 'inherit',
+				'post_type'      => 'attachment',
+				'post_mime_type' => 'image',
+				'order'          => $atts['order'],
+				'orderby'        => $atts['orderby'],
+			)
+		);
+	}
+
+	if ( empty( $attachments ) ) {
+		return '';
+	}
+
+	if ( is_feed() ) {
+		$output = "\n";
+		foreach ( $attachments as $att_id => $attachment ) {
+			$output .= wp_get_attachment_link( $att_id, $atts['size'], true ) . "\n";
+		}
+
+		return $output;
+	}
+
+	$itemtag    = tag_escape( $atts['itemtag'] );
+	$captiontag = tag_escape( $atts['captiontag'] );
+	$icontag    = tag_escape( $atts['icontag'] );
+	$valid_tags = wp_kses_allowed_html( 'post' );
+	if ( ! isset( $valid_tags[ $itemtag ] ) ) {
+		$itemtag = 'li';
+	}
+	if ( ! isset( $valid_tags[ $captiontag ] ) ) {
+		$captiontag = 'div';
+	}
+	if ( ! isset( $valid_tags[ $icontag ] ) ) {
+		$icontag = 'div';
+	}
+
+	$gallery_style = '';
+
+	$gallery_div = "<div id='js-carouselView{$instance}' class='carousel js-carouselView'>"
+	               . "<ul class='handle carousel-handle'>";
+
+	$output = $gallery_style . $gallery_div;
+
+	foreach ( $attachments as $id => $attachment ) {
+
+		$attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "$selector-$id" ) : '';
+		if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
+			$image_output = wp_get_attachment_link( $id, $atts['size'], false, false, false, $attr );
+		} elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
+			$image_output = wp_get_attachment_image( $id, $atts['size'], false, $attr );
+		} else {
+			$image_output = wp_get_attachment_link( $id, $atts['size'], true, false, false, $attr );
+		}
+
+		$output .= "<{$itemtag} class='carousel-handle-slide'>";
+		$output .= "
+			<{$icontag} class='carousel-handle-slide-media'>
+				$image_output
+			</{$icontag}>";
+		if ( $captiontag && trim( $attachment->post_excerpt ) ) {
+			$output .= "
+				<{$captiontag} class='carousel-handle-slide-caption'>
+				" . wptexturize( $attachment->post_excerpt ) . "
+				</{$captiontag}>";
+		}
+		$output .= "</{$itemtag}>";
+	}
+
+	$output .= "</ul></div>\n";
+
+	return $output;
+}
+
+add_filter( 'post_gallery', 'internetorg_post_gallery_filter', 10, 3 );
