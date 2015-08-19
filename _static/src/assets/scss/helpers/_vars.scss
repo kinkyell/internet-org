@@ -50,9 +50,30 @@ $BASE_FONT_SIZE: 16px;
         font-weight: 800;
         font-style: normal;
     } @else if $style == SERIF {
-
+        font-family: "Lava";
+        font-style: Normal;
+        font-weight: 500;
+        font-stretch: normal;
     } @else if $style == SERIF_ITALIC {
-
+        font-family: "Lava";
+        font-style: Italic;
+        font-weight: 400;
+        font-stretch: normal;
+    } @else if $style == SERIF_MED_ITALIC {
+        font-family: "Lava";
+        font-style: Italic;
+        font-weight: 500;
+        font-stretch: normal;
+    } @else if $style == SERIF_ALT {
+        font-family: "Harir";
+        font-style: Normal;
+        font-weight: 400;
+        font-stretch: normal;
+    } @else if $style == SERIF_ALT_BOLD {
+        font-family: "Harir";
+        font-style: Normal;
+        font-weight: 700;
+        font-stretch: normal;
     }
 }
 
