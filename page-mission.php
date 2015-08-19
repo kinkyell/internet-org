@@ -99,7 +99,7 @@ get_header();
 										<div class="hdg hdg_3"><?php echo esc_html( $section_fields['title'] ); ?></div>
 									</div>
 									<div class="feature-bd wysiwyg quarantine">
-										<?php echo wp_kses_post( ineternetorg_the_section_content( $section_fields['content'] ) ); ?>
+										<?php echo apply_filters( 'the_content', wp_kses_post( $section_fields['content'] ) ); ?>
 									</div>
 								</div>
 							<?php
