@@ -1,0 +1,81 @@
+/* ---------------------------------------------------------------------
+ Statement Block
+
+ Content structure used in narrative sections
+------------------------------------------------------------------------ */
+.statementBlock {
+    position: relative;
+}
+
+.statementBlock_end {
+    height: 100%;
+    padding-top: 92px;
+    box-sizing: border-box;
+}
+
+.statementBlock-pre {
+    position: relative; // For pseudo positioning
+    margin-bottom: 6px;
+}
+
+// .statementBlock-pre_divide {}
+
+.statementBlock-pre_divide:before {
+    content: "";
+    display: inline-block;
+    height: 3px;
+    width: 20px;
+    position: absolute;
+    top: -16px;
+    text-align: center;
+    background-color: $CLR_ACCENT;
+}
+
+.statementBlock-pre_themeImpact:before { background-color: $CLR_IMPACT; }
+.statementBlock-pre_themeMission:before { background-color: $CLR_MISSION; }
+.statementBlock-pre_themeApproach:before { background-color: $CLR_APPROACH; }
+
+// .statementBlock-hd {}
+
+// .statementBlock-bd {}
+
+.statementBlock_end .statementBlock-pre,
+.statementBlock_end .statementBlock-hd {
+    @include contain(wide);
+}
+
+.statementBlock_end .statementBlock-bd {
+    width: 100%;
+    height: 58%;
+    padding: 28px 0;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    background-color: #efede5;
+}
+
+@include breakpoint(MD) {
+    // .statementBlock {
+    //     top: -55px;
+    // }
+
+    // .statementBlock_start {
+    //     top: 0;
+    // }
+
+    // .statementBlock_end {
+    //     height: auto;
+    //     padding-top: initial;
+    //     box-sizing: content-box;
+    // }
+
+    // .statementBlock_end .statementBlock-bd {
+    //     width: initial;
+    //     height: initial;
+    //     padding: initial;
+    //     box-sizing: initial;
+    //     position: initial;
+    //     bottom: initial;
+    //     background-color: initial;
+    // }
+}
