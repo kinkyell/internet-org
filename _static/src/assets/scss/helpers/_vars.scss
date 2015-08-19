@@ -40,6 +40,22 @@ $FONT_SERIF: 'Lava Pro', Times New Roman,  serif; // Lava Pro Medium
 $FONT_SERIF_ITALIC: 'Lava Pro', Times New Roman, serif; // Lava Pro Regular Italic
 $BASE_FONT_SIZE: 16px;
 
+@mixin font($style) {
+    @if $style == SANS {
+        font-family: "Basis Grotesque Pro Black", 'Helvetica Neue', Arial, Droid, sans-serif;
+        font-weight: 800;
+        font-style: normal;
+    } @else if $style == SANS_BLACK {
+        font-family: "Basis Grotesque Pro Black", 'Helvetica Neue', Arial, Droid, sans-serif;
+        font-weight: 800;
+        font-style: normal;
+    } @else if $style == SERIF {
+
+    } @else if $style == SERIF_ITALIC {
+
+    }
+}
+
 //----------------------------------------------------------------------------
 //Spacing Hierarchy
 //----------------------------------------------------------------------------
@@ -49,3 +65,7 @@ $SPACE_x2: 32px;
 $SPACE_x3: 37px;
 $SPACE_x4: 45px;
 $SPACE_x5: 75px;
+
+// div { font-family:"Basis Grotesque Pro Black", 'Helvetica Neue', Arial, Droid, sans-serif; font-weight:800; font-style:normal; }
+// div { font-family:"Basis Grotesque Pro Regular", 'Helvetica Neue', Arial, Droid, sans-serif; font-weight:normal; font-style:normal; }
+// div { font-family:"Basis Grotesque Pro Italic", 'Helvetica Neue', Arial, Droid, sans-serif; font-weight:normal; font-style:italic; }
