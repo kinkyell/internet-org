@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------------------
- Statement Block
+ Transform Block
 
  Content structure used in narrative sections
 ------------------------------------------------------------------------ */
@@ -8,31 +8,47 @@
 }
 
 .transformBlock-pre {
-    position: relative; // For pseudo positioning
+    height: 46px;
     margin-bottom: 6px;
+    position: relative; // For pseudo positioning
 }
 
-// .transformBlock-pre_divide {}
+.transformBlock-pre-item {
+    position: absolute;
+    opacity: 0;
+}
 
-.transformBlock-pre_divide:before {
+.transformBlock-pre-item:nth-child(1) {
+    opacity: 1;
+}
+
+.transformBlock-pre-item_divide:before {
     content: "";
     display: inline-block;
-    height: 3px;
-    width: 20px;
+    height: 4px;
+    width: 40px;
     position: absolute;
-    top: -16px;
+    top: -32px;
     text-align: center;
     background-color: $CLR_ACCENT;
 }
 
-.transformBlock-pre_themeImpact:before { background-color: $CLR_IMPACT; }
-.transformBlock-pre_themeMission:before { background-color: $CLR_MISSION; }
-.transformBlock-pre_themeApproach:before { background-color: $CLR_APPROACH; }
+.transformBlock-post-item-bd {
+    margin-bottom: 62px;
+}
 
-.transformBlock-hd {}
+.transformBlock-stmnt {}
 
-.transformBlock-bd {}
+.transformBlock-post {
+    position: relative;
+}
 
-@include breakpoint(MD) {
+.transformBlock-post-item {
+    position: absolute;
+    opacity: 0;
+    z-index: 0;
+}
 
+.transformBlock-post-item_isActive {
+    z-index: 1;
 }
