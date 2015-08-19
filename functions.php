@@ -572,7 +572,7 @@ function internetorg_post_gallery_filter( $output, $attr, $instance ) {
 		$output .= "</{$itemtag}>";
 	}
 
-	$output .= "</ul></div>\n";
+	$output .= "</ul><div class='carousel-captionBox'></div></div>\n";
 
 	return $output;
 }
