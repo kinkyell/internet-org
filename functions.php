@@ -12,10 +12,10 @@ require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
 /** translation related plugins -- commenting out to continue working on theme without blocker/distraction */
 //require IO_DIR . '/plugins/bogo/bogo.php';
-//require IO_DIR . '/plugins/babble/babble.php';
-//require IO_DIR . '/plugins/babble/translation-show-pre-translation.php';
-//require IO_DIR . '/plugins/babble/translation-group-tool.php';
-//require IO_DIR . '/plugins/babble/translation-fields.php';
+require IO_DIR . '/plugins/babble/babble.php';
+require IO_DIR . '/plugins/babble/translation-show-pre-translation.php';
+require IO_DIR . '/plugins/babble/translation-group-tool.php';
+require IO_DIR . '/plugins/babble/translation-fields.php';
 
 /** Other VIP plugins that have caused some wonkiness -- commenting out to continue working on theme without blocker/distraction */
 //wpcom_vip_load_plugin( 'wp-google-analytics' );
@@ -380,3 +380,83 @@ function ineternetorg_the_section_content( $section_content = '' ){
 
 	return $section_content;
 }
+
+/**
+ * Make custom meta fields available for Babble translation.
+ *
+ * Hooks the bbl_translated_meta_fields Babble filter to add our fields to
+ * the list of fields which have translation configurations and so will show
+ * up in the translation UI.
+ * It should be noted that this is based on the demonstration of translating WPSEO meta fields in Babble plugin.
+ * It "works," however, it appears there is a bug in Babble, see issues 257 and 260 in the Babble Github project.
+ * When you update the translated post, the meta for the original is overwritten as well.
+ * There are some suggestions in the Babble Github project, issue 257.
+ * Two possible solutions:
+ * 1. The developer should both filter bbl_translated_meta_fields to specify the translation config for each field AND
+ * filter bbl_sync_meta_key to stop those keys being filtered
+ * 2. Babble should stop a meta_key which has a translation config (e.g. in bbl_translated_meta_fields) from syncing
+ *
+ * @see  bbl_wpseo_meta_fields
+ *
+ * @link https://github.com/Automattic/babble/blob/develop/translation-fields.php Demonstration of translating meta.
+ * @link https://github.com/Automattic/babble/issues/257 Clashing keys when using the `bbl_translated_meta_fields`
+ *       filter #257
+ * @link https://github.com/Automattic/babble/issues/260 Filtering `bbl_translated_meta_fields` doesn't stop
+ *       `meta_keys` from syncing #260
+ *
+ * @param array    $fields An array of instances of the Babble_Meta_Field_* classes
+ * @param \WP_Post $post   The WP_Post object which is to be translated
+ *
+ * @return array An array of instances of the Babble_Meta_Field_* classes
+ */
+function internetorg_bbl_fm_fields( array $fields, WP_Post $post ) {
+
+	error_log( '$fields = ' . print_r( $fields, true ) );
+	error_log( '$post = ' . print_r( $post, true ) );
+
+	$fields['page_subtitle'] = new Babble_Meta_Field_Textarea(
+		$post,
+		'page_subtitle',
+		_x(
+			'Subtitle',
+			'Fieldmanager plugin meta field',
+			'internetorg'
+		)
+	);
+
+	return $fields;
+}
+
+add_filter( 'bbl_translated_meta_fields', 'internetorg_bbl_fm_fields', 10, 2 );
+
+/**
+ * Hooks the bbl_sync_meta_key Babble filter to specify when a meta_key
+ * should not be translated. If a key is NOT to be translated, normally
+ * you will want Babble to sync the same value to all translations, e.g.
+ * for a meta_key which specifies the same custom header colour for a post
+ * whichever language it is in. If you want a meta_key to be translated, e.g.
+ * for a meta_key which specifies the text for a subheading, then you will
+ * want to specify a translation configuration AND stop the key from being
+ * synced by returning false in this filter when the $meta_key value is
+ * the name of your meta_key.
+ *
+ * @param bool   $sync     True if the meta_key is NOT to be translated and SHOULD be synced
+ * @param string $meta_key The name of the post meta meta_key
+ *
+ * @return bool True if the meta_key is NOT to be translated and SHOULD be synced
+ */
+function internetorg_bbl_sync_meta_key( $sync, $meta_key ) {
+
+	error_log( '$sync = ' . print_r( $sync, true ) );
+	error_log( '$meta_key = ' . print_r( $meta_key, true ) );
+
+	$sync_not = array( 'page_subtitle' );
+
+	if ( in_array( $meta_key, $sync_not ) ) {
+		return false;
+	}
+
+	return $sync;
+}
+
+add_filter( 'bbl_sync_meta_key', 'internetorg_bbl_sync_meta_key', 10, 2 );
