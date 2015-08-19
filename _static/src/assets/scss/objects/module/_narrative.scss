@@ -15,10 +15,6 @@
     height: 100%;
 }
 
-// .narrative-section.isActive {
-//     z-index: 1;
-// }
-
 .narrative-section-slides {
     height: 100%;
     overflow: hidden;
@@ -108,32 +104,4 @@
     .narrative {
         display: none;
     }
-
-    // .narrative {
-    //     background: url(../media/images/icons/io-mark-bg.svg) no-repeat $CLR_GRAY_LIGHTER;
-    //     background-position: -725px top;
-    //     background-size: 1450px 2035px;
-    // }
-
-    // .narrative-section {
-    //     position: absolute;
-    // }
-
-    // .narrative-section:not(.isActive) {
-    //     display: none;
-    // }
-
-    // .narrative-section-bd {
-    //     width: 100%;
-    //     height: 100%;
-    //     background-color: transparent;
-    // }
-
-    // .narrative-section-bd-ft {
-    //     display: none;
-    // }
-
-    // .narrative-section-slides-item {
-    //     background-image: none!important; //overwrite inline style
-    // }
 }
