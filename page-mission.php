@@ -85,8 +85,8 @@ get_header();
 				<div class="theme-mission">
 
 
-					<div class="container">
-						<div class="contentCol">
+					<div class="contentCol">
+						<div class="container">
 
 						<?php
 						$section_meta = get_post_meta( get_the_ID(), 'home-content-section', true );
