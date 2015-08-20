@@ -1,0 +1,160 @@
+/* ---------------------------------------------------------------------
+ WP Jetpack's Contact Form Plugin styles
+------------------------------------------------------------------------ */
+
+.vendorForm {
+
+    .grunion-field-label {
+        display: block;
+        font-family: $FONT_SERIF;
+        font-weight: 400; @warn 'REMOVE ONCE Web Fonts are in place';
+        color: $CLR_BLACK;
+        @include remify(font-size, 16px);
+        line-height: 1.5;
+        margin: 56px 0 14px;
+    }
+
+    /* Visually hiding input labels */
+    .grunion-field-label.email,
+    .grunion-field-label.name,
+    .grunion-field-label.website,
+    .grunion-field-label.text,
+    .grunion-field-label.textarea {
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        border: 0 !important;
+        position: absolute !important;
+        clip: rect(0 0 0 0) !important;
+        overflow: hidden !important;
+    }
+
+    .grunion-field-label + .email,
+    .grunion-field-label + .name,
+    .grunion-field-label + .website,
+    .grunion-field-label + .text,
+    .grunion-field-label + textarea {
+    	font-family: $FONT_SANS;
+    	font-weight: 200;
+    	font-style: normal;
+    	@include remify(font-size, 18px);
+        box-sizing: border-box;
+        width: 100%;
+        max-height: 51px;
+        padding: 14px 8px;
+        border-width: 0; /* reseting border */
+    	border-bottom: 1px solid $CLR_GRAY_LIGHT;
+    	margin: 14px 0;
+    	resize: none;
+    }
+
+    .grunion-field-label + input[placeholder],
+    .grunion-field-label + textarea[placeholder] {
+    	@include remify(font-size, 18px);
+    	font-style: italic;
+    	font-weight: 200;
+    }
+
+    .grunion-radio-label {
+        display: inline-flex;
+        font-family: $FONT_SANS;
+        @include remify(font-size, 18px);
+        font-weight: 200;
+        line-height: 1.25;
+        color: $CLR_GRAY;
+        cursor: pointer;
+    }
+
+    .grunion-radio-label {
+        margin: 14px 0;
+    }
+
+    .grunion-radio-label > .radio {
+        visibility: hidden;
+        margin-right: 20px;
+    }
+
+    .grunion-radio-label > .radio:before {
+        content: '';
+        visibility: visible;
+        position: relative;
+        top: -2px;
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        vertical-align: top;
+        cursor: pointer;
+        border: 1px solid #d4d4c8;
+        background-color: transparent;
+        border-radius: 50%;
+        transition: all 0.25s linear;
+    }
+
+    .grunion-radio-label > .radio:checked:before {
+        border-color: transparent;
+        background-color: #ffcc01;
+    }
+
+    input[submit],
+    .contact-submit > input[submit],
+    .contact-submit > .pushbutton-wide {
+        display: inline-block;
+        border: 0;
+        padding: 16px;
+        width: 100%;
+        box-sizing: border-box;
+        font-family: $FONT_SANS;
+        font-weight: bold;
+        @include remify(font-size, 13px);
+        line-height: normal; /* set to normal to .btn can be usd on inputs in firefox with consistency */
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        cursor: pointer;
+        background-color: $CLR_ACCENT;
+        color: white;
+        @include transition(background-color 0.2s ease-in-out);
+        margin-top: 56px;
+    }
+
+    .contact-submit > input[submit]:hover,
+    .contact-submit > .pushbutton-wide:hover,
+    .contact-submit > input[submit]:active,
+    .contact-submit > .pushbutton-wide:active {
+        background-color: $CLR_ACCENT_ACTIVE;
+    }
+}
+
+@include breakpoint(MD) {
+
+    .vendorForm {
+
+        .grunion-field-label {
+            @include remify(font-size, 20px);
+        }
+        
+        input[submit],
+        .contact-submit > input[submit],
+        .contact-submit > .pushbutton-wide {
+            padding: 22px;
+            @include remify(font-size, 18px);
+        }
+
+    }
+
+}
+
+/* Right to Left Language support */
+[dir="rtl"] {
+
+    .vendorForm {
+
+        .grunion-radio-label > .radio {
+            margin-right: 0;
+            margin-left: 20px;
+        }
+
+    }
+
+}

@@ -21,3 +21,36 @@
 	font-style: italic;
 	font-weight: 200;
 }
+
+input[submit] {
+    display: inline-block;
+    border: 0;
+    padding: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: $FONT_SANS;
+    font-weight: bold;
+    @include remify(font-size, 13px);
+    line-height: normal; /* set to normal to .btn can be usd on inputs in firefox with consistency */
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: $CLR_ACCENT;
+    color: white;
+    @include transition(background-color 0.2s ease-in-out);
+    margin-top: 56px;
+}
+
+input[submit]:hover,
+input[submit]:active {
+    background-color: $CLR_ACCENT_ACTIVE;
+}
+
+@include breakpoint(MD) {    
+	input[submit] {
+        padding: 22px;
+        @include remify(font-size, 18px);
+    }
+
+}
