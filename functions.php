@@ -496,12 +496,13 @@ function internetorg_post_gallery_filter( $output, $attr, $instance ) {
 	if ( ! empty( $atts['include'] ) ) {
 		$_attachments = get_posts(
 			array(
-				'include'        => $atts['include'],
-				'post_status'    => 'inherit',
-				'post_type'      => 'attachment',
-				'post_mime_type' => 'image',
-				'order'          => $atts['order'],
-				'orderby'        => $atts['orderby'],
+				'include'          => $atts['include'],
+				'post_status'      => 'inherit',
+				'post_type'        => 'attachment',
+				'post_mime_type'   => 'image',
+				'order'            => $atts['order'],
+				'orderby'          => $atts['orderby'],
+				'suppress_filters' => false,
 			)
 		);
 
