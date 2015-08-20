@@ -12,10 +12,10 @@ require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
 /** translation related plugins -- commenting out to continue working on theme without blocker/distraction */
 //require IO_DIR . '/plugins/bogo/bogo.php';
-require IO_DIR . '/plugins/babble/babble.php';
-require IO_DIR . '/plugins/babble/translation-show-pre-translation.php';
-require IO_DIR . '/plugins/babble/translation-group-tool.php';
-require IO_DIR . '/plugins/babble/translation-fields.php';
+//require IO_DIR . '/plugins/babble/babble.php';
+//require IO_DIR . '/plugins/babble/translation-show-pre-translation.php';
+//require IO_DIR . '/plugins/babble/translation-group-tool.php';
+//require IO_DIR . '/plugins/babble/translation-fields.php';
 
 /** Other VIP plugins that have caused some wonkiness -- commenting out to continue working on theme without blocker/distraction */
 //wpcom_vip_load_plugin( 'wp-google-analytics' );
@@ -346,6 +346,10 @@ function internetorg_get_post_thumbnail( $post_id = 0 ) {
 		return '';
 	}
 
+	if ( ! has_post_thumbnail( $post_id ) ) {
+		return get_stylesheet_directory_uri() . '/_static/web/assets/media/uploads/home.jpg';
+	}
+
 	$post_thumbnail_id = get_post_thumbnail_id( $post_id );
 
 	if ( empty( $post_thumbnail_id ) ) {
@@ -359,26 +363,6 @@ function internetorg_get_post_thumbnail( $post_id = 0 ) {
 	}
 
 	return $attachment_image_src[0];
-}
-
-/**
- * Apply WP's WYSIWYG text transformation functions using the_content filter.
- *
- * @todo this doesn't seem to handle video media embeds? Investigate.
- *
- * @param string $section_content The string to texturize.
- *
- * @return string
- */
-function ineternetorg_the_section_content( $section_content = '' ){
-
-	if ( empty( $section_content ) ) {
-		return '';
-	}
-
-	$section_content = apply_filters( 'the_content', $section_content );
-
-	return $section_content;
 }
 
 /**
@@ -410,9 +394,6 @@ function ineternetorg_the_section_content( $section_content = '' ){
  * @return array An array of instances of the Babble_Meta_Field_* classes
  */
 function internetorg_bbl_fm_fields( array $fields, WP_Post $post ) {
-
-	error_log( '$fields = ' . print_r( $fields, true ) );
-	error_log( '$post = ' . print_r( $post, true ) );
 
 	$fields['page_subtitle'] = new Babble_Meta_Field_Textarea(
 		$post,
@@ -447,9 +428,6 @@ add_filter( 'bbl_translated_meta_fields', 'internetorg_bbl_fm_fields', 10, 2 );
  */
 function internetorg_bbl_sync_meta_key( $sync, $meta_key ) {
 
-	error_log( '$sync = ' . print_r( $sync, true ) );
-	error_log( '$meta_key = ' . print_r( $meta_key, true ) );
-
 	$sync_not = array( 'page_subtitle' );
 
 	if ( in_array( $meta_key, $sync_not ) ) {
@@ -464,7 +442,7 @@ add_filter( 'bbl_sync_meta_key', 'internetorg_bbl_sync_meta_key', 10, 2 );
 /**
  * Filter the WP Native Gallery to modify markup to match what our FEDs expect.
  *
- * If the filtered output isn't empty... we're going to ignore it and use roll own anyway.
+ * If the filtered output isn't empty... we're going to ignore it and roll own anyway.
  *
  * @param string $output   The gallery output. Default empty.
  * @param array  $attr     Attributes of the gallery shortcode.
@@ -564,7 +542,9 @@ function internetorg_post_gallery_filter( $output, $attr, $instance ) {
 
 	$gallery_style = '';
 
-	$gallery_div = "<div id='js-carouselView{$instance}' class='carousel js-carouselView'>"
+	$selector = "js-carouselView{$instance}";
+
+	$gallery_div = "<div id='{$selector}' class='carousel js-carouselView'>"
 	               . "<ul class='handle carousel-handle'>";
 
 	$output = $gallery_style . $gallery_div;
@@ -594,9 +574,25 @@ function internetorg_post_gallery_filter( $output, $attr, $instance ) {
 		$output .= "</{$itemtag}>";
 	}
 
-	$output .= "</ul></div>\n";
+	$output .= "</ul><div class='carousel-captionBox'></div></div>\n";
 
 	return $output;
 }
 
 add_filter( 'post_gallery', 'internetorg_post_gallery_filter', 10, 3 );
+
+/**
+ * Filter the image caption shortcode output to remove the inline width style and image width/height attributes.
+ *
+ * @param  string $output The image caption markup to filter.
+ *
+ * @return string
+ */
+function internetorg_img_caption_filter( $output ) {
+	$output = preg_replace( '/style=\"width: [0-9]{1,}px\"/', '', $output );
+	$output = preg_replace( '/(width|height)=\"\d{1,}\"\s/', '', $output );
+
+	return $output;
+}
+
+add_filter( 'img_caption_shortcode', 'internetorg_img_caption_filter' );
