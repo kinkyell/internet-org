@@ -452,6 +452,8 @@ add_filter( 'bbl_sync_meta_key', 'internetorg_bbl_sync_meta_key', 10, 2 );
  */
 function internetorg_post_gallery_filter( $output, $attr, $instance ) {
 
+	$post = get_post();
+
 	$atts = shortcode_atts(
 		array(
 			'order'      => 'ASC',
