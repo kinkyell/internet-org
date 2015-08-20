@@ -1,5 +1,7 @@
 /* ---------------------------------------------------------------------
  WP Jetpack's Contact Form Plugin styles
+
+ NOTE: Wrap the form php include in <div class="vendorForm"> ... </div>
 ------------------------------------------------------------------------ */
 
 .vendorForm {
@@ -118,7 +120,7 @@
         margin-top: 56px;
     }
 
-    .contact-submit > input[submit]:hover,
+    input[submit]:hover,
     .contact-submit > .pushbutton-wide:hover,
     .contact-submit > input[submit]:active,
     .contact-submit > .pushbutton-wide:active {
