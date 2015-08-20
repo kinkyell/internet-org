@@ -123,11 +123,13 @@ get_header();
 
 			<div class="container">
 				<div class="contentCol">
-					<div class="vr vr_x4">
+					<div class="vr vr_x1">
 						<div class="hdg hdg_3"><?php echo esc_html__( 'Get in Touch', 'internetorg' ); ?></div>
 					</div>
 
+					<div class="vendorForm">
 					<?php the_content(); ?>
+					</div>
 
 				</div><!-- /.contentCol -->
 			</div>
