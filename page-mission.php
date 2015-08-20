@@ -23,6 +23,7 @@ get_header();
 			<div class="viewWindow-panel-content">
 				<div class="viewWindow-panel-content-inner">
 
+
 					<div class="introBlock introBlock_fill">
 						<div class="introBlock-inner">
 							<div class="container">
@@ -30,11 +31,15 @@ get_header();
 									<div class="topicBlock-hd topicBlock-hd_plus">
 										<h2 class="hdg hdg_3 mix-hdg_bold">Example Intro Block</h2>
 									</div>
-									<div class="topicBlock-subHd"><div class="hdg hdg_5 mix-hdg_italic mix-hdg_gray">May 25, 2015</div></div>
+									<div class="topicBlock-subHd">
+										<div class="hdg hdg_5 mix-hdg_italic mix-hdg_gray">May 25, 2015</div>
+									</div>
 									<div class="topicBlock-bd">
 										<p class="bdcpy">Will need to replace this layout with the home page narrative one.</p>
 									</div>
-									<div class="topicBlock-cta"><a class="btn js-stateLink" href="/approach" data-type="panel" data-title="Our Approach" data-image="http://placehold.it/400x800?text=APPROACH" data-theme="Approach">Our Approach</a></div>
+									<div class="topicBlock-cta">
+										<a class="btn js-stateLink" href="/approach" data-type="panel" data-title="Our Approach" data-image="http://placehold.it/400x800?text=APPROACH" data-theme="Approach">Our Approach</a>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -46,6 +51,7 @@ get_header();
 							</ul>
 						</div>
 					</div>
+
 
 				</div>
 			</div>
@@ -107,8 +113,8 @@ get_header();
 						endif;
 						?>
 
-						</div>
-					</div><!-- end container -->
+						</div><!-- end container -->
+					</div><!-- end contentCol -->
 
 					<?php get_template_part( 'template-parts/content', 'free-services' ); ?>
 
@@ -127,7 +133,7 @@ get_header();
 						</div>
 					</div>
 					<div class="introBlock-ft">
-						<a href="/approach" class="arrowCta js-stateSwap" data-title="Our Approach" data-title="Our Approach" data-image="http://placehold.it/400x800?text=APPROACH" data-theme="Approach"></a>
+						<a href="/approach" class="arrowCta js-stateSwap" data-title="Our Approach" data-image="http://placehold.it/400x800?text=APPROACH" data-theme="Approach"></a>
 					</div>
 				</div> <!-- end introBlock -->
 
