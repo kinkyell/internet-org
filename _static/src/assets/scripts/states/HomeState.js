@@ -40,12 +40,11 @@ define(function(require, exports, module) { // jshint ignore:line
      * @fires State:activate
      */
     HomeState.prototype.onActivate = function(event) {
-        var transitions;
         if (event.method !== 'init') {
             //TODO: replace image with narrative stuff
-            transitions = this.getAnimationDirections(event);
-            viewWindow.replaceFeatureImage('http://placehold.it/400x801/eeeeee/888888?text=HOME', transitions.feature);
+            console.log('this stuff will not happen on state load');
         }
+
         this.refreshComponents($(document.body));
     };
 

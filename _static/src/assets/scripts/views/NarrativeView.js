@@ -537,14 +537,14 @@ define(function(require, exports, module) { // jshint ignore:line
 
         switch (position) {
             case 0:
-                featureImage = '/assets/media/uploads/home.jpg';
+                featureImage = '/assets/media/uploads/home_DT.jpg';
 
                 this.tl.tweenFromTo('section01', 'section00', {
                     onComplete: this._onLabelComplete.bind(this, position)
                 });
                 break;
             case 1:
-                featureImage = '/assets/media/uploads/mission.jpg';
+                featureImage = '/assets/media/uploads/mission_DT.jpg';
 
                 if (direction === 'bottom') {
                     this.tl.tweenFromTo('section00', 'section01', {
@@ -557,7 +557,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 }
                 break;
             case 2:
-                featureImage = '/assets/media/uploads/approach.jpg';
+                featureImage = '/assets/media/uploads/approach_DT.jpg';
 
                 if (direction === 'bottom') {
                     this.tl.tweenFromTo('section01', 'section02', {
@@ -570,7 +570,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 }
                 break;
             case 3:
-                featureImage = '/assets/media/uploads/impact.jpg';
+                featureImage = '/assets/media/uploads/impact_DT.jpg';
 
                 if (direction === 'bottom') {
                     this.tl.tweenFromTo('section02', 'section03', {
@@ -583,14 +583,14 @@ define(function(require, exports, module) { // jshint ignore:line
                 }
                 break;
             case 4:
-                featureImage = '/assets/media/uploads/contact.jpg';
+                featureImage = '/assets/media/uploads/contact_DT.jpg';
 
                 this.tl.tweenFromTo('section03', 'section04', {
                     onComplete: this._onLabelComplete.bind(this, position)
                 });
                 break;
             default:
-                featureImage = '/assets/media/uploads/home.jpg';
+                featureImage = '/assets/media/uploads/home_DT.jpg';
 
                 this.tl.tweenFromTo('section01', 'section00', {
                     onComplete: this._onLabelComplete.bind(this, position)
