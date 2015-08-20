@@ -35,6 +35,9 @@ define(function(require, exports, module) { // jshint ignore:line
             SELECT_MENU: 0.2, // select menu speed
             PANEL_SHIFT: 0.5, // panel shift speed
             ADDL_CONTENT: 0.3 // additional content load in
+        },
+        narrativeSpeeds: {
+            SECTION_CHANGE: 0.35
         }
     };
 
