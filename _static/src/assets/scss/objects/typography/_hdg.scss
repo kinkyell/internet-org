@@ -4,8 +4,11 @@
  heading styles
 ------------------------------------------------------------------------ */
 .hdg {
-	font-family: $FONT_SERIF;
-    font-weight: 400; @warn 'REMOVE ONCE Web Fonts are in place';
+    // font-family: $FONT_SERIF;
+    // font-weight: 400; @warn 'REMOVE ONCE Web Fonts are in place';
+
+    @include font(SERIF);
+
 	color: $CLR_BLACK;
 }
 
@@ -50,16 +53,18 @@
 }
 
 .hdg_subHdg {
-	font-family: $FONT_SANS;
+	// font-family: $FONT_SANS;
+    @include font(SANS);
 	@include remify(font-size, 17px);
 	line-height: 1.4285714;
 }
 
 .hdg_heavy {
-    color: $CLR_ACCENT;
-    font-family: $FONT_SANS_BLACK;
-    font-weight: bolder; @warn 'REMOVE ONCE Web Fonts are in place';
+    // font-family: $FONT_SANS_BLACK;
+    // font-weight: bolder; @warn 'REMOVE ONCE Web Fonts are in place';
+    @include font(SANS_BLACK);
     @include remify(font-size, 13px);
+    color: $CLR_ACCENT;
     line-height: 1.222222;
     text-transform: uppercase;
 }
