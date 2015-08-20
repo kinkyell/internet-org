@@ -216,11 +216,11 @@ define(function(require, exports, module) { // jshint ignore:line
         // if (this._gotoNextSlide(true) || this._isAnimating) {
         //     return;
         // }
-
-        var destinationSection = this._position + 1;
-
         if (!this._narrativeManager._isAnimating) {
-            this._narrativeManager.gotoSection(destinationSection);
+            var destinationPos = this._position + 1;
+            this._narrativeManager.gotoSection(destinationPos).then(function(param) {
+                console.log(param, destinationPos);
+            });
         }
     };
 

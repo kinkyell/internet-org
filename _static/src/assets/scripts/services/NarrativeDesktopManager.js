@@ -187,7 +187,7 @@ define(function(require, exports, module) { // jshint ignore:line
         // }
 
         this._isAnimating = true;
-        this._sectionTransition(position);
+        return this._sectionTransition(position);
     };
 
     proto._onLabelComplete = function(position) {
@@ -203,18 +203,27 @@ define(function(require, exports, module) { // jshint ignore:line
         $('.transformBlock-post-item').eq(position - 1).addClass('transformBlock-post-item_isActive');
 
         window.setTimeout(this._onSectionComplete.bind(this, position), this._scrollBuffer);
+
+        resolve('a random string');
+
+        return this;
     };
 
     proto._sectionTransition = function(position) {
         // var direction = (this._position < position) ? 'bottom' : 'top';
         // var featureImage = null;
+        return new Promise(function(resolve) {
+
+        this.tl.tweenFromTo('section00', 'section01', {
+            onComplete: this._onLabelComplete.bind(this, position, resolve)
+        });
 
         switch (position) {
             case 0:
                 // featureImage = '/assets/media/uploads/home_DT.jpg';
 
                 this.tl.tweenFromTo('section01', 'section00', {
-                    onComplete: this._onLabelComplete.bind(this, position)
+                    onComplete: this._onLabelComplete.bind(this, position, resolve)
                 });
                 break;
             case 1:
@@ -222,11 +231,11 @@ define(function(require, exports, module) { // jshint ignore:line
 
                 if (direction === 'bottom') {
                     this.tl.tweenFromTo('section00', 'section01', {
-                        onComplete: this._onLabelComplete.bind(this, position)
+                        onComplete: this._onLabelComplete.bind(this, position, resolve)
                     });
                 } else {
                     this.tl.tweenFromTo('section02', 'section01', {
-                        onComplete: this._onLabelComplete.bind(this, position)
+                        onComplete: this._onLabelComplete.bind(this, position, resolve)
                     });
                 }
                 break;
@@ -235,11 +244,11 @@ define(function(require, exports, module) { // jshint ignore:line
 
                 if (direction === 'bottom') {
                     this.tl.tweenFromTo('section01', 'section02', {
-                        onComplete: this._onLabelComplete.bind(this, position)
+                        onComplete: this._onLabelComplete.bind(this, position, resolve)
                     });
                 } else {
                     this.tl.tweenFromTo('section03', 'section02', {
-                        onComplete: this._onLabelComplete.bind(this, position)
+                        onComplete: this._onLabelComplete.bind(this, position, resolve)
                     });
                 }
                 break;
@@ -248,11 +257,11 @@ define(function(require, exports, module) { // jshint ignore:line
 
                 if (direction === 'bottom') {
                     this.tl.tweenFromTo('section02', 'section03', {
-                        onComplete: this._onLabelComplete.bind(this, position)
+                        onComplete: this._onLabelComplete.bind(this, position, resolve)
                     });
                 } else {
                     this.tl.tweenFromTo('section04', 'section03', {
-                        onComplete: this._onLabelComplete.bind(this, position)
+                        onComplete: this._onLabelComplete.bind(this, position, resolve)
                     });
                 }
                 break;
@@ -260,17 +269,19 @@ define(function(require, exports, module) { // jshint ignore:line
                 // featureImage = '/assets/media/uploads/contact_DT.jpg';
 
                 this.tl.tweenFromTo('section03', 'section04', {
-                    onComplete: this._onLabelComplete.bind(this, position)
+                    onComplete: this._onLabelComplete.bind(this, position, resolve)
                 });
                 break;
             default:
                 // featureImage = '/assets/media/uploads/home_DT.jpg';
 
                 this.tl.tweenFromTo('section01', 'section00', {
-                    onComplete: this._onLabelComplete.bind(this, position)
+                    onComplete: this._onLabelComplete.bind(this, position, resolve)
                 });
                 break;
         }
+
+        });
 
         featureImage = '/assets/media/uploads/home_DT.jpg';
         this.viewWindow.replaceFeatureImage(featureImage, direction);
