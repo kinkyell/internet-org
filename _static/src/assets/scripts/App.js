@@ -12,6 +12,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     require('gsap-cssPlugin');
     require('gsap-timeline');
+    require('gsap-easePack');
 
     var Router = require('services/Router');
 

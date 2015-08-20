@@ -1,6 +1,7 @@
 define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
+    var $ = require('jquery');
     var AbstractView = require('./AbstractView');
     var eventHub = require('services/eventHub');
     var breakpointManager = require('services/breakpointManager');
@@ -50,6 +51,16 @@ define(function(require, exports, module) { // jshint ignore:line
          */
         this._slidePosition = 0;
 
+        /**
+         * Determines the total number of sections
+         *
+         * @default null
+         * @property _sectionLength
+         * @type {bool}
+         * @private
+         */
+        this._sectionLength = null;
+
         this._touchTracker = {
             y: 0
         };
@@ -73,7 +84,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.setupHandlers = function() {
         this._onWheelEventHandler = this._onWheelEvent.bind(this);
-        this._onTouchStartHandler = this._onTouchStart.bind(this)
+        this._onTouchStartHandler = this._onTouchStart.bind(this);
     };
 
     /**
@@ -109,7 +120,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.layout = function() {
         this.$narrativeSections.eq(0).addClass('isActive');
-        this._slidesLength = this.$narrativeSections.length;
+        this._sectionLength = this.$narrativeSections.length;
     };
 
     /**
@@ -202,8 +213,17 @@ define(function(require, exports, module) { // jshint ignore:line
         //     return;
         // }
 
-        // var prevSlidePos = this._position - 1;
-        // this._gotoSection(prevSlidePos);
+        if (!this._narrativeManager._isAnimating) {
+            var state = {
+                position: this._position,
+                destinationPos: this._position - 1
+            };
+            if (state.destinationPos >= 0) {
+                this._narrativeManager.gotoSection(state).then(function(param) {
+                    this._position -= 1;
+                }.bind(this));
+            }
+        }
     };
 
     /**
@@ -216,11 +236,17 @@ define(function(require, exports, module) { // jshint ignore:line
         // if (this._gotoNextSlide(true) || this._isAnimating) {
         //     return;
         // }
+
         if (!this._narrativeManager._isAnimating) {
-            var destinationPos = this._position + 1;
-            this._narrativeManager.gotoSection(destinationPos).then(function(param) {
-                console.log(param, destinationPos);
-            });
+            var state = {
+                position: this._position,
+                destinationPos: this._position + 1
+            };
+            if (state.destinationPos < this._sectionLength) {
+                this._narrativeManager.gotoSection(state).then(function(param) {
+                    this._position += 1;
+                }.bind(this));
+            }
         }
     };
 
