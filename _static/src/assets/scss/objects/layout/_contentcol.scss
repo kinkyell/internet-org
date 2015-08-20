@@ -6,11 +6,12 @@ Layout for padded columns of content.
 
 .contentCol {
 	padding: 22px 0;
+	overflow: hidden;
 }
 
 .contentCol_flush {
 	padding: 0;
-	overflow: hidden;
+	// overflow: hidden;
 	// margin-bottom: 40px;
 } 
 
