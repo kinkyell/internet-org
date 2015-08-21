@@ -54,7 +54,12 @@ class Internetorg_Main_SubNav_Walker extends Walker_Nav_Menu
 		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn )        . '"' : '';
 		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url )        . '"' : '';
 		$attributes .= ' ';
-		$attributes .= ' class="auxLink js-stateLink"';
+
+		if ( internetorg_is_internal_url( $item->url ) ) {
+			$attributes .= ' class="auxLink js-stateLink"';
+		} else {
+			$attributes .= ' class="auxLink"';
+		}
 
 		if ( is_array( $args ) && ! empty( $args ) ) {
 			$args = (object) $args;
