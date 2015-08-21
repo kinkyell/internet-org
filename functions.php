@@ -264,7 +264,6 @@ if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 				'slug'         => $svcqry->post->post_name,
 				'title'        => $svcqry->post->post_title,
 				'excerpt'      => $svcqry->post->post_excerpt,
-				'service_link' => $svcqry->post->service_link,
 				'image'        => $image_url,
 			);
 
