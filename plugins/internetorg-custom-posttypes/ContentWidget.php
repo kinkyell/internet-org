@@ -58,7 +58,7 @@ class Internetorg_ContentWidget_PostType extends Internetorg_PostType
 			'label_macro'    => __( 'Call to Action: %s', 'internetorg' ),
 			'collapsed'      => false,
 			'sortable'       => false,
-			'limit'          => 1,
+			'limit'          => 0,
 			'children'       => array(
 				'label' => new Fieldmanager_TextField( __( 'Button Label', 'internetorg' ) ),
 				'url'   => new Fieldmanager_Link( __( 'URL', 'internetorg' ) ),
