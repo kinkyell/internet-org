@@ -149,7 +149,10 @@ define(function(require, exports, module) { // jshint ignore:line
      * @returns {NarrativeView}
      * @public
      */
-    proto.onDisable = function() {};
+    proto.onDisable = function() {
+        $(window).off('mousewheel DOMMouseScroll', this._onWheelEventHandler);
+        this.$body.off('touchstart', this._onTouchStartHandler);
+    };
 
     //////////////////////////////////////////////////////////////////////////////////
     // EVENT HANDLERS
@@ -174,29 +177,29 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     proto._onTouchStart = function(e) {
-        // this._touchTracker.y = e.originalEvent.touches[0].pageY;
+        this._touchTracker.y = e.originalEvent.touches[0].pageY;
 
-        // this.$body
-        //     .on('touchmove' + this._eventTouchNamespace, this._onTouchMove.bind(this))
-        //     .on('touchend' + this._eventTouchNamespace, this._onTouchEnd.bind(this))
-        //     .on('touchcancel' + this._eventTouchNamespace, this._onTouchEnd.bind(this));
+        this.$body
+            .on('touchmove' + this._eventTouchNamespace, this._onTouchMove.bind(this))
+            .on('touchend' + this._eventTouchNamespace, this._onTouchEnd.bind(this))
+            .on('touchcancel' + this._eventTouchNamespace, this._onTouchEnd.bind(this));
     };
 
     proto._onTouchMove = function(e) {
-        // e.preventDefault();
+        e.preventDefault();
 
-        // var y = e.originalEvent.touches[0].pageY;
-        // var delta = -(y -this._touchTracker.y);
+        var y = e.originalEvent.touches[0].pageY;
+        var delta = -(y -this._touchTracker.y);
 
-        // if (delta < -1) {
-        //     this._scrollUp();
-        // } else if (delta > 1) {
-        //     this._scrollDown();
-        // }
+        if (delta < -1) {
+            this._scrollUp();
+        } else if (delta > 1) {
+            this._scrollDown();
+        }
     };
 
     proto._onTouchEnd = function(e) {
-        // this.$body.off(this._eventTouchNamespace);
+        this.$body.off(this._eventTouchNamespace);
     };
 
     //////////////////////////////////////////////////////////////////////////////////

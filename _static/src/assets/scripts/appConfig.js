@@ -38,7 +38,10 @@ define(function(require, exports, module) { // jshint ignore:line
         },
         narrative: {
             mobile: {
-                SECTION_SPEED: 0.35,
+                EASE: Expo, // gsap ease type
+                EASE_DIRECTION_FORWARD: 'easeOut', // gsap ease direction when progressing forward
+                EASE_DIRECTION_REVERSE: 'easeIn', // gsap ease direction when progressing backward
+                SECTION_DURATION: 0.65, // uniform transformBlock section durations
             },
             desktop: {
                 EASE: Expo, // gsap ease type

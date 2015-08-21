@@ -21,7 +21,6 @@ define(function(require, exports, module) { // jshint ignore:line
     var PanelState = require('states/PanelState');
     var SearchState = require('states/SearchState');
     var TitledState = require('states/TitledState');
-    var NarrativeView = require('views/NarrativeView');
     var HeaderView = require('views/HeaderView');
     var eventHub = require('services/eventHub');
     var assetLoader = require('services/assetLoader');
@@ -94,9 +93,6 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._setupLayout = function() {
         this.headerView = new HeaderView($('.js-headerView'));
         this.viewWindow = viewWindow;
-
-        //TODO: move this to home state
-        this.narrativeView = new NarrativeView($('.js-narrativeView'));
     };
 
     /**

@@ -34,16 +34,6 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     var NarrativeDesktopManager = function() {
         /**
-         * Tracks whether scroll direction is up or down
-         *
-         * @default 'down'
-         * @property _direction
-         * @type {string}
-         * @private
-         */
-        this._direction = 'down';
-
-        /**
          * Tracks whether there is an active animation
          *
          * @default false
@@ -52,26 +42,6 @@ define(function(require, exports, module) { // jshint ignore:line
          * @private
          */
         this._isAnimating = false;
-
-        /**
-         * Threashold for wheel delta normalization
-         *
-         * @default 5
-         * @property _factor
-         * @type {bool}
-         * @private
-         */
-        this._factor = 5;
-
-        /**
-         * reference to the total number of slides
-         *
-         * @default null
-         * @property _slidesLength
-         * @type {bool}
-         * @private
-         */
-        this._slidesLength = null;
 
         /**
          * Buffer for scroll jacking (ms)
@@ -138,6 +108,12 @@ define(function(require, exports, module) { // jshint ignore:line
         this._timeLineReverse = this._createTimeline('reverse');
     };
 
+    /**
+     * Set up instance
+     *
+     * @method _init
+     * @private
+     */
     proto._createChildren = function() {
         this._$transformBlock = $('.js-transformBlock');
         this._$transformBlockPre = $('.transformBlock-pre-item');
