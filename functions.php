@@ -201,7 +201,7 @@ add_filter( 'pre_get_posts', 'internetorg_extend_search_post_type_range' );
 
 if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 	/**
-	 * Get a list of the free services offered
+	 * Retrieve an array of free services offered.
 	 *
 	 * This method will return an empty array if there are no services, if there
 	 * are services your array will look similar to:
@@ -225,37 +225,56 @@ if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 	 */
 	function internetorg_get_free_services() {
 
-		// check the cache first
+		/** @var array|bool $services An array of cached io_freesvc data, else false on failure */
 		$services = wp_cache_get( 'internetorg_free_services_list' );
 
-		// no cache, query
-		if ( false === $services ) {
-			$args = array(
-				'post_type'   => 'io_freesvc',
-				'post_status' => 'publish',
+		/** return early if the cached data was successfully returned */
+		if ( false !== $services ) {
+			return $services;
+		}
+
+		/** @var array $args An array of arguments for a new WP_Query */
+		$args = array(
+			'post_type'   => 'io_freesvc',
+			'post_status' => 'publish',
+		);
+
+		/** @var array $services An array to hold io_freesvc data*/
+		$services = array();
+
+		/** @var WP_Query $svcqry A WP_Query to retrieve io_freesvc post objects */
+		$svcqry   = new WP_Query( $args );
+
+		/** build array of services so we are not passing around a query object */
+		while ( $svcqry->have_posts() ) :
+
+			/** Set up the current post object */
+			$svcqry->the_post();
+
+			if ( ! has_post_thumbnail( $svcqry->post->ID ) ) {
+				/** @var string $image_url URL to a featured image or default image file */
+				$image_url = get_stylesheet_directory_uri()
+				             . '/_static/web/assets/media/images/icons/png/icon-services-dictionary.png';
+			} else {
+				$image_url = internetorg_get_post_thumbnail( $svcqry->post->ID );
+			}
+
+			$services[] = array(
+				'post_id'      => $svcqry->post->ID,
+				'slug'         => $svcqry->post->post_name,
+				'title'        => $svcqry->post->post_title,
+				'excerpt'      => $svcqry->post->post_excerpt,
+				'service_link' => $svcqry->post->service_link,
+				'image'        => $image_url,
 			);
 
-			$services = array();
-			$svcqry   = new WP_Query( $args );
+		endwhile;
 
-			// build array of services so we are not passing around a query object
-			while ( $svcqry->have_posts() ) : $svcqry->the_post();
-				$postId     = get_the_ID();
-				$services[] = array(
-					'post_id' => $postId,
-					'slug'    => $svcqry->post->post_name,
-					'title'   => get_the_title(),
-					'excerpt' => get_the_excerpt(),
-					'image'   => wp_get_attachment_image_src( get_post_thumbnail_id( $postId ), 'thumbnail' ),
-				);
-			endwhile;
+		// caching the compiled array and not the query (86400 == 1 day)
+		wp_cache_set( 'internetorg_free_services_list', $services, null, 86400 );
 
-			// caching the compiled array and not the query (86400 == 1 day)
-			wp_cache_set( 'internetorg_free_services_list', $services, null, 86400 );
-
-			// reset the query to before we started mucking with it
-			wp_reset_postdata();
-		}
+		// reset the query to before we started mucking with it
+		wp_reset_postdata();
 
 		return $services;
 	}
@@ -452,6 +471,8 @@ add_filter( 'bbl_sync_meta_key', 'internetorg_bbl_sync_meta_key', 10, 2 );
  */
 function internetorg_post_gallery_filter( $output, $attr, $instance ) {
 
+	$post = get_post();
+
 	$atts = shortcode_atts(
 		array(
 			'order'      => 'ASC',
@@ -475,12 +496,13 @@ function internetorg_post_gallery_filter( $output, $attr, $instance ) {
 	if ( ! empty( $atts['include'] ) ) {
 		$_attachments = get_posts(
 			array(
-				'include'        => $atts['include'],
-				'post_status'    => 'inherit',
-				'post_type'      => 'attachment',
-				'post_mime_type' => 'image',
-				'order'          => $atts['order'],
-				'orderby'        => $atts['orderby'],
+				'include'          => $atts['include'],
+				'post_status'      => 'inherit',
+				'post_type'        => 'attachment',
+				'post_mime_type'   => 'image',
+				'order'            => $atts['order'],
+				'orderby'          => $atts['orderby'],
+				'suppress_filters' => false,
 			)
 		);
 

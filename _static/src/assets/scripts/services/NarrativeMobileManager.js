@@ -14,7 +14,7 @@ define(function(require, exports, module) { // jshint ignore:line
     require('gsap-scrollToPlugin');
     require('gsap-cssPlugin');
 
-    var SECTION_SPEED = AppConfig.narrativeSpeeds.SECTION_CHANGE;
+    var SECTION_SPEED = AppConfig.narrative.SECTION_SPEED;
 
     /**
      * Constructor for NarrativeMobileManager
