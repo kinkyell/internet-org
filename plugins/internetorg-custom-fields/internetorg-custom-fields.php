@@ -33,6 +33,7 @@ if ( !function_exists( 'internetorg_custom_fields_init' ) ) {
 		add_action( 'fm_post_page', 'internetorg_create_fields_internetorg_page_home' );
 		add_action( 'edit_form_after_title', 'internetorg_page_home_after_title_fields' );
 		add_action( 'fm_post_page', 'internetorg_create_after_title_fields_internetorg_page_home' );
+		add_action( 'fm_post_io_freesvc', 'internetorg_create_fields_io_freesvc' );
 
 		return;
 	}

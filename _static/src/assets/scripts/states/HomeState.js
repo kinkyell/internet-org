@@ -1,9 +1,10 @@
 define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
+    var $ = require('jquery');
     var BasicState = require('./BasicState');
     var viewWindow = require('services/viewWindow');
-    var $ = require('jquery');
+    var NarrativeView = require('views/NarrativeView');
 
     var CarouselView = require('views/CarouselView');
 
@@ -30,7 +31,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @type {Object}
      */
     HomeState.prototype.COMPONENTS = {
-        '.js-carouselView': CarouselView
+        '.js-narrativeView': NarrativeView
     };
 
     /**

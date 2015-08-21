@@ -44,10 +44,12 @@ require.config({
         'gsap-scrollToPlugin': '../vendor/gsap/src/uncompressed/plugins/ScrollToPlugin',
         'gsap-tween': '../vendor/gsap/src/uncompressed/TweenLite',
         'gsap-timeline': '../vendor/gsap/src/uncompressed/TimelineMax',
+        'gsap-easePack': '../vendor/gsap/src/uncompressed/easing/EasePack',
         'jquery-touchswipe': '../vendor/jquery-touchswipe/jquery.touchSwipe',
         'dragdealer': '../vendor/skidding--dragdealer/src/dragdealer',
         'fastclick': '../vendor/fastclick/lib/fastclick',
-        'handlebars': '../vendor/handlebars/handlebars.runtime'
+        'handlebars': '../vendor/handlebars/handlebars.runtime',
+        'appConfig': 'appConfig'
     },
 
     map: {
@@ -72,6 +74,10 @@ require.config({
         },
         'handlebars': {
             exports: 'Handlebars'
+        },
+        'appConfig': {
+            deps: ['gsap-easePack'],
+            exports: 'appConfig'
         }
     },
 

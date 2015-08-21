@@ -1,12 +1,8 @@
 <?php
 /**
- * The template for displaying the mission page
+ * The template for displaying the impact page
  *
- * Template Name: Mission
- *
- * @todo: Discuss with FED what class to apply on WYSIWYG areas
- * @todo: How to determine if this is being ajaxed in so we don't output header/footer/etc., and is that allowed on VIP?
- * @todo: How to handle fields that weren't intended for use on this template
+ * Template Name: Impact
  *
  * @package Internet.org
  */
@@ -17,7 +13,7 @@ get_header();
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="<?php the_permalink(); ?>" data-type="panel" data-theme="Mission" data-title="<?php the_title(); ?>" data-image="<?php echo esc_url( internetorg_get_post_thumbnail( get_the_ID() ) ); ?>">
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="/impact" data-type="panel" data-theme="Impact" data-title="Our Impact" data-image="http://placehold.it/400x800?text=IMPACT">
 
 		<div class="viewWindow-panel">
 			<div class="viewWindow-panel-content">
@@ -38,7 +34,7 @@ get_header();
 										<p class="bdcpy">Will need to replace this layout with the home page narrative one.</p>
 									</div>
 									<div class="topicBlock-cta">
-										<a class="btn js-stateLink" href="/approach" data-type="panel" data-title="Our Approach" data-image="http://placehold.it/400x800?text=APPROACH" data-theme="Approach">Our Approach</a>
+										<a class="btn js-stateLink" href="/impact" data-type="panel" data-title="Our Impact" data-image="http://placehold.it/400x800?text=IMPACT" data-theme="Impact">Our Impact</a>
 									</div>
 								</div>
 							</div>
@@ -64,15 +60,15 @@ get_header();
 			</div>
 		</div><!-- end viewWindow-panel_feature -->
 
+
 		<div class="viewWindow-panel viewWindow-panel_story isActive">
 			<div class="viewWindow-panel-content">
-
 
 				<div class="introBlock">
 					<div class="introBlock-inner">
 						<div class="container">
 							<div class="topicBlock">
-								<div class="topicBlock-hd topicBlock-hd_mega topicBlock-hd_themeMission">
+								<div class="topicBlock-hd topicBlock-hd_mega topicBlock-hd_themeImpact">
 									<h2 class="hdg hdg_2 mix-hdg_bold">
 										<?php the_title(); ?>
 									</h2>
@@ -85,10 +81,10 @@ get_header();
 							</div>
 						</div>
 					</div>
-				</div><!-- .introBlock -->
+				</div>
 
 
-				<div class="theme-mission">
+				<div class="theme-impact">
 
 
 					<div class="contentCol">
@@ -100,53 +96,33 @@ get_header();
 								</div>
 							</div>
 
-						<?php
-						$section_meta = get_post_meta( get_the_ID(), 'home-content-section', true );
-
-						if ( ! empty( $section_meta ) ) :
-							foreach ( $section_meta as $section_key => $section_fields ) :
-							?>
-								<div class="feature"> <!-- TEXT -->
-									<div class="feature-hd">
-										<div class="hdg hdg_3"><?php echo esc_html( $section_fields['title'] ); ?></div>
-									</div>
-									<div class="feature-bd wysiwyg quarantine">
-										<?php echo apply_filters( 'the_content', wp_kses_post( $section_fields['content'] ) ); ?>
-									</div>
-								</div>
 							<?php
-							endforeach;
-						endif;
-						?>
+							$section_meta = get_post_meta( get_the_ID(), 'home-content-section', true );
+
+							if ( ! empty( $section_meta ) ) :
+								foreach ( $section_meta as $section_key => $section_fields ) :
+									?>
+									<div class="feature"> <!-- TEXT -->
+										<div class="feature-hd">
+											<div class="hdg hdg_3"><?php echo esc_html( $section_fields['title'] ); ?></div>
+										</div>
+										<div class="feature-bd wysiwyg quarantine">
+											<?php echo apply_filters( 'the_content', wp_kses_post( $section_fields['content'] ) ); ?>
+										</div>
+									</div>
+									<?php
+								endforeach;
+							endif;
+							?>
 
 						</div><!-- end container -->
 					</div><!-- end contentCol -->
 
-					<?php get_template_part( 'template-parts/content', 'free-services' ); ?>
+				</div> <!-- end theme-impact -->
 
-				</div> <!-- end theme-mission -->
-
-
-				<div class="introBlock js-scrollImage" data-image="http://placehold.it/400x800?text=APPROACH">
-					<div class="introBlock-inner">
-						<div class="topicBlock">
-							<div class="topicBlock-subHd">
-								<div class="hdg hdg_5 mix-hdg_italic mix-hdg_gray">Learn About</div>
-							</div>
-							<div class="topicBlock-hd topicBlock-hd_plus topicBlock-hd_themeApproach">
-								<h2 class="hdg hdg_2 hdg-mix_bold">Our Approach</h2>
-							</div>
-						</div>
-					</div>
-					<div class="introBlock-ft">
-						<a href="/approach" class="arrowCta js-stateSwap" data-title="Our Approach" data-image="http://placehold.it/400x800?text=APPROACH" data-theme="Approach"></a>
-					</div>
-				</div> <!-- end introBlock -->
-
-
-			</div><!-- end viewWindow-panel-content -->
-		</div><!-- end isActive -->
-	</div><!-- end js-viewWindow -->
+			</div>
+		</div>
+	</div>
 
 <?php endwhile; // End of the loop. ?>
 

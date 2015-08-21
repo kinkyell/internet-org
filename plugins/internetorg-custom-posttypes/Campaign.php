@@ -70,7 +70,20 @@ class Internetorg_Campaign_PostType extends Internetorg_PostType
 			'modal_button_label' => __( 'Use Image as Background', 'internetorg' ),
 			'preview_size'       => 'icon',
 		) );
+
+		$subtitle = new Fieldmanager_TextArea(
+			array(
+				'name' => 'page_subtitle',
+				'label' => __( 'Subtitle', 'internetorg' ),
+				'attributes' => array(
+					'rows' => 3,
+					'cols' => 30,
+				),
+			)
+		);
+
 		$fm->add_meta_box( __( 'Background Image', 'internetorg' ), array( 'io_campaign' ) );
+		$subtitle->add_meta_box( __( 'Subtitle', 'internetorg' ), array( 'io_campaign' ) );
 	}
 }
 

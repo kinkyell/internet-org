@@ -36,8 +36,28 @@ define(function(require, exports, module) { // jshint ignore:line
             PANEL_SHIFT: 0.5, // panel shift speed
             ADDL_CONTENT: 0.3 // additional content load in
         },
-        narrativeSpeeds: {
-            SECTION_CHANGE: 0.35
+        narrative: {
+            mobile: {
+                EASE: Expo, // gsap ease type
+                EASE_DIRECTION_FORWARD: 'easeOut', // gsap ease direction when progressing forward
+                EASE_DIRECTION_REVERSE: 'easeIn', // gsap ease direction when progressing backward
+                SECTION_DURATION: 0.65, // uniform transformBlock section durations
+            },
+            desktop: {
+                EASE: Expo, // gsap ease type
+                EASE_DIRECTION_FORWARD: 'easeOut', // gsap ease direction when progressing forward
+                EASE_DIRECTION_REVERSE: 'easeIn', // gsap ease direction when progressing backward
+                SCROLL_BUFFER: 0, // Buffer for scroll jacking (ms)
+                TIME_SCALE: 0.5, // Timeline speed multiplier
+                SECTION_DURATION: 0.35, // uniform transformBlock section durations
+                featureImages: { // Featured images
+                    HOME: '/assets/media/uploads/home_DT.jpg',
+                    MISSION: '/assets/media/uploads/mission_DT.jpg',
+                    APPROACH: '/assets/media/uploads/approach_DT.jpg',
+                    IMPACT: '/assets/media/uploads/impact_DT.jpg',
+                    FOOT: '/assets/media/uploads/contact_DT.jpg'
+                }
+            }
         }
     };
 
