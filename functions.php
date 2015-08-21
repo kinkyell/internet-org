@@ -618,3 +618,41 @@ function internetorg_img_caption_filter( $output ) {
 }
 
 add_filter( 'img_caption_shortcode', 'internetorg_img_caption_filter' );
+
+function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button = true ) {
+	$out = '<div class="topicBlock">';
+
+	$widget = internetorg_get_content_widget_by_slug( $widget_slug );
+
+	if ( ! empty( $widget ) || ( isset( $widget['post'] ) && empty( $widget['post'] ) ) ) {
+		$meta = ( ! empty( $widget['meta'] ) ? $widget['meta'] : null );
+		$post = $widget['post'];
+
+		$out .= '<div class="topicBlock-hd"><h2 class="hdg hdg_3">' . esc_html( $post->post_title ) . '</h2></div>';
+		$out .= '<div class="topicBlock-bd">';
+		$out .= '<p class="bdcpy">' . wp_kses_post( $post->post_content ) . '</p>';
+
+		if ( ! empty( $meta ) && ! empty( $meta['widget-data'] ) ) {
+			foreach ( $meta['widget-data'] as $cta ) {
+				$label = ( ! empty( $cta['label'] ) ? $cta['label'] : '' );
+				$url   = ( ! empty( $cta['url'] )   ? $cta['url']   : '' );
+				$file  = ( ! empty( $cta['image'] ) ? $cta['image'] : '' );
+
+				$link = $url ? $url : $file;
+				if ( ! empty( $link ) ) {
+					$out .= '<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? $link : '' ) . '" class="' . ( $cta_as_button ? 'btn' : 'link link_twoArrows' ) . '">' . esc_html( $label ) . '</a></div>';
+				}
+			}
+		}
+
+		$out .= '</div>';
+	}
+
+	$out .= '</div>';
+
+	return $out;
+}
+
+function internet_org_get_content_widget_html( $widget_slug, $cta_as_button = true ) {
+	echo get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button );
+}
