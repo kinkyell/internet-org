@@ -94,6 +94,12 @@ get_header();
 					<div class="contentCol">
 						<div class="container">
 
+							<div class="feature"> <!-- TEXT -->
+								<div class="feature-bd wysiwyg quarantine">
+									<?php the_content(); ?>
+								</div>
+							</div>
+
 						<?php
 						$section_meta = get_post_meta( get_the_ID(), 'home-content-section', true );
 
