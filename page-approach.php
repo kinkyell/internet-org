@@ -13,7 +13,7 @@
  */
 
 get_header();
-url_to_postid();
+
 ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
