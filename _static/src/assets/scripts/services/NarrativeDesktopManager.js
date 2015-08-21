@@ -81,7 +81,7 @@ define(function(require, exports, module) { // jshint ignore:line
          * @type {bool}
          * @private
          */
-        this._scrollBuffer = 400;
+        this._scrollBuffer = AppConfig.narrative.desktop.SCROLL_BUFFER;
 
         /**
          * section properties
@@ -167,8 +167,8 @@ define(function(require, exports, module) { // jshint ignore:line
 
         //  transition 01
         ///////////////////////
-        tl.to(this._$transformBlock, SECTION_DURATION, { y: '-90px', ease: EASE[easeDirection] });
-        tl.to(this._$transformBlockPre.eq(0), SECTION_DURATION, { opacity: 0, ease: EASE[easeDirection] }, '-=' + SECTION_DURATION);
+        tl.fromTo(this._$transformBlock, SECTION_DURATION, { y: '0px' }, { y: '-90px', ease: EASE[easeDirection] });
+        tl.fromTo(this._$transformBlockPre.eq(0), SECTION_DURATION, { opacity: 1, }, { opacity: 0, ease: EASE[easeDirection] }, '-=' + SECTION_DURATION);
         tl.fromTo(this._$transformBlockPost.eq(0), SECTION_DURATION, postIn[0], postIn[1], '-=' + SECTION_DURATION);
 
         //  transition 02
@@ -224,11 +224,11 @@ define(function(require, exports, module) { // jshint ignore:line
             ease: EASE[easeDirection]
         }, '-=' + SECTION_DURATION);
 
-        tl.addLabel(this._sections[0].label, 0);
-        tl.addLabel(this._sections[1].label, 0.35);
-        tl.addLabel(this._sections[2].label, 0.7);
-        tl.addLabel(this._sections[3].label, 1.05);
-        tl.addLabel(this._sections[4].label, 1.4);
+        tl.addLabel(this._sections[0].label, SECTION_DURATION * 0);
+        tl.addLabel(this._sections[1].label, SECTION_DURATION * 1);
+        tl.addLabel(this._sections[2].label, SECTION_DURATION * 2);
+        tl.addLabel(this._sections[3].label, SECTION_DURATION * 3);
+        tl.addLabel(this._sections[4].label, SECTION_DURATION * 4);
 
         tl.timeScale(TIME_SCALE);
 

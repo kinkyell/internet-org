@@ -44,7 +44,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 EASE: Expo, // gsap ease type
                 EASE_DIRECTION_FORWARD: 'easeOut', // gsap ease direction when progressing forward
                 EASE_DIRECTION_REVERSE: 'easeIn', // gsap ease direction when progressing backward
-                SCROLL_BUFFER: 400, // Buffer for scroll jacking (ms)
+                SCROLL_BUFFER: 0, // Buffer for scroll jacking (ms)
                 TIME_SCALE: 0.5, // Timeline speed multiplier
                 SECTION_DURATION: 0.35, // uniform transformBlock section durations
                 featureImages: { // Featured images
