@@ -129,69 +129,32 @@ get_header();
 										'echo'            => false,
 										'order'           => 'DESC',
 									);
-
-									$archives = wp_get_archives( $args );
-
-									if ( ! empty( $archives ) ) : ?>
+									?>
 								<div class="resultsList-list-item">
 									<select class="js-select select_inline">
-										<?php echo $archives; ?>
+										<option></option>
+										<?php echo wp_get_archives( $args ); ?>
 									</select>
 								</div>
-								<?php endif; ?>
 							</div>
 						</div>
 				</div>
 			</div>
 					<?php endif; ?>
-					<?php
-					/*  content widgets */
-					$contentWidgets = array(
-						'contact'   => internetorg_get_content_widget_by_slug( 'contact' ),
-						'media-kit' => internetorg_get_content_widget_by_slug( 'media-kit' ),
-					);
-					?>
+
 					<div class="footBox">
 						<div class="container">
 							<div class="vList vList_footBox">
-
-					<?php foreach ( $contentWidgets as $key => $widget ) : ?>
-						<?php if ( ! empty( $widget ) ) :
-							$meta = ( ! empty( $widget['meta'] ) ? $widget['meta'] : null );
-							$post = ( ! empty( $widget['post'] ) ? $widget['post'] : null );
-
-							// if we don't have post data skip everything else
-							if ( empty( $post ) ) {
-								continue;
-							}
-							?>
-
 								<div>
-									<div class="topicBlock">
-										<div class="topicBlock-hd">
-											<h2 class="hdg hdg_8 mix-hdg_bold"><?php echo esc_html( $post->post_title ); ?></h2>
-										</div>
-										<div class="topicBlock-bd"><p class="bdcpy"><?php echo $post->post_content; ?></p></div>
-
-								<?php
-
-								if ( ! empty( $meta ) ) :
-									$label = ( ! empty( $meta['widget-data']['label'] ) ? $meta['widget-data']['label'] : '' );
-									$url   = ( ! empty( $meta['widget-data']['url'] )   ? $meta['widget-data']['url'] : '' );
-									$file  = ( ! empty( $meta['widget-data']['image'] ) ? $meta['widget-data']['image'] : '' );
-
-									$link = $url ? $url : $file;
-									if ( ! empty( $link ) ) : ?>
-										<div class="topicBlock-cta"><a href="<?php echo esc_url( ! empty( $link ) ? $link : '' ); ?>" class="btn"><?php echo esc_html( $label ); ?></a></div>
-									<?php endif; ?>
-								<?php endif; ?>
-									</div>
+									<?php internet_org_get_content_widget_html( 'contact' ); ?>
 								</div>
-						<?php endif; ?>
-					<?php endforeach; ?>
+								<div>
+									<?php internet_org_get_content_widget_html( 'media-kit' ); ?>
+								</div>
 							</div>
 						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>
