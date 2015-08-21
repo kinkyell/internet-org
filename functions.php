@@ -670,8 +670,22 @@ function internetorg_is_internal_url( $url ) {
 		return false;
 	}
 
+	/** relative URL beginning with forward slash */
+	if ( substr( $url, 0, 1 ) === '/' ) {
+		return true;
+	}
+
+	/** relative URL beginning with two dots */
+	if ( substr( $url, 0, 3 ) === '../' ) {
+		return true;
+	}
+
 	/** @var array $link_parsed Associative array of URL components returned by parse_url for the provided url */
 	$link_parsed = parse_url( $url );
+
+	if ( empty( $link_parsed['host'] ) ) {
+		return false;
+	}
 
 	/** @var array $home_parsed Associative array of URL components returned by parse_url for the home_url */
 	$home_parsed = parse_url( home_url() );
@@ -688,16 +702,6 @@ function internetorg_is_internal_url( $url ) {
 	$home_parsed_host = str_ireplace( 'www.', '', $home_parsed['host'] );
 
 	if ( strtolower( $link_parsed_host ) === strtolower( $home_parsed_host ) ) {
-		return true;
-	}
-
-	/** relative URL beginning with forward slash */
-	if ( substr( $url, 0, 1 ) === '/' ) {
-		return true;
-	}
-
-	/** relative URL beginning with two dots */
-	if ( substr( $url, 0, 3 ) === '../' ) {
 		return true;
 	}
 
