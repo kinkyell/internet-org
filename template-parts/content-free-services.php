@@ -25,27 +25,21 @@ if ( empty( $services ) ) {
 				<ul class="servicesList">
 					<?php foreach ( $services as $service ) : ?>
 						<li>
-							<?php if ( ! empty( $service['service_link'] ) ) : ?>
-							<a href="<?php echo esc_url( $service['service_link'] ); ?>" target="_blank">
+							<div class="servicesList-item">
+								<?php if ( ! empty( $service['image'] ) ) : ?>
+									<div class="servicesList-item-icon">
+										<img src="<?php echo esc_url( $service['image'] ); ?>" alt="<?php echo esc_attr( $service['title'] ); ?>">
+									</div>
 								<?php endif; ?>
-								<div class="servicesList-item">
-									<?php if ( ! empty( $service['image'] ) ) : ?>
-										<div class="servicesList-item-icon">
-											<img src="<?php echo esc_url( $service['image'] ); ?>" alt="<?php echo esc_attr( $service['title'] ); ?>">
-										</div>
-									<?php endif; ?>
-									<div class="servicesList-item-bd">
-										<div class="hdg hdg_5"><?php echo esc_html( $service['title'] ); ?></div>
-										<div class="bdcpy bdcpy_sm">
-											<?php if ( ! empty( $service['excerpt'] ) ) : ?>
-												<?php echo esc_html( $service['excerpt'] ); ?>
-											<?php endif; ?>
-										</div>
+								<div class="servicesList-item-bd">
+									<div class="hdg hdg_5"><?php echo esc_html( $service['title'] ); ?></div>
+									<div class="bdcpy bdcpy_sm">
+										<?php if ( ! empty( $service['excerpt'] ) ) : ?>
+											<?php echo esc_html( $service['excerpt'] ); ?>
+										<?php endif; ?>
 									</div>
 								</div>
-								<?php if ( ! empty( $service['service_link'] ) ) : ?>
-							</a>
-						<?php endif; ?>
+							</div>
 						</li>
 					<?php endforeach; ?>
 				</ul>

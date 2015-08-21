@@ -8,8 +8,7 @@
 
     .grunion-field-label {
         display: block;
-        font-family: $FONT_SERIF;
-        font-weight: 400; @warn 'REMOVE ONCE Web Fonts are in place';
+        @include font(SERIF);
         color: $CLR_BLACK;
         @include remify(font-size, 16px);
         line-height: 1.5;
@@ -37,8 +36,7 @@
     .grunion-field-label + .website,
     .grunion-field-label + .text,
     .grunion-field-label + textarea {
-    	font-family: $FONT_SANS;
-    	font-weight: 200;
+        @include font(SANS);
     	font-style: normal;
     	@include remify(font-size, 18px);
         box-sizing: border-box;
@@ -60,7 +58,7 @@
 
     .grunion-radio-label {
         display: inline-flex;
-        font-family: $FONT_SANS;
+        @include font(SANS);
         @include remify(font-size, 18px);
         font-weight: 200;
         line-height: 1.25;
@@ -106,8 +104,7 @@
         padding: 16px;
         width: 100%;
         box-sizing: border-box;
-        font-family: $FONT_SANS;
-        font-weight: bold;
+        @include font(SANS_BLACK);
         @include remify(font-size, 13px);
         line-height: normal; /* set to normal to .btn can be usd on inputs in firefox with consistency */
         text-align: center;

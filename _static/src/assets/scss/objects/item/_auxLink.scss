@@ -5,8 +5,7 @@
 .auxLink {
     display: block;
     padding: 12px;
-    font-family: $FONT_SANS_BLACK;
-    font-weight: bolder; // TODO: REMOVE ONCE Web Fonts are in place
+    @include font(SANS_BLACK);    
     @include remify(font-size, 10px);
     line-height: 1.6;
     text-decoration: none;

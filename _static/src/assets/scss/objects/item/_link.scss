@@ -4,9 +4,8 @@
  common links styling
 ------------------------------------------------------------------------ */
 .link {
-    @include transition(all 0.3s ease-in-out);
-    font-family: $FONT_SANS_BLACK;
-    font-weight: bold; @warn 'REMOVE ONCE Web Fonts are in place';
+    @include transition(all 0.3s ease-in-out);   
+    @include font(SANS_BLACK);
     @include remify(font-size, 13px);
     line-height: 1.222222;
     text-decoration: none;

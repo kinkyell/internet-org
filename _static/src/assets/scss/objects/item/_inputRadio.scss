@@ -9,9 +9,8 @@
 
 .inputRadio-label {
     display: inline-flex;
-    font-family: $FONT_SANS;
+    @include font(SANS);
     @include remify(font-size, 18px);
-    font-weight: 200;
     line-height: 1.25;
     color: $CLR_GRAY;
     cursor: pointer;

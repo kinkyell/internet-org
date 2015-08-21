@@ -136,17 +136,6 @@ if ( ! function_exists( 'internetorg_create_after_title_fields_internetorg_page_
 	}
 }
 
-if ( ! function_exists( 'internetorg_create_fields_io_freesvc' ) ) {
-	function internetorg_create_fields_io_freesvc() {
-		$fm = new Fieldmanager_Link(
-			array(
-				'name' => 'service_link',
-				)
-		);
-		$fm->add_meta_box( __( 'Link To The Service URL', 'internetorg' ), array( 'io_freesvc' ) );
-	}
-}
-
 /**
  * Called when the plugin activates, use to do anything that needs to be done once
  *

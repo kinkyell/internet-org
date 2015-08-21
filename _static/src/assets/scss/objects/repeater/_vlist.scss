@@ -22,7 +22,7 @@
 }
 
 .vList_bullets > *  {
-	font-family: $FONT_SANS;
+	@include font(SANS);
 	line-height: 1.666667;
 	color: $CLR_GRAY;
 	position: relative;
