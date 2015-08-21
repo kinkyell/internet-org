@@ -132,8 +132,10 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._init = function() {
         this._createChildren();
-        this._setupTransitions();
         this.viewWindow = ViewWindow;
+
+        this._timeLine = this._createTimeline('forward');
+        this._timeLineReverse = this._createTimeline('reverse');
     };
 
     proto._createChildren = function() {
@@ -146,88 +148,91 @@ define(function(require, exports, module) { // jshint ignore:line
     // Slide Logic
     // /////////////////////////////////////////////////////////////////////////////////////////
 
-    proto._setupTransitions = function() {
-        this.tl = new Timeline({ paused: true });
+    proto._createTimeline = function(direction) {
+        var tl = new Timeline({ paused: true });
+        var easeDirection = (direction === 'forward') ? EASE_DIRECTION_FORWARD : EASE_DIRECTION_REVERSE;
 
         var postIn = [
             {
                 y: '90px',
                 opacity: 0,
-                ease: EASE[EASE_DIRECTION_FORWARD]
+                ease: EASE[easeDirection]
             },
             {
                 y: '0px',
                 opacity: 1,
-                ease: EASE[EASE_DIRECTION_FORWARD]
+                ease: EASE[easeDirection]
             }
         ];
 
         //  transition 01
         ///////////////////////
-        this.tl.to(this._$transformBlock, SECTION_DURATION, { y: '-90px', ease: EASE[EASE_DIRECTION_FORWARD] });
-        this.tl.to(this._$transformBlockPre.eq(0), SECTION_DURATION, { opacity: 0, ease: EASE[EASE_DIRECTION_FORWARD] }, '-=' + SECTION_DURATION);
-        this.tl.fromTo(this._$transformBlockPost.eq(0), SECTION_DURATION, postIn[0], postIn[1], '-=' + SECTION_DURATION);
+        tl.to(this._$transformBlock, SECTION_DURATION, { y: '-90px', ease: EASE[easeDirection] });
+        tl.to(this._$transformBlockPre.eq(0), SECTION_DURATION, { opacity: 0, ease: EASE[easeDirection] }, '-=' + SECTION_DURATION);
+        tl.fromTo(this._$transformBlockPost.eq(0), SECTION_DURATION, postIn[0], postIn[1], '-=' + SECTION_DURATION);
 
         //  transition 02
         ///////////////////////
-        this.tl.to(this._$transformBlockPost.eq(0), SECTION_DURATION, {
+        tl.to(this._$transformBlockPost.eq(0), SECTION_DURATION, {
             y: '-45px',
             opacity: 0,
-            ease: EASE[EASE_DIRECTION_FORWARD]
+            ease: EASE[easeDirection]
         });
 
-        this.tl.fromTo(this._$transformBlockPost.eq(1), SECTION_DURATION, postIn[0], postIn[1], '-=' + SECTION_DURATION);
+        tl.fromTo(this._$transformBlockPost.eq(1), SECTION_DURATION, postIn[0], postIn[1], '-=' + SECTION_DURATION);
 
         //  transition 03
         ///////////////////////
-        this.tl.to(this._$transformBlockPost.eq(1), SECTION_DURATION, {
+        tl.to(this._$transformBlockPost.eq(1), SECTION_DURATION, {
             y: '-45px',
             opacity: 0,
-            ease: EASE[EASE_DIRECTION_FORWARD]
+            ease: EASE[easeDirection]
         });
 
-        this.tl.fromTo(this._$transformBlockPost.eq(2), SECTION_DURATION, postIn[0], postIn[1], '-=' + SECTION_DURATION);
+        tl.fromTo(this._$transformBlockPost.eq(2), SECTION_DURATION, postIn[0], postIn[1], '-=' + SECTION_DURATION);
 
         //  transition 04
         ///////////////////////
-        this.tl.to(this._$transformBlock, SECTION_DURATION, {
+        tl.to(this._$transformBlock, SECTION_DURATION, {
             y: '-=90px',
-            ease: EASE[EASE_DIRECTION_FORWARD]
+            ease: EASE[easeDirection]
         });
 
-        this.tl.fromTo(this._$transformBlockPre.eq(1), SECTION_DURATION, {
+        tl.fromTo(this._$transformBlockPre.eq(1), SECTION_DURATION, {
             opacity: 0,
             y: '50px',
-            ease: EASE[EASE_DIRECTION_FORWARD]
+            ease: EASE[easeDirection]
         }, {
             opacity: 1,
             y: '0px',
-            ease: EASE[EASE_DIRECTION_FORWARD]
+            ease: EASE[easeDirection]
         }, '-=' + SECTION_DURATION);
 
-        this.tl.to(this._$transformBlockPost.eq(2), SECTION_DURATION, {
+        tl.to(this._$transformBlockPost.eq(2), SECTION_DURATION, {
             y: '-45px',
             opacity: 0,
-            ease: EASE[EASE_DIRECTION_FORWARD]
+            ease: EASE[easeDirection]
         }, '-=' + SECTION_DURATION);
 
-        this.tl.fromTo(this._$transformBlockPost.eq(3), SECTION_DURATION, {
+        tl.fromTo(this._$transformBlockPost.eq(3), SECTION_DURATION, {
             y: '90px',
             opacity: 0,
-            ease: EASE[EASE_DIRECTION_FORWARD]
+            ease: EASE[easeDirection]
         }, {
             y: '0px',
             opacity: 1,
-            ease: EASE[EASE_DIRECTION_FORWARD]
+            ease: EASE[easeDirection]
         }, '-=' + SECTION_DURATION);
 
-        this.tl.addLabel(this._sections[0].label, 0);
-        this.tl.addLabel(this._sections[1].label, 0.35);
-        this.tl.addLabel(this._sections[2].label, 0.7);
-        this.tl.addLabel(this._sections[3].label, 1.05);
-        this.tl.addLabel(this._sections[4].label, 1.4);
+        tl.addLabel(this._sections[0].label, 0);
+        tl.addLabel(this._sections[1].label, 0.35);
+        tl.addLabel(this._sections[2].label, 0.7);
+        tl.addLabel(this._sections[3].label, 1.05);
+        tl.addLabel(this._sections[4].label, 1.4);
 
-        this.tl.timeScale(TIME_SCALE);
+        tl.timeScale(TIME_SCALE);
+
+        return tl;
     };
 
     proto.gotoSection = function(state) {
@@ -241,8 +246,9 @@ define(function(require, exports, module) { // jshint ignore:line
             var fromLabel = this._sections[state.position].label;
             var toLabel = this._sections[state.destinationPos].label;
             var direction = (state.position < state.destinationPos) ? 'bottom' : 'top';
+            var timeline = (direction === 'bottom') ? this._timeLine : this._timeLineReverse;
 
-            this.tl.tweenFromTo(fromLabel, toLabel, {
+            timeline.tweenFromTo(fromLabel, toLabel, {
                 onComplete: this._onLabelComplete.bind(this, state, resolve)
             });
 
