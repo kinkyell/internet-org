@@ -653,5 +653,53 @@ function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button 
 }
 
 function internet_org_get_content_widget_html( $widget_slug, $cta_as_button = true ) {
-	echo get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button );
+	echo wp_kses_post( get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button ) );
+}
+
+/**
+ * Conditionally check if provided URL appears to be an internal link.
+ *
+ * @param string $url URL to test
+ *
+ * @return bool
+ */
+function internetorg_is_internal_url( $url ) {
+
+	/** no URL */
+	if ( empty( $url ) ) {
+		return false;
+	}
+
+	/** @var array $link_parsed Associative array of URL components returned by parse_url for the provided url */
+	$link_parsed = parse_url( $url );
+
+	/** @var array $home_parsed Associative array of URL components returned by parse_url for the home_url */
+	$home_parsed = parse_url( home_url() );
+
+	/** hostname match */
+	if ( strtolower( $link_parsed['host'] ) === strtolower( $home_parsed['host'] ) ) {
+		return true;
+	}
+
+	/** @var string $link_parsed_host remove www. for comparison */
+	$link_parsed_host = str_ireplace( 'www.', '', $link_parsed['host'] );
+
+	/** @var string $home_parsed_host remove www. for comparison */
+	$home_parsed_host = str_ireplace( 'www.', '', $home_parsed['host'] );
+
+	if ( strtolower( $link_parsed_host ) === strtolower( $home_parsed_host ) ) {
+		return true;
+	}
+
+	/** relative URL beginning with forward slash */
+	if ( substr( $url, 0, 1 ) === '/' ) {
+		return true;
+	}
+
+	/** relative URL beginning with two dots */
+	if ( substr( $url, 0, 3 ) === '../' ) {
+		return true;
+	}
+
+	return false;
 }
