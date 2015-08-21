@@ -23,17 +23,23 @@ get_header();
 
 	<div class="viewWindow-panel viewWindow-panel_feature">
 		<div class="viewWindow-panel-content">
+		    <?php
+		    // if we need a video url we'll add this
+		    /*
 			<a href="" class="contentOnMedia-link contentOnMedia-link_ct"><span class="circleBtn circleBtn_play"></span></a>
+             */
 
-			<?php
-
-			$featured_image = '';
+			$featured_image_url = '';
 			if ( has_post_thumbnail() ) {
-				$featured_image = get_the_post_thumbnail();
+				// $featured_image = get_the_post_thumbnail();
+				$featured_image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' );
+				if ( is_array( $featured_image ) && !empty( $featured_image[0] ) ) {
+				    $featured_image_url = $featured_image[0];
+				}
 			}
 
 			?>
-			<div class="viewWindow-panel-content-inner" style="background-image: url('<?php echo esc_attr( $featured_image ); ?>');"></div>
+			<div class="viewWindow-panel-content-inner" style="background-image: url('<?php echo esc_attr( $featured_image_url ); ?>');"></div>
 		</div>
 	</div>
 
@@ -51,7 +57,7 @@ get_header();
 										<h2 class="hdg hdg_2"><?php the_title(); ?></h2>
 									</div>
 									<div class="topicBlock-bd">
-										<p class="bdcpy"><?php /* sub title custom field */ ?></p>
+										<p class="bdcpy"><?php echo esc_html( internetorg_get_the_subtitle( get_the_ID() ) ); ?></p>
 									</div>
 								</div>
 							</div>
@@ -76,6 +82,16 @@ get_header();
 				<div class="footBox">
 					<div class="container">
 						<div class="topicBlock">
+
+						<?php
+						/**
+						 *
+						 * @todo accomodate multiple CTAs in this section
+						 */
+
+						?>
+
+
 							<?php $involved = internetorg_get_content_widget_by_slug( 'get-involved' ); ?>
 
 							<?php if ( ! empty( $involved ) || ( isset( $involved['post'] ) && empty( $involved['post'] ) ) ) :
