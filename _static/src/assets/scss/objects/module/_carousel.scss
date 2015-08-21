@@ -37,7 +37,7 @@ carousel layout
 }
 
 .carousel-handle-slide-caption {
-    font-family: $FONT_SANS;
+    @include font(SANS);
     @include remify(font-size, 14px);
     line-height: 1.666667;
     text-align: left;

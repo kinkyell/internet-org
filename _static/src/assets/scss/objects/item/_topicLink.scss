@@ -19,7 +19,7 @@
 }
 
 .topicLink-link {
-    font-family: $FONT_SERIF;
+    @include font(SERIF);
     @include remify(font-size, 21px);
     line-height: 1.145833;
     color: inherit;

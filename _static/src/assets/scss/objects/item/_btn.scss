@@ -9,8 +9,7 @@
     padding: 16px;
     width: 100%;
     box-sizing: border-box;
-    font-family: $FONT_SANS;
-    font-weight: bold;
+    @include font(SANS_BLACK);
     @include remify(font-size, 13px);
     line-height: normal; /* set to normal to .btn can be usd on inputs in firefox with consistency */
     text-align: center;

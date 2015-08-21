@@ -48,8 +48,7 @@
     background: #ffffff;
     @include remify(font-size, 18px);
     line-height: 1;
-    font-family: $FONT_SANS_BLACK;
-    font-weight: bolder;
+    @include font(SANS_BLACK);
     text-transform: uppercase;
     text-align: center;
     cursor: pointer;
@@ -87,8 +86,7 @@ select:focus + .select-label,
 }
 
 .select-label-light {
-    font-family: $FONT_SANS;
-    font-weight: normal;
+    @include font(SANS);
 }
 
 .select-menu {
@@ -112,8 +110,7 @@ select:focus + .select-label,
 }
 
 .select-menu-item:not(:focus) {
-    font-family: $FONT_SANS;
-    font-weight: normal;
+    @include font(SANS);
 }
 
 .select > .select-menu {

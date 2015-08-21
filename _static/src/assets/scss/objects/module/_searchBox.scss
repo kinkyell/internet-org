@@ -37,8 +37,7 @@
 }
 
 .searchBox-input_tall {
-    font-family: $FONT_SERIF;
-    font-weight: 500;
+    @include font(SERIF);
     @include remify(font-size, 58px);
     border-bottom: 1px solid $CLR_GRAY_LIGHT;
     width: 95%;

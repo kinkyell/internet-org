@@ -15,8 +15,7 @@
     h4,
     h5,
     h6 {
-        font-family: $FONT_SERIF;
-        font-weight: 400; @warn 'REMOVE ONCE Web Fonts are in place';
+        @include font(SERIF);
         color: $CLR_BLACK;
         @include remify(font-size, 16px);
         line-height: 1.4565384;
@@ -24,8 +23,7 @@
 
     a {
         @include transition(all 0.3s ease-in-out);
-        font-family: $FONT_SANS_BLACK;
-        font-weight: bolder; @warn 'REMOVE ONCE Web Fonts are in place';
+        @include font(SANS_BLACK);
         @include remify(font-size, 13px);
         line-height: 1.222222;
         text-decoration: none;
@@ -77,8 +75,7 @@
     a:hover:before { background-color: $CLR_ACCENT_ACTIVE; }
 
     p {
-        font-family: $FONT_SANS;
-        font-weight: 200; // TODO: REMOVE ONCE Web Fonts are in place
+        @include font(SANS);
         @include remify(font-size, 14px);
         line-height: 1.714285714;
         color: $CLR_GRAY;
@@ -94,7 +91,7 @@
     .theme-mission ul:not(.carousel-handle) li:before { color: $CLR_MISSION; }
 
     ul:not(.carousel-handle) > li {
-        font-family: $FONT_SANS;
+        @include font(SANS);
         line-height: 1.666667;
         color: $CLR_GRAY;
         position: relative;
@@ -117,8 +114,7 @@
     }
 
     blockquote > *:first-child {
-        font-family: $FONT_SERIF_ITALIC;
-        font-style: italic; // TODO: REMOVE ONCE Web Fonts are in place
+        @include font(SERIF_ITALIC);
         @include remify(font-size, 22px);
         line-height: 1.363636;
         color: $CLR_BLACK;
@@ -130,8 +126,7 @@
     }
 
     blockquote > cite {
-        font-family: $FONT_SANS;
-        font-weight: 200; // TODO: REMOVE ONCE Web Fonts are in place
+        @include font(SANS);
         @include remify(font-size, 18px);
         line-height: 1;
         color: $CLR_GRAY;
@@ -150,8 +145,7 @@
     // caption { }
 
     figcaption {
-        font-family: $FONT_SERIF_ITALIC;
-        font-style: italic;  // TODO: REMOVE ONCE Web Fonts are in place
+        @include font(SERIF_ITALIC);
         @include remify(font-size, 14px);
         line-height: 1.3636363;
         color: $CLR_GRAY;

@@ -26,8 +26,7 @@
 .langSelect-menu-item {
     @include remify(font-size, 13px);
     line-height: 1;
-    font-family: $FONT_SANS_BLACK;
-    font-weight: bolder;
+    @include font(SANS_BLACK);
     text-transform: uppercase;
     cursor: pointer;
 }
@@ -60,8 +59,7 @@
 }
 
 .langSelect-label-light {
-    font-family: $FONT_SANS;
-    font-weight: normal;
+    @include font(SANS);
 }
 
 .langSelect-menu {
@@ -78,8 +76,7 @@
     display: inline-block;
     width: 40%;
     padding: 20px 0 0 30px;
-    font-family: $FONT_SANS;
-    font-weight: bold;
+    @include font(SANS_BLACK);
 }
 
 .langSelect-menu-item > * {
