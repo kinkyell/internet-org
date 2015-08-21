@@ -45,8 +45,8 @@ get_header();
 						</div>
 						<div class="introBlock-ft introBlock-ft_rule">
 							<ul class="socialParade">
-								<li><a class="socialParade-icon socialParade-icon_fb" href="">Facebook</a></li>
-								<li><a class="socialParade-icon socialParade-icon_tw" href="">Twitter</a></li>
+								<li><a class="socialParade-icon socialParade-icon_fb" href="https://fb.me/Internetdotorg">Facebook</a></li>
+								<li><a class="socialParade-icon socialParade-icon_tw" href="https://twitter.com/internet_org">Twitter</a></li>
 								<li><a class="socialParade-icon socialParade-icon_li" href="">LinkedIn</a></li>
 							</ul>
 						</div>
