@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Internet.org\n"
-"POT-Creation-Date: 2015-08-14 11:16-0500\n"
+"POT-Creation-Date: 2015-08-21 15:12-0500\n"
 "PO-Revision-Date: 2015-08-13 17:37-0500\n"
 "Last-Translator: Richard Aber <raber@nerdery.com>\n"
 "Language-Team: Richard Aber <raber@nerdery.com>\n"
@@ -38,15 +38,15 @@ msgstr ""
 msgid "Try looking in the monthly archives. %1$s"
 msgstr ""
 
-#: archive-io_press.php:20
+#: archive-io_press.php:53
 msgid "Press"
 msgstr ""
 
-#: archive-io_press.php:76
+#: archive-io_press.php:100
 msgid "Read More"
 msgstr ""
 
-#: archive-io_press.php:95
+#: archive-io_press.php:118
 msgid "Show More"
 msgstr ""
 
@@ -86,6 +86,11 @@ msgstr ""
 msgid "Sidebar"
 msgstr ""
 
+#: functions.php:420
+msgctxt "Fieldmanager plugin meta field"
+msgid "Subtitle"
+msgstr ""
+
 #: inc/extras.php:52
 #, php-format
 msgid "Page %s"
@@ -119,150 +124,335 @@ msgctxt "post author"
 msgid "by %s"
 msgstr ""
 
-#: inc/template-tags.php:130
+#: inc/template-tags.php:127
 #, php-format
 msgctxt "post date"
 msgid "%s"
 msgstr ""
 
-#: inc/template-tags.php:142 inc/template-tags.php:148
+#: inc/template-tags.php:139 inc/template-tags.php:145
 msgid ", "
 msgstr ""
 
-#: inc/template-tags.php:144
+#: inc/template-tags.php:141
 #, php-format
 msgid "Posted in %1$s"
 msgstr ""
 
-#: inc/template-tags.php:150
+#: inc/template-tags.php:147
 #, php-format
 msgid "Tagged %1$s"
 msgstr ""
 
-#: inc/template-tags.php:156
+#: inc/template-tags.php:153
 msgid "Leave a comment"
 msgstr ""
 
-#: inc/template-tags.php:156
+#: inc/template-tags.php:153
 msgid "1 Comment"
 msgstr ""
 
-#: inc/template-tags.php:156
+#: inc/template-tags.php:153
 msgid "% Comments"
 msgstr ""
 
-#: inc/template-tags.php:160 inc/template-tags.php:183
+#: inc/template-tags.php:157 inc/template-tags.php:180
 #: template-parts/content-page-entry-end.php:11
 #: template-parts/content-page.php:26
 msgid "Edit"
 msgstr ""
 
-#: inc/template-tags.php:179
+#: inc/template-tags.php:176
 msgid "Read More &rarr;"
 msgstr ""
 
-#: inc/template-tags.php:200
+#: inc/template-tags.php:197
 #, php-format
 msgid "Category: %s"
 msgstr ""
 
-#: inc/template-tags.php:202
+#: inc/template-tags.php:199
 #, php-format
 msgid "Tag: %s"
 msgstr ""
 
-#: inc/template-tags.php:204
+#: inc/template-tags.php:201
 #, php-format
 msgid "Author: %s"
 msgstr ""
 
-#: inc/template-tags.php:206
+#: inc/template-tags.php:203
 #, php-format
 msgid "Year: %s"
 msgstr ""
 
-#: inc/template-tags.php:206
+#: inc/template-tags.php:203
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr ""
 
-#: inc/template-tags.php:208
+#: inc/template-tags.php:205
 #, php-format
 msgid "Month: %s"
 msgstr ""
 
-#: inc/template-tags.php:208
+#: inc/template-tags.php:205
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr ""
 
-#: inc/template-tags.php:210
+#: inc/template-tags.php:207
 #, php-format
 msgid "Day: %s"
 msgstr ""
 
-#: inc/template-tags.php:210
+#: inc/template-tags.php:207
 msgctxt "daily archives date format"
 msgid "F j, Y"
 msgstr ""
 
-#: inc/template-tags.php:213
+#: inc/template-tags.php:210
 msgctxt "post format archive title"
 msgid "Asides"
 msgstr ""
 
-#: inc/template-tags.php:215
+#: inc/template-tags.php:212
 msgctxt "post format archive title"
 msgid "Galleries"
 msgstr ""
 
-#: inc/template-tags.php:217
+#: inc/template-tags.php:214
 msgctxt "post format archive title"
 msgid "Images"
 msgstr ""
 
-#: inc/template-tags.php:219
+#: inc/template-tags.php:216
 msgctxt "post format archive title"
 msgid "Videos"
 msgstr ""
 
-#: inc/template-tags.php:221
+#: inc/template-tags.php:218
 msgctxt "post format archive title"
 msgid "Quotes"
 msgstr ""
 
-#: inc/template-tags.php:223
+#: inc/template-tags.php:220
 msgctxt "post format archive title"
 msgid "Links"
 msgstr ""
 
-#: inc/template-tags.php:225
+#: inc/template-tags.php:222
 msgctxt "post format archive title"
 msgid "Statuses"
 msgstr ""
 
-#: inc/template-tags.php:227
+#: inc/template-tags.php:224
 msgctxt "post format archive title"
 msgid "Audio"
 msgstr ""
 
-#: inc/template-tags.php:229
+#: inc/template-tags.php:226
 msgctxt "post format archive title"
 msgid "Chats"
 msgstr ""
 
-#: inc/template-tags.php:232
+#: inc/template-tags.php:229
 #, php-format
 msgid "Archives: %s"
 msgstr ""
 
-#: inc/template-tags.php:236
+#: inc/template-tags.php:233
 #, php-format
 msgid "%1$s: %2$s"
 msgstr ""
 
-#: inc/template-tags.php:238
+#: inc/template-tags.php:235
 msgid "Archives"
+msgstr ""
+
+#: page-contact.php:43 single-io_press.php:86
+#: template-parts/content-page-temp-panel.php:32
+msgid "Facebook"
+msgstr ""
+
+#: page-contact.php:44 single-io_press.php:87
+#: template-parts/content-page-temp-panel.php:33
+msgid "Twitter"
+msgstr ""
+
+#: page-contact.php:45 single-io_press.php:88
+#: template-parts/content-page-temp-panel.php:34
+msgid "LinkedIn"
+msgstr ""
+
+#: page-contact.php:107
+msgid "Learn More"
+msgstr ""
+
+#: page-contact.php:127
+msgid "Get in Touch"
+msgstr ""
+
+#: page-contact.php:142
+msgid "Follow the Project"
+msgstr ""
+
+#: page-contact.php:143
+msgid "Stay updated about Internet.org and lorem ipsum dolor sit amet."
+msgstr ""
+
+#: page-contact.php:146
+msgid "https://fb.me/Internetdotorg"
+msgstr ""
+
+#: page-contact.php:146
+msgid "Like us on Facebook"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:53
+#: plugins/internetorg-custom-posttypes/Page.php:46
+msgid "Section"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:54
+#: plugins/internetorg-custom-posttypes/Page.php:47
+#, php-format
+msgid "Section: %s"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:55
+#: plugins/internetorg-custom-posttypes/Page.php:48
+msgid "Add another Content Area"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:60
+#: plugins/internetorg-custom-posttypes/Page.php:52
+msgid "Section Title"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:61
+msgid "Section Name"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:62
+#: plugins/internetorg-custom-posttypes/Page.php:53
+msgid "Description"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:63
+msgid "Section Slug"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:64
+#: plugins/internetorg-custom-posttypes/Campaign.php:85
+msgid "Background Image"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:66
+#: plugins/internetorg-custom-posttypes/Page.php:55
+msgid "Call to action"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:67
+#: plugins/internetorg-custom-posttypes/Page.php:56
+#, php-format
+msgid "Call to action: %s"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:68
+#: plugins/internetorg-custom-posttypes/Page.php:57
+msgid "Add another CTA"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:71
+#: plugins/internetorg-custom-posttypes/Page.php:60
+msgid "Link"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:72
+#: plugins/internetorg-custom-posttypes/Page.php:61
+msgid "Image"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:78
+#: plugins/internetorg-custom-posttypes/Page.php:68
+msgid "Content Areas"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:126
+#: plugins/internetorg-custom-posttypes/Campaign.php:77
+#: plugins/internetorg-custom-posttypes/Campaign.php:86
+msgid "Subtitle"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:135
+msgid "Additional page configuration"
+msgstr ""
+
+#: plugins/internetorg-custom-posttypes/Campaign.php:30
+msgid "Campaigns"
+msgstr ""
+
+#: plugins/internetorg-custom-posttypes/Campaign.php:31
+msgid "Campaign"
+msgstr ""
+
+#: plugins/internetorg-custom-posttypes/Campaign.php:68
+msgid "Add Background"
+msgstr ""
+
+#: plugins/internetorg-custom-posttypes/Campaign.php:69
+msgid "Select Background Image"
+msgstr ""
+
+#: plugins/internetorg-custom-posttypes/Campaign.php:70
+msgid "Use Image as Background"
+msgstr ""
+
+#: plugins/internetorg-custom-posttypes/ContentWidget.php:30
+msgid "Content Widgets"
+msgstr ""
+
+#: plugins/internetorg-custom-posttypes/ContentWidget.php:31
+msgid "Content Widget"
+msgstr ""
+
+#: plugins/internetorg-custom-posttypes/ContentWidget.php:57
+#: plugins/internetorg-custom-posttypes/ContentWidget.php:68
+msgid "Call to Action"
+msgstr ""
+
+#: plugins/internetorg-custom-posttypes/ContentWidget.php:58
+#, php-format
+msgid "Call to Action: %s"
+msgstr ""
+
+#: plugins/internetorg-custom-posttypes/ContentWidget.php:63
+msgid "Button Label"
+msgstr ""
+
+#: plugins/internetorg-custom-posttypes/ContentWidget.php:64
+msgid "URL"
+msgstr ""
+
+#: plugins/internetorg-custom-posttypes/ContentWidget.php:65
+msgid "File"
+msgstr ""
+
+#: plugins/internetorg-custom-posttypes/Press.php:30
+msgid "Press Articles"
+msgstr ""
+
+#: plugins/internetorg-custom-posttypes/Press.php:31
+msgid "Press Article"
+msgstr ""
+
+#: plugins/internetorg-custom-posttypes/Story.php:30
+msgid "Stories"
+msgstr ""
+
+#: plugins/internetorg-custom-posttypes/Story.php:31
+msgid "Story"
 msgstr ""
 
 #: search.php:15
@@ -279,19 +469,7 @@ msgstr ""
 msgid "Search Internet.org"
 msgstr ""
 
-#: single-io_press.php:39
-msgid "Facebook"
-msgstr ""
-
-#: single-io_press.php:40
-msgid "Twitter"
-msgstr ""
-
-#: single-io_press.php:41
-msgid "LinkedIn"
-msgstr ""
-
-#: single-io_press.php:61 template-parts/content-free-services.php:15
+#: template-parts/content-free-services.php:22
 msgid "Full List of Free Services"
 msgstr ""
 
@@ -333,6 +511,20 @@ msgstr ""
 msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
+#: template-parts/header-buttons.php:19
+msgid "Menu"
+msgstr ""
+
+#: template-parts/header-search.php:15
+msgctxt "label"
+msgid "Search"
+msgstr ""
+
+#: template-parts/header-search.php:17
+msgctxt "placeholder"
+msgid "Search"
+msgstr ""
+
 #. Theme Name of the plugin/theme
 msgid "Internet.org"
 msgstr ""
@@ -342,11 +534,11 @@ msgid "http://underscores.me/"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Description"
+msgid "A Custom Theme for Internet.org."
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "arichard"
+msgid "The Nerdery"
 msgstr ""
 
 #. Author URI of the plugin/theme
