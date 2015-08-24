@@ -57,7 +57,7 @@ get_header(); ?>
 													</div>
 													<div class="feature-cta">
 														<a href="<?php the_permalink(); ?>" class="link mix-link_small">
-															<?php _e( 'Read More', 'internetorg' ); ?>
+															<?php esc_html_e( 'Read More', 'internetorg' ); ?>
 														</a>
 													</div>
 												</div>
