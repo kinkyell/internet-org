@@ -40,7 +40,6 @@ define(function(require, exports, module) { // jshint ignore:line
     HomeState.prototype.onActivate = function(event) {
         if (event.method !== 'init') {
             //TODO: replace image with narrative stuff
-            console.log('this stuff will not happen on state load');
         }
 
         this.refreshComponents($(document.body));
