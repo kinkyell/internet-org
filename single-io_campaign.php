@@ -2,8 +2,6 @@
 /**
  * The template for displaying the mission page
  *
- * Template Name: Mission
- *
  * @todo: Discuss with FED what class to apply on WYSIWYG areas
  * @todo: How to determine if this is being ajaxed in so we don't output header/footer/etc., and is that allowed on VIP?
  * @todo: How to handle fields that weren't intended for use on this template
