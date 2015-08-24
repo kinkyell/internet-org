@@ -64,7 +64,7 @@ class Internetorg_Main_SubNav_Walker extends Walker_Nav_Menu
 			$args->before,
 			$attributes,
 			$args->link_before,
-			apply_filters( 'the_title', $item->title, $item->ID ),
+			esc_attr( apply_filters( 'the_title', $item->title, $item->ID ) ),
 			$args->link_after,
 			$args->after
 		);
