@@ -16,20 +16,38 @@ define(function(require, exports, module) { // jshint ignore:line
      * TODO: update to point to WP endpoints
      */
     var PATHS = {
-        'mission': '/pages/mission.html',
-        'approach': '/pages/approach.html',
-        'approach/tertiary': '/pages/approach-tertiary.html',
-        'impact': '/pages/impact.html',
-        'press': '/pages/press-content.html',
-        'contact': '/pages/contact-content.html',
-        'pressResults': '/pages/press-content-addl.html',
-        'searchResults': '/pages/search-results.html',
-        '404': '/pages/not-found.html'
+        'mission': 'mission/index.html',
+        'approach': 'approach/index.html',
+        'approach/tertiary': 'approach/tertiary/index.html',
+        'impact': 'impact/index.html',
+        'press': 'press/index.html',
+        'contact': 'contact/index.html',
+        'pressResults': 'pages/press-content-addl.html',
+        'searchResults': 'search/index.html',
+        '404': 'not-found/index.html'
     };
 
     var PREFIX_STRIPPER = /^\//;
 
+    function _parseHtmlResponse(htmlStr) {
+        var parsed = $.parseHTML(htmlStr);
+        var viewWindowStory = parsed.reduce(function(found, element) {
+            if (element.nodeName === 'DIV' && element.className.indexOf('viewWindow') !== -1) {
+                return element.lastElementChild.firstElementChild.firstElementChild;
+            }
+            return found;
+        }, null);
+
+        if (viewWindowStory === null) {
+            // this means it had no wrapper, send all html
+            viewWindowStory = htmlStr;
+        }
+
+        return viewWindowStory;
+    }
+
     var apiService = {
+
 
         /**
          * Returns html for a given basic route
@@ -39,7 +57,7 @@ define(function(require, exports, module) { // jshint ignore:line
         getPanelContent: function(route) {
             route = route.replace(PREFIX_STRIPPER, '');
             var path = PATHS[route] || PATHS['404'];
-            return Promise.resolve($.get(BASE_URL + path));
+            return Promise.resolve($.get(BASE_URL + path)).then(_parseHtmlResponse);
         },
 
         /**
@@ -48,7 +66,7 @@ define(function(require, exports, module) { // jshint ignore:line
          * @returns {Promise} represents value of search result html returned
          */
         getSearchResults: function(searchText) {
-            return Promise.resolve($.get(BASE_URL + PATHS.searchResults));
+            return Promise.resolve($.get(BASE_URL + PATHS.searchResults)).then(_parseHtmlResponse);
         },
 
         /**
@@ -61,7 +79,7 @@ define(function(require, exports, module) { // jshint ignore:line
             var resultsPath = PATHS[contentType + 'Results'];
             return Promise.resolve($.get(BASE_URL + resultsPath, {
                 page: page
-            }));
+            })).then(_parseHtmlResponse);
         }
 
     };

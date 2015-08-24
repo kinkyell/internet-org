@@ -23,7 +23,7 @@ define(function(require, exports, module) { // jshint ignore:line
     // Additional Variables
     var appConfig = {
         classes: new ClassDict(classes),
-        apiBase: '',
+        apiBase: window.SETTINGS.STATIC_PATH,
         searchPath: '/search/', // include prefix '/'
         animationSpeeds: {
             CONTENT_IN: 0.4, // content fade in
@@ -38,13 +38,13 @@ define(function(require, exports, module) { // jshint ignore:line
         },
         narrative: {
             mobile: {
-                EASE: Expo, // gsap ease type
+                EASE: window.Expo, // gsap ease type
                 EASE_DIRECTION_FORWARD: 'easeOut', // gsap ease direction when progressing forward
                 EASE_DIRECTION_REVERSE: 'easeIn', // gsap ease direction when progressing backward
                 SECTION_DURATION: 0.65, // uniform transformBlock section durations
             },
             desktop: {
-                EASE: Expo, // gsap ease type
+                EASE: window.Expo, // gsap ease type
                 EASE_DIRECTION_FORWARD: 'easeOut', // gsap ease direction when progressing forward
                 EASE_DIRECTION_REVERSE: 'easeIn', // gsap ease direction when progressing backward
                 SCROLL_BUFFER: 0, // Buffer for scroll jacking (ms)
@@ -54,12 +54,18 @@ define(function(require, exports, module) { // jshint ignore:line
                     HOME: '/assets/media/uploads/home_DT.jpg',
                     MISSION: '/assets/media/uploads/mission_DT.jpg',
                     APPROACH: '/assets/media/uploads/approach_DT.jpg',
+                    APPROACH_01: '/assets/media/uploads/approach_DT_02.jpg',
+                    APPROACH_02: '/assets/media/uploads/approach_DT_03.jpg',
                     IMPACT: '/assets/media/uploads/impact_DT.jpg',
+                    IMPACT_01: '/assets/media/uploads/impact_DT_02.jpg',
+                    IMPACT_02: '/assets/media/uploads/impact_DT_03.jpg',
                     FOOT: '/assets/media/uploads/contact_DT.jpg'
                 }
             }
         }
     };
+
+    console.log(window.Expo);
 
     return appConfig;
 

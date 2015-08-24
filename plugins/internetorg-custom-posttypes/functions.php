@@ -50,7 +50,17 @@ if ( ! function_exists( 'internetorg_get_content_widget_by_slug' ) ) :
 	 *
 	 * array(
 	 *     'post' => WP_Post,
-	 *     'meta' => array,
+	 *     'meta' => [
+	 *          'slug' => $slug,
+	 *          'meta-data' => [ // no limit to the number of elements
+	 *              [
+	 *                  'label' => '',
+	 *                  'url'   => '',
+	 *                  'image' => '', // image url NOT object or ID
+	 *              ],
+	 *              ...
+	 *          ],
+	 *      ],
 	 * )
 	 *
 	 * @param string $slug slug of the widget to lookup
@@ -80,14 +90,16 @@ if ( ! function_exists( 'internetorg_get_content_widget_by_slug' ) ) :
 				$meta = get_post_meta( $wdgtqry->post->ID );
 
 				if ( ! empty( $meta ) ) {
-					$slug = ( ! empty( $meta['slug'][0] ) ? $meta['slug'][0] : '' );
 					$data = ( ! empty( $meta['widget-data'][0] ) ? $meta['widget-data'][0] : '' );
 
 					$data = maybe_unserialize( $data );
 
-					if ( ! empty( $data['image'] ) ) {
-						$imgurl = wp_get_attachment_url( $data['image'] );
-						$data['image'] = $imgurl;
+					if ( ! empty( $data ) ) {
+						foreach ( $data as $index => $item ) {
+							if ( ! empty( $item['image'] ) ) {
+								$data[ $index ]['image'] = wp_get_attachment_url( $item['image'] );
+							}
+						}
 					}
 
 					$meta = array(

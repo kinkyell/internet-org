@@ -3,10 +3,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var $ = require('jquery');
     var BasicState = require('./BasicState');
-    var viewWindow = require('services/viewWindow');
     var NarrativeView = require('views/NarrativeView');
-
-    var CarouselView = require('views/CarouselView');
 
     /**
      * Manages home state

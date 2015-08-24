@@ -617,3 +617,105 @@ function internetorg_img_caption_filter( $output ) {
 }
 
 add_filter( 'img_caption_shortcode', 'internetorg_img_caption_filter' );
+
+function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button = true ) {
+	$out = '<div class="topicBlock">';
+
+	$widget = internetorg_get_content_widget_by_slug( $widget_slug );
+
+	if ( ! empty( $widget ) || ( isset( $widget['post'] ) && empty( $widget['post'] ) ) ) {
+		$meta = ( ! empty( $widget['meta'] ) ? $widget['meta'] : null );
+		$post = $widget['post'];
+
+		$out .= '<div class="topicBlock-hd"><h2 class="hdg hdg_3">' . esc_html( $post->post_title ) . '</h2></div>';
+		$out .= '<div class="topicBlock-bd">';
+		$out .= '<p class="bdcpy">' . wp_kses_post( $post->post_content ) . '</p>';
+
+		if ( ! empty( $meta ) && ! empty( $meta['widget-data'] ) ) {
+			foreach ( $meta['widget-data'] as $cta ) {
+				$label = ( ! empty( $cta['label'] ) ? $cta['label'] : '' );
+				$url   = ( ! empty( $cta['url'] )   ? $cta['url']   : '' );
+				$file  = ( ! empty( $cta['image'] ) ? $cta['image'] : '' );
+
+				$link = $url ? $url : $file;
+				if ( ! empty( $link ) ) {
+					$out .= '<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? $link : '' ) . '" class="' . ( $cta_as_button ? 'btn' : 'link link_twoArrows' ) . '">' . esc_html( $label ) . '</a></div>';
+				}
+			}
+		}
+
+		$out .= '</div>';
+	}
+
+	$out .= '</div>';
+
+	return $out;
+}
+
+function internet_org_get_content_widget_html( $widget_slug, $cta_as_button = true ) {
+	echo wp_kses_post( get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button ) );
+}
+
+/**
+ * Conditionally check if provided URL appears to be an internal link.
+ *
+ * @param string $url URL to test
+ *
+ * @return bool
+ */
+function internetorg_is_internal_url( $url ) {
+
+	/** no URL */
+	if ( empty( $url ) ) {
+		return false;
+	}
+
+	/** relative URL beginning with forward slash */
+	if ( substr( $url, 0, 1 ) === '/' ) {
+		return true;
+	}
+
+	/** relative URL beginning with two dots */
+	if ( substr( $url, 0, 3 ) === '../' ) {
+		return true;
+	}
+
+	/** @var array $link_parsed Associative array of URL components returned by parse_url for the provided url */
+	$link_parsed = parse_url( $url );
+
+	if ( empty( $link_parsed['host'] ) ) {
+		return false;
+	}
+
+	/** @var array $home_parsed Associative array of URL components returned by parse_url for the home_url */
+	$home_parsed = parse_url( home_url() );
+
+	/** hostname match */
+	if ( strtolower( $link_parsed['host'] ) === strtolower( $home_parsed['host'] ) ) {
+		return true;
+	}
+
+	/** @var string $link_parsed_host remove www. for comparison */
+	$link_parsed_host = str_ireplace( 'www.', '', $link_parsed['host'] );
+
+	/** @var string $home_parsed_host remove www. for comparison */
+	$home_parsed_host = str_ireplace( 'www.', '', $home_parsed['host'] );
+
+	if ( strtolower( $link_parsed_host ) === strtolower( $home_parsed_host ) ) {
+		return true;
+	}
+
+	return false;
+}
+
+
+function internetorg_get_media_image_url( $post_thumbnail_id, $size = 'single-post-thumbnail' ) {
+	$url = '';
+
+	$featured_image = wp_get_attachment_image_src( $post_thumbnail_id, $size );
+	if ( is_array( $featured_image ) && ! empty( $featured_image[0] ) ) {
+		$url = $featured_image[0];
+	}
+
+	return $url;
+}

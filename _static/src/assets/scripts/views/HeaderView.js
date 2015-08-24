@@ -138,7 +138,10 @@ define(function(require, exports, module) { // jshint ignore:line
         var shouldBeCentered = (isMenuOpen || !isHome);
         var shouldBeRaised = (isMenuOpen && this.searchView.isOpen);
         var shouldHaveBackBtn = (isNarrow && !isMenuOpen && !isHome);
-        var shouldHaveInvertedLogo = (!isMenuOpen && ((!isNarrow && this._invertLeft) || isOnFirstNarrative));
+        var shouldHaveInvertedLogo = (
+            !isMenuOpen &&
+            ((!isNarrow && this._invertLeft) || (isNarrow && isOnFirstNarrative))
+        );
         var shouldHaveInvertedMenu = (!isMenuOpen && ((!isNarrow && this._invertRight) || isOnFirstNarrative));
 
         // background bar visibility

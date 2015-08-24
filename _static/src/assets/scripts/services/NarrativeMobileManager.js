@@ -24,7 +24,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @class NarrativeMobileManager
      * @constructor
      */
-    var NarrativeMobileManager = function() {
+    var NarrativeMobileManager = function(sectionsConf) {
         /**
          * Tracks whether there is an active animation
          *
@@ -54,6 +54,15 @@ define(function(require, exports, module) { // jshint ignore:line
          * @private
          */
         this._scrollBuffer = 400;
+
+        /**
+         * sections configuration params
+         *
+         * @property _sectionsConf
+         * @type {obj}
+         * @private
+         */
+        this._sectionsConf = sectionsConf;
 
         /**
          * section properties
@@ -114,7 +123,6 @@ define(function(require, exports, module) { // jshint ignore:line
     // /////////////////////////////////////////////////////////////////////////////////////////
 
     proto._getSectionOffsets = function() {
-
         var sectionHeight = this._$sections.eq(0).height();
 
         var i = 0;
@@ -195,50 +203,61 @@ define(function(require, exports, module) { // jshint ignore:line
         return tl;
     };
 
-    proto.gotoSection = function(state) {
-        // if (state.position >= this._slidesLength) {
-        //     return;
-        // }
-
+    proto.gotoSection = function(section, direction) {
         this._isAnimating = true;
-        return this._sectionTransition(state);
+        return this._sectionTransition(section, direction);
     };
 
-    proto._sectionTransition = function(state) {
+    proto.gotoSubSection = function(section, direction) {
+        this._isAnimating = true;
+        return this._subSectionTransition(section, direction);
+    };
+
+    proto._sectionTransition = function(section, direction) {
+        var sectionPosition = this._sectionsConf.indexOf(section);
+        var prevSection = (direction === 'down') ? this._sectionsConf[sectionPosition - 1] : this._sectionsConf[sectionPosition + 1];
+
         return new Promise(function(resolve) {
-            var fromLabel = this._sections[state.position].label;
-            var toLabel = this._sections[state.destinationPos].label;
+            var fromLabel = prevSection.label;
+            var toLabel = section.label;
             // var timeline = (state.position < state.destinationPos) ? this._timeLine : this._timeLineReverse;
             var timeline = this._timeLine;
 
             timeline.tweenFromTo(fromLabel, toLabel, {
-                onComplete: this._onSectionComplete.bind(this, state, resolve)
+                onComplete: this._onSectionComplete.bind(this, resolve)
             });
-
         }.bind(this));
     };
 
-    proto._onSectionComplete = function(state, resolve) {
+    proto._subSectionTransition = function(section, direction) {
+        var sectionPosition = this._sectionsConf.indexOf(section);
+        var prevSection = (direction === 'down') ? this._sectionsConf[sectionPosition - 1] : this._sectionsConf[sectionPosition + 1];
+
+        return new Promise(function(resolve) {
+            var fromLabel = prevSection.label;
+            var toLabel = section.label;
+            // var timeline = (state.position < state.destinationPos) ? this._timeLine : this._timeLineReverse;
+            var timeline = this._timeLine;
+
+            timeline.tweenFromTo(fromLabel, toLabel, {
+                onComplete: this._onSectionComplete.bind(this, resolve)
+            });
+        }.bind(this));
+    };
+
+    proto._onSectionComplete = function(resolve) {
         $(window).on('wheel', this._onWheelEventHandler);
         this._isAnimating = false;
         // this._updateSlideHooks();
         // eventHub.publish('Narrative:sectionChange', position);
 
-        resolve(state.destinationPos);
+        resolve();
     };
 
     // /////////////////////////////////////////////////////////////////////////////////////////
     // Slide Logic
     // /////////////////////////////////////////////////////////////////////////////////////////
     proto._gotoNextSlide = function(forward) {
-        if (this._isAnimating) {
-            return;
-        }
-
-        if (!breakpointManager.isMobile) {
-            return false;
-        }
-
         var $currentSection = $('.narrative-section').eq(this._position);
         var $slidesContainer = $currentSection.find('.narrative-section-slides');
         var $slides = $currentSection.find('.narrative-section-slides-item');
@@ -289,6 +308,6 @@ define(function(require, exports, module) { // jshint ignore:line
         return (slidesCount > 1) ? true : false;
     };
 
-    return new NarrativeMobileManager();
+    module.exports = NarrativeMobileManager;
 
 });

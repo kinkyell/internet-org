@@ -54,11 +54,15 @@ class Internetorg_Main_Nav_Walker extends Walker_Nav_Menu
 		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn )        . '"' : '';
 		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url )        . '"' : '';
 		$attributes .= ' ';
-		$attributes .= ' class="topicLink-link js-stateLink"';
+		if ( internetorg_is_internal_url( $item->url ) ) {
+			$attributes .= ' class="topicLink-link js-stateLink"';
+		} else {
+			$attributes .= ' class="topicLink-link"';
+		}
 		$attributes .= ' data-type="panel"';
-		$attributes .= ' data-title="' . apply_filters( 'the_title', $item->title, $item->ID ) . '"';
-		$attributes .= ' data-image="http://placehold.it/400x800?text=' . substr( $item->title, 4 ) . '"';
-		$attributes .= ' data-theme="' . substr( $item->title, 4 ) . '"';
+		$attributes .= ' data-title="' . esc_attr( apply_filters( 'the_title', $item->title, $item->ID ) ) . '"';
+		$attributes .= ' data-image="http://placehold.it/400x800?text=' . esc_attr( substr( $item->title, 4 ) ) . '"';
+		$attributes .= ' data-theme="' . esc_attr( substr( $item->title, 4 ) ) . '"';
 
 		if ( is_array( $args ) && ! empty( $args ) ) {
 			$args = (object) $args;
@@ -68,12 +72,12 @@ class Internetorg_Main_Nav_Walker extends Walker_Nav_Menu
 			$args->before,
 			$attributes,
 			$args->link_before,
-			apply_filters( 'the_title', $item->title, $item->ID ),
+			esc_html( apply_filters( 'the_title', $item->title, $item->ID ) ),
 			$args->link_after,
 			$args->after
 		);
 
-		$customDiv = '<div class="topicLink topicLink_theme' . substr( $item->title, 4 ) . ' js-menuView-slider" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">';
+		$customDiv = '<div class="topicLink topicLink_theme' . esc_attr( substr( $item->title, 4 ) ) . ' js-menuView-slider" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">';
 		$item_output = $customDiv . $item_output . '</div>';
 
 		// build html

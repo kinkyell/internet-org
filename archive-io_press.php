@@ -9,41 +9,13 @@
 get_header();
 
 ?>
+<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="<?php echo esc_url( get_post_type_archive_link( 'io_press' ) ); ?>" data-type="titled" data-title="Press">
 
-<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="/press" data-type="titled" data-title="Press">
-	<div class="viewWindow-panel">
-		<div class="viewWindow-panel-content">
-			<div class="viewWindow-panel-content-inner">
 
-				<div class="introBlock introBlock_fill">
-					<div class="introBlock-inner">
-						<div class="container">
-							<div class="topicBlock">
-								<div class="topicBlock-hd topicBlock-hd_plus">
-									<h2 class="hdg hdg_3 mix-hdg_bold">Example Intro Block</h2>
-								</div>
-								<div class="topicBlock-subHd"><div class="hdg hdg_5 mix-hdg_italic mix-hdg_gray">May 25, 2015</div></div>
-								<div class="topicBlock-bd">
-									<p class="bdcpy">Will need to replace this layout with the home page narrative one.</p>
-								</div>
-								<div class="topicBlock-cta"><a class="btn js-stateLink" href="/approach" data-type="panel" data-title="Our Approach" data-image="http://placehold.it/400x800?text=APPROACH" data-theme="Approach">Our Approach</a></div>
-							</div>
-						</div>
-					</div>
-					<div class="introBlock-ft introBlock-ft_rule">
-						<ul class="socialParade">
-							<li><a class="socialParade-icon socialParade-icon_fb" href="">Facebook</a></li>
-							<li><a class="socialParade-icon socialParade-icon_tw" href="">Twitter</a></li>
-							<li><a class="socialParade-icon socialParade-icon_li" href="">LinkedIn</a></li>
-						</ul>
-					</div>
-				</div>
+	<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
 
-			</div>
-		</div>
-	</div>
 
-	<div class="viewWindow-panel viewWindow-panel_feature">
+	<div id="featurePanel" class="viewWindow-panel viewWindow-panel_feature">
 		<div class="viewWindow-panel-content">
 			<div class="viewWindow-panel-content-inner">
 				<div class="introBlock introBlock_fill">
@@ -58,7 +30,7 @@ get_header();
 			</div>
 		</div>
 	</div>
-	<div class="viewWindow-panel viewWindow-panel_story isActive">
+	<div id="storyPanel" class="viewWindow-panel viewWindow-panel_story isActive">
 		<div class="viewWindow-panel-content">
 			<div class="viewWindow-panel-content-inner">
 				<div>
@@ -71,7 +43,6 @@ get_header();
 							<div class="resultsList-list-item">
 								<?php
 								$is_media = has_post_thumbnail();
-								$type = $is_media ? 'media' : 'feature';
 								?>
 
 									<?php if ( $is_media ) : ?>
@@ -129,69 +100,32 @@ get_header();
 										'echo'            => false,
 										'order'           => 'DESC',
 									);
-
-									$archives = wp_get_archives( $args );
-
-									if ( ! empty( $archives ) ) : ?>
+									?>
 								<div class="resultsList-list-item">
 									<select class="js-select select_inline">
-										<?php echo $archives; ?>
+										<option></option>
+										<?php echo wp_get_archives( $args ); ?>
 									</select>
 								</div>
-								<?php endif; ?>
 							</div>
 						</div>
 				</div>
 			</div>
 					<?php endif; ?>
-					<?php
-					/*  content widgets */
-					$contentWidgets = array(
-						'contact'   => internetorg_get_content_widget_by_slug( 'contact' ),
-						'media-kit' => internetorg_get_content_widget_by_slug( 'media-kit' ),
-					);
-					?>
+
 					<div class="footBox">
 						<div class="container">
 							<div class="vList vList_footBox">
-
-					<?php foreach ( $contentWidgets as $key => $widget ) : ?>
-						<?php if ( ! empty( $widget ) ) :
-							$meta = ( ! empty( $widget['meta'] ) ? $widget['meta'] : null );
-							$post = ( ! empty( $widget['post'] ) ? $widget['post'] : null );
-
-							// if we don't have post data skip everything else
-							if ( empty( $post ) ) {
-								continue;
-							}
-							?>
-
 								<div>
-									<div class="topicBlock">
-										<div class="topicBlock-hd">
-											<h2 class="hdg hdg_8 mix-hdg_bold"><?php echo esc_html( $post->post_title ); ?></h2>
-										</div>
-										<div class="topicBlock-bd"><p class="bdcpy"><?php echo $post->post_content; ?></p></div>
-
-								<?php
-
-								if ( ! empty( $meta ) ) :
-									$label = ( ! empty( $meta['widget-data']['label'] ) ? $meta['widget-data']['label'] : '' );
-									$url   = ( ! empty( $meta['widget-data']['url'] )   ? $meta['widget-data']['url'] : '' );
-									$file  = ( ! empty( $meta['widget-data']['image'] ) ? $meta['widget-data']['image'] : '' );
-
-									$link = $url ? $url : $file;
-									if ( ! empty( $link ) ) : ?>
-										<div class="topicBlock-cta"><a href="<?php echo esc_url( ! empty( $link ) ? $link : '' ); ?>" class="btn"><?php echo esc_html( $label ); ?></a></div>
-									<?php endif; ?>
-								<?php endif; ?>
-									</div>
+									<?php internet_org_get_content_widget_html( 'contact' ); ?>
 								</div>
-						<?php endif; ?>
-					<?php endforeach; ?>
+								<div>
+									<?php internet_org_get_content_widget_html( 'media-kit' ); ?>
+								</div>
 							</div>
 						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>
@@ -199,6 +133,5 @@ get_header();
 </div>
 
 <?php
-// now that we have the post listing out of the way we'll display the widgets
 
 get_footer();
