@@ -21,7 +21,7 @@ get_header();
 	<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
 
 
-	<div class="viewWindow-panel viewWindow-panel_feature">
+	<div id="featurePanel" class="viewWindow-panel viewWindow-panel_feature">
 		<div class="viewWindow-panel-content">
 		    <?php
 		    // if we need a video url we'll add this
@@ -46,7 +46,7 @@ get_header();
 	</div>
 
 
-	<div class="viewWindow-panel viewWindow-panel_story isActive">
+	<div id="storyPanel" class="viewWindow-panel viewWindow-panel_story isActive">
 		<div class="viewWindow-panel-content">
 			<div class="viewWindow-panel-content-inner">
 

@@ -11,7 +11,7 @@ get_header();
 ?>
 
 <div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="/press" data-type="titled" data-title="Press">
-	<div class="viewWindow-panel">
+	<div id="homePanel" class="viewWindow-panel">
 		<div class="viewWindow-panel-content">
 			<div class="viewWindow-panel-content-inner">
 
@@ -43,7 +43,7 @@ get_header();
 		</div>
 	</div>
 
-	<div class="viewWindow-panel viewWindow-panel_feature">
+	<div id="featurePanel" class="viewWindow-panel viewWindow-panel_feature">
 		<div class="viewWindow-panel-content">
 			<div class="viewWindow-panel-content-inner">
 				<div class="introBlock introBlock_fill">
@@ -58,7 +58,7 @@ get_header();
 			</div>
 		</div>
 	</div>
-	<div class="viewWindow-panel viewWindow-panel_story isActive">
+	<div id="storyPanel" class="viewWindow-panel viewWindow-panel_story isActive">
 		<div class="viewWindow-panel-content">
 			<div class="viewWindow-panel-content-inner">
 				<div>

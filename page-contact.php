@@ -18,7 +18,7 @@ get_header();
 <div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="/contact" data-type="titled" data-title="Contact" data-desc="If you&CloseCurlyQuote;re working on a project related to connectivity or just want to keep up with Internet.org, let us know.">
 
 <?php while ( have_posts() ) : the_post(); ?>
-	<div class="viewWindow-panel">
+	<div id="homePanel" class="viewWindow-panel">
 		<div class="viewWindow-panel-content">
 			<div class="viewWindow-panel-content-inner">
 				<div class="introBlock introBlock_fill">
@@ -50,7 +50,7 @@ get_header();
 		</div>
 	</div>
 
-	<div class="viewWindow-panel viewWindow-panel_feature isDouble">
+	<div id="featurePanel" class="viewWindow-panel viewWindow-panel_feature isDouble">
 		<div class="viewWindow-panel-content">
 			<div class="viewWindow-panel-content-inner">
 				<div class="introBlock introBlock_fill">
@@ -73,7 +73,7 @@ get_header();
 		</div>
 	</div>
 
-	<div class="viewWindow-panel viewWindow-panel_story isActive">
+	<div id="storyPanel" class="viewWindow-panel viewWindow-panel_story isActive">
 		<div class="viewWindow-panel-content">
 
 			<?php

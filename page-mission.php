@@ -19,7 +19,7 @@ get_header();
 
 	<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="<?php the_permalink(); ?>" data-type="panel" data-theme="Mission" data-title="<?php the_title(); ?>" data-image="<?php echo esc_url( internetorg_get_post_thumbnail( get_the_ID() ) ); ?>">
 
-		<div class="viewWindow-panel">
+		<div id="homePanel" class="viewWindow-panel">
 			<div class="viewWindow-panel-content">
 				<div class="viewWindow-panel-content-inner">
 
@@ -58,13 +58,13 @@ get_header();
 		</div>
 
 
-		<div class="viewWindow-panel viewWindow-panel_feature">
+		<div id="featurePanel" class="viewWindow-panel viewWindow-panel_feature">
 			<div class="viewWindow-panel-content">
 				<div class="viewWindow-panel-content-inner" style="background-image: url(<?php echo esc_url( internetorg_get_post_thumbnail( get_the_ID() ) ); ?>);"></div>
 			</div>
 		</div><!-- end viewWindow-panel_feature -->
 
-		<div class="viewWindow-panel viewWindow-panel_story isActive">
+		<div id="storyPanel" class="viewWindow-panel viewWindow-panel_story isActive">
 			<div class="viewWindow-panel-content">
 
 
