@@ -72,7 +72,8 @@ module.exports = function(grunt) {
             watchScripts: {
                 files: [
                     '<%= env.DIR_SRC %>/jst/**/*',
-                    '<%= env.DIR_SRC %>/assets/scripts/**/*'
+                    '<%= env.DIR_SRC %>/assets/scripts/**/*',
+                    '!<%= env.DIR_SRC %>/assets/scripts/**/*.build.js'
                 ],
                 tasks: ['buildScripts']
             }

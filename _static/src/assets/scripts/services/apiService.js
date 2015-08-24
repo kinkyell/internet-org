@@ -7,6 +7,7 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     var $ = require('jquery');
+    var templates = require('templates'); // jshint ignore:line
 
     // api base url for ajax requests
     var BASE_URL = require('appConfig').apiBase;
@@ -23,7 +24,7 @@ define(function(require, exports, module) { // jshint ignore:line
         'press': 'press/index.html',
         'contact': 'contact/index.html',
         'pressResults': 'pages/press-content-addl.html',
-        'searchResults': 'search/index.html',
+        'searchResults': 'search/data.html',
         '404': 'not-found/index.html'
     };
 
@@ -65,8 +66,30 @@ define(function(require, exports, module) { // jshint ignore:line
          * @param {String} searchText Text from search box
          * @returns {Promise} represents value of search result html returned
          */
-        getSearchResults: function(searchText) {
-            return Promise.resolve($.get(BASE_URL + PATHS.searchResults)).then(_parseHtmlResponse);
+        getSearchResults: function(searchText, page) {
+            page = page || 1;
+            return Promise.resolve($.get(BASE_URL + PATHS.searchResults, {
+                page: page
+            }, 'json')).then(function(res) {
+                if (typeof res === 'string') {
+                    res = JSON.parse(res);
+                }
+                // jshint ignore:start
+                return {
+                    hasNextPage: res.next_page !== 0,
+                    totalResults: typeof res.total_results === 'Number' ? res.total_results : 'Unknown',
+                    results: res.results.map(function(result) {
+                        return templates['search-result']({
+                            title: result.title,
+                            desc: result.excerpt,
+                            url: result.permalink,
+                            imgUrl: result.img_url,
+                            formattedDate: result.date
+                        });
+                    }).join('')
+                };
+                // jshint ignore:end
+            });
         },
 
         /**
