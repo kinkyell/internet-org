@@ -2,6 +2,7 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     var $ = require('jquery');
+    var AppConfig = require('appConfig');
     var AbstractView = require('./AbstractView');
     var eventHub = require('services/eventHub');
     var breakpointManager = require('services/breakpointManager');
@@ -12,6 +13,59 @@ define(function(require, exports, module) { // jshint ignore:line
         PROGRESS: '.narrative-progress',
         PROGRESS_HIDDEN: 'narrative-progress_isHidden'
     };
+
+    var SECTIONS_CONF = [
+        {
+            label: 'section00',
+            label_r: 'section00_r',
+            featureImage: AppConfig.narrative.desktop.featureImages.HOME,
+            subSections: []
+        },
+        {
+            label: 'section01',
+            label_r: 'section01_r',
+            featureImage: AppConfig.narrative.desktop.featureImages.MISSION,
+            subSections: []
+        },
+        {
+            label: 'section02',
+            label_r: 'section02_r',
+            featureImage: AppConfig.narrative.desktop.featureImages.APPROACH,
+            subSections: [
+                {
+                    featureImage: AppConfig.narrative.desktop.featureImages.APPROACH
+                },
+                {
+                    featureImage: AppConfig.narrative.desktop.featureImages.APPROACH_01
+                },
+                {
+                    featureImage: AppConfig.narrative.desktop.featureImages.APPROACH_02
+                }
+            ]
+        },
+        {
+            label: 'section03',
+            label_r: 'section03_r',
+            featureImage: AppConfig.narrative.desktop.featureImages.IMPACT,
+            subSections: [
+                {
+                    featureImage: AppConfig.narrative.desktop.featureImages.IMPACT
+                },
+                {
+                    featureImage: AppConfig.narrative.desktop.featureImages.IMPACT_01
+                },
+                {
+                    featureImage: AppConfig.narrative.desktop.featureImages.IMPACT_02
+                }
+            ]
+        },
+        {
+            label: 'section04',
+            label_r: 'section04_r',
+            featureImage: AppConfig.narrative.desktop.featureImages.FOOT,
+            subSections: []
+        }
+    ];
 
     /**
      * A view for transitioning display panels
@@ -49,7 +103,7 @@ define(function(require, exports, module) { // jshint ignore:line
          * @type {bool}
          * @private
          */
-        this._slidePosition = 0;
+        this._subPosition = null;
 
         /**
          * Determines the total number of sections
@@ -134,7 +188,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.onEnable = function() {
         // determine bp specific narrative handler
-        this._narrativeManager = (breakpointManager.isMobile) ? NarrativeMobileManager : NarrativeDesktopManager;
+        this._narrativeManager = (breakpointManager.isMobile) ? new NarrativeMobileManager(SECTIONS_CONF) : new NarrativeDesktopManager(SECTIONS_CONF);
 
         $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
         this.$body.on('touchstart', this._onTouchStartHandler);
@@ -212,19 +266,31 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._scrollUp = function() {
-        // if (this._gotoNextSlide() || this._isAnimating) {
-        //     return;
-        // }
-
         if (!this._narrativeManager._isAnimating) {
-            var state = {
-                position: this._position,
-                destinationPos: this._position - 1
-            };
-            if (state.destinationPos >= 0) {
-                this._narrativeManager.gotoSection(state).then(function(param) {
-                    this._position -= 1;
+            var direction = 'up';
+            var section = SECTIONS_CONF[this._position];
+            var subsLength = section.subSections.length;
+            var subPosition = this._subPosition;
+
+            if (subsLength > 0 && subPosition > 0) {
+                var destinationSubPos = subPosition - 1;
+                var destinationSub = section.subSections[destinationSubPos];
+
+                this._narrativeManager.gotoSubSection(destinationSub, direction).then(function() {
+                    this._subPosition -= 1;
                 }.bind(this));
+            } else {
+                var sectionsLength = SECTIONS_CONF.length;
+                var destinationSectionPos = this._position - 1;
+                var destinationSection = SECTIONS_CONF[destinationSectionPos];
+                var destinationSubsLength = destinationSection.subSections.length;
+                this._subPosition = destinationSubsLength - 1;
+
+                if (destinationSectionPos >= 0) {
+                    this._narrativeManager.gotoSection(destinationSection, direction).then(function() {
+                        this._position -= 1;
+                    }.bind(this));
+                }
             }
         }
     };
@@ -236,19 +302,29 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._scrollDown = function() {
-        // if (this._gotoNextSlide(true) || this._isAnimating) {
-        //     return;
-        // }
-
         if (!this._narrativeManager._isAnimating) {
-            var state = {
-                position: this._position,
-                destinationPos: this._position + 1
-            };
-            if (state.destinationPos < this._sectionLength) {
-                this._narrativeManager.gotoSection(state).then(function(param) {
-                    this._position += 1;
+            var direction = 'down';
+            var section = SECTIONS_CONF[this._position];
+            var subsLength = section.subSections.length;
+            var subPosition = this._subPosition;
+            if (subsLength > 0 && subPosition < subsLength - 1) {
+                var destinationSubPos = subPosition + 1;
+                var destinationSub = section.subSections[destinationSubPos];
+
+                this._narrativeManager.gotoSubSection(destinationSub, direction).then(function() {
+                    this._subPosition += 1;
                 }.bind(this));
+            } else {
+                var sectionsLength = SECTIONS_CONF.length;
+                var destinationSectionPos = this._position + 1;
+                var destinationSection = SECTIONS_CONF[destinationSectionPos];
+                this._subPosition = 0;
+
+                if (destinationSectionPos < sectionsLength) {
+                    this._narrativeManager.gotoSection(destinationSection, direction).then(function() {
+                        this._position += 1;
+                    }.bind(this));
+                }
             }
         }
     };

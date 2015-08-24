@@ -289,6 +289,6 @@ define(function(require, exports, module) { // jshint ignore:line
         return (slidesCount > 1) ? true : false;
     };
 
-    return new NarrativeMobileManager();
+    module.exports = NarrativeMobileManager;
 
 });
