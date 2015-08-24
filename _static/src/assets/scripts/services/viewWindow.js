@@ -88,14 +88,19 @@ define(function(require, exports, module) { // jshint ignore:line
      * @method replaceFeatureContent
      * @param {String} html HTML content to add
      * @param {String} direction Direction to animate to/from
+     * @param {String} bgImg Optional background images to swap on container
      * @return {Promise} resolves when finished
      */
-    ViewWindow.prototype.replaceFeatureContent = function(html, direction) {
+    ViewWindow.prototype.replaceFeatureContent = function(html, direction, bgImg) {
         return this._featureQueue.queue(function() {
             var $panel = this._getPanelWrap();
 
             $panel.children().append(html);
             this._featureImage = html;
+
+            if (typeof bgImg !== 'undefined') {
+                $panel.children().css('background-image', 'url(' + bgImg + ')');
+            }
 
             return this._updatePanel(
                 $panel,
