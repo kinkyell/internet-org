@@ -48,8 +48,7 @@ require.config({
         'jquery-touchswipe': '../vendor/jquery-touchswipe/jquery.touchSwipe',
         'dragdealer': '../vendor/skidding--dragdealer/src/dragdealer',
         'fastclick': '../vendor/fastclick/lib/fastclick',
-        'handlebars': '../vendor/handlebars/handlebars.runtime',
-        'appConfig': 'appConfig'
+        'handlebars': '../vendor/handlebars/handlebars.runtime'
     },
 
     map: {
@@ -75,9 +74,8 @@ require.config({
         'handlebars': {
             exports: 'Handlebars'
         },
-        'appConfig': {
-            deps: ['gsap-easePack'],
-            exports: 'appConfig'
+        'gsap-easePack': {
+            exports: 'Expo'
         }
     },
 
