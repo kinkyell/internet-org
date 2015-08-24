@@ -7,9 +7,10 @@
  */
 ?>
 
-<div class="viewWindow-panel">
+<div id="homePanel" class="viewWindow-panel">
 	<div class="viewWindow-panel-content">
 		<div class="viewWindow-panel-content-inner">
+
 			<div class="introBlock introBlock_fill">
 				<div class="introBlock-inner">
 					<div class="container">
@@ -35,6 +36,7 @@
 					</ul>
 				</div>
 			</div>
+
 		</div>
 	</div>
 </div>
