@@ -2,8 +2,6 @@
 /**
  * The template for displaying the mission page
  *
- * Template Name: Mission
- *
  * @todo: Discuss with FED what class to apply on WYSIWYG areas
  * @todo: How to determine if this is being ajaxed in so we don't output header/footer/etc., and is that allowed on VIP?
  * @todo: How to handle fields that weren't intended for use on this template
@@ -21,7 +19,7 @@ get_header();
 	<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
 
 
-	<div class="viewWindow-panel viewWindow-panel_feature">
+	<div id="featurePanel" class="viewWindow-panel viewWindow-panel_feature">
 		<div class="viewWindow-panel-content">
 		    <?php
 		    // if we need a video url we'll add this
@@ -31,11 +29,13 @@ get_header();
 
 			$featured_image_url = '';
 			if ( has_post_thumbnail() ) {
-				// $featured_image = get_the_post_thumbnail();
+				/*
 				$featured_image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' );
 				if ( is_array( $featured_image ) && ! empty( $featured_image[0] ) ) {
-				    $featured_image_url = $featured_image[0];
+					$featured_image_url = $featured_image[0];
 				}
+				 */
+				$featured_image_url = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' );
 			}
 
 			?>
@@ -44,7 +44,7 @@ get_header();
 	</div>
 
 
-	<div class="viewWindow-panel viewWindow-panel_story isActive">
+	<div id="storyPanel" class="viewWindow-panel viewWindow-panel_story isActive">
 		<div class="viewWindow-panel-content">
 			<div class="viewWindow-panel-content-inner">
 
