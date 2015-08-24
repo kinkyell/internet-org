@@ -24,7 +24,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var appConfig = {
         classes: new ClassDict(classes),
         apiBase: window.SETTINGS.STATIC_PATH,
-        searchPath: '/search/', // include prefix '/'
+        searchPath: '/', // include prefix '/'
         animationSpeeds: {
             CONTENT_IN: 0.4, // content fade in
             MENU_IN: 0.25, // menu in speed
