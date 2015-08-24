@@ -98,7 +98,7 @@ if ( ! function_exists( 'internetorg_posted_on_date' ) ) :
 	function internetorg_posted_on_date() {
 		$time_string = internetorg_get_post_publish_time_string();
 
-		printf( esc_html_x( '%s', 'post date', 'internetorg' ), esc_html( $time_string ) );
+		printf( esc_html_x( '%s', 'post date', 'internetorg' ), wp_kses_post( $time_string ) );
 	}
 endif;
 
