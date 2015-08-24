@@ -65,8 +65,6 @@ define(function(require, exports, module) { // jshint ignore:line
         }
     };
 
-    console.log(window.Expo);
-
     return appConfig;
 
 });

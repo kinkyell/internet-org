@@ -10,8 +10,10 @@
 get_header();
 $home_background_image_url = '';
 
-// content
 ?>
+
+<div class="viewWindow js-viewWindow" data-route="<?php echo esc_url( home_url( '/' ) ); ?>" data-type="home">
+
 
 <div class="viewWindow-panel isActive">
 	<div class="viewWindow-panel-content">
@@ -180,7 +182,7 @@ $home_background_image_url = '';
 	</div>
 </div>
 
-
+</div>
 
 <?php
 
