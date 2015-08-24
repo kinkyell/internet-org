@@ -2,55 +2,23 @@
 /**
  * Custom template for the contact page
  *
+ * Template Name: Contact
+ *
  * @package Internet.org
  * @author arichard <arichard@nerdery.com>
  */
 
-$after_title_custom_fields = get_post_meta( get_the_ID(), 'after_title_fm_fields', true );
-$subtitle = '';
-if ( ! empty( $after_title_custom_fields['Subtitle'] ) ) {
-	$subtitle = $after_title_custom_fields['Subtitle'];
-}
-
 get_header();
 
 ?>
-<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="/contact" data-type="titled" data-title="Contact" data-desc="If you&CloseCurlyQuote;re working on a project related to connectivity or just want to keep up with Internet.org, let us know.">
 
 <?php while ( have_posts() ) : the_post(); ?>
-	<div class="viewWindow-panel">
-		<div class="viewWindow-panel-content">
-			<div class="viewWindow-panel-content-inner">
-				<div class="introBlock introBlock_fill">
-					<div class="introBlock-inner">
-						<div class="container">
-							<div class="topicBlock">
-								<div class="topicBlock-hd topicBlock-hd_plus">
-									<h2 class="hdg hdg_3 mix-hdg_bold">Example Intro Block</h2>
-								</div>
-								<div class="topicBlock-subHd">
-									<div class="hdg hdg_5 mix-hdg_italic mix-hdg_gray"><?php internetorg_get_post_publish_time_string(); ?></div>
-								</div>
-								<div class="topicBlock-bd">
-									<p class="bdcpy">Will need to replace this layout with the home page narrative one.</p>
-								</div>
-								<div class="topicBlock-cta"><a class="btn js-stateLink" href="/approach" data-type="panel" data-title="Our Approach" data-image="http://placehold.it/400x800?text=APPROACH" data-theme="Approach">Our Approach</a></div>
-							</div>
-						</div>
-					</div>
-					<div class="introBlock-ft introBlock-ft_rule">
-						<ul class="socialParade">
-							<li><a class="socialParade-icon socialParade-icon_fb" href=""><?php esc_html_e( 'Facebook', 'internetorg' ); ?></a></li>
-							<li><a class="socialParade-icon socialParade-icon_tw" href=""><?php esc_html_e( 'Twitter', 'internetorg' ); ?></a></li>
-							<li><a class="socialParade-icon socialParade-icon_li" href=""><?php esc_html_e( 'LinkedIn', 'internetorg' ); ?></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
-	<div class="viewWindow-panel viewWindow-panel_feature isDouble">
+<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="<?php the_permalink(); ?>" data-type="titled" data-title="<?php the_title(); ?>" data-desc="<?php echo esc_attr( internetorg_get_the_subtitle( get_the_ID() ) ); ?>">
+
+	<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
+
+	<div id="featurePanel" class="viewWindow-panel viewWindow-panel_feature isDouble">
 		<div class="viewWindow-panel-content">
 			<div class="viewWindow-panel-content-inner">
 				<div class="introBlock introBlock_fill">
@@ -60,11 +28,11 @@ get_header();
 								<div class="topicBlock-hd topicBlock-hd_plus">
 									<h2 class="hdg hdg_2"><?php the_title(); ?></h2>
 								</div>
-								<?php if ( ! empty( $subtitle ) ) : ?>
 								<div class="topicBlock-bd">
-									<p class="bdcpy"><?php echo esc_html( $subtitle ); ?></p>
+									<p class="bdcpy">
+										<?php echo sanitize_text_field( internetorg_get_the_subtitle( get_the_ID() ) ); ?>
+									</p>
 								</div>
-								<?php endif; ?>
 							</div>
 						</div>
 					</div>
@@ -73,7 +41,7 @@ get_header();
 		</div>
 	</div>
 
-	<div class="viewWindow-panel viewWindow-panel_story isActive">
+	<div id="storyPanel" class="viewWindow-panel viewWindow-panel_story isActive">
 		<div class="viewWindow-panel-content">
 
 			<?php
@@ -152,9 +120,9 @@ get_header();
 
 		</div>
 	</div>
-<?php endwhile; ?>
+
 </div>
 
-<?php
-// get_sidebar();
-get_footer();
+<?php endwhile; ?>
+
+<?php get_footer();

@@ -670,8 +670,22 @@ function internetorg_is_internal_url( $url ) {
 		return false;
 	}
 
+	/** relative URL beginning with forward slash */
+	if ( substr( $url, 0, 1 ) === '/' ) {
+		return true;
+	}
+
+	/** relative URL beginning with two dots */
+	if ( substr( $url, 0, 3 ) === '../' ) {
+		return true;
+	}
+
 	/** @var array $link_parsed Associative array of URL components returned by parse_url for the provided url */
 	$link_parsed = parse_url( $url );
+
+	if ( empty( $link_parsed['host'] ) ) {
+		return false;
+	}
 
 	/** @var array $home_parsed Associative array of URL components returned by parse_url for the home_url */
 	$home_parsed = parse_url( home_url() );
@@ -691,15 +705,17 @@ function internetorg_is_internal_url( $url ) {
 		return true;
 	}
 
-	/** relative URL beginning with forward slash */
-	if ( substr( $url, 0, 1 ) === '/' ) {
-		return true;
-	}
-
-	/** relative URL beginning with two dots */
-	if ( substr( $url, 0, 3 ) === '../' ) {
-		return true;
-	}
-
 	return false;
+}
+
+
+function internetorg_get_media_image_url( $post_thumbnail_id, $size = 'single-post-thumbnail' ) {
+	$url = '';
+
+	$featured_image = wp_get_attachment_image_src( $post_thumbnail_id, $size );
+	if ( is_array( $featured_image ) && ! empty( $featured_image[0] ) ) {
+		$url = $featured_image[0];
+	}
+
+	return $url;
 }
