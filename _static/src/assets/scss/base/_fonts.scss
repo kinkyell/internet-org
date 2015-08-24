@@ -6,30 +6,48 @@
 // Lava-Regular-Italic
 // Lava-Medium
 
-// @font-face {
-//   font-family: 'BGP-Regular';
-//   src: url('myfont.woff2') format('woff2'),
-//        url('myfont.woff') format('woff'),
-//        url('myfont.ttf') format('truetype');
-// }
-
-// @font-face {
-//   font-family: 'BGP-Black';
-//   src: url('myfont.woff2') format('woff2'),
-//        url('myfont.woff') format('woff'),
-//        url('myfont.ttf') format('truetype');
-// }
-
-// @font-face {
-//   font-family: 'Lava-Regular-Italic';
-//   src: url('myfont.woff2') format('woff2'),
-//        url('myfont.woff') format('woff'),
-//        url('myfont.ttf') format('truetype');
-// }
-
-// @font-face {
-//   font-family: 'Lava-Medium';
-//   src: url('myfont.woff2') format('woff2'),
-//        url('myfont.woff') format('woff'),
-//        url('myfont.ttf') format('truetype');
-// }
+@font-face {
+	font-family: "Lava"; // Lava Regular
+	src: url("../../assets/media/fonts/WF-026395-008647-001183-1440171530.eot");
+	src: url("../../assets/media/fonts/WF-026395-008647-001183-1440171530.eot?#iefix") format("embedded-opentype"), url("../../assets/media/fonts/WF-026395-008647-001183-1440171530.woff") format("woff"), url("../../assets/media/fonts/WF-026395-008647-001183-1440171530.svg#typotheque_webfonts_service") format("svg");
+	font-style: Normal;
+	font-weight: 500;
+	font-stretch: normal;
+	}
+@font-face {
+	font-family: "Lava"; // Lava Regular Italic
+	src: url("../../assets/media/fonts/WF-026395-008647-001182-1440171530.eot");
+	src: url("../../assets/media/fonts/WF-026395-008647-001182-1440171530.eot?#iefix") format("embedded-opentype"), url("../../assets/media/fonts/WF-026395-008647-001182-1440171530.woff") format("woff"), url("../../assets/media/fonts/WF-026395-008647-001182-1440171530.svg#typotheque_webfonts_service") format("svg");
+	font-style: Italic;
+	font-weight: 400;
+	font-stretch: normal;
+	}
+@font-face {
+	font-family: "Lava"; // Lava Medium
+	src: url("../../assets/media/fonts/WF-026395-008647-001183-1440171530.eot");
+	src: url("../../assets/media/fonts/WF-026395-008647-001183-1440171530.eot?#iefix") format("embedded-opentype"), url("../../assets/media/fonts/WF-026395-008647-001183-1440171530.woff") format("woff"), url("../../assets/media/fonts/WF-026395-008647-001183-1440171530.svg#typotheque_webfonts_service") format("svg");
+	}
+@font-face {
+	font-family: "Lava"; // Lava Medium Italic
+	src: url("../../assets/media/fonts/WF-026395-008647-001184-1440171530.eot");
+	src: url("../../assets/media/fonts/WF-026395-008647-001184-1440171530.eot?#iefix") format("embedded-opentype"), url("../../assets/media/fonts/WF-026395-008647-001184-1440171530.woff") format("woff"), url("../../assets/media/fonts/WF-026395-008647-001184-1440171530.svg#typotheque_webfonts_service") format("svg");
+	font-style: Italic;
+	font-weight: 500;
+	font-stretch: normal;
+	}
+@font-face {
+	font-family: "Harir"; // Harir Regular
+	src: url("../../assets/media/fonts/WF-026395-008647-001233-1440171531.eot");
+	src: url("../../assets/media/fonts/WF-026395-008647-001233-1440171531.eot?#iefix") format("embedded-opentype"), url("../../assets/media/fonts/WF-026395-008647-001233-1440171531.woff") format("woff"), url("../../assets/media/fonts/WF-026395-008647-001233-1440171531.svg#typotheque_webfonts_service") format("svg");
+	font-style: Normal;
+	font-weight: 400;
+	font-stretch: normal;
+	}
+@font-face {
+	font-family: "Harir"; // Harir Bold
+	src: url("../../assets/media/fonts/WF-026395-008647-001233-1440171531.eot");
+	src: url("../../assets/media/fonts/WF-026395-008647-001233-1440171531.eot?#iefix") format("embedded-opentype"), url("../../assets/media/fonts/WF-026395-008647-001233-1440171531.woff") format("woff"), url("../../assets/media/fonts/WF-026395-008647-001233-1440171531.svg#typotheque_webfonts_service") format("svg");
+	font-style: Normal;
+	font-weight: 700;
+	font-stretch: normal;
+	}
