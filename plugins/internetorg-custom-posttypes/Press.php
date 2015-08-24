@@ -17,7 +17,7 @@ class Internetorg_Press_PostType extends Internetorg_PostType
 	/**
 	 * @var bool true show this type in the menu
 	 */
-	protected $showInNaveMenu = true;
+	protected $showInNavMenu = true;
 
 	/**
 	 * constructor
