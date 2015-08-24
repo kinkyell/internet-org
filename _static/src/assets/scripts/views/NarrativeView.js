@@ -10,6 +10,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var NarrativeDesktopManager = require('services/NarrativeDesktopManager');
 
     var CONFIG = {
+        NARRATIVE_DT: '.narrativeDT',
         PROGRESS: '.narrative-progress',
         PROGRESS_HIDDEN: 'narrative-progress_isHidden'
     };
@@ -18,28 +19,28 @@ define(function(require, exports, module) { // jshint ignore:line
         {
             label: 'section00',
             label_r: 'section00_r',
-            featureImage: AppConfig.narrative.desktop.featureImages.HOME,
+            featureImage: '',
             subSections: []
         },
         {
             label: 'section01',
             label_r: 'section01_r',
-            featureImage: AppConfig.narrative.desktop.featureImages.MISSION,
+            featureImage: '',
             subSections: []
         },
         {
             label: 'section02',
             label_r: 'section02_r',
-            featureImage: AppConfig.narrative.desktop.featureImages.APPROACH,
+            featureImage: '',
             subSections: [
                 {
-                    featureImage: AppConfig.narrative.desktop.featureImages.APPROACH
+                    featureImage: ''
                 },
                 {
-                    featureImage: AppConfig.narrative.desktop.featureImages.APPROACH_01
+                    featureImage: ''
                 },
                 {
-                    featureImage: AppConfig.narrative.desktop.featureImages.APPROACH_02
+                    featureImage: ''
                 }
             ]
         },
@@ -49,20 +50,20 @@ define(function(require, exports, module) { // jshint ignore:line
             featureImage: AppConfig.narrative.desktop.featureImages.IMPACT,
             subSections: [
                 {
-                    featureImage: AppConfig.narrative.desktop.featureImages.IMPACT
+                    featureImage: ''
                 },
                 {
-                    featureImage: AppConfig.narrative.desktop.featureImages.IMPACT_01
+                    featureImage: ''
                 },
                 {
-                    featureImage: AppConfig.narrative.desktop.featureImages.IMPACT_02
+                    featureImage: ''
                 }
             ]
         },
         {
             label: 'section04',
             label_r: 'section04_r',
-            featureImage: AppConfig.narrative.desktop.featureImages.FOOT,
+            featureImage: '',
             subSections: []
         }
     ];
@@ -153,6 +154,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$body = $(document.body);
         this.$narrativeSections = this.$element.find('> *');
         this.$progress = $(CONFIG.PROGRESS);
+        this.$narrativeDT = this.$element.find(CONFIG.NARRATIVE_DT);
     };
 
     /**
@@ -175,6 +177,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.layout = function() {
         this.$narrativeSections.eq(0).addClass('isActive');
         this._sectionLength = this.$narrativeSections.length;
+        this._getFeatureImages();
     };
 
     /**
@@ -359,6 +362,25 @@ define(function(require, exports, module) { // jshint ignore:line
         } else {
             this.$progress.removeClass(CONFIG.PROGRESS_HIDDEN);
         }
+    };
+
+    proto._getFeatureImages = function() {
+        var featureImages = this.$narrativeDT.data('feature-images');
+        featureImages = featureImages.replace(/\r?\n|\r/g, '');
+        featureImages = featureImages.replace(/ /g,'');
+        featureImages = featureImages.split(',');
+
+        SECTIONS_CONF[0].featureImage = featureImages[0];
+        SECTIONS_CONF[1].featureImage = featureImages[1];
+        SECTIONS_CONF[2].featureImage = featureImages[2];
+        SECTIONS_CONF[2].subSections[0].featureImage = featureImages[2];
+        SECTIONS_CONF[2].subSections[1].featureImage = featureImages[3];
+        SECTIONS_CONF[2].subSections[2].featureImage = featureImages[4];
+        SECTIONS_CONF[3].featureImage = featureImages[5];
+        SECTIONS_CONF[3].subSections[0].featureImage = featureImages[5];
+        SECTIONS_CONF[3].subSections[1].featureImage = featureImages[6];
+        SECTIONS_CONF[3].subSections[2].featureImage = featureImages[7];
+        SECTIONS_CONF[4].featureImage = featureImages[8];
     };
 
     module.exports = NarrativeView;
