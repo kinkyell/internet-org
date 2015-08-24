@@ -76,6 +76,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 * @final
 	 */
 	SETTINGS.STATIC_PATH = '<?php echo esc_url( get_stylesheet_directory_uri() . '/_static/web/' ); ?>';
+
 	/**
 	 * Set any RequireJs configuration that is dependent on dynamic
 	 * configuration variables. Note that this config data is merged into
