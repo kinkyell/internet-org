@@ -43,7 +43,7 @@ $BASE_FONT_SIZE: 16px;
 @mixin font($style) {
     @if $style == SANS {
         font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
-        font-weight: normal;
+        font-weight: 200; // normal
         font-style: normal;
     } @else if $style == SANS_BLACK {
         font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
@@ -58,22 +58,22 @@ $BASE_FONT_SIZE: 16px;
         font-weight: 500;
         font-stretch: normal;
     } @else if $style == SERIF_ITALIC {
-        font-family: "Lava Regular Italic", "Harir Regular", Times New Roman, Georia, serif ;
-        font-style: normal; // Italic
+        font-family: "Lava", "Harir Regular", Times New Roman, Georia, serif ;
+        font-style: Italic;
         font-weight: 400;
         font-stretch: normal;
     } @else if $style == SERIF_MED_ITALIC {
-        font-family: "Lava Medium Italic", "Harir Bold", Times New Roman, Georia, serif ;
+        font-family: "Lava", "Harir Bold", Times New Roman, Georia, serif ;
         font-style: Italic;
         font-weight: 500;
         font-stretch: normal;
     } @else if $style == SERIF_ALT {
-        font-family: "Harir Regular", Times New Roman, Georia, serif ;
+        font-family: "Harir", Times New Roman, Georia, serif ;
         font-style: Normal;
         font-weight: 400;
         font-stretch: normal;
     } @else if $style == SERIF_ALT_BOLD {
-        font-family: "Harir Bold", Times New Roman, Georia, serif ;
+        font-family: "Harir", Times New Roman, Georia, serif ;
         font-style: Normal;
         font-weight: 700;
         font-stretch: normal;

@@ -41,32 +41,16 @@ get_header(); ?>
 									<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray"><?php echo esc_html( $wp_query->found_posts ); ?> Results Found</div>
 
 								</div>
-								<div class="resultsList-list">
 
-									<?php if ( have_posts() ) : ?>
+								<?php if ( have_posts() ) : ?>
+									<div class="resultsList-list">
 										<?php while ( have_posts() ) : ?>
 											<?php the_post(); ?>
-
-											<div class="resultsList-list-item">
-												<div class="feature feature_tight">
-													<div class="feature-hd">
-														<h2 class="hdg hdg_4"><?php the_title(); ?></h2>
-													</div>
-													<div class="feature-bd">
-														<p class="bdcpy"><?php the_excerpt(); ?></p>
-													</div>
-													<div class="feature-cta">
-														<a href="<?php the_permalink(); ?>" class="link mix-link_small">
-															<?php esc_html_e( 'Read More', 'internetorg' ); ?>
-														</a>
-													</div>
-												</div>
-											</div>
-
+											<?php get_template_part( 'template-parts/content', 'search' ); ?>
 										<?php endwhile; ?>
-									<?php endif; ?>
+									</div>
+								<?php endif; ?>
 
-								</div>
 							</div>
 						</div>
 					</div>
