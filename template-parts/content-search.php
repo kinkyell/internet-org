@@ -9,14 +9,18 @@
 
 ?>
 
-<div id="post-<?php the_ID(); ?>" class="resultsList-list-item">
+<div class="resultsList-list-item">
 	<div class="feature feature_tight">
 		<div class="feature-hd">
-			<?php the_title( '<h2 class="hdg hdg_3">', '</h2>' ); ?>
+			<h2 class="hdg hdg_4"><?php the_title(); ?></h2>
 		</div>
 		<div class="feature-bd">
 			<p class="bdcpy"><?php the_excerpt(); ?></p>
 		</div>
-		<?php internetorg_entry_footer_archive(); ?>
+		<div class="feature-cta">
+			<a href="<?php the_permalink(); ?>" class="link mix-link_small">
+				<?php esc_html_e( 'Read More', 'internetorg' ); ?>
+			</a>
+		</div>
 	</div>
 </div>

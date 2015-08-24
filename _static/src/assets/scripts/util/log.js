@@ -12,7 +12,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * Sends arguments to console log if available
      */
     var log = function() {
-        if (console && typeof console.log === 'function') {
+        if (window.SETTINGS.LOG_CONSOLE && console && typeof console.log === 'function') {
             console.log.apply(console, arguments);
         }
     };
