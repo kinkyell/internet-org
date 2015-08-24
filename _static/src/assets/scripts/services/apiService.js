@@ -23,7 +23,7 @@ define(function(require, exports, module) { // jshint ignore:line
         'press': '/press/index.html',
         'contact': '/contact/index.html',
         'pressResults': '/pages/press-content-addl.html',
-        'searchResults': '/pages/search-results.html',
+        'searchResults': '/search/index.html',
         '404': '/not-found/index.html'
     };
 
@@ -66,7 +66,7 @@ define(function(require, exports, module) { // jshint ignore:line
          * @returns {Promise} represents value of search result html returned
          */
         getSearchResults: function(searchText) {
-            return Promise.resolve($.get(BASE_URL + PATHS.searchResults));
+            return Promise.resolve($.get(BASE_URL + PATHS.searchResults)).then(_parseHtmlResponse);
         },
 
         /**
