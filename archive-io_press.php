@@ -71,7 +71,6 @@ get_header();
 							<div class="resultsList-list-item">
 								<?php
 								$is_media = has_post_thumbnail();
-								$type = $is_media ? 'media' : 'feature';
 								?>
 
 									<?php if ( $is_media ) : ?>
