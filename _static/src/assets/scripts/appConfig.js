@@ -6,8 +6,6 @@
 define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
-    require('gsap-easePack');
-
     var ClassDict = require('util/ClassDict');
 
     // Global Class name references
@@ -25,7 +23,7 @@ define(function(require, exports, module) { // jshint ignore:line
     // Additional Variables
     var appConfig = {
         classes: new ClassDict(classes),
-        apiBase: '',
+        apiBase: window.SETTINGS.STATIC_PATH,
         searchPath: '/search/', // include prefix '/'
         animationSpeeds: {
             CONTENT_IN: 0.4, // content fade in
@@ -66,6 +64,8 @@ define(function(require, exports, module) { // jshint ignore:line
             }
         }
     };
+
+    console.log(window.Expo);
 
     return appConfig;
 

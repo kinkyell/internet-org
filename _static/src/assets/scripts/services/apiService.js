@@ -16,15 +16,15 @@ define(function(require, exports, module) { // jshint ignore:line
      * TODO: update to point to WP endpoints
      */
     var PATHS = {
-        'mission': '/mission/index.html',
-        'approach': '/approach/index.html',
-        'approach/tertiary': '/approach/tertiary/index.html',
-        'impact': '/impact/index.html',
-        'press': '/press/index.html',
-        'contact': '/contact/index.html',
-        'pressResults': '/pages/press-content-addl.html',
-        'searchResults': '/search/index.html',
-        '404': '/not-found/index.html'
+        'mission': 'mission/index.html',
+        'approach': 'approach/index.html',
+        'approach/tertiary': 'approach/tertiary/index.html',
+        'impact': 'impact/index.html',
+        'press': 'press/index.html',
+        'contact': 'contact/index.html',
+        'pressResults': 'pages/press-content-addl.html',
+        'searchResults': 'search/index.html',
+        '404': 'not-found/index.html'
     };
 
     var PREFIX_STRIPPER = /^\//;
