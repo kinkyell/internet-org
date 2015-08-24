@@ -99,7 +99,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._featureImage = html;
 
             if (typeof bgImg !== 'undefined') {
-                $panel.children().css('background-image', 'url(' + imagePath + ')');
+                $panel.children().css('background-image', 'url(' + bgImg + ')');
             }
 
             return this._updatePanel(
