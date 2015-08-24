@@ -6,6 +6,8 @@
 define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
+    require('gsap-easePack');
+
     var ClassDict = require('util/ClassDict');
 
     // Global Class name references
@@ -38,13 +40,13 @@ define(function(require, exports, module) { // jshint ignore:line
         },
         narrative: {
             mobile: {
-                EASE: Expo, // gsap ease type
+                EASE: window.Expo, // gsap ease type
                 EASE_DIRECTION_FORWARD: 'easeOut', // gsap ease direction when progressing forward
                 EASE_DIRECTION_REVERSE: 'easeIn', // gsap ease direction when progressing backward
                 SECTION_DURATION: 0.65, // uniform transformBlock section durations
             },
             desktop: {
-                EASE: Expo, // gsap ease type
+                EASE: window.Expo, // gsap ease type
                 EASE_DIRECTION_FORWARD: 'easeOut', // gsap ease direction when progressing forward
                 EASE_DIRECTION_REVERSE: 'easeIn', // gsap ease direction when progressing backward
                 SCROLL_BUFFER: 0, // Buffer for scroll jacking (ms)
