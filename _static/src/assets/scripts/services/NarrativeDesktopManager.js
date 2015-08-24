@@ -216,14 +216,15 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     proto._onSectionComplete = function(section, direction, resolve) {
-        // var i = 0;
-        // var l = this._$transformBlockPost.length;
-        // for (; i < l; i++) {
-        //     var $postItem = this._$transformBlockPost.eq(i);
-        //     $postItem.removeClass(CONFIG.ACTIVE_POST);
-        // }
+        var sectionPosition = this._sectionsConf.indexOf(section) - 1;
+        var i = 0;
+        var l = this._$transformBlockPost.length;
+        for (; i < l; i++) {
+            var $postItem = this._$transformBlockPost.eq(i);
+            $postItem.removeClass(CONFIG.ACTIVE_POST);
+        }
 
-        // this._$transformBlockPost.eq(state.position).addClass('transformBlock-post-item_isActive');
+        this._$transformBlockPost.eq(sectionPosition).addClass('transformBlock-post-item_isActive');
 
         window.setTimeout(this._onTransitionComplete.bind(this, resolve), this._scrollBuffer);
     };
