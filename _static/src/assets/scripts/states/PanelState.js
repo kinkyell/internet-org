@@ -105,6 +105,10 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
         var $markup = $(markup);
+
+        // remove any duplicate introblocks
+        $markup.children('.introBlock:first-child').remove();
+
         $panel.append($markup);
         Tween.from($markup[0], 0.25, { opacity: 0 });
         this.refreshComponents($panel);

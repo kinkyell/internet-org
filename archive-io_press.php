@@ -9,39 +9,11 @@
 get_header();
 
 ?>
+<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="<?php echo esc_url( get_post_type_archive_link( 'io_press' ) ); ?>" data-type="titled" data-title="Press">
 
-<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="/press" data-type="titled" data-title="Press">
-	<div id="homePanel" class="viewWindow-panel">
-		<div class="viewWindow-panel-content">
-			<div class="viewWindow-panel-content-inner">
 
-				<div class="introBlock introBlock_fill">
-					<div class="introBlock-inner">
-						<div class="container">
-							<div class="topicBlock">
-								<div class="topicBlock-hd topicBlock-hd_plus">
-									<h2 class="hdg hdg_3 mix-hdg_bold">Example Intro Block</h2>
-								</div>
-								<div class="topicBlock-subHd"><div class="hdg hdg_5 mix-hdg_italic mix-hdg_gray">May 25, 2015</div></div>
-								<div class="topicBlock-bd">
-									<p class="bdcpy">Will need to replace this layout with the home page narrative one.</p>
-								</div>
-								<div class="topicBlock-cta"><a class="btn js-stateLink" href="/approach" data-type="panel" data-title="Our Approach" data-image="http://placehold.it/400x800?text=APPROACH" data-theme="Approach">Our Approach</a></div>
-							</div>
-						</div>
-					</div>
-					<div class="introBlock-ft introBlock-ft_rule">
-						<ul class="socialParade">
-							<li><a class="socialParade-icon socialParade-icon_fb" href="">Facebook</a></li>
-							<li><a class="socialParade-icon socialParade-icon_tw" href="">Twitter</a></li>
-							<li><a class="socialParade-icon socialParade-icon_li" href="">LinkedIn</a></li>
-						</ul>
-					</div>
-				</div>
+	<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
 
-			</div>
-		</div>
-	</div>
 
 	<div id="featurePanel" class="viewWindow-panel viewWindow-panel_feature">
 		<div class="viewWindow-panel-content">
@@ -161,6 +133,5 @@ get_header();
 </div>
 
 <?php
-// now that we have the post listing out of the way we'll display the widgets
 
 get_footer();
