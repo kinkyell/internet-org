@@ -703,3 +703,15 @@ function internetorg_is_internal_url( $url ) {
 
 	return false;
 }
+
+
+function internetorg_get_media_image_url( $post_thumbnail_id, $size = 'single-post-thumbnail' ) {
+	$url = '';
+
+	$featured_image = wp_get_attachment_image_src( $post_thumbnail_id, $size );
+	if ( is_array( $featured_image ) && ! empty( $featured_image[0] ) ) {
+		$url = $featured_image[0];
+	}
+
+	return $url;
+}

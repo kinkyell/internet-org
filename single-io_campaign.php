@@ -31,11 +31,13 @@ get_header();
 
 			$featured_image_url = '';
 			if ( has_post_thumbnail() ) {
-				// $featured_image = get_the_post_thumbnail();
+				/*
 				$featured_image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' );
 				if ( is_array( $featured_image ) && ! empty( $featured_image[0] ) ) {
-				    $featured_image_url = $featured_image[0];
+					$featured_image_url = $featured_image[0];
 				}
+				 */
+				$featured_image_url = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' );
 			}
 
 			?>

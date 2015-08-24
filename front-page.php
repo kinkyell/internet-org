@@ -8,15 +8,21 @@
 
 // Header
 get_header();
+$home_background_image_url = '';
 
 // content
 ?>
 
 <div class="viewWindow-panel isActive">
-    <div class="viewWindow-panel-content">
-        <div class="viewWindow-panel-content-inner viewWindow-panel-content-inner_home">
+	<div class="viewWindow-panel-content">
+		<div class="viewWindow-panel-content-inner viewWindow-panel-content-inner_home">
 
 			<?php while ( have_posts() ) : the_post(); ?>
+				<?php
+				if ( has_post_thumbnail() ) :
+					$home_background_image_url = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'full' );
+				endif;
+				?>
 
 				<?php get_template_part( 'template-parts/content', 'home-page-entry-start' ); ?>
 				<?php get_template_part( 'template-parts/content', 'home-page-entry-content' ); ?>
@@ -39,12 +45,11 @@ get_header();
  * @todo finish this when the styles are complete
  */
 
-
 ?>
 
 <div class="viewWindow-panel viewWindow-panel_feature">
 	<div class="viewWindow-panel-content">
-		<div class="viewWindow-panel-content-inner" style="background-image: url('/wp-content/themes/vip/internetorg/_static/web/assets/media/uploads/home.jpg');"></div>
+		<div class="viewWindow-panel-content-inner" style="background-image: url('<?php esc_attr_e( $home_background_image_url ); ?>');"></div>
 	</div>
 </div>
 
