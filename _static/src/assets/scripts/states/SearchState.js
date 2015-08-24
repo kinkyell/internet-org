@@ -83,11 +83,12 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {String} markup HTML content from ajax request
      * @private
      */
-    SearchState.prototype._onPanelContentLoad = function(markup, $panel) {
+    SearchState.prototype._onPanelContentLoad = function(res, $panel) {
         if (!this.active) {
             return;
         }
-        $panel.append(markup);
+        $panel.find('.js-searchState-results').append(res.results);
+        $panel.find('.js-searchState-num').html(res.totalResults);
         this.refreshComponents($panel);
     };
 
