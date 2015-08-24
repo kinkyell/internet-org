@@ -18,7 +18,7 @@ get_header();
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="/approach" data-type="panel" data-theme="Approach" data-title="Our Approach" data-image="http://placehold.it/400x800?text=APPROACH">
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="<?php the_permalink(); ?>" data-type="panel" data-theme="Approach" data-title="<?php the_title(); ?>" data-image="<?php echo esc_url( internetorg_get_post_thumbnail( get_the_ID() ) ); ?>">
 
 		<div id="homePanel" class="viewWindow-panel">
 			<div class="viewWindow-panel-content">
