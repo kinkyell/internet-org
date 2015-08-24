@@ -71,7 +71,7 @@ if ( ! function_exists( 'internetorg_setup' ) ) :
 			array(
 				'primary'         => esc_html__( 'Primary Menu', 'internetorg' ),
 				'primary-sub-nav' => esc_html__( 'Primary Menu Sub Nav', 'internetorg' ),
-		    )
+			)
 		);
 
 		/*
@@ -239,11 +239,11 @@ if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 			'post_status' => 'publish',
 		);
 
-		/** @var array $services An array to hold io_freesvc data*/
+		/** @var array $services An array to hold io_freesvc data */
 		$services = array();
 
 		/** @var WP_Query $svcqry A WP_Query to retrieve io_freesvc post objects */
-		$svcqry   = new WP_Query( $args );
+		$svcqry = new WP_Query( $args );
 
 		/** build array of services so we are not passing around a query object */
 		while ( $svcqry->have_posts() ) :
@@ -260,11 +260,11 @@ if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 			}
 
 			$services[] = array(
-				'post_id'      => $svcqry->post->ID,
-				'slug'         => $svcqry->post->post_name,
-				'title'        => $svcqry->post->post_title,
-				'excerpt'      => $svcqry->post->post_excerpt,
-				'image'        => $image_url,
+				'post_id' => $svcqry->post->ID,
+				'slug'    => $svcqry->post->post_name,
+				'title'   => $svcqry->post->post_title,
+				'excerpt' => $svcqry->post->post_excerpt,
+				'image'   => $image_url,
 			);
 
 		endwhile;
@@ -634,12 +634,14 @@ function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button 
 		if ( ! empty( $meta ) && ! empty( $meta['widget-data'] ) ) {
 			foreach ( $meta['widget-data'] as $cta ) {
 				$label = ( ! empty( $cta['label'] ) ? $cta['label'] : '' );
-				$url   = ( ! empty( $cta['url'] )   ? $cta['url']   : '' );
+				$url   = ( ! empty( $cta['url'] ) ? $cta['url'] : '' );
 				$file  = ( ! empty( $cta['image'] ) ? $cta['image'] : '' );
 
 				$link = $url ? $url : $file;
 				if ( ! empty( $link ) ) {
-					$out .= '<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? $link : '' ) . '" class="' . ( $cta_as_button ? 'btn' : 'link link_twoArrows' ) . '">' . esc_html( $label ) . '</a></div>';
+					$out .= '<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? $link
+						                                                           : '' ) . '" class="' . ( $cta_as_button
+							? 'btn' : 'link link_twoArrows' ) . '">' . esc_html( $label ) . '</a></div>';
 				}
 			}
 		}
@@ -719,3 +721,56 @@ function internetorg_get_media_image_url( $post_thumbnail_id, $size = 'single-po
 
 	return $url;
 }
+
+
+/**
+ * Register a rewrite endpoint for the API.
+ *
+ * @link https://vip.wordpress.com/documentation/wp_rewrite/
+ * @link https://10up.github.io/Engineering-Best-Practices/php/#ajax-endpoints
+ */
+function internetorg_add_ajax_endpoints() {
+	add_rewrite_tag( '%ajax_search_term%', '(.+)' );
+	add_rewrite_rule( 'io-ajax-search/([^/]+)/page/?([0-9]{1,})/?$', 'index.php?ajax_search_term=$matches[1]&paged=$matches[2]', 'top' );
+	add_rewrite_rule( 'io-ajax-search/([^/]+)/?$', 'index.php?ajax_search_term=$matches[1]', 'top' );
+}
+
+add_action( 'init', 'internetorg_add_ajax_endpoints' );
+
+/**
+ * Handle data (maybe) passed to the API endpoint.
+ *
+ * @link https://vip.wordpress.com/documentation/wp_rewrite/
+ * @link https://10up.github.io/Engineering-Best-Practices/php/#ajax-endpoints
+ */
+function internetorg_do_ajax_search() {
+
+	global $wp_query;
+
+	$ajax_search_term  = sanitize_text_field( urldecode( $wp_query->get( 'ajax_search_term' ) ) );
+	$ajax_search_paged = absint( $wp_query->get( 'paged' ) );
+
+	if ( empty( $ajax_search_term ) ) {
+		return;
+	}
+
+	if ( empty( $ajax_search_paged ) ) {
+		$ajax_search_paged = 1;
+	}
+
+	$args = array(
+		's'     => $ajax_search_term,
+		'paged' => $ajax_search_paged,
+	);
+
+	$query = new WP_Query( $args );
+
+	if ( ! $query->have_posts() ) {
+		wp_send_json_error( array() );
+	}
+
+	wp_send_json_success( $query->posts );
+
+}
+
+add_action( 'template_redirect', 'internetorg_do_ajax_search' );
