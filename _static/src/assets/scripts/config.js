@@ -73,9 +73,6 @@ require.config({
         },
         'handlebars': {
             exports: 'Handlebars'
-        },
-        'gsap-easePack': {
-            exports: 'Expo'
         }
     },
 

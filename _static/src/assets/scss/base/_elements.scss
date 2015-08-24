@@ -12,13 +12,13 @@ a {
 html,
 body {
     height: 100%;
-    // overflow-x: hidden;
+    overflow-x: hidden; // NECESSARY for panes
 }
 
 /* Right to Left Language support */
 [dir="rtl"] {
     direction: rtl;
-    
+
     br {
     	display: none;
     }
