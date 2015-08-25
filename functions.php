@@ -755,11 +755,22 @@ function internetorg_add_ajax_endpoints() {
 
 add_action( 'init', 'internetorg_add_ajax_endpoints' );
 
-function internetorg_add_ajax_query_vars( $query_vars ) {
-	$query_vars[] = 'ajax_search_term';
-	$query_vars[] = 'ajax_post_type';
+/**
+ * Add our ajax query vars to the public_query_vars array.
+ *
+ * This will allow us to retrieve query var data without using global $wp_query->get.
+ *
+ * @filter query_vars
+ *
+ * @param array $public_query_vars The array of public query variables.
+ *
+ * @return array
+ */
+function internetorg_add_ajax_query_vars( $public_query_vars ) {
+	$public_query_vars[] = 'ajax_search_term';
+	$public_query_vars[] = 'ajax_post_type';
 
-	return $query_vars;
+	return $public_query_vars;
 }
 
 add_filter( 'query_vars', 'internetorg_add_ajax_query_vars' );
@@ -768,6 +779,9 @@ add_filter( 'query_vars', 'internetorg_add_ajax_query_vars' );
  * Do the ajax search.
  *
  * If the ajax_search_term query var is empty, return so that we don't hijack all template redirects.
+ *
+ * @todo maybe combine with internetorg_do_ajax_more_posts to reduce duplicate code
+ * @todo determine what data actually needs to be returned in json, right now it's a firehose of all WP_Query->posts data
  *
  * @link https://vip.wordpress.com/documentation/wp_rewrite/
  * @link https://10up.github.io/Engineering-Best-Practices/php/#ajax-endpoints
@@ -817,6 +831,9 @@ add_action( 'template_redirect', 'internetorg_do_ajax_search' );
  * Do the ajax load more posts.
  *
  * If the ajax_post_type query var is empty, return so that we don't hijack all template redirects.
+ *
+ * @todo maybe combine with internetorg_do_ajax_search to reduce duplicate code
+ * @todo determine what data actually needs to be returned in json, right now it's a firehose of all WP_Query->posts data
  *
  * @link https://vip.wordpress.com/documentation/wp_rewrite/
  * @link https://10up.github.io/Engineering-Best-Practices/php/#ajax-endpoints
