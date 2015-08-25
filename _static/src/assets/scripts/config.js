@@ -48,7 +48,8 @@ require.config({
         'jquery-touchswipe': '../vendor/jquery-touchswipe/jquery.touchSwipe',
         'dragdealer': '../vendor/skidding--dragdealer/src/dragdealer',
         'fastclick': '../vendor/fastclick/lib/fastclick',
-        'handlebars': '../vendor/handlebars/handlebars.runtime'
+        'handlebars': '../vendor/handlebars/handlebars.runtime',
+        'jquery-swipebox': '../vendor/swipebox/src/js/jquery.swipebox'
     },
 
     map: {
@@ -73,6 +74,10 @@ require.config({
         },
         'handlebars': {
             exports: 'Handlebars'
+        },
+        'jquery-swipebox': {
+           deps: ['jquery'],
+           exports: null
         }
     },
 

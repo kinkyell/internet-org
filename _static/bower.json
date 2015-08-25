@@ -6,9 +6,8 @@
     "nerdery-reset-css": "./tools/cache/nerdery-reset-css",
     "requirejs": "2.1.16",
     "jquery": "components/jquery#1.11.0",
-    "nerdery-function-bind": "./tools/cache/nerdery-function-bind"
-  },
-  "devDependencies": {
+    "nerdery-function-bind": "./tools/cache/nerdery-function-bind",
+    "swipebox": "~1.4.1",
     "gsap": "1.17.0",
     "fastclick": "1.0.6",
     "es6-promise": "2.2.0",

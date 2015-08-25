@@ -24,7 +24,7 @@ define(function(require, exports, module) { // jshint ignore:line
         'press': 'press/index.html',
         'contact': 'contact/index.html',
         'pressResults': 'pages/press-content-addl.html',
-        'searchResults': 'search/data.html',
+        'searchResults': window.SETTINGS.SEARCH_PATH,
         '404': 'not-found/index.html'
     };
 

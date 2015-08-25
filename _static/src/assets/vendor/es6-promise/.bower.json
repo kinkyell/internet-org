@@ -10,7 +10,6 @@
     "commit": "c0628df34f5a2df1b2f7b412304a776b278fff5a"
   },
   "_source": "git://github.com/components/es6-promise.git",
-  "_target": "~2.2.0",
-  "_originalSource": "es6-promise",
-  "_direct": true
+  "_target": "2.2.0",
+  "_originalSource": "es6-promise"
 }
