@@ -15,11 +15,7 @@ get_header();
 		<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
 
 
-		<div id="featurePanel" class="viewWindow-panel viewWindow-panel_feature">
-			<div class="viewWindow-panel-content">
-				<div class="viewWindow-panel-content-inner" style="background-image: url(<?php echo esc_url( get_stylesheet_directory_uri() . '/_static/web/assets/media/uploads/home.jpg' ); ?>);"></div>
-			</div>
-		</div><!-- end viewWindow-panel_feature -->
+		<?php get_template_part( 'template-parts/content', 'feature-panel' ); ?>
 
 
 		<div id="storyPanel" class="viewWindow-panel viewWindow-panel_story isActive">
