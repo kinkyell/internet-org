@@ -7,45 +7,127 @@
  * @package Internet.org
  */
 
-get_header(); ?>
+get_header();
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+?>
+<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="<?php echo esc_url( get_post_type_archive_link( 'io_press' ) ); ?>" data-type="titled" data-title="Press">
 
-		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-					the_archive_description( '<div class="taxonomy-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
+<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
 
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php
+	<div id="featurePanel" class="viewWindow-panel viewWindow-panel_feature">
+		<div class="viewWindow-panel-content">
+			<div class="viewWindow-panel-content-inner">
+				<div class="introBlock introBlock_fill">
+					<div class="introBlock-inner">
+						<div class="topicBlock">
+							<div class="topicBlock-hd topicBlock-hd_plus">
+								<h2 class="hdg hdg_2 mix-hdg_bold"><?php the_archive_title(); ?></h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="storyPanel" class="viewWindow-panel viewWindow-panel_story isActive">
+		<div class="viewWindow-panel-content">
+			<div class="viewWindow-panel-content-inner">
+				<div>
+					<?php if ( have_posts() ) : ?>
+					<div class="contentCol">
+						<div class="container">
+							<div class="resultsList">
+								<div id="addl-results" class="resultsList-list">
+									<?php while ( have_posts() ) : the_post(); ?>
+										<div class="resultsList-list-item">
+											<?php
+											$is_media = has_post_thumbnail();
+											?>
 
-					/*
-					 * Include the Post-Format-specific template for the content.
-					 * If you want to override this in a child theme, then include a file
-					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-					 */
-					get_template_part( 'template-parts/content', get_post_format() );
-				?>
+											<?php if ( $is_media ) : ?>
+											<div class="media media_inline">
+												<div class="media-figure">
+													<?php the_post_thumbnail( array( 210, 260 ), array( 'title' => get_the_title() ) ); ?>
+												</div>
+												<div class="media-bd">
+													<?php endif; ?>
 
-			<?php endwhile; ?>
 
-			<?php the_posts_navigation(); ?>
+													<div class="feature feature_tight">
+														<div class="feature-hd">
+															<h2 class="hdg hdg_3"><?php echo esc_html( get_the_title() ); ?></h2>
+														</div>
+														<div class="feature-date">
+															<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray"><?php internetorg_posted_on_date(); ?></div>
+														</div>
+														<div class="feature-bd">
+															<p class="bdcpy"><?php echo esc_html( get_the_excerpt() ); ?></p>
+														</div>
+														<div class="feature-cta">
+															<a href="<?php the_permalink(); ?>" class="link link_sm" title="<?php the_title_attribute(); ?>"><?php echo esc_html__( 'Read More', 'internetorg' ) ?></a>
+														</div>
+													</div>
 
-		<?php else : ?>
 
-			<?php get_template_part( 'template-parts/content', 'none' ); ?>
+													<?php if ( $is_media ) : ?>
+												</div>
+											</div>
+										<?php endif; ?>
 
-		<?php endif; ?>
+										</div>
+									<?php endwhile; ?>
+								</div>
+								<div class="resultsList-ft">
+									<div class="resultsList-list resultsList-list_spread">
+										<div class="resultsList-list-item">
+											<button type="button" class="btn js-ShowMoreView" data-src="press" data-target="addl-results"><?php esc_html_e( 'Show More', 'internetorg' ); ?></button>
+										</div>
+										<?php
+										// display a select list of archive years
+										$args = array(
+											'type'            => 'yearly',
+											'limit'           => '',
+											'format'          => 'option',
+											'before'          => '',
+											'after'           => '',
+											'show_post_count' => 0,
+											'echo'            => false,
+											'order'           => 'DESC',
+										);
+										?>
+										<div class="resultsList-list-item">
+											<select class="js-select select_inline">
+												<option></option>
+												<?php echo wp_get_archives( $args ); ?>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<?php endif; ?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+						<div class="footBox">
+							<div class="container">
+								<div class="vList vList_footBox">
+									<div>
+										<?php internet_org_get_content_widget_html( 'contact' ); ?>
+									</div>
+									<div>
+										<?php internet_org_get_content_widget_html( 'media-kit' ); ?>
+									</div>
+								</div>
+							</div>
+						</div>
 
-<?php get_sidebar(); ?>
-<?php get_footer();
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<?php
+
+get_footer();
