@@ -654,6 +654,10 @@ function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button 
 	return $out;
 }
 
+/**
+ * @param      $widget_slug
+ * @param bool $cta_as_button
+ */
 function internet_org_get_content_widget_html( $widget_slug, $cta_as_button = true ) {
 	echo wp_kses_post( get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button ) );
 }
@@ -710,7 +714,12 @@ function internetorg_is_internal_url( $url ) {
 	return false;
 }
 
-
+/**
+ * @param        $post_thumbnail_id
+ * @param string $size
+ *
+ * @return string
+ */
 function internetorg_get_media_image_url( $post_thumbnail_id, $size = 'single-post-thumbnail' ) {
 	$url = '';
 
@@ -724,45 +733,74 @@ function internetorg_get_media_image_url( $post_thumbnail_id, $size = 'single-po
 
 
 /**
- * Register a rewrite endpoint for the API.
+ * Register rewrite endpoints for AJAX calls.
  *
  * @link https://vip.wordpress.com/documentation/wp_rewrite/
  * @link https://10up.github.io/Engineering-Best-Practices/php/#ajax-endpoints
+ *
+ * @action init
  */
 function internetorg_add_ajax_endpoints() {
+
+	/** AJAX search endpoint */
 	add_rewrite_tag( '%ajax_search_term%', '(.+)' );
 	add_rewrite_rule( 'io-ajax-search/([^/]+)/page/?([0-9]{1,})/?$', 'index.php?ajax_search_term=$matches[1]&paged=$matches[2]', 'top' );
 	add_rewrite_rule( 'io-ajax-search/([^/]+)/?$', 'index.php?ajax_search_term=$matches[1]', 'top' );
+
+	/** AJAX load more posts endpoint */
+	add_rewrite_tag( '%ajax_post_type%', '(.+)' );
+	add_rewrite_rule( 'io-ajax-posts/([^/]+)/page/?([0-9]{1,})/?$', 'index.php?ajax_post_type=$matches[1]&paged=$matches[2]', 'top' );
+	add_rewrite_rule( 'io-ajax-posts/([^/]+)/?$', 'index.php?ajax_post_type=$matches[1]', 'top' );
 }
 
 add_action( 'init', 'internetorg_add_ajax_endpoints' );
 
+function internetorg_add_ajax_query_vars( $query_vars ) {
+	$query_vars[] = 'ajax_search_term';
+	$query_vars[] = 'ajax_post_type';
+
+	return $query_vars;
+}
+
+add_filter( 'query_vars', 'internetorg_add_ajax_query_vars' );
+
 /**
- * Handle data (maybe) passed to the API endpoint.
+ * Do the ajax search.
+ *
+ * If the ajax_search_term query var is empty, return so that we don't hijack all template redirects.
  *
  * @link https://vip.wordpress.com/documentation/wp_rewrite/
  * @link https://10up.github.io/Engineering-Best-Practices/php/#ajax-endpoints
+ *
+ * @action template_redirect
  */
 function internetorg_do_ajax_search() {
 
-	global $wp_query;
+	/** @var string $ajax_search_term The search term query var */
+	$ajax_search_term = get_query_var( 'ajax_search_term' );
 
-	$ajax_search_term  = sanitize_text_field( urldecode( $wp_query->get( 'ajax_search_term' ) ) );
-	$ajax_search_paged = absint( $wp_query->get( 'paged' ) );
-
+	/** no ajax search term, return early and let template_redirect run it's course */
 	if ( empty( $ajax_search_term ) ) {
 		return;
 	}
+
+	/** @todo : this may need to be modified for json decode rather than urldecode, talk to FED */
+	$ajax_search_term = sanitize_text_field( urldecode( $ajax_search_term ) );
+
+	/** @var int $ajax_search_paged Pagination query var if present else 0 */
+	$ajax_search_paged = absint( get_query_var( 'paged' ) );
 
 	if ( empty( $ajax_search_paged ) ) {
 		$ajax_search_paged = 1;
 	}
 
+	/** @var array $args An array of WP_Query args */
 	$args = array(
 		's'     => $ajax_search_term,
 		'paged' => $ajax_search_paged,
 	);
 
+	/** @var \WP_Query $query A WP_Query for the specified "page" of search results */
 	$query = new WP_Query( $args );
 
 	if ( ! $query->have_posts() ) {
@@ -774,3 +812,57 @@ function internetorg_do_ajax_search() {
 }
 
 add_action( 'template_redirect', 'internetorg_do_ajax_search' );
+
+/**
+ * Do the ajax load more posts.
+ *
+ * If the ajax_post_type query var is empty, return so that we don't hijack all template redirects.
+ *
+ * @link https://vip.wordpress.com/documentation/wp_rewrite/
+ * @link https://10up.github.io/Engineering-Best-Practices/php/#ajax-endpoints
+ */
+function internetorg_do_ajax_more_posts() {
+
+	/** @var string $ajax_post_type The post type query var */
+	$ajax_post_type = get_query_var( 'ajax_post_type' );
+
+	/** no ajax post type, return early and let template_redirect run it's course */
+	if ( empty( $ajax_post_type ) ) {
+		return;
+	}
+
+	/** @todo : this may need to be modified for json decode rather than urldecode, talk to FED */
+	$ajax_post_type = sanitize_title_for_query( urldecode( $ajax_post_type ) );
+
+	/** @var array $allowed_post_types A whitelist array of public post types to compare against */
+	$allowed_post_types = get_post_types( array( 'public' => true ), 'names' );
+
+	if ( ! in_array( $ajax_post_type, $allowed_post_types ) ) {
+		wp_send_json_error( array() );
+	}
+
+	/** @var int $ajax_paged Pagination query var if present else 0 */
+	$ajax_paged = absint( get_query_var( 'paged' ) );
+
+	if ( empty( $ajax_paged ) ) {
+		$ajax_paged = 1;
+	}
+
+	/** @var array $args An array of WP_Query args */
+	$args = array(
+		'post_type' => $ajax_post_type,
+		'paged'     => $ajax_paged,
+	);
+
+	/** @var \WP_Query $query A WP_Query for the specified "page" of post type archive results */
+	$query = new WP_Query( $args );
+
+	if ( ! $query->have_posts() ) {
+		wp_send_json_error( array() );
+	}
+
+	wp_send_json_success( $query->posts );
+
+}
+
+add_action( 'template_redirect', 'internetorg_do_ajax_more_posts' );
