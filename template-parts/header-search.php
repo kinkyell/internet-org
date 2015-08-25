@@ -14,5 +14,5 @@
 		</svg>
 		<span class="u-isVisuallyHidden"><?php esc_html_x( 'Search', 'label', 'internetorg' ); ?></span>
 	</label>
-	<input type="search" id="mainMenu-search" class="searchBox-input js-searchView-input" name="s" placeholder="<?php echo esc_attr_x( 'Search', 'placeholder', 'internetorg' ) ?>" value="<?php echo get_search_query() ?>" />
+	<input type="search" id="mainMenu-search" class="searchBox-input js-searchView-input" name="s" placeholder="<?php echo esc_attr_x( 'Search', 'placeholder', 'internetorg' ) ?>" value="<?php echo esc_attr( get_search_query() ); ?>" />
 </form>
