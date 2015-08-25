@@ -4,6 +4,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var BasicState = require('./BasicState');
     var apiService = require('services/apiService');
     var spread = require('stark/promise/spread');
+    var capitalize = require('stark/string/capitalize');
 
     var viewWindow = require('services/viewWindow');
     var templates = require('templates');
@@ -80,7 +81,7 @@ define(function(require, exports, module) { // jshint ignore:line
             viewWindow.replaceStoryContent(templates['article-header']({
                 title: this._options.title,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse es suscipit euante lorepehicula nulla, suscipit dela eu ante vel vehicula.', //jshint ignore:line
-                theme: this._options.theme
+                theme: capitalize(this._options.theme)
             }), transitions.content)
         ];
 
