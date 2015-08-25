@@ -12,6 +12,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var SelectView = require('views/SelectView');
     var ShowMoreView = require('views/ShowMoreView');
     var ImagePlaceholderView = require('views/ImagePlaceholderView');
+    var VideoModalView = require('views/VideoModalView');
     var $ = require('jquery');
     var Tween = require('gsap-tween');
 
@@ -45,6 +46,7 @@ define(function(require, exports, module) { // jshint ignore:line
         '.js-carouselView': CarouselView,
         '.js-select': SelectView,
         '.js-ShowMoreView': ShowMoreView,
+        '.js-videoModal': VideoModalView,
         'img': ImagePlaceholderView
     };
 

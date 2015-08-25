@@ -14,9 +14,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @constructor
      */
     var VideoModalView = function($element) {
-        AbstractView.call(this, $element);
         this.videoNum = lastNum;
         lastNum++;
+        AbstractView.call(this, $element);
     };
 
     var proto = AbstractView.createChild(VideoModalView);
@@ -32,7 +32,8 @@ define(function(require, exports, module) { // jshint ignore:line
             .addClass('swipebox-video')
             .attr('rel', 'vimeo' + this.videoNum);
 
-        $('.swipebox-video').swipebox({
+        // NOTE: for some reason it needs to be directly queried. Investigate?
+        $('[rel="vimeo'+ this.videoNum + '"]').swipebox({
             vimeoColor: 'ff6b00'
         });
     };
