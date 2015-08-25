@@ -14,7 +14,6 @@
     "commit": "59e13867707fb559799eca6c70ba073bc3d46a91"
   },
   "_source": "git://github.com/mattbryson/TouchSwipe-Jquery-Plugin.git",
-  "_target": "~1.6.8",
-  "_originalSource": "jquery-touchswipe",
-  "_direct": true
+  "_target": "1.6.8",
+  "_originalSource": "jquery-touchswipe"
 }

@@ -9,6 +9,7 @@ define(function(require, exports, module) { // jshint ignore:line
     require('modernizr');
     require('services/apiService');
     var $ = require('jquery');
+    require('jquery-swipebox');
 
     // require all gsap plugins so they get registered correctly
     require('gsap-cssPlugin');

@@ -23,6 +23,6 @@
     "commit": "11c5d26f031fdf5db0aa1f00bc2f02983c286008"
   },
   "_source": "git://github.com/nickstark/stark.git",
-  "_target": "~0.0.7",
+  "_target": "0.0.8",
   "_originalSource": "starkjs"
 }

@@ -12,6 +12,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var CarouselView = require('views/CarouselView');
     var SelectView = require('views/SelectView');
     var ImagePlaceholderView = require('views/ImagePlaceholderView');
+    var VideoModalView = require('views/VideoModalView');
     var $ = require('jquery');
     var Tween = require('gsap-tween');
 
@@ -57,6 +58,7 @@ define(function(require, exports, module) { // jshint ignore:line
     PanelState.prototype.COMPONENTS = {
         '.js-carouselView': CarouselView,
         '.js-select': SelectView,
+        '.js-videoModal': VideoModalView,
         'img': ImagePlaceholderView
     };
 

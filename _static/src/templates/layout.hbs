@@ -128,6 +128,15 @@
             SETTINGS.STATIC_PATH = '{{ env.URL_BASE }}';
 
             /**
+             * Root-relative path for search results
+             *
+             * @property SEARCH_PATH
+             * @type String
+             * @final
+             */
+            SETTINGS.SEARCH_PATH = 'search/data.html';
+
+            /**
              * Set any RequireJs configuration that is dependent on dynamic
              * configuration variables. Note that this config data is merged into
              * any other require.config() statements defined elsewhere.
