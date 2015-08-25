@@ -26,15 +26,15 @@ define(function(require, exports, module) { // jshint ignore:line
         apiBase: window.SETTINGS.STATIC_PATH,
         searchPath: '/', // include prefix '/'
         apiRouts: {
-            'mission': 'mission/index.html',
-            'approach': 'approach/index.html',
-            'approach/tertiary': 'approach/tertiary/index.html',
-            'impact': 'impact/index.html',
-            'press': 'press/index.html',
-            'contact': 'contact/index.html',
-            'pressResults': 'pages/press-content-addl.html',
-            'searchResults': window.SETTINGS.SEARCH_PATH,
-            '404': 'not-found/index.html'
+            'mission': window.SETTINGS.ROUTES['mission'],
+            'approach': window.SETTINGS.ROUTES['approach'],
+            'approach/tertiary': window.SETTINGS.ROUTES['approach/tertiary'],
+            'impact': window.SETTINGS.ROUTES['impact'],
+            'press': window.SETTINGS.ROUTES['press'],
+            'contact': window.SETTINGS.ROUTES['contact'],
+            'pressResults': window.SETTINGS.ROUTES['pressResults'],
+            'searchResults': window.SETTINGS.ROUTES['searchResults'],
+            '404': window.SETTINGS.ROUTES['404']
         },
         animationSpeeds: {
             CONTENT_IN: 0.4, // content fade in
