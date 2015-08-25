@@ -9,7 +9,7 @@
 ?>
 
 <div class="resultsList-hd">
-	<div class="hdg hdg_5 mix-hdg_italic mix-hdg_gray"><?php printf( esc_html__( 'No Results Found', 'internetorg' ) , $wp_query->found_posts ); ?></div>
+	<div class="hdg hdg_5 mix-hdg_italic mix-hdg_gray"><?php esc_html__( 'No Results Found', 'internetorg' ); ?></div>
 </div>
 <div class="resultsList-list">
 	<div class="resultsList-list-item">

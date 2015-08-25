@@ -46,7 +46,6 @@ abstract class Internetorg_PostType
 	public function register() {
 		// This is an alternative way of adding custom meta if you don't use
 		// the fieldmananger plugin
-		// $this->registrationData[1]['register_meta_box_cb'] = array( $this, 'add_meta_boxes' );
 		$this->registrationData[1]['show_in_nav_menus'] = $this->showInNavMenu;
 		call_user_func_array( 'register_post_type', $this->registrationData );
 

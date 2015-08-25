@@ -65,32 +65,6 @@ if ( ! function_exists( 'the_post_navigation' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'internetorg_posted_on' ) ) :
-	/**
-	 * Prints HTML with meta information for the current post-date/time and author.
-	 *
-	 * @see internetorg_get_post_publish_time_string
-	 *
-	 * @return void
-	 */
-	function internetorg_posted_on() {
-		$time_string = internetorg_get_post_publish_time_string();
-
-		$posted_on = sprintf(
-			esc_html_x( 'Posted on %s', 'post date', 'internetorg' ),
-			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-		);
-
-		$byline = sprintf(
-			esc_html_x( 'by %s', 'post author', 'internetorg' ),
-			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
-		);
-
-		echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
-
-	}
-endif;
-
 if ( ! function_exists( 'internetorg_get_post_publish_time_string' ) ) :
 	/**
 	 * get formatted data/time string for the current post
@@ -124,7 +98,7 @@ if ( ! function_exists( 'internetorg_posted_on_date' ) ) :
 	function internetorg_posted_on_date() {
 		$time_string = internetorg_get_post_publish_time_string();
 
-		printf( esc_html_x( '%s', 'post date', 'internetorg' ), $time_string );
+		printf( esc_html_x( '%s', 'post date', 'internetorg' ), wp_kses_post( $time_string ) );
 	}
 endif;
 
@@ -138,13 +112,13 @@ if ( ! function_exists( 'internetorg_entry_footer' ) ) :
 			/* translators: used between list items, there is a space after the comma */
 			$categories_list = get_the_category_list( esc_html__( ', ', 'internetorg' ) );
 			if ( $categories_list && internetorg_categorized_blog() ) {
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'internetorg' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'internetorg' ) . '</span>', esc_html( $categories_list ) ); // WPCS: XSS OK.
 			}
 
 			/* translators: used between list items, there is a space after the comma */
 			$tags_list = get_the_tag_list( '', esc_html__( ', ', 'internetorg' ) );
 			if ( $tags_list ) {
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'internetorg' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'internetorg' ) . '</span>', esc_html( $tags_list ) ); // WPCS: XSS OK.
 			}
 		}
 
@@ -243,7 +217,7 @@ if ( ! function_exists( 'the_archive_title' ) ) :
 		$title = apply_filters( 'get_the_archive_title', $title );
 
 		if ( ! empty( $title ) ) {
-			echo $before . $title . $after;  // WPCS: XSS OK.
+			echo wp_kses_post( $before ) . esc_html( $title ) . wp_kses_post( $after );  // WPCS: XSS OK.
 		}
 	}
 endif;
@@ -270,7 +244,7 @@ if ( ! function_exists( 'the_archive_description' ) ) :
 			 *
 			 * @param string $description Archive description to be displayed.
 			 */
-			echo $before . $description . $after; // WPCS: XSS OK.
+			echo wp_kses_post( $before ) . esc_html( $description ) . wp_kses_post( $after ); // WPCS: XSS OK.
 		}
 	}
 endif;

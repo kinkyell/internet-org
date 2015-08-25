@@ -18,30 +18,6 @@ if ( ! function_exists( 'init_internetorg_custom_posttypes_callback' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'activate_internetorg_custom_posttypes_callback' ) ) :
-	/**
-	 * Plugin activation callback function
-	 *
-	 * @return void
-	 */
-	function activate_internetorg_custom_posttypes_callback() {
-		$cpt = Internetorg_CustomPostTypes::get_instance();
-		$cpt->activate();
-	}
-endif;
-
-if ( ! function_exists( 'deactivate_internetorg_custom_posttypes_callback' ) ) :
-	/**
-	 * Plugin deactivation callback function
-	 *
-	 * @return void
-	 */
-	function deactivate_internetorg_custom_posttypes_callback() {
-		$cpt = Internetorg_CustomPostTypes::get_instance();
-		$cpt->deactivate();
-	}
-endif;
-
 if ( ! function_exists( 'internetorg_get_content_widget_by_slug' ) ) :
 	/**
 	 * Look up a content widget with the given slug

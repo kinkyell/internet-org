@@ -12,7 +12,7 @@
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
 		<div class="entry-meta">
-			<?php internetorg_posted_on(); ?>
+			<?php internetorg_posted_on_date(); ?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 

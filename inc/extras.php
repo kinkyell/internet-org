@@ -39,17 +39,17 @@ if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
 		global $page, $paged;
 
 		// Add the blog name.
-		$title .= get_bloginfo( 'name', 'display' );
+		$title .= esc_html( get_bloginfo( 'name', 'display' ) );
 
 		// Add the blog description for the home/front page.
-		$site_description = get_bloginfo( 'description', 'display' );
+		$site_description = esc_html( get_bloginfo( 'description', 'display' ) );
 		if ( $site_description && ( is_home() || is_front_page() ) ) {
-			$title .= " $sep $site_description";
+			$title .= sprintf( ' %s %s', $sep, $site_description );
 		}
 
 		// Add a page number if necessary.
 		if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
-			$title .= " $sep " . sprintf( esc_html__( 'Page %s', 'internetorg' ), max( $paged, $page ) );
+			$title .= sprintf( ' %s ' . esc_html__( 'Page %s', 'internetorg' ), $sep, max( $paged, $page ) );
 		}
 
 		return $title;

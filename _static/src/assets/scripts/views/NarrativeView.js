@@ -274,9 +274,8 @@ define(function(require, exports, module) { // jshint ignore:line
             var section = SECTIONS_CONF[this._position];
             var subsLength = section.subSections.length;
             var subPosition = this._subPosition;
-            var isMobile = breakpointManager.isMobile;
 
-            if (!isMobile && (subsLength > 0 && subPosition > 0)) {
+            if (subsLength > 0 && subPosition > 0) {
                 var destinationSubPos = subPosition - 1;
                 var destinationSub = section.subSections[destinationSubPos];
 
@@ -311,9 +310,8 @@ define(function(require, exports, module) { // jshint ignore:line
             var section = SECTIONS_CONF[this._position];
             var subsLength = section.subSections.length;
             var subPosition = this._subPosition;
-            var isMobile = breakpointManager.isMobile;
 
-            if (!isMobile && (subsLength > 0 && subPosition < subsLength - 1)) {
+            if (subsLength > 0 && subPosition < subsLength - 1) {
                 var destinationSubPos = subPosition + 1;
                 var destinationSub = section.subSections[destinationSubPos];
 
