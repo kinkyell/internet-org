@@ -32,7 +32,7 @@ define(function(require, exports, module) { // jshint ignore:line
             .addClass('swipebox-video')
             .attr('rel', 'vimeo' + this.videoNum);
 
-        // NOTE: for some reason it needs to be directly queried. Investigate?
+        // NOTE: Needs to be queried because it uses the 'selector' property of the jquery object
         $('[rel="vimeo'+ this.videoNum + '"]').swipebox({
             vimeoColor: 'ff6b00'
         });
@@ -45,6 +45,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onDisable = function() {
+        $.swipebox.close();
     };
 
     //////////////////////////////////////////////////////////////////////////////////
