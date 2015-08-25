@@ -65,6 +65,7 @@
 
 /* Heading Mixins */
 .mix-hdg_white 	{ color: white; }
+.mix-hdg_blackThenWhite { color: $CLR_BLACK; }
 .mix-hdg_gray 	{ color: $CLR_GRAY; }
 .mix-hdg_italic { font-style: italic; }
 .mix-hdg_bold   { font-weight: 500; }
@@ -120,5 +121,8 @@
 
     .mix-hdg_splash {
         color: $CLR_BLACK;
+    }
+    .mix-hdg_blackThenWhite {
+        color: $CLR_WHITE;
     }
 }
