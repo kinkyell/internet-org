@@ -7,6 +7,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var spread = require('stark/promise/spread');
 
     var SearchFormView = require('views/SearchFormView');
+    var ShowMoreView = require('views/ShowMoreView');
 
     var templates = require('templates');
 
@@ -39,6 +40,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @type {Object}
      */
     SearchState.prototype.COMPONENTS = {
+        '.js-ShowMoreView': ShowMoreView,
         '.js-searchFormView': SearchFormView
     };
 
@@ -87,7 +89,7 @@ define(function(require, exports, module) { // jshint ignore:line
         if (!this.active) {
             return;
         }
-        $panel.find('.js-searchState-results').append(res.results);
+        $panel.find('.js-searchState-results').prepend(res.results);
         $panel.find('.js-searchState-num').html(res.totalResults);
         this.refreshComponents($panel);
     };

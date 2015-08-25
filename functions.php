@@ -817,11 +817,28 @@ function internetorg_do_ajax_search() {
 	/** @var \WP_Query $query A WP_Query for the specified "page" of search results */
 	$query = new WP_Query( $args );
 
-	if ( ! $query->have_posts() ) {
+	if ( is_wp_error( $query ) || ! $query->have_posts() ) {
 		wp_send_json_error( array() );
 	}
 
-	wp_send_json_success( $query->posts );
+	$data = array(
+		'found_posts'   => absint( $query->found_posts ),
+		'paged'         => absint( $query->get( 'paged' ) ),
+		'max_num_pages' => absint( $query->max_num_pages ),
+		'posts'         => array(),
+	);
+
+	while ( $query->have_posts() ) {
+		$query->the_post();
+		$data['posts'][] = array(
+			'ID'           => get_the_ID(),
+			'post_title'   => get_the_title(),
+			'post_excerpt' => get_the_excerpt(),
+			'permalink'    => get_the_permalink(),
+		);
+	}
+
+	wp_send_json_success( $data );
 
 }
 
@@ -874,11 +891,28 @@ function internetorg_do_ajax_more_posts() {
 	/** @var \WP_Query $query A WP_Query for the specified "page" of post type archive results */
 	$query = new WP_Query( $args );
 
-	if ( ! $query->have_posts() ) {
+	if ( is_wp_error( $query ) || ! $query->have_posts() ) {
 		wp_send_json_error( array() );
 	}
 
-	wp_send_json_success( $query->posts );
+	$data = array(
+		'found_posts'   => absint( $query->found_posts ),
+		'paged'         => absint( $query->get( 'paged' ) ),
+		'max_num_pages' => absint( $query->max_num_pages ),
+		'posts'         => array(),
+	);
+
+	while ( $query->have_posts() ) {
+		$query->the_post();
+		$data['posts'][] = array(
+			'ID'           => get_the_ID(),
+			'post_title'   => get_the_title(),
+			'post_excerpt' => get_the_excerpt(),
+			'permalink'    => get_the_permalink(),
+		);
+	}
+
+	wp_send_json_success( $data );
 
 }
 
