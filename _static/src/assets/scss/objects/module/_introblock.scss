@@ -3,16 +3,21 @@ Introduction Block
 
 Sections of content that introduce landing and story pages
 ------------------------------------------------------------------------ */
+
 .introBlock {
 	display: table;
 	box-sizing: border-box;
 	width: 100%;
-	min-height: 620px;
-	padding: 45px 0;
+	height: 200px;
+	padding: 126px 0 45px;
 	position: relative;
 	background: url(../media/images/icons/io-mark-bg.svg) no-repeat $CLR_GRAY_LIGHTER;
-	background-position: -725px top;
-	background-size: 1450px 2035px;
+	background-position: -225px top;
+	background-size: 575px 795px;
+}
+
+.introBlock_foot {
+	padding-top: 45px;
 }
 
 .introBlock_social {
@@ -45,4 +50,13 @@ Sections of content that introduce landing and story pages
 
 .introBlock-ft_rule {
 	border-top: 1px solid #d0cfc6;
+}
+
+@include breakpoint(MD) {
+	.introBlock {
+		height: 620px;
+		padding-top: 45px;
+		background-position: -725px top;
+		background-size: 1450px 2035px;
+	}
 }

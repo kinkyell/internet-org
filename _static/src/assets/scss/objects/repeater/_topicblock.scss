@@ -8,8 +8,17 @@
 	// position: relative;
 }
 
+.topicBlock > * {
+	@include contain();
+}
+
 .footBox > .topicBlock {
 	margin-top: 0;
+}
+
+.topicBlock-media {
+	@include unContain();
+	margin-bottom: $SPACE_x2;
 }
 
 .topicBlock-hd {
@@ -51,4 +60,11 @@
 	border-top: 1px solid #d0cfc6;
 	padding: $SPACE_x3;
 	margin-top: $SPACE_x4;
+}
+
+
+@include breakpoint(MD) {
+	.topicBlock-media {
+		@include isVisuallyHidden();
+	}
 }
