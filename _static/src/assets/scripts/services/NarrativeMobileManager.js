@@ -87,6 +87,12 @@ define(function(require, exports, module) { // jshint ignore:line
             },
             {
                 label: 'section04'
+            },
+            {
+                label: 'section05'
+            },
+            {
+                label: 'section06'
             }
         ];
         this._init();
@@ -149,13 +155,13 @@ define(function(require, exports, module) { // jshint ignore:line
         tl.from(this._$sections.eq(2).find('.narrative-section-bd'), 0.5, {y: '50%', ease: EASE[easeDirection]}, '-=0.35');
         tl.from(this._$sections.eq(2).find('.statementBlock'), 0.65, {y: '100%', ease: EASE[easeDirection]}, '-=0.5');
 
-        //  transition 03
+        //  transition 05
         ///////////////////////
         tl.to(this._$narrative, 0.35, { scrollTo: { y: this._sections[3].sectionOffset }, ease: EASE[easeDirection] });
         tl.from(this._$sections.eq(3).find('.narrative-section-bd'), 0.5, {y: '50%', ease: EASE[easeDirection]}, '-=0.35');
         tl.from(this._$sections.eq(3).find('.statementBlock'), 0.65, {y: '100%', ease: EASE[easeDirection]}, '-=0.5');
 
-        //  transition 04
+        //  transition 06
         ///////////////////////
         tl.to(this._$narrative, 0.35, { scrollTo: { y: this._sections[4].sectionOffset }, ease: EASE[easeDirection] });
 
@@ -230,18 +236,8 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     proto._subSectionTransition = function(section, direction) {
-        var sectionPosition = this._sectionsConf.indexOf(section);
-        var prevSection = (direction === 'down') ? this._sectionsConf[sectionPosition - 1] : this._sectionsConf[sectionPosition + 1];
-
         return new Promise(function(resolve) {
-            var fromLabel = prevSection.label;
-            var toLabel = section.label;
-            // var timeline = (state.position < state.destinationPos) ? this._timeLine : this._timeLineReverse;
-            var timeline = this._timeLine;
 
-            timeline.tweenFromTo(fromLabel, toLabel, {
-                onComplete: this._onSectionComplete.bind(this, resolve)
-            });
         }.bind(this));
     };
 

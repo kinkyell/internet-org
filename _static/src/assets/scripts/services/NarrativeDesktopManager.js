@@ -226,7 +226,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         this._$transformBlockPost.eq(sectionPosition).addClass('transformBlock-post-item_isActive');
 
-        window.setTimeout(this._onTransitionComplete.bind(this, resolve), this._scrollBuffer);
+        window.setTimeout(this._onTransitionComplete.bind(this, resolve), 0);
     };
 
     proto._onTransitionComplete = function(resolve) {

@@ -71,7 +71,7 @@ if ( ! function_exists( 'internetorg_setup' ) ) :
 			array(
 				'primary'         => esc_html__( 'Primary Menu', 'internetorg' ),
 				'primary-sub-nav' => esc_html__( 'Primary Menu Sub Nav', 'internetorg' ),
-		    )
+			)
 		);
 
 		/*
@@ -239,11 +239,11 @@ if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 			'post_status' => 'publish',
 		);
 
-		/** @var array $services An array to hold io_freesvc data*/
+		/** @var array $services An array to hold io_freesvc data */
 		$services = array();
 
 		/** @var WP_Query $svcqry A WP_Query to retrieve io_freesvc post objects */
-		$svcqry   = new WP_Query( $args );
+		$svcqry = new WP_Query( $args );
 
 		/** build array of services so we are not passing around a query object */
 		while ( $svcqry->have_posts() ) :
@@ -260,11 +260,11 @@ if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 			}
 
 			$services[] = array(
-				'post_id'      => $svcqry->post->ID,
-				'slug'         => $svcqry->post->post_name,
-				'title'        => $svcqry->post->post_title,
-				'excerpt'      => $svcqry->post->post_excerpt,
-				'image'        => $image_url,
+				'post_id' => $svcqry->post->ID,
+				'slug'    => $svcqry->post->post_name,
+				'title'   => $svcqry->post->post_title,
+				'excerpt' => $svcqry->post->post_excerpt,
+				'image'   => $image_url,
 			);
 
 		endwhile;
@@ -634,12 +634,14 @@ function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button 
 		if ( ! empty( $meta ) && ! empty( $meta['widget-data'] ) ) {
 			foreach ( $meta['widget-data'] as $cta ) {
 				$label = ( ! empty( $cta['label'] ) ? $cta['label'] : '' );
-				$url   = ( ! empty( $cta['url'] )   ? $cta['url']   : '' );
+				$url   = ( ! empty( $cta['url'] ) ? $cta['url'] : '' );
 				$file  = ( ! empty( $cta['image'] ) ? $cta['image'] : '' );
 
 				$link = $url ? $url : $file;
 				if ( ! empty( $link ) ) {
-					$out .= '<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? $link : '' ) . '" class="' . ( $cta_as_button ? 'btn' : 'link link_twoArrows' ) . '">' . esc_html( $label ) . '</a></div>';
+					$out .= '<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? $link
+						                                                           : '' ) . '" class="' . ( $cta_as_button
+							? 'btn' : 'link link_twoArrows' ) . '">' . esc_html( $label ) . '</a></div>';
 				}
 			}
 		}
@@ -652,6 +654,10 @@ function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button 
 	return $out;
 }
 
+/**
+ * @param      $widget_slug
+ * @param bool $cta_as_button
+ */
 function internet_org_get_content_widget_html( $widget_slug, $cta_as_button = true ) {
 	echo wp_kses_post( get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button ) );
 }
@@ -708,7 +714,12 @@ function internetorg_is_internal_url( $url ) {
 	return false;
 }
 
-
+/**
+ * @param        $post_thumbnail_id
+ * @param string $size
+ *
+ * @return string
+ */
 function internetorg_get_media_image_url( $post_thumbnail_id, $size = 'single-post-thumbnail' ) {
 	$url = '';
 
@@ -719,3 +730,156 @@ function internetorg_get_media_image_url( $post_thumbnail_id, $size = 'single-po
 
 	return $url;
 }
+
+
+/**
+ * Register rewrite endpoints for AJAX calls.
+ *
+ * @link https://vip.wordpress.com/documentation/wp_rewrite/
+ * @link https://10up.github.io/Engineering-Best-Practices/php/#ajax-endpoints
+ *
+ * @action init
+ */
+function internetorg_add_ajax_endpoints() {
+
+	/** AJAX search endpoint */
+	add_rewrite_tag( '%ajax_search_term%', '(.+)' );
+	add_rewrite_rule( 'io-ajax-search/([^/]+)/page/?([0-9]{1,})/?$', 'index.php?ajax_search_term=$matches[1]&paged=$matches[2]', 'top' );
+	add_rewrite_rule( 'io-ajax-search/([^/]+)/?$', 'index.php?ajax_search_term=$matches[1]', 'top' );
+
+	/** AJAX load more posts endpoint */
+	add_rewrite_tag( '%ajax_post_type%', '(.+)' );
+	add_rewrite_rule( 'io-ajax-posts/([^/]+)/page/?([0-9]{1,})/?$', 'index.php?ajax_post_type=$matches[1]&paged=$matches[2]', 'top' );
+	add_rewrite_rule( 'io-ajax-posts/([^/]+)/?$', 'index.php?ajax_post_type=$matches[1]', 'top' );
+}
+
+add_action( 'init', 'internetorg_add_ajax_endpoints' );
+
+/**
+ * Add our ajax query vars to the public_query_vars array.
+ *
+ * This will allow us to retrieve query var data without using global $wp_query->get.
+ *
+ * @filter query_vars
+ *
+ * @param array $public_query_vars The array of public query variables.
+ *
+ * @return array
+ */
+function internetorg_add_ajax_query_vars( $public_query_vars ) {
+	$public_query_vars[] = 'ajax_search_term';
+	$public_query_vars[] = 'ajax_post_type';
+
+	return $public_query_vars;
+}
+
+add_filter( 'query_vars', 'internetorg_add_ajax_query_vars' );
+
+/**
+ * Do the ajax search.
+ *
+ * If the ajax_search_term query var is empty, return so that we don't hijack all template redirects.
+ *
+ * @todo maybe combine with internetorg_do_ajax_more_posts to reduce duplicate code
+ * @todo determine what data actually needs to be returned in json, right now it's a firehose of all WP_Query->posts data
+ *
+ * @link https://vip.wordpress.com/documentation/wp_rewrite/
+ * @link https://10up.github.io/Engineering-Best-Practices/php/#ajax-endpoints
+ *
+ * @action template_redirect
+ */
+function internetorg_do_ajax_search() {
+
+	/** @var string $ajax_search_term The search term query var */
+	$ajax_search_term = get_query_var( 'ajax_search_term' );
+
+	/** no ajax search term, return early and let template_redirect run it's course */
+	if ( empty( $ajax_search_term ) ) {
+		return;
+	}
+
+	/** @todo : this may need to be modified for json decode rather than urldecode, talk to FED */
+	$ajax_search_term = sanitize_text_field( urldecode( $ajax_search_term ) );
+
+	/** @var int $ajax_search_paged Pagination query var if present else 0 */
+	$ajax_search_paged = absint( get_query_var( 'paged' ) );
+
+	if ( empty( $ajax_search_paged ) ) {
+		$ajax_search_paged = 1;
+	}
+
+	/** @var array $args An array of WP_Query args */
+	$args = array(
+		's'     => $ajax_search_term,
+		'paged' => $ajax_search_paged,
+	);
+
+	/** @var \WP_Query $query A WP_Query for the specified "page" of search results */
+	$query = new WP_Query( $args );
+
+	if ( ! $query->have_posts() ) {
+		wp_send_json_error( array() );
+	}
+
+	wp_send_json_success( $query->posts );
+
+}
+
+add_action( 'template_redirect', 'internetorg_do_ajax_search' );
+
+/**
+ * Do the ajax load more posts.
+ *
+ * If the ajax_post_type query var is empty, return so that we don't hijack all template redirects.
+ *
+ * @todo maybe combine with internetorg_do_ajax_search to reduce duplicate code
+ * @todo determine what data actually needs to be returned in json, right now it's a firehose of all WP_Query->posts data
+ *
+ * @link https://vip.wordpress.com/documentation/wp_rewrite/
+ * @link https://10up.github.io/Engineering-Best-Practices/php/#ajax-endpoints
+ */
+function internetorg_do_ajax_more_posts() {
+
+	/** @var string $ajax_post_type The post type query var */
+	$ajax_post_type = get_query_var( 'ajax_post_type' );
+
+	/** no ajax post type, return early and let template_redirect run it's course */
+	if ( empty( $ajax_post_type ) ) {
+		return;
+	}
+
+	/** @todo : this may need to be modified for json decode rather than urldecode, talk to FED */
+	$ajax_post_type = sanitize_title_for_query( urldecode( $ajax_post_type ) );
+
+	/** @var array $allowed_post_types A whitelist array of public post types to compare against */
+	$allowed_post_types = get_post_types( array( 'public' => true ), 'names' );
+
+	if ( ! in_array( $ajax_post_type, $allowed_post_types ) ) {
+		wp_send_json_error( array() );
+	}
+
+	/** @var int $ajax_paged Pagination query var if present else 0 */
+	$ajax_paged = absint( get_query_var( 'paged' ) );
+
+	if ( empty( $ajax_paged ) ) {
+		$ajax_paged = 1;
+	}
+
+	/** @var array $args An array of WP_Query args */
+	$args = array(
+		'post_type' => $ajax_post_type,
+		'paged'     => $ajax_paged,
+	);
+
+	/** @var \WP_Query $query A WP_Query for the specified "page" of post type archive results */
+	$query = new WP_Query( $args );
+
+	if ( ! $query->have_posts() ) {
+		wp_send_json_error( array() );
+	}
+
+	wp_send_json_success( $query->posts );
+
+}
+
+add_action( 'template_redirect', 'internetorg_do_ajax_more_posts' );
