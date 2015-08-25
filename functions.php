@@ -23,6 +23,7 @@ require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 //wpcom_vip_load_plugin( 'cache-nav-menu' );
 //wpcom_vip_load_plugin( 'facebook' );
 //wpcom_vip_load_plugin( 'lazy-load' );
+wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
 
 /** Custom Post Types */
 require IO_DIR . '/plugins/internetorg-custom-posttypes/internetorg-custom-posttypes.php';
@@ -929,3 +930,13 @@ function internetorg_do_ajax_more_posts() {
 }
 
 add_action( 'template_redirect', 'internetorg_do_ajax_more_posts' );
+
+if ( class_exists( 'MultiPostThumbnails' ) ) {
+	new MultiPostThumbnails(
+		array(
+			'label'     => 'Mobile Featured Image',
+			'id'        => 'mobile-featured-image',
+			'post_type' => array( 'page' ),
+		)
+	);
+}
