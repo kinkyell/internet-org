@@ -25,6 +25,17 @@ define(function(require, exports, module) { // jshint ignore:line
         classes: new ClassDict(classes),
         apiBase: window.SETTINGS.STATIC_PATH,
         searchPath: '/', // include prefix '/'
+        apiRouts: {
+            'mission': 'mission/index.html',
+            'approach': 'approach/index.html',
+            'approach/tertiary': 'approach/tertiary/index.html',
+            'impact': 'impact/index.html',
+            'press': 'press/index.html',
+            'contact': 'contact/index.html',
+            'pressResults': 'pages/press-content-addl.html',
+            'searchResults': window.SETTINGS.SEARCH_PATH,
+            '404': 'not-found/index.html'
+        },
         animationSpeeds: {
             CONTENT_IN: 0.4, // content fade in
             MENU_IN: 0.25, // menu in speed

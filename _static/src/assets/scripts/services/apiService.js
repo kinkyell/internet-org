@@ -8,6 +8,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var $ = require('jquery');
     var templates = require('templates'); // jshint ignore:line
+    var AppConfig = require('appConfig');
 
     // api base url for ajax requests
     var BASE_URL = require('appConfig').apiBase;
@@ -17,15 +18,15 @@ define(function(require, exports, module) { // jshint ignore:line
      * TODO: update to point to WP endpoints
      */
     var PATHS = {
-        'mission': 'mission/index.html',
-        'approach': 'approach/index.html',
-        'approach/tertiary': 'approach/tertiary/index.html',
-        'impact': 'impact/index.html',
-        'press': 'press/index.html',
-        'contact': 'contact/index.html',
-        'pressResults': 'pages/press-content-addl.html',
-        'searchResults': window.SETTINGS.SEARCH_PATH,
-        '404': 'not-found/index.html'
+        'mission': AppConfig.apiRouts['mission'],
+        'approach': AppConfig.apiRouts['approach'],
+        'approach/tertiary': AppConfig.apiRouts['approach/tertiary'],
+        'impact': AppConfig.apiRouts['impact'],
+        'press': AppConfig.apiRouts['press'],
+        'contact': AppConfig.apiRouts['contact'],
+        'pressResults': AppConfig.apiRouts['pressResults'],
+        'searchResults': AppConfig.apiRouts['searchResults'],
+        '404': AppConfig.apiRouts['404']
     };
 
     var PREFIX_STRIPPER = /^\//;
