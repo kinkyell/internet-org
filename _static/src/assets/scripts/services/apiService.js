@@ -69,22 +69,30 @@ define(function(require, exports, module) { // jshint ignore:line
         getSearchResults: function(searchText, page) {
             page = page || 1;
             return Promise.resolve($.get(BASE_URL + PATHS.searchResults, {
+                s: searchText,
                 page: page
             }, 'json')).then(function(res) {
                 if (typeof res === 'string') {
                     res = JSON.parse(res);
                 }
+
+                if (!res.success) {
+                    return {
+                        hasNextPage: false,
+                        totalResults: 0,
+                        results: ''
+                    };
+                }
+
                 // jshint ignore:start
                 return {
-                    hasNextPage: res.next_page !== 0,
-                    totalResults: typeof res.total_results === 'Number' ? res.total_results : 'Unknown',
-                    results: res.results.map(function(result) {
+                    hasNextPage: res.data.paged < res.data.max_num_pages,
+                    totalResults: typeof res.data.found_posts === 'number' ? res.data.found_posts : 'Unknown',
+                    results: res.data.posts.map(function(result) {
                         return templates['search-result']({
-                            title: result.title,
-                            desc: result.excerpt,
-                            url: result.permalink,
-                            imgUrl: result.img_url,
-                            formattedDate: result.date
+                            title: result.post_title,
+                            desc: result.post_excerpt,
+                            url: result.permalink
                         });
                     }).join('')
                 };
@@ -98,8 +106,14 @@ define(function(require, exports, module) { // jshint ignore:line
          * @param {Number} page Page Number
          * @returns {Promise} represents value of html returned
          */
-        getMoreContent: function(contentType, page) {
+        getMoreContent: function(contentType, page, args) {
             var resultsPath = PATHS[contentType + 'Results'];
+
+            if (contentType === 'search') {
+                return apiService.getSearchResults(args, page).then(function(res) {
+                    return res.results;
+                });
+            }
             return Promise.resolve($.get(BASE_URL + resultsPath, {
                 page: page
             })).then(_parseHtmlResponse);

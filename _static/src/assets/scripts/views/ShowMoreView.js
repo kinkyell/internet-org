@@ -46,7 +46,8 @@ define(function(require, exports, module) { // jshint ignore:line
         var targetId = this.element.getAttribute('data-target');
         this.targetEl = document.getElementById(targetId);
         this.contentType = this.element.getAttribute('data-src');
-        this.nextPage = 1;
+        this.contentArgs = this.element.getAttribute('data-args');
+        this.nextPage = 2;
     };
 
     /**
@@ -134,7 +135,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._loadAddlContent = function() {
         var currentPage = this.nextPage;
         this.nextPage++;
-        return apiService.getMoreContent(this.contentType, currentPage);
+        return apiService.getMoreContent(this.contentType, currentPage, this.contentArgs);
     };
 
     /**
