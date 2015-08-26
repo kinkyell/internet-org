@@ -48,9 +48,9 @@ define(function(require, exports, module) { // jshint ignore:line
             }
             this._narrativeView.enable();
         } else {
-            var defaultImage = '/assets/media/uploads/home_DT.jpg';
-            viewWindow.replaceFeatureImage(defaultImage, 'left');
             this._narrativeView = new NarrativeView($('.js-narrativeView'));
+            var defaultImage = this._narrativeView._sectionConf[0].featureImage
+            viewWindow.replaceFeatureImage(defaultImage, 'left');
         }
 
         this.refreshComponents($(document.body));

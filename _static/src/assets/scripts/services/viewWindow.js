@@ -11,6 +11,8 @@ define(function(require, exports, module) { // jshint ignore:line
     var breakpointManager = require('services/breakpointManager');
     var AnimationQueue = require('util/AnimationQueue');
 
+    var parseUrl = require('stark/string/parseUrl');
+
     // speed of shift and feature transitions
     var TRANSITION_SPEED = require('appConfig').animationSpeeds.PANEL_SHIFT;
 
@@ -51,6 +53,7 @@ define(function(require, exports, module) { // jshint ignore:line
         var childImg = this.$feature.find('.viewWindow-panel-content-inner').css('background-image');
         if (BG_IMG_REGEX.test(childImg)) {
             this._featureImage = childImg.match(BG_IMG_REGEX)[1];
+            this._featureImage = parseUrl(this._featureImage).pathname;
         }
     };
 
@@ -64,6 +67,8 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     ViewWindow.prototype.replaceFeatureImage = function(imagePath, direction) {
         return this._featureQueue.queue(function() {
+
+
             var $panel;
 
             if (this._featureImage === imagePath) {

@@ -108,6 +108,8 @@ define(function(require, exports, module) { // jshint ignore:line
             y: 0
         };
 
+        this._sectionConf = SECTIONS_CONF;
+
         /**
          * @type String
          */
@@ -128,6 +130,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto.init = function() {
+
+
         // determine bp specific narrative handler
         this._narrativeManager = (breakpointManager.isMobile) ?
             new NarrativeMobileManager(SECTIONS_CONF) :
