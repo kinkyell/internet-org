@@ -349,6 +349,46 @@ function internetorg_get_the_subtitle( $post_id = 0 ) {
 }
 
 /**
+ * Get the page_intro_block custom field data.
+ *
+ * @param int    $post_id The post ID to retrieve the page_intro_block for.
+ * @param string $key The intro_title or intro_content key. Defaults to empty (all key => value pairs).
+ *
+ * @return string|array Specified value of key=>value pair as string, the entire array, else empty string on failure.
+ */
+function internetorg_get_the_intro_block( $post_id = 0, $key = '' ) {
+
+	$post_id = absint( $post_id );
+
+	if ( empty( $post_id ) ) {
+		$post_id = get_the_ID();
+	}
+
+	if ( empty( $post_id ) ) {
+		return '';
+	}
+
+	/** @var array $intro_meta An array of the unserialized data of the page_intro_block custom field meta */
+	$intro_meta = get_post_meta( $post_id, 'page_intro_block', true );
+
+	if ( empty( $intro_meta ) ) {
+		return '';
+	}
+
+	/** @var array $allowed_keys The keys that we are allowed to retrieve specifically from the $intro_meta array */
+	$allowed_keys = array(
+		'intro_title',
+		'intro_content',
+	);
+
+	if ( in_array( $key, $allowed_keys ) ) {
+		return $intro_meta[$key];
+	}
+
+	return $intro_meta;
+}
+
+/**
  * @param int $post_id
  *
  * @return string

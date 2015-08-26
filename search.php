@@ -58,8 +58,10 @@ get_header(); ?>
 
 							</div>
 
-
-							<?php if ( have_posts() ) : ?>
+							<?php
+							$next_posts_link = get_next_posts_link();
+							if ( ! empty( $next_posts_link ) ) {
+								?>
 								<div class="resultsList-ft">
 									<div class="resultsList-list resultsList-list_spread">
 										<div class="resultsList-list-item">
@@ -69,8 +71,7 @@ get_header(); ?>
 										</div>
 									</div>
 								</div>
-							<?php endif; ?>
-
+							<?php } ?>
 
 						</div>
 					</div>

@@ -33,16 +33,18 @@ $home_background_image_url = '';
 					$custom_stories  .= wp_kses_post( get_internetorg_home_section_story( $fieldset ) );
 
 					// Compile a list of images to use for desktop (the scrolly ones).
-					$hasMultipleCtas = false;
+					$addToSub = false;
 					if ( ! empty( $fieldset['call-to-action'] ) ) {
-						if ( count( $fieldset ) > 1 ) {
-							$hasMultipleCtas = true;
-						}
 						foreach ( $fieldset['call-to-action'] as $cta ) {
 							if ( ! empty( $cta['image'] ) ) {
 								$imgUrl = wp_get_attachment_url( $cta['image'], 'full' );
-								$dt_image_list .= $imgUrl . ',';
-								if ( $hasMultipleCtas ) {
+
+								// add the first CTA image to the main list and
+								// each other image to the "sub" list
+								if ( ! $addToSub ) {
+									$dt_image_list .= $imgUrl . ',';
+									$addToSub = true;
+								} else {
 									$dt_sub_image_list .= $imgUrl . ',';
 								}
 							}

@@ -83,13 +83,24 @@ get_header();
 							</div>
 		<?php endwhile; ?>
 					</div>
-					<div class="resultsList-ft">
+
+					<?php
+					$next_posts_link = get_next_posts_link();
+					if ( ! empty( $next_posts_link ) ) {
+						?>
+						<div class="resultsList-ft">
 							<div class="resultsList-list resultsList-list_spread">
 								<div class="resultsList-list-item">
-									<button type="button" class="btn js-ShowMoreView" data-src="press" data-target="addl-results"><?php esc_html_e( 'Show More', 'internetorg' ); ?></button>
+									<button type="button" class="btn js-ShowMoreView" data-src="press" data-target="addl-results">
+										<?php esc_html_e( 'Show More', 'internetorg' ); ?>
+									</button>
 								</div>
 							</div>
 						</div>
+						<?php
+					}
+					?>
+
 				</div>
 			</div>
 					<?php endif; ?>
