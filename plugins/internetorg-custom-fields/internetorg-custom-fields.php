@@ -8,7 +8,7 @@ Author URI:  https://nerdery.com/
 License:     GPL v2 or later
 */
 
-if ( !function_exists( 'internetorg_custom_fields_init' ) ) {
+if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 	/**
 	 * Initializes the custom fields using "Field Manager" from Alley
 	 *
@@ -48,12 +48,24 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 	 * @return void
 	 */
 	function internetorg_create_fields_internetorg_page_home() {
+
+		$next_post = new Fieldmanager_Autocomplete( array(
+		    'name' => 'next_page',
+		    'show_edit_link' => true,
+		    'datasource' => new Fieldmanager_Datasource_Post( array(
+		        'query_args' => array( 'post_type' => 'page' ),
+		    ) ),
+		) );
+		$next_post->add_meta_box( 'Next Page', 'page' );
+
+
 		$fm = new Fieldmanager_Group( array(
 			'name'           => 'home-content-section',
 			'label'          => __( 'Section', 'internetorg' ),
 			'label_macro'    => __( 'Section: %s', 'internetorg' ),
 			'add_more_label' => __( 'Add another Content Area', 'internetorg' ),
 			'collapsed'      => false,
+			'collapsible'    => true,
 			'sortable'       => true,
 			'limit'          => 0,
 			'children'       => array(
@@ -67,6 +79,7 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 					'label_macro'    => __( 'Call to action: %s', 'internetorg' ),
 					'add_more_label' => __( 'Add another CTA', 'internetorg' ),
 					'limit'          => 5,
+					'collapsible'    => true,
 					'children'       => array(
 						'title' => new Fieldmanager_TextField( __( 'CTA Title', 'internetorg' ) ),
 						'text'  => new Fieldmanager_TextArea( __( 'Content', 'internetorg' ) ),
@@ -124,20 +137,40 @@ if ( ! function_exists( 'internetorg_create_after_title_fields_internetorg_page_
 
 		$fm = new Fieldmanager_TextArea(
 			array(
-				'name' => 'page_subtitle',
-				'label' => __( 'Subtitle', 'internetorg' ),
+				'name'       => 'page_subtitle',
+				'label'      => __( 'Subtitle', 'internetorg' ),
 				'attributes' => array(
 					'rows' => 3,
 					'cols' => 30,
 				),
 			)
 		);
-
-		// add field to context create in "internetorg_page_home_after_title_fields"
 		$fm->add_meta_box( __( 'Additional page configuration', 'internetorg' ), array( 'page' ), 'internetorg_page_home_after_title', 'high' );
+
+		$intro = new Fieldmanager_Group(
+			array(
+				'name'     => 'page_intro_block',
+				'children' => array(
+					'intro_title'   => new Fieldmanager_TextField(
+						array(
+							'label' => __( 'Intro Title', 'internetorg' ),
+						)
+					),
+					'intro_content' => new Fieldmanager_TextArea(
+						array(
+							'label'      => __( 'Intro Copy', 'internetorg' ),
+							'attributes' => array(
+								'rows' => 3,
+								'cols' => 30,
+							),
+						)
+					),
+				),
+			)
+		);
+		$intro->add_meta_box( __( 'Page Intro', 'internetorg' ), array( 'page' ), 'internetorg_page_home_after_title', 'high' );
 	}
 }
-
 /**
  * Called when the plugin activates, use to do anything that needs to be done once
  *
@@ -148,4 +181,6 @@ function internetorg_cf_on_activate() {
 
 	return;
 }
+
 register_activation_hook( __FILE__, 'internetorg_cf_on_activate' );
+

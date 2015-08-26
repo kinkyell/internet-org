@@ -716,22 +716,31 @@ function internetorg_is_internal_url( $url ) {
 }
 
 /**
- * @param        $post_thumbnail_id
- * @param string $size
+ * Get the URL of a valid image attachment by attachment ID.
  *
- * @return string
+ * @param int          $attachment_id Image attachment ID. Required.
+ * @param string|array $size          Optional. Registered image size name or width/height array.
+ *
+ * @return string The URL of the image attachment or empty string on failure.
  */
-function internetorg_get_media_image_url( $post_thumbnail_id, $size = 'single-post-thumbnail' ) {
-	$url = '';
+function internetorg_get_media_image_url( $attachment_id = 0, $size = 'single-post-thumbnail' ) {
 
-	$featured_image = wp_get_attachment_image_src( $post_thumbnail_id, $size );
-	if ( is_array( $featured_image ) && ! empty( $featured_image[0] ) ) {
-		$url = $featured_image[0];
+	$attachment_id = absint( $attachment_id );
+
+	if ( empty( $attachment_id ) ) {
+		return '';
 	}
 
-	return $url;
-}
+	/** @var bool|array $image_src An array of image data, else false on failure */
+	$image_src = wp_get_attachment_image_src( $attachment_id, $size );
 
+	if ( empty( $image_src ) ) {
+		return '';
+	}
+
+	return $image_src[0];
+
+}
 
 /**
  * Register rewrite endpoints for AJAX calls.
@@ -831,11 +840,16 @@ function internetorg_do_ajax_search() {
 
 	while ( $query->have_posts() ) {
 		$query->the_post();
+
+		/** @var string $post_thumbnail URL of the post thumbnail or an empty string */
+		$post_thumbnail = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), array( 210, 260 ) );
+
 		$data['posts'][] = array(
 			'ID'           => get_the_ID(),
 			'post_title'   => get_the_title(),
 			'post_excerpt' => get_the_excerpt(),
 			'permalink'    => get_the_permalink(),
+			'post_thumbnail' => $post_thumbnail,
 		);
 	}
 
@@ -916,12 +930,17 @@ function internetorg_do_ajax_more_posts() {
 
 	while ( $query->have_posts() ) {
 		$query->the_post();
+
+		/** @var string $post_thumbnail URL of the post thumbnail or an empty string */
+		$post_thumbnail = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), array( 210, 260 ) );
+
 		$data['posts'][] = array(
-			'ID'           => get_the_ID(),
-			'post_title'   => get_the_title(),
-			'post_date'    => get_the_date(),
-			'post_excerpt' => get_the_excerpt(),
-			'permalink'    => get_the_permalink(),
+			'ID'             => get_the_ID(),
+			'post_title'     => get_the_title(),
+			'post_date'      => get_the_date(),
+			'post_excerpt'   => get_the_excerpt(),
+			'permalink'      => get_the_permalink(),
+			'post_thumbnail' => $post_thumbnail,
 		);
 	}
 
@@ -982,9 +1001,13 @@ function get_internetorg_home_section_story( $cf_content_section ) {
 	$out = '<div class="narrative-section">
 		<div class="narrative-section-slides">';
 
+	$data_img = '';
 	if ( ! empty( $cf_content_section['call-to-action'] ) ) {
 		foreach ( $cf_content_section['call-to-action'] as $cta ) {
 			if ( ! empty( $cta['image'] ) ) {
+				if ( empty( $data_img ) ) {
+					$data_img = $cta['image'];
+				}
 				$out .= '<div class="narrative-section-slides-item" style="background-image: url(' . wp_get_attachment_url( $cta['image'], 'full' ) . ')"></div>';
 			}
 		}
@@ -1006,7 +1029,13 @@ function get_internetorg_home_section_story( $cf_content_section ) {
 				</div>
 			</div>
 			<div class="narrative-section-bd-link u-isHiddenMedium">
-				<a href="#" class="circleBtn circleBtn_theme' . ucwords( $cf_content_section['slug'] ) . ' js-stateLink">' . $cf_content_section['name'] . '</a>
+				<a href="/' . $cf_content_section['slug'] . '"
+					class="circleBtn circleBtn_theme' . ucwords( $cf_content_section['slug'] ) . ' js-stateLink"
+					data-type="panel"
+					data-theme="' . $cf_content_section['slug'] . '"
+					data-title="' . $cf_content_section['name'] . '"
+					data-desc="' . strip_tags( $cf_content_section['content'] ) . '"
+					data-image="' . $data_img . '">' . $cf_content_section['name'] . '</a>
 			</div>
 		</div>
 	</div>';
@@ -1062,7 +1091,7 @@ function internetorg_get_mobile_featured_image( $post_type, $post_id ) {
 	$has_post_thumbnail = MultiPostThumbnails::has_post_thumbnail( $post_type, $id, $post_id );
 
 	if ( empty( $has_post_thumbnail ) ) {
-		return internetorg_get_post_thumbnail( $post_id );
+		return '';
 	}
 
 	$img_url = MultiPostThumbnails::get_post_thumbnail_url( $post_type, $id, $post_id, 'full' );
