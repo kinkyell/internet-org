@@ -19,11 +19,12 @@ $home_background_image_url = '';
 	}
 
 	// Pull the custom fields and parse for placement.
-	$custom_fields = get_post_meta( get_the_ID(), 'home-content-section', false );
-	$custom_features = '';
-	$custom_stories  = '';
+	$custom_fields     = get_post_meta( get_the_ID(), 'home-content-section', false );
+	$custom_features   = '';
+	$custom_stories    = '';
 	// This is a string list of images used on this page (not an array, see comma).
-	$dt_image_list   = $home_background_image_url . ',';
+	$dt_image_list     = $home_background_image_url . ',';
+	$dt_sub_image_list = '';
 	if ( ! empty( $custom_fields ) ) :
 		foreach ( $custom_fields as $group ) :
 			if ( ! empty( $group ) ) :
@@ -32,10 +33,18 @@ $home_background_image_url = '';
 					$custom_stories  .= wp_kses_post( get_internetorg_home_section_story( $fieldset ) );
 
 					// Compile a list of images to use for desktop (the scrolly ones).
+					$hasMultipleCtas = false;
 					if ( ! empty( $fieldset['call-to-action'] ) ) {
+						if ( count( $fieldset ) > 1 ) {
+							$hasMultipleCtas = true;
+						}
 						foreach ( $fieldset['call-to-action'] as $cta ) {
 							if ( ! empty( $cta['image'] ) ) {
-								$dt_image_list .= wp_get_attachment_url( $cta['image'], 'full' ) . ',';
+								$imgUrl = wp_get_attachment_url( $cta['image'], 'full' );
+								$dt_image_list .= $imgUrl . ',';
+								if ( $hasMultipleCtas ) {
+									$dt_sub_image_list .= $imgUrl . ',';
+								}
 							}
 						}
 					}
@@ -64,7 +73,10 @@ $home_background_image_url = '';
 		<div class="viewWindow-panel-content">
 			<div class="viewWindow-panel-content-inner viewWindow-panel-content-inner_home">
 				<div class="narrativeView js-narrativeView">
-					<div class="narrativeDT" data-feature-images="<?php echo esc_attr( ltrim( rtrim( $dt_image_list, ',' ), ',' ) ); ?>">
+					<div class="narrativeDT"
+						data-feature-images="<?php echo esc_attr( ltrim( rtrim( $dt_image_list, ',' ), ',' ) ); ?>"
+						data-sub-feature-images="<?php echo esc_attr( ltrim( rtrim( $dt_sub_image_list, ',' ), ',' ) ); ?>"
+						>
 						<div class="narrativeDT-inner">
 							<div class="container">
 								<div class="transformBlock js-transformBlock">
