@@ -7,6 +7,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var breakpointManager = require('services/breakpointManager');
     var NarrativeMobileManager = require('services/NarrativeMobileManager');
     var NarrativeDesktopManager = require('services/NarrativeDesktopManager');
+    var log = require('util/log')
 
     var CONFIG = {
         NARRATIVE_DT: '.narrativeDT',
@@ -301,11 +302,15 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._scrollUp = function() {
         if (!this._narrativeManager._isAnimating) {
+            debugger;
             var direction = 'up';
             var section = SECTIONS_CONF[this._position];
             var subsLength = section.subSections.length;
             var subPosition = this._subPosition;
 
+            var destinationSectionPos = this._position - 1;
+            var destinationSection = SECTIONS_CONF[destinationSectionPos];
+            var destinationSubsLength = destinationSection.subSections.length;
 
             if (subsLength > 0 && subPosition > 0) {
                 var destinationSubPos = subPosition - 1;
@@ -314,10 +319,12 @@ define(function(require, exports, module) { // jshint ignore:line
                 this._narrativeManager.gotoSubSection(destinationSub, direction).then(function() {
                     this._subPosition -= 1;
                 }.bind(this));
-            } else if (this._position > 0) {
-                var destinationSectionPos = this._position - 1;
-                var destinationSection = SECTIONS_CONF[destinationSectionPos];
-                var destinationSubsLength = destinationSection.subSections.length;
+
+            } else if (subsLength > 0 && subPosition === 0) {
+                this._narrativeManager.gotoSubSection(section, direction, section).then(function() {
+                        this._subPosition = -1;
+                    }.bind(this));
+            } else {
                 this._subPosition = destinationSubsLength - 1;
 
                 if (destinationSectionPos >= 0) {
@@ -342,8 +349,6 @@ define(function(require, exports, module) { // jshint ignore:line
             var subsLength = section.subSections.length;
             var subPosition = this._subPosition;
 
-            console.log(subPosition);
-
             if (subsLength > 0 && subPosition < subsLength) {
                 var destinationSubPos = subPosition;
                 var destinationSub = section.subSections[destinationSubPos];
@@ -360,7 +365,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 if (destinationSectionPos < sectionsLength) {
                     this._narrativeManager.gotoSection(destinationSection, direction).then(function() {
                         this._position += 1;
-                    }.bind(this));
+                    }.bind(this)).catch(log);
                 }
             }
         }

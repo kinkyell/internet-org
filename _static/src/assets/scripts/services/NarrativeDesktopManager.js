@@ -233,7 +233,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.gotoSection = function(section, direction) {
-        console.log('gotoSection');
         this._isAnimating = true;
         return this._sectionTransition(section, direction);
     };
@@ -246,10 +245,10 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {string} direction the direction of the transition
      * @public
      */
-    proto.gotoSubSection = function(section, direction) {
-        console.log('gotoSubSection');
+    proto.gotoSubSection = function(section, direction, rootSection) {
+        var rootSection = (typeof rootSection === 'undefined') ? null : rootSection;
         this._isAnimating = true;
-        return this._subSectionTransition(section, direction);
+        return this._subSectionTransition(section, direction, rootSection);
     };
 
     /**
@@ -272,22 +271,27 @@ define(function(require, exports, module) { // jshint ignore:line
             var imgDirection = (direction === 'down') ? 'bottom' : 'top';
             var timeline = (direction === 'down') ? this._timeLine : this._timeLineReverse;
             var featureImage;
+            var content;
+            var subsLast = section.subSections.length - 1;
 
             timeline.tweenFromTo(fromLabel, toLabel, {
                 onComplete: this._onSectionComplete.bind(this, section, resolve)
             });
 
             if (section.subSections.length > 0 && direction === 'up') {
-                featureImage = section.subSections[2].featureImage;
+                featureImage = section.subSections[subsLast].featureImage;
+                content = templates['home-feature'];
             } else {
                 featureImage = section.featureImage;
+                content = '';
             }
 
-            this.viewWindow.replaceFeatureImage(featureImage, imgDirection);
-            this._currentFeature = {
-                type: 'image',
-                img: featureImage
-            };
+            // this.viewWindow.replaceFeatureImage(featureImage, imgDirection);
+
+            this.viewWindow.replaceFeatureContent(
+                content,
+                imgDirection,
+                featureImage);
         }.bind(this));
     };
 
@@ -299,22 +303,25 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {string} direction the direction of the transition
      * @private
      */
-    proto._subSectionTransition = function(section, direction) {
+    proto._subSectionTransition = function(section, direction, rootSection) {
         return new Promise(function(resolve) {
             var imgDirection = (direction === 'down') ? 'bottom' : 'top';
-            var content = templates['home-feature']();
+            var curSection = (rootSection != null) ? rootSection : section;
+
             this.viewWindow.replaceFeatureContent(
                 content,
                 imgDirection,
-                section.featureImage).then(this._onSubSectionComplete.bind(this, resolve));
-            this._currentFeature = {
-                type: 'content',
-                img: section.featureImage,
-                content: content
-            };
+                curSection.featureImage).then(this._onSubSectionComplete.bind(this, resolve));
         }.bind(this));
     };
 
+    /**
+     * Callback for section transition completion
+     *
+     * @method _onSubSectionComplete
+     * @param {function} resolve promise resolution method
+     * @private
+     */
     proto._onSubSectionComplete = function(resolve) {
         window.setTimeout(this._onTransitionComplete.bind(this, resolve), this._scrollBuffer);
     };
