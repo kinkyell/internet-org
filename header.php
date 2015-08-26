@@ -22,7 +22,6 @@
 	<?php wp_head(); ?>
 
 	<?php get_template_part( 'template-parts/header', 'icons' ); ?>
-	<?php get_template_part( 'template-parts/header', 'grunticon' ); ?>
 
 	<!-- POLYFILLS -->
 	<!-- build:js <?php echo esc_url( get_stylesheet_directory_uri() ); ?>/_static/web/assets/scripts/head.js -->
