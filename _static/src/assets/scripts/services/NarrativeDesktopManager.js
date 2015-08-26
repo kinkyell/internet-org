@@ -233,6 +233,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.gotoSection = function(section, direction) {
+        console.log('gotoSection');
         this._isAnimating = true;
         return this._sectionTransition(section, direction);
     };
@@ -246,6 +247,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.gotoSubSection = function(section, direction) {
+        console.log('gotoSubSection');
         this._isAnimating = true;
         return this._subSectionTransition(section, direction);
     };
@@ -337,11 +339,12 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onTransitionComplete = function(resolve) {
-        // $(window).on('wheel', this._onWheelEventHandler);
         this._isAnimating = false;
-        // this._updateSlideHooks();
         eventHub.publish('Narrative:sectionChange');
         resolve();
+
+        // $(window).on('wheel', this._onWheelEventHandler);
+        // this._updateSlideHooks();
     };
 
     module.exports = NarrativeDesktopManager;
