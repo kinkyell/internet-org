@@ -1001,9 +1001,13 @@ function get_internetorg_home_section_story( $cf_content_section ) {
 	$out = '<div class="narrative-section">
 		<div class="narrative-section-slides">';
 
+	$data_img = '';
 	if ( ! empty( $cf_content_section['call-to-action'] ) ) {
 		foreach ( $cf_content_section['call-to-action'] as $cta ) {
 			if ( ! empty( $cta['image'] ) ) {
+				if ( empty( $data_img ) ) {
+					$data_img = $cta['image'];
+				}
 				$out .= '<div class="narrative-section-slides-item" style="background-image: url(' . wp_get_attachment_url( $cta['image'], 'full' ) . ')"></div>';
 			}
 		}
@@ -1025,7 +1029,13 @@ function get_internetorg_home_section_story( $cf_content_section ) {
 				</div>
 			</div>
 			<div class="narrative-section-bd-link u-isHiddenMedium">
-				<a href="#" class="circleBtn circleBtn_theme' . ucwords( $cf_content_section['slug'] ) . ' js-stateLink">' . $cf_content_section['name'] . '</a>
+				<a href="/' . $cf_content_section['slug'] . '"
+					class="circleBtn circleBtn_theme' . ucwords( $cf_content_section['slug'] ) . ' js-stateLink"
+					data-type="panel"
+					data-theme="' . $cf_content_section['slug'] . '"
+					data-title="' . $cf_content_section['name'] . '"
+					data-desc="' . strip_tags( $cf_content_section['content'] ) . '"
+					data-image="' . $data_img . '">' . $cf_content_section['name'] . '</a>
 			</div>
 		</div>
 	</div>';
