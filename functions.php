@@ -1062,7 +1062,7 @@ function internetorg_get_mobile_featured_image( $post_type, $post_id ) {
 	$has_post_thumbnail = MultiPostThumbnails::has_post_thumbnail( $post_type, $id, $post_id );
 
 	if ( empty( $has_post_thumbnail ) ) {
-		return internetorg_get_post_thumbnail( $post_id );
+		return '';
 	}
 
 	$img_url = MultiPostThumbnails::get_post_thumbnail_url( $post_type, $id, $post_id, 'full' );
