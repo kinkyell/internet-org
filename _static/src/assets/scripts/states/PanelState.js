@@ -72,6 +72,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     PanelState.prototype.onActivate = function(event) {
         var transitions = this.getAnimationDirections(event);
+        var theme = this._options.theme;
 
         if (event.silent) {
             viewWindow.getCurrentStory().then(this._handleStaticContent);
@@ -83,7 +84,7 @@ define(function(require, exports, module) { // jshint ignore:line
             viewWindow.replaceStoryContent(templates['article-header']({
                 title: this._options.title,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse es suscipit euante lorepehicula nulla, suscipit dela eu ante vel vehicula.', //jshint ignore:line
-                theme: capitalize(this._options.theme)
+                theme: (typeof theme === 'string' && theme.length) ? capitalize(theme) : theme
             }), transitions.content)
         ];
 
