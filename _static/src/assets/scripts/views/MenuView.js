@@ -39,7 +39,6 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handleStateChange = this._onStateChange.bind(this);
         this._handleBgClick = this._onBgClick.bind(this);
         this._handleEscPress = this._onEscPress.bind(this);
-        return this;
     };
 
     /**
