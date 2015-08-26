@@ -48,8 +48,8 @@ get_header();
 
 								<!-- Duplicate Content - Mobile Only -->
 								<div class="topicBlock-bd isHidden u-isHiddenMedium" aria-hidden="true">
-									<div class="hdg hdg_3">Internet Access Changes Lives</div>
-									<p class="bdcpy">Paola lives with her husband and young son on an organic farm several hours from Bogota. They live sustainably off the land with very little income and are largely cut off from the outside world.</p>
+									<div class="hdg hdg_3"><?php echo sanitize_text_field( internetorg_get_the_subtitle( get_the_ID() ) ); ?></div>
+									<p class="bdcpy"><?php the_content(); ?></p>
 								</div>
 
 								<!-- END ADD MOBILE ONLY CONTENT HERE -->
@@ -68,11 +68,11 @@ get_header();
 								<!-- Duplicate Content - DESKTOP Only -->
 								<div class="feature isVissuallyHidden u-isVisuallyHiddenSmall">
 									<div class="feature-hd">
-										<div class="hdg hdg_3">Internet Access Changes Lives</div>
+										<div class="hdg hdg_3"><?php echo sanitize_text_field( internetorg_get_the_subtitle( get_the_ID() ) ); ?></div>
 									</div>
 									<div class="feature-bd">
 										<p class="bdcpy bdcpy_sm">
-											Around the world, people are taking the initiative and using Internet.org to improve their lives — they’re doing better in school, building businesses and providing for their families.
+											<?php the_content(); ?>
 										</p>
 									</div>
 								</div>
