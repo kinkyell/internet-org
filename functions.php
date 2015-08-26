@@ -936,7 +936,7 @@ if ( class_exists( 'MultiPostThumbnails' ) ) {
 		array(
 			'label'     => 'Mobile Featured Image',
 			'id'        => 'mobile-featured-image',
-			'post_type' => array( 'page' ),
+			'post_type' => 'page',
 		)
 	);
 }
@@ -1012,4 +1012,64 @@ function get_internetorg_home_section_story( $cf_content_section ) {
 	</div>';
 
 	return $out;
+}
+
+/**
+ * Get the "mobile featured image" as registered with the Multiple Post Thumbnails plugin.
+ *
+ * If the MultiPostThumbnails class is not present, or the "mobile featured image" has not been populated in the post,
+ * then use the internetorg_get_post_thumbnail function to retrieve the standard featured image.
+ *
+ * @see MultiPostThumbnails::has_post_thumbnail
+ * @see MultiPostThumbnails::get_post_thumbnail_url
+ * @see internetorg_get_post_thumbnail
+ *
+ * @param string $post_type The post type that we are retrieving the "mobile featured image" for.
+ * @param int    $post_id The ID of the post that we are retrieving the "mobile featured image" for.
+ *
+ * @return string
+ */
+function internetorg_get_mobile_featured_image( $post_type, $post_id ) {
+
+	$post_id = absint( $post_id );
+
+	if ( empty( $post_id ) ) {
+		$post_id = get_the_ID();
+	}
+
+	if ( empty( $post_id ) ) {
+		return '';
+	}
+
+	$post_type = sanitize_title( $post_type );
+
+	if ( empty( $post_type ) ) {
+		$post_type = get_post_type( $post_id );
+	}
+
+	$allowed_post_types = get_post_types();
+
+	if ( ! in_array( $post_type, $allowed_post_types ) ) {
+		return '';
+	}
+
+	if ( ! class_exists( 'MultiPostThumbnails' ) ) {
+		return internetorg_get_post_thumbnail( $post_id );
+	}
+
+	$id = 'mobile-featured-image';
+
+	$has_post_thumbnail = MultiPostThumbnails::has_post_thumbnail( $post_type, $id, $post_id );
+
+	if ( empty( $has_post_thumbnail ) ) {
+		return internetorg_get_post_thumbnail( $post_id );
+	}
+
+	$img_url = MultiPostThumbnails::get_post_thumbnail_url( $post_type, $id, $post_id, 'full' );
+
+	if ( empty( $img_url ) ) {
+		return internetorg_get_post_thumbnail( $post_id );
+	}
+
+	return $img_url;
 }
