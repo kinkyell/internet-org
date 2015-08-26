@@ -137,6 +137,25 @@
             SETTINGS.SEARCH_PATH = 'search/data.html';
 
             /**
+             * routes for static and WP endpoints
+             *
+             * @property ROUTES
+             * @type obj
+             * @final
+             */
+            SETTINGS.ROUTES = {
+                'mission': 'mission/index.html',
+                'approach': 'approach/index.html',
+                'approach/tertiary': 'approach/tertiary/index.html',
+                'impact': 'impact/index.html',
+                'press': 'press/index.html',
+                'contact': 'contact/index.html',
+                'pressResults': 'pages/press-content-addl.html',
+                'searchResults': window.SETTINGS.SEARCH_PATH,
+                '404': 'not-found/index.html'
+            };
+
+            /**
              * Set any RequireJs configuration that is dependent on dynamic
              * configuration variables. Note that this config data is merged into
              * any other require.config() statements defined elsewhere.

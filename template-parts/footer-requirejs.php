@@ -78,6 +78,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 	SETTINGS.STATIC_PATH = '<?php echo esc_url( get_stylesheet_directory_uri() . '/_static/web/' ); ?>';
 
 	/**
+	 * Root-relative path for search results
+	 *
+	 * @property SEARCH_PATH
+	 * @type String
+	 * @final
+	 */
+	SETTINGS.SEARCH_PATH = 'search/data.html';
+
+	/**
+	 * routes for static and WP endpoints
+	 *
+	 * @property ROUTES
+	 * @type obj
+	 * @final
+	 */
+	SETTINGS.ROUTES = {
+		'mission': 'mission',
+		'approach': 'approach',
+		'approach/tertiary': 'approach/tertiary/index.html',
+		'impact': 'impact',
+		'press': 'press',
+		'contact': 'contact',
+		'pressResults': 'press',
+		'searchResults': window.SETTINGS.SEARCH_PATH,
+		'404': 'not-found/index.html'
+	};
+
+
+	/**
 	 * Set any RequireJs configuration that is dependent on dynamic
 	 * configuration variables. Note that this config data is merged into
 	 * any other require.config() statements defined elsewhere.

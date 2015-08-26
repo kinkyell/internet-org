@@ -936,7 +936,140 @@ if ( class_exists( 'MultiPostThumbnails' ) ) {
 		array(
 			'label'     => 'Mobile Featured Image',
 			'id'        => 'mobile-featured-image',
-			'post_type' => array( 'page' ),
+			'post_type' => 'page',
 		)
 	);
+}
+
+/**
+ * build html for the home page feature panel from content section custom field
+ *
+ * NOTE: Returned content is not escaped
+ *
+ * @param array $cf_content_section content section data to parse
+ * @return string rendered html for custom field
+ */
+function get_internetorg_home_section_feature( $cf_content_section ) {
+	$out = '<div class="transformBlock-post-item">';
+
+	$out .= '<div class="transformBlock-post-item-bd">';
+	$out .= '<p class="bdcpy bdcpy_narrative">' . ltrim( rtrim( $cf_content_section['content'], '</p>' ), '<p>' ) . '</p>';
+	$out .= '</div>';
+
+	if ( ! empty( $cf_content_section['slug'] ) ) {
+		$out .= '<a href="/' . $cf_content_section['slug'] . '"
+				class="link link_theme' . ucwords( $cf_content_section['slug'] ) . ' js-stateLink"
+				data-type="panel"
+				data-theme="' . $cf_content_section['slug'] . '"
+				data-title="' . $cf_content_section['name'] . '"
+				data-desc="' . strip_tags( $cf_content_section['content'] ) . '">' . $cf_content_section['name'] . '</a>';
+	}
+
+	$out .= '</div>';
+
+	return $out;
+}
+
+/**
+ * build html for the home page story panel from content section custom field
+ *
+ * NOTE: Returned content is not escaped
+ *
+ * @param array $cf_content_section content section data to parse
+ * @return string rendered html for custom field
+ */
+function get_internetorg_home_section_story( $cf_content_section ) {
+	$out = '<div class="narrative-section">
+		<div class="narrative-section-slides">';
+
+	if ( ! empty( $cf_content_section['call-to-action'] ) ) {
+		foreach ( $cf_content_section['call-to-action'] as $cta ) {
+			if ( ! empty( $cta['image'] ) ) {
+				$out .= '<div class="narrative-section-slides-item" style="background-image: url(' . wp_get_attachment_url( $cta['image'], 'full' ) . ')"></div>';
+			}
+		}
+	}
+
+	$out .= '</div>
+		<div class="narrative-section-bd">
+			<div class="container container_wide">
+				<div class="statementBlock">
+					<div class="statementBlock-pre">
+						<h2 class="hdg hdg_heavy mix-hdg_theme' . ucwords( $cf_content_section['slug'] ) . '">' . $cf_content_section['name'] . '</h2>
+					</div>
+					<div class="statementBlock-hd">
+						<h2 class="hdg hdg_1">' . $cf_content_section['title'] . '</h2>
+					</div>
+					<div class="statementBlock-bd">
+						<p class="bdcpy bdcpy_narrative">' . ltrim( rtrim( $cf_content_section['content'], '</p>' ), '<p>' ) . '</p>
+					</div>
+				</div>
+			</div>
+			<div class="narrative-section-bd-link u-isHiddenMedium">
+				<a href="#" class="circleBtn circleBtn_theme' . ucwords( $cf_content_section['slug'] ) . ' js-stateLink">' . $cf_content_section['name'] . '</a>
+			</div>
+		</div>
+	</div>';
+
+	return $out;
+}
+
+/**
+ * Get the "mobile featured image" as registered with the Multiple Post Thumbnails plugin.
+ *
+ * If the MultiPostThumbnails class is not present, or the "mobile featured image" has not been populated in the post,
+ * then use the internetorg_get_post_thumbnail function to retrieve the standard featured image.
+ *
+ * @see MultiPostThumbnails::has_post_thumbnail
+ * @see MultiPostThumbnails::get_post_thumbnail_url
+ * @see internetorg_get_post_thumbnail
+ *
+ * @param string $post_type The post type that we are retrieving the "mobile featured image" for.
+ * @param int    $post_id The ID of the post that we are retrieving the "mobile featured image" for.
+ *
+ * @return string
+ */
+function internetorg_get_mobile_featured_image( $post_type, $post_id ) {
+
+	$post_id = absint( $post_id );
+
+	if ( empty( $post_id ) ) {
+		$post_id = get_the_ID();
+	}
+
+	if ( empty( $post_id ) ) {
+		return '';
+	}
+
+	$post_type = sanitize_title( $post_type );
+
+	if ( empty( $post_type ) ) {
+		$post_type = get_post_type( $post_id );
+	}
+
+	$allowed_post_types = get_post_types();
+
+	if ( ! in_array( $post_type, $allowed_post_types ) ) {
+		return '';
+	}
+
+	if ( ! class_exists( 'MultiPostThumbnails' ) ) {
+		return internetorg_get_post_thumbnail( $post_id );
+	}
+
+	$id = 'mobile-featured-image';
+
+	$has_post_thumbnail = MultiPostThumbnails::has_post_thumbnail( $post_type, $id, $post_id );
+
+	if ( empty( $has_post_thumbnail ) ) {
+		return internetorg_get_post_thumbnail( $post_id );
+	}
+
+	$img_url = MultiPostThumbnails::get_post_thumbnail_url( $post_type, $id, $post_id, 'full' );
+
+	if ( empty( $img_url ) ) {
+		return internetorg_get_post_thumbnail( $post_id );
+	}
+
+	return $img_url;
 }

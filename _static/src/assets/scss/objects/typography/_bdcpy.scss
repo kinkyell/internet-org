@@ -41,6 +41,9 @@
 .mix-bdcpy_mobileOnly {
     color: $CLR_WHITE;
 }
+.mix-bdcpy_blackThenWhite {
+    color: $CLR_BLACK;
+}
 
 @include breakpoint(MD) {
     .bdcpy {
@@ -62,5 +65,8 @@
 
     .mix-bdcpy_splash {
         color: $CLR_GRAY;
+    }
+    .mix-bdcpy_blackThenWhite {
+        color: $CLR_WHITE;
     }
 }
