@@ -49,7 +49,7 @@ define(function(require, exports, module) { // jshint ignore:line
         getPanelContent: function(route) {
             route = route.replace(PREFIX_STRIPPER, '').replace(SUFFIX_STRIPPER, '');
             var path = PATHS[route] || route;
-            return Promise.resolve($.get(BASE_URL + path)).then(_parseHtmlResponse);
+            return Promise.resolve($.get('/' + path)).then(_parseHtmlResponse);
         },
 
         /**
@@ -59,7 +59,7 @@ define(function(require, exports, module) { // jshint ignore:line
          */
         getSearchResults: function(searchText, page) {
             page = page || 1;
-            return Promise.resolve($.get(BASE_URL + PATHS.searchResults, {
+            return Promise.resolve($.get('/' + PATHS.searchResults, {
                 s: searchText,
                 page: page
             }, 'json')).then(function(res) {
@@ -103,7 +103,7 @@ define(function(require, exports, module) { // jshint ignore:line
             if (contentType === 'search') {
                 return apiService.getSearchResults(args, page);
             }
-            return Promise.resolve($.get(BASE_URL + resultsPath, {
+            return Promise.resolve($.get('/' + resultsPath, {
                 page: page
             })).then(function(res) {
                 if (typeof res === 'string') {
