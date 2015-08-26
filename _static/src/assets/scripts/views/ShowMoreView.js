@@ -107,14 +107,18 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {String} html HTML string content
      * @private
      */
-    proto._onContentLoad = function(html) {
+    proto._onContentLoad = function(res) {
         var newContent = document.createElement('div');
-        newContent.innerHTML = html;
+        newContent.className = 'resultsList-list';
+        newContent.innerHTML = res.results;
         this.targetEl.appendChild(newContent);
 
         return tweenAsync.from(newContent, animationSpeeds.ADDL_CONTENT, {
             height: 0,
             opacity: 0
+        }).then(function() {
+            // return if it's the last page
+            return !res.hasNextPage;
         });
     };
 
@@ -144,7 +148,10 @@ define(function(require, exports, module) { // jshint ignore:line
      * @method enableButton
      * @private
      */
-    proto.enableButton = function() {
+    proto.enableButton = function(isLastPage) {
+        if (isLastPage) {
+            return;
+        }
         this.$element.removeClass('isLoading').removeAttr('disabled');
     };
 
