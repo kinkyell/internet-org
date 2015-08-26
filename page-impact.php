@@ -13,7 +13,7 @@ get_header();
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="<?php the_permalink(); ?>" data-type="panel" data-theme="Impact" data-title="<?php the_title(); ?>" data-image="<?php echo esc_url( internetorg_get_post_thumbnail( get_the_ID() ) ); ?>">
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="<?php the_permalink(); ?>" data-type="panel" data-theme="<?php echo esc_attr( internetorg_get_page_theme() ); ?>" data-title="<?php the_title(); ?>" data-image="<?php echo esc_url( internetorg_get_post_thumbnail( get_the_ID() ) ); ?>">
 
 
 		<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
@@ -29,7 +29,7 @@ get_header();
 
 					<?php get_template_part( 'template-parts/content', 'page-intro-block' ); ?>
 
-					<div class="theme-impact">
+					<div class="<?php echo esc_attr( 'theme-' . strtolower( internetorg_get_page_theme() ) ); ?>">
 						<div class="container">
 							<div class="contentCol">
 
