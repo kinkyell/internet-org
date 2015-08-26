@@ -108,7 +108,7 @@ get_header();
 
 					</div>
 
-
+					<?php /*
 					<div class="introBlock js-scrollImage" data-image="http://placehold.it/400x800?text=APPROACH">
 						<div class="introBlock-inner">
 							<div class="topicBlock">
@@ -124,7 +124,8 @@ get_header();
 							<a href="/approach" class="arrowCta js-stateSwap" data-title="Our Approach" data-image="http://placehold.it/400x800?text=APPROACH" data-theme="Approach"></a>
 						</div>
 					</div> <!-- end introBlock -->
-
+					*/ ?>
+					<?php get_template_part( 'template-parts/content', 'page-next-page' ); ?>
 
 				</div>
 
