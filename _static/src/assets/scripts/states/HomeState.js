@@ -4,6 +4,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var $ = require('jquery');
     var BasicState = require('./BasicState');
     var NarrativeView = require('views/NarrativeView');
+    var viewWindow = require('services/viewWindow');
 
     /**
      * Manages home state
@@ -37,9 +38,18 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     HomeState.prototype.onActivate = function(event) {
         if (event.method !== 'init' && this._narrativeView) {
-            //TODO: replace image with narrative stuff
+            var lastFeature = this._narrativeView._narrativeManager._currentFeature;
+            if (lastFeature) {
+                if (lastFeature.type === 'image') {
+                    viewWindow.replaceFeatureImage(lastFeature.img, 'left');
+                } else {
+                    viewWindow.replaceFeatureContent(lastFeature.content, 'left', lastFeature.img);
+                }
+            }
             this._narrativeView.enable();
         } else {
+            var defaultImage = '/assets/media/uploads/home_DT.jpg';
+            viewWindow.replaceFeatureImage(defaultImage, 'left');
             this._narrativeView = new NarrativeView($('.js-narrativeView'));
         }
 

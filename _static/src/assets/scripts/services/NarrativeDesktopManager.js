@@ -284,6 +284,10 @@ define(function(require, exports, module) { // jshint ignore:line
             }
 
             this.viewWindow.replaceFeatureImage(featureImage, imgDirection);
+            this._currentFeature = {
+                type: 'image',
+                img: featureImage
+            };
         }.bind(this));
     };
 
@@ -298,10 +302,16 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._subSectionTransition = function(section, direction) {
         return new Promise(function(resolve) {
             var imgDirection = (direction === 'down') ? 'bottom' : 'top';
+            var content = templates['home-feature']();
             this.viewWindow.replaceFeatureContent(
-                templates['home-feature'],
+                content,
                 imgDirection,
                 section.featureImage).then(this._onSubSectionComplete.bind(this, resolve));
+            this._currentFeature = {
+                type: 'content',
+                img: section.featureImage,
+                content: content
+            };
         }.bind(this));
     };
 
