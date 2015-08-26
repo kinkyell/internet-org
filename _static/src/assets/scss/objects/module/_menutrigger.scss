@@ -25,10 +25,10 @@
 }
 
 .menuTrigger-label {
+    @include remify(font-size, 14px);
     display: none;
     font-family: Arial, sans-serif;
     font-weight: bold;
-    @include remify(font-size, 14px);
     color: $CLR_BLACK;
     text-transform: uppercase;
     vertical-align: text-top;
@@ -61,7 +61,7 @@
 }
 
 .menuTrigger-icon.isOpen {
-    border: none;
+    border: 0;
     padding-bottom: 6px;
 }
 
