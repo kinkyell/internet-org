@@ -1142,3 +1142,57 @@ function internetorg_get_mobile_featured_image( $post_type, $post_id ) {
 
 	return $img_url;
 }
+
+/**
+ * Get the "page theme" attribute of the page-template by post ID.
+ *
+ * @param int $post_id The post ID of the page to retrieve theme for.
+ *
+ * @return string The page theme, defined by page-template else Approach.
+ */
+function internetorg_get_page_theme( $post_id = 0 ){
+
+	/** @var array $allowed_themes An array of possible page themes */
+	$allowed_themes = array(
+		'Approach',
+		'Mission',
+		'Impact',
+	);
+
+	/** @var string $default_theme A default page theme if one cannot be determined */
+	$default_theme = $allowed_themes[0];
+
+	$post_id = absint( $post_id );
+
+	if ( empty( $post_id ) ) {
+		$post_id = get_the_ID();
+	}
+
+	if ( empty( $post_id ) ) {
+		return $default_theme;
+	}
+
+	/** @var string|bool $page_template_slug The name of the page template, else empty string or false */
+	$page_template_slug = get_page_template_slug( $post_id );
+
+	if ( empty( $page_template_slug ) ) {
+		return $default_theme;
+	}
+
+	$page_template_slug = str_ireplace( '.php', '', $page_template_slug );
+
+	/** @var array $slug_array Array of strings from exploded $page_template_slug */
+	$slug_array = explode( '-', $page_template_slug );
+
+	/** @var string $slug The last element of the $slug_array */
+	$slug = end( $slug_array );
+
+	/** @var string $theme Uppercased version of slug */
+	$theme = ucwords( $slug );
+
+	if ( ! in_array( $theme, $allowed_themes ) ) {
+		return $default_theme;
+	}
+
+	return $theme;
+}
