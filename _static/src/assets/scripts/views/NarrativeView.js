@@ -4,7 +4,6 @@ define(function(require, exports, module) { // jshint ignore:line
     var $ = require('jquery');
     var AppConfig = require('appConfig');
     var AbstractView = require('./AbstractView');
-    var eventHub = require('services/eventHub');
     var breakpointManager = require('services/breakpointManager');
     var NarrativeMobileManager = require('services/NarrativeMobileManager');
     var NarrativeDesktopManager = require('services/NarrativeDesktopManager');
@@ -18,19 +17,16 @@ define(function(require, exports, module) { // jshint ignore:line
     var SECTIONS_CONF = [
         {
             label: 'section00',
-            label_r: 'section00_r',
             featureImage: '',
             subSections: []
         },
         {
             label: 'section01',
-            label_r: 'section01_r',
             featureImage: '',
             subSections: []
         },
         {
             label: 'section02',
-            label_r: 'section02_r',
             featureImage: '',
             subSections: [
                 {
@@ -46,7 +42,6 @@ define(function(require, exports, module) { // jshint ignore:line
         },
         {
             label: 'section03',
-            label_r: 'section03_r',
             featureImage: AppConfig.narrative.desktop.featureImages.IMPACT,
             subSections: [
                 {
@@ -62,7 +57,6 @@ define(function(require, exports, module) { // jshint ignore:line
         },
         {
             label: 'section04',
-            label_r: 'section04_r',
             featureImage: '',
             subSections: []
         }
@@ -131,6 +125,22 @@ define(function(require, exports, module) { // jshint ignore:line
     var proto = AbstractView.createChild(NarrativeView);
 
     /**
+     * Initializes the UI Component View.
+     * Runs a single setupHandlers call, followed by createChildren and layout.
+     * Exits early if it is already initialized.
+     *
+     * @method init
+     * @returns {AbstractView}
+     * @private
+     */
+    proto.init = function() {
+        // determine bp specific narrative handler
+        this._narrativeManager = (breakpointManager.isMobile) ?
+            new NarrativeMobileManager(SECTIONS_CONF) :
+            new NarrativeDesktopManager(SECTIONS_CONF);
+    };
+
+    /**
      * Binds the scope of any handler functions.
      * Should only be run on initialization of the view.
      *
@@ -164,7 +174,12 @@ define(function(require, exports, module) { // jshint ignore:line
      * @returns {NarrativeView}
      * @public
      */
-    proto.removeChildren = function() {};
+    proto.removeChildren = function() {
+        this.$body = null;
+        this.$narrativeSections = null;
+        this.$progress = null;
+        this.$narrativeDT = null;
+    };
 
     /**
      * Performs measurements and applys any positioning style logic.
@@ -190,9 +205,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onEnable = function() {
-        // determine bp specific narrative handler
-        this._narrativeManager = (breakpointManager.isMobile) ? new NarrativeMobileManager(SECTIONS_CONF) : new NarrativeDesktopManager(SECTIONS_CONF);
-
         $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
         this.$body.on('touchstart', this._onTouchStartHandler);
     };
@@ -283,7 +295,6 @@ define(function(require, exports, module) { // jshint ignore:line
                     this._subPosition -= 1;
                 }.bind(this));
             } else {
-                var sectionsLength = SECTIONS_CONF.length;
                 var destinationSectionPos = this._position - 1;
                 var destinationSection = SECTIONS_CONF[destinationSectionPos];
                 var destinationSubsLength = destinationSection.subSections.length;
@@ -367,21 +378,40 @@ define(function(require, exports, module) { // jshint ignore:line
 
     proto._getFeatureImages = function() {
         var featureImages = this.$narrativeDT.data('feature-images');
-        featureImages = featureImages.replace(/\r?\n|\r/g, '');
-        featureImages = featureImages.replace(/ /g,'');
-        featureImages = featureImages.split(',');
+        var subFeatureImages = this.$narrativeDT.data('sub-feature-images');
+        featureImages = this._stringToArray(featureImages);
+        subFeatureImages = this._stringToArray(subFeatureImages);
+        var subSections = [];
 
-        SECTIONS_CONF[0].featureImage = featureImages[0];
-        SECTIONS_CONF[1].featureImage = featureImages[1];
-        SECTIONS_CONF[2].featureImage = featureImages[2];
-        SECTIONS_CONF[2].subSections[0].featureImage = featureImages[2];
-        SECTIONS_CONF[2].subSections[1].featureImage = featureImages[3];
-        SECTIONS_CONF[2].subSections[2].featureImage = featureImages[4];
-        SECTIONS_CONF[3].featureImage = featureImages[5];
-        SECTIONS_CONF[3].subSections[0].featureImage = featureImages[5];
-        SECTIONS_CONF[3].subSections[1].featureImage = featureImages[6];
-        SECTIONS_CONF[3].subSections[2].featureImage = featureImages[7];
-        SECTIONS_CONF[4].featureImage = featureImages[8];
+        var i = 0;
+        var l = SECTIONS_CONF.length;
+        for (; i < l; i++) {
+            var section = SECTIONS_CONF[i];
+            section.featureImage = featureImages[i];
+
+            if (section.subSections.length > 0) {
+                var j = 0;
+                var jl = section.subSections.length;
+                for (; j < jl; j++) {
+                    var subSection = section.subSections[j];
+                    subSections.push(subSection);
+                    // subSection.featureImage = subFeatureImages[j];
+                }
+            }
+        }
+
+        var k = 0;
+        var kl = subSections.length;
+        for (; k < kl; k++) {
+            var sub = subSections[k];
+            sub.featureImage = subFeatureImages[k];
+        }
+    };
+
+    proto._stringToArray = function(str) {
+        str = str.replace(/\r?\n|\r/g, '');
+        str = str.replace(/ /g,'');
+        return str.split(',');
     };
 
     module.exports = NarrativeView;

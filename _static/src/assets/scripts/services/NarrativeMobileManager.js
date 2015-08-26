@@ -8,7 +8,6 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var $ = require('jquery');
     var AppConfig = require('appConfig');
-    var Tween = require('gsap-tween');
     var Timeline = require('gsap-timeline');
     require('gsap-scrollToPlugin');
     require('gsap-cssPlugin');
@@ -145,25 +144,66 @@ define(function(require, exports, module) { // jshint ignore:line
 
         //  transition 01
         ///////////////////////
-        tl.to(this._$narrative, 0.35, { scrollTo: { y: this._sections[1].sectionOffset }, ease: EASE[easeDirection] });
-        tl.from(this._$sections.eq(1).find('.narrative-section-bd'), 0.5, {y: '50%', ease: EASE[easeDirection]}, '-=0.35');
-        tl.from(this._$sections.eq(1).find('.statementBlock'), 0.65, {y: '100%', ease: EASE[easeDirection]}, '-=0.5');
+        tl.to(
+            this._$narrative,
+            0.35,
+            { scrollTo: { y: this._sections[1].sectionOffset }, ease: EASE[easeDirection] });
+
+        tl.from(
+            this._$sections.eq(1).find('.narrative-section-bd'),
+            0.5,
+            {y: '50%', ease: EASE[easeDirection]},
+            '-=0.35');
+
+        tl.from(
+            this._$sections.eq(1).find('.statementBlock'),
+            0.65,
+            {y: '100%', ease: EASE[easeDirection]},
+            '-=0.5');
 
         //  transition 02
         ///////////////////////
-        tl.to(this._$narrative, 0.35, { scrollTo: { y: this._sections[2].sectionOffset }, ease: EASE[easeDirection] });
-        tl.from(this._$sections.eq(2).find('.narrative-section-bd'), 0.5, {y: '50%', ease: EASE[easeDirection]}, '-=0.35');
-        tl.from(this._$sections.eq(2).find('.statementBlock'), 0.65, {y: '100%', ease: EASE[easeDirection]}, '-=0.5');
+        tl.to(
+            this._$narrative,
+            0.35,
+            { scrollTo: { y: this._sections[2].sectionOffset }, ease: EASE[easeDirection] });
+
+        tl.from(
+            this._$sections.eq(2).find('.narrative-section-bd'),
+            0.5,
+            {y: '50%', ease: EASE[easeDirection]},
+            '-=0.35');
+
+        tl.from(
+            this._$sections.eq(2).find('.statementBlock'),
+            0.65,
+            {y: '100%', ease: EASE[easeDirection]},
+            '-=0.5');
 
         //  transition 05
         ///////////////////////
-        tl.to(this._$narrative, 0.35, { scrollTo: { y: this._sections[3].sectionOffset }, ease: EASE[easeDirection] });
-        tl.from(this._$sections.eq(3).find('.narrative-section-bd'), 0.5, {y: '50%', ease: EASE[easeDirection]}, '-=0.35');
-        tl.from(this._$sections.eq(3).find('.statementBlock'), 0.65, {y: '100%', ease: EASE[easeDirection]}, '-=0.5');
+        tl.to(this._$narrative,
+            0.35,
+            { scrollTo: { y: this._sections[3].sectionOffset }, ease: EASE[easeDirection] });
+
+        tl.from(
+            this._$sections.eq(3).find('.narrative-section-bd'),
+            0.5,
+            {y: '50%', ease: EASE[easeDirection]},
+            '-=0.35');
+
+        tl.from(
+            this._$sections.eq(3).find('.statementBlock'),
+            0.65,
+            {y: '100%', ease: EASE[easeDirection]},
+            '-=0.5');
 
         //  transition 06
         ///////////////////////
-        tl.to(this._$narrative, 0.35, { scrollTo: { y: this._sections[4].sectionOffset }, ease: EASE[easeDirection] });
+        tl.to(
+            this._$narrative,
+            0.35,
+            { scrollTo: { y: this._sections[4].sectionOffset }, ease: EASE[easeDirection] });
 
         tl.addLabel(this._sections[0].label, SECTION_DURATION * 0);
         tl.addLabel(this._sections[1].label, SECTION_DURATION * 1);
@@ -221,7 +261,9 @@ define(function(require, exports, module) { // jshint ignore:line
 
     proto._sectionTransition = function(section, direction) {
         var sectionPosition = this._sectionsConf.indexOf(section);
-        var prevSection = (direction === 'down') ? this._sectionsConf[sectionPosition - 1] : this._sectionsConf[sectionPosition + 1];
+        var prevSection = (direction === 'down') ?
+            this._sectionsConf[sectionPosition - 1] :
+            this._sectionsConf[sectionPosition + 1];
 
         return new Promise(function(resolve) {
             var fromLabel = prevSection.label;

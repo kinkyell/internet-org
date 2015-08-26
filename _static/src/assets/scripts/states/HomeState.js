@@ -27,9 +27,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @static
      * @type {Object}
      */
-    HomeState.prototype.COMPONENTS = {
-        '.js-narrativeView': NarrativeView
-    };
+    HomeState.prototype.COMPONENTS = {};
 
     /**
      * Activate state
@@ -40,9 +38,22 @@ define(function(require, exports, module) { // jshint ignore:line
     HomeState.prototype.onActivate = function(event) {
         if (event.method !== 'init') {
             //TODO: replace image with narrative stuff
+            this._narrativeView.enable();
+        } else {
+            this._narrativeView = new NarrativeView($('.js-narrativeView'));
         }
 
         this.refreshComponents($(document.body));
+    };
+
+    /**
+     * Deactivate State
+     *
+     * @method deactivate
+     * @fires State:activate
+     */
+    HomeState.prototype.deactivate = function() {
+        this._narrativeView.disable();
     };
 
     /**

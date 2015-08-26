@@ -18,15 +18,15 @@ define(function(require, exports, module) { // jshint ignore:line
      * TODO: update to point to WP endpoints
      */
     var PATHS = {
-        'mission': AppConfig.apiRouts['mission'],
-        'approach': AppConfig.apiRouts['approach'],
-        'approach/tertiary': AppConfig.apiRouts['approach/tertiary'],
-        'impact': AppConfig.apiRouts['impact'],
-        'press': AppConfig.apiRouts['press'],
-        'contact': AppConfig.apiRouts['contact'],
-        'pressResults': AppConfig.apiRouts['pressResults'],
-        'searchResults': AppConfig.apiRouts['searchResults'],
-        '404': AppConfig.apiRouts['404']
+        'mission': AppConfig.apiRouts.mission,
+        'approach': AppConfig.apiRouts.approach,
+        'approach/tertiary': AppConfig.apiRouts.approachTertiary,
+        'impact': AppConfig.apiRouts.impact,
+        'press': AppConfig.apiRouts.press,
+        'contact': AppConfig.apiRouts.contact,
+        'pressResults': AppConfig.apiRouts.pressResults,
+        'searchResults': AppConfig.apiRouts.searchResults,
+        '404': AppConfig.apiRouts.fourOfour
     };
 
     var PREFIX_STRIPPER = /^\//;
