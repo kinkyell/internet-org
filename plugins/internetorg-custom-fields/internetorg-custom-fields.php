@@ -54,6 +54,7 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 			'label_macro'    => __( 'Section: %s', 'internetorg' ),
 			'add_more_label' => __( 'Add another Content Area', 'internetorg' ),
 			'collapsed'      => false,
+			'collapsible'    => true,
 			'sortable'       => true,
 			'limit'          => 0,
 			'children'       => array(
@@ -67,6 +68,7 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 					'label_macro'    => __( 'Call to action: %s', 'internetorg' ),
 					'add_more_label' => __( 'Add another CTA', 'internetorg' ),
 					'limit'          => 5,
+					'collapsible'    => true,
 					'children'       => array(
 						'title' => new Fieldmanager_TextField( __( 'CTA Title', 'internetorg' ) ),
 						'text'  => new Fieldmanager_TextArea( __( 'Content', 'internetorg' ) ),
