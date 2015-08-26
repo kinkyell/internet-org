@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Internet.org\n"
-"POT-Creation-Date: 2015-08-21 15:12-0500\n"
+"POT-Creation-Date: 2015-08-26 11:58-0500\n"
 "PO-Revision-Date: 2015-08-13 17:37-0500\n"
 "Last-Translator: Richard Aber <raber@nerdery.com>\n"
 "Language-Team: Richard Aber <raber@nerdery.com>\n"
@@ -19,34 +19,27 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: 404.php:15
+#: 404.php:33
 msgid "Oops! That page can&rsquo;t be found."
 msgstr ""
 
-#: 404.php:19
-msgid ""
-"It looks like nothing was found at this location. Maybe try one of the links "
-"below or a search?"
+#: 404.php:45 404.php:65
+msgid "Not found"
 msgstr ""
 
-#: 404.php:27
-msgid "Most Used Categories"
+#: 404.php:46 404.php:69
+msgid "It looks like nothing was found at this location. Maybe try a search?"
 msgstr ""
 
-#: 404.php:44
-#, php-format
-msgid "Try looking in the monthly archives. %1$s"
-msgstr ""
-
-#: archive-io_press.php:53
+#: archive-io_press.php:25
 msgid "Press"
 msgstr ""
 
-#: archive-io_press.php:100
+#: archive-io_press.php:71 archive.php:69 template-parts/content-search.php:22
 msgid "Read More"
 msgstr ""
 
-#: archive-io_press.php:118
+#: archive-io_press.php:89 archive.php:85 search.php:67
 msgid "Show More"
 msgstr ""
 
@@ -74,19 +67,19 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: functions.php:72
+#: functions.php:73
 msgid "Primary Menu"
 msgstr ""
 
-#: functions.php:73
+#: functions.php:74
 msgid "Primary Menu Sub Nav"
 msgstr ""
 
-#: functions.php:144
+#: functions.php:145
 msgid "Sidebar"
 msgstr ""
 
-#: functions.php:420
+#: functions.php:421
 msgctxt "Fieldmanager plugin meta field"
 msgid "Subtitle"
 msgstr ""
@@ -112,200 +105,173 @@ msgstr ""
 msgid "Post navigation"
 msgstr ""
 
-#: inc/template-tags.php:80
-#, php-format
-msgctxt "post date"
-msgid "Posted on %s"
-msgstr ""
-
-#: inc/template-tags.php:85
-#, php-format
-msgctxt "post author"
-msgid "by %s"
-msgstr ""
-
-#: inc/template-tags.php:127
+#: inc/template-tags.php:101
 #, php-format
 msgctxt "post date"
 msgid "%s"
 msgstr ""
 
-#: inc/template-tags.php:139 inc/template-tags.php:145
+#: inc/template-tags.php:113 inc/template-tags.php:119
 msgid ", "
 msgstr ""
 
-#: inc/template-tags.php:141
+#: inc/template-tags.php:115
 #, php-format
 msgid "Posted in %1$s"
 msgstr ""
 
-#: inc/template-tags.php:147
+#: inc/template-tags.php:121
 #, php-format
 msgid "Tagged %1$s"
 msgstr ""
 
-#: inc/template-tags.php:153
+#: inc/template-tags.php:127
 msgid "Leave a comment"
 msgstr ""
 
-#: inc/template-tags.php:153
+#: inc/template-tags.php:127
 msgid "1 Comment"
 msgstr ""
 
-#: inc/template-tags.php:153
+#: inc/template-tags.php:127
 msgid "% Comments"
 msgstr ""
 
-#: inc/template-tags.php:157 inc/template-tags.php:180
+#: inc/template-tags.php:131 inc/template-tags.php:154
 #: template-parts/content-page-entry-end.php:11
 #: template-parts/content-page.php:26
 msgid "Edit"
 msgstr ""
 
-#: inc/template-tags.php:176
+#: inc/template-tags.php:150
 msgid "Read More &rarr;"
 msgstr ""
 
-#: inc/template-tags.php:197
+#: inc/template-tags.php:171
 #, php-format
 msgid "Category: %s"
 msgstr ""
 
-#: inc/template-tags.php:199
+#: inc/template-tags.php:173
 #, php-format
 msgid "Tag: %s"
 msgstr ""
 
-#: inc/template-tags.php:201
+#: inc/template-tags.php:175
 #, php-format
 msgid "Author: %s"
 msgstr ""
 
-#: inc/template-tags.php:203
+#: inc/template-tags.php:177
 #, php-format
 msgid "Year: %s"
 msgstr ""
 
-#: inc/template-tags.php:203
+#: inc/template-tags.php:177
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr ""
 
-#: inc/template-tags.php:205
+#: inc/template-tags.php:179
 #, php-format
 msgid "Month: %s"
 msgstr ""
 
-#: inc/template-tags.php:205
+#: inc/template-tags.php:179
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr ""
 
-#: inc/template-tags.php:207
+#: inc/template-tags.php:181
 #, php-format
 msgid "Day: %s"
 msgstr ""
 
-#: inc/template-tags.php:207
+#: inc/template-tags.php:181
 msgctxt "daily archives date format"
 msgid "F j, Y"
 msgstr ""
 
-#: inc/template-tags.php:210
+#: inc/template-tags.php:184
 msgctxt "post format archive title"
 msgid "Asides"
 msgstr ""
 
-#: inc/template-tags.php:212
+#: inc/template-tags.php:186
 msgctxt "post format archive title"
 msgid "Galleries"
 msgstr ""
 
-#: inc/template-tags.php:214
+#: inc/template-tags.php:188
 msgctxt "post format archive title"
 msgid "Images"
 msgstr ""
 
-#: inc/template-tags.php:216
+#: inc/template-tags.php:190
 msgctxt "post format archive title"
 msgid "Videos"
 msgstr ""
 
-#: inc/template-tags.php:218
+#: inc/template-tags.php:192
 msgctxt "post format archive title"
 msgid "Quotes"
 msgstr ""
 
-#: inc/template-tags.php:220
+#: inc/template-tags.php:194
 msgctxt "post format archive title"
 msgid "Links"
 msgstr ""
 
-#: inc/template-tags.php:222
+#: inc/template-tags.php:196
 msgctxt "post format archive title"
 msgid "Statuses"
 msgstr ""
 
-#: inc/template-tags.php:224
+#: inc/template-tags.php:198
 msgctxt "post format archive title"
 msgid "Audio"
 msgstr ""
 
-#: inc/template-tags.php:226
+#: inc/template-tags.php:200
 msgctxt "post format archive title"
 msgid "Chats"
 msgstr ""
 
-#: inc/template-tags.php:229
+#: inc/template-tags.php:203
 #, php-format
 msgid "Archives: %s"
 msgstr ""
 
-#: inc/template-tags.php:233
+#: inc/template-tags.php:207
 #, php-format
 msgid "%1$s: %2$s"
 msgstr ""
 
-#: inc/template-tags.php:235
+#: inc/template-tags.php:209
 msgid "Archives"
 msgstr ""
 
-#: page-contact.php:43 single-io_press.php:86
-#: template-parts/content-page-temp-panel.php:32
-msgid "Facebook"
-msgstr ""
-
-#: page-contact.php:44 single-io_press.php:87
-#: template-parts/content-page-temp-panel.php:33
-msgid "Twitter"
-msgstr ""
-
-#: page-contact.php:45 single-io_press.php:88
-#: template-parts/content-page-temp-panel.php:34
-msgid "LinkedIn"
-msgstr ""
-
-#: page-contact.php:107
+#: page-contact.php:75
 msgid "Learn More"
 msgstr ""
 
-#: page-contact.php:127
+#: page-contact.php:95
 msgid "Get in Touch"
 msgstr ""
 
-#: page-contact.php:142
+#: page-contact.php:110
 msgid "Follow the Project"
 msgstr ""
 
-#: page-contact.php:143
+#: page-contact.php:111
 msgid "Stay updated about Internet.org and lorem ipsum dolor sit amet."
 msgstr ""
 
-#: page-contact.php:146
+#: page-contact.php:114
 msgid "https://fb.me/Internetdotorg"
 msgstr ""
 
-#: page-contact.php:146
+#: page-contact.php:114
 msgid "Like us on Facebook"
 msgstr ""
 
@@ -365,27 +331,35 @@ msgid "Add another CTA"
 msgstr ""
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:71
+msgid "CTA Title"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:72
+msgid "Content"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:73
 #: plugins/internetorg-custom-posttypes/Page.php:60
 msgid "Link"
 msgstr ""
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:72
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:74
 #: plugins/internetorg-custom-posttypes/Page.php:61
 msgid "Image"
 msgstr ""
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:78
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:80
 #: plugins/internetorg-custom-posttypes/Page.php:68
 msgid "Content Areas"
 msgstr ""
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:126
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:128
 #: plugins/internetorg-custom-posttypes/Campaign.php:77
 #: plugins/internetorg-custom-posttypes/Campaign.php:86
 msgid "Subtitle"
 msgstr ""
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:135
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:137
 msgid "Additional page configuration"
 msgstr ""
 
@@ -455,18 +429,26 @@ msgstr ""
 msgid "Story"
 msgstr ""
 
-#: search.php:15
-#, php-format
-msgid "%s"
-msgstr ""
-
-#: search.php:21
+#: search.php:43
 #, php-format
 msgid "%d Results Found"
 msgstr ""
 
-#: searchpage.php:32
-msgid "Search Internet.org"
+#: searchform.php:16 template-parts/header-search.php:15
+msgctxt "label"
+msgid "Search"
+msgstr ""
+
+#: single-io_press.php:47 single.php:42
+msgid "Facebook"
+msgstr ""
+
+#: single-io_press.php:48 single.php:43
+msgid "Twitter"
+msgstr ""
+
+#: single-io_press.php:49 single.php:44
+msgid "LinkedIn"
 msgstr ""
 
 #: template-parts/content-free-services.php:22
@@ -484,7 +466,7 @@ msgid ""
 msgstr ""
 
 #: template-parts/content-none.php:24
-#: template-parts/content-search-none.php:18
+#: template-parts/content-search-none.php:14
 msgid ""
 "Sorry, but nothing matched your search terms. Please try again with some "
 "different keywords."
@@ -502,10 +484,6 @@ msgstr ""
 msgid "Pages:"
 msgstr ""
 
-#: template-parts/content-search-none.php:12
-msgid "No Results Found"
-msgstr ""
-
 #: template-parts/content.php:25
 #, php-format
 msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
@@ -513,11 +491,6 @@ msgstr ""
 
 #: template-parts/header-buttons.php:19
 msgid "Menu"
-msgstr ""
-
-#: template-parts/header-search.php:15
-msgctxt "label"
-msgid "Search"
 msgstr ""
 
 #: template-parts/header-search.php:17
