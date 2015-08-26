@@ -127,7 +127,8 @@ define(function(require, exports, module) { // jshint ignore:line
                             title: result.post_title,
                             desc: result.post_excerpt,
                             date: result.post_date,
-                            url: result.permalink
+                            url: result.permalink,
+                            image: result.post_thumbnail
                         });
                     }).join('')
                 };
