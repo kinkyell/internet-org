@@ -39,7 +39,6 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handleStateChange = this._onStateChange.bind(this);
         this._handleBgClick = this._onBgClick.bind(this);
         this._handleEscPress = this._onEscPress.bind(this);
-        return this;
     };
 
     /**
@@ -105,14 +104,20 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.open = function() {
         var wrapperOpts = {};
-        var panelOpts = {};
+        var panelOpts = {
+            onComplete: function() {
+                this.isAnimating = false;
+            },
+            callbackScope: this
+        };
         var directionInvert = document.documentElement.dir === 'ltr' ? 1 : -1;
 
-        if (this.isOpen) {
+        if (this.isOpen || this.isAnimating) {
             return;
         }
 
         this.isOpen = true;
+        this.isAnimating = true;
         eventHub.publish('MainMenu:change', this.isOpen);
         eventHub.publish('MainMenu:open');
         this.$element.removeClass('u-isVisuallyHidden');
@@ -152,16 +157,18 @@ define(function(require, exports, module) { // jshint ignore:line
                     panelTween.progress(0);
                     panelTween.kill();
                 }
+                this.isAnimating = false;
             },
             callbackScope: this
         };
         var panelOpts = {};
         var directionInvert = document.documentElement.dir === 'ltr' ? 1 : -1;
 
-        if (!this.isOpen) {
+        if (!this.isOpen || this.isAnimating) {
             return;
         }
         this.isOpen = false;
+        this.isAnimating = true;
         eventHub.publish('MainMenu:change', this.isOpen);
         eventHub.publish('MainMenu:close');
 

@@ -1,4 +1,11 @@
 <div class="resultsList-list-item">
+    {{#if image}}
+    <div class="media media_inline">
+        <div class="media-figure">
+            <div class="imgWrap isLoaded"><img src="{{image}}" alt="story image"></div>
+        </div>
+        <div class="media-bd">
+    {{/if}}
     <div class="feature feature_tight">
         <div class="feature-hd">
             <h2 class="hdg hdg_3">{{title}}</h2>
@@ -13,4 +20,8 @@
             <a href="{{url}}" class="link link_sm js-stateLink" data-type="titled" data-title="{{title}}" data-desc="{{desc}}">Read More</a>
         </div>
     </div>
+    {{#if image}}
+        </div>
+    </div>
+    {{/if}}
 </div>

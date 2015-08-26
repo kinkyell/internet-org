@@ -83,7 +83,8 @@
     top: 4px;
     transition: all 0.3s linear;
 }
-
+// removed for the moment
+/*
 .menuTrigger:hover .menuTrigger-icon.isOpen:before {
     transform: rotate(45deg); //405
     transform-origin: middle middle;
@@ -93,10 +94,13 @@
     transform: rotate(-45deg); //495
     transform-origin: middle middle;
 }
+*/
 
 @include breakpoint(MD) {
     .menuTrigger-label {
         display: inline-block;
+        margin-right: 8px;
+        letter-spacing: 0.085em;
     }
 }
 

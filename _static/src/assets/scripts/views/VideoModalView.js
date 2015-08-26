@@ -22,6 +22,20 @@ define(function(require, exports, module) { // jshint ignore:line
     var proto = AbstractView.createChild(VideoModalView);
 
     /**
+     * Binds the scope of any handler functions.
+     * Should only be run on initialization of the view.
+     *
+     * @method setupHandlers
+     * @returns {VideoModalView}
+     * @private
+     */
+    proto.setupHandlers = function() {
+        this._handleOpen = this._onOpen.bind(this);
+        this._handleClose = this._onClose.bind(this);
+        this._handleOverlayClick = this._onOverlayClick.bind(this);
+    };
+
+    /**
      * Performs any event binding to handlers.
      *
      * @method onEnable
@@ -34,7 +48,9 @@ define(function(require, exports, module) { // jshint ignore:line
 
         // NOTE: Needs to be queried because it uses the 'selector' property of the jquery object
         $('[rel="vimeo'+ this.videoNum + '"]').swipebox({
-            vimeoColor: 'ff6b00'
+            vimeoColor: 'ff6b00',
+            afterOpen: this._handleOpen,
+            afterClose: this._handleClose
         });
     };
 
@@ -51,6 +67,36 @@ define(function(require, exports, module) { // jshint ignore:line
     //////////////////////////////////////////////////////////////////////////////////
     // EVENT HANDLERS
     //////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Tears down any event binding to handlers.
+     *
+     * @method _onOpen
+     * @private
+     */
+    proto._onOpen = function() {
+        $('#swipebox-overlay').on('click', this._handleOverlayClick);
+    };
+
+    /**
+     * Tears down any event binding to handlers.
+     *
+     * @method _onClose
+     * @private
+     */
+    proto._onClose = function() {
+        $('#swipebox-overlay').off('click', this._handleOverlayClick);
+    };
+
+    /**
+     * Tears down any event binding to handlers.
+     *
+     * @method _onOverlayClick
+     * @private
+     */
+    proto._onOverlayClick = function() {
+        $.swipebox.close();
+    };
 
 
     //////////////////////////////////////////////////////////////////////////////////

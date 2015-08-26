@@ -302,6 +302,7 @@ define(function(require, exports, module) { // jshint ignore:line
             var subsLength = section.subSections.length;
             var subPosition = this._subPosition;
 
+
             if (subsLength > 0 && subPosition > 0) {
                 var destinationSubPos = subPosition - 1;
                 var destinationSub = section.subSections[destinationSubPos];
@@ -309,7 +310,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 this._narrativeManager.gotoSubSection(destinationSub, direction).then(function() {
                     this._subPosition -= 1;
                 }.bind(this));
-            } else {
+            } else if (this._position > 0) {
                 var destinationSectionPos = this._position - 1;
                 var destinationSection = SECTIONS_CONF[destinationSectionPos];
                 var destinationSubsLength = destinationSection.subSections.length;
