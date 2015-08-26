@@ -79,32 +79,24 @@ get_header();
 										</div>
 									<?php endwhile; ?>
 								</div>
-								<div class="resultsList-ft">
-									<div class="resultsList-list resultsList-list_spread">
-										<div class="resultsList-list-item">
-											<button type="button" class="btn js-ShowMoreView" data-src="press" data-target="addl-results"><?php esc_html_e( 'Show More', 'internetorg' ); ?></button>
-										</div>
-										<?php
-										// display a select list of archive years
-										$args = array(
-											'type'            => 'yearly',
-											'limit'           => '',
-											'format'          => 'option',
-											'before'          => '',
-											'after'           => '',
-											'show_post_count' => 0,
-											'echo'            => false,
-											'order'           => 'DESC',
-										);
-										?>
-										<div class="resultsList-list-item">
-											<select class="js-select select_inline">
-												<option></option>
-												<?php echo wp_get_archives( $args ); ?>
-											</select>
+
+								<?php
+								$next_posts_link = get_next_posts_link();
+								if ( ! empty( $next_posts_link ) ) {
+									?>
+									<div class="resultsList-ft">
+										<div class="resultsList-list resultsList-list_spread">
+											<div class="resultsList-list-item">
+												<button type="button" class="btn js-ShowMoreView" data-src="press" data-target="addl-results">
+													<?php esc_html_e( 'Show More', 'internetorg' ); ?>
+												</button>
+											</div>
 										</div>
 									</div>
-								</div>
+									<?php
+								}
+								?>
+
 							</div>
 						</div>
 						<?php endif; ?>
