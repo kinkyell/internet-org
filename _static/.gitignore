@@ -6,6 +6,8 @@
 docs/
 build-reports/
 build-env.js
+stage-build-env.js
+sandbox-build-env.js
 node_modules/
 npm-debug.log
 tools/node/
