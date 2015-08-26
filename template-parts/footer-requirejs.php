@@ -94,13 +94,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 * @final
 	 */
 	SETTINGS.ROUTES = {
-		'mission': 'mission',
-		'approach': 'approach',
-		'approach/tertiary': 'approach/tertiary/index.html',
-		'impact': 'impact',
-		'press': 'press',
-		'contact': 'contact',
-		'pressResults': 'press',
+		'pressResults': '/press',
 		'searchResults': window.SETTINGS.SEARCH_PATH,
 		'404': 'not-found/index.html'
 	};
