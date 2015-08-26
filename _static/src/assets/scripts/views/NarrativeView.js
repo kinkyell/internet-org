@@ -215,7 +215,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * Exits early if it is already disabled.
      *
      * @method disable
-     * @returns {NarrativeView}
      * @public
      */
     proto.onDisable = function() {
@@ -231,6 +230,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * Mouse Wheel event handler
      *
      * @method _onWheelEvent
+     * @param {obj} event the event object
      * @private
      */
     proto._onWheelEvent = function(event) {
@@ -245,6 +245,13 @@ define(function(require, exports, module) { // jshint ignore:line
         event.preventDefault();
     };
 
+    /**
+     * Touchstart event handler
+     *
+     * @method _onTouchStart
+     * @param {obj} e the event object
+     * @private
+     */
     proto._onTouchStart = function(e) {
         this._touchTracker.y = e.originalEvent.touches[0].pageY;
 
@@ -254,6 +261,13 @@ define(function(require, exports, module) { // jshint ignore:line
             .on('touchcancel' + this._eventTouchNamespace, this._onTouchEnd.bind(this));
     };
 
+    /**
+     * Touchmove event handler
+     *
+     * @method _onTouchMove
+     * @param {obj} e the event object
+     * @private
+     */
     proto._onTouchMove = function(e) {
         e.preventDefault();
 
@@ -267,6 +281,13 @@ define(function(require, exports, module) { // jshint ignore:line
         }
     };
 
+    /**
+     * Touchend event handler
+     *
+     * @method _onTouchEnd
+     * @param {obj} e the event object
+     * @private
+     */
     proto._onTouchEnd = function(e) {
         this.$body.off(this._eventTouchNamespace);
     };
@@ -344,6 +365,12 @@ define(function(require, exports, module) { // jshint ignore:line
         }
     };
 
+    /**
+     * Updates the slide styling classes
+     *
+     * @method _updateSlideHooks
+     * @private
+     */
     proto._updateSlideHooks = function() {
         var i = 0;
         var l = this.$narrativeSections.length;
@@ -354,6 +381,12 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$narrativeSections.eq(this._position).addClass('isActive');
     };
 
+    /**
+     * Updates the slide indicators
+     *
+     * @method _updateIndicators
+     * @private
+     */
     proto._updateIndicators = function() {
         var $progressIndicators = this.$progress.find('> *');
         var i = 0;
@@ -366,6 +399,13 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$progress.find('> *').eq(this._position).addClass('isActive');
     };
 
+    /**
+     * Updates the display of the slide
+     * indicators
+     *
+     * @method _displayIndicators
+     * @private
+     */
     proto._displayIndicators = function() {
         var slidesLength = this._slidesLength;
 
@@ -376,6 +416,13 @@ define(function(require, exports, module) { // jshint ignore:line
         }
     };
 
+    /**
+     * Poles DOM for image attributes and
+     * assigns the paths to the config items
+     *
+     * @method _getFeatureImages
+     * @private
+     */
     proto._getFeatureImages = function() {
         var featureImages = this.$narrativeDT.data('feature-images');
         var subFeatureImages = this.$narrativeDT.data('sub-feature-images');
@@ -395,7 +442,6 @@ define(function(require, exports, module) { // jshint ignore:line
                 for (; j < jl; j++) {
                     var subSection = section.subSections[j];
                     subSections.push(subSection);
-                    // subSection.featureImage = subFeatureImages[j];
                 }
             }
         }
@@ -408,6 +454,13 @@ define(function(require, exports, module) { // jshint ignore:line
         }
     };
 
+    /**
+     * Returns the input string as an array of values
+     *
+     * @method _stringToArray
+     * @param {string} str string to be prossesed
+     * @private
+     */
     proto._stringToArray = function(str) {
         str = str.replace(/\r?\n|\r/g, '');
         str = str.replace(/ /g,'');

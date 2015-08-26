@@ -92,9 +92,17 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     // /////////////////////////////////////////////////////////////////////////////////////////
-    // Slide Logic
+    // Helper Methods
     // /////////////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * Begins the sequece for section change
+     *
+     * @method gotoSection
+     * @param {object} section section config params
+     * @param {string} direction the direction of the transition
+     * @public
+     */
     proto._createTimeline = function(direction) {
         var tl = new Timeline({ paused: true });
         var easeDirection = (direction === 'forward') ? EASE_DIRECTION_FORWARD : EASE_DIRECTION_REVERSE;
@@ -216,16 +224,40 @@ define(function(require, exports, module) { // jshint ignore:line
         return tl;
     };
 
+    /**
+     * Begins the sequece for section change
+     *
+     * @method gotoSection
+     * @param {object} section section config params
+     * @param {string} direction the direction of the transition
+     * @public
+     */
     proto.gotoSection = function(section, direction) {
         this._isAnimating = true;
         return this._sectionTransition(section, direction);
     };
 
+    /**
+     * Begins the sequece for subsection change
+     *
+     * @method gotoSubSection
+     * @param {object} section section config params
+     * @param {string} direction the direction of the transition
+     * @public
+     */
     proto.gotoSubSection = function(section, direction) {
         this._isAnimating = true;
         return this._subSectionTransition(section, direction);
     };
 
+    /**
+     * Kicks off a section transition
+     *
+     * @method _sectionTransition
+     * @param {object} section section config params
+     * @param {string} direction the direction of the transition
+     * @private
+     */
     proto._sectionTransition = function(section, direction) {
         var sectionPosition = this._sectionsConf.indexOf(section);
         var prevSection = (direction === 'down') ?
@@ -240,7 +272,7 @@ define(function(require, exports, module) { // jshint ignore:line
             var featureImage;
 
             timeline.tweenFromTo(fromLabel, toLabel, {
-                onComplete: this._onSectionComplete.bind(this, section, direction, resolve)
+                onComplete: this._onSectionComplete.bind(this, section, resolve)
             });
 
             if (section.subSections.length > 0 && direction === 'up') {
@@ -253,6 +285,14 @@ define(function(require, exports, module) { // jshint ignore:line
         }.bind(this));
     };
 
+    /**
+     * Kicks off a subsection transition
+     *
+     * @method _subSectionTransition
+     * @param {object} section section config params
+     * @param {string} direction the direction of the transition
+     * @private
+     */
     proto._subSectionTransition = function(section, direction) {
         return new Promise(function(resolve) {
             var imgDirection = (direction === 'down') ? 'bottom' : 'top';
@@ -267,7 +307,15 @@ define(function(require, exports, module) { // jshint ignore:line
         window.setTimeout(this._onTransitionComplete.bind(this, resolve), this._scrollBuffer);
     };
 
-    proto._onSectionComplete = function(section, direction, resolve) {
+    /**
+     * Callback for section transition completion
+     *
+     * @method _onSectionComplete
+     * @param {object} section section config params
+     * @param {function} resolve promise resolution method
+     * @private
+     */
+    proto._onSectionComplete = function(section, resolve) {
         var sectionPosition = this._sectionsConf.indexOf(section) - 1;
         var i = 0;
         var l = this._$transformBlockPost.length;
@@ -281,6 +329,13 @@ define(function(require, exports, module) { // jshint ignore:line
         window.setTimeout(this._onTransitionComplete.bind(this, resolve), 0);
     };
 
+    /**
+     * Callback for transition completion
+     *
+     * @method _onTransitionComplete
+     * @param {function} resolve promise resolution method
+     * @private
+     */
     proto._onTransitionComplete = function(resolve) {
         // $(window).on('wheel', this._onWheelEventHandler);
         this._isAnimating = false;

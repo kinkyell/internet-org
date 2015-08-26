@@ -36,7 +36,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @fires State:activate
      */
     HomeState.prototype.onActivate = function(event) {
-        if (event.method !== 'init') {
+        if (event.method !== 'init' && this._narrativeView) {
             //TODO: replace image with narrative stuff
             this._narrativeView.enable();
         } else {
