@@ -25,17 +25,7 @@ define(function(require, exports, module) { // jshint ignore:line
         classes: new ClassDict(classes),
         apiBase: window.SETTINGS.STATIC_PATH,
         searchPath: '/', // include prefix '/'
-        apiRouts: {
-            mission: window.SETTINGS.ROUTES.mission,
-            approach: window.SETTINGS.ROUTES.approach,
-            approachTertiary: window.SETTINGS.ROUTES.approachTertiary,
-            impact: window.SETTINGS.ROUTES.impact,
-            press: window.SETTINGS.ROUTES.press,
-            contact: window.SETTINGS.ROUTES.contact,
-            pressResults: window.SETTINGS.ROUTES.pressResults,
-            searchResults: window.SETTINGS.ROUTES.searchResults,
-            fourOfour: window.SETTINGS.ROUTES.fourOfour
-        },
+        apiRoutes: window.SETTINGS.ROUTES,
         animationSpeeds: {
             CONTENT_IN: 0.4, // content fade in
             MENU_IN: 0.25, // menu in speed

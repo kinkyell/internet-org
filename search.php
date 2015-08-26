@@ -35,23 +35,43 @@ get_header(); ?>
 				<div class="viewWindow-panel-content-inner">
 					<div class="contentCol">
 						<div class="container">
+
 							<div class="resultsList">
 								<div class="resultsList-hd">
 
-									<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray"><?php echo esc_html( $wp_query->found_posts ); ?> Results Found</div>
+									<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray">
+										<?php printf( esc_html__( '%d Results Found', 'internetorg' ), $wp_query->found_posts ); ?>
+									</div>
 
 								</div>
 
-								<?php if ( have_posts() ) : ?>
-									<div class="resultsList-list">
+								<div class="resultsList-list">
+									<?php if ( have_posts() ) : ?>
 										<?php while ( have_posts() ) : ?>
 											<?php the_post(); ?>
 											<?php get_template_part( 'template-parts/content', 'search' ); ?>
 										<?php endwhile; ?>
-									</div>
-								<?php endif; ?>
+									<?php else : ?>
+										<?php get_template_part( 'template-parts/content', 'search-none' ); ?>
+									<?php endif; ?>
+								</div>
 
 							</div>
+
+
+							<?php if ( have_posts() ) : ?>
+								<div class="resultsList-ft">
+									<div class="resultsList-list resultsList-list_spread">
+										<div class="resultsList-list-item">
+											<button type="button" class="btn js-ShowMoreView" data-src="search" data-target="search-results" data-args="<?php the_search_query(); ?>">
+												<?php esc_html_e( 'Show More', 'internetorg' ); ?>
+											</button>
+										</div>
+									</div>
+								</div>
+							<?php endif; ?>
+
+
 						</div>
 					</div>
 				</div>

@@ -8,7 +8,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var $ = require('jquery');
     var templates = require('templates'); // jshint ignore:line
-    var AppConfig = require('appConfig');
+    var appConfig = require('appConfig');
 
     // api base url for ajax requests
     var BASE_URL = require('appConfig').apiBase;
@@ -17,19 +17,10 @@ define(function(require, exports, module) { // jshint ignore:line
      * Matches path keys to ajax source.
      * TODO: update to point to WP endpoints
      */
-    var PATHS = {
-        'mission': AppConfig.apiRouts.mission,
-        'approach': AppConfig.apiRouts.approach,
-        'approach/tertiary': AppConfig.apiRouts.approachTertiary,
-        'impact': AppConfig.apiRouts.impact,
-        'press': AppConfig.apiRouts.press,
-        'contact': AppConfig.apiRouts.contact,
-        'pressResults': AppConfig.apiRouts.pressResults,
-        'searchResults': AppConfig.apiRouts.searchResults,
-        '404': AppConfig.apiRouts.fourOfour
-    };
+    var PATHS = appConfig.apiRoutes;
 
     var PREFIX_STRIPPER = /^\//;
+    var SUFFIX_STRIPPER = /\/$/;
 
     function _parseHtmlResponse(htmlStr) {
         var parsed = $.parseHTML(htmlStr);
@@ -50,15 +41,14 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var apiService = {
 
-
         /**
          * Returns html for a given basic route
          * @param {String} route Route name
          * @returns {Promise} represents value of html returned
          */
         getPanelContent: function(route) {
-            route = route.replace(PREFIX_STRIPPER, '');
-            var path = PATHS[route] || PATHS['404'];
+            route = route.replace(PREFIX_STRIPPER, '').replace(SUFFIX_STRIPPER, '');
+            var path = PATHS[route] || route;
             return Promise.resolve($.get(BASE_URL + path)).then(_parseHtmlResponse);
         },
 

@@ -88,25 +88,6 @@ get_header();
 								<div class="resultsList-list-item">
 									<button type="button" class="btn js-ShowMoreView" data-src="press" data-target="addl-results"><?php esc_html_e( 'Show More', 'internetorg' ); ?></button>
 								</div>
-									<?php
-									// display a select list of archive years
-									$args = array(
-										'type'            => 'yearly',
-										'limit'           => '',
-										'format'          => 'option',
-										'before'          => '',
-										'after'           => '',
-										'show_post_count' => 0,
-										'echo'            => false,
-										'order'           => 'DESC',
-									);
-									?>
-								<div class="resultsList-list-item">
-									<select class="js-select select_inline">
-										<option></option>
-										<?php echo wp_get_archives( $args ); ?>
-									</select>
-								</div>
 							</div>
 						</div>
 				</div>
