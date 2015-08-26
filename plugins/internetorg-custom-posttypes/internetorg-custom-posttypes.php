@@ -15,7 +15,6 @@ require __DIR__ . '/PostTypeBase.php';
 require __DIR__ . '/FreeService.php';
 require __DIR__ . '/Campaign.php';
 require __DIR__ . '/Story.php';
-require __DIR__ . '/Press.php';
 require __DIR__ . '/ContentWidget.php';
 
 add_action( 'init', 'init_internetorg_custom_posttypes_callback' );
