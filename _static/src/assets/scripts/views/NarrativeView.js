@@ -34,9 +34,6 @@ define(function(require, exports, module) { // jshint ignore:line
                 },
                 {
                     featureImage: ''
-                },
-                {
-                    featureImage: ''
                 }
             ]
         },
@@ -44,9 +41,6 @@ define(function(require, exports, module) { // jshint ignore:line
             label: 'section03',
             featureImage: AppConfig.narrative.desktop.featureImages.IMPACT,
             subSections: [
-                {
-                    featureImage: ''
-                },
                 {
                     featureImage: ''
                 },
@@ -343,8 +337,10 @@ define(function(require, exports, module) { // jshint ignore:line
             var subsLength = section.subSections.length;
             var subPosition = this._subPosition;
 
-            if (subsLength > 0 && subPosition < subsLength - 1) {
-                var destinationSubPos = subPosition + 1;
+            console.log(subPosition);
+
+            if (subsLength > 0 && subPosition < subsLength) {
+                var destinationSubPos = subPosition;
                 var destinationSub = section.subSections[destinationSubPos];
 
                 this._narrativeManager.gotoSubSection(destinationSub, direction).then(function() {
