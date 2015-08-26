@@ -41,13 +41,11 @@ class Internetorg_CustomPostTypes
 		$internetorg_cpt_freeService = new Internetorg_FreeService_PostType();
 		$internetorg_cpt_campaign    = new Internetorg_Campaign_PostType();
 		$internetorg_cpt_story       = new Internetorg_Story_PostType();
-		$internetorg_cpt_press       = new Internetorg_Press_PostType();
 		$internetorg_cpt_widget      = new Internetorg_ContentWidget_PostType();
 
 		$internetorg_cpt_freeService->register();
 		$internetorg_cpt_campaign->register();
 		$internetorg_cpt_story->register();
-		$internetorg_cpt_press->register();
 		$internetorg_cpt_widget->register();
 	}
 
