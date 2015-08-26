@@ -66,7 +66,7 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 					'label'          => __( 'Call to action', 'internetorg' ),
 					'label_macro'    => __( 'Call to action: %s', 'internetorg' ),
 					'add_more_label' => __( 'Add another CTA', 'internetorg' ),
-					'limit'          => 2,
+					'limit'          => 5,
 					'children'       => array(
 						'link'  => new Fieldmanager_TextField( __( 'Link', 'internetorg' ) ),
 						'image' => new Fieldmanager_Media( __( 'Image', 'internetorg' ) ),

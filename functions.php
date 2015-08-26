@@ -940,3 +940,76 @@ if ( class_exists( 'MultiPostThumbnails' ) ) {
 		)
 	);
 }
+
+/**
+ * build html for the home page feature panel from content section custom field
+ *
+ * NOTE: Returned content is not escaped
+ *
+ * @param array $cf_content_section content section data to parse
+ * @return string rendered html for custom field
+ */
+function get_internetorg_home_section_feature( $cf_content_section ) {
+	$out = '<div class="transformBlock-post-item">';
+
+	$out .= '<div class="transformBlock-post-item-bd">';
+	$out .= '<p class="bdcpy bdcpy_narrative">' . ltrim( rtrim( $cf_content_section['content'], '</p>' ), '<p>' ) . '</p>';
+	$out .= '</div>';
+
+	if ( ! empty( $cf_content_section['slug'] ) ) {
+		$out .= '<a href="/' . $cf_content_section['slug'] . '"
+				class="link link_theme' . ucwords( $cf_content_section['slug'] ) . ' js-stateLink"
+				data-type="panel"
+				data-theme="' . $cf_content_section['slug'] . '"
+				data-title="' . $cf_content_section['name'] . '"
+				data-desc="' . strip_tags( $cf_content_section['content'] ) . '">' . $cf_content_section['name'] . '</a>';
+	}
+
+	$out .= '</div>';
+
+	return $out;
+}
+
+/**
+ * build html for the home page story panel from content section custom field
+ *
+ * NOTE: Returned content is not escaped
+ *
+ * @param array $cf_content_section content section data to parse
+ * @return string rendered html for custom field
+ */
+function get_internetorg_home_section_story( $cf_content_section ) {
+	$out = '<div class="narrative-section">
+		<div class="narrative-section-slides">';
+
+	if ( ! empty( $cf_content_section['call-to-action'] ) ) {
+		foreach ( $cf_content_section['call-to-action'] as $cta ) {
+			if ( ! empty( $cta['image'] ) ) {
+				$out .= '<div class="narrative-section-slides-item" style="background-image: url(' . wp_get_attachment_url( $cta['image'], 'full' ) . ')"></div>';
+			}
+		}
+	}
+
+	$out .= '</div>
+		<div class="narrative-section-bd">
+			<div class="container container_wide">
+				<div class="statementBlock">
+					<div class="statementBlock-pre">
+						<h2 class="hdg hdg_heavy mix-hdg_theme' . ucwords( $cf_content_section['slug'] ) . '">' . $cf_content_section['name'] . '</h2>
+					</div>
+					<div class="statementBlock-hd">
+						<h2 class="hdg hdg_1">' . $cf_content_section['title'] . '</h2>
+					</div>
+					<div class="statementBlock-bd">
+						<p class="bdcpy bdcpy_narrative">' . ltrim( rtrim( $cf_content_section['content'], '</p>' ), '<p>' ) . '</p>
+					</div>
+				</div>
+			</div>
+			<div class="narrative-section-bd-link u-isHiddenMedium">
+				<a href="#" class="circleBtn circleBtn_theme' . ucwords( $cf_content_section['slug'] ) . ' js-stateLink">' . $cf_content_section['name'] . '</a>
+			</div>
+		</div>
+	</div>';
+
+	return $out;
+}
