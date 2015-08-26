@@ -26,6 +26,11 @@
     background-color: $CLR_ACCENT_ACTIVE;
 }
 
+.btn[disabled] {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
 // THEME CLASSES by contectual or chain selection
 .theme-impact .btn,
 .btn_themeImpact {

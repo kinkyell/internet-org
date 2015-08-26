@@ -11,7 +11,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var appConfig = require('appConfig');
 
     // api base url for ajax requests
-    var BASE_URL = require('appConfig').apiBase;
+    var BASE_URL = appConfig.apiBase;
 
     /*
      * Matches path keys to ajax source.
@@ -101,13 +101,38 @@ define(function(require, exports, module) { // jshint ignore:line
             var resultsPath = PATHS[contentType + 'Results'];
 
             if (contentType === 'search') {
-                return apiService.getSearchResults(args, page).then(function(res) {
-                    return res.results;
-                });
+                return apiService.getSearchResults(args, page);
             }
             return Promise.resolve($.get(BASE_URL + resultsPath, {
                 page: page
-            })).then(_parseHtmlResponse);
+            })).then(function(res) {
+                if (typeof res === 'string') {
+                    res = JSON.parse(res);
+                }
+
+                if (!res.success) {
+                    return {
+                        hasNextPage: false,
+                        totalResults: 0,
+                        results: ''
+                    };
+                }
+
+                // jshint ignore:start
+                return {
+                    hasNextPage: page < res.data.max_num_pages,
+                    totalResults: typeof res.data.found_posts === 'number' ? res.data.found_posts : 'Unknown',
+                    results: res.data.posts.map(function(result) {
+                        return templates['archive-result']({
+                            title: result.post_title,
+                            desc: result.post_excerpt,
+                            date: result.post_date,
+                            url: result.permalink
+                        });
+                    }).join('')
+                };
+                // jshint ignore:end
+            });
         }
 
     };
