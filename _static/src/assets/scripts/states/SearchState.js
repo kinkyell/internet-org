@@ -62,7 +62,7 @@ define(function(require, exports, module) { // jshint ignore:line
         }
 
         var tasks = [
-            apiService.getSearchResults(event.searchText),
+            apiService.getSearchResults(tmplArgs.searchText/*, page */),
             viewWindow.replaceStoryContent(
                 templates['search-results-header'](tmplArgs),
                 transitions.content
