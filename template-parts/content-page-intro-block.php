@@ -11,7 +11,7 @@
 	<div class="introBlock-inner">
 
 		<div class="topicBlock">
-			<div class="topicBlock-hd topicBlock-hd_mega topicBlock-hd_themeImpact">
+			<div class="topicBlock-hd topicBlock-hd_mega <?php echo esc_attr( 'topicBlock-hd_theme' . internetorg_get_page_theme() ); ?>">
 				<h2 class="hdg hdg_2 mix-hdg_bold"><?php the_title(); ?></h2>
 			</div>
 			<div class="topicBlock-bd">

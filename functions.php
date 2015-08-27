@@ -1001,89 +1001,6 @@ if ( class_exists( 'MultiPostThumbnails' ) ) {
 }
 
 /**
- * build html for the home page feature panel from content section custom field
- *
- * NOTE: Returned content is not escaped
- *
- * @param array $cf_content_section content section data to parse
- * @return string rendered html for custom field
- */
-function get_internetorg_home_section_feature( $cf_content_section ) {
-	$out = '<div class="transformBlock-post-item">';
-
-	$out .= '<div class="transformBlock-post-item-bd">';
-	$out .= '<p class="bdcpy bdcpy_narrative">' . ltrim( rtrim( $cf_content_section['content'], '</p>' ), '<p>' ) . '</p>';
-	$out .= '</div>';
-
-	if ( ! empty( $cf_content_section['slug'] ) ) {
-		$out .= '<a href="/' . $cf_content_section['slug'] . '"
-				class="link link_theme' . ucwords( $cf_content_section['slug'] ) . ' js-stateLink"
-				data-type="panel"
-				data-theme="' . $cf_content_section['slug'] . '"
-				data-title="' . $cf_content_section['name'] . '"
-				data-desc="' . strip_tags( $cf_content_section['content'] ) . '">' . $cf_content_section['name'] . '</a>';
-	}
-
-	$out .= '</div>';
-
-	return $out;
-}
-
-/**
- * build html for the home page story panel from content section custom field
- *
- * NOTE: Returned content is not escaped
- *
- * @param array $cf_content_section content section data to parse
- * @return string rendered html for custom field
- */
-function get_internetorg_home_section_story( $cf_content_section ) {
-	$out = '<div class="narrative-section">
-		<div class="narrative-section-slides">';
-
-	$data_img = '';
-	if ( ! empty( $cf_content_section['call-to-action'] ) ) {
-		foreach ( $cf_content_section['call-to-action'] as $cta ) {
-			if ( ! empty( $cta['image'] ) ) {
-				if ( empty( $data_img ) ) {
-					$data_img = $cta['image'];
-				}
-				$out .= '<div class="narrative-section-slides-item" style="background-image: url(' . wp_get_attachment_url( $cta['image'], 'full' ) . ')"></div>';
-			}
-		}
-	}
-
-	$out .= '</div>
-		<div class="narrative-section-bd">
-			<div class="container container_wide">
-				<div class="statementBlock">
-					<div class="statementBlock-pre">
-						<h2 class="hdg hdg_heavy mix-hdg_theme' . ucwords( $cf_content_section['slug'] ) . '">' . $cf_content_section['name'] . '</h2>
-					</div>
-					<div class="statementBlock-hd">
-						<h2 class="hdg hdg_1">' . $cf_content_section['title'] . '</h2>
-					</div>
-					<div class="statementBlock-bd">
-						<p class="bdcpy bdcpy_narrative">' . ltrim( rtrim( $cf_content_section['content'], '</p>' ), '<p>' ) . '</p>
-					</div>
-				</div>
-			</div>
-			<div class="narrative-section-bd-link u-isHiddenMedium">
-				<a href="/' . $cf_content_section['slug'] . '"
-					class="circleBtn circleBtn_theme' . ucwords( $cf_content_section['slug'] ) . ' js-stateLink"
-					data-type="panel"
-					data-theme="' . $cf_content_section['slug'] . '"
-					data-title="' . $cf_content_section['name'] . '"
-					data-desc="' . strip_tags( $cf_content_section['content'] ) . '"
-					data-image="' . $data_img . '">' . $cf_content_section['name'] . '</a>
-			</div>
-		</div>
-	</div>';
-
-	return $out;
-}
-
-/**
  * Get the "mobile featured image" as registered with the Multiple Post Thumbnails plugin.
  *
  * If the MultiPostThumbnails class is not present, or the "mobile featured image" has not been populated in the post,
@@ -1141,4 +1058,58 @@ function internetorg_get_mobile_featured_image( $post_type, $post_id ) {
 	}
 
 	return $img_url;
+}
+
+/**
+ * Get the "page theme" attribute of the page-template by post ID.
+ *
+ * @param int $post_id The post ID of the page to retrieve theme for.
+ *
+ * @return string The page theme, defined by page-template else Approach.
+ */
+function internetorg_get_page_theme( $post_id = 0 ){
+
+	/** @var array $allowed_themes An array of possible page themes */
+	$allowed_themes = array(
+		'Approach',
+		'Mission',
+		'Impact',
+	);
+
+	/** @var string $default_theme A default page theme if one cannot be determined */
+	$default_theme = $allowed_themes[0];
+
+	$post_id = absint( $post_id );
+
+	if ( empty( $post_id ) ) {
+		$post_id = get_the_ID();
+	}
+
+	if ( empty( $post_id ) ) {
+		return $default_theme;
+	}
+
+	/** @var string|bool $page_template_slug The name of the page template, else empty string or false */
+	$page_template_slug = get_page_template_slug( $post_id );
+
+	if ( empty( $page_template_slug ) ) {
+		return $default_theme;
+	}
+
+	$page_template_slug = str_ireplace( '.php', '', $page_template_slug );
+
+	/** @var array $slug_array Array of strings from exploded $page_template_slug */
+	$slug_array = explode( '-', $page_template_slug );
+
+	/** @var string $slug The last element of the $slug_array */
+	$slug = end( $slug_array );
+
+	/** @var string $theme Uppercased version of slug */
+	$theme = ucwords( $slug );
+
+	if ( ! in_array( $theme, $allowed_themes ) ) {
+		return $default_theme;
+	}
+
+	return $theme;
 }

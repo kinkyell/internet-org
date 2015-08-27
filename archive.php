@@ -10,7 +10,7 @@
 get_header();
 
 ?>
-<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="<?php echo esc_url( get_post_type_archive_link( 'io_press' ) ); ?>" data-type="titled" data-title="Press">
+<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="<?php echo esc_url( home_url( add_query_arg() ) ); ?>" data-type="titled" data-title="Press">
 
 
 <?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>

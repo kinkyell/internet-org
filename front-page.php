@@ -29,9 +29,6 @@ $home_background_image_url = '';
 		foreach ( $custom_fields as $group ) :
 			if ( ! empty( $group ) ) :
 				foreach ( $group as $fieldset ) :
-					$custom_features .= wp_kses_post( get_internetorg_home_section_feature( $fieldset ) );
-					$custom_stories  .= wp_kses_post( get_internetorg_home_section_story( $fieldset ) );
-
 					// Compile a list of images to use for desktop (the scrolly ones).
 					$addToSub = false;
 					if ( ! empty( $fieldset['call-to-action'] ) ) {
@@ -95,7 +92,31 @@ $home_background_image_url = '';
 									</div>
 									<div class="transformBlock-post">
 
-										<?php echo wp_kses_post( $custom_features ); ?>
+										<?php
+
+										// echo wp_kses_post( $custom_features );
+
+										if ( ! empty( $custom_fields ) ) :
+											foreach ( $custom_fields as $group ) :
+												if ( ! empty( $group ) ) :
+													foreach ( $group as $cf_content_section ) : ?>
+														<div class="transformBlock-post-item">
+															<div class="transformBlock-post-item-bd">
+																<p class="bdcpy bdcpy_narrative"><?php echo wp_kses_post( ltrim( rtrim( $cf_content_section['content'], '</p>' ), '<p>' ) ); ?></p>
+															</div>
+															<a href="/<?php echo esc_attr( $cf_content_section['slug'] ); ?>"
+																class="link link_theme<?php echo esc_attr( ucwords( $cf_content_section['slug'] ) ); ?> js-stateLink"
+																data-type="panel"
+																data-theme="<?php echo esc_attr( $cf_content_section['slug'] ); ?>"
+																data-title="<?php echo esc_attr( $cf_content_section['name'] ); ?>"
+																data-desc="<?php echo esc_attr( strip_tags( nl2br( $cf_content_section['content'] ) ) ); ?>"><?php echo esc_html( $cf_content_section['slug'] ); ?></a>
+														</div>
+													<?php endforeach;
+												endif;
+											endforeach;
+										endif;
+
+										?>
 
 										<div class="transformBlock-post-item">
 											<div class="splashFooter">
@@ -132,6 +153,60 @@ $home_background_image_url = '';
 						</div>
 
 						<?php echo wp_kses_post( $custom_stories ); ?>
+
+						<?php if ( ! empty( $custom_fields ) ) :
+							foreach ( $custom_fields as $group ) :
+								if ( ! empty( $group ) ) :
+									foreach ( $group as $fieldset ) : ?>
+
+										<div class="narrative-section">
+											<div class="narrative-section-slides">
+
+											<?php $data_img = '';
+											if ( ! empty( $cf_content_section['call-to-action'] ) ) {
+												foreach ( $cf_content_section['call-to-action'] as $cta ) {
+													if ( ! empty( $cta['image'] ) ) {
+														if ( empty( $data_img ) ) {
+															$data_img = $cta['image'];
+														} ?>
+														<div class="narrative-section-slides-item" style="background-image: url('<?php echo esc_url( wp_get_attachment_url( $cta['image'], 'full' ) ); ?>')"></div>
+														<?php
+													}
+												}
+											}
+											?>
+											</div>
+											<div class="narrative-section-bd">
+												<div class="container container_wide">
+													<div class="statementBlock">
+														<div class="statementBlock-pre">
+															<h2 class="hdg hdg_heavy mix-hdg_theme<?php echo esc_attr( ucwords( $cf_content_section['slug'] ) ); ?>"><?php echo esc_html( $cf_content_section['name'] ); ?></h2>
+														</div>
+														<div class="statementBlock-hd">
+															<h2 class="hdg hdg_1"><?php echo esc_html( $cf_content_section['title'] ); ?></h2>
+														</div>
+														<div class="statementBlock-bd">
+															<p class="bdcpy bdcpy_narrative"><?php echo wp_kses_post( ltrim( rtrim( $cf_content_section['content'], '</p>' ), '<p>' ) ); ?></p>
+														</div>
+													</div>
+												</div>
+												<div class="narrative-section-bd-link u-isHiddenMedium">
+													<a href="/<?php echo esc_attr( $cf_content_section['slug'] ); ?>"
+														class="circleBtn circleBtn_theme<?php echo esc_attr( ucwords( $cf_content_section['slug'] ) ); ?> js-stateLink"
+														data-type="panel"
+														data-theme="<?php echo esc_attr( $cf_content_section['slug'] ); ?>"
+														data-title="<?php echo esc_attr( $cf_content_section['name'] ); ?>"
+														data-desc="<?php echo esc_attr( strip_tags( nl2br( $cf_content_section['content'] ) ) ); ?>"
+														data-image="<?php echo esc_url( $data_img ); ?>"><?php echo esc_html( $cf_content_section['name'] ); ?></a>
+												</div>
+											</div>
+										</div>
+
+							<?php
+									endforeach;
+								endif;
+							endforeach;
+						endif; ?>
 
 						<div class="narrative-section">
 							<div class="narrative-section-slides">

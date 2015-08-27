@@ -11,7 +11,7 @@ get_header();
 
 
 
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="<?php echo esc_url( home_url( '/404/' ) ); ?>" data-type="panel" data-theme="Approach" data-title="Not Found" data-image="<?php echo esc_url( get_stylesheet_directory_uri() . '/_static/web/assets/media/uploads/home.jpg' ); ?>">
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="<?php echo esc_url( home_url( add_query_arg() ) ); ?>" data-type="panel" data-theme="<?php echo esc_attr( internetorg_get_page_theme() ); ?>" data-title="<?php esc_attr_e( 'Not Found', 'internetorg' ); ?>" data-image="<?php echo esc_url( get_stylesheet_directory_uri() . '/_static/web/assets/media/uploads/home.jpg' ); ?>">
 
 
 		<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
@@ -29,7 +29,7 @@ get_header();
 						<div class="introBlock-inner">
 
 							<div class="topicBlock">
-								<div class="topicBlock-hd topicBlock-hd_mega topicBlock-hd_themeApproach">
+								<div class="topicBlock-hd topicBlock-hd_mega <?php echo esc_attr( 'topicBlock-hd_theme' . internetorg_get_page_theme() ); ?>">
 									<h2 class="hdg hdg_2 mix-hdg_bold"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'internetorg' ); ?></h2>
 								</div>
 
@@ -53,7 +53,7 @@ get_header();
 					</div>
 
 
-					<div class="theme-approach">
+					<div class="<?php echo esc_attr( 'theme-' . strtolower( internetorg_get_page_theme() ) ); ?>">
 						<div class="container">
 							<div class="contentCol">
 
