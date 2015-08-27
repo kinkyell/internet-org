@@ -311,8 +311,6 @@ define(function(require, exports, module) { // jshint ignore:line
             var destinationSection = SECTIONS_CONF[destinationSectionPos];
             var destinationSubsLength = destinationSection.subSections.length;
 
-            debugger;
-
             // if has subs
             // and subs pos MORE THAN 0
             if (subsLength > 0 && subPosition > 0) {

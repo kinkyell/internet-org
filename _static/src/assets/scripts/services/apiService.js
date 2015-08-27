@@ -62,9 +62,14 @@ define(function(require, exports, module) { // jshint ignore:line
 
             var path = appConfig.searchPath + encodeURIComponent(searchText) + '/page/' + page;
 
-            return Promise.resolve($.get(path, {}, 'json')).then(function(res) {
+            var handleResponse = function(res) {
                 if (typeof res === 'string') {
                     res = JSON.parse(res);
+                }
+
+                if (typeof res.success !== 'boolean') {
+                    // catch http error
+                    res = res.responseJSON;
                 }
 
                 if (!res.success) {
@@ -88,7 +93,9 @@ define(function(require, exports, module) { // jshint ignore:line
                     }).join('')
                 };
                 // jshint ignore:end
-            });
+            };
+
+            return Promise.resolve($.get(path, {}, 'json')).then(handleResponse, handleResponse);
         },
 
         /**

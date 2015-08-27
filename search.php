@@ -45,7 +45,7 @@ get_header(); ?>
 
 								</div>
 
-								<div class="resultsList-list">
+								<div class="resultsList-list js-searchState-results" id="search-results">
 									<?php if ( have_posts() ) : ?>
 										<?php while ( have_posts() ) : ?>
 											<?php the_post(); ?>
@@ -62,7 +62,7 @@ get_header(); ?>
 							$next_posts_link = get_next_posts_link();
 							if ( ! empty( $next_posts_link ) ) {
 								?>
-								<div class="resultsList-ft">
+								<div class="resultsList-ft js-searchState-ft">
 									<div class="resultsList-list resultsList-list_spread">
 										<div class="resultsList-list-item">
 											<button type="button" class="btn js-ShowMoreView" data-src="search" data-target="search-results" data-args="<?php the_search_query(); ?>">
