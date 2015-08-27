@@ -11,7 +11,6 @@ define(function(require, exports, module) { // jshint ignore:line
     var AppConfig = require('appConfig');
     var Timeline = require('gsap-timeline');
     var ViewWindow = require('services/viewWindow');
-    var templates = require('templates');
     require('gsap-cssPlugin');
 
     var SECTION_DURATION = AppConfig.narrative.desktop.SECTION_DURATION;
@@ -281,13 +280,11 @@ define(function(require, exports, module) { // jshint ignore:line
 
             if (section.subSections.length > 0 && direction === 'up') {
                 featureImage = section.subSections[subsLast].featureImage;
-                content = templates['home-feature'];
+                content = section.subSections[subsLast].content;
             } else {
                 featureImage = section.featureImage;
                 content = '';
             }
-
-            // this.viewWindow.replaceFeatureImage(featureImage, imgDirection);
 
             this.viewWindow.replaceFeatureContent(
                 content,
@@ -306,12 +303,12 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._subSectionTransition = function(section, direction, rootSection, content) {
         return new Promise(function(resolve) {
-            var content = (content) ? templates['home-feature'] : '';
+            var curContent = (content) ? section.content : '';
             var imgDirection = (direction === 'down') ? 'bottom' : 'top';
             var curSection = (rootSection != null) ? rootSection : section;
 
             this.viewWindow.replaceFeatureContent(
-                content,
+                curContent,
                 imgDirection,
                 curSection.featureImage).then(this._onSubSectionComplete.bind(this, resolve));
         }.bind(this));

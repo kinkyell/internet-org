@@ -11,6 +11,10 @@
     display: none;
 }
 
+.narrativeDT-sections {
+    display: none;
+}
+
 @include breakpoint(MD) {
     .narrativeDT {
         display: table;
