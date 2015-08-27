@@ -6,9 +6,10 @@
  * @author arichard <arichard@nerdery.com>
  */
 
-// Header
 get_header();
+
 $home_background_image_url = '';
+
 ?>
 
 <div class="viewWindow js-viewWindow" data-route="<?php echo esc_url( home_url( '/' ) ); ?>" data-type="home">
@@ -36,8 +37,7 @@ $home_background_image_url = '';
 							if ( ! empty( $cta['image'] ) ) {
 								$imgUrl = wp_get_attachment_url( $cta['image'], 'full' );
 
-								// add the first CTA image to the main list and
-								// each other image to the "sub" list
+								 // Add the first CTA image to the main list and each other image to the "sub" list.
 								if ( ! $addToSub ) {
 									$dt_image_list .= $imgUrl . ',';
 									$addToSub = true;
@@ -93,8 +93,6 @@ $home_background_image_url = '';
 									<div class="transformBlock-post">
 
 										<?php
-
-										// echo wp_kses_post( $custom_features );
 
 										if ( ! empty( $custom_fields ) ) :
 											foreach ( $custom_fields as $group ) :
@@ -257,15 +255,6 @@ $home_background_image_url = '';
 <?php endwhile; ?>
 </div>
 
-
-
-
-
-
 <?php
 
-// Sidebar -- no sidebar on the front page
-// get_sidebar();
-
-// Footer
 get_footer();
