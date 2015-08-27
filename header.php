@@ -60,7 +60,6 @@
 				?>
 
 				<?php
-				// Configure and build the secondary portion of the menu (Careers, etc.)
 				$submenu_config = array(
 					'container_class' => 'mainMenu-panel-secondary',
 					'container_id'    => '',
