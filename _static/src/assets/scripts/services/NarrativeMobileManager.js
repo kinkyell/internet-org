@@ -124,9 +124,16 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     // /////////////////////////////////////////////////////////////////////////////////////////
-    // Slide Logic
+    // Helpers
     // /////////////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * Records the scroll position offset for
+     * each section animation
+     *
+     * @method _getSectionOffsets
+     * @private
+     */
     proto._getSectionOffsets = function() {
         var sectionHeight = this._$sections.eq(0).height();
 
@@ -138,6 +145,13 @@ define(function(require, exports, module) { // jshint ignore:line
         }
     };
 
+    /**
+     * Defines the animation timeline
+     *
+     * @method _createTimeline
+     * @param {string} direction the direction of the transition
+     * @private
+     */
     proto._createTimeline = function(direction) {
         var tl = new Timeline({ paused: true });
         var easeDirection = (direction === 'forward') ? EASE_DIRECTION_FORWARD : EASE_DIRECTION_REVERSE;

@@ -11,7 +11,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var appConfig = require('appConfig');
 
     // api base url for ajax requests
-    var BASE_URL = appConfig.apiBase;
+    // var BASE_URL = appConfig.apiBase;
 
     /*
      * Matches path keys to ajax source.

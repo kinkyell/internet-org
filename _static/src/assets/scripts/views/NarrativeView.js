@@ -2,12 +2,11 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     var $ = require('jquery');
-    var AppConfig = require('appConfig');
     var AbstractView = require('./AbstractView');
     var breakpointManager = require('services/breakpointManager');
     var NarrativeMobileManager = require('services/NarrativeMobileManager');
     var NarrativeDesktopManager = require('services/NarrativeDesktopManager');
-    var log = require('util/log')
+    var log = require('util/log');
 
     var CONFIG = {
         NARRATIVE_DT: '.narrativeDT',

@@ -91,7 +91,7 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     // /////////////////////////////////////////////////////////////////////////////////////////
-    // Helper Methods
+    // Helpers
     // /////////////////////////////////////////////////////////////////////////////////////////
 
     /**
@@ -245,8 +245,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.gotoSubSection = function(section, direction, rootSection, content) {
-        var rootSection = (typeof rootSection === 'undefined') ? null : rootSection;
-        var content = (typeof content === 'undefined') ? null : content;
+        rootSection = (typeof rootSection === 'undefined') ? null : rootSection;
+        content = (typeof content === 'undefined') ? null : content;
         this._isAnimating = true;
         return this._subSectionTransition(section, direction, rootSection, content);
     };
