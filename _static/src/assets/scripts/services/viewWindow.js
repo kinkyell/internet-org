@@ -9,6 +9,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var tweenAsync = require('util/tweenAsync');
     var $ = require('jquery');
     var breakpointManager = require('services/breakpointManager');
+    var apiService = require('services/apiService');
     var AnimationQueue = require('util/AnimationQueue');
 
     var parseUrl = require('stark/string/parseUrl');
@@ -323,6 +324,27 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     ViewWindow.prototype.getCurrentFeature = function() {
         return Promise.resolve(this.$feature.children().children());
+    };
+
+    /**
+     * Load in homepage content
+     *
+     * @method loadHomepageContent
+     */
+    ViewWindow.prototype.loadHomepageContent = function() {
+        if (this._homepageResolution) {
+            return this._homepageResolution;
+        }
+        if (this.$home.children().length > 0) {
+            this._homepageResolution = Promise.resolve();
+            return this._homepageResolution;
+        }
+        this._homepageResolution = apiService.getHomepageContent().then(function(content) {
+            var homeEl = this.$element.find('.viewWindow-panel-content-inner_home')[0];
+            homeEl.parentNode.replaceChild(content.el, homeEl);
+        }.bind(this));
+
+        return this._homepageResolution;
     };
 
     return new ViewWindow();
