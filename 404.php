@@ -11,7 +11,7 @@ get_header();
 
 
 
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="<?php echo esc_url( home_url( add_query_arg() ) ); ?>" data-type="panel" data-theme="<?php echo esc_attr( internetorg_get_page_theme() ); ?>" data-title="<?php esc_attr_e( 'Not Found', 'internetorg' ); ?>" data-image="<?php echo esc_url( get_stylesheet_directory_uri() . '/_static/web/assets/media/uploads/home.jpg' ); ?>">
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="<?php echo esc_url( home_url( '/404/' ) ); ?>" data-type="panel" data-theme="<?php echo esc_attr( internetorg_get_page_theme() ); ?>" data-title="<?php esc_attr_e( 'Not Found', 'internetorg' ); ?>" data-image="<?php echo esc_url( get_stylesheet_directory_uri() . '/_static/web/assets/media/uploads/home.jpg' ); ?>">
 
 
 		<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>

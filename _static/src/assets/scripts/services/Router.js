@@ -218,13 +218,13 @@ define(function(require, exports, module) { // jshint ignore:line
     Router.prototype._onSearch = function(event) {
         var prevStates = this._currentStates.slice(0);
         // .replace(/%20/g, '+')
-        var url = appConfig.searchPath + '?s=' + encodeURIComponent(event.searchText);
+        //var url = appConfig.searchPath + encodeURIComponent(event.searchText) + '/page/1';
         this._currentStates.push({
-            path: url,
+            //path: url,
             type: 'search',
             searchText: event.searchText
         });
-        this.historyManager.pushState(this._currentStates, null, url);
+        this.historyManager.pushState(this._currentStates, null, '/?s=' + encodeURIComponent(event.searchText));
         eventHub.publish('Router:stateChange', this._currentStates, prevStates);
     };
 

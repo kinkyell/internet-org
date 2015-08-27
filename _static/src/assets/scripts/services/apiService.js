@@ -59,10 +59,10 @@ define(function(require, exports, module) { // jshint ignore:line
          */
         getSearchResults: function(searchText, page) {
             page = page || 1;
-            return Promise.resolve($.get('/' + PATHS.searchResults, {
-                s: searchText,
-                page: page
-            }, 'json')).then(function(res) {
+
+            var path = appConfig.searchPath + encodeURIComponent(searchText) + '/page/' + page;
+
+            return Promise.resolve($.get(path, {}, 'json')).then(function(res) {
                 if (typeof res === 'string') {
                     res = JSON.parse(res);
                 }
