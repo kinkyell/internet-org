@@ -29,26 +29,12 @@ define(function(require, exports, module) { // jshint ignore:line
         {
             label: 'section02',
             featureImage: '',
-            subSections: [
-                {
-                    featureImage: ''
-                },
-                {
-                    featureImage: ''
-                }
-            ]
+            subSections: []
         },
         {
             label: 'section03',
-            featureImage: AppConfig.narrative.desktop.featureImages.IMPACT,
-            subSections: [
-                {
-                    featureImage: ''
-                },
-                {
-                    featureImage: ''
-                }
-            ]
+            featureImage: '',
+            subSections: []
         },
         {
             label: 'section04',
@@ -131,8 +117,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto.init = function() {
-
-
         // determine bp specific narrative handler
         this._narrativeManager = (breakpointManager.isMobile) ?
             new NarrativeMobileManager(SECTIONS_CONF) :
@@ -164,6 +148,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$narrativeSections = this.$element.find('> *');
         this.$progress = $(CONFIG.PROGRESS);
         this.$narrativeDT = this.$element.find(CONFIG.NARRATIVE_DT);
+        this._$structureSections = $('.narrativeDT-sections');
     };
 
     /**
@@ -178,6 +163,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$narrativeSections = null;
         this.$progress = null;
         this.$narrativeDT = null;
+        this._$structureSections = null;
     };
 
     /**
@@ -191,7 +177,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.layout = function() {
         this.$narrativeSections.eq(0).addClass('isActive');
         this._sectionLength = this.$narrativeSections.length;
-        this._getFeatureImages();
+        this._getSectionContent();
     };
 
     /**
@@ -311,15 +297,11 @@ define(function(require, exports, module) { // jshint ignore:line
             var destinationSection = SECTIONS_CONF[destinationSectionPos];
             var destinationSubsLength = destinationSection.subSections.length;
 
-            debugger;
-
             // if has subs
             // and subs pos MORE THAN 0
             if (subsLength > 0 && subPosition > 0) {
                 var destinationSubPos = subPosition - 1;
                 var destinationSub = section.subSections[destinationSubPos];
-
-                // var content = (subPosition === 0) ? true : true;
 
                 this._narrativeManager.gotoSubSection(destinationSub, direction, null, true).then(function() {
                     this._subPosition -= 1;
@@ -358,13 +340,17 @@ define(function(require, exports, module) { // jshint ignore:line
             var subsLength = section.subSections.length;
             var subPosition = this._subPosition;
 
+            // if has subs
+            // and subs pos is not at the end
             if (subsLength > 0 && subPosition < subsLength - 1) {
                 var destinationSubPos = subPosition + 1;
                 var destinationSub = section.subSections[destinationSubPos];
 
-                this._narrativeManager.gotoSubSection(destinationSub, direction).then(function() {
+                this._narrativeManager.gotoSubSection(destinationSub, direction, null, true).then(function() {
                     this._subPosition += 1;
                 }.bind(this));
+
+            // Anything Else
             } else {
                 var sectionsLength = SECTIONS_CONF.length;
                 var destinationSectionPos = this._position + 1;
@@ -438,34 +424,34 @@ define(function(require, exports, module) { // jshint ignore:line
      * @method _getFeatureImages
      * @private
      */
-    proto._getFeatureImages = function() {
-        var featureImages = this.$narrativeDT.data('feature-images');
-        var subFeatureImages = this.$narrativeDT.data('sub-feature-images');
-        featureImages = this._stringToArray(featureImages);
-        subFeatureImages = this._stringToArray(subFeatureImages);
-        var subSections = [];
-
+    proto._getSectionContent = function() {
+        var $sections = this._$structureSections.find('> li');
         var i = 0;
-        var l = SECTIONS_CONF.length;
+        var l = $sections.length;
         for (; i < l; i++) {
-            var section = SECTIONS_CONF[i];
-            section.featureImage = featureImages[i];
+            var confItem = SECTIONS_CONF[i];
+            var $structureSection = $sections.eq(i);
+            var featureImage = $structureSection.data('feature');
+            var $subSections = $structureSection.find('> ul > li');
+            var subsLength = $subSections.length;
 
-            if (section.subSections.length > 0) {
-                var j = 0;
-                var jl = section.subSections.length;
-                for (; j < jl; j++) {
-                    var subSection = section.subSections[j];
-                    subSections.push(subSection);
+            if (subsLength !== 0) {
+                var p = 0;
+                var pl = subsLength;
+                for (; p < pl; p++) {
+                    var $subSection = $subSections.eq(p);
+                    var subFeature = $subSection.data('feature');
+                    var subContent = $subSection.html();
+
+                    confItem.subSections.push({
+                        featureImage: subFeature,
+                        content: subContent
+                    });
                 }
-            }
-        }
 
-        var k = 0;
-        var kl = subSections.length;
-        for (; k < kl; k++) {
-            var sub = subSections[k];
-            sub.featureImage = subFeatureImages[k];
+            }
+
+            confItem.featureImage = featureImage;
         }
     };
 

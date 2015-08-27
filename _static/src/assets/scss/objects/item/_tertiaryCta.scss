@@ -1,0 +1,13 @@
+/* ---------------------------------------------------------------------
+ Tertiary Call To Action
+
+ specific call to action styling
+------------------------------------------------------------------------ */
+.tertiaryCta {
+    color: #ffffff;
+    font-size: 26px;
+}
+
+.tertiaryCta > * + * {
+    margin-left: 12px;
+}
