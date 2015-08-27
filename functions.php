@@ -382,7 +382,7 @@ function internetorg_get_the_intro_block( $post_id = 0, $key = '' ) {
 	);
 
 	if ( in_array( $key, $allowed_keys ) ) {
-		return $intro_meta[$key];
+		return $intro_meta[ $key ];
 	}
 
 	return $intro_meta;
@@ -680,9 +680,10 @@ function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button 
 
 				$link = $url ? $url : $file;
 				if ( ! empty( $link ) ) {
-					$out .= '<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? $link
-						                                                           : '' ) . '" class="' . ( $cta_as_button
-							? 'btn' : 'link link_twoArrows' ) . '">' . esc_html( $label ) . '</a></div>';
+					$out .=
+						'<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? $link : '' )
+						. '" class="' . ( $cta_as_button ? 'btn' : 'link link_twoArrows' )
+						. '">' . esc_html( $label ) . '</a></div>';
 				}
 			}
 		}
