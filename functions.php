@@ -1113,3 +1113,58 @@ function internetorg_get_page_theme( $post_id = 0 ){
 
 	return $theme;
 }
+
+/**
+ * Get the permalink to the current archive.
+ *
+ * @see get_the_archive_title for inspiration.
+ *
+ * @return string
+ */
+function internetorg_get_archive_link() {
+	if ( is_category() ) {
+		$link = get_category_link( get_queried_object_id() );
+	} elseif ( is_tag() ) {
+		$link = get_tag_link( get_queried_object_id() );
+	} elseif ( is_author() ) {
+		$link = get_author_posts_url( get_queried_object_id() );
+	} elseif ( is_year() ) {
+		$link = get_year_link( '' );
+	} elseif ( is_month() ) {
+		$link = get_month_link( '', '' );
+	} elseif ( is_day() ) {
+		$link = get_day_link( '', '', '' );
+	} elseif ( is_tax( 'post_format' ) ) {
+		if ( is_tax( 'post_format', 'post-format-aside' ) ) {
+			$link = get_post_format_link( 'post-format-aside' );
+		} elseif ( is_tax( 'post_format', 'post-format-gallery' ) ) {
+			$link = get_post_format_link( 'post-format-gallery' );
+		} elseif ( is_tax( 'post_format', 'post-format-image' ) ) {
+			$link = get_post_format_link( 'post-format-image' );
+		} elseif ( is_tax( 'post_format', 'post-format-video' ) ) {
+			$link = get_post_format_link( 'post-format-video' );
+		} elseif ( is_tax( 'post_format', 'post-format-quote' ) ) {
+			$link = get_post_format_link( 'post-format-quote' );
+		} elseif ( is_tax( 'post_format', 'post-format-link' ) ) {
+			$link = get_post_format_link( 'post-format-link' );
+		} elseif ( is_tax( 'post_format', 'post-format-status' ) ) {
+			$link = get_post_format_link( 'post-format-status' );
+		} elseif ( is_tax( 'post_format', 'post-format-audio' ) ) {
+			$link = get_post_format_link( 'post-format-audio' );
+		} elseif ( is_tax( 'post_format', 'post-format-chat' ) ) {
+			$link = get_post_format_link( 'post-format-chat' );
+		}
+	} elseif ( is_post_type_archive() ) {
+		$link = get_post_type_archive_link( get_post_type() );
+	} elseif ( is_tax() ) {
+		$link = get_term_link( get_queried_object_id() );
+	} else {
+		$link = home_url( '/' );
+	}
+
+	if ( empty( $link ) || is_wp_error( $link ) ) {
+		$link = home_url( '/' );
+	}
+
+	return $link;
+}
