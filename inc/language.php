@@ -20,8 +20,6 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 
 		$list = bogo_language_switcher_links();
 
-		$optionsList  = array();
-		$divList      = array();
 		$selectedLang = null;
 
 		// display the selector, NOTE: we are not caching here because each user
@@ -34,7 +32,9 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 		}
 		echo '</select>';
 
-		echo '<div class="langSelect-label">' . esc_html( ! empty( $selectedLang ) ? $selectedLang['title'] : '' ) . '</div>';
+		echo '<div class="langSelect-label">';
+		echo esc_html( ! empty( $selectedLang ) ? $selectedLang['title'] : '' );
+		echo '</div>';
 
 		echo '<div class="langSelect-menu" style="height: auto;">';
 		foreach ( $list as $item ) {
