@@ -57,12 +57,12 @@ define(function(require, exports, module) { // jshint ignore:line
         var tmplArgs = { searchText: this._options.searchText };
 
         if (event.silent) {
-            viewWindow.getCurrentFeature().then(this._handleStaticContent);
+            viewWindow.getCurrentStory().then(this._handleStaticContent);
             return;
         }
 
         var tasks = [
-            apiService.getSearchResults(tmplArgs.searchText/*, page */),
+            apiService.getSearchResults(tmplArgs.searchText),
             viewWindow.replaceStoryContent(
                 templates['search-results-header'](tmplArgs),
                 transitions.content
@@ -91,6 +91,7 @@ define(function(require, exports, module) { // jshint ignore:line
         }
         $panel.find('.js-searchState-results').prepend(res.results);
         $panel.find('.js-searchState-num').html(res.totalResults);
+        $panel.find('.js-searchState-ft').toggle(res.hasNextPage);
         this.refreshComponents($panel);
     };
 

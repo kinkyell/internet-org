@@ -22,14 +22,20 @@ define(function(require, exports, module) { // jshint ignore:line
     var PREFIX_STRIPPER = /^\//;
     var SUFFIX_STRIPPER = /\/$/;
 
-    function _parseHtmlResponse(htmlStr) {
+    function _getViewWindow(htmlStr) {
         var parsed = $.parseHTML(htmlStr);
-        var viewWindowStory = parsed.reduce(function(found, element) {
+        var viewWindowEl = parsed.reduce(function(found, element) {
             if (element.nodeName === 'DIV' && element.className.indexOf('viewWindow') !== -1) {
-                return element.lastElementChild.firstElementChild.firstElementChild;
+                return element;
             }
             return found;
         }, null);
+        return viewWindowEl;
+    }
+
+    function _parseHtmlResponse(htmlStr) {
+        var viewWindowEl = _getViewWindow(htmlStr);
+        var viewWindowStory = viewWindowEl ? viewWindowEl.lastElementChild.firstElementChild.firstElementChild : null;
 
         if (viewWindowStory === null) {
             // this means it had no wrapper, send all html
@@ -62,9 +68,14 @@ define(function(require, exports, module) { // jshint ignore:line
 
             var path = appConfig.searchPath + encodeURIComponent(searchText) + '/page/' + page;
 
-            return Promise.resolve($.get(path, {}, 'json')).then(function(res) {
+            var handleResponse = function(res) {
                 if (typeof res === 'string') {
                     res = JSON.parse(res);
+                }
+
+                if (typeof res.success !== 'boolean') {
+                    // catch http error
+                    res = res.responseJSON;
                 }
 
                 if (!res.success) {
@@ -88,7 +99,9 @@ define(function(require, exports, module) { // jshint ignore:line
                     }).join('')
                 };
                 // jshint ignore:end
-            });
+            };
+
+            return Promise.resolve($.get(path, {}, 'json')).then(handleResponse, handleResponse);
         },
 
         /**
@@ -103,9 +116,7 @@ define(function(require, exports, module) { // jshint ignore:line
             if (contentType === 'search') {
                 return apiService.getSearchResults(args, page);
             }
-            return Promise.resolve($.get('/' + resultsPath, {
-                page: page
-            })).then(function(res) {
+            return Promise.resolve($.get('/' + resultsPath + 'page/' + page)).then(function(res) {
                 if (typeof res === 'string') {
                     res = JSON.parse(res);
                 }
@@ -133,6 +144,23 @@ define(function(require, exports, module) { // jshint ignore:line
                     }).join('')
                 };
                 // jshint ignore:end
+            });
+        },
+
+        /**
+         * Returns html for homepage content
+         * @returns {Promise} represents value of html returned
+         */
+        getHomepageContent: function() {
+            return Promise.resolve($.get('/')).then(function(html) {
+                var viewWindowEl = _getViewWindow(html);
+                var homeEl = viewWindowEl.firstElementChild.firstElementChild.firstElementChild;
+                var imageUrl;
+
+                return {
+                    el: homeEl,
+                    image: imageUrl
+                };
             });
         }
 

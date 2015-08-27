@@ -15,7 +15,7 @@
 			<h2 class="hdg hdg_4"><?php the_title(); ?></h2>
 		</div>
 		<div class="feature-bd">
-			<p class="bdcpy"><?php the_excerpt(); ?></p>
+			<div class="bdcpy"><?php the_excerpt(); ?></div>
 		</div>
 		<div class="feature-cta">
 			<a href="<?php the_permalink(); ?>" class="link mix-link_small">

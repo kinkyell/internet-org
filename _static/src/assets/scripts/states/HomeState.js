@@ -16,6 +16,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @constructor
      */
     var HomeState = function(options) {
+        // make sure homepage content is loaded before you do anything
+        this._initializer = viewWindow.loadHomepageContent();
+
         BasicState.call(this, options);
         this.invertRight = true;
     };
@@ -40,23 +43,27 @@ define(function(require, exports, module) { // jshint ignore:line
      * @fires State:activate
      */
     HomeState.prototype.onActivate = function(event) {
-        if (event.method !== 'init' && this._narrativeView) {
-            var lastFeature = this._narrativeView._narrativeManager._currentFeature;
-            if (lastFeature) {
-                if (lastFeature.type === 'image') {
-                    viewWindow.replaceFeatureImage(lastFeature.img, 'left');
-                } else {
-                    viewWindow.replaceFeatureContent(lastFeature.content, 'left', lastFeature.img);
+        this._initializer.then(function() {
+            if (event.method !== 'init' && this._narrativeView) {
+                var lastFeature = this._narrativeView._narrativeManager._currentFeature;
+                if (lastFeature) {
+                    if (lastFeature.type === 'image') {
+                        viewWindow.replaceFeatureImage(lastFeature.img, 'left');
+                    } else {
+                        viewWindow.replaceFeatureContent(lastFeature.content, 'left', lastFeature.img);
+                    }
+                }
+                this._narrativeView.enable();
+            } else {
+                this._narrativeView = new NarrativeView($('.js-narrativeView'));
+                if (event.method !== 'init') {
+                    var defaultImage = this._narrativeView._sectionConf[0].featureImage
+                    viewWindow.replaceFeatureImage(defaultImage, 'left');
                 }
             }
-            this._narrativeView.enable();
-        } else {
-            this._narrativeView = new NarrativeView($('.js-narrativeView'));
-            var defaultImage = this._narrativeView._sectionConf[0].featureImage;
-            viewWindow.replaceFeatureImage(defaultImage, 'left');
-        }
 
-        this.refreshComponents($(document.body));
+            this.refreshComponents($(document.body));
+        }.bind(this));
     };
 
     /**
@@ -66,7 +73,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @fires State:activate
      */
     HomeState.prototype.deactivate = function() {
-        this._narrativeView.disable();
+        this._initializer.then(function() {
+            this._narrativeView.disable();
+        }.bind(this));
     };
 
     /**

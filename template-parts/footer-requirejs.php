@@ -84,7 +84,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 * @type String
 	 * @final
 	 */
-	SETTINGS.SEARCH_PATH = 'search/data.html';
+	SETTINGS.SEARCH_PATH = 'io-ajax-search/';
 
 	/**
 	 * routes for static and WP endpoints
@@ -94,7 +94,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 * @final
 	 */
 	SETTINGS.ROUTES = {
-		'pressResults': '/press',
+		'pressResults': 'io-ajax-posts/press/',
 		'searchResults': window.SETTINGS.SEARCH_PATH,
 		'404': 'not-found/index.html'
 	};

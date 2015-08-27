@@ -150,6 +150,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.enableButton = function(isLastPage) {
         if (isLastPage) {
+            this.$element.remove();
             return;
         }
         this.$element.removeClass('isLoading').removeAttr('disabled');
