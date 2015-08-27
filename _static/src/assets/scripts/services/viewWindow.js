@@ -335,12 +335,13 @@ define(function(require, exports, module) { // jshint ignore:line
         if (this._homepageResolution) {
             return this._homepageResolution;
         }
-        if (this.$home.children().length > 0) {
+        var $home = this.$element.find('.viewWindow-panel-content-inner_home');
+        if ($home.children().length > 0) {
             this._homepageResolution = Promise.resolve();
             return this._homepageResolution;
         }
         this._homepageResolution = apiService.getHomepageContent().then(function(content) {
-            var homeEl = this.$element.find('.viewWindow-panel-content-inner_home')[0];
+            var homeEl = $home[0];
             homeEl.parentNode.replaceChild(content.el, homeEl);
         }.bind(this));
 
