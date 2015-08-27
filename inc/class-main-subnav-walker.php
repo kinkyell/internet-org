@@ -39,12 +39,8 @@ class Internetorg_Main_SubNav_Walker extends Walker_Nav_Menu
 	 * @return void
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-		global $wp_query;
+
 		$indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' );
-
-		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
-		$class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
-
 
 		$output .= $indent . '<li>';
 
