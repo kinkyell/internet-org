@@ -30,7 +30,7 @@ get_header();
 								</div>
 								<div class="topicBlock-bd">
 									<p class="bdcpy">
-										<?php echo sanitize_text_field( internetorg_get_the_subtitle( get_the_ID() ) ); ?>
+										<?php echo esc_html( internetorg_get_the_subtitle( get_the_ID() ) ); ?>
 									</p>
 								</div>
 							</div>
