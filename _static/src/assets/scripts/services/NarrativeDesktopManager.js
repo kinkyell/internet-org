@@ -245,10 +245,11 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {string} direction the direction of the transition
      * @public
      */
-    proto.gotoSubSection = function(section, direction, rootSection) {
+    proto.gotoSubSection = function(section, direction, rootSection, content) {
         var rootSection = (typeof rootSection === 'undefined') ? null : rootSection;
+        var content = (typeof content === 'undefined') ? null : content;
         this._isAnimating = true;
-        return this._subSectionTransition(section, direction, rootSection);
+        return this._subSectionTransition(section, direction, rootSection, content);
     };
 
     /**
@@ -303,8 +304,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {string} direction the direction of the transition
      * @private
      */
-    proto._subSectionTransition = function(section, direction, rootSection) {
+    proto._subSectionTransition = function(section, direction, rootSection, content) {
         return new Promise(function(resolve) {
+            var content = (content) ? templates['home-feature'] : '';
             var imgDirection = (direction === 'down') ? 'bottom' : 'top';
             var curSection = (rootSection != null) ? rootSection : section;
 

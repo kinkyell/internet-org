@@ -217,7 +217,8 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     Router.prototype._onSearch = function(event) {
         var prevStates = this._currentStates.slice(0);
-        var url = appConfig.searchPath + '?s=' + encodeURIComponent(event.searchText).replace(/%20/g, '+');
+        // .replace(/%20/g, '+')
+        var url = appConfig.searchPath + '?s=' + encodeURIComponent(event.searchText);
         this._currentStates.push({
             path: url,
             type: 'search',
