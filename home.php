@@ -2,7 +2,7 @@
 /**
  * This is the blog home template.
  *
- * @package
+ * @package Internet.org
  * @author arichard <arichard@nerdery.com>
  */
 

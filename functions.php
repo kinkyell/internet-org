@@ -5,24 +5,10 @@
  * @package Internet.org
  */
 
-// PLUGIN INCLUSION
-// WP VIP Helper Plugin -- gives us access to the VIP only functions
+// WP VIP Helper Plugin -- gives us access to the VIP only functions.
 define( 'IO_DIR', __DIR__ );
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
-/** translation related plugins -- commenting out to continue working on theme without blocker/distraction */
-//require IO_DIR . '/plugins/bogo/bogo.php';
-//require IO_DIR . '/plugins/babble/babble.php';
-//require IO_DIR . '/plugins/babble/translation-show-pre-translation.php';
-//require IO_DIR . '/plugins/babble/translation-group-tool.php';
-//require IO_DIR . '/plugins/babble/translation-fields.php';
-
-/** Other VIP plugins that have caused some wonkiness -- commenting out to continue working on theme without blocker/distraction */
-//wpcom_vip_load_plugin( 'wp-google-analytics' );
-//wpcom_vip_load_plugin( 'responsive-images' );
-//wpcom_vip_load_plugin( 'cache-nav-menu' );
-//wpcom_vip_load_plugin( 'facebook' );
-//wpcom_vip_load_plugin( 'lazy-load' );
 wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
 
 /** Custom Post Types */
@@ -117,7 +103,7 @@ if ( ! function_exists( 'internetorg_setup' ) ) :
 			)
 		);
 	}
-endif; // internetorg_setup
+endif;
 
 add_action( 'after_setup_theme', 'internetorg_setup' );
 
@@ -171,7 +157,7 @@ if ( ! function_exists( 'internetorg_extend_search_post_type_range' ) ) :
 	 * @link     http://goo.gl/UI9Yyj pre_get_posts action reference
 	 * @link     http://goo.gl/8QQlj1 WP_Query class reference
 	 *
-	 * @param WP_Query $query the WP_Query object to operate on
+	 * @param WP_Query $query the WP_Query object to operate on.
 	 *
 	 * @return WP_Query
 	 */
@@ -183,11 +169,11 @@ if ( ! function_exists( 'internetorg_extend_search_post_type_range' ) ) :
 			$query->set(
 				'post_type',
 				array(
-					'post', // default PT
-					'page', // default PT
-					'io_press', // CPT
-					'io_story', // CPT
-					'io_campaign', // CPT
+					'post',
+					'page',
+					'io_press',
+					'io_story',
+					'io_campaign',
 				)
 			);
 			$query->is_search = true;
@@ -226,34 +212,34 @@ if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 	 */
 	function internetorg_get_free_services() {
 
-		/** @var array|bool $services An array of cached io_freesvc data, else false on failure */
+		/** @var array|bool $services An array of cached io_freesvc data, else false on failure. */
 		$services = wp_cache_get( 'internetorg_free_services_list' );
 
-		/** return early if the cached data was successfully returned */
+		// Return early if the cached data was successfully returned.
 		if ( false !== $services ) {
 			return $services;
 		}
 
-		/** @var array $args An array of arguments for a new WP_Query */
+		/** @var array $args An array of arguments for a new WP_Query. */
 		$args = array(
 			'post_type'   => 'io_freesvc',
 			'post_status' => 'publish',
 		);
 
-		/** @var array $services An array to hold io_freesvc data */
+		/** @var array $services An array to hold io_freesvc data. */
 		$services = array();
 
-		/** @var WP_Query $svcqry A WP_Query to retrieve io_freesvc post objects */
+		/** @var WP_Query $svcqry A WP_Query to retrieve io_freesvc post objects. */
 		$svcqry = new WP_Query( $args );
 
-		/** build array of services so we are not passing around a query object */
+		/** Build array of services so we are not passing around a query object. */
 		while ( $svcqry->have_posts() ) :
 
-			/** Set up the current post object */
+			/** Set up the current post object. */
 			$svcqry->the_post();
 
 			if ( ! has_post_thumbnail( $svcqry->post->ID ) ) {
-				/** @var string $image_url URL to a featured image or default image file */
+				/** @var string $image_url URL to a featured image or default image file. */
 				$image_url = get_stylesheet_directory_uri()
 				             . '/_static/web/assets/media/images/icons/png/icon-services-dictionary.png';
 			} else {
@@ -270,10 +256,10 @@ if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 
 		endwhile;
 
-		// caching the compiled array and not the query (86400 == 1 day)
+		// Caching the compiled array and not the query (86400 == 1 day).
 		wp_cache_set( 'internetorg_free_services_list', $services, null, 86400 );
 
-		// reset the query to before we started mucking with it
+		// Reset the query to before we started mucking with it.
 		wp_reset_postdata();
 
 		return $services;
@@ -286,11 +272,6 @@ endif;
 require get_template_directory() . '/inc/enqueue-scripts.php';
 
 /**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
-
-/**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
@@ -299,16 +280,6 @@ require get_template_directory() . '/inc/template-tags.php';
  * Custom functions that act independently of the theme templates.
  */
 require get_template_directory() . '/inc/extras.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-require get_template_directory() . '/inc/jetpack.php';
 
 /**
  * Language related functionality
@@ -320,14 +291,12 @@ require get_template_directory() . '/inc/language.php';
  */
 require get_template_directory() . '/inc/menu-walkers.php';
 
-// @todo: Move these custom functions to an include and load in functions.php file
-
 /**
  * Get the "subtitle" from the page_subtitle custom field.
  *
  * @see internetorg_create_after_title_fields_internetorg_page_home()
  *
- * @param int $post_id
+ * @param int $post_id The post ID from which to retrieve the subtitle meta.
  *
  * @return string
  */
@@ -382,14 +351,16 @@ function internetorg_get_the_intro_block( $post_id = 0, $key = '' ) {
 	);
 
 	if ( in_array( $key, $allowed_keys ) ) {
-		return $intro_meta[$key];
+		return $intro_meta[ $key ];
 	}
 
 	return $intro_meta;
 }
 
 /**
- * @param int $post_id
+ * Get the post thumbnail (featured image) for the supplied post by post ID.
+ *
+ * @param int $post_id Post ID to retrieve featured image from.
  *
  * @return string
  */
@@ -447,10 +418,10 @@ function internetorg_get_post_thumbnail( $post_id = 0 ) {
  * @link https://github.com/Automattic/babble/issues/260 Filtering `bbl_translated_meta_fields` doesn't stop
  *       `meta_keys` from syncing #260
  *
- * @param array    $fields An array of instances of the Babble_Meta_Field_* classes
- * @param \WP_Post $post   The WP_Post object which is to be translated
+ * @param array    $fields An array of instances of the Babble_Meta_Field_* classes.
+ * @param \WP_Post $post   The WP_Post object which is to be translated.
  *
- * @return array An array of instances of the Babble_Meta_Field_* classes
+ * @return array An array of instances of the Babble_Meta_Field_* classes.
  */
 function internetorg_bbl_fm_fields( array $fields, WP_Post $post ) {
 
@@ -480,8 +451,8 @@ add_filter( 'bbl_translated_meta_fields', 'internetorg_bbl_fm_fields', 10, 2 );
  * synced by returning false in this filter when the $meta_key value is
  * the name of your meta_key.
  *
- * @param bool   $sync     True if the meta_key is NOT to be translated and SHOULD be synced
- * @param string $meta_key The name of the post meta meta_key
+ * @param bool   $sync     True if the meta_key is NOT to be translated and SHOULD be synced.
+ * @param string $meta_key The name of the post meta meta_key.
  *
  * @return bool True if the meta_key is NOT to be translated and SHOULD be synced
  */
@@ -606,8 +577,8 @@ function internetorg_post_gallery_filter( $output, $attr, $instance ) {
 
 	$selector = "js-carouselView{$instance}";
 
-	$gallery_div = "<div id='{$selector}' class='carousel js-carouselView'>"
-	               . "<ul class='handle carousel-handle'>";
+	$gallery_div = "<div id='{$selector}' class='carousel js-carouselView'>";
+	$gallery_div .= '<ul class="handle carousel-handle">';
 
 	$output = $gallery_style . $gallery_div;
 
@@ -659,7 +630,16 @@ function internetorg_img_caption_filter( $output ) {
 
 add_filter( 'img_caption_shortcode', 'internetorg_img_caption_filter' );
 
+/**
+ * Get the Markup for a "content widget".
+ *
+ * @param string $widget_slug   Slug of the widget to lookup.
+ * @param bool   $cta_as_button Whether to add the 'btn' class or not.
+ *
+ * @return string
+ */
 function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button = true ) {
+
 	$out = '<div class="topicBlock">';
 
 	$widget = internetorg_get_content_widget_by_slug( $widget_slug );
@@ -680,9 +660,10 @@ function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button 
 
 				$link = $url ? $url : $file;
 				if ( ! empty( $link ) ) {
-					$out .= '<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? $link
-						                                                           : '' ) . '" class="' . ( $cta_as_button
-							? 'btn' : 'link link_twoArrows' ) . '">' . esc_html( $label ) . '</a></div>';
+					$out .=
+						'<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? $link : '' )
+						. '" class="' . ( $cta_as_button ? 'btn' : 'link link_twoArrows' )
+						. '">' . esc_html( $label ) . '</a></div>';
 				}
 			}
 		}
@@ -696,8 +677,10 @@ function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button 
 }
 
 /**
- * @param      $widget_slug
- * @param bool $cta_as_button
+ * Escape the Markup for a "content widget".
+ *
+ * @param string $widget_slug   Slug of the widget to lookup.
+ * @param bool   $cta_as_button Whether to add the 'btn' class or not.
  */
 function internet_org_get_content_widget_html( $widget_slug, $cta_as_button = true ) {
 	echo wp_kses_post( get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button ) );
@@ -706,46 +689,46 @@ function internet_org_get_content_widget_html( $widget_slug, $cta_as_button = tr
 /**
  * Conditionally check if provided URL appears to be an internal link.
  *
- * @param string $url URL to test
+ * @param string $url URL to test.
  *
  * @return bool
  */
 function internetorg_is_internal_url( $url ) {
 
-	/** no URL */
+	// No URL to test.
 	if ( empty( $url ) ) {
 		return false;
 	}
 
-	/** relative URL beginning with forward slash */
+	// Relative URL beginning with forward slash.
 	if ( substr( $url, 0, 1 ) === '/' ) {
 		return true;
 	}
 
-	/** relative URL beginning with two dots */
+	// Relative URL beginning with two dots.
 	if ( substr( $url, 0, 3 ) === '../' ) {
 		return true;
 	}
 
-	/** @var array $link_parsed Associative array of URL components returned by parse_url for the provided url */
+	/** @var array $link_parsed Associative array of URL components returned by parse_url for the provided url. */
 	$link_parsed = parse_url( $url );
 
 	if ( empty( $link_parsed['host'] ) ) {
 		return false;
 	}
 
-	/** @var array $home_parsed Associative array of URL components returned by parse_url for the home_url */
+	/** @var array $home_parsed Associative array of URL components returned by parse_url for the home_url. */
 	$home_parsed = parse_url( home_url() );
 
-	/** hostname match */
+	// Hostname match.
 	if ( strtolower( $link_parsed['host'] ) === strtolower( $home_parsed['host'] ) ) {
 		return true;
 	}
 
-	/** @var string $link_parsed_host remove www. for comparison */
+	/** @var string $link_parsed_host remove www. for comparison. */
 	$link_parsed_host = str_ireplace( 'www.', '', $link_parsed['host'] );
 
-	/** @var string $home_parsed_host remove www. for comparison */
+	/** @var string $home_parsed_host remove www. for comparison. */
 	$home_parsed_host = str_ireplace( 'www.', '', $home_parsed['host'] );
 
 	if ( strtolower( $link_parsed_host ) === strtolower( $home_parsed_host ) ) {
@@ -830,9 +813,6 @@ add_filter( 'query_vars', 'internetorg_add_ajax_query_vars' );
  *
  * If the ajax_search_term query var is empty, return so that we don't hijack all template redirects.
  *
- * @todo maybe combine with internetorg_do_ajax_more_posts to reduce duplicate code
- * @todo determine what data actually needs to be returned in json, right now it's a firehose of all WP_Query->posts data
- *
  * @link https://vip.wordpress.com/documentation/wp_rewrite/
  * @link https://10up.github.io/Engineering-Best-Practices/php/#ajax-endpoints
  *
@@ -840,37 +820,37 @@ add_filter( 'query_vars', 'internetorg_add_ajax_query_vars' );
  */
 function internetorg_do_ajax_search() {
 
-	/** @var string $ajax_search_term The search term query var */
+	/** @var string $ajax_search_term The search term query var. */
 	$ajax_search_term = get_query_var( 'ajax_search_term' );
 
-	/** no ajax search term, return early and let template_redirect run it's course */
+	// No ajax search term, return early and let template_redirect run it's course.
 	if ( empty( $ajax_search_term ) ) {
 		return;
 	}
 
-	/** @todo : this may need to be modified for json decode rather than urldecode, talk to FED */
 	$ajax_search_term = sanitize_text_field( urldecode( $ajax_search_term ) );
 
-	/** @var int $ajax_search_paged Pagination query var if present else 0 */
+	/** @var int $ajax_search_paged Pagination query var if present else 0. */
 	$ajax_search_paged = absint( get_query_var( 'paged' ) );
 
 	if ( empty( $ajax_search_paged ) ) {
 		$ajax_search_paged = 1;
 	}
 
-	/** @var array $args An array of WP_Query args */
+	/** @var array $args An array of WP_Query args. */
 	$args = array(
 		's'     => $ajax_search_term,
 		'paged' => $ajax_search_paged,
 	);
 
-	/** @var \WP_Query $query A WP_Query for the specified "page" of search results */
+	/** @var \WP_Query $query A WP_Query for the specified "page" of search results. */
 	$query = new WP_Query( $args );
 
 	if ( is_wp_error( $query ) || ! $query->have_posts() ) {
 		wp_send_json_error( array() );
 	}
 
+	/** @var array $data Return data array for wp_send_json_success. */
 	$data = array(
 		'found_posts'   => absint( $query->found_posts ),
 		'paged'         => absint( $query->get( 'paged' ) ),
@@ -881,7 +861,7 @@ function internetorg_do_ajax_search() {
 	while ( $query->have_posts() ) {
 		$query->the_post();
 
-		/** @var string $post_thumbnail URL of the post thumbnail or an empty string */
+		/** @var string $post_thumbnail URL of the post thumbnail or an empty string. */
 		$post_thumbnail = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), array( 210, 260 ) );
 
 		$data['posts'][] = array(
@@ -904,56 +884,53 @@ add_action( 'template_redirect', 'internetorg_do_ajax_search' );
  *
  * If the ajax_post_type query var is empty, return so that we don't hijack all template redirects.
  *
- * @todo maybe combine with internetorg_do_ajax_search to reduce duplicate code
- * @todo determine what data actually needs to be returned in json, right now it's a firehose of all WP_Query->posts data
- *
  * @link https://vip.wordpress.com/documentation/wp_rewrite/
  * @link https://10up.github.io/Engineering-Best-Practices/php/#ajax-endpoints
  */
 function internetorg_do_ajax_more_posts() {
 
-	/** @var string $ajax_post_type The post type query var */
+	/** @var string $ajax_post_type The post type query var. */
 	$ajax_post_type = get_query_var( 'ajax_post_type' );
 
-	/** no ajax post type, return early and let template_redirect run it's course */
+	// No ajax post type, return early and let template_redirect run it's course.
 	if ( empty( $ajax_post_type ) ) {
 		return;
 	}
 
-	/** @todo : this may need to be modified for json decode rather than urldecode, talk to FED */
 	$ajax_post_type = sanitize_title_for_query( urldecode( $ajax_post_type ) );
 
 	if ( 'press' == $ajax_post_type ) {
 		$ajax_post_type = 'post';
 	}
 
-	/** @var array $allowed_post_types A whitelist array of public post types to compare against */
+	/** @var array $allowed_post_types A whitelist array of public post types to compare against. */
 	$allowed_post_types = get_post_types( array( 'public' => true ), 'names' );
 
 	if ( ! in_array( $ajax_post_type, $allowed_post_types ) ) {
 		wp_send_json_error( array() );
 	}
 
-	/** @var int $ajax_paged Pagination query var if present else 0 */
+	/** @var int $ajax_paged Pagination query var if present else 0. */
 	$ajax_paged = absint( get_query_var( 'paged' ) );
 
 	if ( empty( $ajax_paged ) ) {
 		$ajax_paged = 1;
 	}
 
-	/** @var array $args An array of WP_Query args */
+	/** @var array $args An array of WP_Query args. */
 	$args = array(
 		'post_type' => $ajax_post_type,
 		'paged'     => $ajax_paged,
 	);
 
-	/** @var \WP_Query $query A WP_Query for the specified "page" of post type archive results */
+	/** @var \WP_Query $query A WP_Query for the specified "page" of post type archive results. */
 	$query = new WP_Query( $args );
 
 	if ( is_wp_error( $query ) || ! $query->have_posts() ) {
 		wp_send_json_error( array() );
 	}
 
+	/** @var array $data Return data array for wp_send_json_success. */
 	$data = array(
 		'found_posts'   => absint( $query->found_posts ),
 		'paged'         => absint( $query->get( 'paged' ) ),
@@ -964,7 +941,7 @@ function internetorg_do_ajax_more_posts() {
 	while ( $query->have_posts() ) {
 		$query->the_post();
 
-		/** @var string $post_thumbnail URL of the post thumbnail or an empty string */
+		/** @var string $post_thumbnail URL of the post thumbnail or an empty string. */
 		$post_thumbnail = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), array( 210, 260 ) );
 
 		$data['posts'][] = array(
@@ -1060,16 +1037,16 @@ function internetorg_get_mobile_featured_image( $post_type, $post_id ) {
  *
  * @return string The page theme, defined by page-template else Approach.
  */
-function internetorg_get_page_theme( $post_id = 0 ){
+function internetorg_get_page_theme( $post_id = 0 ) {
 
-	/** @var array $allowed_themes An array of possible page themes */
+	/** @var array $allowed_themes An array of possible "page themes". */
 	$allowed_themes = array(
 		'Approach',
 		'Mission',
 		'Impact',
 	);
 
-	/** @var string $default_theme A default page theme if one cannot be determined */
+	/** @var string $default_theme A default page theme if one cannot be determined. */
 	$default_theme = $allowed_themes[0];
 
 	$post_id = absint( $post_id );
@@ -1082,7 +1059,7 @@ function internetorg_get_page_theme( $post_id = 0 ){
 		return $default_theme;
 	}
 
-	/** @var string|bool $page_template_slug The name of the page template, else empty string or false */
+	/** @var string|bool $page_template_slug The name of the page template, else empty string or false. */
 	$page_template_slug = get_page_template_slug( $post_id );
 
 	if ( empty( $page_template_slug ) ) {
@@ -1091,13 +1068,13 @@ function internetorg_get_page_theme( $post_id = 0 ){
 
 	$page_template_slug = str_ireplace( '.php', '', $page_template_slug );
 
-	/** @var array $slug_array Array of strings from exploded $page_template_slug */
+	/** @var array $slug_array Array of strings from exploded $page_template_slug. */
 	$slug_array = explode( '-', $page_template_slug );
 
-	/** @var string $slug The last element of the $slug_array */
+	/** @var string $slug The last element of the $slug_array. */
 	$slug = end( $slug_array );
 
-	/** @var string $theme Uppercased version of slug */
+	/** @var string $theme Uppercased version of slug. */
 	$theme = ucwords( $slug );
 
 	if ( ! in_array( $theme, $allowed_themes ) ) {
@@ -1118,7 +1095,7 @@ function internetorg_get_archive_link() {
 	if ( is_category() ) {
 		$link = get_category_link( get_queried_object_id() );
 	} elseif ( is_tag() ) {
-		$link = get_tag_link( get_queried_object_id() );
+		$link = wpcom_vip_get_term_link( get_queried_object() );
 	} elseif ( is_author() ) {
 		$link = get_author_posts_url( get_queried_object_id() );
 	} elseif ( is_year() ) {
@@ -1150,7 +1127,7 @@ function internetorg_get_archive_link() {
 	} elseif ( is_post_type_archive() ) {
 		$link = get_post_type_archive_link( get_post_type() );
 	} elseif ( is_tax() ) {
-		$link = get_term_link( get_queried_object_id() );
+		$link = wpcom_vip_get_term_link( get_queried_object() );
 	} else {
 		$link = home_url( '/' );
 	}

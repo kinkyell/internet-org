@@ -20,26 +20,28 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 
 		$list = bogo_language_switcher_links();
 
-		$optionsList  = array();
-		$divList      = array();
 		$selectedLang = null;
-
-		foreach ( $list as $item ) {
-			if ( ! empty( $item ) ) {
-				$optionsList[] = '<option value="' . esc_url( $item['href'] ) . '">' . esc_html( $item['title'] ) . '</option>';
-
-				$divList[] = '<div class="langSelect-menu-item"><span>' . esc_html( $item['native_name'] ) . '</span></div>';
-			}
-		}
 
 		// display the selector, NOTE: we are not caching here because each user
 		// will need their own selection
 		echo '<select onchange="document.location.href=this.options[this.selectedIndex].value;">';
-		echo implode( "\n", $optionsList );
+		foreach ( $list as $item ) {
+			if ( ! empty( $item ) ) {
+				echo '<option value="' . esc_url( $item['href'] ) . '">' . esc_html( $item['title'] ) . '</option>';
+			}
+		}
 		echo '</select>';
-		echo '<div class="langSelect-label">' . esc_html( ! empty( $selectedLang ) ? $selectedLang['title'] : '' ) . '</div>';
+
+		echo '<div class="langSelect-label">';
+		echo esc_html( ! empty( $selectedLang ) ? $selectedLang['title'] : '' );
+		echo '</div>';
+
 		echo '<div class="langSelect-menu" style="height: auto;">';
-		echo implode( "\n", $divList );
+		foreach ( $list as $item ) {
+			if ( ! empty( $item ) ) {
+				echo '<div class="langSelect-menu-item"><span>' . esc_html( $item['native_name'] ) . '</span></div>';
+			}
+		}
 		echo '</div>';
 
 	}

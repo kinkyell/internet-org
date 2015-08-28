@@ -66,7 +66,7 @@ define(function(require, exports, module) { // jshint ignore:line
         getSearchResults: function(searchText, page) {
             page = page || 1;
 
-            var path = appConfig.searchPath + encodeURIComponent(searchText) + '/page/' + page;
+            var path = '/' + appConfig.searchPath + encodeURIComponent(searchText) + '/page/' + page;
 
             var handleResponse = function(res) {
                 if (typeof res === 'string') {

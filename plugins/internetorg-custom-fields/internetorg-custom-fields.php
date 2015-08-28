@@ -13,6 +13,7 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 	 * Initializes the custom fields using "Field Manager" from Alley
 	 *
 	 * Basic field creation
+	 *
 	 * @see http://fieldmanager.org/docs/contexts/post-context/
 	 *
 	 * List of field types
@@ -40,7 +41,6 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 }
 add_action( 'init', 'internetorg_custom_fields_init' );
 
-// pluggable because pluggable
 if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 	/**
 	 * Create the custom fields for the Homepage
@@ -49,52 +49,60 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 	 */
 	function internetorg_create_fields_internetorg_page_home() {
 
-		$next_post = new Fieldmanager_Autocomplete( array(
-		    'name' => 'next_page',
-		    'show_edit_link' => true,
-		    'datasource' => new Fieldmanager_Datasource_Post( array(
-		        'query_args' => array( 'post_type' => 'page' ),
-		    ) ),
-		) );
+		$next_post = new Fieldmanager_Autocomplete(
+			array(
+				'name'           => 'next_page',
+				'show_edit_link' => true,
+				'datasource'     => new Fieldmanager_Datasource_Post(
+					array(
+						'query_args' => array(
+							'post_type' => 'page',
+						),
+					)
+				)
+			)
+		);
+
 		$next_post->add_meta_box( 'Next Page', 'page' );
 
-
-		$fm = new Fieldmanager_Group( array(
-			'name'           => 'home-content-section',
-			'label'          => __( 'Section', 'internetorg' ),
-			'label_macro'    => __( 'Section: %s', 'internetorg' ),
-			'add_more_label' => __( 'Add another Content Area', 'internetorg' ),
-			'collapsed'      => false,
-			'collapsible'    => true,
-			'sortable'       => true,
-			'limit'          => 0,
-			'children'       => array(
-				'title'          => new Fieldmanager_TextField( __( 'Section Title', 'internetorg' ) ),
-				'name'           => new Fieldmanager_TextField( __( 'Section Name', 'internetorg' ) ),
-				'content'        => new Fieldmanager_RichTextarea( __( 'Description', 'internetorg' ) ),
-				'slug'           => new Fieldmanager_TextField( __( 'Section Slug', 'internetorg' ) ),
-				'image'          => new Fieldmanager_Media( __( 'Background Image', 'internetorg' ) ),
-				'call-to-action' => new Fieldmanager_Group( array(
-					'label'          => __( 'Call to action', 'internetorg' ),
-					'label_macro'    => __( 'Call to action: %s', 'internetorg' ),
-					'add_more_label' => __( 'Add another CTA', 'internetorg' ),
-					'limit'          => 5,
-					'collapsible'    => true,
-					'children'       => array(
-						'title' => new Fieldmanager_TextField( __( 'CTA Title', 'internetorg' ) ),
-						'text'  => new Fieldmanager_TextArea( __( 'Content', 'internetorg' ) ),
-						'link'  => new Fieldmanager_TextField( __( 'Link', 'internetorg' ) ),
-						'image' => new Fieldmanager_Media( __( 'Image', 'internetorg' ) ),
+		$fm = new Fieldmanager_Group(
+			array(
+				'name'           => 'home-content-section',
+				'label'          => __( 'Section', 'internetorg' ),
+				'label_macro'    => __( 'Section: %s', 'internetorg' ),
+				'add_more_label' => __( 'Add another Content Area', 'internetorg' ),
+				'collapsed'      => false,
+				'collapsible'    => true,
+				'sortable'       => true,
+				'limit'          => 0,
+				'children'       => array(
+					'title'          => new Fieldmanager_TextField( __( 'Section Title', 'internetorg' ) ),
+					'name'           => new Fieldmanager_TextField( __( 'Section Name', 'internetorg' ) ),
+					'content'        => new Fieldmanager_RichTextarea( __( 'Description', 'internetorg' ) ),
+					'slug'           => new Fieldmanager_TextField( __( 'Section Slug', 'internetorg' ) ),
+					'image'          => new Fieldmanager_Media( __( 'Background Image', 'internetorg' ) ),
+					'call-to-action' => new Fieldmanager_Group(
+						array(
+							'label'          => __( 'Call to action', 'internetorg' ),
+							'label_macro'    => __( 'Call to action: %s', 'internetorg' ),
+							'add_more_label' => __( 'Add another CTA', 'internetorg' ),
+							'limit'          => 5,
+							'collapsible'    => true,
+							'children'       => array(
+								'title' => new Fieldmanager_TextField( __( 'CTA Title', 'internetorg' ) ),
+								'text'  => new Fieldmanager_RichTextarea( __( 'Content', 'internetorg' ) ),
+								'link'  => new Fieldmanager_TextField( __( 'Link', 'internetorg' ) ),
+								'image' => new Fieldmanager_Media( __( 'Image', 'internetorg' ) ),
+							),
+						)
 					),
-				) ),
-			),
-		) );
-
+				),
+			)
+		);
 		$fm->add_meta_box( __( 'Content Areas', 'internetorg' ), array( 'page' ) );
 	}
 }
 
-// make pluggable
 if ( ! function_exists( 'internetorg_page_home_after_title_fields' ) ) {
 	/**
 	 * Adds fields directly below the title of the post title on the edit scree
@@ -113,7 +121,6 @@ if ( ! function_exists( 'internetorg_page_home_after_title_fields' ) ) {
 	}
 }
 
-// pluggable to allow this to be overriden if extended
 if ( ! function_exists( 'internetorg_create_after_title_fields_internetorg_page_home' ) ) {
 	/**
 	 * Create custom fields for the "Home" Page that will appear after the title
@@ -145,7 +152,13 @@ if ( ! function_exists( 'internetorg_create_after_title_fields_internetorg_page_
 				),
 			)
 		);
-		$fm->add_meta_box( __( 'Additional page configuration', 'internetorg' ), array( 'page' ), 'internetorg_page_home_after_title', 'high' );
+
+		$fm->add_meta_box(
+			__( 'Additional page configuration', 'internetorg' ),
+			array( 'page' ),
+			'internetorg_page_home_after_title',
+			'high'
+		);
 
 		$intro = new Fieldmanager_Group(
 			array(
@@ -168,9 +181,16 @@ if ( ! function_exists( 'internetorg_create_after_title_fields_internetorg_page_
 				),
 			)
 		);
-		$intro->add_meta_box( __( 'Page Intro', 'internetorg' ), array( 'page' ), 'internetorg_page_home_after_title', 'high' );
+
+		$intro->add_meta_box(
+			__( 'Page Intro', 'internetorg' ),
+			array( 'page' ),
+			'internetorg_page_home_after_title',
+			'high'
+		);
 	}
 }
+
 /**
  * Called when the plugin activates, use to do anything that needs to be done once
  *
@@ -183,4 +203,3 @@ function internetorg_cf_on_activate() {
 }
 
 register_activation_hook( __FILE__, 'internetorg_cf_on_activate' );
-

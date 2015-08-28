@@ -4,6 +4,9 @@
  * User: raber
  * Date: 8/26/15
  * Time: 2:42 PM
+ *
+ * PHPCS complains about escaping at line 27, however, we are following the suggestion from Tom Nowell at
+ * @link http://tomjn.com/2015/05/07/escaping-the-unsecure/
  */
 
 /** @var array $section_meta An array of post meta with the home-content-section meta_key */

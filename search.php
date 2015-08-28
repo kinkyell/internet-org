@@ -2,6 +2,8 @@
 /**
  * The template for displaying search results pages.
  *
+ * VIP Scanner complains about escaping at line 45, false positive (note the use of esc_html__), PHPCS does not.
+ *
  * @package Internet.org
  */
 

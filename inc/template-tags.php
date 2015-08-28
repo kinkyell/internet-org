@@ -89,7 +89,7 @@ if ( ! function_exists( 'internetorg_entry_footer_archive' ) ) :
 
 		// read more link
 		echo '<div class="feature-cta">';
-		printf( sanitize_text_field( __( 'Read More &rarr;', 'internetorg' ) ) );
+		printf( esc_html( __( 'Read More &rarr;', 'internetorg' ) ) );
 		echo '</div>';
 
 		// display the edit link if an authorized user is logged in.
