@@ -57,7 +57,7 @@ define(function(require, exports, module) { // jshint ignore:line
             } else {
                 this._narrativeView = new NarrativeView($('.js-narrativeView'));
                 if (event.method !== 'init') {
-                    var defaultImage = this._narrativeView._sectionConf[0].featureImage
+                    var defaultImage = this._narrativeView._sectionConf[0].featureImage;
                     viewWindow.replaceFeatureImage(defaultImage, 'left');
                 }
             }
