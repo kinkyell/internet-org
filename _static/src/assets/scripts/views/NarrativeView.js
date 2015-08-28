@@ -260,42 +260,43 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._scrollUp = function() {
-        if (!this._narrativeManager._isAnimating) {
-            var direction = 'up';
-            var section = SECTIONS_CONF[this._position];
-            var subsLength = section.subSections.length;
-            var subPosition = this._subPosition;
+        if (this._narrativeManager._isAnimating) {
+            return;
+        }
+        var direction = 'up';
+        var section = SECTIONS_CONF[this._position];
+        var subsLength = section.subSections.length;
+        var subPosition = this._subPosition;
 
-            var destinationSectionPos = this._position - 1;
-            var destinationSection = SECTIONS_CONF[destinationSectionPos];
-            var destinationSubsLength = destinationSection.subSections.length;
+        var destinationSectionPos = this._position - 1;
+        var destinationSection = SECTIONS_CONF[destinationSectionPos];
+        var destinationSubsLength = destinationSection && destinationSection.subSections.length;
 
-            // if has subs
-            // and subs pos MORE THAN 0
-            if (subsLength > 0 && subPosition > 0) {
-                var destinationSubPos = subPosition - 1;
-                var destinationSub = section.subSections[destinationSubPos];
+        // if has subs
+        // and subs pos MORE THAN 0
+        if (subsLength > 0 && subPosition > 0) {
+            var destinationSubPos = subPosition - 1;
+            var destinationSub = section.subSections[destinationSubPos];
 
-                this._narrativeManager.gotoSubSection(destinationSub, direction, null, true).then(function() {
-                    this._subPosition -= 1;
+            this._narrativeManager.gotoSubSection(destinationSub, direction, null, true).then(function() {
+                this._subPosition -= 1;
+            }.bind(this));
+
+
+        // subs pos IS 0
+        } else if (subPosition === 0) {
+            this._narrativeManager.gotoSubSection(section, direction, section).then(function() {
+                this._subPosition = -1;
+            }.bind(this));
+
+        // Anything Else
+        } else {
+            this._subPosition = destinationSubsLength - 1;
+
+            if (destinationSectionPos >= 0) {
+                this._narrativeManager.gotoSection(destinationSection, direction).then(function() {
+                    this._position -= 1;
                 }.bind(this));
-
-
-            // subs pos IS 0
-            } else if (subPosition === 0) {
-                this._narrativeManager.gotoSubSection(section, direction, section).then(function() {
-                    this._subPosition = -1;
-                }.bind(this));
-
-            // Anything Else
-            } else {
-                this._subPosition = destinationSubsLength - 1;
-
-                if (destinationSectionPos >= 0) {
-                    this._narrativeManager.gotoSection(destinationSection, direction).then(function() {
-                        this._position -= 1;
-                    }.bind(this));
-                }
             }
         }
     };

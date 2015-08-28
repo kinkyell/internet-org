@@ -15,6 +15,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var VideoModalView = require('views/VideoModalView');
     var $ = require('jquery');
     var Tween = require('gsap-tween');
+    var LoadingContainer = require('util/LoadingContainer');
 
     var log = require('util/log');
 
@@ -85,7 +86,12 @@ define(function(require, exports, module) { // jshint ignore:line
                 title: this._options.title,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse es suscipit euante lorepehicula nulla, suscipit dela eu ante vel vehicula.', //jshint ignore:line
                 theme: (typeof theme === 'string' && theme.length) ? capitalize(theme) : theme
-            }), transitions.content)
+            }), transitions.content).then(function($panel) {
+                console.log('asdf')
+                this.loader = new LoadingContainer($panel[0]);
+                this.loader.addThrobber();
+                return $panel;
+            }.bind(this))
         ];
 
         if (this._options.image) {
@@ -117,6 +123,10 @@ define(function(require, exports, module) { // jshint ignore:line
         Tween.from($markup[0], 0.25, { opacity: 0 });
         this.refreshComponents($panel);
         this._initializeScrollWatcher($panel);
+
+        // remove loader
+        this.loader.removeThrobber();
+        this.loader = null;
     };
 
     /**
