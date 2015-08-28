@@ -5,6 +5,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var apiService = require('services/apiService');
     var spread = require('stark/promise/spread');
     var capitalize = require('stark/string/capitalize');
+    var tap = require('stark/promise/tap');
 
     var viewWindow = require('services/viewWindow');
     var templates = require('templates');
@@ -31,6 +32,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handlePanelContentLoad = this._onPanelContentLoad.bind(this);
         this._handleStaticContent = this._onStaticContent.bind(this);
         this._handlePanelScroll = this._onPanelScroll.bind(this);
+        this._handleLoaderInit = this._onLoaderInit.bind(this);
         this.refreshScrollerInfo = this._refreshScrollerInfo.bind(this);
 
         /**
@@ -86,12 +88,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 title: this._options.title,
                 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse es suscipit euante lorepehicula nulla, suscipit dela eu ante vel vehicula.', //jshint ignore:line
                 theme: (typeof theme === 'string' && theme.length) ? capitalize(theme) : theme
-            }), transitions.content).then(function($panel) {
-                console.log('asdf')
-                this.loader = new LoadingContainer($panel[0]);
-                this.loader.addThrobber();
-                return $panel;
-            }.bind(this))
+            }), transitions.content).then(tap(this._handleLoaderInit))
         ];
 
         if (this._options.image) {
@@ -142,6 +139,18 @@ define(function(require, exports, module) { // jshint ignore:line
         }
         this.refreshComponents($panel);
         this._initializeScrollWatcher($panel);
+    };
+
+    /**
+     * Handle static content when loaded
+     *
+     * @method _onLoaderInit
+     * @param {jQuery} $panel Panel that wraps static content
+     * @private
+     */
+    PanelState.prototype._onLoaderInit = function($panel) {
+        this.loader = new LoadingContainer($panel[0]);
+        this.loader.addThrobber();
     };
 
     /**

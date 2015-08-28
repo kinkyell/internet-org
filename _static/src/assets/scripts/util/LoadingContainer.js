@@ -6,6 +6,8 @@
 define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
+    var tweenAsync = require('util/tweenAsync');
+
     /**
      * Loading indicator abstraction
      *
@@ -31,6 +33,10 @@ define(function(require, exports, module) { // jshint ignore:line
         } else {
             this.element.appendChild(this.throbber);
         }
+
+        return tweenAsync.from(this.throbber, 0.3, {
+            opacity: 0
+        });
     };
 
     /**
@@ -40,9 +46,16 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     LoadingContainer.prototype.removeThrobber = function() {
-        if (this.throbber.parentNode === this.element) {
-            this.element.removeChild(this.throbber);
+        if (this.throbber.parentNode !== this.element) {
+            return Promise.resolve();
         }
+        return tweenAsync.to(this.throbber, 0.3, {
+            opacity: 0,
+            onComplete: function() {
+                this.element.removeChild(this.throbber);
+            },
+            callbackScope: this
+        });
     };
 
     return LoadingContainer;
