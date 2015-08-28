@@ -13,6 +13,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var AnimationQueue = require('util/AnimationQueue');
 
     var parseUrl = require('stark/string/parseUrl');
+    var log = require('util/log');
 
     // speed of shift and feature transitions
     var TRANSITION_SPEED = require('appConfig').animationSpeeds.PANEL_SHIFT;
@@ -73,10 +74,12 @@ define(function(require, exports, module) { // jshint ignore:line
     ViewWindow.prototype.replaceFeatureImage = function(imagePath, direction) {
         return this._featureQueue.queue(function() {
 
-
             var $panel;
 
-            if (this._featureImage === imagePath) {
+            if (this._featureImage === imagePath || !imagePath) {
+                if (!imagePath) {
+                    log('ViewWindow: [warning] image path is undefined!');
+                }
                 return Promise.resolve(this.$feature.children());
             }
 
