@@ -92,7 +92,7 @@ $home_background_image_url = '';
 											<span class="bdcpy bdcpy_narrative mix-bdcpy_splash"><?php the_title(); ?></span>
 										</div>
 										<div class="transformBlock-pre-item">
-											<span class="bdcpy bdcpy_narrative mix-bdcpy_splash"><?php echo esc_html( ! empty( $get_involved_content_widget ) ? $get_involved_content_widget->post_title : '' ); ?></span>
+											<span class="bdcpy bdcpy_narrative mix-bdcpy_splash"><?php echo esc_html( ! empty( $get_involved_content_widget_post ) ? $get_involved_content_widget_post->post_title : '' ); ?></span>
 										</div>
 									</div>
 									<div class="transformBlock-stmnt">
