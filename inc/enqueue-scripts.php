@@ -19,7 +19,13 @@ function internetorg_enqueue_scripts() {
 
 	wp_enqueue_style( 'internetorg-style', get_stylesheet_uri() );
 
-	/** @var string $domain_name The domain name of the current website for use with basis font @link http://fontdeck.com/support/tutorial */
+	/**
+	 * The domain name of the current website for use with basis font.
+	 *
+	 * @link http://fontdeck.com/support/tutorial
+	 *
+	 * @var string $domain_name
+	 */
 	$domain_name = parse_url( get_home_url(), PHP_URL_HOST );
 
 	wp_enqueue_style(

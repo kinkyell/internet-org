@@ -1,6 +1,6 @@
 <?php
 /**
- * Used for when there are no results
+ * Used for when there are no results.
  *
  * @package Internet.org
  * @author  arichard <arichard@nerdery.com>

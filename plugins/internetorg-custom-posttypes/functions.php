@@ -1,14 +1,14 @@
 <?php
 /**
- * This file contains misc. functions for the plugin
+ * This file contains misc. functions for the plugin.
  *
  * @package IOrgCustomPosttypes
- * @author arichard <arichard@nerdery.com>
+ * @author  arichard <arichard@nerdery.com>
  */
 
 if ( ! function_exists( 'init_internetorg_custom_posttypes_callback' ) ) :
 	/**
-	 * Plugin initialization callback function
+	 * Plugin initialization callback function.
 	 *
 	 * @return void
 	 */
@@ -20,9 +20,9 @@ endif;
 
 if ( ! function_exists( 'internetorg_get_content_widget_by_slug' ) ) :
 	/**
-	 * Look up a content widget with the given slug
+	 * Look up a content widget with the given slug.
 	 *
-	 * if data is returned it's in the following format:
+	 * If data is returned it's in the following format:
 	 *
 	 * array(
 	 *     'post' => WP_Post,
@@ -39,26 +39,27 @@ if ( ! function_exists( 'internetorg_get_content_widget_by_slug' ) ) :
 	 *      ],
 	 * )
 	 *
-	 * @param string $slug slug of the widget to lookup
-	 * @return mixed array widget data or false if not found
+	 * @param string $slug Slug of the widget to lookup.
+	 *
+	 * @return bool|array Widget data, else false if not found.
 	 */
 	function internetorg_get_content_widget_by_slug( $slug ) {
-		$cache_key = sanitize_key( $slug );
+		$cache_key   = sanitize_key( $slug );
 		$cache_group = 'internetorg_cntntwdgt';
 
 		$is_cached = false;
-		$widget = wp_cache_get( $cache_key, $cache_group, false, $is_cached );
+		$widget    = wp_cache_get( $cache_key, $cache_group, false, $is_cached );
 
 		if ( ! $is_cached ) {
 
 			$args = array(
-				'name' => $slug,
-				'post_type' => 'io_ctntwdgt',
-				'post_status' => 'publish',
+				'name'           => $slug,
+				'post_type'      => 'io_ctntwdgt',
+				'post_status'    => 'publish',
 				'posts_per_page' => 1,
 			);
 
-			$widget = false;
+			$widget  = false;
 			$wdgtqry = new WP_Query( $args );
 
 			while ( $wdgtqry->have_posts() ) : $wdgtqry->the_post();
@@ -92,7 +93,7 @@ if ( ! function_exists( 'internetorg_get_content_widget_by_slug' ) ) :
 				break;
 			endwhile;
 
-			// cache the results for one day
+			// Cache the results for one day.
 			wp_cache_set( $cache_key, $widget, $cache_group, 86400 );
 
 			wp_reset_postdata();

@@ -1,15 +1,19 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: raber
- * Date: 8/26/15
- * Time: 2:42 PM
+ * Content page feature blocks template part.
  *
- * PHPCS complains about escaping at line 27, however, we are following the suggestion from Tom Nowell at
- * @link http://tomjn.com/2015/05/07/escaping-the-unsecure/
+ * PHPCS complains about escaping at line 27, however, we are following the suggestion from Tom Nowell at...
+ *
+ * @link    http://tomjn.com/2015/05/07/escaping-the-unsecure/
+ *
+ * @package Internet.org
  */
 
-/** @var array $section_meta An array of post meta with the home-content-section meta_key */
+/**
+ * An array of post meta with the home-content-section meta_key.
+ *
+ * @var array $section_meta
+ */
 $section_meta = get_post_meta( get_the_ID(), 'home-content-section', true );
 
 if ( empty( $section_meta ) ) {

@@ -1,10 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: raber
- * Date: 8/26/15
- * Time: 2:33 PM
+ * Content Page Intro Block template part.
+ *
+ * @package Internet.org
  */
+
 ?>
 
 <div class="introBlock">

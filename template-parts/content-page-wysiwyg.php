@@ -1,9 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: raber
- * Date: 8/26/15
- * Time: 3:15 PM
+ * Content Page Wysiwyg template part.
+ *
+ * @package Internet.org
  */
 
 $the_content = get_the_content();

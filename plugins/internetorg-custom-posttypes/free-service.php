@@ -1,26 +1,27 @@
 <?php
 /**
- * This is a "FreeService" post type
+ * This is a "FreeService" post type.
  *
  * @package internetorg
- * @author arichard <arichard@nerdery.com>
+ * @author  arichard <arichard@nerdery.com>
  */
 
 /**
  * Class Internetorg_FreeService_PostType
  *
  * @package internetorg
- * @author arichard <arichard@nerdery.com>
+ * @author  arichard <arichard@nerdery.com>
  */
-class Internetorg_FreeService_PostType extends Internetorg_PostType
-{
+class Internetorg_FreeService_PostType extends Internetorg_PostType {
 	/**
-	 * @var bool true show this type in the menu
+	 * Show this type in the menu.
+	 *
+	 * @var bool $showInNavMenu
 	 */
 	protected $showInNavMenu = true;
 
 	/**
-	 * constructor
+	 * Constructor.
 	 */
 	public function __construct() {
 		Internetorg_PostType::__construct(

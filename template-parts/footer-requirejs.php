@@ -1,11 +1,14 @@
 <?php
 /**
- * Print the Requirejs bootstrap markup before closing body tag.
+ * Footer RequireJs template part.
  *
+ * Print the Requirejs bootstrap markup before closing body tag.
  * WPCOM_IS_VIP_ENV constant used to determine if we are on production or not for FED build.
  * Adapted from VIP documentation regarding loading plugins, same concept applies.
  *
- * @see https://vip.wordpress.com/documentation/quickstart/#loading-plugins
+ * @see     https://vip.wordpress.com/documentation/quickstart/#loading-plugins
+ *
+ * @package Internet.org
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

@@ -22,7 +22,12 @@ $home_background_image_url = '';
 	// Pull the custom fields and parse for placement.
 	$custom_fields                     = get_post_meta( get_the_ID(), 'home-content-section', false );
 	$get_involved_content_widget       = internetorg_get_content_widget_by_slug( 'home-get-involved' );
-	/** @var WP_Post $get_involved_content_widget_post */
+
+	/**
+	 * An array of io_ctntwdgt Posts and associated meta, else null.
+	 *
+	 * @var null|WP_Post $get_involved_content_widget_post
+	 */
 	$get_involved_content_widget_post  = null;
 	$get_involved_content_widget_image = null;
 

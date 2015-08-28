@@ -9,9 +9,7 @@
 
 ?>
 
-	<?php /*
-	<div><?php echo vip_powered_wpcom(); ?></div>
-    */ ?>
+	<?php /* <div><?php echo vip_powered_wpcom(); ?></div> */ ?>
 
 	<?php wp_footer(); /* required */ ?>
 

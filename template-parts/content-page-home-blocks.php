@@ -1,9 +1,9 @@
 <?php
 /**
- * The template used for displaying content blocks on the home page
+ * The template used for displaying content blocks on the home page.
  *
  * @package Internet.org
- * @author arichard <arichard@nerdery.com>
+ * @author  arichard <arichard@nerdery.com>
  */
 
 $custom_fields = get_post_meta( get_the_ID(), 'home-content-section', false );

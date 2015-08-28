@@ -1,10 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: raber
- * Date: 8/14/15
- * Time: 5:21 PM
+ * Header Icons template part.
+ *
+ * @package Internet.org
  */
+
 ?>
 
 <!-- ICONS -->

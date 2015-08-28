@@ -11,10 +11,10 @@ require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
 wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
 
-/** Custom Post Types */
+/** Custom Post Types. */
 require IO_DIR . '/plugins/internetorg-custom-posttypes/internetorg-custom-posttypes.php';
 
-/** Fieldmanager and Fields */
+/** Fieldmanager and Fields. */
 wpcom_vip_load_plugin( 'fieldmanager' );
 require IO_DIR . '/plugins/internetorg-custom-fields/internetorg-custom-fields.php';
 
@@ -31,7 +31,7 @@ if ( ! function_exists( 'internetorg_setup' ) ) :
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
 		 * If you're building a theme based on Internet.org, use a find and replace
-		 * to change 'internetorg' to the name of your theme in all the template files
+		 * to change 'internetorg' to the name of your theme in all the template files.
 		 */
 		load_theme_textdomain( 'internetorg', get_template_directory() . '/languages' );
 
@@ -62,8 +62,7 @@ if ( ! function_exists( 'internetorg_setup' ) ) :
 		);
 
 		/*
-		 * Switch default core markup for search form, comment form, and comments
-		 * to output valid HTML5.
+		 * Switch default core markup for search form, comment form, and comments to output valid HTML5.
 		 */
 		add_theme_support(
 			'html5',
@@ -78,7 +77,7 @@ if ( ! function_exists( 'internetorg_setup' ) ) :
 
 		/*
 		 * Enable support for Post Formats.
-		 * See http://codex.wordpress.org/Post_Formats
+		 * @link http://codex.wordpress.org/Post_Formats
 		 */
 		add_theme_support(
 			'post-formats',
@@ -119,27 +118,6 @@ function internetorg_content_width() {
 }
 
 add_action( 'after_setup_theme', 'internetorg_content_width', 0 );
-
-/**
- * Register widget area.
- *
- * @link http://codex.wordpress.org/Function_Reference/register_sidebar
- */
-function internetorg_widgets_init() {
-	register_sidebar(
-		array(
-			'name'          => esc_html__( 'Sidebar', 'internetorg' ),
-			'id'            => 'sidebar-1',
-			'description'   => '',
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</aside>',
-			'before_title'  => '<h1 class="widget-title">',
-			'after_title'   => '</h1>',
-		)
-	);
-}
-
-add_action( 'widgets_init', 'internetorg_widgets_init' );
 
 if ( ! function_exists( 'internetorg_extend_search_post_type_range' ) ) :
 	/**
@@ -212,7 +190,11 @@ if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 	 */
 	function internetorg_get_free_services() {
 
-		/** @var array|bool $services An array of cached io_freesvc data, else false on failure. */
+		/**
+		 * An array of cached io_freesvc data, else false on failure.
+		 *
+		 * @var array|bool $services
+		 */
 		$services = wp_cache_get( 'internetorg_free_services_list' );
 
 		// Return early if the cached data was successfully returned.
@@ -220,16 +202,28 @@ if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 			return $services;
 		}
 
-		/** @var array $args An array of arguments for a new WP_Query. */
+		/**
+		 * An array of arguments for a new WP_Query.
+		 *
+		 * @var array $args
+		 */
 		$args = array(
 			'post_type'   => 'io_freesvc',
 			'post_status' => 'publish',
 		);
 
-		/** @var array $services An array to hold io_freesvc data. */
+		/**
+		 * An array to hold io_freesvc data.
+		 *
+		 * @var array $services
+		 */
 		$services = array();
 
-		/** @var WP_Query $svcqry A WP_Query to retrieve io_freesvc post objects. */
+		/**
+		 * A WP_Query to retrieve io_freesvc post objects.
+		 *
+		 * @var WP_Query $svcqry
+		 */
 		$svcqry = new WP_Query( $args );
 
 		/** Build array of services so we are not passing around a query object. */
@@ -239,7 +233,11 @@ if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 			$svcqry->the_post();
 
 			if ( ! has_post_thumbnail( $svcqry->post->ID ) ) {
-				/** @var string $image_url URL to a featured image or default image file. */
+				/**
+				 * URL to a featured image or default image file.
+				 *
+				 * @var string $image_url
+				 */
 				$image_url = get_stylesheet_directory_uri()
 				             . '/_static/web/assets/media/images/icons/png/icon-services-dictionary.png';
 			} else {
@@ -337,14 +335,22 @@ function internetorg_get_the_intro_block( $post_id = 0, $key = '' ) {
 		return '';
 	}
 
-	/** @var array $intro_meta An array of the unserialized data of the page_intro_block custom field meta */
+	/**
+	 * An array of the unserialized data of the page_intro_block custom field meta
+	 *
+	 * @var array $intro_meta
+	 */
 	$intro_meta = get_post_meta( $post_id, 'page_intro_block', true );
 
 	if ( empty( $intro_meta ) ) {
 		return '';
 	}
 
-	/** @var array $allowed_keys The keys that we are allowed to retrieve specifically from the $intro_meta array */
+	/**
+	 * The keys that we are allowed to retrieve specifically from the $intro_meta array.
+	 *
+	 * @var array $allowed_keys
+	 */
 	$allowed_keys = array(
 		'intro_title',
 		'intro_content',
@@ -710,14 +716,22 @@ function internetorg_is_internal_url( $url ) {
 		return true;
 	}
 
-	/** @var array $link_parsed Associative array of URL components returned by parse_url for the provided url. */
+	/**
+	 * Associative array of URL components returned by parse_url for the provided url.
+	 *
+	 * @var array $link_parsed
+	 */
 	$link_parsed = parse_url( $url );
 
 	if ( empty( $link_parsed['host'] ) ) {
 		return false;
 	}
 
-	/** @var array $home_parsed Associative array of URL components returned by parse_url for the home_url. */
+	/**
+	 * Associative array of URL components returned by parse_url for the home_url.
+	 *
+	 * @var array $home_parsed
+	 */
 	$home_parsed = parse_url( home_url() );
 
 	// Hostname match.
@@ -725,10 +739,18 @@ function internetorg_is_internal_url( $url ) {
 		return true;
 	}
 
-	/** @var string $link_parsed_host remove www. for comparison. */
+	/**
+	 * Remove www. for comparison.
+	 *
+	 *  @var string $link_parsed_host
+	 */
 	$link_parsed_host = str_ireplace( 'www.', '', $link_parsed['host'] );
 
-	/** @var string $home_parsed_host remove www. for comparison. */
+	/**
+	 * Remove www. for comparison.
+	 *
+	 * @var string $home_parsed_host
+	 */
 	$home_parsed_host = str_ireplace( 'www.', '', $home_parsed['host'] );
 
 	if ( strtolower( $link_parsed_host ) === strtolower( $home_parsed_host ) ) {
@@ -754,7 +776,11 @@ function internetorg_get_media_image_url( $attachment_id = 0, $size = 'single-po
 		return '';
 	}
 
-	/** @var bool|array $image_src An array of image data, else false on failure */
+	/**
+	 * An array of image data, else false on failure.
+	 *
+	 * @var bool|array $image_src
+	 */
 	$image_src = wp_get_attachment_image_src( $attachment_id, $size );
 
 	if ( empty( $image_src ) ) {
@@ -820,7 +846,11 @@ add_filter( 'query_vars', 'internetorg_add_ajax_query_vars' );
  */
 function internetorg_do_ajax_search() {
 
-	/** @var string $ajax_search_term The search term query var. */
+	/**
+	 * The search term query var.
+	 *
+	 * @var string $ajax_search_term
+	 */
 	$ajax_search_term = get_query_var( 'ajax_search_term' );
 
 	// No ajax search term, return early and let template_redirect run it's course.
@@ -830,27 +860,43 @@ function internetorg_do_ajax_search() {
 
 	$ajax_search_term = sanitize_text_field( urldecode( $ajax_search_term ) );
 
-	/** @var int $ajax_search_paged Pagination query var if present else 0. */
+	/**
+	 * Pagination query var if present else 0.
+	 *
+	 * @var int $ajax_search_paged
+	 */
 	$ajax_search_paged = absint( get_query_var( 'paged' ) );
 
 	if ( empty( $ajax_search_paged ) ) {
 		$ajax_search_paged = 1;
 	}
 
-	/** @var array $args An array of WP_Query args. */
+	/**
+	 * An array of WP_Query args.
+	 *
+	 * @var array $args
+	 */
 	$args = array(
 		's'     => $ajax_search_term,
 		'paged' => $ajax_search_paged,
 	);
 
-	/** @var \WP_Query $query A WP_Query for the specified "page" of search results. */
+	/**
+	 * A WP_Query for the specified "page" of search results.
+	 *
+	 * @var \WP_Query $query
+	 */
 	$query = new WP_Query( $args );
 
 	if ( is_wp_error( $query ) || ! $query->have_posts() ) {
 		wp_send_json_error( array() );
 	}
 
-	/** @var array $data Return data array for wp_send_json_success. */
+	/**
+	 * Return data array for wp_send_json_success.
+	 *
+	 * @var array $data
+	 */
 	$data = array(
 		'found_posts'   => absint( $query->found_posts ),
 		'paged'         => absint( $query->get( 'paged' ) ),
@@ -861,7 +907,11 @@ function internetorg_do_ajax_search() {
 	while ( $query->have_posts() ) {
 		$query->the_post();
 
-		/** @var string $post_thumbnail URL of the post thumbnail or an empty string. */
+		/**
+		 * URL of the post thumbnail or an empty string.
+		 *
+		 * @var string $post_thumbnail
+		 */
 		$post_thumbnail = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), array( 210, 260 ) );
 
 		$data['posts'][] = array(
@@ -889,7 +939,11 @@ add_action( 'template_redirect', 'internetorg_do_ajax_search' );
  */
 function internetorg_do_ajax_more_posts() {
 
-	/** @var string $ajax_post_type The post type query var. */
+	/**
+	 * The post type query var.
+	 *
+	 * @var string $ajax_post_type
+	 */
 	$ajax_post_type = get_query_var( 'ajax_post_type' );
 
 	// No ajax post type, return early and let template_redirect run it's course.
@@ -899,38 +953,58 @@ function internetorg_do_ajax_more_posts() {
 
 	$ajax_post_type = sanitize_title_for_query( urldecode( $ajax_post_type ) );
 
-	if ( 'press' == $ajax_post_type ) {
+	if ( 'press' === $ajax_post_type ) {
 		$ajax_post_type = 'post';
 	}
 
-	/** @var array $allowed_post_types A whitelist array of public post types to compare against. */
+	/**
+	 * A whitelist array of public post types to compare against.
+	 *
+	 * @var array $allowed_post_types
+	 */
 	$allowed_post_types = get_post_types( array( 'public' => true ), 'names' );
 
 	if ( ! in_array( $ajax_post_type, $allowed_post_types ) ) {
 		wp_send_json_error( array() );
 	}
 
-	/** @var int $ajax_paged Pagination query var if present else 0. */
+	/**
+	 * Pagination query var if present else 0.
+	 *
+	 * @var int $ajax_paged
+	 */
 	$ajax_paged = absint( get_query_var( 'paged' ) );
 
 	if ( empty( $ajax_paged ) ) {
 		$ajax_paged = 1;
 	}
 
-	/** @var array $args An array of WP_Query args. */
+	/**
+	 * An array of WP_Query args.
+	 *
+	 * @var array $args
+	 */
 	$args = array(
 		'post_type' => $ajax_post_type,
 		'paged'     => $ajax_paged,
 	);
 
-	/** @var \WP_Query $query A WP_Query for the specified "page" of post type archive results. */
+	/**
+	 * A WP_Query for the specified "page" of post type archive results.
+	 *
+	 * @var \WP_Query $query
+	 */
 	$query = new WP_Query( $args );
 
 	if ( is_wp_error( $query ) || ! $query->have_posts() ) {
 		wp_send_json_error( array() );
 	}
 
-	/** @var array $data Return data array for wp_send_json_success. */
+	/**
+	 * Return data array for wp_send_json_success.
+	 *
+	 * @var array $data
+	 */
 	$data = array(
 		'found_posts'   => absint( $query->found_posts ),
 		'paged'         => absint( $query->get( 'paged' ) ),
@@ -941,7 +1015,11 @@ function internetorg_do_ajax_more_posts() {
 	while ( $query->have_posts() ) {
 		$query->the_post();
 
-		/** @var string $post_thumbnail URL of the post thumbnail or an empty string. */
+		/**
+		 * URL of the post thumbnail or an empty string.
+		 *
+		 * @var string $post_thumbnail
+		 */
 		$post_thumbnail = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), array( 210, 260 ) );
 
 		$data['posts'][] = array(
@@ -1039,14 +1117,22 @@ function internetorg_get_mobile_featured_image( $post_type, $post_id ) {
  */
 function internetorg_get_page_theme( $post_id = 0 ) {
 
-	/** @var array $allowed_themes An array of possible "page themes". */
+	/**
+	 * An array of possible "page themes".
+	 *
+	 * @var array $allowed_themes
+	 */
 	$allowed_themes = array(
 		'Approach',
 		'Mission',
 		'Impact',
 	);
 
-	/** @var string $default_theme A default page theme if one cannot be determined. */
+	/**
+	 * A default page theme if one cannot be determined.
+	 *
+	 * @var string $default_theme
+	 */
 	$default_theme = $allowed_themes[0];
 
 	$post_id = absint( $post_id );
@@ -1059,7 +1145,11 @@ function internetorg_get_page_theme( $post_id = 0 ) {
 		return $default_theme;
 	}
 
-	/** @var string|bool $page_template_slug The name of the page template, else empty string or false. */
+	/**
+	 * The name of the page template, else empty string or false.
+	 *
+	 * @var string|bool $page_template_slug
+	 */
 	$page_template_slug = get_page_template_slug( $post_id );
 
 	if ( empty( $page_template_slug ) ) {
@@ -1068,13 +1158,25 @@ function internetorg_get_page_theme( $post_id = 0 ) {
 
 	$page_template_slug = str_ireplace( '.php', '', $page_template_slug );
 
-	/** @var array $slug_array Array of strings from exploded $page_template_slug. */
+	/**
+	 * Array of strings from exploded $page_template_slug.
+	 *
+	 * @var array $slug_array
+	 */
 	$slug_array = explode( '-', $page_template_slug );
 
-	/** @var string $slug The last element of the $slug_array. */
+	/**
+	 * The last element of the $slug_array.
+	 *
+	 * @var string $slug
+	 */
 	$slug = end( $slug_array );
 
-	/** @var string $theme Uppercased version of slug. */
+	/**
+	 * Uppercased version of slug.
+	 *
+	 * @var string $theme
+	 */
 	$theme = ucwords( $slug );
 
 	if ( ! in_array( $theme, $allowed_themes ) ) {

@@ -1,71 +1,77 @@
 <?php
 /**
- * This is where I'm keeping the Abstract PostType class
+ * This is where I'm keeping the Abstract PostType class.
  *
  * @package internetorg
- * @author arichard <arichard@nerdery.com>
+ * @author  arichard <arichard@nerdery.com>
  */
 
 /**
  * Class Internetorg_PostType (Abstract)
  *
  * @package internetorg
- * @author arichard <arichard@nerdery.com>
+ * @author  arichard <arichard@nerdery.com>
  */
-abstract class Internetorg_PostType
-{
+abstract class Internetorg_PostType {
 	/**
-	 * @var string $postType holds the CPT name
+	 * Holds the CPT name.
+	 *
+	 * @var string $postType
 	 */
 	protected $postType;
 
 	/**
-	 * @var bool $showInNavMenu determine if the CPT will appear in the menu
+	 * Determine if the CPT will appear in the menu.
+	 *
+	 * @var bool $showInNavMenu
 	 */
 	protected $showInNavMenu = false;
 
 	/**
-	 * @var array $registrationData the configuration of the CPT
+	 * The configuration of the CPT.
+	 *
+	 * @var array $registrationData
 	 */
 	protected $registrationData;
 
 	/**
-	 * constructor
-	 *
+	 * Constructor.
 	 */
 	public function __construct() {
 		$this->registrationData = func_get_args();
-		$this->postType = $this->registrationData[0];
+		$this->postType         = $this->registrationData[0];
 	}
 
 	/**
-	 * registers the CPT
+	 * Registers the CPT.
 	 *
 	 * @return void
 	 */
 	public function register() {
-		// This is an alternative way of adding custom meta if you don't use
-		// the fieldmananger plugin
+		// This is an alternative way of adding custom meta if you don't use the fieldmananger plugin.
 		$this->registrationData[1]['show_in_nav_menus'] = $this->showInNavMenu;
 		call_user_func_array( 'register_post_type', $this->registrationData );
 
-		// add the custom meta fields if this CPT needs them
+		// Add the custom meta fields if this CPT needs them.
 		$this->add_meta_boxes();
 	}
 
 	/**
-	 * Add custom fields to this CPT
+	 * Add custom fields to this CPT.
 	 *
 	 * @return void
 	 */
-	public function add_meta_boxes() {}
+	public function add_meta_boxes() {
+	}
 
 	/**
-	 * save the custom meta field for this custom post type
+	 * Save the custom meta field for this custom post type.
 	 *
-	 * @param int $postId the post related to this meta being saved
-	 * @param array $data form data to be saved
+	 * @param int   $postId ID of the post related to this meta being saved.
+	 * @param array $data   Form data to be saved.
+	 *
 	 * @return void
 	 */
-	public function save_meta_data( $postId, $data ) {}
+	public function save_meta_data( $postId, $data ) {
+	}
 }

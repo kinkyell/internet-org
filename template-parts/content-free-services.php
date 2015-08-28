@@ -1,6 +1,8 @@
 <?php
 /**
- * This will display a list of free services, by default all are displayed
+ * Content free services template part.
+ *
+ * This will display a list of free services, by default all are displayed.
  *
  * @package Internet.org
  * @author  arichard <arichard@nerdery.com>

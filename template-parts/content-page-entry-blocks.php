@@ -1,6 +1,6 @@
 <?php
 /**
- * The template used for displaying content blocks on the home page
+ * The template used for displaying content blocks on the home page.
  *
  * @package Internet.org
  * @author  arichard <arichard@nerdery.com>

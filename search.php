@@ -42,7 +42,7 @@ get_header(); ?>
 								<div class="resultsList-hd">
 
 									<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray">
-										<?php printf( esc_html__( '%d Results Found', 'internetorg' ), $wp_query->found_posts ); ?>
+										<?php esc_html__( printf( '%d Results Found', $wp_query->found_posts ), 'internetorg' ); ?>
 									</div>
 
 								</div>

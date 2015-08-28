@@ -3,8 +3,9 @@
  * This is the temp/placeholder panel
  *
  * @package Internet.org
- * @author arichard <arichard@nerdery.com>
+ * @author  arichard <arichard@nerdery.com>
  */
+
 ?>
 
 <div id="homePanel" class="viewWindow-panel">

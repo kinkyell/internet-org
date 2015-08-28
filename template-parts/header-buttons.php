@@ -1,9 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: raber
- * Date: 8/14/15
- * Time: 4:26 PM
+ * Header Buttons template part.
+ *
+ * @package Internet.org
  */
 
 ?>

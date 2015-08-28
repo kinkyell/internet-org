@@ -1,26 +1,27 @@
 <?php
 /**
- * This is a "Story" post type
+ * This is a "Story" post type.
  *
  * @package internetorg
- * @author arichard <arichard@nerdery.com>
+ * @author  arichard <arichard@nerdery.com>
  */
 
 /**
  * Class Internetorg_Story_PostType
  *
  * @package internetorg
- * @author arichard <arichard@nerdery.com>
+ * @author  arichard <arichard@nerdery.com>
  */
-class Internetorg_Story_PostType extends Internetorg_PostType
-{
+class Internetorg_Story_PostType extends Internetorg_PostType {
 	/**
-	 * @var bool true show this type in the menu
+	 * Show this type in the menu.
+	 *
+	 * @var bool $showInNavMenu
 	 */
 	protected $showInNavMenu = true;
 
 	/**
-	 * constructor
+	 * Constructor.
 	 */
 	public function __construct() {
 		Internetorg_PostType::__construct(
@@ -55,4 +56,3 @@ class Internetorg_Story_PostType extends Internetorg_PostType
 		);
 	}
 }
-

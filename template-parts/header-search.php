@@ -1,10 +1,12 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: raber
- * Date: 8/14/15
- * Time: 4:32 PM
+ * Header Search template part.
+ *
+ * Search form in the header is different than the serachform.php version, use this one for header.
+ *
+ * @package Internet.org
  */
+
 ?>
 
 <form class="searchBox js-searchView js-searchFormView" role="search">

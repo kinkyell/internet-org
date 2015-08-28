@@ -1,9 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: raber
- * Date: 8/25/15
- * Time: 3:51 PM
+ * Content Feature Panel template part.
+ *
+ * @package Internet.org
  */
 
 $id = get_the_ID();

@@ -1,14 +1,18 @@
 <?php
 /**
- * This template part displays the next page footer block if
+ * Content Page Next Page template part.
  *
- * @see     meta_key=next_page (on the page post type)
+ * This template part displays the next page footer block if meta_key=next_page (on the page post type).
  *
  * @package Internet.org
  * @author  arichard <arichard@nerdery.com>
  */
 
-/** @var int $next_page Post ID stored in the "next_page" meta field */
+/**
+ * Post ID stored in the "next_page" meta field.
+ *
+ * @var int $next_page
+ */
 $next_page_id = absint( get_post_meta( get_the_ID(), 'next_page', true ) );
 
 if ( empty( $next_page_id ) ) {

@@ -1,9 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: raber
- * Date: 8/24/15
- * Time: 12:36 PM
+ * Searchform theme template file.
+ *
+ * @link    https://codex.wordpress.org/Function_Reference/get_search_form
+ *
+ * @package Internet.org
  */
 
 ?>

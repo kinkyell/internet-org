@@ -1,9 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: raber
- * Date: 8/14/15
- * Time: 4:23 PM
+ * Header Logo template part.
+ *
+ * @package Internet.org
  */
 
 ?>

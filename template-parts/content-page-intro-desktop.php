@@ -1,9 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: raber
- * Date: 8/26/15
- * Time: 2:37 PM
+ * Content Page Intro Desktop template part.
+ *
+ * @package Internet.org
  */
 
 $intro_block = internetorg_get_the_intro_block();
