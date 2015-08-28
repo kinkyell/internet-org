@@ -14,33 +14,7 @@ define(function(require, exports, module) { // jshint ignore:line
         PROGRESS_HIDDEN: 'narrative-progress_isHidden'
     };
 
-    var SECTIONS_CONF = [
-        {
-            label: 'section00',
-            featureImage: '',
-            subSections: []
-        },
-        {
-            label: 'section01',
-            featureImage: '',
-            subSections: []
-        },
-        {
-            label: 'section02',
-            featureImage: '',
-            subSections: []
-        },
-        {
-            label: 'section03',
-            featureImage: '',
-            subSections: []
-        },
-        {
-            label: 'section04',
-            featureImage: '',
-            subSections: []
-        }
-    ];
+    var SECTIONS_CONF = [];
 
     /**
      * A view for transitioning display panels
@@ -428,7 +402,9 @@ define(function(require, exports, module) { // jshint ignore:line
         var i = 0;
         var l = $sections.length;
         for (; i < l; i++) {
-            var confItem = SECTIONS_CONF[i];
+            var confItem = {};
+            confItem.label = 'section0' + i;
+            confItem.subSections = [];
             var $structureSection = $sections.eq(i);
             var featureImage = $structureSection.data('feature');
             var $subSections = $structureSection.find('> ul > li');
@@ -451,6 +427,8 @@ define(function(require, exports, module) { // jshint ignore:line
             }
 
             confItem.featureImage = featureImage;
+
+            SECTIONS_CONF.push(confItem);
         }
     };
 
