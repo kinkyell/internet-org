@@ -1,36 +1,44 @@
 <?php
-/*
-Plugin Name: Internet.org Custom Fields
-Description: Creates custom fields for the Internet.org website
-Version:     1.0
-Author:      The Nerdery
-Author URI:  https://nerdery.com/
-License:     GPL v2 or later
-*/
+/**
+ * Internet.org Custom Fields file.
+ *
+ * @since             1.0.0
+ * @package           Internet.org
+ *
+ * @wordpress-plugin
+ * Plugin Name:       Internet.org Custom Fields
+ * Description:       Creates custom fields for the Internet.org website
+ * Version:           1.0.0
+ * Author:            The Nerdery
+ * Author URI:        https://nerdery.com/
+ * License:           GPL v2 or later
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ */
 
 if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 	/**
-	 * Initializes the custom fields using "Field Manager" from Alley
+	 * Initializes the custom fields using the "Fieldmanager" plugin from Alley Interactive.
 	 *
-	 * Basic field creation
+	 * Basic field creation.
 	 *
-	 * @see http://fieldmanager.org/docs/contexts/post-context/
+	 * @link http://fieldmanager.org/docs/contexts/post-context/
 	 *
-	 * List of field types
-	 * @see http://fieldmanager.org/docs/fields/
+	 * List of field types.
+	 * @link http://fieldmanager.org/docs/fields/
 	 *
-	 * Fields being activated
-	 * @see internetorg_create_fields_internetorg_page_home
-	 * @see internetorg_page_home_after_title_fields
-	 * @see internetorg_create_after_title_fields_internetorg_page_home
+	 * Fields being activated.
+	 * @see  internetorg_create_fields_internetorg_page_home
+	 * @see  internetorg_page_home_after_title_fields
+	 * @see  internetorg_create_after_title_fields_internetorg_page_home
 	 *
 	 * @return void
 	 */
 	function internetorg_custom_fields_init() {
-		// The desire is have these fields only on the home page but we cannot
-		// limit these custom fields to a specific page upon page creation, we
-		// can, however, limit on display with a custom page template for those
-		// pages on which we wish to display the content
+		/*
+		 * The desire is have these fields only on the home page but we cannot limit these custom fields to a specific
+		 * page upon page creation, we can, however, limit on display with a custom page template for those pages
+		 * on which we wish to display the content.
+		 */
 		add_action( 'fm_post_page', 'internetorg_create_fields_internetorg_page_home' );
 		add_action( 'edit_form_after_title', 'internetorg_page_home_after_title_fields' );
 		add_action( 'fm_post_page', 'internetorg_create_after_title_fields_internetorg_page_home' );
@@ -43,7 +51,7 @@ add_action( 'init', 'internetorg_custom_fields_init' );
 
 if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 	/**
-	 * Create the custom fields for the Homepage
+	 * Create the custom fields for the Homepage.
 	 *
 	 * @return void
 	 */
@@ -59,7 +67,7 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 							'post_type' => 'page',
 						),
 					)
-				)
+				),
 			)
 		);
 
@@ -105,42 +113,34 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 
 if ( ! function_exists( 'internetorg_page_home_after_title_fields' ) ) {
 	/**
-	 * Adds fields directly below the title of the post title on the edit scree
+	 * Adds fields directly below the title of the post title on the edit screen.
+	 *
+	 * @global \WP_Post $post          The WP_Post object to which to add a meta box to.
+	 * @global array    $wp_meta_boxes The array of metaboxes.
 	 *
 	 * @return void
 	 */
 	function internetorg_page_home_after_title_fields() {
-		// get the global vars we need to work with
+		// Get the global vars we need to work with.
 		global $post, $wp_meta_boxes;
 
-		// render the FM meta box in 'internetorg_home_after_title' context
+		// Render the FM meta box in 'internetorg_home_after_title' context.
 		do_meta_boxes( get_current_screen(), 'internetorg_page_home_after_title', $post );
 
-		// unset 'internetorg_home_after_title' context from the post's meta boxes
+		// Unset 'internetorg_home_after_title' context from the post's meta boxes.
 		unset( $wp_meta_boxes['post']['internetorg_page_home_after_title'] );
 	}
 }
 
 if ( ! function_exists( 'internetorg_create_after_title_fields_internetorg_page_home' ) ) {
 	/**
-	 * Create custom fields for the "Home" Page that will appear after the title
+	 * Create custom fields for the "Home" Page that will appear after the title.
 	 *
 	 * @see internetorg_page_home_after_title_fields
 	 *
 	 * @return void
 	 */
 	function internetorg_create_after_title_fields_internetorg_page_home() {
-		/*
-		 * This is how to specify a group of items in case you need to add more
-		 * than one field to this location
-		 *
-		 * $fm = new Fieldmanager_Group( array(
-		 * 	'name'     => 'after_title_fm_fields',
-		 * 	'children' => array(
-		 * 		'Subtitle' => new Fieldmanager_TextField( __( 'Subtitle', 'internetorg' ) ),
-		 * 	),
-		 * ) );
-		 */
 
 		$fm = new Fieldmanager_TextArea(
 			array(
@@ -192,7 +192,7 @@ if ( ! function_exists( 'internetorg_create_after_title_fields_internetorg_page_
 }
 
 /**
- * Called when the plugin activates, use to do anything that needs to be done once
+ * Called when the plugin activates, use to do anything that needs to be done once.
  *
  * @return void
  */
