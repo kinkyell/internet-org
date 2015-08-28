@@ -11,6 +11,7 @@
  * Adds custom classes to the array of body classes.
  *
  * @param array $classes Classes for the body element.
+ *
  * @return array
  */
 function internetorg_body_classes( $classes ) {
@@ -21,6 +22,7 @@ function internetorg_body_classes( $classes ) {
 
 	return $classes;
 }
+
 add_filter( 'body_class', 'internetorg_body_classes' );
 
 if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
@@ -28,7 +30,8 @@ if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
 	 * Filters wp_title to print a neat <title> tag based on what is being viewed.
 	 *
 	 * @param string $title Default title text for current view.
-	 * @param string $sep Optional separator.
+	 * @param string $sep   Optional separator.
+	 *
 	 * @return string The filtered title.
 	 */
 	function internetorg_wp_title( $title, $sep ) {
@@ -54,6 +57,7 @@ if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
 
 		return $title;
 	}
+
 	add_filter( 'wp_title', 'internetorg_wp_title', 10, 2 );
 
 	/**
@@ -67,6 +71,7 @@ if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
 		<title><?php wp_title( '|', true, 'right' ); ?></title>
 		<?php
 	}
+
 	add_action( 'wp_head', 'internetorg_render_title' );
 endif;
 
@@ -75,12 +80,14 @@ if ( ! function_exists( 'internetorg_change_excerpt_length' ) ) :
 	/**
 	 * Change the default length of the excerpts to 25 words (from default 55)
 	 *
-	 * @param int $length original length
-	 * @return int new length
+	 * @param int $length Original length.
+	 *
+	 * @return int New length.
 	 */
 	function internetorg_change_excerpt_length( $length ) {
 		return 25;
 	}
+
 	add_action( 'excerpt_length', 'internetorg_change_excerpt_length' );
 endif;
 
@@ -88,33 +95,39 @@ if ( ! function_exists( 'internetorg_change_excerpt_more' ) ) :
 	/**
 	 * Change the default "more" indicator
 	 *
-	 * @param string $more current more indicator
-	 * @return string new more indicator
+	 * @param string $more Current more indicator.
+	 *
+	 * @return string New more indicator.
 	 */
 	function internetorg_change_excerpt_more( $more ) {
 		return '&hellip;';
 	}
+
 	add_action( 'excerpt_more', 'internetorg_change_excerpt_more' );
 endif;
 
 /**
- * Improves the caption shortcode with HTML5 figure & figcaption; microdata & wai-aria attributes
+ * Improves the caption shortcode with HTML5 figure & figcaption; microdata & wai-aria attributes.
  *
- * based off this solution http://joostkiens.com/improving-wp-caption-shortcode/
+ * @link http://joostkiens.com/improving-wp-caption-shortcode/
  *
- * @param  string $val     Empty
- * @param  array  $attr    Shortcode attributes
- * @param  string $content Shortcode content
+ * @param  string $val     The caption output. Default empty.
+ * @param  array  $attr    Attributes of the caption shortcode.
+ * @param  string $content The image element, possibly wrapped in a hyperlink.
+ *
  * @return string          Shortcode output
  */
-function jk_img_caption_shortcode_filter($val, $attr, $content = null)
-{
-	$cleanedAttributes = shortcode_atts( array(
-		'id'      => '',
-		'align'   => 'aligncenter',
-		'width'   => '',
-		'caption' => '',
-	), $attr );
+function internetorg_img_caption_shortcode_filter( $val, $attr, $content = null ) {
+
+	$cleanedAttributes = shortcode_atts(
+		array(
+			'id'      => '',
+			'align'   => 'aligncenter',
+			'width'   => '',
+			'caption' => '',
+		),
+		$attr
+	);
 
 	$id      = $cleanedAttributes['id'];
 	$width   = $cleanedAttributes['width'];
@@ -130,9 +143,13 @@ function jk_img_caption_shortcode_filter($val, $attr, $content = null)
 		$id = esc_attr( $id );
 	}
 
-	// Add itemprop="contentURL" to image - Ugly hack
+	// Add itemprop="contentURL" to image - Ugly hack.
 	$content = str_replace( '<img', '<img itemprop="contentURL"', $content );
 
-	return '<figure id="' . $id . '" aria-describedby="figcaption_' . $id . '" class="wp-caption ' . esc_attr( $align ) . '" itemscope itemtype="http://schema.org/ImageObject" style="width: ' . ( 0 + (int) $width ) . 'px">' . do_shortcode( $content ) . '<figcaption id="figcaption_'. $id . '" class="wp-caption-text" itemprop="description">' . $caption . '</figcaption></figure>';
+	return '<figure id="' . $id . '" aria-describedby="figcaption_' . $id . '" class="wp-caption '
+	       . esc_attr( $align ) . '" itemscope itemtype="http://schema.org/ImageObject" style="width: '
+	       . ( 0 + (int) $width ) . 'px">' . do_shortcode( $content ) . '<figcaption id="figcaption_' . $id
+	       . '" class="wp-caption-text" itemprop="description">' . $caption . '</figcaption></figure>';
 }
-add_filter( 'img_caption_shortcode', 'jk_img_caption_shortcode_filter', 10, 3 );
+
+add_filter( 'img_caption_shortcode', 'internetorg_img_caption_shortcode_filter', 10, 3 );

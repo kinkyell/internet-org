@@ -1,29 +1,28 @@
 <?php
 /**
- * This file is for language related functions
+ * This file is for language related functions.
  *
- * @package
- * @author arichard <arichard@nerdery.com>
+ * @package Internet.org
+ * @author  arichard <arichard@nerdery.com>
  */
 
 if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 	/**
-	 * Builds the language switcher needed for the FE of the site
+	 * Builds the language switcher needed for the FE of the site.
 	 *
 	 * @return void
 	 */
 	function internetorg_language_switcher() {
 
 		if ( ! function_exists( 'bogo_language_switcher_links' ) ) {
-			return '';
+			return;
 		}
 
 		$list = bogo_language_switcher_links();
 
 		$selectedLang = null;
 
-		// display the selector, NOTE: we are not caching here because each user
-		// will need their own selection
+		// Display the selector, NOTE: we are not caching here because each user will need their own selection.
 		echo '<select onchange="document.location.href=this.options[this.selectedIndex].value;">';
 		foreach ( $list as $item ) {
 			if ( ! empty( $item ) ) {
@@ -49,10 +48,11 @@ endif;
 
 if ( ! function_exists( 'internetorg_add_translatable_posttypes' ) ) :
 	/**
-	 * Add our CPTs to the list of translatable post types
+	 * Add our CPTs to the list of translatable post types.
 	 *
-	 * @param array $posttypes current list of translatable post types
-	 * @return array new list of translatable post types
+	 * @param array $posttypes Current list of translatable post types.
+	 *
+	 * @return array New list of translatable post types.
 	 */
 	function internetorg_add_translatable_posttypes( $posttypes ) {
 		if ( ! is_array( $posttypes ) ) {
@@ -69,10 +69,10 @@ if ( ! function_exists( 'internetorg_add_translatable_posttypes' ) ) :
 
 		return array_merge( $posttypes, $cptlist );
 	}
-	// hook on to the filter so our CPTs get listed
+
+	// Hook on to the filter so our CPTs get listed.
 	add_filter( 'bogo_localizable_post_types', 'internetorg_add_translatable_posttypes' );
 endif;
-
 
 
 /**
@@ -101,30 +101,30 @@ function internetorg_is_rtl( $locale = '' ) {
 	 * @var array
 	 */
 	$rtl_languages = array(
-		'ar',      // Arabic / العربية
-		'arc',     // Aramaic
-		'arq',     // Algerian Arabic / الدارجة الجزايرية
-		'azb',     // South Azerbaijani / گؤنئی آذربایجان
-		'az_TR',   // Azerbaijani (Turkey) / Azərbaycan Türkcəsi
-		'bcc',     // Balochi Southern / بلوچی مکرانی
-		'bqi',     // Bakthiari / بختياري
-		'ckb',     // Sorani Kurdish / کوردی
-		'dv',      // Dhivehi
-		'fa',      // Persian / فارسی
-		'fa_IR',   // Persian / فارسی
-		'fa_AF',   // Persian (Afghanistan) / (افغانستان) فارسی
-		'glk',     // Gilaki / گیلکی
-		'ha',      // Hausa / هَوُسَ
-		'haz',     // Hazaragi / هزاره گی
-		'he',      // Hebrew / עִבְרִית
-		'he_IL',   // Hebrew / עִבְרִית
-		'mzn',     // Mazanderani / مازِرونی
-		'pnb',     // Western Punjabi / پنجابی
-		'ps',      // Pashto / پښتو
-		'sd',      // Sindhi / سنڌي
-		'ug',      // Uyghur / ئۇيغۇرچە
-		'ur',      // Urdu / اردو
-		'yi',      // Yiddish / ייִדיש'
+		'ar',      // Arabic / العربية.
+		'arc',     // Aramaic.
+		'arq',     // Algerian Arabic / الدارجة الجزايرية.
+		'azb',     // South Azerbaijani / گؤنئی آذربایجان.
+		'az_TR',   // Azerbaijani (Turkey) / Azərbaycan Türkcəsi.
+		'bcc',     // Balochi Southern / بلوچی مکرانی.
+		'bqi',     // Bakthiari / بختياري.
+		'ckb',     // Sorani Kurdish / کوردی.
+		'dv',      // Dhivehi.
+		'fa',      // Persian / فارسی.
+		'fa_IR',   // Persian / فارسی.
+		'fa_AF',   // Persian (Afghanistan) / (افغانستان) فارسی.
+		'glk',     // Gilaki / گیلکی.
+		'ha',      // Hausa / هَوُسَ.
+		'haz',     // Hazaragi / هزاره گی.
+		'he',      // Hebrew / עִבְרִית.
+		'he_IL',   // Hebrew / עִבְרִית.
+		'mzn',     // Mazanderani / مازِرونی.
+		'pnb',     // Western Punjabi / پنجابی.
+		'ps',      // Pashto / پښتو.
+		'sd',      // Sindhi / سنڌي.
+		'ug',      // Uyghur / ئۇيغۇرچە.
+		'ur',      // Urdu / اردو.
+		'yi',      // Yiddish / ייִדיש'.
 	);
 
 	if ( ! in_array( $locale, $rtl_languages ) ) {

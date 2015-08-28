@@ -9,18 +9,20 @@
 
 if ( ! function_exists( 'internetorg_get_post_publish_time_string' ) ) :
 	/**
-	 * get formatted data/time string for the current post
+	 * Get formatted data/time string for the current post.
 	 *
-	 * @return string formatted time/date post was published
+	 * @return string Formatted time/date post was published.
 	 */
 	function internetorg_get_post_publish_time_string() {
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 
-		$time_string = sprintf( $time_string,
+		$time_string = sprintf(
+			$time_string,
 			esc_attr( get_the_date( 'c' ) ),
 			esc_html( get_the_date() ),
 			esc_attr( get_the_modified_date( 'c' ) ),
-			esc_html( get_the_modified_date() )
+			esc_html( get_the_modified_date()
+			)
 		);
 
 		return $time_string;
@@ -29,11 +31,11 @@ endif;
 
 if ( ! function_exists( 'internetorg_posted_on_date' ) ) :
 	/**
-	 * No frills way to print (translated) the post's publish date
+	 * No frills way to print (translated) the post's publish date.
 	 *
-	 * @see internetorg_get_post_publish_time_string
+	 * @see  internetorg_get_post_publish_time_string
 	 *
-	 * @note this method echos content directly to the screen
+	 * @note This method echos content directly to the screen.
 	 *
 	 * @return void
 	 */
@@ -51,22 +53,32 @@ if ( ! function_exists( 'internetorg_entry_footer' ) ) :
 	function internetorg_entry_footer() {
 		// Hide category and tag text for pages.
 		if ( 'post' == get_post_type() ) {
-			/* translators: used between list items, there is a space after the comma */
+			/* translators: used between list items, there is a space after the comma. */
 			$categories_list = get_the_category_list( esc_html__( ', ', 'internetorg' ) );
 			if ( $categories_list && internetorg_categorized_blog() ) {
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'internetorg' ) . '</span>', esc_html( $categories_list ) ); // WPCS: XSS OK.
+				printf(
+					'<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'internetorg' ) . '</span>',
+					esc_html( $categories_list )
+				); // WPCS: XSS OK.
 			}
 
-			/* translators: used between list items, there is a space after the comma */
+			/* translators: used between list items, there is a space after the comma. */
 			$tags_list = get_the_tag_list( '', esc_html__( ', ', 'internetorg' ) );
 			if ( $tags_list ) {
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'internetorg' ) . '</span>', esc_html( $tags_list ) ); // WPCS: XSS OK.
+				printf(
+					'<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'internetorg' ) . '</span>',
+					esc_html( $tags_list )
+				); // WPCS: XSS OK.
 			}
 		}
 
 		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 			echo '<span class="comments-link">';
-			comments_popup_link( esc_html__( 'Leave a comment', 'internetorg' ), esc_html__( '1 Comment', 'internetorg' ), esc_html__( '% Comments', 'internetorg' ) );
+			comments_popup_link(
+				esc_html__( 'Leave a comment', 'internetorg' ),
+				esc_html__( '1 Comment', 'internetorg' ),
+				esc_html__( '% Comments', 'internetorg' )
+			);
 			echo '</span>';
 		}
 
@@ -76,10 +88,9 @@ endif;
 
 if ( ! function_exists( 'internetorg_entry_footer_archive' ) ) :
 	/**
-	 * display necessary html for post footer suitable for archive listing
+	 * Display necessary HTML for post footer suitable for archive listing.
 	 *
-	 * Less information is displayed than is used on default entry footer, no
-	 * date, author, comment count, comment link, etc.
+	 * Less information is displayed than is used on default entry footer, no date, author, comment count, comment link, etc.
 	 *
 	 * @see internetorg_entry_footer
 	 *
@@ -87,12 +98,12 @@ if ( ! function_exists( 'internetorg_entry_footer_archive' ) ) :
 	 */
 	function internetorg_entry_footer_archive() {
 
-		// read more link
+		// Read more link.
 		echo '<div class="feature-cta">';
 		printf( esc_html( __( 'Read More &rarr;', 'internetorg' ) ) );
 		echo '</div>';
 
-		// display the edit link if an authorized user is logged in.
+		// Display the edit link if an authorized user is logged in.
 		edit_post_link( esc_html__( 'Edit', 'internetorg' ), '<span class="edit-link">', '</span>' );
 	}
 endif;
@@ -105,13 +116,14 @@ endif;
 function internetorg_categorized_blog() {
 	if ( false === ( $all_the_cool_cats = get_transient( 'internetorg_categories' ) ) ) {
 		// Create an array of all the categories that are attached to posts.
-		$all_the_cool_cats = get_categories( array(
-			'fields'     => 'ids',
-			'hide_empty' => 1,
-
-			// We only need to know if there is more than one category.
-			'number'     => 2,
-		) );
+		$all_the_cool_cats = get_categories(
+			array(
+				'fields'     => 'ids',
+				'hide_empty' => 1,
+				// We only need to know if there is more than one category.
+				'number'     => 2,
+			)
+		);
 
 		// Count the number of categories that are attached to the posts.
 		$all_the_cool_cats = count( $all_the_cool_cats );
@@ -138,5 +150,6 @@ function internetorg_category_transient_flusher() {
 	// Like, beat it. Dig?
 	delete_transient( 'internetorg_categories' );
 }
+
 add_action( 'edit_category', 'internetorg_category_transient_flusher' );
-add_action( 'save_post',     'internetorg_category_transient_flusher' );
+add_action( 'save_post', 'internetorg_category_transient_flusher' );
