@@ -90,7 +90,7 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 							'collapsible'    => true,
 							'children'       => array(
 								'title' => new Fieldmanager_TextField( __( 'CTA Title', 'internetorg' ) ),
-								'text'  => new Fieldmanager_TextArea( __( 'Content', 'internetorg' ) ),
+								'text'  => new Fieldmanager_RichTextarea( __( 'Content', 'internetorg' ) ),
 								'link'  => new Fieldmanager_TextField( __( 'Link', 'internetorg' ) ),
 								'image' => new Fieldmanager_Media( __( 'Image', 'internetorg' ) ),
 							),
