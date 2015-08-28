@@ -43,6 +43,10 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$feature = this.$element.find('.viewWindow-panel_feature');
         this.$story = this.$element.find('.viewWindow-panel_story');
 
+        if (!this.element) {
+            throw new TypeError('ViewWindow: no view windows found.');
+        }
+
         // init properties
         this._featureQueue = new AnimationQueue();
         this._storyQueue = new AnimationQueue();

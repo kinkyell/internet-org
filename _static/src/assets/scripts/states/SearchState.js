@@ -5,9 +5,11 @@ define(function(require, exports, module) { // jshint ignore:line
     var viewWindow = require('services/viewWindow');
     var apiService = require('services/apiService');
     var spread = require('stark/promise/spread');
+    var tap = require('stark/promise/tap');
 
     var SearchFormView = require('views/SearchFormView');
     var ShowMoreView = require('views/ShowMoreView');
+    var LoadingContainer = require('util/LoadingContainer');
 
     var templates = require('templates');
 
@@ -25,6 +27,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handlePanelContentLoad = this._onPanelContentLoad.bind(this);
         this._handleStaticContent = this._onStaticContent.bind(this);
         this._handleSearchFormCreation = this._onSearchFormCreation.bind(this);
+        this._handleLoaderInit = this._onLoaderInit.bind(this);
         BasicState.call(this, options);
 
         this.doublePanel = true;
@@ -66,7 +69,7 @@ define(function(require, exports, module) { // jshint ignore:line
             viewWindow.replaceStoryContent(
                 templates['search-results-header'](tmplArgs),
                 transitions.content
-            )
+            ).then(tap(this._handleLoaderInit))
         ];
 
         viewWindow.replaceFeatureContent(templates['search-input-panel'](tmplArgs), transitions.feature)
@@ -93,6 +96,10 @@ define(function(require, exports, module) { // jshint ignore:line
         $panel.find('.js-searchState-num').html(res.totalResults);
         $panel.find('.js-searchState-ft').toggle(res.hasNextPage);
         this.refreshComponents($panel);
+
+        // remove loader
+        this.loader.removeThrobber();
+        this.loader = null;
     };
 
     /**
@@ -107,6 +114,18 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
         this.refreshComponents($panel);
+    };
+
+    /**
+     * Initialize loader
+     *
+     * @method _onLoaderInit
+     * @param {jQuery} $panel Panel that wraps static content
+     * @private
+     */
+    SearchState.prototype._onLoaderInit = function($panel) {
+        this.loader = new LoadingContainer($panel[0]);
+        this.loader.addThrobber();
     };
 
     /**

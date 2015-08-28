@@ -4,6 +4,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var BasicState = require('./BasicState');
     var apiService = require('services/apiService');
     var spread = require('stark/promise/spread');
+    var tap = require('stark/promise/tap');
 
     var viewWindow = require('services/viewWindow');
     var templates = require('templates');
@@ -15,6 +16,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var VideoModalView = require('views/VideoModalView');
     var $ = require('jquery');
     var Tween = require('gsap-tween');
+    var LoadingContainer = require('util/LoadingContainer');
 
     var log = require('util/log');
 
@@ -29,6 +31,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var TitledState = function(options) {
         this._handlePanelContentLoad = this._onPanelContentLoad.bind(this);
         this._handleStaticContent = this._onStaticContent.bind(this);
+        this._handleLoaderInit = this._onLoaderInit.bind(this);
 
         BasicState.call(this, options);
     };
@@ -69,7 +72,7 @@ define(function(require, exports, module) { // jshint ignore:line
         var tasks = [
             apiService.getPanelContent(this._options.path),
             viewWindow.replaceFeatureContent(templates['page-title-panel'](this._options), transitions.feature),
-            viewWindow.replaceStoryContent('', transitions.content)
+            viewWindow.replaceStoryContent('', transitions.content).then(tap(this._handleLoaderInit))
         ];
 
         Promise.all(tasks)
@@ -92,6 +95,10 @@ define(function(require, exports, module) { // jshint ignore:line
         $panel.append($markup);
         Tween.from($markup[0], 0.25, { opacity: 0 });
         this.refreshComponents($panel);
+
+        // remove loader
+        this.loader.removeThrobber();
+        this.loader = null;
     };
 
     /**
@@ -106,6 +113,18 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
         this.refreshComponents($panel);
+    };
+
+    /**
+     * Initialize loader
+     *
+     * @method _onLoaderInit
+     * @param {jQuery} $panel Panel that wraps static content
+     * @private
+     */
+    TitledState.prototype._onLoaderInit = function($panel) {
+        this.loader = new LoadingContainer($panel[0]);
+        this.loader.addThrobber();
     };
 
     return TitledState;

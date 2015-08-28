@@ -142,7 +142,7 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     * Handle static content when loaded
+     * Initialize loader
      *
      * @method _onLoaderInit
      * @param {jQuery} $panel Panel that wraps static content

@@ -12,7 +12,7 @@ get_header();
 
 ?>
 
-<div class="viewWindow isShifted js-stateDefault">
+<div class="viewWindow isShifted js-viewWindow js-stateDefault">
 <?php while ( have_posts() ) : the_post(); ?>
 
 	<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
