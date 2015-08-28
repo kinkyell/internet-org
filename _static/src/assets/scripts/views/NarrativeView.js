@@ -14,8 +14,6 @@ define(function(require, exports, module) { // jshint ignore:line
         PROGRESS_HIDDEN: 'narrative-progress_isHidden'
     };
 
-    var SECTIONS_CONF = [];
-
     /**
      * A view for transitioning display panels
      *
@@ -64,11 +62,19 @@ define(function(require, exports, module) { // jshint ignore:line
          */
         this._sectionLength = null;
 
+        /**
+         * configuration for section params
+         *
+         * @default empty
+         * @property _sectionConf
+         * @type {array}
+         * @private
+         */
+        this._sectionConf = [];
+
         this._touchTracker = {
             y: 0
         };
-
-        this._sectionConf = SECTIONS_CONF;
 
         /**
          * @type String
@@ -90,10 +96,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto.init = function() {
-        // determine bp specific narrative handler
-        this._narrativeManager = (breakpointManager.isMobile) ?
-            new NarrativeMobileManager(SECTIONS_CONF) :
-            new NarrativeDesktopManager(SECTIONS_CONF);
+
     };
 
     /**
@@ -150,7 +153,13 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.layout = function() {
         this.$narrativeSections.eq(0).addClass('isActive');
         this._sectionLength = this.$narrativeSections.length;
-        this._getSectionContent();
+
+        this._getSectionContent().then(function() {
+            // determine bp specific narrative handle
+            this._narrativeManager = (breakpointManager.isMobile) ?
+                new NarrativeMobileManager(this._sectionConf) :
+                new NarrativeDesktopManager(this._sectionConf);
+        }.bind(this));
     };
 
     /**
@@ -262,12 +271,12 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._scrollUp = function() {
         if (!this._narrativeManager._isAnimating) {
             var direction = 'up';
-            var section = SECTIONS_CONF[this._position];
+            var section = this._sectionConf[this._position];
             var subsLength = section.subSections.length;
             var subPosition = this._subPosition;
 
             var destinationSectionPos = this._position - 1;
-            var destinationSection = SECTIONS_CONF[destinationSectionPos];
+            var destinationSection = this._sectionConf[destinationSectionPos];
             var destinationSubsLength = destinationSection.subSections.length;
 
             // if has subs
@@ -309,7 +318,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._scrollDown = function() {
         if (!this._narrativeManager._isAnimating) {
             var direction = 'down';
-            var section = SECTIONS_CONF[this._position];
+            var section = this._sectionConf[this._position];
             var subsLength = section.subSections.length;
             var subPosition = this._subPosition;
 
@@ -325,9 +334,9 @@ define(function(require, exports, module) { // jshint ignore:line
 
             // Anything Else
             } else {
-                var sectionsLength = SECTIONS_CONF.length;
+                var sectionsLength = this._sectionConf.length;
                 var destinationSectionPos = this._position + 1;
-                var destinationSection = SECTIONS_CONF[destinationSectionPos];
+                var destinationSection = this._sectionConf[destinationSectionPos];
                 this._subPosition = -1;
 
                 if (destinationSectionPos < sectionsLength) {
@@ -398,38 +407,43 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._getSectionContent = function() {
-        var $sections = this._$structureSections.find('> li');
-        var i = 0;
-        var l = $sections.length;
-        for (; i < l; i++) {
-            var confItem = {};
-            confItem.label = 'section0' + i;
-            confItem.subSections = [];
-            var $structureSection = $sections.eq(i);
-            var featureImage = $structureSection.data('feature');
-            var $subSections = $structureSection.find('> ul > li');
-            var subsLength = $subSections.length;
+        return new Promise(function(resolve) {
+            var $sections = this._$structureSections.find('> li');
+            var i = 0;
+            var l = $sections.length;
+            for (; i < l; i++) {
+                var confItem = {};
+                confItem.label = 'section0' + i;
+                confItem.subSections = [];
+                var $structureSection = $sections.eq(i);
+                var featureImage = $structureSection.data('feature');
+                var $subSections = $structureSection.find('> ul > li');
+                var subsLength = $subSections.length;
 
-            if (subsLength !== 0) {
-                var p = 0;
-                var pl = subsLength;
-                for (; p < pl; p++) {
-                    var $subSection = $subSections.eq(p);
-                    var subFeature = $subSection.data('feature');
-                    var subContent = $subSection.html();
+                if (subsLength !== 0) {
+                    var p = 0;
+                    var pl = subsLength;
+                    for (; p < pl; p++) {
+                        var $subSection = $subSections.eq(p);
+                        var subFeature = $subSection.data('feature');
+                        var subContent = $subSection.html();
 
-                    confItem.subSections.push({
-                        featureImage: subFeature,
-                        content: subContent
-                    });
+                        confItem.subSections.push({
+                            featureImage: subFeature,
+                            content: subContent
+                        });
+                    }
+
                 }
 
+                confItem.featureImage = featureImage;
+
+                this._sectionConf.push(confItem);
             }
 
-            confItem.featureImage = featureImage;
+            resolve();
 
-            SECTIONS_CONF.push(confItem);
-        }
+        }.bind(this)).catch(log);
     };
 
     /**
