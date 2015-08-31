@@ -270,6 +270,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @return {Promise} rejects if already animating, resolves when complete
      */
     ViewWindow.prototype.shift = function(silent) {
+        debugger;
         return this._shiftQueue.queue(function() {
             var percent = breakpointManager.isMobile ? 50 : 33.333;
             var shiftOn = !this._isShifted;

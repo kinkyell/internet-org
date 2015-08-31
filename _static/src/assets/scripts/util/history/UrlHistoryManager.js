@@ -14,6 +14,7 @@ define(function(require, exports, module) { // jshint ignore:line
         AbstractHistoryManager.call(this);
 
         window.addEventListener('popstate', this._handlePopState.bind(this));
+        window.history.replaceState({}, null, window.location.href);
     };
 
     UrlHistoryManager.prototype = Object.create(AbstractHistoryManager.prototype);
@@ -51,6 +52,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @fires HistoryManager:popState
      */
     UrlHistoryManager.prototype._handlePopState = function(event) {
+        if (event.state === null) {
+            return;
+        }
         eventHub.publish('HistoryManager:popState', event.state);
     };
 
