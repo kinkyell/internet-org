@@ -1240,3 +1240,92 @@ function internetorg_get_archive_link() {
 
 	return $link;
 }
+
+/**
+ * IO Video shortcode.
+ *
+ * Generate the markup for the skinned video player preview based on an io_video post_id.
+ *
+ * @param array $atts Array of shortcode atts, only uses id at this time.
+ *
+ * @return string
+ */
+function internetorg_video_shortcode( $atts = array() ) {
+
+	/**
+	 * A merged array of incoming and default values.
+	 *
+	 * @var array $atts
+	 */
+	$atts = shortcode_atts(
+		array(
+			'id' => '0',
+		),
+		$atts,
+		'io_video'
+	);
+
+	/**
+	 * The io_video post_id to look up the data from.
+	 *
+	 * @var int $post_id
+	 */
+	$post_id = absint( $atts['id'] );
+
+	if ( empty( $post_id ) ) {
+		return '';
+	}
+	/**
+	 * URL to the Vimeo video.
+	 *
+	 * @var string $url
+	 */
+	$url = get_post_meta( $post_id, 'video-url', true );
+
+	if ( empty( $url ) ) {
+		return '';
+	}
+
+	/**
+	 * The io_video post title.
+	 *
+	 * @var string $title
+	 */
+	$title = get_the_title( $post_id );
+
+	/**
+	 * URL to the io_video featured image.
+	 *
+	 * @var string $image
+	 */
+	$image = internetorg_get_post_thumbnail( $post_id );
+
+	/**
+	 * String representing the duration of the video.
+	 *
+	 * @var string $duration
+	 */
+	$duration = get_post_meta( $post_id, 'video-duration', true );
+
+	/**
+	 * The return markup
+	 *
+	 * @var string $markup
+	 */
+	$markup = '<div class="contentOnMedia">'
+	          . '<img class="contentOnMedia-media" src="' . esc_url( $image ) . '" alt="">'
+	          . '<div class="contentOnMedia-details">'
+	          . '<div class="contentOnMedia-details-title">' . esc_html( $title ) . '</div>'
+	          . '<div class="contentOnMedia-details-duration">' . esc_html( $duration ) . '</div>'
+	          . '</div>'
+	          . '<a href="' . esc_url( $url )
+	          . '" class="contentOnMedia-link contentOnMedia-link_ct js-videoModal swipebox-video" rel="vimeo2">'
+	          . '<span class="circleBtn circleBtn_play"></span>'
+	          . '</a>'
+	          . '</div>';
+
+	return $markup;
+
+}
+
+add_shortcode( 'io_video', 'internetorg_video_shortcode' );
