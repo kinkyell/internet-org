@@ -22,6 +22,7 @@ require __DIR__ . '/post-type-base.php';
 require __DIR__ . '/free-service.php';
 require __DIR__ . '/campaign.php';
 require __DIR__ . '/story.php';
+require __DIR__ . '/video.php';
 require __DIR__ . '/content-widget.php';
 
 add_action( 'init', 'init_internetorg_custom_posttypes_callback' );

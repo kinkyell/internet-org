@@ -50,11 +50,13 @@ class Internetorg_CustomPostTypes {
 		$internetorg_cpt_campaign    = new Internetorg_Campaign_PostType();
 		$internetorg_cpt_story       = new Internetorg_Story_PostType();
 		$internetorg_cpt_widget      = new Internetorg_ContentWidget_PostType();
+		$internetorg_cpt_video      = new Internetorg_Video_PostType();
 
 		$internetorg_cpt_freeService->register();
 		$internetorg_cpt_campaign->register();
 		$internetorg_cpt_story->register();
 		$internetorg_cpt_widget->register();
+		$internetorg_cpt_video->register();
 	}
 
 	/**
