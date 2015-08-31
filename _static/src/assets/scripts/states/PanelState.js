@@ -122,8 +122,10 @@ define(function(require, exports, module) { // jshint ignore:line
         this._initializeScrollWatcher($panel);
 
         // remove loader
-        this.loader.removeThrobber();
-        this.loader = null;
+        if (this.loader) {
+            this.loader.removeThrobber();
+            this.loader = null;
+        }
     };
 
     /**
@@ -149,6 +151,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     PanelState.prototype._onLoaderInit = function($panel) {
+        console.log(this)
         this.loader = new LoadingContainer($panel[0]);
         this.loader.addThrobber();
     };

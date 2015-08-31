@@ -14,6 +14,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var parseUrl = require('stark/string/parseUrl');
     var log = require('util/log');
+    var vwConfig = require('appConfig').viewWindow;
 
     // speed of shift and feature transitions
     var TRANSITION_SPEED = require('appConfig').animationSpeeds.PANEL_SHIFT;
@@ -167,8 +168,12 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     ViewWindow.prototype._getAnimProps = function(direction) {
-        var inOpts = {};
-        var outOpts = {};
+        var inOpts = {
+            ease: vwConfig.FEATURE_EASE[vwConfig.EASE_DIRECTION]
+        };
+        var outOpts = {
+            ease: vwConfig.FEATURE_EASE[vwConfig.EASE_DIRECTION]
+        };
         var directionInvert = document.documentElement.dir === 'ltr' ? 1 : -1;
 
         switch (direction.toLowerCase()) {
@@ -294,6 +299,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
             return tweenAsync.from(animateElement, TRANSITION_SPEED, {
                 xPercent: directionInvert * sign * percent,
+                ease: vwConfig.SHIFT_EASE[vwConfig.EASE_DIRECTION],
                 onComplete: function() {
                     this.$panels.removeClass('isAnimating').removeClass('isActive');
                     this.$panels[method]().addClass('isActive');

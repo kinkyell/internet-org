@@ -34,7 +34,7 @@ define(function(require, exports, module) { // jshint ignore:line
             SLIDERS_IN: 0.2, // speed menu sliders come in
             SLIDERS_STAGGER: 0.1, // offset between menu sliders
             SELECT_MENU: 0.2, // select menu speed
-            PANEL_SHIFT: 0.5, // panel shift speed
+            PANEL_SHIFT: 0.4, // panel shift speed
             ADDL_CONTENT: 0.3 // additional content load in
         },
         narrative: {
@@ -63,6 +63,11 @@ define(function(require, exports, module) { // jshint ignore:line
                     FOOT: '/assets/media/uploads/contact_DT.jpg'
                 }
             }
+        },
+        viewWindow: {
+            FEATURE_EASE: window.Power2,
+            SHIFT_EASE: window.Power1,
+            EASE_DIRECTION: 'easeInOut'
         }
     };
 
