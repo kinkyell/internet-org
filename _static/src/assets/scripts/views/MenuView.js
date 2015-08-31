@@ -103,13 +103,13 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.open = function() {
-        var wrapperOpts = {};
-        var panelOpts = {
+        var wrapperOpts = {
             onComplete: function() {
                 this.isAnimating = false;
             },
             callbackScope: this
         };
+        var panelOpts = {};
         var directionInvert = document.documentElement.dir === 'ltr' ? 1 : -1;
 
         if (this.isOpen || this.isAnimating) {
