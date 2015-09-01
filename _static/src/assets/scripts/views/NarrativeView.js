@@ -121,7 +121,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.createChildren = function() {
         this.$body = $(document.body);
-        this.$narrativeSections = this.$element.find('> *');
+        this.$narrativeSections = $('.narrative').find('> *');
         this.$progress = $(CONFIG.PROGRESS);
         this.$narrativeDT = this.$element.find(CONFIG.NARRATIVE_DT);
         this._$structureSections = $('.narrativeDT-sections');
@@ -328,7 +328,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 var destinationSubPos = subPosition + 1;
                 var destinationSub = section.subSections[destinationSubPos];
 
-                this._narrativeManager.gotoSubSection(destinationSub, direction, null, true).then(function() {
+                this._narrativeManager.gotoSubSection(destinationSub, direction, section, true).then(function() {
                     this._subPosition += 1;
                 }.bind(this));
 
@@ -437,6 +437,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 }
 
                 confItem.featureImage = featureImage;
+                confItem.element = this.$narrativeSections.eq(i);
 
                 this._sectionConf.push(confItem);
             }
@@ -444,19 +445,6 @@ define(function(require, exports, module) { // jshint ignore:line
             resolve();
 
         }.bind(this)).catch(log);
-    };
-
-    /**
-     * Returns the input string as an array of values
-     *
-     * @method _stringToArray
-     * @param {string} str string to be prossesed
-     * @private
-     */
-    proto._stringToArray = function(str) {
-        str = str.replace(/\r?\n|\r/g, '');
-        str = str.replace(/ /g,'');
-        return str.split(',');
     };
 
     module.exports = NarrativeView;
