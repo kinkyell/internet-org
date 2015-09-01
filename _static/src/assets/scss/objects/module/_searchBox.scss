@@ -55,6 +55,11 @@
     text-transform: uppercase;
 }
 
+/* Diabling IE user agent's 'x' close icon in input */
+.searchBox-input::-ms-clear {
+    display: none;
+}
+
 @include breakpoint(MD) {
     .searchBox-input {
         visibility: visible;
