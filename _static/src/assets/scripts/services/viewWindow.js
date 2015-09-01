@@ -73,6 +73,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @return {Promise} resolves when finished
      */
     ViewWindow.prototype.replaceFeatureImage = function(imagePath, direction) {
+        imagePath = parseUrl(imagePath).pathname
         return this._featureQueue.queue(function() {
 
             var $panel;
