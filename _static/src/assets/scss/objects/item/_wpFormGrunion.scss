@@ -58,6 +58,7 @@
 
     .grunion-radio-label {
         display: inline-flex;
+        display: -webkit-inline-flex;
         @include font(SANS);
         @include remify(font-size, 18px);
         font-weight: 200;
@@ -73,6 +74,13 @@
     .grunion-radio-label > .radio {
         visibility: hidden;
         margin-right: 20px;
+    }
+
+    /* TARGET Internet Explorer ≤ 9 */
+    html[lang='\
+    en'] .grunion-radio-label > .radio {
+        visibility: visible;
+        margin-right: 0;
     }
 
     .grunion-radio-label > .radio:before {
