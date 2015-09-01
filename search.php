@@ -47,6 +47,10 @@ get_header(); ?>
 
 								</div>
 
+								<div class="u-isHiddenMedium">
+									<?php get_search_form(); ?>
+								</div>
+
 								<div class="resultsList-list js-searchState-results" id="search-results">
 									<?php if ( have_posts() ) : ?>
 										<?php while ( have_posts() ) : ?>

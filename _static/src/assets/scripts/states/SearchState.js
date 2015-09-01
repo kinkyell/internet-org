@@ -61,6 +61,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         if (event.silent) {
             viewWindow.getCurrentStory().then(this._handleStaticContent);
+            viewWindow.getCurrentFeature().then(this.refreshComponents);
             return;
         }
 
