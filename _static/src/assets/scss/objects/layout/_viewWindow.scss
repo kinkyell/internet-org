@@ -83,6 +83,7 @@ Layout for paneled views
 
     .viewWindow-panel_feature {
         display: block;
+        z-index: 1;
     }
 
     .viewWindow.isShifted {

@@ -121,6 +121,8 @@
         cursor: pointer;
         background-color: $CLR_ACCENT;
         color: white;
+        appearance: none;
+        border-radius: 0;
         @include transition(background-color 0.2s ease-in-out);
         margin-top: 56px;
     }
