@@ -21,6 +21,29 @@
         line-height: 1.4565384;
     }
 
+    p > a:before,
+    p > a:after {
+        content: none !important;
+        border: none !important;
+        height: 0 !important;
+        width: 0 !important;
+    }
+
+    p > a {
+        font-size: inherit !important;
+        text-transform: none !important;
+        display: inline !important;
+        padding: 0 !important;
+    }
+
+    p {
+        @include font(SANS);
+        @include remify(font-size, 14px);
+        line-height: 1.714285714;
+        color: $CLR_GRAY;
+    }
+
+
     a:not(.contentOnMedia-link) {
         @include transition(all 0.3s ease-in-out);
         @include font(SANS_BLACK);
@@ -73,13 +96,6 @@
     a:not(.contentOnMedia-link):hover:after { border-color: $CLR_ACCENT_ACTIVE; }
 
     a:not(.contentOnMedia-link):hover:before { background-color: $CLR_ACCENT_ACTIVE; }
-
-    p {
-        @include font(SANS);
-        @include remify(font-size, 14px);
-        line-height: 1.714285714;
-        color: $CLR_GRAY;
-    }
 
     ul:not(.carousel-handle) > * + * {
         margin-top: 22px;
