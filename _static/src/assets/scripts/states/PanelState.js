@@ -233,17 +233,19 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     PanelState.prototype._refreshScrollerInfo = function() {
         var OFFSET = 0.25;
+        var parentHeight = this._scrollPanel.children()[0].offsetHeight;
 
         // add child elements
         this._scrollBlocks = this._panelImages.map(function(idx, el) {
             var url = el.getAttribute('data-image');
             var fromTop = $(el).offset().top;
             var height = el.offsetHeight;
+            var bottomVal = fromTop + height + (OFFSET * height);
 
             return {
                 img: url,
                 top: fromTop + (OFFSET * height),
-                bottom: fromTop + height + (OFFSET * height)
+                bottom: bottomVal > parentHeight ? Infinity : bottomVal
             };
         }).toArray();
 
