@@ -11,9 +11,6 @@ define(function(require, exports, module) { // jshint ignore:line
     // construct a promise that resolves on tween complete
     function getPromise(method) {
         return function(element, duration, opts) {
-            if (!element) {
-                debugger;
-            }
             var complete = opts.onComplete;
             return new Promise(function(resolve) {
                 opts.onComplete = function(args) {
