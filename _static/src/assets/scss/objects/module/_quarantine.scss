@@ -21,20 +21,20 @@
         line-height: 1.4565384;
     }
 
-    p > a:before,
-    p > a:after {
-        content: none !important;
-        border: none !important;
-        height: 0 !important;
-        width: 0 !important;
-    }
+    // p > a:before,
+    // p > a:after {
+    //     content: none !important;
+    //     border: none !important;
+    //     height: 0 !important;
+    //     width: 0 !important;
+    // }
 
-    p > a {
-        font-size: inherit !important;
-        text-transform: none !important;
-        display: inline !important;
-        padding: 0 !important;
-    }
+    // p > a {
+    //     font-size: inherit !important;
+    //     text-transform: none !important;
+    //     display: inline !important;
+    //     padding: 0 !important;
+    // }
 
     p {
         @include font(SANS);
