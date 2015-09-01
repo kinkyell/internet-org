@@ -34,6 +34,7 @@ Layout for paneled views
 
 .viewWindow-panel-content-inner {
     min-height: 100%;
+    padding-top: 70px;
     box-sizing: border-box;
     position: relative;
     background: #ffffff;
@@ -106,6 +107,10 @@ Layout for paneled views
 
     .isAnimating .viewWindow-panel-content {
         overflow-y: hidden;
+    }
+
+    .viewWindow-panel-content-inner {
+        padding-top: 0;
     }
 }
 
