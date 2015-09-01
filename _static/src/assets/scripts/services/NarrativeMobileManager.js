@@ -7,6 +7,7 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     var $ = require('jquery');
+    var eventHub = require('services/eventHub');
     var AppConfig = require('appConfig');
     var Timeline = require('gsap-timeline');
     require('gsap-scrollToPlugin');
@@ -35,16 +36,6 @@ define(function(require, exports, module) { // jshint ignore:line
         this._isAnimating = false;
 
         /**
-         * reference to the total number of slides
-         *
-         * @default null
-         * @property _slidesLength
-         * @type {bool}
-         * @private
-         */
-        this._slidesLength = null;
-
-        /**
          * Buffer for scroll jacking (ms)
          *
          * @default 0
@@ -63,37 +54,6 @@ define(function(require, exports, module) { // jshint ignore:line
          */
         this._sectionsConf = sectionsConf;
 
-        /**
-         * section properties
-         *
-         * @default arr
-         * @property _sections
-         * @type {arr}
-         * @private
-         */
-        this._sections = [
-            {
-                label: 'section00'
-            },
-            {
-                label: 'section01'
-            },
-            {
-                label: 'section02'
-            },
-            {
-                label: 'section03'
-            },
-            {
-                label: 'section04'
-            },
-            {
-                label: 'section05'
-            },
-            {
-                label: 'section06'
-            }
-        ];
         this._init();
     };
 
@@ -123,6 +83,17 @@ define(function(require, exports, module) { // jshint ignore:line
         this._$sections = $('.narrative-section');
     };
 
+    /**
+     * Remove any child objects or references to DOM elements.
+     *
+     * @method removeChildren
+     * @public
+     */
+    proto.removeChildren = function() {
+        this._$narrative = null;
+        this._$sections = null;
+    };
+
     // /////////////////////////////////////////////////////////////////////////////////////////
     // Helpers
     // /////////////////////////////////////////////////////////////////////////////////////////
@@ -141,7 +112,7 @@ define(function(require, exports, module) { // jshint ignore:line
         var l = this._$sections.length;
         for (; i < l; i++) {
             var sectionOffset = sectionHeight * i;
-            this._sections[i].sectionOffset = sectionOffset;
+            this._sectionsConf[i].sectionOffset = sectionOffset;
         }
     };
 
@@ -161,7 +132,7 @@ define(function(require, exports, module) { // jshint ignore:line
         tl.to(
             this._$narrative,
             0.35,
-            { scrollTo: { y: this._sections[1].sectionOffset }, ease: EASE[easeDirection] });
+            { scrollTo: { y: this._sectionsConf[1].sectionOffset }, ease: EASE[easeDirection] });
 
         tl.from(
             this._$sections.eq(1).find('.narrative-section-bd'),
@@ -180,7 +151,7 @@ define(function(require, exports, module) { // jshint ignore:line
         tl.to(
             this._$narrative,
             0.35,
-            { scrollTo: { y: this._sections[2].sectionOffset }, ease: EASE[easeDirection] });
+            { scrollTo: { y: this._sectionsConf[2].sectionOffset }, ease: EASE[easeDirection] });
 
         tl.from(
             this._$sections.eq(2).find('.narrative-section-bd'),
@@ -198,7 +169,7 @@ define(function(require, exports, module) { // jshint ignore:line
         ///////////////////////
         tl.to(this._$narrative,
             0.35,
-            { scrollTo: { y: this._sections[3].sectionOffset }, ease: EASE[easeDirection] });
+            { scrollTo: { y: this._sectionsConf[3].sectionOffset }, ease: EASE[easeDirection] });
 
         tl.from(
             this._$sections.eq(3).find('.narrative-section-bd'),
@@ -217,13 +188,13 @@ define(function(require, exports, module) { // jshint ignore:line
         tl.to(
             this._$narrative,
             0.35,
-            { scrollTo: { y: this._sections[4].sectionOffset }, ease: EASE[easeDirection] });
+            { scrollTo: { y: this._sectionsConf[4].sectionOffset }, ease: EASE[easeDirection] });
 
-        tl.addLabel(this._sections[0].label, SECTION_DURATION * 0);
-        tl.addLabel(this._sections[1].label, SECTION_DURATION * 1);
-        tl.addLabel(this._sections[2].label, SECTION_DURATION * 2);
-        tl.addLabel(this._sections[3].label, SECTION_DURATION * 3);
-        tl.addLabel(this._sections[4].label, SECTION_DURATION * 4);
+        tl.addLabel(this._sectionsConf[0].label, SECTION_DURATION * 0);
+        tl.addLabel(this._sectionsConf[1].label, SECTION_DURATION * 1);
+        tl.addLabel(this._sectionsConf[2].label, SECTION_DURATION * 2);
+        tl.addLabel(this._sectionsConf[3].label, SECTION_DURATION * 3);
+        tl.addLabel(this._sectionsConf[4].label, SECTION_DURATION * 4);
 
         // var bdTwnOffset = 50;
         // var bdTwnPos = null;
@@ -263,16 +234,41 @@ define(function(require, exports, module) { // jshint ignore:line
         return tl;
     };
 
+    /**
+     * Begins the sequece for section change
+     *
+     * @method gotoSection
+     * @param {object} section section config params
+     * @param {string} direction the direction of the transition
+     * @public
+     */
     proto.gotoSection = function(section, direction) {
         this._isAnimating = true;
         return this._sectionTransition(section, direction);
     };
 
-    proto.gotoSubSection = function(section, direction) {
+    /**
+     * Begins the sequece for subsection change
+     *
+     * @method gotoSubSection
+     * @param {object} section section config params
+     * @param {string} direction the direction of the transition
+     * @public
+     */
+    proto.gotoSubSection = function(section, direction, rootSection) {
+        rootSection = (typeof rootSection === 'undefined') ? null : rootSection;
         this._isAnimating = true;
-        return this._subSectionTransition(section, direction);
+        return this._subSectionTransition(section, direction, rootSection);
     };
 
+    /**
+     * Kicks off a section transition
+     *
+     * @method _sectionTransition
+     * @param {object} section section config params
+     * @param {string} direction the direction of the transition
+     * @private
+     */
     proto._sectionTransition = function(section, direction) {
         var sectionPosition = this._sectionsConf.indexOf(section);
         var prevSection = (direction === 'down') ?
@@ -291,74 +287,124 @@ define(function(require, exports, module) { // jshint ignore:line
         }.bind(this));
     };
 
-    proto._subSectionTransition = function(section, direction) {
+    /**
+     * Kicks off a subsection transition
+     *
+     * @method _subSectionTransition
+     * @param {object} section section config params
+     * @param {string} direction the direction of the transition
+     * @private
+     */
+    proto._subSectionTransition = function(section, direction, rootSection, content) {
         return new Promise(function(resolve) {
+
+            // get slides container
+            // get child slides
+            // get current subsection position
+            // loop over up to current to get total offset
+            // scroll container to that offset
+
+            var sectionPosition = this._sectionsConf.indexOf(rootSection);
+            var subsectionPosition = rootSection.subSections.indexOf(section);
+            var $slidesContainer = this._$sections.eq(sectionPosition).find('.narrative-section-slides');
+            var $slides = $slidesContainer.find('> *');
+            var destinationPos = (direction === 'down') ? subsectionPosition += 1 : subsectionPosition -= 1;
+
+            var offsetY = 0;
+            var i = 0;
+            for (; i < destinationPos; i++) {
+                offsetY += $slides.eq(i).height();
+            }
+
+            TweenLite.to($slidesContainer, 0.35, { scrollTo: { y: offsetY }, onComplete: function() {
+                // window.setTimeout(this._onTransitionComplete.bind(this, resolve), this._scrollBuffer);
+                this._onTransitionComplete(resolve);
+            }.bind(this) });
 
         }.bind(this));
     };
 
+    /**
+     * Callback for section transition completion
+     *
+     * @method _onSectionComplete
+     * @param {function} resolve promise resolution method
+     * @private
+     */
     proto._onSectionComplete = function(resolve) {
-        $(window).on('wheel', this._onWheelEventHandler);
-        this._isAnimating = false;
-        // this._updateSlideHooks();
-        // eventHub.publish('Narrative:sectionChange', position);
+        this._onTransitionComplete(resolve);
+    };
 
+    /**
+     * Callback for transition completion
+     *
+     * @method _onTransitionComplete
+     * @param {function} resolve promise resolution method
+     * @private
+     */
+    proto._onTransitionComplete = function(resolve) {
+        console.log('complete');
+        this._isAnimating = false;
+        eventHub.publish('Narrative:sectionChange');
         resolve();
+
+        // $(window).on('wheel', this._onWheelEventHandler);
+        // this._updateSlideHooks();
     };
 
     // /////////////////////////////////////////////////////////////////////////////////////////
     // Slide Logic
     // /////////////////////////////////////////////////////////////////////////////////////////
-    proto._gotoNextSlide = function(forward) {
-        var $currentSection = $('.narrative-section').eq(this._position);
-        var $slidesContainer = $currentSection.find('.narrative-section-slides');
-        var $slides = $currentSection.find('.narrative-section-slides-item');
-        var slideCount = $slides.length;
-        var destinationSlidePos = this._slidePosition;
-        var atEnd;
+    // proto._gotoNextSlide = function(forward) {
+    //     var $currentSection = $('.narrative-section').eq(this._position);
+    //     var $slidesContainer = $currentSection.find('.narrative-section-slides');
+    //     var $slides = $currentSection.find('.narrative-section-slides-item');
+    //     var slideCount = $slides.length;
+    //     var destinationSlidePos = this._slidePosition;
+    //     var atEnd;
 
-        if (forward) {
-            destinationSlidePos += 1;
-            atEnd = destinationSlidePos >= slideCount;
-        } else {
-            destinationSlidePos -= 1;
-            atEnd = destinationSlidePos < 0;
-        }
+    //     if (forward) {
+    //         destinationSlidePos += 1;
+    //         atEnd = destinationSlidePos >= slideCount;
+    //     } else {
+    //         destinationSlidePos -= 1;
+    //         atEnd = destinationSlidePos < 0;
+    //     }
 
-        var hasMultiple = this._hasMultiple(this._position);
+    //     var hasMultiple = this._hasMultiple(this._position);
 
-        if (!hasMultiple || atEnd) {
-            return false;
-        }
+    //     if (!hasMultiple || atEnd) {
+    //         return false;
+    //     }
 
-        this._isAnimating = true;
+    //     this._isAnimating = true;
 
-        var offsetY = 0;
-        var i = 0;
-        for (; i < destinationSlidePos; i++) {
-            offsetY += $slides.eq(i).height();
-        }
+    //     var offsetY = 0;
+    //     var i = 0;
+    //     for (; i < destinationSlidePos; i++) {
+    //         offsetY += $slides.eq(i).height();
+    //     }
 
-        var tl = new Timeline();
-        tl.to($slidesContainer, 0.35, { scrollTo: { y: offsetY }, onComplete: function() {
-            window.setTimeout(this._onSlideComplete.bind(this, forward), this._scrollBuffer);
-        }.bind(this) });
+    //     var tl = new Timeline();
+    //     tl.to($slidesContainer, 0.35, { scrollTo: { y: offsetY }, onComplete: function() {
+    //         window.setTimeout(this._onSlideComplete.bind(this, forward), this._scrollBuffer);
+    //     }.bind(this) });
 
-        return true;
-    };
+    //     return true;
+    // };
 
-    proto._onSlideComplete = function(forward) {
-        this._slidePosition = (forward) ? this._slidePosition += 1 : this._slidePosition -= 1;
-        this._isAnimating = false;
-    };
+    // proto._onSlideComplete = function(forward) {
+    //     this._slidePosition = (forward) ? this._slidePosition += 1 : this._slidePosition -= 1;
+    //     this._isAnimating = false;
+    // };
 
-    proto._hasMultiple = function(position) {
-        var $currentSection = $('.narrative-section').eq(position);
-        var $slides = $currentSection.find('.narrative-section-slides-item');
-        var slidesCount = $slides.length;
+    // proto._hasMultiple = function(position) {
+    //     var $currentSection = $('.narrative-section').eq(position);
+    //     var $slides = $currentSection.find('.narrative-section-slides-item');
+    //     var slidesCount = $slides.length;
 
-        return (slidesCount > 1) ? true : false;
-    };
+    //     return (slidesCount > 1) ? true : false;
+    // };
 
     module.exports = NarrativeMobileManager;
 
