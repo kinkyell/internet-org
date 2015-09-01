@@ -13,6 +13,8 @@
     color: $CLR_ACCENT;
     position: relative;
     padding-right: 35px;
+    display: inline-flex;
+    display: -webkit-inline-flex;
 }
 
 .link:after,
