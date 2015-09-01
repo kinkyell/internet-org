@@ -39,6 +39,10 @@ Layout for paneled views
     background: #ffffff;
 }
 
+.viewWindow-panel_story .viewWindow-panel-content-inner {
+    padding-top: 70px;
+}
+
 // .viewWindow-panel.isActive > .viewWindow-panel-content {
 //     padding-top: 45px;
 //     background-color: $CLR_GRAY_LIGHTER;
@@ -106,6 +110,10 @@ Layout for paneled views
 
     .isAnimating .viewWindow-panel-content {
         overflow-y: hidden;
+    }
+
+    .viewWindow-panel_story .viewWindow-panel-content-inner {
+        padding-top: 0;
     }
 }
 

@@ -9,6 +9,10 @@
 
 ?>
 
+<div class="u-isHiddenMedium">
+	<?php get_search_form(); ?>
+</div>
+
 <div class="resultsList-list-item">
 	<div class="feature feature_tight">
 		<div class="feature-hd">

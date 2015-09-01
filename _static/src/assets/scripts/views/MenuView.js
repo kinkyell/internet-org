@@ -137,6 +137,8 @@ define(function(require, exports, module) { // jshint ignore:line
 
         Tween.from(this.element, SPEEDS.MENU_IN, wrapperOpts);
         this._animateSliders(panelOpts.delay);
+
+        this.element.style.minHeight = $(window).height() + 'px';
     };
 
     /**
@@ -186,6 +188,8 @@ define(function(require, exports, module) { // jshint ignore:line
         }
 
         wrapperTween = Tween.to(this.element, SPEEDS.MENU_OUT, wrapperOpts);
+
+        this.element.style.minHeight = '0';
     };
 
     /**
