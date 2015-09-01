@@ -10,6 +10,7 @@ define( 'IO_DIR', __DIR__ );
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
 wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
+wpcom_vip_load_plugin( 'wpcom-thumbnail-editor' );
 
 /** Custom Post Types. */
 require IO_DIR . '/plugins/internetorg-custom-posttypes/internetorg-custom-posttypes.php';
@@ -105,6 +106,38 @@ if ( ! function_exists( 'internetorg_setup' ) ) :
 endif;
 
 add_action( 'after_setup_theme', 'internetorg_setup' );
+
+/**
+ * Register additional image sizes.
+ */
+function internetorg_setup_image_sizes() {
+
+	// Hard cropped image 1280 x 1600 for use in "Panel."
+	add_image_size( 'panel-image', 1280, 1600, true );
+
+	// Soft cropped image 960 x whatever for use in content or the "mobile only" thumbnail.
+	add_image_size( 'inline-image', 960, 9999 );
+
+	// Hard cropped image 420 x 520 for use in "listings" like search or press.
+	add_image_size( 'listing-image', 420, 520, true );
+}
+
+add_action( 'after_setup_theme', 'internetorg_setup_image_sizes' );
+
+/**
+ * Add custom image sizes to the media chooser.
+ *
+ * Default values include 'Thumbnail', 'Medium', 'Large', 'Full Size'.
+ *
+ * @param array $sizes Registered image sizes and their names.
+ *
+ * @return array
+ */
+function internetorg_custom_sizes( $sizes ) {
+	return array_merge( $sizes, array( 'inline-image' => __( 'Inline Image' ), ) );
+}
+
+add_filter( 'image_size_names_choose', 'internetorg_custom_sizes' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
