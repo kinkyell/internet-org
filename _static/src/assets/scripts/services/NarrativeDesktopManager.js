@@ -90,6 +90,18 @@ define(function(require, exports, module) { // jshint ignore:line
         this._$transformBlockPost = $('.transformBlock-post-item');
     };
 
+    /**
+     * Remove any child objects or references to DOM elements.
+     *
+     * @method removeChildren
+     * @public
+     */
+    proto.removeChildren = function() {
+        this._$transformBlock = null;
+        this._$transformBlockPre = null;
+        this._$transformBlockPost = null;
+    };
+
     // /////////////////////////////////////////////////////////////////////////////////////////
     // Helpers
     // /////////////////////////////////////////////////////////////////////////////////////////

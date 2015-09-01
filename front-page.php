@@ -121,7 +121,9 @@ $home_background_image_url = '';
 																data-image="<?php echo esc_url( ( ! empty( $cf_content_section['call-to-action'][0] ) ? wp_get_attachment_url( $cf_content_section['call-to-action'][0]['image'], 'full' ) : ''  ) ); ?>"
 																data-theme="<?php echo esc_attr( $cf_content_section['slug'] ); ?>"
 																data-title="<?php echo esc_attr( $cf_content_section['name'] ); ?>"
-																data-desc="<?php echo esc_attr( strip_tags( nl2br( $cf_content_section['content'] ) ) ); ?>"><?php echo esc_html( $cf_content_section['slug'] ); ?></a>
+																data-desc="<?php echo esc_attr( strip_tags( nl2br( $cf_content_section['content'] ) ) ); ?>">
+																<?php echo esc_html( $cf_content_section['name'] ); ?>
+															</a>
 														</div>
 													<?php endforeach;
 												endif;
