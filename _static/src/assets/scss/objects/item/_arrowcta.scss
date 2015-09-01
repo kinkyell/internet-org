@@ -22,15 +22,18 @@
     left: 0;
 }
 
-.arrowCta:after {
-    border-width: 0;
-    border-right-width: 3px;
-    border-bottom-width: 3px;
-    border-style: solid;
-    border-color: $CLR_BLACK;
+.arrowCta:after,
+.arrowCta:before {
+    /* Each border side called intetnially to resolve IE11 artifacts */
+    border-right: 3px solid $CLR_BLACK;
+    border-bottom: 3px solid $CLR_BLACK;
+    border-left: 0 solid transparent;
+    border-top: 0 solid transparent;
     top: 0;
     left: 0;
     opacity: 1;
+}
+.arrowCta:after {
     animation: bottom-arrow 1.65s infinite;
 }
 
@@ -43,13 +46,6 @@
 }
 
 .arrowCta:before {
-    border-width: 0;
-    border-right-width: 3px;
-    border-bottom-width: 3px;
-    border-style: solid;
-    border-color: $CLR_BLACK;
-    top: 0;
-    left: 0;
     animation: top-arrow 1.65s infinite;
 }
 
