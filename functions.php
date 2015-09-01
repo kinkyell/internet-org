@@ -1038,12 +1038,26 @@ function internetorg_do_ajax_more_posts() {
 
 add_action( 'template_redirect', 'internetorg_do_ajax_more_posts' );
 
+/**
+ * Add "Mobile Featured Image" via VIP approved Multiple Post Thumbnails plugin.
+ *
+ * Appears the 'post_type' param does not accept an array or comma delimited string of post types. Hence two calls.
+ *
+ * @link https://github.com/voceconnect/multi-post-thumbnails/wiki
+ */
 if ( class_exists( 'MultiPostThumbnails' ) ) {
 	new MultiPostThumbnails(
 		array(
 			'label'     => 'Mobile Featured Image',
 			'id'        => 'mobile-featured-image',
 			'post_type' => 'page',
+		)
+	);
+	new MultiPostThumbnails(
+		array(
+			'label'     => 'Mobile Featured Image',
+			'id'        => 'mobile-featured-image',
+			'post_type' => 'io_story',
 		)
 	);
 }
