@@ -21,7 +21,7 @@
         line-height: 1.4565384;
     }
 
-    a {
+    a:not(.contentOnMedia-link) {
         @include transition(all 0.3s ease-in-out);
         @include font(SANS_BLACK);
         @include remify(font-size, 13px);
@@ -35,8 +35,8 @@
         margin-top: 14px; /* To compensate for the extra white space added */
     }
 
-    a:after,
-    a:before {
+    a:not(.contentOnMedia-link):after,
+    a:not(.contentOnMedia-link):before {
         @include transition(all 0.15s ease-in-out);
         content: "";
         display: block;
@@ -44,7 +44,7 @@
         right: -8px;
     }
 
-    a:after {
+    a:not(.contentOnMedia-link):after {
         top: calc(50% - 5px);
         height: 10px;
         width: 10px;
@@ -53,26 +53,26 @@
         transform: rotate(-45deg);
     }
 
-    a:before {
+    a:not(.contentOnMedia-link):before {
         top: 50%;
         height: 1px;
         width: 30px;
         background-color: $CLR_ACCENT;
     }
 
-    a:hover,
-    a:active {
+    a:not(.contentOnMedia-link):hover,
+    a:not(.contentOnMedia-link):active {
         color: $CLR_ACCENT_ACTIVE;
     }
 
-    a:hover:after,
-    a:hover:before {
+    a:not(.contentOnMedia-link):hover:after,
+    a:not(.contentOnMedia-link):hover:before {
         right: -10px;
     }
 
-    a:hover:after { border-color: $CLR_ACCENT_ACTIVE; }
+    a:not(.contentOnMedia-link):hover:after { border-color: $CLR_ACCENT_ACTIVE; }
 
-    a:hover:before { background-color: $CLR_ACCENT_ACTIVE; }
+    a:not(.contentOnMedia-link):hover:before { background-color: $CLR_ACCENT_ACTIVE; }
 
     p {
         @include font(SANS);

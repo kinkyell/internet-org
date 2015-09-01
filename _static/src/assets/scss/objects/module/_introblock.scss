@@ -10,10 +10,15 @@ Sections of content that introduce landing and story pages
     width: 100%;
     height: 200px;
     padding: 126px 0 45px;
+    // padding: 45px 0;
     position: relative;
     background: url("../media/images/icons/io-mark-bg.svg") no-repeat $CLR_GRAY_LIGHTER;
     background-position: -225px top;
     background-size: 575px 795px;
+}
+
+.introBlock_flushMobi {
+    padding: 45px 0;
 }
 
 .introBlock_foot {
@@ -29,19 +34,15 @@ Sections of content that introduce landing and story pages
     vertical-align: middle;
 }
 
-@warn "needed?";
-
-.introBlock-inner_narrow {
-    padding: 0 150px;
+.introBlock-inner_stack {
+    display: block;
 }
 
 .introBlock-ft {
-    padding: $SPACE_x3 0;
-    position: absolute;
-    bottom: 0;
-    left: 12.5%;
-    width: 75%;
-    text-align: center;
+    padding-top: $SPACE_x3;
+    margin-top: $SPACE_x3;
+    display: block;
+    width: 100%;
 }
 
 .introBlock-ft_rule {
@@ -54,6 +55,16 @@ Sections of content that introduce landing and story pages
         padding-top: 45px;
         background-position: -725px top;
         background-size: 1450px 2035px;
+    }
+
+    .introBlock-ft {
+        padding-bottom: $SPACE_x3;
+        margin-top: 0;
+        position: absolute;
+        bottom: 0;
+        left: 12.5%;
+        width: 75%;
+        text-align: center;
     }
 }
 
