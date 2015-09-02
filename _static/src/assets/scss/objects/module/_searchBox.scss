@@ -56,12 +56,34 @@
     text-transform: uppercase;
 }
 
+.searchBox_inPanelMobile {
+    padding: 18px 30px 17px 34px;
+    background-color: $CLR_GRAY_LIGHTER;
+    margin-top: 1px;
+}
+
+.searchBox-icon_inPanelMobile {
+    left: 8.5%;
+}
+
+.searchBox-input_inPanelMobile {
+    width: 85%;
+    margin-left: 10%;
+    // background-color: lime;
+    @include remify(font-size, 21px);
+    @include font(SERIF);
+
+}
+
 /* Diabling IE user agent's 'x' close icon in input */
 .searchBox-input::-ms-clear {
     display: none;
 }
 
 @include breakpoint(MD) {
+    .searchBox {
+        background-color: transparent;
+    }
     .searchBox-input {
         visibility: visible;
     }
