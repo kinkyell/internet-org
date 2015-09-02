@@ -169,7 +169,7 @@ $home_background_image_url = '';
 						<?php if ( ! empty( $custom_fields ) ) :
 							foreach ( $custom_fields as $group ) :
 								if ( ! empty( $group ) ) :
-									foreach ( $group as $fieldset ) : ?>
+									foreach ( $group as $cf_content_section ) : ?>
 
 										<div class="narrative-section">
 											<div class="narrative-section-slides">
