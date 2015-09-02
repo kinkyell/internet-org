@@ -30,7 +30,7 @@
 				</div>
 				<div class="feature-bd">
 					<p class="bdcpy">
-						<?php the_excerpt(); ?>
+						<?php echo wp_kses_post( get_the_excerpt() ); ?>
 					</p>
 				</div>
 				<div class="feature-cta">
