@@ -15,11 +15,13 @@ define(function(require, exports, module) { // jshint ignore:line
     var parseUrl = require('stark/string/parseUrl');
     var log = require('util/log');
     var vwConfig = require('appConfig').viewWindow;
+    var eventHub = require('services/eventHub');
 
     // speed of shift and feature transitions
     var TRANSITION_SPEED = require('appConfig').animationSpeeds.PANEL_SHIFT;
 
     var BG_IMG_REGEX = /^url\((.+)\)$/;
+    var SCROLL_BARIER = 70;
 
     /**
      * Constructor for ViewWindow
@@ -55,6 +57,8 @@ define(function(require, exports, module) { // jshint ignore:line
         this._shiftQueue = new AnimationQueue();
         this._isShifted = false;
         this._featureImage = null;
+        this._handlePanelScroll = this._onPanelScroll.bind(this);
+        this.$story.children().on('scroll', this._handlePanelScroll);
 
         // get bg image if available
         var childImg = this.$feature.find('.viewWindow-panel-content-inner').css('background-image');
@@ -143,7 +147,9 @@ define(function(require, exports, module) { // jshint ignore:line
             return this._updatePanel(
                 $panel,
                 this.$story,
-                direction
+                direction,
+                false,
+                true
             );
         }, this);
     };
@@ -225,7 +231,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @return {Promise} resolves when complete with animation
      * @private
      */
-    ViewWindow.prototype._updatePanel = function($panel, $target, direction, doublePanel) {
+    ViewWindow.prototype._updatePanel = function($panel, $target, direction, doublePanel, scroller) {
         var opts = this._getAnimProps(direction);
         var $newPanel;
         var $removedPanel;
@@ -242,6 +248,13 @@ define(function(require, exports, module) { // jshint ignore:line
         doublePanel = doublePanel || false;
 
         $target.addClass('isAnimating');
+
+        if (scroller) {
+            $removedPanel.off('scroll', this._handlePanelScroll);
+            $newPanel.on('scroll', this._handlePanelScroll);
+            this._currentScroll = 0;
+            eventHub.publish('viewWindow:scrollBarrier', this._currentScroll > SCROLL_BARIER);
+        }
 
         var cleanup = function() {
             $removedPanel.remove();
@@ -360,6 +373,21 @@ define(function(require, exports, module) { // jshint ignore:line
         }.bind(this));
 
         return this._homepageResolution;
+    };
+
+    /**
+     * Load in homepage content
+     *
+     * @method _onPanelScroll
+     */
+    ViewWindow.prototype._onPanelScroll = function(event) {
+        var oldScroll = this._currentScroll;
+        this._currentScroll = event.target.scrollTop;
+        if (oldScroll <= SCROLL_BARIER && this._currentScroll > SCROLL_BARIER) {
+            eventHub.publish('viewWindow:scrollBarrier', this._currentScroll > SCROLL_BARIER);
+        } else if (oldScroll > SCROLL_BARIER && this._currentScroll <= SCROLL_BARIER) {
+            eventHub.publish('viewWindow:scrollBarrier', this._currentScroll > SCROLL_BARIER);
+        }
     };
 
     return new ViewWindow();
