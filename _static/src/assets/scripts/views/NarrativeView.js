@@ -351,9 +351,6 @@ define(function(require, exports, module) { // jshint ignore:line
 
             }
 
-
-
-
         }
     };
 
@@ -411,7 +408,7 @@ define(function(require, exports, module) { // jshint ignore:line
                     var destinationSubPos = subPosition + 1;
                     var destinationSub = section.subSections[destinationSubPos];
 
-                    this._narrativeManager.gotoSubSection(destinationSub, direction, section, true).then(function() {
+                    this._narrativeManager.gotoSubSection(destinationSub, direction, null, true).then(function() {
                         this._subPosition += 1;
                     }.bind(this));
 
