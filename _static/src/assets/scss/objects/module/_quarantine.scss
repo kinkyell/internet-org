@@ -5,7 +5,7 @@
 ------------------------------------------------------------------------ */
 .quarantine {
 
-    * + * {
+    > * + * {
         margin-top: 19px;
     }
 
@@ -17,8 +17,9 @@
     h6 {
         @include font(SERIF);
         color: $CLR_BLACK;
-        @include remify(font-size, 16px);
+        @include remify(font-size, 20px);
         line-height: 1.4565384;
+        margin-top: 45px;
     }
 
     // p > a:before,
@@ -213,10 +214,11 @@
         h4,
         h5,
         h6 {
-            @include remify(font-size, 26px);
+            @include remify(font-size, 32px);
+            margin-top: 58px;
         }
 
-        a {
+        a:not(.contentOnMedia-link) {
             @include remify(font-size, 18px);
         }
 
