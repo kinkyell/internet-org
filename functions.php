@@ -274,7 +274,7 @@ if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 				$image_url = get_stylesheet_directory_uri()
 				             . '/_static/web/assets/media/images/icons/png/icon-services-dictionary.png';
 			} else {
-				$image_url = internetorg_get_post_thumbnail( $svcqry->post->ID );
+				$image_url = internetorg_get_post_thumbnail( $svcqry->post->ID, 'listing-image' );
 			}
 
 			$services[] = array(
@@ -399,9 +399,7 @@ function internetorg_get_the_intro_block( $post_id = 0, $key = '' ) {
 /**
  * Get the post thumbnail (featured image) for the supplied post by post ID.
  *
- * If the supplied post ID does not have an assigned post thumbnail, will default to the home.jpg in FED statics.
- *
- * @param int $post_id Post ID to retrieve featured image from.
+ * @param int    $post_id Post ID to retrieve featured image from.
  * @param string $size    Optional. The registered image size to retrieve. Defaults to 'full'.
  *
  * @return string
@@ -800,7 +798,7 @@ function internetorg_is_internal_url( $url ) {
  * Get the URL of a valid image attachment by attachment ID.
  *
  * @param int          $attachment_id Image attachment ID. Required.
- * @param string|array $size          Optional. Registered image size name or width/height array.
+ * @param string|array $size          Optional. Registered image size name or width/height array. Defaults to full.
  *
  * @return string The URL of the image attachment or empty string on failure.
  */
@@ -948,7 +946,7 @@ function internetorg_do_ajax_search() {
 		 *
 		 * @var string $post_thumbnail
 		 */
-		$post_thumbnail = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), array( 210, 260 ) );
+		$post_thumbnail = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'listing-image' );
 
 		$data['posts'][] = array(
 			'ID'           => get_the_ID(),
@@ -1056,7 +1054,7 @@ function internetorg_do_ajax_more_posts() {
 		 *
 		 * @var string $post_thumbnail
 		 */
-		$post_thumbnail = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), array( 210, 260 ) );
+		$post_thumbnail = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'listing-image' );
 
 		$data['posts'][] = array(
 			'ID'             => get_the_ID(),
@@ -1109,7 +1107,7 @@ if ( class_exists( 'MultiPostThumbnails' ) ) {
  * @see internetorg_get_post_thumbnail
  *
  * @param string $post_type The post type that we are retrieving the "mobile featured image" for.
- * @param int    $post_id The ID of the post that we are retrieving the "mobile featured image" for.
+ * @param int    $post_id   The ID of the post that we are retrieving the "mobile featured image" for.
  * @param string $size      Optional. The registered image size to retrieve. Defaults to "inline-image."
  *
  * @return string
@@ -1349,7 +1347,7 @@ function internetorg_video_shortcode( $atts = array() ) {
 	 *
 	 * @var string $image
 	 */
-	$image = internetorg_get_post_thumbnail( $post_id );
+	$image = internetorg_get_post_thumbnail( $post_id, 'inline-image' );
 
 	/**
 	 * String representing the duration of the video.
