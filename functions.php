@@ -804,7 +804,7 @@ function internetorg_is_internal_url( $url ) {
  *
  * @return string The URL of the image attachment or empty string on failure.
  */
-function internetorg_get_media_image_url( $attachment_id = 0, $size = 'single-post-thumbnail' ) {
+function internetorg_get_media_image_url( $attachment_id = 0, $size = 'full' ) {
 
 	$attachment_id = absint( $attachment_id );
 
