@@ -107,20 +107,21 @@ get_header();
 						</div>
 						<?php endif; ?>
 
-						<div class="footBox">
-							<div class="container">
-								<div class="vList vList_footBox">
-									<div>
-										<?php internet_org_get_content_widget_html( 'contact' ); ?>
-									</div>
-									<div>
-										<?php internet_org_get_content_widget_html( 'media-kit' ); ?>
-									</div>
+					</div>
+
+					<div class="footBox">
+						<div class="container">
+							<div class="vList vList_footBox">
+								<div>
+									<?php internet_org_get_content_widget_html( 'contact' ); ?>
+								</div>
+								<div>
+									<?php internet_org_get_content_widget_html( 'media-kit' ); ?>
 								</div>
 							</div>
 						</div>
-
 					</div>
+
 				</div>
 			</div>
 		</div>

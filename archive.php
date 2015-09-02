@@ -100,21 +100,21 @@ get_header();
 							</div>
 						</div>
 						<?php endif; ?>
+					</div>
 
-						<div class="footBox">
-							<div class="container">
-								<div class="vList vList_footBox">
-									<div>
-										<?php internet_org_get_content_widget_html( 'contact' ); ?>
-									</div>
-									<div>
-										<?php internet_org_get_content_widget_html( 'media-kit' ); ?>
-									</div>
+					<div class="footBox">
+						<div class="container">
+							<div class="vList vList_footBox">
+								<div>
+									<?php internet_org_get_content_widget_html( 'contact' ); ?>
+								</div>
+								<div>
+									<?php internet_org_get_content_widget_html( 'media-kit' ); ?>
 								</div>
 							</div>
 						</div>
-
 					</div>
+
 				</div>
 			</div>
 		</div>
