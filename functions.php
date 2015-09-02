@@ -1378,3 +1378,14 @@ function internetorg_video_shortcode( $atts = array() ) {
 }
 
 add_shortcode( 'io_video', 'internetorg_video_shortcode' );
+
+/**
+ * Change the confirmation message from the contact form
+ * @filter grunion_contact_form_success_message
+ * @param string $msg default response message
+ * @return string new response message
+ */
+function internetorg_change_contact_form_response( $msg ) {
+	return '<div class="vr vr_x1"><div class="hdg hdg_3 mix-hdg_centerInMobile">' . __( 'Thank you!', 'internetorg' ) . '</div></div>';
+}
+add_filter( 'grunion_contact_form_success_message', 'internetorg_change_contact_form_response' );
