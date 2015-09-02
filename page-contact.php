@@ -92,10 +92,6 @@ get_header();
 
 				<div class="container">
 					<div class="contentCol">
-						<div class="vr vr_x1">
-							<div class="hdg hdg_3"><?php echo esc_html__( 'Get in Touch', 'internetorg' ); ?></div>
-						</div>
-
 						<div class="vendorForm">
 						<?php the_content(); ?>
 						</div>
@@ -112,7 +108,7 @@ get_header();
 									<p class="bdcpy mix-bdcpy_light"><?php echo esc_html__( 'Stay updated about Internet.org and lorem ipsum dolor sit amet.', 'internetorg' ); ?></p>
 								</div>
 								<div class="fbFollowBlock-cta">
-									<a href="<?php echo esc_attr__( 'https://fb.me/Internetdotorg', 'internetorg' ); ?>" class="btn btn_facebook"><?php echo esc_html__( 'Like us on Facebook', 'internetorg' ); ?></a>
+									<a href="<?php echo esc_attr__( 'https://fb.me/Internetdotorg', 'internetorg' ); ?>" class="btn btn_facebook" target="_blank"><?php echo esc_html__( 'Like us on Facebook', 'internetorg' ); ?></a>
 								</div>
 							</div>
 						</div>

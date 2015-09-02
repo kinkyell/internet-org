@@ -56,6 +56,10 @@ Layout for paneled views
     left: -50%;
 }
 
+.viewWindow-panel:not(.isAnimating):not(.isActive):first-child {
+    visibility: hidden;
+}
+
 .viewWindow-panel_feature {
     display: none;
     overflow: hidden;

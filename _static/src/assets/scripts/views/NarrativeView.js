@@ -109,6 +109,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.setupHandlers = function() {
         this._onWheelEventHandler = this._onWheelEvent.bind(this);
         this._onTouchStartHandler = this._onTouchStart.bind(this);
+        this.refreshNarrativeManager = this.refreshNarrativeManager.bind(this);
     };
 
     /**
@@ -156,18 +157,19 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$narrativeSections.eq(0).addClass('isActive');
         this._sectionLength = this.$narrativeSections.length;
 
-        this._getSectionContent().then(function() {
-
-            // determine bp specific narrative handle
-            this._narrativeManager = (breakpointManager.isMobile) ?
-                new NarrativeMobileManager(this._sectionConf) :
-                new NarrativeDesktopManager(this._sectionConf);
-        }.bind(this));
+        this._getSectionContent().then(this.refreshNarrativeManager);
 
         this.$viewWindow.before(this.$progress);
         this.$progress.find(':first-child').addClass('isActive');
         this._displayIndicators(0);
 
+    };
+
+    proto.refreshNarrativeManager = function() {
+        // determine bp specific narrative handle
+        var isMobile = breakpointManager.isMobile;
+        var NarrativeManager = isMobile ? NarrativeMobileManager : NarrativeDesktopManager;
+        this._narrativeManager = new NarrativeManager(this._sectionConf);
     };
 
     /**
@@ -182,6 +184,13 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.onEnable = function() {
         $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
         this.$body.on('touchstart', this._onTouchStartHandler);
+        this._currentlyMobile = breakpointManager.isMobile;
+        breakpointManager.subscribe(function() {
+            if (breakpointManager.isMobile !== this._currentlyMobile) {
+                this._currentlyMobile = breakpointManager.isMobile;
+                this.refreshNarrativeManager();
+            }
+        }.bind(this));
     };
 
     /**

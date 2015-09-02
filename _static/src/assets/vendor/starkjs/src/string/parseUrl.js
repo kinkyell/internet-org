@@ -6,7 +6,7 @@ export default function(url) {
     anchor.href = url;
 
     // mask out properties we don't need
-    return mask(anchor, [
+    var masked = mask(anchor, [
         'hash',
         'href',
         'host',
@@ -16,4 +16,11 @@ export default function(url) {
         'protocol',
         'search'
     ]);
+
+    // IE11 bug
+    if (masked.pathname.indexOf('/') !== 0) {
+        masked.pathname = '/' + masked.pathname;
+    }
+
+    return masked;
 };
