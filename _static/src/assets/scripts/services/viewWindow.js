@@ -60,7 +60,7 @@ define(function(require, exports, module) { // jshint ignore:line
         var childImg = this.$feature.find('.viewWindow-panel-content-inner').css('background-image');
         if (BG_IMG_REGEX.test(childImg)) {
             this._featureImage = childImg.match(BG_IMG_REGEX)[1];
-            this._featureImage = parseUrl(this._featureImage).pathname;
+            this._featureImage = parseUrl(this._featureImage).href;
         }
     };
 
@@ -73,7 +73,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @return {Promise} resolves when finished
      */
     ViewWindow.prototype.replaceFeatureImage = function(imagePath, direction) {
-        imagePath = parseUrl(imagePath).pathname
+        imagePath = parseUrl(imagePath).href;
         return this._featureQueue.queue(function() {
 
             var $panel;
