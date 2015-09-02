@@ -1,9 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: raber
- * Date: 9/1/15
- * Time: 7:58 PM
+ * The template part for displaying single posts in home.php (press page).
+ *
+ * @package Internet.org
  */
 
 ?>
