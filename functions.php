@@ -1110,10 +1110,11 @@ if ( class_exists( 'MultiPostThumbnails' ) ) {
  *
  * @param string $post_type The post type that we are retrieving the "mobile featured image" for.
  * @param int    $post_id The ID of the post that we are retrieving the "mobile featured image" for.
+ * @param string $size      Optional. The registered image size to retrieve. Defaults to "inline-image."
  *
  * @return string
  */
-function internetorg_get_mobile_featured_image( $post_type, $post_id ) {
+function internetorg_get_mobile_featured_image( $post_type, $post_id, $size = 'inline-image' ) {
 
 	$post_id = absint( $post_id );
 
@@ -1138,7 +1139,7 @@ function internetorg_get_mobile_featured_image( $post_type, $post_id ) {
 	}
 
 	if ( ! class_exists( 'MultiPostThumbnails' ) ) {
-		return internetorg_get_post_thumbnail( $post_id );
+		return internetorg_get_post_thumbnail( $post_id, $size );
 	}
 
 	$id = 'mobile-featured-image';
@@ -1149,10 +1150,10 @@ function internetorg_get_mobile_featured_image( $post_type, $post_id ) {
 		return '';
 	}
 
-	$img_url = MultiPostThumbnails::get_post_thumbnail_url( $post_type, $id, $post_id, 'full' );
+	$img_url = MultiPostThumbnails::get_post_thumbnail_url( $post_type, $id, $post_id, $size );
 
 	if ( empty( $img_url ) ) {
-		return internetorg_get_post_thumbnail( $post_id );
+		return internetorg_get_post_thumbnail( $size );
 	}
 
 	return $img_url;
