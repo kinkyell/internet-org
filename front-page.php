@@ -209,7 +209,7 @@ $home_background_image_url = '';
 														data-theme="<?php echo esc_attr( $cf_content_section['slug'] ); ?>"
 														data-title="<?php echo esc_attr( $cf_content_section['name'] ); ?>"
 														data-desc="<?php echo esc_attr( strip_tags( nl2br( $cf_content_section['content'] ) ) ); ?>"
-														data-image="<?php echo esc_url( $data_img ); ?>"><?php echo esc_html( $cf_content_section['name'] ); ?></a>
+														<?php if (is_string($data_img)): ?>data-image="<?php echo esc_url( $data_img ); ?>"<?php endif; ?>><?php echo esc_html( $cf_content_section['name'] ); ?></a>
 												</div>
 											</div>
 										</div>
