@@ -9,6 +9,7 @@
 .searchBox-icon {
     display: block;
     width: 20px;
+    height: 20px;
     margin-right: 4px;
     margin-top: -10px;
     position: absolute;
@@ -24,6 +25,7 @@
 
 .searchBox-icon_lrg {
     width: 27px;
+    height: 27px;
     top: 43%;
 }
 
@@ -44,13 +46,19 @@
     margin-left: 5%;
 }
 
-.searchBox-input.isOpen {
+.searchBox-input.isOpen,
+.searchBox_inPanel > .searchBox-input {
     visibility: visible;
 }
 
 .searchBox-input::placeholder {
     color: #6d6e64;
     text-transform: uppercase;
+}
+
+/* Diabling IE user agent's 'x' close icon in input */
+.searchBox-input::-ms-clear {
+    display: none;
 }
 
 @include breakpoint(MD) {

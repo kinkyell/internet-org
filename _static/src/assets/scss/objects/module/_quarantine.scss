@@ -5,7 +5,7 @@
 ------------------------------------------------------------------------ */
 .quarantine {
 
-    * + * {
+    > * + * {
         margin-top: 19px;
     }
 
@@ -17,9 +17,33 @@
     h6 {
         @include font(SERIF);
         color: $CLR_BLACK;
-        @include remify(font-size, 16px);
+        @include remify(font-size, 20px);
         line-height: 1.4565384;
+        margin-top: 45px;
     }
+
+    // p > a:before,
+    // p > a:after {
+    //     content: none !important;
+    //     border: none !important;
+    //     height: 0 !important;
+    //     width: 0 !important;
+    // }
+
+    // p > a {
+    //     font-size: inherit !important;
+    //     text-transform: none !important;
+    //     display: inline !important;
+    //     padding: 0 !important;
+    // }
+
+    p {
+        @include font(SANS);
+        @include remify(font-size, 14px);
+        line-height: 1.714285714;
+        color: $CLR_GRAY;
+    }
+
 
     a:not(.contentOnMedia-link) {
         @include transition(all 0.3s ease-in-out);
@@ -73,13 +97,6 @@
     a:not(.contentOnMedia-link):hover:after { border-color: $CLR_ACCENT_ACTIVE; }
 
     a:not(.contentOnMedia-link):hover:before { background-color: $CLR_ACCENT_ACTIVE; }
-
-    p {
-        @include font(SANS);
-        @include remify(font-size, 14px);
-        line-height: 1.714285714;
-        color: $CLR_GRAY;
-    }
 
     ul:not(.carousel-handle) > * + * {
         margin-top: 22px;
@@ -197,10 +214,11 @@
         h4,
         h5,
         h6 {
-            @include remify(font-size, 26px);
+            @include remify(font-size, 32px);
+            margin-top: 58px;
         }
 
-        a {
+        a:not(.contentOnMedia-link) {
             @include remify(font-size, 18px);
         }
 

@@ -10,6 +10,7 @@ define( 'IO_DIR', __DIR__ );
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
 wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
+wpcom_vip_load_plugin( 'wpcom-thumbnail-editor' );
 
 /** Custom Post Types. */
 require IO_DIR . '/plugins/internetorg-custom-posttypes/internetorg-custom-posttypes.php';
@@ -105,6 +106,38 @@ if ( ! function_exists( 'internetorg_setup' ) ) :
 endif;
 
 add_action( 'after_setup_theme', 'internetorg_setup' );
+
+/**
+ * Register additional image sizes.
+ */
+function internetorg_setup_image_sizes() {
+
+	// Hard cropped image 1280 x 1600 for use in "Panel."
+	add_image_size( 'panel-image', 1280, 1600, true );
+
+	// Soft cropped image 960 x whatever for use in content or the "mobile only" thumbnail.
+	add_image_size( 'inline-image', 960, 9999 );
+
+	// Hard cropped image 420 x 520 for use in "listings" like search or press.
+	add_image_size( 'listing-image', 420, 520, true );
+}
+
+add_action( 'after_setup_theme', 'internetorg_setup_image_sizes' );
+
+/**
+ * Add custom image sizes to the media chooser.
+ *
+ * Default values include 'Thumbnail', 'Medium', 'Large', 'Full Size'.
+ *
+ * @param array $sizes Registered image sizes and their names.
+ *
+ * @return array
+ */
+function internetorg_custom_sizes( $sizes ) {
+	return array_merge( $sizes, array( 'inline-image' => __( 'Inline Image' ), ) );
+}
+
+add_filter( 'image_size_names_choose', 'internetorg_custom_sizes' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -241,7 +274,7 @@ if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 				$image_url = get_stylesheet_directory_uri()
 				             . '/_static/web/assets/media/images/icons/png/icon-services-dictionary.png';
 			} else {
-				$image_url = internetorg_get_post_thumbnail( $svcqry->post->ID );
+				$image_url = internetorg_get_post_thumbnail( $svcqry->post->ID, 'listing-image' );
 			}
 
 			$services[] = array(
@@ -366,11 +399,12 @@ function internetorg_get_the_intro_block( $post_id = 0, $key = '' ) {
 /**
  * Get the post thumbnail (featured image) for the supplied post by post ID.
  *
- * @param int $post_id Post ID to retrieve featured image from.
+ * @param int    $post_id Post ID to retrieve featured image from.
+ * @param string $size    Optional. The registered image size to retrieve. Defaults to 'full'.
  *
  * @return string
  */
-function internetorg_get_post_thumbnail( $post_id = 0 ) {
+function internetorg_get_post_thumbnail( $post_id = 0, $size = 'full' ) {
 
 	$post_id = absint( $post_id );
 
@@ -392,7 +426,7 @@ function internetorg_get_post_thumbnail( $post_id = 0 ) {
 		return '';
 	}
 
-	$attachment_image_src = wp_get_attachment_image_src( $post_thumbnail_id, 'full' );
+	$attachment_image_src = wp_get_attachment_image_src( $post_thumbnail_id, $size );
 
 	if ( empty( $attachment_image_src ) ) {
 		return '';
@@ -764,11 +798,11 @@ function internetorg_is_internal_url( $url ) {
  * Get the URL of a valid image attachment by attachment ID.
  *
  * @param int          $attachment_id Image attachment ID. Required.
- * @param string|array $size          Optional. Registered image size name or width/height array.
+ * @param string|array $size          Optional. Registered image size name or width/height array. Defaults to full.
  *
  * @return string The URL of the image attachment or empty string on failure.
  */
-function internetorg_get_media_image_url( $attachment_id = 0, $size = 'single-post-thumbnail' ) {
+function internetorg_get_media_image_url( $attachment_id = 0, $size = 'full' ) {
 
 	$attachment_id = absint( $attachment_id );
 
@@ -912,7 +946,7 @@ function internetorg_do_ajax_search() {
 		 *
 		 * @var string $post_thumbnail
 		 */
-		$post_thumbnail = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), array( 210, 260 ) );
+		$post_thumbnail = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'listing-image' );
 
 		$data['posts'][] = array(
 			'ID'           => get_the_ID(),
@@ -1020,7 +1054,7 @@ function internetorg_do_ajax_more_posts() {
 		 *
 		 * @var string $post_thumbnail
 		 */
-		$post_thumbnail = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), array( 210, 260 ) );
+		$post_thumbnail = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'listing-image' );
 
 		$data['posts'][] = array(
 			'ID'             => get_the_ID(),
@@ -1038,12 +1072,26 @@ function internetorg_do_ajax_more_posts() {
 
 add_action( 'template_redirect', 'internetorg_do_ajax_more_posts' );
 
+/**
+ * Add "Mobile Featured Image" via VIP approved Multiple Post Thumbnails plugin.
+ *
+ * Appears the 'post_type' param does not accept an array or comma delimited string of post types. Hence two calls.
+ *
+ * @link https://github.com/voceconnect/multi-post-thumbnails/wiki
+ */
 if ( class_exists( 'MultiPostThumbnails' ) ) {
 	new MultiPostThumbnails(
 		array(
 			'label'     => 'Mobile Featured Image',
 			'id'        => 'mobile-featured-image',
 			'post_type' => 'page',
+		)
+	);
+	new MultiPostThumbnails(
+		array(
+			'label'     => 'Mobile Featured Image',
+			'id'        => 'mobile-featured-image',
+			'post_type' => 'io_story',
 		)
 	);
 }
@@ -1059,11 +1107,12 @@ if ( class_exists( 'MultiPostThumbnails' ) ) {
  * @see internetorg_get_post_thumbnail
  *
  * @param string $post_type The post type that we are retrieving the "mobile featured image" for.
- * @param int    $post_id The ID of the post that we are retrieving the "mobile featured image" for.
+ * @param int    $post_id   The ID of the post that we are retrieving the "mobile featured image" for.
+ * @param string $size      Optional. The registered image size to retrieve. Defaults to "inline-image."
  *
  * @return string
  */
-function internetorg_get_mobile_featured_image( $post_type, $post_id ) {
+function internetorg_get_mobile_featured_image( $post_type, $post_id, $size = 'inline-image' ) {
 
 	$post_id = absint( $post_id );
 
@@ -1088,7 +1137,7 @@ function internetorg_get_mobile_featured_image( $post_type, $post_id ) {
 	}
 
 	if ( ! class_exists( 'MultiPostThumbnails' ) ) {
-		return internetorg_get_post_thumbnail( $post_id );
+		return internetorg_get_post_thumbnail( $post_id, $size );
 	}
 
 	$id = 'mobile-featured-image';
@@ -1099,10 +1148,10 @@ function internetorg_get_mobile_featured_image( $post_type, $post_id ) {
 		return '';
 	}
 
-	$img_url = MultiPostThumbnails::get_post_thumbnail_url( $post_type, $id, $post_id, 'full' );
+	$img_url = MultiPostThumbnails::get_post_thumbnail_url( $post_type, $id, $post_id, $size );
 
 	if ( empty( $img_url ) ) {
-		return internetorg_get_post_thumbnail( $post_id );
+		return internetorg_get_post_thumbnail( $post_id, $size );
 	}
 
 	return $img_url;
@@ -1298,7 +1347,7 @@ function internetorg_video_shortcode( $atts = array() ) {
 	 *
 	 * @var string $image
 	 */
-	$image = internetorg_get_post_thumbnail( $post_id );
+	$image = internetorg_get_post_thumbnail( $post_id, 'inline-image' );
 
 	/**
 	 * String representing the duration of the video.
