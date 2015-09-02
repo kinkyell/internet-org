@@ -688,7 +688,7 @@ function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button 
 		$meta = ( ! empty( $widget['meta'] ) ? $widget['meta'] : null );
 		$post = $widget['post'];
 
-		$out .= '<div class="topicBlock-hd"><h2 class="hdg hdg_3">' . esc_html( $post->post_title ) . '</h2></div>';
+		$out .= '<div class="topicBlock-hd"><h2 class="hdg hdg_8 mix-hdg_bold">' . esc_html( $post->post_title ) . '</h2></div>';
 		$out .= '<div class="topicBlock-bd">';
 		$out .= '<p class="bdcpy">' . wp_kses_post( $post->post_content ) . '</p>';
 

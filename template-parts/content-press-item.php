@@ -1,0 +1,49 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: raber
+ * Date: 9/1/15
+ * Time: 7:58 PM
+ */
+
+?>
+
+<div class="resultsList-list-item">
+
+	<?php if ( has_post_thumbnail() ) : ?>
+	<div class="media media_inline">
+		<div class="media-figure">
+			<img src="<?php echo esc_url( internetorg_get_post_thumbnail( get_the_ID(), 'listing-image' ) ); ?>" alt="" />
+		</div>
+		<div class="media-bd">
+			<?php endif; ?>
+
+			<div class="feature feature_tight">
+				<div class="feature-hd">
+					<h2 class="hdg hdg_3">
+						<?php the_title(); ?>
+					</h2>
+				</div>
+				<div class="feature-date">
+					<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray">
+						<?php internetorg_posted_on_date(); ?>
+					</div>
+				</div>
+				<div class="feature-bd">
+					<p class="bdcpy">
+						<?php the_excerpt(); ?>
+					</p>
+				</div>
+				<div class="feature-cta">
+					<a href="<?php the_permalink(); ?>" class="link link_sm">
+						<?php esc_html_e( 'Read More', 'internetorg' ); ?>
+					</a>
+				</div>
+			</div>
+
+			<?php if ( has_post_thumbnail() ) : ?>
+		</div><!-- media-bd -->
+	</div><!-- media_inline -->
+<?php endif; ?>
+
+</div><!-- resultsList-list-item -->
