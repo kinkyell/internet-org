@@ -143,6 +143,7 @@ define(function(require, exports, module) { // jshint ignore:line
             ((!isNarrow && this._invertLeft) || (isNarrow && isOnFirstNarrative))
         );
         var shouldHaveInvertedMenu = (!isMenuOpen && ((!isNarrow && this._invertRight) || isOnFirstNarrative));
+        var shouldHaveMinimalLogo = shouldBeCentered || (isNarrow && !isOnFirstNarrative);
 
         // background bar visibility
         this.$element.toggleClass('isVisible', !isHome && !isMenuOpen);
@@ -168,7 +169,7 @@ define(function(require, exports, module) { // jshint ignore:line
         // update logo
         this.$logo
             .toggleClass('header-logo_invert', shouldHaveInvertedLogo)
-            .toggleClass('header-logo_min', shouldBeCentered)
+            .toggleClass('header-logo_min', shouldHaveMinimalLogo)
             .toggleClass('mix-header-logo_center', shouldBeCentered)
             .toggleClass('mix-header-logo_up', shouldBeRaised);
     };
