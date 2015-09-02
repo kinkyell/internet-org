@@ -151,7 +151,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     PanelState.prototype._onLoaderInit = function($panel) {
-        console.log(this)
         this.loader = new LoadingContainer($panel[0]);
         this.loader.addThrobber();
     };
