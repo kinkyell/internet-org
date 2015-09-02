@@ -52,7 +52,7 @@ class Internetorg_Main_SubNav_Walker extends Walker_Nav_Menu {
 		$attributes .= ' ';
 
 		if ( internetorg_is_internal_url( $item->url ) ) {
-			$attributes .= ' class="auxLink js-stateLink" data-type="tiled" data-title="' . esc_attr( $item->title ) . '"';
+			$attributes .= ' class="auxLink js-stateLink" data-type="titled" data-title="' . esc_attr( $item->title ) . '"';
 		} else {
 			$attributes .= ' class="auxLink"';
 		}
