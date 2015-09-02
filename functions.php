@@ -112,14 +112,14 @@ add_action( 'after_setup_theme', 'internetorg_setup' );
  */
 function internetorg_setup_image_sizes() {
 
-	// Hard cropped image 640 x 800 for use in "Panel."
-	add_image_size( 'panel-image', 640, 800, true );
+	// Hard cropped image 960 x 1200 for use in "Panel."
+	add_image_size( 'panel-image', 960, 1200, true );
 
-	// Soft cropped image 480 x whatever for use in content or the "mobile only" thumbnail.
-	add_image_size( 'inline-image', 480, 9999 );
+	// Soft cropped image 720 x whatever for use in content or the "mobile only" thumbnail.
+	add_image_size( 'inline-image', 720, 9999 );
 
-	// Hard cropped image 210 x 260 for use in "listings" like press.
-	add_image_size( 'listing-image', 210, 260, array( 'left', 'center' ) );
+	// Hard cropped image 315 x 390 for use in "listings" like press.
+	add_image_size( 'listing-image', 315, 390, array( 'left', 'center' ) );
 }
 
 add_action( 'after_setup_theme', 'internetorg_setup_image_sizes' );
