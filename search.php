@@ -38,7 +38,7 @@ get_header(); ?>
 
 
 					<div class="u-isHiddenMedium">
-						<?php get_search_form( 'template-parts/content', 'search-mobile' ); ?>
+						<?php get_template_part( 'template-parts/content', 'search-mobile' ); ?>
 					</div>
 
 
