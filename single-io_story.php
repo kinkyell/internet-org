@@ -2,8 +2,6 @@
 /**
  * The template for displaying all single io_story (substory) posts.
  *
- * Mobile Aquila == substory == io_story Have a look at page-mission for similar features (not single.php)
- *
  * @package Internet.org
  */
 
