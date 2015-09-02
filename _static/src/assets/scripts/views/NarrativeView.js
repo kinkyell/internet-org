@@ -156,7 +156,6 @@ define(function(require, exports, module) { // jshint ignore:line
 
         this._getSectionContent().then(function() {
 
-            console.log(this._sectionConf);
             // determine bp specific narrative handle
             this._narrativeManager = (breakpointManager.isMobile) ?
                 new NarrativeMobileManager(this._sectionConf) :
