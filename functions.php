@@ -399,11 +399,14 @@ function internetorg_get_the_intro_block( $post_id = 0, $key = '' ) {
 /**
  * Get the post thumbnail (featured image) for the supplied post by post ID.
  *
+ * If the supplied post ID does not have an assigned post thumbnail, will default to the home.jpg in FED statics.
+ *
  * @param int $post_id Post ID to retrieve featured image from.
+ * @param string $size    Optional. The registered image size to retrieve. Defaults to 'full'.
  *
  * @return string
  */
-function internetorg_get_post_thumbnail( $post_id = 0 ) {
+function internetorg_get_post_thumbnail( $post_id = 0, $size = 'full' ) {
 
 	$post_id = absint( $post_id );
 
@@ -425,7 +428,7 @@ function internetorg_get_post_thumbnail( $post_id = 0 ) {
 		return '';
 	}
 
-	$attachment_image_src = wp_get_attachment_image_src( $post_thumbnail_id, 'full' );
+	$attachment_image_src = wp_get_attachment_image_src( $post_thumbnail_id, $size );
 
 	if ( empty( $attachment_image_src ) ) {
 		return '';
