@@ -155,6 +155,8 @@ define(function(require, exports, module) { // jshint ignore:line
         this._sectionLength = this.$narrativeSections.length;
 
         this._getSectionContent().then(function() {
+
+            console.log(this._sectionConf);
             // determine bp specific narrative handle
             this._narrativeManager = (breakpointManager.isMobile) ?
                 new NarrativeMobileManager(this._sectionConf) :
@@ -270,42 +272,89 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._scrollUp = function() {
         if (!this._narrativeManager._isAnimating) {
-            var direction = 'up';
-            var section = this._sectionConf[this._position];
-            var subsLength = section.subSections.length;
-            var subPosition = this._subPosition;
 
-            var destinationSectionPos = this._position - 1;
-            var destinationSection = this._sectionConf[destinationSectionPos];
-            var destinationSubsLength = destinationSection.subSections.length;
+            if (breakpointManager.isMobile) {
+                var direction = 'up';
+                var section = this._sectionConf[this._position];
+                var subsLength = section.subSections.length;
+                var subPosition = this._subPosition;
 
-            // if has subs
-            // and subs pos MORE THAN 0
-            if (subsLength > 0 && subPosition > 0) {
-                var destinationSubPos = subPosition - 1;
-                var destinationSub = section.subSections[destinationSubPos];
+                var destinationSectionPos = this._position - 1;
+                var destinationSection = this._sectionConf[destinationSectionPos];
+                var destinationSubsLength = destinationSection.subSections.length;
 
-                this._narrativeManager.gotoSubSection(destinationSub, direction, null, true).then(function() {
-                    this._subPosition -= 1;
-                }.bind(this));
+                // if has subs
+                // and subs pos MORE THAN 0
+                if (subsLength > 0 && subPosition > 0) {
+                    var destinationSubPos = subPosition - 1;
+                    var destinationSub = section.subSections[destinationSubPos];
 
-
-            // subs pos IS 0
-            } else if (subPosition === 0) {
-                this._narrativeManager.gotoSubSection(section, direction, section).then(function() {
-                    this._subPosition = -1;
-                }.bind(this));
-
-            // Anything Else
-            } else {
-                this._subPosition = destinationSubsLength - 1;
-
-                if (destinationSectionPos >= 0) {
-                    this._narrativeManager.gotoSection(destinationSection, direction).then(function() {
-                        this._position -= 1;
+                    this._narrativeManager.gotoSubSection(destinationSub, direction, section, true).then(function() {
+                        this._subPosition -= 1;
                     }.bind(this));
+
+
+                // subs pos IS 0
+                // } else if (subPosition === 0) {
+                //     this._narrativeManager.gotoSubSection(section, direction, section).then(function() {
+                //         this._subPosition = destinationSubsLength;
+                //     }.bind(this));
+
+                // Anything Else
+                } else {
+                    this._subPosition = destinationSubsLength;
+
+                    if (destinationSectionPos >= 0) {
+                        this._narrativeManager.gotoSection(destinationSection, direction).then(function() {
+                            this._position -= 1;
+                        }.bind(this));
+                    }
                 }
+
+            } else {
+
+                var direction = 'up';
+                var section = this._sectionConf[this._position];
+                var subsLength = section.subSections.length;
+                var subPosition = this._subPosition;
+
+                var destinationSectionPos = this._position - 1;
+                var destinationSection = this._sectionConf[destinationSectionPos];
+                var destinationSubsLength = destinationSection.subSections.length;
+
+                // if has subs
+                // and subs pos MORE THAN 0
+                if (subsLength > 0 && subPosition > 0) {
+                    var destinationSubPos = subPosition - 1;
+                    var destinationSub = section.subSections[destinationSubPos];
+
+                    this._narrativeManager.gotoSubSection(destinationSub, direction, null, true).then(function() {
+                        this._subPosition -= 1;
+                    }.bind(this));
+
+
+                // subs pos IS 0
+                } else if (subPosition === 0) {
+                    this._narrativeManager.gotoSubSection(section, direction, section).then(function() {
+                        this._subPosition = -1;
+                    }.bind(this));
+
+                // Anything Else
+                } else {
+                    this._subPosition = destinationSubsLength - 1;
+
+                    if (destinationSectionPos >= 0) {
+                        this._narrativeManager.gotoSection(destinationSection, direction).then(function() {
+                            this._position -= 1;
+                        }.bind(this));
+                    }
+                }
+
             }
+
+
+
+
         }
     };
 
@@ -317,33 +366,71 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._scrollDown = function() {
         if (!this._narrativeManager._isAnimating) {
-            var direction = 'down';
-            var section = this._sectionConf[this._position];
-            var subsLength = section.subSections.length;
-            var subPosition = this._subPosition;
 
-            // if has subs
-            // and subs pos is not at the end
-            if (subsLength > 0 && subPosition < subsLength - 1) {
-                var destinationSubPos = subPosition + 1;
-                var destinationSub = section.subSections[destinationSubPos];
+            if (breakpointManager.isMobile) {
 
-                this._narrativeManager.gotoSubSection(destinationSub, direction, section, true).then(function() {
-                    this._subPosition += 1;
-                }.bind(this));
+                var direction = 'down';
+                var section = this._sectionConf[this._position];
+                var subsLength = section.subSections.length;
+                var subPosition = this._subPosition;
 
-            // Anything Else
-            } else {
-                var sectionsLength = this._sectionConf.length;
-                var destinationSectionPos = this._position + 1;
-                var destinationSection = this._sectionConf[destinationSectionPos];
-                this._subPosition = -1;
+                // if has subs
+                // and subs pos is not at the end
+                if (subsLength > 0 && subPosition < subsLength - 1) {
+                    var destinationSubPos = subPosition + 1;
+                    var destinationSub = section.subSections[destinationSubPos];
 
-                if (destinationSectionPos < sectionsLength) {
-                    this._narrativeManager.gotoSection(destinationSection, direction).then(function() {
-                        this._position += 1;
+                    this._narrativeManager.gotoSubSection(destinationSub, direction, section, true).then(function() {
+                        this._subPosition += 1;
                     }.bind(this)).catch(log);
+
+                // Anything Else
+                } else {
+                    var sectionsLength = this._sectionConf.length;
+                    var destinationSectionPos = this._position + 1;
+                    var destinationSection = this._sectionConf[destinationSectionPos];
+                    this._subPosition = -1;
+
+
+                    if (destinationSectionPos < sectionsLength) {
+                        this._narrativeManager.gotoSection(destinationSection, direction).then(function() {
+                            this._position += 1;
+                        }.bind(this)).catch(log);
+                    }
                 }
+
+            } else {
+
+                var direction = 'down';
+                var section = this._sectionConf[this._position];
+                var subsLength = section.subSections.length;
+                var subPosition = this._subPosition;
+
+                // if has subs
+                // and subs pos is not at the end
+                if (subsLength > 0 && subPosition < subsLength - 1) {
+                    var destinationSubPos = subPosition + 1;
+                    var destinationSub = section.subSections[destinationSubPos];
+
+                    this._narrativeManager.gotoSubSection(destinationSub, direction, section, true).then(function() {
+                        this._subPosition += 1;
+                    }.bind(this));
+
+                // Anything Else
+                } else {
+                    var sectionsLength = this._sectionConf.length;
+                    var destinationSectionPos = this._position + 1;
+                    var destinationSection = this._sectionConf[destinationSectionPos];
+                    this._subPosition = -1;
+
+
+                    if (destinationSectionPos < sectionsLength) {
+                        this._narrativeManager.gotoSection(destinationSection, direction).then(function() {
+                            this._position += 1;
+                        }.bind(this)).catch(log);
+                    }
+                }
+
             }
         }
     };

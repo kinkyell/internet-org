@@ -13,10 +13,11 @@ define(function(require, exports, module) { // jshint ignore:line
     require('gsap-scrollToPlugin');
     require('gsap-cssPlugin');
 
+    var TIME_SCALE = AppConfig.narrative.mobile.TIME_SCALE;
     var SECTION_DURATION = AppConfig.narrative.mobile.SECTION_DURATION;
-    var EASE = AppConfig.narrative.desktop.EASE;
-    var EASE_DIRECTION_FORWARD = AppConfig.narrative.desktop.EASE_DIRECTION_FORWARD;
-    var EASE_DIRECTION_REVERSE = AppConfig.narrative.desktop.EASE_DIRECTION_REVERSE;
+    var EASE = AppConfig.narrative.mobile.EASE;
+    var EASE_DIRECTION_FORWARD = AppConfig.narrative.mobile.EASE_DIRECTION_FORWARD;
+    var EASE_DIRECTION_REVERSE = AppConfig.narrative.mobile.EASE_DIRECTION_REVERSE;
 
     /**
      * Constructor for NarrativeMobileManager
@@ -190,46 +191,14 @@ define(function(require, exports, module) { // jshint ignore:line
             0.35,
             { scrollTo: { y: this._sectionsConf[4].sectionOffset }, ease: EASE[easeDirection] });
 
-        tl.addLabel(this._sectionsConf[0].label, SECTION_DURATION * 0);
-        tl.addLabel(this._sectionsConf[1].label, SECTION_DURATION * 1);
-        tl.addLabel(this._sectionsConf[2].label, SECTION_DURATION * 2);
-        tl.addLabel(this._sectionsConf[3].label, SECTION_DURATION * 3);
-        tl.addLabel(this._sectionsConf[4].label, SECTION_DURATION * 4);
+        var i = 0;
+        var l = this._sectionsConf.length;
+        for (; i < l; i++) {
+            var section = this._sectionsConf[i];
+            tl.addLabel(section.label, SECTION_DURATION * i);
+        }
 
-        // var bdTwnOffset = 50;
-        // var bdTwnPos = null;
-
-        // if (position === 0) {
-        //     bdTwnPos = 0;
-        // } else if (this._position < position) {
-        //     bdTwnPos = bdTwnOffset;
-        // } else {
-        //     bdTwnPos = 0 - bdTwnOffset;
-        // }
-        // bdTwnPos = bdTwnOffset;
-
-        // var bdCntPos = bdTwnPos * 2;
-
-        // var bdTwn = Tween.from($sectionBody, 0.5, {y: bdTwnPos + '%'});
-        // var bdCntTwn = Tween.from($sectionBodyCnt, 0.65, {y: bdCntPos + '%'});
-
-        // tl.add(bdTwn);
-        // tl.add(bdCntTwn, '-=0.5');
-
-        // if (this._position === 0 && position === 1) {
-        //     var opacTwn = Tween.from($sectionBody, 0.5, {opacity: 0});
-        //     tl.add(opacTwn, 0);
-        // }
-
-        // tl.to($('.narrative'), 0.35, { scrollTo: { y: offsetY }, onComplete: function() {
-        //     this._position = position;
-        //     this._displayIndicators();
-        //     this._updateIndicators();
-        //     this._updateSlideHooks();
-        //     window.setTimeout(this._onSectionComplete.bind(this, position), this._scrollBuffer);
-        // }.bind(this) }, '-=0.65');
-
-        // tl.timeScale(1.15);
+        tl.timeScale(TIME_SCALE);
 
         return tl;
     };
@@ -297,18 +266,11 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._subSectionTransition = function(section, direction, rootSection, content) {
         return new Promise(function(resolve) {
-
-            // get slides container
-            // get child slides
-            // get current subsection position
-            // loop over up to current to get total offset
-            // scroll container to that offset
-
             var sectionPosition = this._sectionsConf.indexOf(rootSection);
             var subsectionPosition = rootSection.subSections.indexOf(section);
             var $slidesContainer = this._$sections.eq(sectionPosition).find('.narrative-section-slides');
             var $slides = $slidesContainer.find('> *');
-            var destinationPos = (direction === 'down') ? subsectionPosition += 1 : subsectionPosition -= 1;
+            var destinationPos = (direction === 'down') ? subsectionPosition + 1 : subsectionPosition;
 
             var offsetY = 0;
             var i = 0;
@@ -317,9 +279,8 @@ define(function(require, exports, module) { // jshint ignore:line
             }
 
             TweenLite.to($slidesContainer, 0.35, { scrollTo: { y: offsetY }, onComplete: function() {
-                // window.setTimeout(this._onTransitionComplete.bind(this, resolve), this._scrollBuffer);
                 this._onTransitionComplete(resolve);
-            }.bind(this) });
+            }.bind(this)});
 
         }.bind(this));
     };
@@ -343,7 +304,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onTransitionComplete = function(resolve) {
-        console.log('complete');
         this._isAnimating = false;
         eventHub.publish('Narrative:sectionChange');
         resolve();
@@ -351,60 +311,6 @@ define(function(require, exports, module) { // jshint ignore:line
         // $(window).on('wheel', this._onWheelEventHandler);
         // this._updateSlideHooks();
     };
-
-    // /////////////////////////////////////////////////////////////////////////////////////////
-    // Slide Logic
-    // /////////////////////////////////////////////////////////////////////////////////////////
-    // proto._gotoNextSlide = function(forward) {
-    //     var $currentSection = $('.narrative-section').eq(this._position);
-    //     var $slidesContainer = $currentSection.find('.narrative-section-slides');
-    //     var $slides = $currentSection.find('.narrative-section-slides-item');
-    //     var slideCount = $slides.length;
-    //     var destinationSlidePos = this._slidePosition;
-    //     var atEnd;
-
-    //     if (forward) {
-    //         destinationSlidePos += 1;
-    //         atEnd = destinationSlidePos >= slideCount;
-    //     } else {
-    //         destinationSlidePos -= 1;
-    //         atEnd = destinationSlidePos < 0;
-    //     }
-
-    //     var hasMultiple = this._hasMultiple(this._position);
-
-    //     if (!hasMultiple || atEnd) {
-    //         return false;
-    //     }
-
-    //     this._isAnimating = true;
-
-    //     var offsetY = 0;
-    //     var i = 0;
-    //     for (; i < destinationSlidePos; i++) {
-    //         offsetY += $slides.eq(i).height();
-    //     }
-
-    //     var tl = new Timeline();
-    //     tl.to($slidesContainer, 0.35, { scrollTo: { y: offsetY }, onComplete: function() {
-    //         window.setTimeout(this._onSlideComplete.bind(this, forward), this._scrollBuffer);
-    //     }.bind(this) });
-
-    //     return true;
-    // };
-
-    // proto._onSlideComplete = function(forward) {
-    //     this._slidePosition = (forward) ? this._slidePosition += 1 : this._slidePosition -= 1;
-    //     this._isAnimating = false;
-    // };
-
-    // proto._hasMultiple = function(position) {
-    //     var $currentSection = $('.narrative-section').eq(position);
-    //     var $slides = $currentSection.find('.narrative-section-slides-item');
-    //     var slidesCount = $slides.length;
-
-    //     return (slidesCount > 1) ? true : false;
-    // };
 
     module.exports = NarrativeMobileManager;
 
