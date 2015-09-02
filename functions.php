@@ -1153,7 +1153,7 @@ function internetorg_get_mobile_featured_image( $post_type, $post_id, $size = 'i
 	$img_url = MultiPostThumbnails::get_post_thumbnail_url( $post_type, $id, $post_id, $size );
 
 	if ( empty( $img_url ) ) {
-		return internetorg_get_post_thumbnail( $size );
+		return internetorg_get_post_thumbnail( $post_id, $size );
 	}
 
 	return $img_url;
