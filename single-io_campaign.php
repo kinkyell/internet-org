@@ -20,7 +20,7 @@ get_header();
 
 	<div id="featurePanel" class="viewWindow-panel viewWindow-panel_feature">
 		<div class="viewWindow-panel-content">
-			<div class="viewWindow-panel-content-inner" style="background-image: url('<?php echo esc_attr( internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' ) ); ?>');"></div>
+			<div class="viewWindow-panel-content-inner" style="background-image: url('<?php echo esc_attr( internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'panel-image' ) ); ?>');"></div>
 		</div>
 	</div>
 
