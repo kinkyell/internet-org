@@ -8,6 +8,8 @@
     @include remify(font-size, 14px);
     line-height: 1.714285714;
     color: $CLR_GRAY;
+    // -webkit-font-smoothing: antialiased;
+    // font-smoothing: antialiased;
 }
 
 .bdcpy_lg {

@@ -6,6 +6,8 @@
 .hdg {
     @include font(SERIF);
 	color: $CLR_BLACK;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
 }
 
 .hdg_1 {
