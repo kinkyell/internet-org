@@ -1,0 +1,53 @@
+/* ---------------------------------------------------------------------
+ narrativeView
+
+ wrapping layout container for narrative items
+------------------------------------------------------------------------ */
+.narrativeView-progress {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    opacity: 1;
+    transition: opacity 0.25s ease-out;
+    z-index: 2;
+}
+
+.narrativeView-progress > * {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    transition: background-color 0.25s ease-out;
+}
+
+.narrativeView-progress > * + * {
+    margin-top: 6px;
+}
+
+.narrativeView-progress > *.isActive:nth-child(1) { background-color: #ffcc02; }
+.narrativeView-progress > *.isActive:nth-child(2) { background-color: #9d25a0; }
+.narrativeView-progress > *.isActive:nth-child(3) { background-color: #fa5cb6; }
+.narrativeView-progress > *.isActive:nth-child(4) { background-color: #ff6b00; }
+.narrativeView-progress > *.isActive:nth-child(5) { background-color: #ffcc02; }
+
+.narrativeView-progress_isHidden {
+    opacity: 0;
+}
+
+
+@include breakpoint(MD) {
+    .narrativeView-progress {
+        left: initial;
+        bottom: 50%;
+        right: 20px;
+    }
+
+    .narrativeView-progress > * {
+        width: 8px;
+        height: 8px;
+    }
+
+    .narrativeView-progress > * + * {
+        margin-top: 12px;
+    }
+}
