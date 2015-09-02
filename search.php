@@ -35,6 +35,13 @@ get_header(); ?>
 		<div class="viewWindow-panel viewWindow-panel_story isActive">
 			<div class="viewWindow-panel-content">
 				<div class="viewWindow-panel-content-inner">
+
+
+					<div class="u-isHiddenMedium">
+						<?php get_search_form( 'template-parts/content', 'search-mobile' ); ?>
+					</div>
+
+
 					<div class="contentCol">
 						<div class="container">
 
@@ -45,10 +52,6 @@ get_header(); ?>
 										<?php esc_html__( printf( '%d Results Found', $wp_query->found_posts ), 'internetorg' ); ?>
 									</div>
 
-								</div>
-
-								<div class="u-isHiddenMedium">
-									<?php get_search_form(); ?>
 								</div>
 
 								<div class="resultsList-list js-searchState-results" id="search-results">
