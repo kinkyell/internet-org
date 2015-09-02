@@ -1,6 +1,6 @@
 <?php
 /**
- * The template part for displaying single posts in home.php (press page).
+ * The template part for displaying single post summaries in home.php (press page).
  *
  * @package Internet.org
  */
@@ -34,7 +34,7 @@
 					</p>
 				</div>
 				<div class="feature-cta">
-					<a href="<?php the_permalink(); ?>" class="link link_sm">
+					<a class="link js-stateLink" href="<?php echo esc_url( get_the_permalink() ); ?>" data-title="<?php echo esc_attr( get_the_title() ); ?>" data-desc="<?php echo esc_attr( get_the_date() ); ?>" data-type="titled">
 						<?php esc_html_e( 'Read More', 'internetorg' ); ?>
 					</a>
 				</div>
