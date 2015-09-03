@@ -35,3 +35,17 @@
         background-color: $CLR_ACCENT;
     }
 }
+
+@media (max-height: 480px) {
+    .splashFooter {
+        @include verticalConstrain();
+    }
+
+    .statementBlock_end .statementBlock-pre {
+        @include verticalConstrain();
+    }
+
+    .statementBlock_end .statementBlock-hd {
+        @include verticalConstrain();
+    }
+}
