@@ -32,6 +32,8 @@
     top: 0;
     left: 0;
     opacity: 1;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
 }
 .arrowCta:after {
     animation: bottom-arrow 1.65s infinite;

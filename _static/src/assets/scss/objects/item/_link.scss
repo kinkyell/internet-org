@@ -4,7 +4,7 @@
  common links styling
 ------------------------------------------------------------------------ */
 .link {
-    @include transition(all 0.3s ease-in-out);   
+    @include transition(all 0.3s ease-in-out); 
     @include font(SANS_BLACK);
     @include remify(font-size, 13px);
     line-height: 1.222222;
@@ -15,6 +15,8 @@
     padding-right: 35px;
     display: inline-flex;
     display: -webkit-inline-flex;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
 }
 
 .link:after,
@@ -40,6 +42,7 @@
     height: 1px;
     width: 30px;
     background-color: $CLR_ACCENT;
+    margin-right: -1px;
 }
 
 .link:hover,
@@ -73,6 +76,8 @@
     width: 4px;
     border-bottom: 2px solid #dcb421;
     border-right: 2px solid #dcb421;
+    border-left: 0 solid transparent;
+    border-top: 0 solid transparent;
     transform: rotate(-45deg);
     background-color: transparent;
 }
@@ -105,7 +110,12 @@
     left: -5px;
 }
 
-.link_preArrows:hover:before { background-color: transparent; }
+.link_preArrows:hover:before,
+.link_preArrows:hover:after {
+    background-color: transparent;
+    border-bottom: 2px solid $CLR_ACCENT;
+    border-right: 2px solid $CLR_ACCENT;
+}
 
 .link_inline {
     text-transform: none;

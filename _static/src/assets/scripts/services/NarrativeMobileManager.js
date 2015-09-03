@@ -55,6 +55,15 @@ define(function(require, exports, module) { // jshint ignore:line
          */
         this._sectionsConf = sectionsConf;
 
+        /**
+         * sections configuration params
+         *
+         * @property _currentSection
+         * @type {obj}
+         * @private
+         */
+        this._currentSection = 0;
+
         this._init();
     };
 
@@ -244,6 +253,8 @@ define(function(require, exports, module) { // jshint ignore:line
             this._sectionsConf[sectionPosition - 1] :
             this._sectionsConf[sectionPosition + 1];
 
+        this._currentSection = sectionPosition;
+
         return new Promise(function(resolve) {
             var fromLabel = prevSection.label;
             var toLabel = section.label;
@@ -271,6 +282,8 @@ define(function(require, exports, module) { // jshint ignore:line
             var $slidesContainer = this._$sections.eq(sectionPosition).find('.narrative-section-slides');
             var $slides = $slidesContainer.find('> *');
             var destinationPos = (direction === 'down') ? subsectionPosition + 1 : subsectionPosition;
+
+            this._currentSection = sectionPosition;
 
             var offsetY = 0;
             var i = 0;
@@ -305,7 +318,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._onTransitionComplete = function(resolve) {
         this._isAnimating = false;
-        eventHub.publish('Narrative:sectionChange');
+        eventHub.publish('Narrative:sectionChange', this._currentSection);
         resolve();
 
         // $(window).on('wheel', this._onWheelEventHandler);

@@ -51,11 +51,6 @@ get_header();
 								<?php the_content(); ?>
 							</div>
 						</div>
-						<div class="contentCol contentCol_flush">
-							<div class="container">
-								<?php /* insert gallery here */ ?>
-							</div>
-						</div>
 					</div>
 
 				</div>

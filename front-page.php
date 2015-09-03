@@ -63,9 +63,10 @@ $home_background_image_url = '';
 
 												<li data-feature="<?php echo esc_url( $imgUrl ); ?>">
 													<div class="featureContent">
-														<?php if ( ! empty( $cta['text'] ) ) : ?>
-															<?php echo wp_kses_post( $cta['text'] ); ?>
-														<?php endif; ?>
+														<a href="<?php echo esc_url( $cta['link'] ); ?>" class="tertiaryCta js-stateLink" data-type="titled" data-theme="<?php echo esc_attr( strtolower( $fieldset['slug'] ) ); ?>" data-title="<?php echo esc_attr( $cta['title'] ); ?>" data-desc="<?php echo esc_attr( strip_tags( $cta['text'] ) ); ?>">
+															<?php echo esc_html( strip_tags( $cta['title'] ) ); ?>
+															<span class="circleBtn circleBtn_theme<?php echo esc_attr( ucwords( $fieldset['slug'] ) ); ?>"></span>
+														</a>
 													</div>
 												</li>
 
@@ -169,7 +170,7 @@ $home_background_image_url = '';
 						<?php if ( ! empty( $custom_fields ) ) :
 							foreach ( $custom_fields as $group ) :
 								if ( ! empty( $group ) ) :
-									foreach ( $group as $fieldset ) : ?>
+									foreach ( $group as $cf_content_section ) : ?>
 
 										<div class="narrative-section">
 											<div class="narrative-section-slides">
