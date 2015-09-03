@@ -9,7 +9,7 @@ get_header();
 
 ?>
 
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-type="titled">
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-type="titled" data-route="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-desc="<?php echo esc_html( internetorg_get_the_subtitle( get_the_ID() ) ); ?>" data-date="<?php internetorg_posted_on_date(); ?>">
 		<?php while ( have_posts() ) : the_post(); ?>
 
 			<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
@@ -39,9 +39,9 @@ get_header();
 						</div>
 						<div class="introBlock-ft introBlock-ft_rule">
 							<ul class="socialParade">
-								<li><a class="socialParade-icon socialParade-icon_fb" href=""><?php esc_html_e( 'Facebook', 'internetorg' ); ?></a></li>
-								<li><a class="socialParade-icon socialParade-icon_tw" href=""><?php esc_html_e( 'Twitter', 'internetorg' ); ?></a></li>
-								<li><a class="socialParade-icon socialParade-icon_li" href=""><?php esc_html_e( 'LinkedIn', 'internetorg' ); ?></a></li>
+								<li><a class="socialParade-icon socialParade-icon_fb" href="https://fb.me/Internetdotorg" target="_blank"><?php esc_html_e( 'Facebook', 'internetorg' ); ?></a></li>
+								<li><a class="socialParade-icon socialParade-icon_tw" href="https://twitter.com/internet_org" target="_blank"><?php esc_html_e( 'Twitter', 'internetorg' ); ?></a></li>
+								<li><a class="socialParade-icon socialParade-icon_li" href="" target="_blank"><?php esc_html_e( 'LinkedIn', 'internetorg' ); ?></a></li>
 							</ul>
 						</div>
 					</div>

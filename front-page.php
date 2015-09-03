@@ -120,6 +120,7 @@ $home_background_image_url = '';
 																class="link link_theme<?php echo esc_attr( ucwords( $cf_content_section['slug'] ) ); ?> js-stateLink"
 																data-type="panel"
 																data-image="<?php echo esc_url( ( ! empty( $cf_content_section['call-to-action'][0] ) ? wp_get_attachment_url( $cf_content_section['call-to-action'][0]['image'], 'full' ) : ''  ) ); ?>"
+																data-mobile-image=""
 																data-theme="<?php echo esc_attr( $cf_content_section['slug'] ); ?>"
 																data-title="<?php echo esc_attr( $cf_content_section['name'] ); ?>"
 																data-desc="<?php echo esc_attr( strip_tags( nl2br( $cf_content_section['content'] ) ) ); ?>">

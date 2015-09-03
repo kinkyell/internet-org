@@ -79,6 +79,11 @@ Sections of content that introduce landing and story pages
         margin: 0;
         padding-bottom: $SPACE_x3;
     }
+
+    // reset border
+    .viewWindow-panel-content-inner > .introBlock {
+        margin-top: 0;
+    }
 }
 
 // NOTE: moved below to override media query
