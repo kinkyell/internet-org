@@ -1437,14 +1437,14 @@ function internetorg_custom_link_shortcode($attr = array()){
 		'link_title' => '',
 		'image' => '',
 		'link_desc' => '',
-		'link_text' => esc_html__('Click Me','internetorg')
+		'link_text' => esc_html__( 'Click Me', 'internetorg' )
 	) );
 	ob_start();
 
-	$source = absint($attr['source']);
+	$source = absint( $attr['source'] );
 
 	//return if we don't have a url
-	if( empty($source) ) {
+	if( empty( $source ) ) {
 		return '';
 	};
 
@@ -1458,15 +1458,15 @@ function internetorg_custom_link_shortcode($attr = array()){
 		$sm_image = wp_get_attachment_image_src($attachment_id, 'inline-image');
 	}
 
-	if( $attr['link_to_press'] == 'panel' ){
+	if ( $attr['link_to_press'] == 'panel' ) {
 		$data_attr .= 'data-image="'. esc_url( $lg_image[0] ) .'" ';
 		$data_attr .= 'data-mobile-image="'. esc_url( $sm_image[0] ) .'" ';
-	}elseif( $attr['link_to_press'] == 'titled' ) {
+	} elseif ( 'titled' === $attr['link_to_press'] ) {
 		$data_attr .= 'data-title="'. esc_attr( $attr['link_title'] ) .'" ';
 		$data_attr .= 'data-desc="'. esc_attr( $attr['link_desc'] ).'" ';
 	}
 
-	$url = str_replace(home_url(), '', get_permalink($source));
+	$url = str_replace( home_url(), '', get_permalink($source) );
 	?>
 
 	<a class="<?php echo esc_attr( $attr['css_class'] ); ?> js-stateLink"
@@ -1588,15 +1588,15 @@ add_filter( 'grunion_contact_form_success_message', 'internetorg_change_contact_
  * @return boolean true if url is a video url
  */
 function internetorg_is_video_url( $url ) {
-    $check_val = 'vimeo.com';
+	$check_val = 'vimeo.com';
 
-    // url too short, go away
-    if ( strlen( $url ) <= strlen( $check_val ) ) {
-        return false;
-    }
+	// url too short, go away
+	if ( strlen( $url ) <= strlen( $check_val ) ) {
+		return false;
+	}
 
-    $found_loc = strpos( $url, $check_val );
+	$found_loc = strpos( $url, $check_val );
 
-    return $found_loc !== FALSE;
+	return $found_loc !== false;
 }
 
