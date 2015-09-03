@@ -20,6 +20,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var SCRAPE_ATTRS = [
         'type',
         'image',
+        'mobile-image',
         'title',
         'theme',
         'route',

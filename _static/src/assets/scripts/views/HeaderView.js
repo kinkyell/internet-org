@@ -36,6 +36,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handleMenuChange = this._onMenuChange.bind(this);
         this._handleSearchToggle = this._onSearchToggle.bind(this);
         this._handleNarrativeChange = this._onNarrativeChange.bind(this);
+        this._handleScrollBarrier = this._onScrollBarrier.bind(this);
     };
 
     /**
@@ -51,6 +52,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._invertLeft = false;
         this._invertRight = true;
         this._isFirstNarrative = true;
+        this._pastBarrier = false;
         this.isLogoCentered = false;
         this.$logo = this.$('.js-headerView-logo');
         this.$menuBtn = this.$('.js-headerView-menuBtn');
@@ -104,6 +106,7 @@ define(function(require, exports, module) { // jshint ignore:line
         eventHub.subscribe('MainMenu:change', this._handleMenuChange);
         eventHub.subscribe('Search:toggle', this._handleSearchToggle);
         eventHub.subscribe('Narrative:sectionChange', this._handleNarrativeChange);
+        eventHub.subscribe('viewWindow:scrollBarrier', this._handleScrollBarrier);
         breakpointManager.subscribe(this._handleBreakpointChange);
         this.$menuBtn.on('click', this._handleMenuBtnClick);
     };
@@ -120,6 +123,7 @@ define(function(require, exports, module) { // jshint ignore:line
         eventHub.unsubscribe('MainMenu:change', this._handleMenuChange);
         eventHub.unsubscribe('Search:toggle', this._handleSearchToggle);
         eventHub.unsubscribe('Narrative:sectionChange', this._handleNarrativeChange);
+        eventHub.unsubscribe('viewWindow:scrollBarrier', this._handleScrollBarrier);
         breakpointManager.unsubscribe(this._handleBreakpointChange);
         this.$menuBtn.off('click', this._handleMenuBtnClick);
     };
@@ -134,6 +138,7 @@ define(function(require, exports, module) { // jshint ignore:line
         var isNarrow = breakpointManager.isMobile;
         var isHome = this._isHome;
         var isMenuOpen = this.menuView.isOpen;
+        var isPastBarrier = this._pastBarrier;
         var isOnFirstNarrative = (isHome && this._isFirstNarrative);
         var shouldBeCentered = (isMenuOpen || !isHome);
         var shouldBeRaised = (isMenuOpen && this.searchView.isOpen);
@@ -146,7 +151,7 @@ define(function(require, exports, module) { // jshint ignore:line
         var shouldHaveMinimalLogo = shouldBeCentered || (isNarrow && !isOnFirstNarrative);
 
         // background bar visibility
-        this.$element.toggleClass('isVisible', !isHome && !isMenuOpen);
+        this.$element.toggleClass('isVisible', !isHome && !isMenuOpen && isPastBarrier);
 
         // invert logo when over imagery
         this.$logo.toggleClass('header-logo_invert', shouldHaveInvertedLogo);
@@ -220,6 +225,17 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onSearchToggle = function() {
+        this._render();
+    };
+
+    /**
+     * Sets the header state after search toggles
+     *
+     * @method _onScrollBarrier
+     * @private
+     */
+    proto._onScrollBarrier = function(pastBarrier) {
+        this._pastBarrier = pastBarrier;
         this._render();
     };
 
