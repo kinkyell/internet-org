@@ -1536,6 +1536,7 @@ function internetorg_register_custom_link_shortcode_ui(){
 				),
 				array(
 					'label' => esc_html__('Data Title', 'internetorg'),
+
 					'attr' => 'link_title',
 					'type' => 'text',
 				),
@@ -1576,3 +1577,26 @@ function internetorg_change_contact_form_response( $msg ) {
 	return '<div class="vr vr_x1"><div class="hdg hdg_3 mix-hdg_centerInMobile">' . __( 'Thank you!', 'internetorg' ) . '</div></div>';
 }
 add_filter( 'grunion_contact_form_success_message', 'internetorg_change_contact_form_response' );
+
+/**
+ * Check if specified url is a video URL
+ *
+ * Note: currently only checks for vimeo.com in the URL, if more video hosts are added this
+ *       function will need to be updated.
+ *
+ * @param string $url the url to check
+ * @return boolean true if url is a video url
+ */
+function internetorg_is_video_url( $url ) {
+    $check_val = 'vimeo.com';
+
+    // url too short, go away
+    if ( strlen( $url ) <= strlen( $check_val ) ) {
+        return false;
+    }
+
+    $found_loc = strpos( $url, $check_val );
+
+    return $found_loc !== FALSE;
+}
+

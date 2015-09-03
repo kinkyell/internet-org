@@ -20,8 +20,8 @@ $home_background_image_url = '';
 	}
 
 	// Pull the custom fields and parse for placement.
-	$custom_fields                     = get_post_meta( get_the_ID(), 'home-content-section', false );
-	$get_involved_content_widget       = internetorg_get_content_widget_by_slug( 'home-get-involved' );
+	$custom_fields					   = get_post_meta( get_the_ID(), 'home-content-section', false );
+	$get_involved_content_widget	   = internetorg_get_content_widget_by_slug( 'home-get-involved' );
 
 	/**
 	 * An array of io_ctntwdgt Posts and associated meta, else null.
@@ -52,7 +52,7 @@ $home_background_image_url = '';
 								<?php foreach ( $group as $fieldset ) : ?>
 
 									<?php if ( ! empty( $fieldset['call-to-action'] ) ) : ?>
-										<li class="narrativeDT-sections-item" data-feature="<?php echo esc_url( ( ! empty( $fieldset['call-to-action'][0] ) ? wp_get_attachment_url( $fieldset['call-to-action'][0]['image'], 'full' ) : ''  ) ); ?>">
+										<li class="narrativeDT-sections-item" data-feature="<?php echo esc_url( ( ! empty( $fieldset['call-to-action'][0] ) ? wp_get_attachment_url( $fieldset['call-to-action'][0]['image'], 'full' ) : ''	 ) ); ?>">
 
 										<?php if ( count( $fieldset['call-to-action'] ) > 1 ) : ?>
 											<ul>
@@ -62,12 +62,22 @@ $home_background_image_url = '';
 													$imgUrl = wp_get_attachment_url( $cta['image'], 'full' ); ?>
 
 												<li data-feature="<?php echo esc_url( $imgUrl ); ?>">
+													<?php if ( ! empty( $cta['link'] ) ) : ?>
 													<div class="featureContent">
-														<a href="<?php echo esc_url( $cta['link'] ); ?>" class="tertiaryCta js-stateLink" data-type="titled" data-theme="<?php echo esc_attr( strtolower( $fieldset['slug'] ) ); ?>" data-title="<?php echo esc_attr( $cta['title'] ); ?>" data-desc="<?php echo esc_attr( strip_tags( $cta['text'] ) ); ?>">
+														<?php
+
+														$js_class = 'js-stateLink';
+														if ( internetorg_is_video_url( $cta['link'] ) ) {
+															$js_class = 'js-videoModal';
+														}
+
+														?>
+														<a href="<?php echo esc_url( $cta['link'] ); ?>" class="tertiaryCta <?php echo esc_attr( $js_class ); ?>" data-type="titled" data-theme="<?php echo esc_attr( strtolower( $fieldset['slug'] ) ); ?>" data-title="<?php echo esc_attr( $cta['title'] ); ?>" data-desc="<?php echo esc_attr( strip_tags( $cta['text'] ) ); ?>">
 															<?php echo esc_html( strip_tags( $cta['title'] ) ); ?>
 															<span class="circleBtn circleBtn_theme<?php echo esc_attr( ucwords( $fieldset['slug'] ) ); ?>"></span>
 														</a>
 													</div>
+													<?php endif; ?>
 												</li>
 
 												<?php endif; ?>
@@ -183,7 +193,24 @@ $home_background_image_url = '';
 														if ( empty( $data_img ) ) {
 															$data_img = $cta['image'];
 														} ?>
-														<div class="narrative-section-slides-item" style="background-image: url('<?php echo esc_url( wp_get_attachment_url( $cta['image'], 'full' ) ); ?>')"></div>
+														<div class="narrative-section-slides-item" style="background-image: url('<?php echo esc_url( wp_get_attachment_url( $cta['image'], 'full' ) ); ?>')">
+														<?php if ( ! empty( $cta['link'] ) ) : ?>
+															<div class="narrative-section-slides-item-inner">
+																<?php
+
+																$js_class = 'js-stateLink';
+																if ( internetorg_is_video_url( $cta['link'] ) ) {
+																	$js_class = 'js-videoModal';
+																}
+
+																?>
+																<a href="<?php echo esc_url( $cta['link'] ); ?>" class="tertiaryCta <?php echo esc_attr( $js_class ); ?>" data-type="titled" data-theme="<?php echo esc_attr( strtolower( $fieldset['slug'] ) ); ?>" data-title="<?php echo esc_attr( $cta['title'] ); ?>" data-desc="<?php echo esc_attr( strip_tags( $cta['text'] ) ); ?>">
+																	<?php echo esc_html( strip_tags( $cta['title'] ) ); ?>
+																	<span class="circleBtn circleBtn_theme<?php echo esc_attr( ucwords( $fieldset['slug'] ) ); ?>"></span>
+																</a>
+															</div>
+														<?php endif; ?>
+														</div>
 														<?php
 													}
 												}
