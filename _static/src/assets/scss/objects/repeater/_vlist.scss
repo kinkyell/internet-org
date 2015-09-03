@@ -43,6 +43,10 @@
 	margin-top: 22px;
 }
 
+.vList_tight > * + * {
+	margin-top: 8px;
+}
+
 .vList_spread > * + * {
 	margin-top: 28px;
 }

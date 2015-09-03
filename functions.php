@@ -9,6 +9,9 @@
 define( 'IO_DIR', __DIR__ );
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
+//Shortcake VIP Plugin
+require_once( WP_CONTENT_DIR . '/themes/vip/plugins/shortcode-ui/shortcode-ui.php' );
+
 wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
 wpcom_vip_load_plugin( 'wpcom-thumbnail-editor' );
 
@@ -112,14 +115,14 @@ add_action( 'after_setup_theme', 'internetorg_setup' );
  */
 function internetorg_setup_image_sizes() {
 
-	// Hard cropped image 640 x 800 for use in "Panel."
-	add_image_size( 'panel-image', 640, 800, true );
+	// Hard cropped image 960 x 1200 for use in "Panel."
+	add_image_size( 'panel-image', 960, 1200, true );
 
-	// Soft cropped image 480 x whatever for use in content or the "mobile only" thumbnail.
-	add_image_size( 'inline-image', 480, 9999 );
+	// Soft cropped image 720 x whatever for use in content or the "mobile only" thumbnail.
+	add_image_size( 'inline-image', 720, 9999 );
 
-	// Hard cropped image 210 x 260 for use in "listings" like press.
-	add_image_size( 'listing-image', 210, 260, array( 'left', 'center' ) );
+	// Hard cropped image 315 x 390 for use in "listings" like press.
+	add_image_size( 'listing-image', 315, 390, array( 'left', 'center' ) );
 }
 
 add_action( 'after_setup_theme', 'internetorg_setup_image_sizes' );
@@ -688,7 +691,7 @@ function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button 
 		$meta = ( ! empty( $widget['meta'] ) ? $widget['meta'] : null );
 		$post = $widget['post'];
 
-		$out .= '<div class="topicBlock-hd"><h2 class="hdg hdg_3">' . esc_html( $post->post_title ) . '</h2></div>';
+		$out .= '<div class="topicBlock-hd"><h2 class="hdg hdg_8 mix-hdg_bold">' . esc_html( $post->post_title ) . '</h2></div>';
 		$out .= '<div class="topicBlock-bd">';
 		$out .= '<p class="bdcpy">' . wp_kses_post( $post->post_content ) . '</p>';
 
@@ -1378,6 +1381,150 @@ function internetorg_video_shortcode( $atts = array() ) {
 }
 
 add_shortcode( 'io_video', 'internetorg_video_shortcode' );
+
+
+/**
+ * Shortcode UI Registration for Video
+ * See: https://github.com/fusioneng/Shortcake
+ */
+
+
+function internetorg_register_video_shortcode_ui(){
+	/**
+	 * Register a UI for the Custom Link shortcode
+	 *
+	 * @param string The shortcode tag
+	 * @param array The various fields, name of ui element and other attributes
+	 *
+	 */
+	shortcode_ui_register_for_shortcode(
+		'io-video',
+		array(
+			'label' => esc_html__('Video','internetorg'),
+			'listItemImage' => 'dashicons-format-video',
+			'attrs' => array(
+				array(
+					'label'       => esc_html__('Video To Insert','internetorg'),
+					'attr'        => 'id',
+					'type'        => 'post_select',
+					'query'    => array(
+						'post_type' => 'io_video',
+					),
+				),
+
+			),
+		)
+	);
+}
+add_action( 'init', 'internetorg_register_video_shortcode_ui' );
+
+/**
+ * IO Custom Link shortcode.
+ *
+ * Generate the markup for a custom link
+ *
+ * @param array $atts Array of shortcode atts.
+ *
+ * @return string
+ */
+
+function internetorg_custom_link_shortcode($attr = array()){
+	$attr = wp_parse_args( $attr, array(
+		'css_class' => 'link',
+		'source' => '',
+		'link_to_press' => '',
+		'link_title' => '',
+		'link_desc' => '',
+		'link_text' => esc_html__('Click Me','internetorg')
+	) );
+	ob_start();
+	$source = absint($attr['source']);
+	if( empty($source) ) {
+		return '';
+	};
+
+	$url = str_replace(home_url(), '', get_permalink($source));
+	?>
+
+	<a class="<?php echo esc_attr( $attr['css_class'] ); ?> js-stateLink"
+	   href="<?php echo esc_url( $url ); ?>"
+	   data-title="<?php echo esc_attr( $attr['link_title'] ); ?>"
+	   data-desc="<?php echo esc_attr( $attr['link_desc'] ); ?>"
+	   data-type="<?php echo esc_attr( $attr['link_to_press'] ); ?>"
+		><?php echo esc_html( $attr['link_text'] ); ?></a>
+	<?php
+	return ob_get_clean();
+}
+
+add_shortcode( 'io-custom-link', 'internetorg_custom_link_shortcode' );
+
+
+/**
+ * Shortcode UI Registration for Dynamic Link
+ * See: https://github.com/fusioneng/Shortcake
+ */
+
+function internetorg_register_custom_link_shortcode_ui(){
+	/**
+	 * Register a UI for the Custom Link shortcode
+	 *
+	 * @param string The shortcode tag
+	 * @param array The various fields, name of ui element and other attributes
+	 *
+	 */
+	shortcode_ui_register_for_shortcode(
+		'io-custom-link',
+		array(
+			'label' => esc_html__('Link','internetorg'),
+			'listItemImage' => 'dashicons-admin-links',
+			'attrs' => array(
+				array(
+					'label' => esc_html__('Link CSS Class','internetorg'),
+					'attr' => 'css_class',
+					'type' => 'radio',
+					'options' => array(
+						'link' => esc_attr__('Arrow Link','internetorg'),
+						'link link_inline' => esc_attr__('Inline Link','internetorg'),
+					),
+				),
+				array(
+					'label'       => esc_html__('URL','internetorg'),
+					'attr'        => 'source',
+					'type'        => 'post_select',
+					'query'    => array(
+						'post_type' => 'page, io_story, post',
+					),
+				),
+				array(
+					'label' => esc_html__('Is this a Press Article','internetorg'),
+					'attr' => 'link_to_press',
+					'type' => 'radio',
+					'options' => array(
+						'titled' => esc_attr__('Yes', 'internetorg'),
+						'panel' => esc_attr__('No','internetorg'),
+					),
+				),
+				array(
+					'label' => esc_html__('Data Title','internetorg'),
+					'attr' => 'link_title',
+					'type' => 'text',
+				),
+				array(
+					'label' => esc_html__('Data Description','internetorg'),
+					'attr' => 'link_desc',
+					'type' => 'text',
+				),
+				array(
+					'label' => esc_html__('Link Text', 'internetorg'),
+					'attr' => 'link_text',
+					'type' => 'text',
+				),
+			),
+		)
+	);
+}
+
+add_action( 'init', 'internetorg_register_custom_link_shortcode_ui' );
 
 /**
  * Change the confirmation message from the contact form

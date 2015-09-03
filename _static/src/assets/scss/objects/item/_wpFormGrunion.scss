@@ -61,10 +61,13 @@
         display: -webkit-inline-flex;
         @include font(SANS);
         @include remify(font-size, 18px);
-        font-weight: 200;
         line-height: 1.25;
         color: $CLR_GRAY;
         cursor: pointer;
+        /* need to overwrite grunion styles */
+        font-weight: normal !important;
+        margin-bottom: 0 !important;
+
     }
 
     .grunion-radio-label {
