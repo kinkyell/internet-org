@@ -46,57 +46,69 @@
 
 
     a:not(.contentOnMedia-link) {
-        @include transition(all 0.3s ease-in-out);
+        @include transition(all 0.3s ease-in-out); 
         @include font(SANS_BLACK);
         @include remify(font-size, 13px);
+        display: inline-block;
         line-height: 1.222222;
         text-decoration: none;
-        text-transform: uppercase;
         color: $CLR_ACCENT;
-        position: relative;
-        padding-right: 35px;
-        display: inline-block;
-        margin-top: 14px; /* To compensate for the extra white space added */
-    }
+        -webkit-font-smoothing: antialiased;
+        font-smoothing: antialiased;
+    }    
 
-    a:not(.contentOnMedia-link):after,
-    a:not(.contentOnMedia-link):before {
-        @include transition(all 0.15s ease-in-out);
-        content: "";
-        display: block;
-        position: absolute;
-        right: -8px;
-    }
+    // a:not(.contentOnMedia-link) {
+    //     @include transition(all 0.3s ease-in-out);
+    //     @include font(SANS_BLACK);
+    //     @include remify(font-size, 13px);
+    //     line-height: 1.222222;
+    //     text-decoration: none;
+    //     text-transform: uppercase;
+    //     color: $CLR_ACCENT;
+    //     position: relative;
+    //     padding-right: 35px;
+    //     display: inline-block;
+    //     margin-top: 14px; /* To compensate for the extra white space added */
+    // }
 
-    a:not(.contentOnMedia-link):after {
-        top: calc(50% - 5px);
-        height: 10px;
-        width: 10px;
-        border-bottom: 1px solid $CLR_ACCENT;
-        border-right: 1px solid $CLR_ACCENT;
-        transform: rotate(-45deg);
-    }
+    // a:not(.contentOnMedia-link):after,
+    // a:not(.contentOnMedia-link):before {
+    //     @include transition(all 0.15s ease-in-out);
+    //     content: "";
+    //     display: block;
+    //     position: absolute;
+    //     right: -8px;
+    // }
 
-    a:not(.contentOnMedia-link):before {
-        top: 50%;
-        height: 1px;
-        width: 30px;
-        background-color: $CLR_ACCENT;
-    }
+    // a:not(.contentOnMedia-link):after {
+    //     top: calc(50% - 5px);
+    //     height: 10px;
+    //     width: 10px;
+    //     border-bottom: 1px solid $CLR_ACCENT;
+    //     border-right: 1px solid $CLR_ACCENT;
+    //     transform: rotate(-45deg);
+    // }
 
-    a:not(.contentOnMedia-link):hover,
-    a:not(.contentOnMedia-link):active {
-        color: $CLR_ACCENT_ACTIVE;
-    }
+    // a:not(.contentOnMedia-link):before {
+    //     top: 50%;
+    //     height: 1px;
+    //     width: 30px;
+    //     background-color: $CLR_ACCENT;
+    // }
 
-    a:not(.contentOnMedia-link):hover:after,
-    a:not(.contentOnMedia-link):hover:before {
-        right: -10px;
-    }
+    // a:not(.contentOnMedia-link):hover,
+    // a:not(.contentOnMedia-link):active {
+    //     color: $CLR_ACCENT_ACTIVE;
+    // }
 
-    a:not(.contentOnMedia-link):hover:after { border-color: $CLR_ACCENT_ACTIVE; }
+    // a:not(.contentOnMedia-link):hover:after,
+    // a:not(.contentOnMedia-link):hover:before {
+    //     right: -10px;
+    // }
 
-    a:not(.contentOnMedia-link):hover:before { background-color: $CLR_ACCENT_ACTIVE; }
+    // a:not(.contentOnMedia-link):hover:after { border-color: $CLR_ACCENT_ACTIVE; }
+
+    // a:not(.contentOnMedia-link):hover:before { background-color: $CLR_ACCENT_ACTIVE; }
 
     ul:not(.carousel-handle) > * + * {
         margin-top: 22px;
