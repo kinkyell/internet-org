@@ -271,7 +271,7 @@ $home_background_image_url = '';
 						</div>
 					</div>
 
-					<ul class="narrative-progress narrative-progress_isHidden">
+					<ul class="narrativeView-progress narrativeView-progress_isHidden">
 						<li></li>
 						<li></li>
 						<li></li>
