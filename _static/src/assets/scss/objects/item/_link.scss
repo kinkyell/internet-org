@@ -4,7 +4,7 @@
  common links styling
 ------------------------------------------------------------------------ */
 .link {
-    @include transition(all 0.3s ease-in-out);   
+    @include transition(all 0.3s ease-in-out); 
     @include font(SANS_BLACK);
     @include remify(font-size, 13px);
     line-height: 1.222222;
@@ -15,8 +15,8 @@
     padding-right: 35px;
     display: inline-flex;
     display: -webkit-inline-flex;
-    // -webkit-font-smoothing: antialiased;
-    // font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
 }
 
 .link:after,
