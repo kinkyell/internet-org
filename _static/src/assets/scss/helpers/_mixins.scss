@@ -41,3 +41,8 @@
     width: auto;
     margin: initial;
 }
+
+@mixin verticalConstrain() {
+    width: 100%;
+    transform: scale(0.75) translateY(-40px);
+}
