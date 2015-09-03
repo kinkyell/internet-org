@@ -1416,6 +1416,7 @@ function internetorg_register_video_shortcode_ui(){
 		)
 	);
 }
+
 add_action( 'init', 'internetorg_register_video_shortcode_ui' );
 
 /**
@@ -1434,22 +1435,43 @@ function internetorg_custom_link_shortcode($attr = array()){
 		'source' => '',
 		'link_to_press' => '',
 		'link_title' => '',
+		'image' => '',
 		'link_desc' => '',
 		'link_text' => esc_html__('Click Me','internetorg')
 	) );
 	ob_start();
+
 	$source = absint($attr['source']);
+
+	//return if we don't have a url
 	if( empty($source) ) {
 		return '';
 	};
+
+	$data_attr = '';
+	$lg_image = '';
+	$sm_image = '';
+
+	$attachment_id = absint($attr['image']);
+	if(!empty($attachment_id)) {
+		$lg_image = wp_get_attachment_image_src($attachment_id, 'panel-image');
+		$sm_image = wp_get_attachment_image_src($attachment_id, 'inline-image');
+	}
+
+	if( $attr['link_to_press'] == 'panel' ){
+		$data_attr .= 'data-image="'. esc_url( $lg_image[0] ) .'" ';
+		$data_attr .= 'data-mobile-image="'. esc_url( $sm_image[0] ) .'" ';
+	}elseif( $attr['link_to_press'] == 'titled' ) {
+		$data_attr .= 'data-title="'. esc_attr( $attr['link_title'] ) .'" ';
+		$data_attr .= 'data-desc="'. esc_attr( $attr['link_desc'] ).'" ';
+	}
 
 	$url = str_replace(home_url(), '', get_permalink($source));
 	?>
 
 	<a class="<?php echo esc_attr( $attr['css_class'] ); ?> js-stateLink"
 	   href="<?php echo esc_url( $url ); ?>"
-	   data-title="<?php echo esc_attr( $attr['link_title'] ); ?>"
-	   data-desc="<?php echo esc_attr( $attr['link_desc'] ); ?>"
+	   <?php echo $data_attr; ?>
 	   data-type="<?php echo esc_attr( $attr['link_to_press'] ); ?>"
 		><?php echo esc_html( $attr['link_text'] ); ?></a>
 	<?php
@@ -1475,42 +1497,50 @@ function internetorg_register_custom_link_shortcode_ui(){
 	shortcode_ui_register_for_shortcode(
 		'io-custom-link',
 		array(
-			'label' => esc_html__('Link','internetorg'),
+			'label' => esc_html__('Link', 'internetorg'),
 			'listItemImage' => 'dashicons-admin-links',
 			'attrs' => array(
 				array(
-					'label' => esc_html__('Link CSS Class','internetorg'),
+					'label' => esc_html__('Link CSS Class', 'internetorg'),
 					'attr' => 'css_class',
 					'type' => 'radio',
 					'options' => array(
-						'link' => esc_attr__('Arrow Link','internetorg'),
-						'link link_inline' => esc_attr__('Inline Link','internetorg'),
+						'link' => esc_attr__('Arrow Link', 'internetorg'),
+						'link link_inline' => esc_attr__('Inline Link', 'internetorg'),
 					),
 				),
 				array(
-					'label'       => esc_html__('URL','internetorg'),
-					'attr'        => 'source',
-					'type'        => 'post_select',
-					'query'    => array(
+					'label' => esc_html__('URL', 'internetorg'),
+					'attr' => 'source',
+					'type' => 'post_select',
+					'query' => array(
 						'post_type' => 'page, io_story, post',
 					),
 				),
 				array(
-					'label' => esc_html__('Is this a Press Article','internetorg'),
+					'label' => esc_html__('Is this a Press Article', 'internetorg'),
 					'attr' => 'link_to_press',
-					'type' => 'radio',
+					'type' => 'select',
 					'options' => array(
 						'titled' => esc_attr__('Yes', 'internetorg'),
-						'panel' => esc_attr__('No','internetorg'),
+						'panel' => esc_attr__('No', 'internetorg'),
 					),
 				),
 				array(
-					'label' => esc_html__('Data Title','internetorg'),
+					'label' => esc_html__('Image', 'internetorg'),
+					'attr' => 'image',
+					'type' => 'attachment',
+					'libraryType' => array('image'),
+					'addButton' => 'Select Image',
+					'frameTitle' => 'Select Image',
+				),
+				array(
+					'label' => esc_html__('Data Title', 'internetorg'),
 					'attr' => 'link_title',
 					'type' => 'text',
 				),
 				array(
-					'label' => esc_html__('Data Description','internetorg'),
+					'label' => esc_html__('Data Description', 'internetorg'),
 					'attr' => 'link_desc',
 					'type' => 'text',
 				),
@@ -1525,6 +1555,16 @@ function internetorg_register_custom_link_shortcode_ui(){
 }
 
 add_action( 'init', 'internetorg_register_custom_link_shortcode_ui' );
+
+add_action( 'enqueue_shortcode_ui', function() {
+	wp_enqueue_script(
+		'io-shortcodeui',
+		get_stylesheet_directory_uri() . '/js/internet-org-shortcode.js',
+		array(),
+		false,
+		true
+	);
+});
 
 /**
  * Change the confirmation message from the contact form
