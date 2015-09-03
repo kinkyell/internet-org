@@ -11,6 +11,10 @@ Layout for paneled views
     border-top: 70px solid $CLR_GRAY_LIGHTER;
 }
 
+.viewWindow_flush {
+    border-top: 0;
+}
+
 .viewWindow-panel {
     width: 50%;
     height: 100%;
