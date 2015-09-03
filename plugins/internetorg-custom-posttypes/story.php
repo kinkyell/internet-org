@@ -55,4 +55,30 @@ class Internetorg_Story_PostType extends Internetorg_PostType {
 			)
 		);
 	}
+
+	/**
+	 * Add meta boxes to this post type.
+	 *
+	 * @return void
+	 */
+	public function add_meta_boxes() {
+
+		$subtitle = new Fieldmanager_TextArea(
+			array(
+				'name'       => 'page_subtitle',
+				'label'      => __( 'Subtitle', 'internetorg' ),
+				'attributes' => array(
+					'rows' => 3,
+					'cols' => 30,
+				),
+			)
+		);
+
+		$subtitle->add_meta_box(
+			__( 'Additional page configuration', 'internetorg' ),
+			array( 'io_story' ),
+			'internetorg_page_home_after_title',
+			'high'
+		);
+	}
 }
