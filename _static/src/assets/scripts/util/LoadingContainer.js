@@ -29,7 +29,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     LoadingContainer.prototype.addThrobber = function() {
         if (this.element.firstChild) {
-            this.element.insertBefore(this.throbber, this.element.firstChild)
+            this.element.insertBefore(this.throbber, this.element.firstChild);
         } else {
             this.element.appendChild(this.throbber);
         }

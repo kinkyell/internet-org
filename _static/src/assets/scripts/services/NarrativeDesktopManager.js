@@ -60,6 +60,11 @@ define(function(require, exports, module) { // jshint ignore:line
          */
         this._sectionsConf = sectionsConf;
 
+        this._currentFeature = {
+            type: 'image',
+            img: this._sectionsConf[0].featureImage
+        };
+
         this._init();
     };
 
@@ -302,6 +307,12 @@ define(function(require, exports, module) { // jshint ignore:line
                 content,
                 imgDirection,
                 featureImage);
+
+            this._currentFeature = {
+                type: 'content',
+                img: featureImage,
+                content: content
+            };
         }.bind(this));
     };
 
@@ -323,6 +334,12 @@ define(function(require, exports, module) { // jshint ignore:line
                 curContent,
                 imgDirection,
                 curSection.featureImage).then(this._onSubSectionComplete.bind(this, resolve));
+
+            this._currentFeature = {
+                type: 'content',
+                img: curSection.featureImage,
+                content: curContent
+            };
         }.bind(this));
     };
 

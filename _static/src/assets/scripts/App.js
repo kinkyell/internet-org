@@ -44,7 +44,7 @@ define(function(require, exports, module) { // jshint ignore:line
     // ios cache fix http://stackoverflow.com/questions/11979156/mobile-safari-back-button
     window.onpageshow = function(event) {
         if (event.persisted) {
-            window.location.reload()
+            window.location.reload();
         }
     };
 

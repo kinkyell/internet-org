@@ -8,6 +8,7 @@ Layout for paneled views
     width: 200%;
     height: 100%;
     position: relative;
+    border-top: 70px solid $CLR_GRAY_LIGHTER;
 }
 
 .viewWindow-panel {
@@ -39,9 +40,9 @@ Layout for paneled views
     background: #ffffff;
 }
 
-.viewWindow-panel_story .viewWindow-panel-content-inner {
-    border-top: 70px solid $CLR_GRAY_LIGHTER;
-}
+// .viewWindow-panel_story .viewWindow-panel-content-inner {
+//     border-top: 70px solid $CLR_GRAY_LIGHTER;
+// }
 
 // .viewWindow-panel.isActive > .viewWindow-panel-content {
 //     padding-top: 45px;
@@ -86,6 +87,8 @@ Layout for paneled views
     }
 
     .viewWindow-panel_feature {
+        width: calc(33.333% + 1px); // fix white space on right
+        margin-right: -1px;
         display: block;
         z-index: 1;
     }
@@ -117,7 +120,7 @@ Layout for paneled views
         overflow-y: hidden;
     }
 
-    .viewWindow-panel_story .viewWindow-panel-content-inner {
+    .viewWindow {
         border-top: 0;
     }
 }
