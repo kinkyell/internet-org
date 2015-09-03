@@ -44,6 +44,9 @@ if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
 		// Add the blog name.
 		$title .= esc_html( get_bloginfo( 'name', 'display' ) );
 
+		// escape $sep
+		$sep = esc_html( $sep );
+
 		// Add the blog description for the home/front page.
 		$site_description = esc_html( get_bloginfo( 'description', 'display' ) );
 		if ( $site_description && ( is_home() || is_front_page() ) ) {
