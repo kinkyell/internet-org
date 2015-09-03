@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Internet.org\n"
-"POT-Creation-Date: 2015-08-26 22:47-0500\n"
+"POT-Creation-Date: 2015-09-03 15:35-0500\n"
 "PO-Revision-Date: 2015-08-13 17:37-0500\n"
 "Last-Translator: Richard Aber <raber@nerdery.com>\n"
 "Language-Team: Richard Aber <raber@nerdery.com>\n"
@@ -14,8 +14,8 @@ msgstr ""
 "X-Poedit-WPHeader: style.css\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
@@ -35,11 +35,12 @@ msgstr ""
 msgid "It looks like nothing was found at this location. Maybe try a search?"
 msgstr ""
 
-#: archive.php:69 home.php:73 template-parts/content-search.php:22
+#: archive.php:69 template-parts/content-press-item.php:38
+#: template-parts/content-search.php:22
 msgid "Read More"
 msgstr ""
 
-#: archive.php:91 home.php:97 search.php:69
+#: archive.php:91 home.php:63 search.php:78
 msgid "Show More"
 msgstr ""
 
@@ -67,67 +68,129 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: functions.php:73
+#: functions.php:63
 msgid "Primary Menu"
 msgstr ""
 
-#: functions.php:74
+#: functions.php:64
 msgid "Primary Menu Sub Nav"
 msgstr ""
 
-#: functions.php:145
-msgid "Sidebar"
+#: functions.php:140
+msgid "Inline Image"
 msgstr ""
 
-#: functions.php:461
+#: functions.php:475
 msgctxt "Fieldmanager plugin meta field"
 msgid "Subtitle"
 msgstr ""
 
-#: inc/extras.php:52
+#: functions.php:1403 plugins/internetorg-custom-posttypes/video.php:30
+msgid "Video"
+msgstr ""
+
+#: functions.php:1407
+msgid "Video To Insert"
+msgstr ""
+
+#: functions.php:1438
+msgid "Click Me"
+msgstr ""
+
+#: functions.php:1478
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:101
+msgid "Link"
+msgstr ""
+
+#: functions.php:1482
+msgid "Link CSS Class"
+msgstr ""
+
+#: functions.php:1486
+msgid "Arrow Link"
+msgstr ""
+
+#: functions.php:1487
+msgid "Inline Link"
+msgstr ""
+
+#: functions.php:1491
+#: plugins/internetorg-custom-posttypes/content-widget.php:66
+msgid "URL"
+msgstr ""
+
+#: functions.php:1499
+msgid "Is this a Press Article"
+msgstr ""
+
+#: functions.php:1503
+msgid "Yes"
+msgstr ""
+
+#: functions.php:1504
+msgid "No"
+msgstr ""
+
+#: functions.php:1508
+msgid "Data Title"
+msgstr ""
+
+#: functions.php:1513
+msgid "Data Description"
+msgstr ""
+
+#: functions.php:1518
+msgid "Link Text"
+msgstr ""
+
+#: functions.php:1536
+msgid "Thank you!"
+msgstr ""
+
+#: inc/extras.php:55
 #, php-format
 msgid "Page %s"
 msgstr ""
 
-#: inc/template-tags.php:43
+#: inc/template-tags.php:45
 #, php-format
 msgctxt "post date"
 msgid "%s"
 msgstr ""
 
-#: inc/template-tags.php:55 inc/template-tags.php:61
+#: inc/template-tags.php:57 inc/template-tags.php:66
 msgid ", "
 msgstr ""
 
-#: inc/template-tags.php:57
+#: inc/template-tags.php:60
 #, php-format
 msgid "Posted in %1$s"
 msgstr ""
 
-#: inc/template-tags.php:63
+#: inc/template-tags.php:69
 #, php-format
 msgid "Tagged %1$s"
 msgstr ""
 
-#: inc/template-tags.php:69
+#: inc/template-tags.php:78
 msgid "Leave a comment"
 msgstr ""
 
-#: inc/template-tags.php:69
+#: inc/template-tags.php:79
 msgid "1 Comment"
 msgstr ""
 
-#: inc/template-tags.php:69
+#: inc/template-tags.php:80
 msgid "% Comments"
 msgstr ""
 
-#: inc/template-tags.php:73 inc/template-tags.php:96
+#: inc/template-tags.php:85 inc/template-tags.php:107
 #: template-parts/content-page-entry-end.php:11
 #: template-parts/content-page.php:26
 msgid "Edit"
 msgstr ""
 
-#: inc/template-tags.php:92
+#: inc/template-tags.php:103
 msgid "Read More &rarr;"
 msgstr ""
 
@@ -135,196 +198,184 @@ msgstr ""
 msgid "Learn More"
 msgstr ""
 
-#: page-contact.php:96
-msgid "Get in Touch"
-msgstr ""
-
-#: page-contact.php:111
+#: page-contact.php:107
 msgid "Follow the Project"
 msgstr ""
 
-#: page-contact.php:112
+#: page-contact.php:108
 msgid "Stay updated about Internet.org and lorem ipsum dolor sit amet."
 msgstr ""
 
-#: page-contact.php:115
+#: page-contact.php:111
 msgid "https://fb.me/Internetdotorg"
 msgstr ""
 
-#: page-contact.php:115
+#: page-contact.php:111
 msgid "Like us on Facebook"
 msgstr ""
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:64
-msgid "Section"
-msgstr ""
-
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:65
-#, php-format
-msgid "Section: %s"
-msgstr ""
-
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:66
-msgid "Add another Content Area"
-msgstr ""
-
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:72
-msgid "Section Title"
-msgstr ""
-
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:73
-msgid "Section Name"
-msgstr ""
-
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:74
-msgid "Description"
-msgstr ""
-
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:75
-msgid "Section Slug"
-msgstr ""
-
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:76
-#: plugins/internetorg-custom-posttypes/Campaign.php:85
-msgid "Background Image"
-msgstr ""
-
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:78
-msgid "Call to action"
+msgid "Section"
 msgstr ""
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:79
 #, php-format
-msgid "Call to action: %s"
+msgid "Section: %s"
 msgstr ""
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:80
-msgid "Add another CTA"
-msgstr ""
-
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:84
-msgid "CTA Title"
-msgstr ""
-
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:85
-msgid "Content"
+msgid "Add another Content Area"
 msgstr ""
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:86
-msgid "Link"
+msgid "Section Title"
 msgstr ""
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:87
-msgid "Image"
+msgid "Section Name"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:88
+msgid "Description"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:89
+msgid "Section Slug"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:90
+#: plugins/internetorg-custom-posttypes/campaign.php:88
+msgid "Background Image"
 msgstr ""
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:93
+msgid "Call to action"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:94
+#, php-format
+msgid "Call to action: %s"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:95
+msgid "Add another CTA"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:99
+msgid "CTA Title"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:100
+msgid "Content"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:102
+msgid "Image"
+msgstr ""
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:109
 msgid "Content Areas"
 msgstr ""
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:141
-#: plugins/internetorg-custom-posttypes/Campaign.php:77
-#: plugins/internetorg-custom-posttypes/Campaign.php:86
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:147
+#: plugins/internetorg-custom-posttypes/campaign.php:80
+#: plugins/internetorg-custom-posttypes/campaign.php:89
+#: plugins/internetorg-custom-posttypes/story.php:69
 msgid "Subtitle"
 msgstr ""
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:148
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:156
+#: plugins/internetorg-custom-posttypes/story.php:78
 msgid "Additional page configuration"
 msgstr ""
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:156
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:168
 msgid "Intro Title"
 msgstr ""
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:161
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:173
 msgid "Intro Copy"
 msgstr ""
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:171
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:185
 msgid "Page Intro"
 msgstr ""
 
-#: plugins/internetorg-custom-posttypes/Campaign.php:30
+#: plugins/internetorg-custom-posttypes/campaign.php:31
 msgid "Campaigns"
 msgstr ""
 
-#: plugins/internetorg-custom-posttypes/Campaign.php:31
+#: plugins/internetorg-custom-posttypes/campaign.php:32
 msgid "Campaign"
 msgstr ""
 
-#: plugins/internetorg-custom-posttypes/Campaign.php:68
+#: plugins/internetorg-custom-posttypes/campaign.php:70
 msgid "Add Background"
 msgstr ""
 
-#: plugins/internetorg-custom-posttypes/Campaign.php:69
+#: plugins/internetorg-custom-posttypes/campaign.php:71
 msgid "Select Background Image"
 msgstr ""
 
-#: plugins/internetorg-custom-posttypes/Campaign.php:70
+#: plugins/internetorg-custom-posttypes/campaign.php:72
 msgid "Use Image as Background"
 msgstr ""
 
-#: plugins/internetorg-custom-posttypes/ContentWidget.php:30
+#: plugins/internetorg-custom-posttypes/content-widget.php:31
 msgid "Content Widgets"
 msgstr ""
 
-#: plugins/internetorg-custom-posttypes/ContentWidget.php:31
+#: plugins/internetorg-custom-posttypes/content-widget.php:32
 msgid "Content Widget"
 msgstr ""
 
-#: plugins/internetorg-custom-posttypes/ContentWidget.php:57
-#: plugins/internetorg-custom-posttypes/ContentWidget.php:68
+#: plugins/internetorg-custom-posttypes/content-widget.php:59
+#: plugins/internetorg-custom-posttypes/content-widget.php:71
 msgid "Call to Action"
 msgstr ""
 
-#: plugins/internetorg-custom-posttypes/ContentWidget.php:58
+#: plugins/internetorg-custom-posttypes/content-widget.php:60
 #, php-format
 msgid "Call to Action: %s"
 msgstr ""
 
-#: plugins/internetorg-custom-posttypes/ContentWidget.php:63
+#: plugins/internetorg-custom-posttypes/content-widget.php:65
 msgid "Button Label"
 msgstr ""
 
-#: plugins/internetorg-custom-posttypes/ContentWidget.php:64
-msgid "URL"
-msgstr ""
-
-#: plugins/internetorg-custom-posttypes/ContentWidget.php:65
+#: plugins/internetorg-custom-posttypes/content-widget.php:67
 msgid "File"
 msgstr ""
 
-#: plugins/internetorg-custom-posttypes/Story.php:30
+#: plugins/internetorg-custom-posttypes/story.php:31
 msgid "Stories"
 msgstr ""
 
-#: plugins/internetorg-custom-posttypes/Story.php:31
+#: plugins/internetorg-custom-posttypes/story.php:32
 msgid "Story"
 msgstr ""
 
-#: search.php:43
-#, php-format
-msgid "%d Results Found"
+#: plugins/internetorg-custom-posttypes/video.php:29
+msgid "Videos"
 msgstr ""
 
-#: searchform.php:16 template-parts/header-search.php:15
+#: plugins/internetorg-custom-posttypes/video.php:62
+#: plugins/internetorg-custom-posttypes/video.php:73
+msgid "Video Duration"
+msgstr ""
+
+#: plugins/internetorg-custom-posttypes/video.php:69
+#: plugins/internetorg-custom-posttypes/video.php:74
+msgid "Video URL"
+msgstr ""
+
+#: searchform.php:17 template-parts/content-search-mobile.php:17
+#: template-parts/header-search.php:17
 msgctxt "label"
 msgid "Search"
 msgstr ""
 
-#: single.php:42
-msgid "Facebook"
-msgstr ""
-
-#: single.php:43
-msgid "Twitter"
-msgstr ""
-
-#: single.php:44
-msgid "LinkedIn"
-msgstr ""
-
-#: template-parts/content-free-services.php:22
+#: template-parts/content-free-services.php:24
 msgid "Full List of Free Services"
 msgstr ""
 
@@ -357,8 +408,35 @@ msgstr ""
 msgid "Pages:"
 msgstr ""
 
-#: template-parts/content-page-next-page.php:24
+#: template-parts/content-page-next-page.php:33
 msgid "Learn About"
+msgstr ""
+
+#: template-parts/content-search-mobile.php:19
+#: template-parts/header-search.php:19
+msgctxt "placeholder"
+msgid "Search"
+msgstr ""
+
+#: template-parts/content-single-more.php:18
+msgid "More Posts"
+msgstr ""
+
+#: template-parts/content-single-more.php:40
+#: template-parts/content-single-more.php:64
+msgid "Read"
+msgstr ""
+
+#: template-parts/content-social-links.php:12
+msgid "Facebook"
+msgstr ""
+
+#: template-parts/content-social-links.php:13
+msgid "Twitter"
+msgstr ""
+
+#: template-parts/content-social-links.php:14
+msgid "LinkedIn"
 msgstr ""
 
 #: template-parts/content.php:25
@@ -366,13 +444,8 @@ msgstr ""
 msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: template-parts/header-buttons.php:19
+#: template-parts/header-buttons.php:18
 msgid "Menu"
-msgstr ""
-
-#: template-parts/header-search.php:17
-msgctxt "placeholder"
-msgid "Search"
 msgstr ""
 
 #. Theme Name of the plugin/theme
