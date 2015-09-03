@@ -102,3 +102,55 @@ if ( ! function_exists( 'internetorg_get_content_widget_by_slug' ) ) :
 		return $widget;
 	}
 endif;
+
+
+if ( ! function_exists( 'internetorg_get_free_services' ) ) :
+	/**
+	 * Helper function to get an array of all free services
+	 *
+	 * If data is returned it's in the following format:
+	 *
+	 * array(
+	 *     'post' => WP_Post
+	 * )
+	 *
+	 * @return bool|array Service data, else false if not found.
+	 */
+	function internetorg_get_free_services() {
+		$cache_key = 'free-services';
+		$cache_group = 'internetorg_freesvc';
+		$is_cached = false;
+		$srvpost = wp_cache_get($cache_key, $cache_group, false, $is_cached);
+
+		if ( ! $is_cached ) {
+
+			$args = array(
+				'post_type'      => 'io_freesvc',
+				'post_status'    => 'publish',
+				'posts_per_page' => -1,
+			);
+
+			$srvpost  = false;
+			$srvquery = new WP_Query( $args );
+
+			if (!$srvquery->have_posts() ){
+				return $srvpost;
+			}
+
+			while ( $srvquery->have_posts() ) : $srvquery->the_post();
+
+				$srvpost[] = array(
+					'post' => $srvquery->post
+				);
+
+			endwhile;
+
+			// Cache the results for one day.
+			wp_cache_set( $cache_key, $srvpost, $cache_group, 86400 );
+
+			wp_reset_postdata();
+		}
+
+		return $srvpost;
+	}
+endif;
