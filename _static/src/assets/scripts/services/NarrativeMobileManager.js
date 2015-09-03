@@ -12,6 +12,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var Timeline = require('gsap-timeline');
     require('gsap-scrollToPlugin');
     require('gsap-cssPlugin');
+    var TweenLite = require('gsap-tween');
 
     var TIME_SCALE = AppConfig.narrative.mobile.TIME_SCALE;
     var SECTION_DURATION = AppConfig.narrative.mobile.SECTION_DURATION;
