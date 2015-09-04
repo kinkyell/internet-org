@@ -9,6 +9,8 @@
 define( 'IO_DIR', __DIR__ );
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
+vip_allow_title_orphans();
+
 //Shortcake VIP Plugin
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/shortcode-ui/shortcode-ui.php' );
 
