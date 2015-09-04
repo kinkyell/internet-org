@@ -24,26 +24,29 @@ get_header();
 
 		<div class="viewWindow-panel viewWindow-panel_story isActive">
 			<div class="viewWindow-panel-content">
-
 				<div class="viewWindow-panel-content-inner">
 
-					<?php get_template_part( 'template-parts/content', 'page-intro-block' ); ?>
+					<div><!-- Needed for JS cache -->
 
-					<div class="<?php echo esc_attr( 'theme-' . strtolower( internetorg_get_page_theme() ) ); ?>">
-						<div class="container">
-							<div class="contentCol">
+						<?php get_template_part( 'template-parts/content', 'page-intro-block' ); ?>
 
-								<?php get_template_part( 'template-parts/content', 'page-intro-desktop' ); ?>
+						<div class="<?php echo esc_attr( 'theme-' . strtolower( internetorg_get_page_theme() ) ); ?>">
+							<div class="container">
+								<div class="contentCol">
 
-								<?php get_template_part( 'template-parts/content', 'page-wysiwyg' ); ?>
+									<?php get_template_part( 'template-parts/content', 'page-intro-desktop' ); ?>
 
-								<?php get_template_part( 'template-parts/content', 'page-feature-blocks' ); ?>
+									<?php get_template_part( 'template-parts/content', 'page-wysiwyg' ); ?>
 
+									<?php get_template_part( 'template-parts/content', 'page-feature-blocks' ); ?>
+
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<?php get_template_part( 'template-parts/content', 'page-next-page' ); ?>
+						<?php get_template_part( 'template-parts/content', 'page-next-page' ); ?>
+
+					</div>
 
 				</div>
 
