@@ -8,7 +8,6 @@ Layout for paneled views
     width: 200%;
     height: 100%;
     position: relative;
-    border-top: 70px solid $CLR_GRAY_LIGHTER;
 }
 
 .viewWindow_flush {
@@ -124,9 +123,6 @@ Layout for paneled views
         overflow-y: hidden;
     }
 
-    .viewWindow {
-        border-top: 0;
-    }
 }
 
 /* Right to Left Language support */

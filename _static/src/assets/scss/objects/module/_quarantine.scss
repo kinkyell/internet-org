@@ -45,7 +45,7 @@
     }
 
 
-    a:not(.contentOnMedia-link) {
+    a:not(.contentOnMedia-link, .link) {
         @include transition(all 0.3s ease-in-out); 
         @include font(SANS_BLACK);
         @include remify(font-size, 13px);
