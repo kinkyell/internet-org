@@ -73,7 +73,7 @@ get_header();
 								<?php foreach ( $fieldset['call-to-action'] as $cta ) : ?>
 									<div class="feaure-cta">
 									<?php if ( ! empty( $cta['link'] ) ) : ?>
-										<a href="<?php echo esc_attr( $cta['link'] ); ?>" class="link"><?php echo esc_html__( 'Learn More', 'internetorg' ); ?></a>
+										<a href="<?php echo esc_attr__( $cta['link'] ); ?>" class="link"><?php echo esc_html__( 'Learn More', 'internetorg' ); ?></a>
 									<?php endif; ?>
 									</div>
 								<?php endforeach; ?>
@@ -99,16 +99,21 @@ get_header();
 					</div><!-- /.contentCol -->
 				</div>
 
+
 				<div class="socialBlock">
 					<div class="socialBlock-inner">
 						<div class="container">
 							<div class="fbFollowBlock">
-								<div class="fbFollowBlock-bd">
-									<h2 class="hdg hdg_3 mix-hdg_white"><?php echo esc_html__( 'Follow the Project', 'internetorg' ); ?></h2>
-									<p class="bdcpy mix-bdcpy_light"><?php echo esc_html__( 'Stay updated about Internet.org and lorem ipsum dolor sit amet.', 'internetorg' ); ?></p>
+								<div class="fbFollowBlock-inner">
+									<div class="fbFollowBlock-hd">
+										<h2 class="hdg hdg_3 mix-hdg_blackThenWhite"><?php echo esc_html__( 'Follow the Project', 'internetorg' ); ?></h2>
+									</div>
+									<div class="fbFollowBlock-bd">
+										<p class="bdcpy mix-bdcpy_blackThenWhite"><?php echo esc_html__( 'Stay updated about Internet.org and lorem ipsum dolor sit amet.', 'internetorg' ); ?></p>
+									</div>
 								</div>
 								<div class="fbFollowBlock-cta">
-									<a href="<?php echo esc_attr__( 'https://fb.me/Internetdotorg', 'internetorg' ); ?>" class="btn btn_facebook" target="_blank"><?php echo esc_html__( 'Like us on Facebook', 'internetorg' ); ?></a>
+									<a href="<?php echo esc_attr__( 'https://fb.me/Internetdotorg', 'internetorg' ); ?>" class="btn btn_facebook"><?php echo esc_html__( 'Like us on Facebook', 'internetorg' ); ?></a>
 								</div>
 							</div>
 						</div>
