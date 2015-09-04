@@ -80,22 +80,20 @@ define(function(require, exports, module) { // jshint ignore:line
         this._setupStates();
         this._preloadImages(); // load images initially on the page
 
-
-        // window.addEventListener('DOMContentLoaded', this._setMinimalUI.bind(this));
+        this._setMinimalUI();
     };
 
     proto._setMinimalUI = function() {
-        // console.log('setup');
-        // var scream = Scream({
-        //     width: {
-        //         portrait: 320,
-        //         landscape: 640
-        //     }
-        // });
+        var scream = gajus.Scream({
+            width: {
+                portrait: 320,
+                landscape: 640
+            }
+        });
 
-        // var brim = Brim({
-        //     viewport: scream
-        // });
+        var brim = gajus.Brim({
+            viewport: scream
+        });
     };
 
     /**

@@ -183,7 +183,11 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.onEnable = function() {
         $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
-        this.$body.on('touchstart', this._onTouchStartHandler);
+
+        // this.$body.on('touchstart', this._onTouchStartHandler);
+        // $('#brim-main').on('touchstart', this._onTouchStartHandler);
+        $(window).on('slidefrommin', this._onTouchStartHandler);
+
         this._currentlyMobile = breakpointManager.isMobile;
         breakpointManager.subscribe(function() {
             if (breakpointManager.isMobile !== this._currentlyMobile) {
@@ -237,7 +241,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onTouchStart = function(e) {
-        this._touchTracker.y = e.originalEvent.touches[0].pageY;
+        this._touchTracker.y = (e != undefined) ? '350' : e.originalEvent.touches[0].pageY;
 
         this.$body
             .on('touchmove' + this._eventTouchNamespace, this._onTouchMove.bind(this))
