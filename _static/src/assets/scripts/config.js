@@ -49,7 +49,9 @@ require.config({
         'dragdealer': '../vendor/skidding--dragdealer/src/dragdealer',
         'fastclick': '../vendor/fastclick/lib/fastclick',
         'handlebars': '../vendor/handlebars/handlebars.runtime',
-        'jquery-swipebox': '../vendor/swipebox/src/js/jquery.swipebox'
+        'jquery-swipebox': '../vendor/swipebox/src/js/jquery.swipebox',
+        'brim': '../vendor/brim/dist/brim',
+        'scream': '../vendor/scream/dist/scream'
     },
 
     map: {

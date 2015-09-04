@@ -287,7 +287,6 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._scrollUp = function() {
         if (!this._narrativeManager._isAnimating) {
-
             var direction = 'up';
             var section = this._sectionConf[this._position];
             var subsLength = section.subSections.length;
@@ -341,7 +340,6 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._scrollDown = function() {
         if (!this._narrativeManager._isAnimating) {
-
             var direction = 'down';
             var section = this._sectionConf[this._position];
             var subsLength = section.subSections.length;

@@ -17,6 +17,9 @@ define(function(require, exports, module) { // jshint ignore:line
     require('gsap-easePack');
     require('gsap-tween');
 
+    var Brim = require('brim');
+    var Scream = require('scream');
+
     var Router = require('services/Router');
 
     var StateStack = require('services/StateStack');
@@ -76,6 +79,23 @@ define(function(require, exports, module) { // jshint ignore:line
         this._setupLayout();
         this._setupStates();
         this._preloadImages(); // load images initially on the page
+
+
+        // window.addEventListener('DOMContentLoaded', this._setMinimalUI.bind(this));
+    };
+
+    proto._setMinimalUI = function() {
+        // console.log('setup');
+        // var scream = Scream({
+        //     width: {
+        //         portrait: 320,
+        //         landscape: 640
+        //     }
+        // });
+
+        // var brim = Brim({
+        //     viewport: scream
+        // });
     };
 
     /**
