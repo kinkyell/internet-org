@@ -131,22 +131,22 @@
 
 /* IMPACT */ 
 .theme-impact .link,
-.link_themeImpact { color: $CLR_IMPACT; }
+.link_themeImpact { color: $CLR_IMPACT !important; }
 
 .theme-impact .link:after,
-.link_themeImpact:after { border-color: $CLR_IMPACT; }
+.link_themeImpact:after { border-color: $CLR_IMPACT !important; }
 
 .theme-impact .link:before,
-.link_themeImpact:before { background-color: $CLR_IMPACT; }
+.link_themeImpact:before { background-color: $CLR_IMPACT !important; }
 
 .theme-impact .link:hover,
-.link_themeImpact:hover { color: $CLR_IMPACT_ACTIVE; }
+.link_themeImpact:hover { color: $CLR_IMPACT_ACTIVE !important; }
 
 .theme-impact .link:hover:after,
-.link_themeImpact:hover:after { border-color: $CLR_IMPACT_ACTIVE; }
+.link_themeImpact:hover:after { border-color: $CLR_IMPACT_ACTIVE !important; }
 
 .theme-impact .link:hover:before,
-.link_themeImpact:hover:before { background-color: $CLR_IMPACT_ACTIVE; }
+.link_themeImpact:hover:before { background-color: $CLR_IMPACT_ACTIVE !important; }
 
 /* APPROACH */
 .theme-approach .link,
