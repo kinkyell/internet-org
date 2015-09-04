@@ -57,7 +57,7 @@ get_header();
 						<div class="feature">
 							<?php if ( ! empty( $fieldset['title'] ) ) : ?>
 							<div class="feature-hd">
-								<div class="hdg hdg_4"><?php echo esc_html( $fieldset['title'] ); ?></div>
+								<div class="hdg hdg_3"><?php echo esc_html( $fieldset['title'] ); ?></div>
 							</div>
 							<?php endif; ?>
 
