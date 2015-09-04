@@ -308,6 +308,8 @@ define(function(require, exports, module) { // jshint ignore:line
                     this._subPosition -= 1;
                 }.bind(this));
 
+                this._updateCtas(false);
+
             // subs pos IS 0
             } else if (subPosition === 0 && breakpointManager.isMobile === false) {
                 this._narrativeManager.gotoSubSection(section, direction, section).then(function() {
@@ -325,6 +327,8 @@ define(function(require, exports, module) { // jshint ignore:line
                         this._position -= 1;
                     }.bind(this));
                 }
+
+                this._updateCtas(true);
             }
         }
     };
@@ -354,6 +358,8 @@ define(function(require, exports, module) { // jshint ignore:line
                     this._subPosition += 1;
                 }.bind(this));
 
+                this._updateCtas(false);
+
             // Anything Else
             } else {
                 var sectionsLength = this._sectionConf.length;
@@ -368,7 +374,17 @@ define(function(require, exports, module) { // jshint ignore:line
                         this._position += 1;
                     }.bind(this)).catch(log);
                 }
+
+                this._updateCtas(true);
             }
+        }
+    };
+
+    proto._updateCtas = function(show) {
+        if (show) {
+            $('.narrative-section-bd-link').show();
+        } else {
+            $('.narrative-section-bd-link').hide();
         }
     };
 

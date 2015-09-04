@@ -283,7 +283,6 @@ define(function(require, exports, module) { // jshint ignore:line
             var $slidesContainer = this._$sections.eq(sectionPosition).find('.narrative-section-slides');
             var $slides = $slidesContainer.find('> *');
             var destinationPos = (direction === 'down') ? subsectionPosition + 1 : subsectionPosition;
-
             this._currentSection = sectionPosition;
 
             var offsetY = 0;
