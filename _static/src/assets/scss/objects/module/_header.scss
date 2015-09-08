@@ -33,6 +33,10 @@
     direction: ltr; // logo is in english
 }
 
+.header-logo span {
+    @include isVisuallyHidden();
+}
+
 .header-logo_min {
     width: 25px;
 }
