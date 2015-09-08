@@ -113,7 +113,7 @@ define(function(require, exports, module) { // jshint ignore:line
         if (!this.active) {
             return;
         }
-        var $markup = $(markup);
+        var $markup = $(markup).children();
 
         // remove any duplicate introblocks
         $markup.children('.introBlock:first-child').remove();
