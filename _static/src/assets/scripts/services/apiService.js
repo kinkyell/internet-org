@@ -25,8 +25,8 @@ define(function(require, exports, module) { // jshint ignore:line
     function _getViewWindow(htmlStr) {
         var parsed = $.parseHTML(htmlStr);
         var viewWindowEl = parsed.reduce(function(found, element) {
-            if (element.nodeName === 'DIV' && element.className.indexOf('viewWindow') !== -1) {
-                return element;
+            if (element.nodeName === 'DIV' && element.id === 'brim-main') {
+                return element.querySelector('.js-viewWindow');
             }
             return found;
         }, null);

@@ -13,7 +13,7 @@
 
 	<!-- META DATA -->
 	<meta charset="<?php esc_attr_e( get_bloginfo( 'charset' ) ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1.0" />
 	<!--[if IE]><meta http-equiv="cleartype" content="on" /><![endif]-->
 
 	<link rel="profile" href="http://gmpg.org/xfn/11">
@@ -32,56 +32,60 @@
 
 <body <?php body_class(); ?>>
 
-	<!-- header -->
-	<div class="header js-headerView" role="banner">
-		<?php get_template_part( 'template-parts/header', 'logo' ); ?>
-		<?php get_template_part( 'template-parts/header', 'buttons' ); ?>
-	</div>
+	<div id="brim-mask"></div>
 
-	<div class="mainMenu js-menuView u-isVisuallyHidden">
-		<div class="mainMenu-panel js-menuView-panel">
-			<div class="mainMenu-panel-hd">
-				<?php get_template_part( 'template-parts/header', 'search' ); ?>
-			</div>
+	<div id="brim-main">
 
-				<?php
-				$main_menu_config = array(
-					'container_class' => 'mainMenu-panel-primary',
-					'container_id'    => '',
-					'menu_class'      => '',
-					'menu_id'         => '',
-					'before'          => '',
-					'after'           => '',
-					'link_before'     => '',
-					'link_after'      => '',
-					'theme_location'  => 'primary',
-					'walker'          => new Internetorg_Main_Nav_Walker(),
-				);
-				wp_nav_menu( $main_menu_config );
-				?>
-
-				<?php
-				$submenu_config = array(
-					'container_class' => 'mainMenu-panel-secondary',
-					'container_id'    => '',
-					'menu_class'      => 'borderBlocks borderBlocks_2up',
-					'menu_id'         => '',
-					'before'          => '',
-					'after'           => '',
-					'link_before'     => '',
-					'link_after'      => '',
-					'theme_location'  => 'primary-sub-nav',
-					'walker'          => new Internetorg_Main_SubNav_Walker(),
-				);
-				wp_nav_menu( $submenu_config );
-
-				?>
-
-			<div class="mainMenu-panel-lang">
-				<?php internetorg_language_switcher(); ?>
-			</div>
-
+		<!-- header -->
+		<div class="header js-headerView" role="banner">
+			<?php get_template_part( 'template-parts/header', 'logo' ); ?>
+			<?php get_template_part( 'template-parts/header', 'buttons' ); ?>
 		</div>
-	</div> <!-- end header -->
 
-	<!-- CONTENT -->
+		<div class="mainMenu js-menuView u-isVisuallyHidden">
+			<div class="mainMenu-panel js-menuView-panel">
+				<div class="mainMenu-panel-hd">
+					<?php get_template_part( 'template-parts/header', 'search' ); ?>
+				</div>
+
+					<?php
+					$main_menu_config = array(
+						'container_class' => 'mainMenu-panel-primary',
+						'container_id'    => '',
+						'menu_class'      => '',
+						'menu_id'         => '',
+						'before'          => '',
+						'after'           => '',
+						'link_before'     => '',
+						'link_after'      => '',
+						'theme_location'  => 'primary',
+						'walker'          => new Internetorg_Main_Nav_Walker(),
+					);
+					wp_nav_menu( $main_menu_config );
+					?>
+
+					<?php
+					$submenu_config = array(
+						'container_class' => 'mainMenu-panel-secondary',
+						'container_id'    => '',
+						'menu_class'      => 'borderBlocks borderBlocks_2up',
+						'menu_id'         => '',
+						'before'          => '',
+						'after'           => '',
+						'link_before'     => '',
+						'link_after'      => '',
+						'theme_location'  => 'primary-sub-nav',
+						'walker'          => new Internetorg_Main_SubNav_Walker(),
+					);
+					wp_nav_menu( $submenu_config );
+
+					?>
+
+				<div class="mainMenu-panel-lang">
+					<?php internetorg_language_switcher(); ?>
+				</div>
+
+			</div>
+		</div> <!-- end header -->
+
+		<!-- CONTENT -->
