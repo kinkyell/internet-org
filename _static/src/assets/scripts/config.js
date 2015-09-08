@@ -50,6 +50,7 @@ require.config({
         'fastclick': '../vendor/fastclick/lib/fastclick',
         'handlebars': '../vendor/handlebars/handlebars.runtime',
         'jquery-swipebox': '../vendor/swipebox/src/js/jquery.swipebox',
+        'platform': '../vendor/platform.js/platform',
         'brim': '../vendor/brim/dist/brim',
         'scream': '../vendor/scream/dist/scream'
     },
@@ -80,6 +81,12 @@ require.config({
         'jquery-swipebox': {
            deps: ['jquery'],
            exports: null
+        },
+        'brim': {
+            exports: 'gajus.Brim'
+        },
+        'scream': {
+            exports: 'gajus.Scream'
         }
     },
 

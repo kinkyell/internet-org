@@ -23,3 +23,13 @@ body {
     	display: none;
     }
 }
+
+// https://github.com/gajus/brim#styling
+#brim-mask {
+    pointer-events: none;
+    display: none;
+}
+
+#brim-main {
+    height: 100%;
+}

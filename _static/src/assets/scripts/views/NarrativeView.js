@@ -7,6 +7,9 @@ define(function(require, exports, module) { // jshint ignore:line
     var NarrativeMobileManager = require('services/NarrativeMobileManager');
     var NarrativeDesktopManager = require('services/NarrativeDesktopManager');
     var log = require('util/log');
+    var platform = require('platform');
+    var Brim = require('brim');
+    var Scream = require('scream');
 
     var CONFIG = {
         NARRATIVE_DT: '.narrativeDT',
@@ -95,9 +98,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @returns {AbstractView}
      * @private
      */
-    proto.init = function() {
-
-    };
+    proto.init = function() {};
 
     /**
      * Binds the scope of any handler functions.
@@ -109,6 +110,8 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.setupHandlers = function() {
         this._onWheelEventHandler = this._onWheelEvent.bind(this);
         this._onTouchStartHandler = this._onTouchStart.bind(this);
+        this._onTouchMoveHandler = this._onTouchMove.bind(this);
+        this._onTouchEndHandler = this._onTouchEnd.bind(this);
         this.refreshNarrativeManager = this.refreshNarrativeManager.bind(this);
     };
 
@@ -158,9 +161,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.layout = function() {
         this.$narrativeSections.eq(0).addClass('isActive');
         this._sectionLength = this.$narrativeSections.length;
-
         this._getSectionContent().then(this.refreshNarrativeManager);
-
         this.$viewWindow.before(this.$progress);
         this.$progress.find(':first-child').addClass('isActive');
         this._displayIndicators(0);
@@ -184,9 +185,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onEnable = function() {
-        this.$narrative[0].scrollTop = this.scrollTop;
-        $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
-        this.$body.on('touchstart', this._onTouchStartHandler);
         this._currentlyMobile = breakpointManager.isMobile;
         breakpointManager.subscribe(function() {
             if (breakpointManager.isMobile !== this._currentlyMobile) {
@@ -194,6 +192,39 @@ define(function(require, exports, module) { // jshint ignore:line
                 this.refreshNarrativeManager();
             }
         }.bind(this));
+
+
+
+        if (platform.os.family == 'iOS' && parseInt(platform.os.version, 10) >= 8) {
+            $('html, body').css('height', 'auto');
+            $('#brim-mask').css('display', 'block');
+            $('#brim-main').css('height', 'auto');
+
+            var scream = Scream({
+                width: {
+                    portrait: 320,
+                    landscape: 640
+                }
+            });
+
+            var brim = Brim({
+                viewport: scream
+            });
+
+            brim.on('viewchange', function (e) {
+                this._narrativeManager.refresh(this._position);
+
+                if (e.viewName === 'minimal') {
+                    $('#brim-main').on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
+                } else {
+                    $('#brim-main').off(this._eventTouchNamespace);
+                }
+
+            }.bind(this));
+        } else {
+            $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
+            $('#brim-main').on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
+        }
     };
 
     /**
@@ -207,7 +238,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.onDisable = function() {
         this.scrollTop = this.$narrative[0].scrollTop;
         $(window).off('mousewheel DOMMouseScroll', this._onWheelEventHandler);
-        this.$body.off('touchstart', this._onTouchStartHandler);
+        $('#brim-main').off(this._eventTouchNamespace);
     };
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -241,12 +272,13 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onTouchStart = function(e) {
+        // this._touchTracker.y = (e != undefined) ? '350' : e.originalEvent.touches[0].pageY;
         this._touchTracker.y = e.originalEvent.touches[0].pageY;
 
-        this.$body
-            .on('touchmove' + this._eventTouchNamespace, this._onTouchMove.bind(this))
-            .on('touchend' + this._eventTouchNamespace, this._onTouchEnd.bind(this))
-            .on('touchcancel' + this._eventTouchNamespace, this._onTouchEnd.bind(this));
+        $('#brim-main')
+            .on('touchmove' + this._eventTouchNamespace, this._onTouchMoveHandler)
+            .on('touchend' + this._eventTouchNamespace, this._onTouchEndHandler)
+            .on('touchcancel' + this._eventTouchNamespace, this._onTouchEndHandler);
     };
 
     /**

@@ -105,6 +105,27 @@ define(function(require, exports, module) { // jshint ignore:line
         this._$sections = null;
     };
 
+    /**
+     * Refresh the objects attributes: used for orientation
+     * and related changes
+     *
+     * @method refresh
+     * @public
+     */
+    proto.refresh = function(position) {
+        // reset css properties from previous timeline initialization
+        TweenLite.set($('.narrative-section-bd'), { clearProps: 'transform' });
+        TweenLite.set($('.statementBlock'), { clearProps: 'transform' });
+
+        this._getSectionOffsets();
+        this._timeLine = this._createTimeline('forward');
+        this._timeLineReverse = this._createTimeline('reverse');
+
+        // this.gotoSection(this._sectionsConf[position + 1], 'down');
+        this._$narrative[0].scrollTop = 0;
+
+    };
+
     // /////////////////////////////////////////////////////////////////////////////////////////
     // Helpers
     // /////////////////////////////////////////////////////////////////////////////////////////
@@ -320,9 +341,6 @@ define(function(require, exports, module) { // jshint ignore:line
         this._isAnimating = false;
         eventHub.publish('Narrative:sectionChange', this._currentSection);
         resolve();
-
-        // $(window).on('wheel', this._onWheelEventHandler);
-        // this._updateSlideHooks();
     };
 
     module.exports = NarrativeMobileManager;
