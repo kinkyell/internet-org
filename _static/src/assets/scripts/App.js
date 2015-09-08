@@ -17,9 +17,6 @@ define(function(require, exports, module) { // jshint ignore:line
     require('gsap-easePack');
     require('gsap-tween');
 
-    var Brim = require('brim');
-    var Scream = require('scream');
-
     var Router = require('services/Router');
 
     var StateStack = require('services/StateStack');
@@ -80,19 +77,29 @@ define(function(require, exports, module) { // jshint ignore:line
         this._setupStates();
         this._preloadImages(); // load images initially on the page
 
-        this._setMinimalUI();
+        // this._minimalUi();
     };
 
-    proto._setMinimalUI = function() {
-        var scream = gajus.Scream({
+    proto._minimalUi = function() {
+        var scream,
+            brim;
+
+        scream = gajus.Scream({
             width: {
                 portrait: 320,
                 landscape: 640
             }
         });
 
-        var brim = gajus.Brim({
+        brim = gajus.Brim({
             viewport: scream
+        });
+
+        brim.on('viewchange', function (e) {
+            // Invoked when view changes.
+
+            // @var {String} 'full', 'minimal'
+            console.log(e.viewName);
         });
     };
 

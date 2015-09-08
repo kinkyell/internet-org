@@ -11,7 +11,7 @@ a {
 
 html,
 body {
-    // height: 100%;
+    height: 100%;
     overflow-x: hidden; // NECESSARY for panes
 }
 
@@ -22,4 +22,14 @@ body {
     br {
     	display: none;
     }
+}
+
+// https://github.com/gajus/brim#styling
+#brim-mask {
+    pointer-events: none;
+    display: none;
+}
+
+#brim-main {
+    height: 100%;
 }
