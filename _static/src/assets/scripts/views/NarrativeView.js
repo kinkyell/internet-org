@@ -185,6 +185,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onEnable = function() {
+
+        this.$progress.show();
+
         this._currentlyMobile = breakpointManager.isMobile;
         breakpointManager.subscribe(function() {
             if (breakpointManager.isMobile !== this._currentlyMobile) {
@@ -236,6 +239,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onDisable = function() {
+        this.$progress.hide();
         this.scrollTop = this.$narrative[0].scrollTop;
         $(window).off('mousewheel DOMMouseScroll', this._onWheelEventHandler);
         $('#brim-main').off(this._eventTouchNamespace);
