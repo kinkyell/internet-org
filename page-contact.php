@@ -113,7 +113,7 @@ get_header();
 									</div>
 								</div>
 								<div class="fbFollowBlock-cta">
-									<a href="<?php echo esc_attr__( 'https://fb.me/Internetdotorg', 'internetorg' ); ?>" class="btn btn_facebook"><?php echo esc_html__( 'Like us on Facebook', 'internetorg' ); ?></a>
+									<a href="<?php echo esc_attr__( 'https://fb.me/Internetdotorg', 'internetorg' ); ?>" class="btn btn_facebook" target="_blank"><?php echo esc_html__( 'Like us on Facebook', 'internetorg' ); ?></a>
 								</div>
 							</div>
 						</div>
