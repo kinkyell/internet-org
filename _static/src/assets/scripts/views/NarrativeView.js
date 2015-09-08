@@ -185,6 +185,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onEnable = function() {
+        this.$narrative[0].scrollTop = this.scrollTop;
         this._currentlyMobile = breakpointManager.isMobile;
         breakpointManager.subscribe(function() {
             if (breakpointManager.isMobile !== this._currentlyMobile) {
@@ -195,19 +196,19 @@ define(function(require, exports, module) { // jshint ignore:line
 
 
 
-        if (platform.os.family == 'iOS' && parseInt(platform.os.version, 10) >= 8) {
+        if (platform.os.family === 'iOS' && parseInt(platform.os.version, 10) >= 8) {
             $('html, body').css('height', 'auto');
             $('#brim-mask').css('display', 'block');
             $('#brim-main').css('height', 'auto');
 
-            var scream = Scream({
+            var scream = new Scream({
                 width: {
                     portrait: 320,
                     landscape: 640
                 }
             });
 
-            var brim = Brim({
+            var brim = new Brim({
                 viewport: scream
             });
 
