@@ -195,36 +195,39 @@ define(function(require, exports, module) { // jshint ignore:line
             }
         }.bind(this));
 
-        if (platform.os.family === 'iOS' && parseInt(platform.os.version, 10) >= 8) {
-            $('html, body').css('height', 'auto');
-            $('#brim-mask').css('display', 'block');
-            $('#brim-main').css('height', 'auto');
+        $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
+        $('#brim-main').on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
 
-            var scream = new Scream({
-                width: {
-                    portrait: 320,
-                    landscape: 640
-                }
-            });
+        // if (platform.os.family === 'iOS' && parseInt(platform.os.version, 10) >= 8) {
+        //     $('html, body').css('height', 'auto');
+        //     $('#brim-mask').css('display', 'block');
+        //     $('#brim-main').css('height', 'auto');
 
-            var brim = new Brim({
-                viewport: scream
-            });
+        //     var scream = new Scream({
+        //         width: {
+        //             portrait: 320,
+        //             landscape: 640
+        //         }
+        //     });
 
-            brim.on('viewchange', function (e) {
-                this._narrativeManager.refresh(this._position);
+        //     var brim = new Brim({
+        //         viewport: scream
+        //     });
 
-                if (e.viewName === 'minimal') {
-                    $('#brim-main').on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
-                } else {
-                    $('#brim-main').off(this._eventTouchNamespace);
-                }
+        //     brim.on('viewchange', function (e) {
+        //         this._narrativeManager.refresh(this._position);
 
-            }.bind(this));
-        } else {
-            $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
-            $('#brim-main').on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
-        }
+        //         if (e.viewName === 'minimal') {
+        //             $('#brim-main').on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
+        //         } else {
+        //             $('#brim-main').off(this._eventTouchNamespace);
+        //         }
+
+        //     }.bind(this));
+        // } else {
+        //     $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
+        //     $('#brim-main').on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
+        // }
     };
 
     /**
