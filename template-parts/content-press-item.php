@@ -19,7 +19,7 @@
 
 			<div class="feature feature_tight">
 				<div class="feature-hd">
-					<h2 class="hdg hdg_3">
+					<h2 class="hdg hdg_4">
 						<?php the_title(); ?>
 					</h2>
 				</div>

@@ -14,7 +14,7 @@
     margin-top: -10px;
     position: absolute;
     left: 0;
-    top: 50%;
+    top: 35%;
     font-size: 0;
     cursor: pointer;
 }
@@ -31,10 +31,10 @@
 }
 
 .searchBox-input {
+    @include remify(font-size, 16px);
     visibility: hidden;
     width: 100%;
     padding: 5px 0;
-    @include remify(font-size, 16px);
     background: transparent;
     border: 0;
 }
@@ -58,7 +58,8 @@
 }
 
 .searchBox_inPanelMobile {
-    padding: 18px 30px 17px 34px;
+    border-top: 80px solid $CLR_GRAY_LIGHTER;
+    padding: 4px 30px 17px 34px;
     background-color: $CLR_GRAY_LIGHTER;
     margin-top: 1px;
 }
@@ -68,11 +69,11 @@
 }
 
 .searchBox-input_inPanelMobile {
+    @include remify(font-size, 21px);
+    @include font(SERIF);
     width: 85%;
     margin-left: 10%;
     // background-color: lime;
-    @include remify(font-size, 21px);
-    @include font(SERIF);
 
 }
 
@@ -85,8 +86,13 @@
     .searchBox {
         background-color: transparent;
     }
+
     .searchBox-input {
         visibility: visible;
+    }
+
+    .searchBox-icon {
+        top: 50%;
     }
 }
 

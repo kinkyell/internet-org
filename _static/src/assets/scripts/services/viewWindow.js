@@ -142,7 +142,7 @@ define(function(require, exports, module) { // jshint ignore:line
         return this._storyQueue.queue(function() {
 
             var $panel = this._getPanelWrap();
-            // $panel.children().append(html);
+            $panel.children().append(html);
 
             return this._updatePanel(
                 $panel,

@@ -124,8 +124,10 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto.createChildren = function() {
+        this.$narrative = $('.narrative');
+        this.scrollTop = 0;
         this.$body = $(document.body);
-        this.$narrativeSections = $('.narrative').find('> *');
+        this.$narrativeSections = this.$narrative.children();
         this.$progress = $(CONFIG.PROGRESS);
         this.$narrativeDT = this.$element.find(CONFIG.NARRATIVE_DT);
         this._$structureSections = $('.narrativeDT-sections');
@@ -234,6 +236,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onDisable = function() {
+        this.scrollTop = this.$narrative[0].scrollTop;
         $(window).off('mousewheel DOMMouseScroll', this._onWheelEventHandler);
         $('#brim-main').off(this._eventTouchNamespace);
     };

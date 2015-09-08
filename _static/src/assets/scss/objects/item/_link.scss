@@ -131,7 +131,7 @@
 
 /* IMPACT */ 
 .theme-impact .link,
-.link_themeImpact { color: $CLR_IMPACT; }
+.link_themeImpact { color: $CLR_IMPACT !important; }
 
 .theme-impact .link:after,
 .link_themeImpact:after { border-color: $CLR_IMPACT; }
@@ -150,7 +150,7 @@
 
 /* APPROACH */
 .theme-approach .link,
-.link_themeApproach { color: $CLR_APPROACH; }
+.link_themeApproach { color: $CLR_APPROACH !important; }
 
 .theme-approach .link:after,
 .link_themeApproach:after { border-color: $CLR_APPROACH; }
@@ -169,7 +169,7 @@
 
 /* MISSION */
 .theme-mission .link,
-.link_themeMission { color: $CLR_MISSION; }
+.link_themeMission { color: $CLR_MISSION !important; }
 
 .theme-mission .link:after,
 .link_themeMission:after, { border-color: $CLR_MISSION; }
