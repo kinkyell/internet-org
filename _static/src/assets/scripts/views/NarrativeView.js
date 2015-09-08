@@ -185,6 +185,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onEnable = function() {
+        this.$progress.show();
         this.$narrative[0].scrollTop = this.scrollTop;
         this._currentlyMobile = breakpointManager.isMobile;
         breakpointManager.subscribe(function() {
@@ -194,38 +195,39 @@ define(function(require, exports, module) { // jshint ignore:line
             }
         }.bind(this));
 
+        $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
+        $('#brim-main').on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
 
+        // if (platform.os.family === 'iOS' && parseInt(platform.os.version, 10) >= 8) {
+        //     $('html, body').css('height', 'auto');
+        //     $('#brim-mask').css('display', 'block');
+        //     $('#brim-main').css('height', 'auto');
 
-        if (platform.os.family === 'iOS' && parseInt(platform.os.version, 10) >= 8) {
-            $('html, body').css('height', 'auto');
-            $('#brim-mask').css('display', 'block');
-            $('#brim-main').css('height', 'auto');
+        //     var scream = new Scream({
+        //         width: {
+        //             portrait: 320,
+        //             landscape: 640
+        //         }
+        //     });
 
-            var scream = new Scream({
-                width: {
-                    portrait: 320,
-                    landscape: 640
-                }
-            });
+        //     var brim = new Brim({
+        //         viewport: scream
+        //     });
 
-            var brim = new Brim({
-                viewport: scream
-            });
+        //     brim.on('viewchange', function (e) {
+        //         this._narrativeManager.refresh(this._position);
 
-            brim.on('viewchange', function (e) {
-                this._narrativeManager.refresh(this._position);
+        //         if (e.viewName === 'minimal') {
+        //             $('#brim-main').on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
+        //         } else {
+        //             $('#brim-main').off(this._eventTouchNamespace);
+        //         }
 
-                if (e.viewName === 'minimal') {
-                    $('#brim-main').on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
-                } else {
-                    $('#brim-main').off(this._eventTouchNamespace);
-                }
-
-            }.bind(this));
-        } else {
-            $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
-            $('#brim-main').on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
-        }
+        //     }.bind(this));
+        // } else {
+        //     $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
+        //     $('#brim-main').on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
+        // }
     };
 
     /**
@@ -237,6 +239,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onDisable = function() {
+        this.$progress.hide();
         this.scrollTop = this.$narrative[0].scrollTop;
         $(window).off('mousewheel DOMMouseScroll', this._onWheelEventHandler);
         $('#brim-main').off(this._eventTouchNamespace);
