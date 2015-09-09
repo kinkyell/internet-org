@@ -10,7 +10,7 @@
 get_header();
 
 ?>
-<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="<?php echo esc_url( internetorg_get_archive_link() ); ?>" data-type="titled" data-title="<?php the_archive_title(); ?>">
+<div class="viewWindow isShifted js-viewWindow js-stateDefault" role="main" data-route="<?php echo esc_url( internetorg_get_archive_link() ); ?>" data-type="titled" data-title="<?php the_archive_title(); ?>">
 
 
 <?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
