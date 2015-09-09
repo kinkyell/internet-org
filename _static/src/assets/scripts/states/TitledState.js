@@ -34,6 +34,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handleLoaderInit = this._onLoaderInit.bind(this);
 
         BasicState.call(this, options);
+        this._options.social = (this._options.social === 'true');
     };
 
     TitledState.prototype = Object.create(BasicState.prototype);

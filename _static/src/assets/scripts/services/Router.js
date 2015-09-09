@@ -25,7 +25,8 @@ define(function(require, exports, module) { // jshint ignore:line
         'theme',
         'route',
         'desc',
-        'date'
+        'date',
+        'social'
     ];
 
     /**
