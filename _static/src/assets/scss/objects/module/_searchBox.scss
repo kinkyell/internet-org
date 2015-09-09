@@ -49,6 +49,8 @@
 
 .searchBox-input.isOpen,
 .searchBox_inPanel > .searchBox-input {
+    margin-top: -7px;
+    margin-bottom: 7px;
     visibility: visible;
 }
 
@@ -85,7 +87,11 @@
         background-color: transparent;
     }
 
-    .searchBox-input {
+    .searchBox-input,
+    .searchBox-input.isOpen,
+    .searchBox_inPanel > .searchBox-input {
+        margin-top: 0;
+        margin-bottom: 0;
         visibility: visible;
     }
 
