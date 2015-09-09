@@ -1602,3 +1602,12 @@ function internetorg_is_video_url( $url ) {
 	return $found_loc !== false;
 }
 
+/**
+ * Wrap oembed videos with a responsive video wrapper div
+ * @filter embed_oembed_html
+ * @return string new oembed wraped in video wrapper
+ */
+function internetorg_wrap_oembed_html($html, $url, $attr, $post_id) {
+	return '<div class="video">' . $html . '</div>';
+}
+add_filter('embed_oembed_html', 'internetorg_wrap_oembed_html', 99, 4);
