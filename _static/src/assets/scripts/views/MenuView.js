@@ -211,10 +211,6 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._animateSliders = function(baseDelay) {
         baseDelay = (baseDelay || 0) + SPEEDS.SLIDERS_STAGGER;
         this.$sliders.each(function(idx, el) {
-            console.log(idx, el);
-            if (el === null) {
-                alert('null');
-            }
             Tween.from(el, SPEEDS.SLIDERS_IN, {
                 onComplete: function() {
                     if (idx === this.$sliders.length - 1) {

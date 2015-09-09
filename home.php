@@ -10,7 +10,7 @@ get_header();
 
 ?>
 
-<div class="viewWindow isShifted js-viewWindow js-stateDefault" data-route="<?php echo esc_url( get_permalink( get_queried_object_id() ) ); ?>" data-type="titled" data-title="<?php echo esc_html( get_the_title( get_queried_object_id() ) ); ?>">
+<div class="viewWindow isShifted js-viewWindow js-stateDefault" role="main" data-route="<?php echo esc_url( get_permalink( get_queried_object_id() ) ); ?>" data-type="titled" data-title="<?php echo esc_html( get_the_title( get_queried_object_id() ) ); ?>">
 
 		<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
 

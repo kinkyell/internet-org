@@ -49,6 +49,8 @@
 
 .searchBox-input.isOpen,
 .searchBox_inPanel > .searchBox-input {
+    margin-top: -7px;
+    margin-bottom: 7px;
     visibility: visible;
 }
 
@@ -58,10 +60,8 @@
 }
 
 .searchBox_inPanelMobile {
-    border-top: 80px solid $CLR_GRAY_LIGHTER;
     padding: 4px 30px 17px 34px;
     background-color: $CLR_GRAY_LIGHTER;
-    margin-top: 1px;
 }
 
 .searchBox-icon_inPanelMobile {
@@ -87,7 +87,11 @@
         background-color: transparent;
     }
 
-    .searchBox-input {
+    .searchBox-input,
+    .searchBox-input.isOpen,
+    .searchBox_inPanel > .searchBox-input {
+        margin-top: 0;
+        margin-bottom: 0;
         visibility: visible;
     }
 
