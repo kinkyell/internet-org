@@ -11,7 +11,7 @@ get_header();
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault" role="main" data-type="panel" data-title="<?php the_title(); ?>" data-image="<?php echo esc_url( internetorg_get_post_thumbnail( get_the_ID(), 'panel-image' ) ); ?>">
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault" role="main" data-route="<?php the_permalink(); ?>" data-type="panel" data-title="<?php the_title(); ?>" data-image="<?php echo esc_url( internetorg_get_post_thumbnail( get_the_ID(), 'panel-image' ) ); ?>">
 
 		<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
 
@@ -24,7 +24,7 @@ get_header();
 					<div>
 
 						<!-- START MOBILE ONLY CONTENT HERE -->
-						<div class="isHidden u-isHiddenMedium" aria-hidden="true">
+						<div class="isHidden u-isHiddenMedium js-introImage" aria-hidden="true">
 							<img src="<?php echo esc_url( internetorg_get_mobile_featured_image( get_post_type(), get_the_ID() ) ); ?>" alt="" />
 						</div>
 						<!-- END MOBILE ONLY CONTENT HERE -->

@@ -2,12 +2,6 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     var AbstractView = require('./AbstractView');
-    var $ = require('jquery');
-    var Tween = require('gsap-tween');
-    var breakpointManager = require('services/breakpointManager');
-    var extend = require('stark/object/extend');
-    var animSpeeds = require('appConfig').animationSpeeds;
-    var eventHub = require('services/eventHub');
 
     /**
      * A view for displaying main menu

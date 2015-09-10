@@ -6,6 +6,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var spread = require('stark/promise/spread');
     var capitalize = require('stark/string/capitalize');
     var tap = require('stark/promise/tap');
+    var parseUrl = require('stark/string/parseUrl');
 
     var viewWindow = require('services/viewWindow');
     var templates = require('templates');
@@ -79,6 +80,8 @@ define(function(require, exports, module) { // jshint ignore:line
         var transitions = this.getAnimationDirections(event);
         var theme = this._options.theme;
         var mobileImage = this._options['mobile-image'];
+        var isImageAbove = this._options.path && parseUrl(this._options.path).pathname.split('/').length > 3;
+        // put image above if above a second tier page (ie., /mission/ -> ["", "mission", ""])
 
         if (event.silent) {
             viewWindow.getCurrentStory().then(this._handleStaticContent);
@@ -91,7 +94,9 @@ define(function(require, exports, module) { // jshint ignore:line
                 title: this._options.title,
                 desc: this._options.desc,
                 image: mobileImage ? mobileImage : this._options.image,
-                theme: (typeof theme === 'string' && theme.length) ? capitalize(theme) : theme
+                theme: (typeof theme === 'string' && theme.length) ? capitalize(theme) : theme,
+                isImageAbove: isImageAbove,
+                isImageBelow: !isImageAbove
             }), transitions.content).then(tap(this._handleLoaderInit))
         ];
 
@@ -119,6 +124,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         // remove any duplicate introblocks
         $markup.children('.introBlock').eq(0).remove();
+        $markup.find('.js-introImage').remove();
 
         $panel.append($markup);
         Tween.from($markup[0], 0.25, { opacity: 0 });
