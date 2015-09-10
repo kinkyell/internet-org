@@ -77,6 +77,12 @@
 
 }
 
+.searchBox-input_inPanelMobile.isOpen,
+.searchBox_inPanelMobile > .searchBox-input {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 /* Diabling IE user agent's 'x' close icon in input */
 .searchBox-input::-ms-clear {
     display: none;
