@@ -959,6 +959,8 @@ function internetorg_do_ajax_search() {
 			'post_excerpt' => get_the_excerpt(),
 			'permalink'    => get_the_permalink(),
 			'post_thumbnail' => $post_thumbnail,
+			'post_type' => get_post_type(),
+			'post_date' => get_the_date('')
 		);
 	}
 
