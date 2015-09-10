@@ -45,6 +45,21 @@ get_header();
 		<div class="viewWindow-panel-content">
 			<div class="viewWindow-panel-content-inner">
 
+				<div class="introBlock u-isHiddenMedium" aria-hidden="true">
+					<div class="introBlock-inner">
+						<div class="container">
+							<div class="topicBlock">
+								<div class="topicBlock-hd topicBlock-hd_plus">
+									<h2 class="hdg hdg_2"><?php the_title(); ?></h2>
+								</div>
+								<div class="topicBlock-bd">
+									<p class="bdcpy"><?php echo esc_html( internetorg_get_the_subtitle( get_the_ID() ) ); ?></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<?php
 				$custom_fields = get_post_meta( get_the_ID(), 'home-content-section', false );
 				if ( ! empty( $custom_fields ) ) :

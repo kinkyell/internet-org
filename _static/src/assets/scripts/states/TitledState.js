@@ -14,6 +14,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var ShowMoreView = require('views/ShowMoreView');
     var ImagePlaceholderView = require('views/ImagePlaceholderView');
     var VideoModalView = require('views/VideoModalView');
+    var CustomRadioView = require('views/CustomRadioView');
     var $ = require('jquery');
     var Tween = require('gsap-tween');
     var LoadingContainer = require('util/LoadingContainer');
@@ -51,6 +52,7 @@ define(function(require, exports, module) { // jshint ignore:line
         '.js-select': SelectView,
         '.js-ShowMoreView': ShowMoreView,
         '.js-videoModal': VideoModalView,
+        'input.radio': CustomRadioView,
         'img': ImagePlaceholderView
     };
 
