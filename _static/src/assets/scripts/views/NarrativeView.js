@@ -10,6 +10,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var platform = require('platform');
     var Brim = require('brim');
     var Scream = require('scream');
+    var debounce = require('stark/function/debounce');
 
     var CONFIG = {
         NARRATIVE_DT: '.narrativeDT',
@@ -113,6 +114,9 @@ define(function(require, exports, module) { // jshint ignore:line
         this._onTouchMoveHandler = this._onTouchMove.bind(this);
         this._onTouchEndHandler = this._onTouchEnd.bind(this);
         this.refreshNarrativeManager = this.refreshNarrativeManager.bind(this);
+
+        this._onResizeHandler = this._onResize.bind(this);
+        this._onResizeHandler = debounce(this._onResizeHandler, 50);
     };
 
     /**
@@ -198,6 +202,9 @@ define(function(require, exports, module) { // jshint ignore:line
         $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
         $('#brim-main').on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
 
+        window.addEventListener('resize', this._onResizeHandler);
+        window.addEventListener('orientationchange', this._onResizeHandler);
+
         // if (platform.os.family === 'iOS' && parseInt(platform.os.version, 10) >= 8) {
         //     $('html, body').css('height', 'auto');
         //     $('#brim-mask').css('display', 'block');
@@ -248,6 +255,17 @@ define(function(require, exports, module) { // jshint ignore:line
     //////////////////////////////////////////////////////////////////////////////////
     // EVENT HANDLERS
     //////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Window resize event handler
+     *
+     * @method _onResize
+     * @param {obj} event the event object
+     * @private
+     */
+    proto._onResize = function() {
+        this._narrativeManager.refresh(this._position);
+    };
 
     /**
      * Mouse Wheel event handler

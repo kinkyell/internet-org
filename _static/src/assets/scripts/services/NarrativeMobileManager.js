@@ -121,9 +121,13 @@ define(function(require, exports, module) { // jshint ignore:line
         this._timeLine = this._createTimeline('forward');
         this._timeLineReverse = this._createTimeline('reverse');
 
-        // this.gotoSection(this._sectionsConf[position + 1], 'down');
-        this._$narrative[0].scrollTop = 0;
-
+        if (position > 0) {
+            this.gotoSection(this._sectionsConf[position - 1], 'up');
+            this.gotoSection(this._sectionsConf[position], 'down');
+        } else {
+            this.gotoSection(this._sectionsConf[position + 1], 'down');
+            this.gotoSection(this._sectionsConf[position], 'up');
+        }
     };
 
     // /////////////////////////////////////////////////////////////////////////////////////////
@@ -158,6 +162,8 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._createTimeline = function(direction) {
         var tl = new Timeline({ paused: true });
         var easeDirection = (direction === 'forward') ? EASE_DIRECTION_FORWARD : EASE_DIRECTION_REVERSE;
+
+        tl.set(this._$narrative, {scrollTo: { y: 0 }});
 
         //  transition 01
         ///////////////////////
