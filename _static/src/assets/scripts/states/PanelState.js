@@ -13,6 +13,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var CarouselView = require('views/CarouselView');
     var SelectView = require('views/SelectView');
     var ImagePlaceholderView = require('views/ImagePlaceholderView');
+    var SearchFormView = require('views/SearchFormView');
     var VideoModalView = require('views/VideoModalView');
     var $ = require('jquery');
     var Tween = require('gsap-tween');
@@ -62,6 +63,7 @@ define(function(require, exports, module) { // jshint ignore:line
         '.js-carouselView': CarouselView,
         '.js-select': SelectView,
         '.js-videoModal': VideoModalView,
+        '.js-searchFormView': SearchFormView,
         'img': ImagePlaceholderView
     };
 
@@ -116,7 +118,7 @@ define(function(require, exports, module) { // jshint ignore:line
         var $markup = $(markup).children();
 
         // remove any duplicate introblocks
-        $markup.children('.introBlock:first-child').remove();
+        $markup.children('.introBlock').eq(0).remove();
 
         $panel.append($markup);
         Tween.from($markup[0], 0.25, { opacity: 0 });

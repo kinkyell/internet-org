@@ -34,6 +34,9 @@ define(function(require, exports, module) { // jshint ignore:line
     }
 
     function _parseHtmlResponse(htmlStr) {
+        if (typeof htmlStr !== 'string') {
+            htmlStr = htmlStr.responseText;
+        }
         var viewWindowEl = _getViewWindow(htmlStr);
         var viewWindowStory = viewWindowEl ? viewWindowEl.lastElementChild.firstElementChild.firstElementChild : null;
 
@@ -55,7 +58,7 @@ define(function(require, exports, module) { // jshint ignore:line
         getPanelContent: function(route) {
             route = route.replace(PREFIX_STRIPPER, '').replace(SUFFIX_STRIPPER, '');
             var path = PATHS[route] || route;
-            return Promise.resolve($.get('/' + path)).then(_parseHtmlResponse);
+            return Promise.resolve($.get('/' + path)).then(_parseHtmlResponse, _parseHtmlResponse);
         },
 
         /**

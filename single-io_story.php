@@ -11,7 +11,7 @@ get_header();
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault" role="main" data-type="titled">
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault" role="main" data-type="panel" data-title="<?php the_title(); ?>">
 
 		<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
 
