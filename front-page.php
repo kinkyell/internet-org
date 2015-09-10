@@ -12,7 +12,7 @@ $home_background_image_url = '';
 
 ?>
 
-<div class="viewWindow viewWindow_flush js-viewWindow" data-route="<?php echo esc_url( home_url( '/' ) ); ?>" data-type="home">
+<div class="viewWindow viewWindow_flush js-viewWindow" role="main" data-route="<?php echo esc_url( home_url( '/' ) ); ?>" data-type="home">
 <?php while ( have_posts() ) : the_post(); ?>
 	<?php
 	if ( has_post_thumbnail() ) {
@@ -204,10 +204,10 @@ $home_background_image_url = '';
 																}
 
 																?>
-																<a href="<?php echo esc_url( $cta['link'] ); ?>" class="tertiaryCta <?php echo esc_attr( $js_class ); ?>" <?php if ( ! internetorg_is_video_url( $cta['link'] ) ) : ?>data-type="titled" data-theme="<?php echo esc_attr( strtolower( $fieldset['slug'] ) ); ?>" data-title="<?php echo esc_attr( $cta['title'] ); ?>" data-desc="<?php echo esc_attr( strip_tags( $cta['text'] ) ); ?>"<?php endif; ?>>
+																<a href="<?php echo esc_url( $cta['link'] ); ?>" class="tertiaryCta <?php echo esc_attr( $js_class ); ?>" <?php if ( ! internetorg_is_video_url( $cta['link'] ) ) : ?>data-type="titled" data-theme="<?php echo esc_attr( strtolower( $cf_content_section['slug'] ) ); ?>" data-title="<?php echo esc_attr( $cta['title'] ); ?>" data-desc="<?php echo esc_attr( strip_tags( $cta['text'] ) ); ?>"<?php endif; ?>>
 
 																	<?php echo esc_html( strip_tags( $cta['title'] ) ); ?>
-																	<span class="circleBtn circleBtn_theme<?php echo esc_attr( ucwords( $fieldset['slug'] ) ); ?><?php if ( internetorg_is_video_url( $cta['link'] ) ) : ?> circleBtn_play<?php endif; ?>"></span>
+																	<span class="circleBtn circleBtn_theme<?php echo esc_attr( ucwords( $cf_content_section['slug'] ) ); ?><?php if ( internetorg_is_video_url( $cta['link'] ) ) : ?> circleBtn_play<?php endif; ?>"></span>
 																</a>
 															</div>
 														<?php endif; ?>
@@ -222,7 +222,7 @@ $home_background_image_url = '';
 												<div class="container container_wide">
 													<div class="statementBlock">
 														<div class="statementBlock-pre">
-															<h2 class="hdg hdg_heavy mix-hdg_theme<?php echo esc_attr( ucwords( $cf_content_section['slug'] ) ); ?>"><?php echo esc_html( $cf_content_section['name'] ); ?></h2>
+															<h2 class="hdg hdg_heavy mix-hdg_theme<?php echo esc_attr( ucwords( $cf_content_section['slug'] ) ); ?> u-isHiddenMedium"><?php echo esc_html( $cf_content_section['name'] ); ?></h2>
 														</div>
 														<div class="statementBlock-hd">
 															<h2 class="hdg hdg_1"><?php echo esc_html( $cf_content_section['title'] ); ?></h2>

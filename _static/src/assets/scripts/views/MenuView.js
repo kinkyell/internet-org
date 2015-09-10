@@ -212,11 +212,17 @@ define(function(require, exports, module) { // jshint ignore:line
         baseDelay = (baseDelay || 0) + SPEEDS.SLIDERS_STAGGER;
         this.$sliders.each(function(idx, el) {
             Tween.from(el, SPEEDS.SLIDERS_IN, {
+                onComplete: function() {
+                    if (idx === this.$sliders.length - 1) {
+                        document.querySelector('.mainMenu').style.transform = 'scale(1)';
+                    }
+                },
+                callbackScope: this,
                 opacity: 0,
                 xPercent: 30,
                 delay: baseDelay + (idx * SPEEDS.SLIDERS_STAGGER)
             });
-        });
+        }.bind(this));
     };
 
     //////////////////////////////////////////////////////////////////////////////////

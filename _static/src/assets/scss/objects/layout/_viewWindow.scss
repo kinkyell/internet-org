@@ -43,9 +43,16 @@ Layout for paneled views
     background: #ffffff;
 }
 
-// .viewWindow-panel_story .viewWindow-panel-content-inner {
-//     border-top: 70px solid $CLR_GRAY_LIGHTER;
-// }
+// add space for headerless pages
+.viewWindow-panel_story .viewWindow-panel-content-inner {
+    border-top: 70px solid $CLR_GRAY_LIGHTER;
+}
+
+// move block up if header exists
+.viewWindow-panel_story .viewWindow-panel-content-inner > .introBlock,
+.viewWindow-panel_story .viewWindow-panel-content-inner > :first-child > .introBlock {
+    margin-top: -70px;
+}
 
 // .viewWindow-panel.isActive > .viewWindow-panel-content {
 //     padding-top: 45px;
@@ -121,6 +128,15 @@ Layout for paneled views
 
     .isAnimating .viewWindow-panel-content {
         overflow-y: hidden;
+    }
+
+    // remove mobile spacing rules
+    .viewWindow-panel_story .viewWindow-panel-content-inner {
+        border-top: 0;
+    }
+    .viewWindow-panel_story .viewWindow-panel-content-inner > .introBlock,
+    .viewWindow-panel_story .viewWindow-panel-content-inner > :first-child > .introBlock {
+        margin-top: 0;
     }
 
 }

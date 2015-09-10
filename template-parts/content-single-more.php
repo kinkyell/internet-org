@@ -36,7 +36,10 @@ if ( empty( $next_post ) && empty( $prev_post ) ) {
 				<div class="topicBlock-cta">
 					<a class="btn js-stateLink" href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>"
 					   data-title="<?php echo apply_filters( 'the_title', esc_attr( $next_post->post_title ) ); ?>"
-					   data-desc="<?php echo esc_attr( get_the_date( '', $next_post->ID ) ); ?>" data-type="titled">
+					   data-date="<?php echo esc_attr( get_the_date( '', $next_post->ID ) ); ?>"
+					   data-social="true"
+					   data-desc="<?php echo wp_kses_post( get_post_field( 'post_excerpt', get_the_ID() ) ); ?>"
+					   data-type="titled">
 						<?php esc_html_e( 'Read', 'internetorg' ); ?>
 					</a>
 				</div>

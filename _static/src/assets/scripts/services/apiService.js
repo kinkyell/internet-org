@@ -94,7 +94,10 @@ define(function(require, exports, module) { // jshint ignore:line
                         return templates['search-result']({
                             title: result.post_title,
                             desc: result.post_excerpt,
-                            url: result.permalink
+                            url: result.permalink,
+                            type: result.post_type,
+                            date: result.post_date,
+                            isPost: result.post_type === 'post'
                         });
                     }).join('')
                 };
