@@ -92,7 +92,7 @@
         content: '';
         visibility: visible;
         position: relative;
-        top: -2px;
+        top: 2px;
         display: inline-block;
         width: 18px;
         height: 18px;
@@ -102,6 +102,7 @@
         background-color: transparent;
         border-radius: 50%;
         transition: all 0.25s linear;
+        margin-right: 10px;
     }
 
     .grunion-radio-label > .radio:checked + span {

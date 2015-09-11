@@ -16,7 +16,7 @@ $home_background_image_url = '';
 <?php while ( have_posts() ) : the_post(); ?>
 	<?php
 	if ( has_post_thumbnail() ) {
-		$home_background_image_url = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'full' );
+		$home_background_image_url = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'panel-image' );
 	}
 
 	// Pull the custom fields and parse for placement.
@@ -52,14 +52,14 @@ $home_background_image_url = '';
 								<?php foreach ( $group as $fieldset ) : ?>
 
 									<?php if ( ! empty( $fieldset['call-to-action'] ) ) : ?>
-										<li class="narrativeDT-sections-item" data-feature="<?php echo esc_url( ( ! empty( $fieldset['call-to-action'][0] ) ? wp_get_attachment_url( $fieldset['call-to-action'][0]['image'], 'full' ) : ''	 ) ); ?>">
+										<li class="narrativeDT-sections-item" data-feature="<?php echo esc_url( ( ! empty( $fieldset['call-to-action'][0] ) ? wp_get_attachment_url( $fieldset['call-to-action'][0]['image'], 'panel-image' ) : ''	 ) ); ?>">
 
 										<?php if ( count( $fieldset['call-to-action'] ) > 1 ) : ?>
 											<ul>
 											<?php for ( $i = 1; $i < count( $fieldset['call-to-action'] ); ++$i ) : ?>
 												<?php $cta = $fieldset['call-to-action'][ $i ]; ?>
 												<?php if ( ! empty( $cta['image'] ) ) :
-													$imgUrl = wp_get_attachment_url( $cta['image'], 'full' ); ?>
+													$imgUrl = wp_get_attachment_url( $cta['image'], 'panel-image' ); ?>
 
 												<li data-feature="<?php echo esc_url( $imgUrl ); ?>">
 													<?php if ( ! empty( $cta['link'] ) ) : ?>
@@ -173,7 +173,7 @@ $home_background_image_url = '';
 									</div>
 								</div>
 								<div class="narrative-section-bd-ft">
-									<a href="#" class="arrowCta arrowCta_light"></a>
+									<a href="#" class="arrowCta arrowCta_light js-narrativeAdvance"></a>
 								</div>
 							</div>
 						</div>
@@ -193,7 +193,7 @@ $home_background_image_url = '';
 														if ( empty( $data_img ) ) {
 															$data_img = $cta['image'];
 														} ?>
-														<div class="narrative-section-slides-item" style="background-image: url('<?php echo esc_url( wp_get_attachment_url( $cta['image'], 'full' ) ); ?>')">
+														<div class="narrative-section-slides-item" style="background-image: url('<?php echo esc_url( wp_get_attachment_url( $cta['image'], 'panel-image' ) ); ?>')">
 														<?php if ( ! empty( $cta['link'] ) ) : ?>
 															<div class="narrative-section-slides-item-inner">
 																<?php

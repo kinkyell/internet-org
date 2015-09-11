@@ -1437,10 +1437,7 @@ function internetorg_custom_link_shortcode($attr = array()){
 	$attr = wp_parse_args( $attr, array(
 		'css_class' => 'link',
 		'source' => '',
-		'link_to_press' => '',
-		'link_title' => '',
 		'image' => '',
-		'link_desc' => '',
 		'link_text' => esc_html__( 'Click Me', 'internetorg' )
 	) );
 	ob_start();
@@ -1451,32 +1448,36 @@ function internetorg_custom_link_shortcode($attr = array()){
 	if( empty( $source ) ) {
 		return '';
 	};
-
+	$post_type = get_post_type($source);
 	$data_attr = '';
+	$data_type = 'titled';
 	$lg_image = '';
 	$sm_image = '';
 
 	$attachment_id = absint($attr['image']);
+
 	if(!empty($attachment_id)) {
 		$lg_image = wp_get_attachment_image_src($attachment_id, 'panel-image');
 		$sm_image = wp_get_attachment_image_src($attachment_id, 'inline-image');
-	}
-
-	if ( $attr['link_to_press'] == 'panel' ) {
 		$data_attr .= 'data-image="'. esc_url( $lg_image[0] ) .'" ';
 		$data_attr .= 'data-mobile-image="'. esc_url( $sm_image[0] ) .'" ';
-	} elseif ( 'titled' === $attr['link_to_press'] ) {
-		$data_attr .= 'data-title="'. esc_attr( $attr['link_title'] ) .'" ';
-		$data_attr .= 'data-desc="'. esc_attr( $attr['link_desc'] ).'" ';
+		$data_type = 'panel';
+	}
+
+	if ( $post_type == 'post' ) {
+		$data_attr .= 'data-social="true"';
 	}
 
 	$url = str_replace( home_url(), '', get_permalink($source) );
 	?>
 
 	<a class="<?php echo esc_attr( $attr['css_class'] ); ?> js-stateLink"
-	   href="<?php echo esc_url( $url ); ?>"
-	   <?php echo $data_attr; ?>
-	   data-type="<?php echo esc_attr( $attr['link_to_press'] ); ?>"
+	    href="<?php echo esc_url( $url ); ?>"
+	    data-title="<?php echo esc_attr( get_the_title($source)); ?>"
+	    data-desc="<?php echo wp_kses_post( get_post_field( 'post_excerpt', $prev_post->ID ) ); ?>"
+	    data-date="<?php echo esc_attr( get_the_date( '', $source ) ); ?>"
+	    <?php echo $data_attr; ?>
+	    data-type="<?php echo esc_attr( $data_type  ); ?>"
 		><?php echo esc_html( $attr['link_text'] ); ?></a>
 	<?php
 	return ob_get_clean();
@@ -1522,32 +1523,12 @@ function internetorg_register_custom_link_shortcode_ui(){
 					),
 				),
 				array(
-					'label' => esc_html__('Is this a Press Article', 'internetorg'),
-					'attr' => 'link_to_press',
-					'type' => 'select',
-					'options' => array(
-						'titled' => esc_attr__('Yes', 'internetorg'),
-						'panel' => esc_attr__('No', 'internetorg'),
-					),
-				),
-				array(
 					'label' => esc_html__('Image', 'internetorg'),
 					'attr' => 'image',
 					'type' => 'attachment',
 					'libraryType' => array('image'),
 					'addButton' => 'Select Image',
 					'frameTitle' => 'Select Image',
-				),
-				array(
-					'label' => esc_html__('Data Title', 'internetorg'),
-
-					'attr' => 'link_title',
-					'type' => 'text',
-				),
-				array(
-					'label' => esc_html__('Data Description', 'internetorg'),
-					'attr' => 'link_desc',
-					'type' => 'text',
 				),
 				array(
 					'label' => esc_html__('Link Text', 'internetorg'),

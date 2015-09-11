@@ -21,7 +21,7 @@ global $post;
 			<a href="<?php the_permalink(); ?>" class="link mix-link_small js-stateLink"
 			   data-title="<?php echo apply_filters( 'the_title', esc_attr( $post->post_title ) ); ?>"
 			   <?php if($post->post_type === 'post'){ ?>
-				   data-date="<?php echo esc_attr( get_the_date( '', $prev_post->ID ) ); ?>"
+				   data-date="<?php echo esc_attr( get_the_date( '', $post->ID ) ); ?>"
 				   data-social="true"
 				   data-desc="<?php echo wp_kses_post( get_post_field( 'post_excerpt', get_the_ID() ) ); ?>"
 			   <?php } ?>
