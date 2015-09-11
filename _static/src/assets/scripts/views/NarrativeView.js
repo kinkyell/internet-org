@@ -11,6 +11,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var Brim = require('brim');
     var Scream = require('scream');
     var debounce = require('stark/function/debounce');
+    var eventHub = require('services/eventHub');
 
     var CONFIG = {
         NARRATIVE_DT: '.narrativeDT',
@@ -99,7 +100,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @returns {AbstractView}
      * @private
      */
-    proto.init = function() {};
+    proto.init = function() {
+        eventHub.publish('Narrative:sectionChange', 0);
+    };
 
     /**
      * Binds the scope of any handler functions.
@@ -179,6 +182,7 @@ define(function(require, exports, module) { // jshint ignore:line
         var isMobile = breakpointManager.isMobile;
         var NarrativeManager = isMobile ? NarrativeMobileManager : NarrativeDesktopManager;
         this._narrativeManager = new NarrativeManager(this._sectionConf);
+        this._narrativeManager.refresh(this._position);
     };
 
     /**
