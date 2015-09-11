@@ -34,9 +34,19 @@ get_header();
 		<div class="viewWindow-panel viewWindow-panel_story isActive">
 			<div class="viewWindow-panel-content">
 				<div class="viewWindow-panel-content-inner">
-
-
+					<div class="introBlock u-isHiddenMedium">
+						<div class="introBlock-inner">
+							<div class="container">
+								<div class="topicBlock">
+									<div class="topicBlock-hd topicBlock-hd_plus">
+										<h2 class="hdg hdg_2 mix-hdg_bold"><?php echo esc_html( get_the_title( get_queried_object_id() ) ); ?></h2>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 					<div>
+
 						<div class="contentCol">
 							<div class="container">
 								<div class="resultsList">
