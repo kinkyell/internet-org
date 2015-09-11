@@ -49,6 +49,7 @@ get_header();
 			<div class="viewWindow-panel-content">
 				<div class="viewWindow-panel-content-inner">
 					<div>
+						<?php get_template_part( 'template-parts/content', 'press-intro-mobile' ); ?>
 
 						<div class="contentCol">
 							<div class="container">
