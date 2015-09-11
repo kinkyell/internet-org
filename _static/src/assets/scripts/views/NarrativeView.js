@@ -204,37 +204,6 @@ define(function(require, exports, module) { // jshint ignore:line
 
         window.addEventListener('resize', this._onResizeHandler);
         window.addEventListener('orientationchange', this._onResizeHandler);
-
-        // if (platform.os.family === 'iOS' && parseInt(platform.os.version, 10) >= 8) {
-        //     $('html, body').css('height', 'auto');
-        //     $('#brim-mask').css('display', 'block');
-        //     $('#brim-main').css('height', 'auto');
-
-        //     var scream = new Scream({
-        //         width: {
-        //             portrait: 320,
-        //             landscape: 640
-        //         }
-        //     });
-
-        //     var brim = new Brim({
-        //         viewport: scream
-        //     });
-
-        //     brim.on('viewchange', function (e) {
-        //         this._narrativeManager.refresh(this._position);
-
-        //         if (e.viewName === 'minimal') {
-        //             $('#brim-main').on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
-        //         } else {
-        //             $('#brim-main').off(this._eventTouchNamespace);
-        //         }
-
-        //     }.bind(this));
-        // } else {
-        //     $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
-        //     $('#brim-main').on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
-        // }
     };
 
     /**
@@ -294,7 +263,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onTouchStart = function(e) {
-        // this._touchTracker.y = (e != undefined) ? '350' : e.originalEvent.touches[0].pageY;
         this._touchTracker.y = e.originalEvent.touches[0].pageY;
 
         $('#brim-main')
