@@ -6,6 +6,7 @@
  *
  * @package Internet.org
  */
+global $wp_query;
 
 get_header(); ?>
 
