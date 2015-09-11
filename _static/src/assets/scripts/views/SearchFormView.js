@@ -95,6 +95,9 @@ define(function(require, exports, module) { // jshint ignore:line
         eventHub.publish('Search:submit', {
             searchText: searchText
         });
+        if (document.activeElement.nodeName === 'INPUT') {
+            document.activeElement.blur();
+        }
     };
 
 
