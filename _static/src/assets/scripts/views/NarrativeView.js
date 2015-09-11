@@ -136,6 +136,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$narrativeDT = this.$element.find(CONFIG.NARRATIVE_DT);
         this._$structureSections = $('.narrativeDT-sections');
         this.$viewWindow = $('.viewWindow');
+        this._$narrativeAdvance = $('.js-narrativeAdvance');
     };
 
     /**
@@ -152,6 +153,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$narrativeDT = null;
         this._$structureSections = null;
         this.$viewWindow = null;
+        this._$narrativeAdvance = null;
     };
 
     /**
@@ -204,6 +206,8 @@ define(function(require, exports, module) { // jshint ignore:line
 
         window.addEventListener('resize', this._onResizeHandler);
         window.addEventListener('orientationchange', this._onResizeHandler);
+
+        this._$narrativeAdvance.on('click', this._onClickAdvance.bind(this));
 
         // if (platform.os.family === 'iOS' && parseInt(platform.os.version, 10) >= 8) {
         //     $('html, body').css('height', 'auto');
@@ -334,6 +338,17 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$body.off(this._eventTouchNamespace);
     };
 
+    /**
+     * Advance click event handler
+     *
+     * @method _onClickAdvance
+     * @private
+     */
+    proto._onClickAdvance = function(event) {
+        event.preventDefault();
+        this._scrollDown();
+    };
+
     //////////////////////////////////////////////////////////////////////////////////
     // HELPERS
     //////////////////////////////////////////////////////////////////////////////////
@@ -343,7 +358,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @method _scrollUp
      * @private
      */
-    proto._scrollUp = function() {
+    proto._scrollUp = function(event) {
         if (!this._narrativeManager._isAnimating) {
             var direction = 'up';
             var section = this._sectionConf[this._position];
@@ -396,7 +411,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @method _scrollDown
      * @private
      */
-    proto._scrollDown = function() {
+    proto._scrollDown = function(event) {
         if (!this._narrativeManager._isAnimating) {
             var direction = 'down';
             var section = this._sectionConf[this._position];
