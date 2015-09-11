@@ -173,7 +173,7 @@ $home_background_image_url = '';
 									</div>
 								</div>
 								<div class="narrative-section-bd-ft">
-									<a href="#" class="arrowCta arrowCta_light"></a>
+									<a href="#" class="arrowCta arrowCta_light js-narrativeAdvance"></a>
 								</div>
 							</div>
 						</div>
