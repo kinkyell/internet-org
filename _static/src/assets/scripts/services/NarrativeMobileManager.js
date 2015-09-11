@@ -143,11 +143,12 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._getSectionOffsets = function() {
         var sectionHeight = this._$sections.eq(0).height();
+        var sectionOffset;
 
         var i = 0;
         var l = this._$sections.length;
         for (; i < l; i++) {
-            var sectionOffset = sectionHeight * i;
+            sectionOffset = sectionHeight * i;
             this._sectionsConf[i].sectionOffset = sectionOffset;
         }
     };

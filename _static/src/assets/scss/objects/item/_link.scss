@@ -4,7 +4,7 @@
  common links styling
 ------------------------------------------------------------------------ */
 .link {
-    @include transition(all 0.3s ease-in-out); 
+    @include transition(all 0.3s ease-in-out);
     @include font(SANS_BLACK);
     @include remify(font-size, 13px);
     line-height: 1.222222;
@@ -26,6 +26,8 @@
     display: block;
     position: absolute;
     right: -8px;
+    -webkit-font-smoothing: none;
+    font-smoothing: none;
 }
 
 .link:after {
@@ -34,7 +36,7 @@
     width: 10px;
     border-bottom: 1px solid $CLR_ACCENT;
     border-right: 1px solid $CLR_ACCENT;
-    transform: rotate(-45deg);
+    transform: rotate(-44deg) translateZ(0); //44 instead of 45 fixes IE11 aliasing bug
 }
 
 .link:before {
@@ -50,9 +52,12 @@
     color: $CLR_ACCENT_ACTIVE;
 }
 
-.link:hover:after,
+.link:hover:after {
+    transform: translate3d(10px, 0, 0) rotate(-44deg); //44 instead of 45 fixes IE11 aliasing bug
+}
+
 .link:hover:before {
-    right: -10px;
+    transform: translateX(10px);
 }
 
 .link:hover:after { border-color: $CLR_ACCENT_ACTIVE; }
@@ -78,7 +83,7 @@
     border-right: 2px solid #dcb421;
     border-left: 0 solid transparent;
     border-top: 0 solid transparent;
-    transform: rotate(-45deg);
+    transform: rotate(-44deg); //44 instead of 45 fixes IE11 aliasing bug
     background-color: transparent;
 }
 
@@ -102,7 +107,7 @@
     width: 4px;
     border-bottom: 2px solid $CLR_ACCENT;
     border-right: 2px solid $CLR_ACCENT;
-    transform: rotate(-45deg);
+    transform: rotate(-44deg); //44 instead of 45 fixes IE11 aliasing bug
     background-color: transparent;
 }
 
@@ -129,7 +134,7 @@
 
 // THEME CLASSES by contectual or chain selection
 
-/* IMPACT */ 
+/* IMPACT */
 .theme-impact .link,
 .link_themeImpact { color: $CLR_IMPACT !important; }
 
