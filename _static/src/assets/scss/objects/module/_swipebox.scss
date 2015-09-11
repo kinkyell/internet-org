@@ -293,3 +293,9 @@ html.swipebox-html.swipebox-touch {
   line-height: 43px;
   font-family: Helvetica, Arial, sans-serif;
 }
+
+@media screen and (max-height: 320px) {
+  #swipebox-slider .slide .swipebox-video-container {
+    padding: 5% 25%;
+  }
+}
