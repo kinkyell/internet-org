@@ -387,9 +387,6 @@ define(function(require, exports, module) { // jshint ignore:line
         this._isAnimating = false;
         eventHub.publish('Narrative:sectionChange');
         resolve();
-
-        // $(window).on('wheel', this._onWheelEventHandler);
-        // this._updateSlideHooks();
     };
 
     module.exports = NarrativeDesktopManager;

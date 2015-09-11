@@ -5,9 +5,19 @@
 ------------------------------------------------------------------------ */
 .tertiaryCta {
     color: #ffffff;
-    font-size: 26px;
+    font-size: 16px;
 }
 
 .tertiaryCta > * {
-    margin-left: 12px;
+    margin-left: 6px;
+}
+
+@include breakpoint(MD) {
+    .tertiaryCta {
+        font-size: 26px;
+    }
+
+    .tertiaryCta > * {
+        margin-left: 12px;
+    }
 }

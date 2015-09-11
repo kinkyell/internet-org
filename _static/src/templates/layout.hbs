@@ -42,13 +42,6 @@
     {{/block}}
 </head>
 <body>
-
-    <div id="brim-mask"></div>
-
-    <div id="brim-main">
-
-
-
     {{>header-main}}
 
     <!-- CONTENT -->
@@ -63,6 +56,7 @@
         <script src="{{ env.URL_BASE }}assets/vendor/requirejs/require.js"></script>
         <script src="{{ env.URL_BASE }}assets/scripts/config.js"></script>
         <!-- endbuild -->
+
         <script>
             /**
              * Global constants
@@ -175,6 +169,5 @@
             require(['main']);
         </script>
     {{/block}}
-    </div>
 </body>
 </html>

@@ -9,7 +9,7 @@ get_header();
 
 ?>
 
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault" role="main" data-type="titled" data-route="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-desc="<?php echo esc_html( internetorg_get_the_subtitle( get_the_ID() ) ); ?>" data-date="<?php internetorg_posted_on_date(); ?>">
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault" role="main" data-type="titled" data-route="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-social="true" data-desc="<?php echo wp_kses_post( get_post_field( 'post_excerpt', get_the_ID() ) ); ?>" data-date="<?php internetorg_posted_on_date(); ?>">
 		<?php while ( have_posts() ) : the_post(); ?>
 
 			<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
