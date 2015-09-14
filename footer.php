@@ -15,8 +15,6 @@
 
 	<?php get_template_part( 'template-parts/footer', 'requirejs' ); ?>
 
-</div>
-
 </body>
 
 </html>

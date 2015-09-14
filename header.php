@@ -32,10 +32,6 @@
 
 <body <?php body_class(); ?>>
 
-	<div id="brim-mask"></div>
-
-	<div id="brim-main">
-
 		<!-- header -->
 		<div class="header js-headerView" role="banner">
 			<?php get_template_part( 'template-parts/header', 'logo' ); ?>
