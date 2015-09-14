@@ -1454,13 +1454,12 @@ function internetorg_custom_link_shortcode($attr = array()){
 	$lg_image = '';
 	$sm_image = '';
 
-	$attachment_id = absint($attr['image']);
 
-	if(!empty($attachment_id)) {
-		$lg_image = wp_get_attachment_image_src($attachment_id, 'panel-image');
-		$sm_image = wp_get_attachment_image_src($attachment_id, 'inline-image');
+	if(get_post_thumbnail_id($source)) {
+		$lg_image = wp_get_attachment_image_src(get_post_thumbnail_id($source), 'panel-image');
+		$sm_image = internetorg_get_mobile_featured_image( get_post_type($source), $source);
 		$data_attr .= 'data-image="'. esc_url( $lg_image[0] ) .'" ';
-		$data_attr .= 'data-mobile-image="'. esc_url( $sm_image[0] ) .'" ';
+		$data_attr .= 'data-mobile-image="'. esc_url( $sm_image ) .'" ';
 		$data_type = 'panel';
 	}
 
@@ -1521,14 +1520,6 @@ function internetorg_register_custom_link_shortcode_ui(){
 					'query' => array(
 						'post_type' => 'page, io_story, post',
 					),
-				),
-				array(
-					'label' => esc_html__('Image', 'internetorg'),
-					'attr' => 'image',
-					'type' => 'attachment',
-					'libraryType' => array('image'),
-					'addButton' => 'Select Image',
-					'frameTitle' => 'Select Image',
 				),
 				array(
 					'label' => esc_html__('Link Text', 'internetorg'),
