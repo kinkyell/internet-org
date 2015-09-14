@@ -78,18 +78,23 @@
         .hdg_1 {
             @include remify(font-size, 43px);
         }
+
         .hdg_4 {
             @include remify(font-size, 24px);
         }
+
         .hdg_heavy {
             @include remify(font-size, 19px);
         }
+
         .bdcpy_narrative {
             @include remify(font-size, 25px);
         }
+
         .link {
             @include remify(font-size, 15px);
         }
+
         .statementBlock {
             margin-top: 60px;
         }
