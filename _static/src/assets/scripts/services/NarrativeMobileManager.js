@@ -122,11 +122,11 @@ define(function(require, exports, module) { // jshint ignore:line
         this._timeLineReverse = this._createTimeline('reverse');
 
         if (position > 0) {
-            this.gotoSection(this._sectionsConf[position - 1], 'up');
-            this.gotoSection(this._sectionsConf[position], 'down');
+            this.gotoSection(position, position - 1);
+            this.gotoSection(position - 1, position);
         } else {
-            this.gotoSection(this._sectionsConf[position + 1], 'down');
-            this.gotoSection(this._sectionsConf[position], 'up');
+            this.gotoSection(position, position + 1);
+            this.gotoSection(position + 1, position);
         }
 
         $('body')[0].scrollTop = 0;

@@ -356,6 +356,9 @@ define(function(require, exports, module) { // jshint ignore:line
             var destinationSection = this._sectionConf[destinationSectionPos];
             var destinationSubsLength = destinationSection.subSections.length;
 
+            var currPos = this._position;
+            var destPos = currPos - 1;
+
             // if has subs
             // and subs pos MORE THAN 0
             if (subsLength > 0 && subPosition > 0) {
@@ -381,9 +384,9 @@ define(function(require, exports, module) { // jshint ignore:line
                 this._updateIndicators(this._position - 1);
                 this._displayIndicators(this._position - 1);
 
-                if (destinationSectionPos >= 0) {
-                    this._narrativeManager.gotoSection(destinationSection, direction).then(function() {
-                        this._position -= 1;
+                if (destPos >= 0) {
+                    this._narrativeManager.gotoSection(currPos, destPos).then(function(pos) {
+                        this._position = pos;
                     }.bind(this));
                 }
 
@@ -427,10 +430,19 @@ define(function(require, exports, module) { // jshint ignore:line
                 this._updateIndicators(this._position + 1);
                 this._displayIndicators(this._position + 1);
 
+
+                var currPos = this._position;
+                var destPos = currPos + 1;
+
+
                 if (destinationSectionPos < sectionsLength) {
-                    this._narrativeManager.gotoSection(destinationSection, direction).then(function() {
-                        this._position += 1;
-                    }.bind(this)).catch(log);
+                    // this._narrativeManager.gotoSection(destinationSection, direction).then(function() {
+                    //     this._position += 1;
+                    // }.bind(this)).catch(log);
+
+                    this._narrativeManager.gotoSection(currPos, destPos).then(function(pos) {
+                        this._position = pos;
+                    }.bind(this));
                 }
 
                 this._updateCtas(true);
