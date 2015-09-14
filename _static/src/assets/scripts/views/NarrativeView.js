@@ -331,6 +331,7 @@ define(function(require, exports, module) { // jshint ignore:line
         event.preventDefault();
         var $indicator = $(event.currentTarget);
         var pos = $indicator.index();
+        this._updateIndicators(pos);
         this._narrativeManager.gotoSection(this._position, pos).then(function(pos) {
             this._position = pos;
         }.bind(this));
@@ -510,7 +511,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._displayIndicators = function(pos) {
-
         if (!breakpointManager.isMobile) {
             this.$progress.removeClass(CONFIG.PROGRESS_HIDDEN);
             return;

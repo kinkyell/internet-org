@@ -290,6 +290,10 @@ define(function(require, exports, module) { // jshint ignore:line
             var section = this._sectionsConf[destPos];
             var subsLast = section.subSections.length - 1;
 
+            var diff = Math.abs(currPos - destPos);
+            var timeScale = (diff > 1) ? TIME_SCALE * 2 : TIME_SCALE;
+            timeline.timeScale(timeScale);
+
             timeline.tweenFromTo(fromLabel, toLabel, {
                 onComplete: this._onSectionComplete.bind(this, destPos, resolve)
             });

@@ -289,7 +289,7 @@ define(function(require, exports, module) { // jshint ignore:line
             var timeline = this._timeLine;
             var diff = Math.abs(currPos - destPos);
 
-            var timeScale = (diff > 1) ? 2 : 1;
+            var timeScale = (diff > 1) ? TIME_SCALE * 2 : TIME_SCALE;
             timeline.timeScale(timeScale);
 
             timeline.tweenFromTo(fromLabel, toLabel, {
