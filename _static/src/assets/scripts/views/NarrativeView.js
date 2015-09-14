@@ -114,9 +114,9 @@ define(function(require, exports, module) { // jshint ignore:line
         this._onTouchMoveHandler = this._onTouchMove.bind(this);
         this._onTouchEndHandler = this._onTouchEnd.bind(this);
         this.refreshNarrativeManager = this.refreshNarrativeManager.bind(this);
-
         this._onResizeHandler = this._onResize.bind(this);
         this._onResizeHandler = debounce(this._onResizeHandler, 50);
+        this._onClickIndicatorHandler = this._onClickIndicator.bind(this);
     };
 
     /**
@@ -204,10 +204,10 @@ define(function(require, exports, module) { // jshint ignore:line
 
         $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
         $(window).on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
-
         window.addEventListener('resize', this._onResizeHandler);
         window.addEventListener('orientationchange', this._onResizeHandler);
         this._$narrativeAdvance.on('click', this._onClickAdvance.bind(this));
+        this.$progress.on('click', '> *', this._onClickIndicatorHandler);
     };
 
     /**
@@ -223,10 +223,10 @@ define(function(require, exports, module) { // jshint ignore:line
         this.scrollTop = this.$narrative[0].scrollTop;
         $(window).off('mousewheel DOMMouseScroll', this._onWheelEventHandler);
         $(window).off(this._eventTouchNamespace);
-
         window.removeEventListener('resize', this._onResizeHandler);
         window.removeEventListener('orientationchange', this._onResizeHandler);
         this._$narrativeAdvance.off('click', this._onClickAdvance.bind(this));
+        this.$progress.off('click', '> *', this._onClickIndicatorHandler);
     };
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -319,6 +319,21 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._onClickAdvance = function(event) {
         event.preventDefault();
         this._scrollDown();
+    };
+
+    /**
+     * Indicator click event handler
+     *
+     * @method _onClickIndicator
+     * @private
+     */
+    proto._onClickIndicator = function(event) {
+        event.preventDefault();
+        var $indicator = $(event.currentTarget);
+        var pos = $indicator.index();
+        this._narrativeManager.gotoSection(this._position, pos).then(function(pos) {
+            this._position = pos;
+        }.bind(this));
     };
 
     //////////////////////////////////////////////////////////////////////////////////

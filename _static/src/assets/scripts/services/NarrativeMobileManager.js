@@ -251,9 +251,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {string} direction the direction of the transition
      * @public
      */
-    proto.gotoSection = function(section, direction) {
+    proto.gotoSection = function(currPos, destPos) {
         this._isAnimating = true;
-        return this._sectionTransition(section, direction);
+        return this._sectionTransition(currPos, destPos);
     };
 
     /**
@@ -278,22 +278,26 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {string} direction the direction of the transition
      * @private
      */
-    proto._sectionTransition = function(section, direction) {
-        var sectionPosition = this._sectionsConf.indexOf(section);
-        var prevSection = (direction === 'down') ?
-            this._sectionsConf[sectionPosition - 1] :
-            this._sectionsConf[sectionPosition + 1];
+    proto._sectionTransition = function(currPos, destPos) {
 
-        this._currentSection = sectionPosition;
+        // var sectionPosition = this._sectionsConf.indexOf(section);
+        // var prevSection = (direction === 'down') ?
+        //     this._sectionsConf[sectionPosition - 1] :
+        //     this._sectionsConf[sectionPosition + 1];
+
+        // this._currentSection = sectionPosition;
 
         return new Promise(function(resolve) {
-            var fromLabel = prevSection.label;
-            var toLabel = section.label;
+            var currSection = this._sectionsConf[currPos];
+            var destSection = this._sectionsConf[destPos];
+
+            var fromLabel = currSection.label;
+            var toLabel = destSection.label;
             // var timeline = (state.position < state.destinationPos) ? this._timeLine : this._timeLineReverse;
             var timeline = this._timeLine;
 
             timeline.tweenFromTo(fromLabel, toLabel, {
-                onComplete: this._onSectionComplete.bind(this, resolve)
+                onComplete: this._onSectionComplete.bind(this, destPos, resolve)
             });
         }.bind(this));
     };
@@ -335,8 +339,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {function} resolve promise resolution method
      * @private
      */
-    proto._onSectionComplete = function(resolve) {
-        this._onTransitionComplete(resolve);
+    proto._onSectionComplete = function(destPos, resolve) {
+        this._onTransitionComplete(destPos, resolve);
     };
 
     /**
@@ -346,10 +350,10 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {function} resolve promise resolution method
      * @private
      */
-    proto._onTransitionComplete = function(resolve) {
+    proto._onTransitionComplete = function(destPos, resolve) {
         this._isAnimating = false;
         eventHub.publish('Narrative:sectionChange', this._currentSection);
-        resolve();
+        resolve(destPos);
     };
 
     module.exports = NarrativeMobileManager;
