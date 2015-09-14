@@ -128,6 +128,8 @@ define(function(require, exports, module) { // jshint ignore:line
             this.gotoSection(this._sectionsConf[position + 1], 'down');
             this.gotoSection(this._sectionsConf[position], 'up');
         }
+
+        $('body')[0].scrollTop = 0;
     };
 
     // /////////////////////////////////////////////////////////////////////////////////////////
