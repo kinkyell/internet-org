@@ -336,9 +336,6 @@ define(function(require, exports, module) { // jshint ignore:line
         }.bind(this));
     };
 
-    //////////////////////////////////////////////////////////////////////////////////
-    // HELPERS
-    //////////////////////////////////////////////////////////////////////////////////
     /**
      * Scoll up to previous section
      *
@@ -359,35 +356,27 @@ define(function(require, exports, module) { // jshint ignore:line
             var currPos = this._position;
             var destPos = currPos - 1;
 
+            var destSectionPos = this._position;
+            var destSlidPos = this._subPosition -= 1;
+
             // if has subs
             // and subs pos MORE THAN 0
             if (subsLength > 0 && subPosition > 0) {
-                var destinationSubPos = subPosition - 1;
-                var destinationSub = section.subSections[destinationSubPos];
-                section = (breakpointManager.isMobile) ? section : null;
-
-                this._narrativeManager.gotoSubSection(destinationSub, direction, section, true).then(function() {
-                    this._subPosition -= 1;
-                }.bind(this));
+                 this._narrativeManager.gotoSubSection(destSectionPos, destSlidPos).then(function(pos) {
+                    this._subPosition = pos;
+                }.bind(this)).catch(log);
 
                 this._updateCtas(false);
-
-            // subs pos IS 0
-            } else if (subPosition === 0 && breakpointManager.isMobile === false) {
-                this._narrativeManager.gotoSubSection(section, direction, section).then(function() {
-                    this._subPosition = -1;
-                }.bind(this));
-
             // Anything Else
             } else {
-                this._subPosition = (breakpointManager.isMobile) ? destinationSubsLength : destinationSubsLength - 1;
+                this._subPosition = (breakpointManager.isMobile) ? destinationSubsLength : destinationSubsLength;
                 this._updateIndicators(this._position - 1);
                 this._displayIndicators(this._position - 1);
 
                 if (destPos >= 0) {
                     this._narrativeManager.gotoSection(currPos, destPos).then(function(pos) {
                         this._position = pos;
-                    }.bind(this));
+                    }.bind(this)).catch(log);
                 }
 
                 this._updateCtas(true);
@@ -407,42 +396,31 @@ define(function(require, exports, module) { // jshint ignore:line
             var section = this._sectionConf[this._position];
             var subsLength = section.subSections.length;
             var subPosition = this._subPosition;
+            var sectionsLength = this._sectionConf.length;
+            var destSectionPos = this._position;
+            var destSlidPos = this._subPosition += 1;
 
             // if has subs
             // and subs pos is not at the end
-            if (subsLength > 0 && subPosition < subsLength - 1) {
-                var destinationSubPos = subPosition + 1;
-                var destinationSub = section.subSections[destinationSubPos];
-                section = (breakpointManager.isMobile) ? section : null;
-
-                this._narrativeManager.gotoSubSection(destinationSub, direction, section, true).then(function() {
-                    this._subPosition += 1;
+            if (subsLength > 0 && subPosition < subsLength) {
+                this._narrativeManager.gotoSubSection(destSectionPos, destSlidPos, subPosition).then(function(pos) {
+                    this._subPosition = pos;
                 }.bind(this));
 
                 this._updateCtas(false);
-
             // Anything Else
             } else {
-                var sectionsLength = this._sectionConf.length;
-                var destinationSectionPos = this._position + 1;
-                var destinationSection = this._sectionConf[destinationSectionPos];
-                this._subPosition = -1;
+                this._subPosition = 0;
                 this._updateIndicators(this._position + 1);
                 this._displayIndicators(this._position + 1);
-
 
                 var currPos = this._position;
                 var destPos = currPos + 1;
 
-
-                if (destinationSectionPos < sectionsLength) {
-                    // this._narrativeManager.gotoSection(destinationSection, direction).then(function() {
-                    //     this._position += 1;
-                    // }.bind(this)).catch(log);
-
+                if (destPos < sectionsLength) {
                     this._narrativeManager.gotoSection(currPos, destPos).then(function(pos) {
                         this._position = pos;
-                    }.bind(this));
+                    }.bind(this)).catch(log);
                 }
 
                 this._updateCtas(true);

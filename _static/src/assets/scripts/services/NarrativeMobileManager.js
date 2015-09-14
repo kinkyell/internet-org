@@ -264,10 +264,10 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {string} direction the direction of the transition
      * @public
      */
-    proto.gotoSubSection = function(section, direction, rootSection) {
-        rootSection = (typeof rootSection === 'undefined') ? null : rootSection;
+    proto.gotoSubSection = function(destSectionPos, destSlidPos) {
+        // rootSection = (typeof rootSection === 'undefined') ? null : rootSection;
         this._isAnimating = true;
-        return this._subSectionTransition(section, direction, rootSection);
+        return this._subSectionTransition(destSectionPos, destSlidPos);
     };
 
     /**
@@ -279,14 +279,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._sectionTransition = function(currPos, destPos) {
-
-        // var sectionPosition = this._sectionsConf.indexOf(section);
-        // var prevSection = (direction === 'down') ?
-        //     this._sectionsConf[sectionPosition - 1] :
-        //     this._sectionsConf[sectionPosition + 1];
-
-        // this._currentSection = sectionPosition;
-
         return new Promise(function(resolve) {
             var currSection = this._sectionsConf[currPos];
             var destSection = this._sectionsConf[destPos];
@@ -295,6 +287,10 @@ define(function(require, exports, module) { // jshint ignore:line
             var toLabel = destSection.label;
             // var timeline = (state.position < state.destinationPos) ? this._timeLine : this._timeLineReverse;
             var timeline = this._timeLine;
+            var diff = Math.abs(currPos - destPos);
+
+            var timeScale = (diff > 1) ? 2 : 1;
+            timeline.timeScale(timeScale);
 
             timeline.tweenFromTo(fromLabel, toLabel, {
                 onComplete: this._onSectionComplete.bind(this, destPos, resolve)
@@ -310,23 +306,19 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {string} direction the direction of the transition
      * @private
      */
-    proto._subSectionTransition = function(section, direction, rootSection, content) {
+    proto._subSectionTransition = function(destSectionPos, destSlidPos) {
         return new Promise(function(resolve) {
-            var sectionPosition = this._sectionsConf.indexOf(rootSection);
-            var subsectionPosition = rootSection.subSections.indexOf(section);
-            var $slidesContainer = this._$sections.eq(sectionPosition).find('.narrative-section-slides');
+            var $slidesContainer = this._$sections.eq(destSectionPos).find('.narrative-section-slides');
             var $slides = $slidesContainer.find('> *');
-            var destinationPos = (direction === 'down') ? subsectionPosition + 1 : subsectionPosition;
-            this._currentSection = sectionPosition;
 
             var offsetY = 0;
             var i = 0;
-            for (; i < destinationPos; i++) {
+            for (; i < destSlidPos; i++) {
                 offsetY += $slides.eq(i).height();
             }
 
             TweenLite.to($slidesContainer, 0.35, { scrollTo: { y: offsetY }, onComplete: function() {
-                this._onTransitionComplete(resolve);
+                this._onTransitionComplete(destSlidPos, resolve);
             }.bind(this)});
 
         }.bind(this));

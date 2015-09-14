@@ -11,6 +11,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var AppConfig = require('appConfig');
     var Timeline = require('gsap-timeline');
     var ViewWindow = require('services/viewWindow');
+    var log = require('util/log');
     require('gsap-cssPlugin');
 
     var SECTION_DURATION = AppConfig.narrative.desktop.SECTION_DURATION;
@@ -248,9 +249,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {string} direction the direction of the transition
      * @public
      */
-    proto.gotoSection = function(section, direction) {
+    proto.gotoSection = function(currPos, destPos) {
         this._isAnimating = true;
-        return this._sectionTransition(section, direction);
+        return this._sectionTransition(currPos, destPos);
     };
 
     /**
@@ -261,11 +262,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {string} direction the direction of the transition
      * @public
      */
-    proto.gotoSubSection = function(section, direction, rootSection, content) {
-        rootSection = (typeof rootSection === 'undefined') ? null : rootSection;
-        content = (typeof content === 'undefined') ? null : content;
+    proto.gotoSubSection = function(destSectionPos, destSlidPos, curSlidePos) {
         this._isAnimating = true;
-        return this._subSectionTransition(section, direction, rootSection, content);
+        return this._subSectionTransition(destSectionPos, destSlidPos, curSlidePos);
     };
 
     /**
@@ -276,23 +275,23 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {string} direction the direction of the transition
      * @private
      */
-    proto._sectionTransition = function(section, direction) {
-        var sectionPosition = this._sectionsConf.indexOf(section);
-        var prevSection = (direction === 'down') ?
-            this._sectionsConf[sectionPosition - 1] :
-            this._sectionsConf[sectionPosition + 1];
-
+    proto._sectionTransition = function(currPos, destPos) {
         return new Promise(function(resolve) {
-            var fromLabel = prevSection.label;
-            var toLabel = section.label;
+            var currSection = this._sectionsConf[currPos];
+            var destSection = this._sectionsConf[destPos];
+
+            var fromLabel = currSection.label;
+            var toLabel = destSection.label;
+            var direction = (currPos < destPos) ? 'down' : 'up';
             var imgDirection = (direction === 'down') ? 'bottom' : 'top';
             var timeline = (direction === 'down') ? this._timeLine : this._timeLineReverse;
             var featureImage;
             var content;
+            var section = this._sectionsConf[destPos];
             var subsLast = section.subSections.length - 1;
 
             timeline.tweenFromTo(fromLabel, toLabel, {
-                onComplete: this._onSectionComplete.bind(this, section, resolve)
+                onComplete: this._onSectionComplete.bind(this, destPos, resolve)
             });
 
             if (section.subSections.length > 0 && direction === 'up') {
@@ -324,21 +323,24 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {string} direction the direction of the transition
      * @private
      */
-    proto._subSectionTransition = function(section, direction, rootSection, content) {
+    proto._subSectionTransition = function(destSectionPos, destSlidPos, curSlidePos) {
         return new Promise(function(resolve) {
-            var curContent = (content) ? section.content : '';
+            var section = this._sectionsConf[destSectionPos];
+            var direction = (curSlidePos < destSlidPos) ? 'down' : 'up';
             var imgDirection = (direction === 'down') ? 'bottom' : 'top';
-            var curSection = (rootSection != null) ? rootSection : section;
+            var subSection = section.subSections[destSlidPos - 1];
+            var featureImage = (destSlidPos === 0) ? section.featureImage : subSection.featureImage;
+            var content = (subSection !== undefined) ? subSection.content : '';
 
             this.viewWindow.replaceFeatureContent(
-                curContent,
+                content,
                 imgDirection,
-                curSection.featureImage).then(this._onSubSectionComplete.bind(this, resolve));
+                featureImage).then(this._onSubSectionComplete.bind(this, destSlidPos, resolve)).catch(log);
 
             this._currentFeature = {
                 type: 'content',
-                img: curSection.featureImage,
-                content: curContent
+                img: featureImage,
+                content: content
             };
         }.bind(this));
     };
@@ -350,8 +352,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {function} resolve promise resolution method
      * @private
      */
-    proto._onSubSectionComplete = function(resolve) {
-        window.setTimeout(this._onTransitionComplete.bind(this, resolve), this._scrollBuffer);
+    proto._onSubSectionComplete = function(destSlidPos, resolve) {
+        window.setTimeout(this._onTransitionComplete.bind(this, destSlidPos, resolve), this._scrollBuffer);
     };
 
     /**
@@ -362,8 +364,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {function} resolve promise resolution method
      * @private
      */
-    proto._onSectionComplete = function(section, resolve) {
-        var sectionPosition = this._sectionsConf.indexOf(section) - 1;
+    proto._onSectionComplete = function(destPos, resolve) {
         var i = 0;
         var l = this._$transformBlockPost.length;
         for (; i < l; i++) {
@@ -371,9 +372,9 @@ define(function(require, exports, module) { // jshint ignore:line
             $postItem.removeClass(CONFIG.ACTIVE_POST);
         }
 
-        this._$transformBlockPost.eq(sectionPosition).addClass('transformBlock-post-item_isActive');
+        this._$transformBlockPost.eq(destPos).addClass('transformBlock-post-item_isActive');
 
-        window.setTimeout(this._onTransitionComplete.bind(this, resolve), 0);
+        window.setTimeout(this._onTransitionComplete.bind(this, destPos, resolve), 0);
     };
 
     /**
@@ -383,10 +384,10 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {function} resolve promise resolution method
      * @private
      */
-    proto._onTransitionComplete = function(resolve) {
+    proto._onTransitionComplete = function(destPos, resolve) {
         this._isAnimating = false;
         eventHub.publish('Narrative:sectionChange');
-        resolve();
+        resolve(destPos);
     };
 
     module.exports = NarrativeDesktopManager;
