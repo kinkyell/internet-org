@@ -24,12 +24,13 @@ body {
     }
 }
 
-// https://github.com/gajus/brim#styling
-#brim-mask {
-    pointer-events: none;
-    display: none;
-}
 
-#brim-main {
-    height: 100%;
-}
+// @media (orientation:landscape) {
+//     html,
+//     body {
+//         position: fixed;
+//         bottom: 0;
+//         width: 100%;
+//         height: 500px !important;
+//     }
+// }

@@ -7,9 +7,6 @@ define(function(require, exports, module) { // jshint ignore:line
     var NarrativeMobileManager = require('services/NarrativeMobileManager');
     var NarrativeDesktopManager = require('services/NarrativeDesktopManager');
     var log = require('util/log');
-    var platform = require('platform');
-    var Brim = require('brim');
-    var Scream = require('scream');
     var debounce = require('stark/function/debounce');
     var eventHub = require('services/eventHub');
 
@@ -206,43 +203,11 @@ define(function(require, exports, module) { // jshint ignore:line
         }.bind(this));
 
         $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
-        $('#brim-main').on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
+        $(window).on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
 
         window.addEventListener('resize', this._onResizeHandler);
         window.addEventListener('orientationchange', this._onResizeHandler);
-
         this._$narrativeAdvance.on('click', this._onClickAdvance.bind(this));
-
-        // if (platform.os.family === 'iOS' && parseInt(platform.os.version, 10) >= 8) {
-        //     $('html, body').css('height', 'auto');
-        //     $('#brim-mask').css('display', 'block');
-        //     $('#brim-main').css('height', 'auto');
-
-        //     var scream = new Scream({
-        //         width: {
-        //             portrait: 320,
-        //             landscape: 640
-        //         }
-        //     });
-
-        //     var brim = new Brim({
-        //         viewport: scream
-        //     });
-
-        //     brim.on('viewchange', function (e) {
-        //         this._narrativeManager.refresh(this._position);
-
-        //         if (e.viewName === 'minimal') {
-        //             $('#brim-main').on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
-        //         } else {
-        //             $('#brim-main').off(this._eventTouchNamespace);
-        //         }
-
-        //     }.bind(this));
-        // } else {
-        //     $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
-        //     $('#brim-main').on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
-        // }
     };
 
     /**
@@ -257,7 +222,11 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$progress.hide();
         this.scrollTop = this.$narrative[0].scrollTop;
         $(window).off('mousewheel DOMMouseScroll', this._onWheelEventHandler);
-        $('#brim-main').off(this._eventTouchNamespace);
+        $(window).off(this._eventTouchNamespace);
+
+        window.removeEventListener('resize', this._onResizeHandler);
+        window.removeEventListener('orientationchange', this._onResizeHandler);
+        this._$narrativeAdvance.off('click', this._onClickAdvance.bind(this));
     };
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -302,10 +271,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onTouchStart = function(e) {
-        // this._touchTracker.y = (e != undefined) ? '350' : e.originalEvent.touches[0].pageY;
         this._touchTracker.y = e.originalEvent.touches[0].pageY;
 
-        $('#brim-main')
+        $(window)
             .on('touchmove' + this._eventTouchNamespace, this._onTouchMoveHandler)
             .on('touchend' + this._eventTouchNamespace, this._onTouchEndHandler)
             .on('touchcancel' + this._eventTouchNamespace, this._onTouchEndHandler);
