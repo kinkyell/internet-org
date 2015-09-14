@@ -97,10 +97,14 @@ Layout for paneled views
     }
 
     .viewWindow-panel_feature {
-        width: calc(33.333% + 1px); // fix white space on right
-        margin-right: -1px;
         display: block;
         z-index: 1;
+    }
+
+    .viewWindow-panel_feature,
+    .viewWindow-panel:first-child {
+        width: calc(33.333% + 1px); // fix white space on right
+        margin-right: -1px;
     }
 
     .viewWindow.isShifted {
