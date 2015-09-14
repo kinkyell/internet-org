@@ -37,6 +37,7 @@
 
 @include breakpoint(MD) {
     .narrativeView-progress {
+        margin-bottom: -40px;
         left: initial;
         bottom: 50%;
         right: 20px;
