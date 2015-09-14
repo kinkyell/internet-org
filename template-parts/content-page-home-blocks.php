@@ -67,7 +67,7 @@ if ( ! empty( $custom_fields ) ) : ?>
 									}
 									?>
 
-									<a href="<?php echo esc_attr( $sectionHref ); ?>" class="link link_theme<?php echo esc_attr( $sectionSlug ); ?> js-stateLink"><?php echo esc_html( $fieldset['name'] ); ?>asdf</a>
+									<a href="<?php echo esc_attr( $sectionHref ); ?>" class="link link_theme<?php echo esc_attr( $sectionSlug ); ?> js-stateLink"><?php echo esc_html( $fieldset['name'] ); ?></a>
 								</div>
 							</div>
 						</div>

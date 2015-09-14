@@ -39,6 +39,7 @@ define(function(require, exports, module) { // jshint ignore:line
         }
         var viewWindowEl = _getViewWindow(htmlStr);
         var viewWindowStory = viewWindowEl ? viewWindowEl.lastElementChild.firstElementChild.firstElementChild : null;
+        viewWindowStory.className = '';
 
         if (viewWindowStory === null) {
             // this means it had no wrapper, send all html
