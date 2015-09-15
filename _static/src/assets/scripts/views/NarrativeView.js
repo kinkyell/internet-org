@@ -140,6 +140,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._$structureSections = $('.narrativeDT-sections');
         this.$viewWindow = $('.viewWindow');
         this._$narrativeAdvance = $('.js-narrativeAdvance');
+        this._$interactionPrompt = $('.interactionPrompt');
     };
 
     /**
@@ -157,6 +158,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._$structureSections = null;
         this.$viewWindow = null;
         this._$narrativeAdvance = null;
+        this._$interactionPrompt = null;
     };
 
     /**
@@ -547,6 +549,13 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._displayIndicators = function(pos) {
+
+        if (!breakpointManager.isMobile && pos <= 0) {
+            this._$interactionPrompt.show();
+        } else {
+            this._$interactionPrompt.hide();
+        }
+
         if (!breakpointManager.isMobile) {
             this.$progress.removeClass(CONFIG.PROGRESS_HIDDEN);
             return;
