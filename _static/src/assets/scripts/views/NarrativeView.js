@@ -413,13 +413,20 @@ define(function(require, exports, module) { // jshint ignore:line
             var destSectionPos = this._position;
             var destSlidPos = this._subPosition -= 1;
 
+            this._updateCtas(true);
+
             // if has subs
             // and subs pos MORE THAN 0
             if (subsLength > 0 && subPosition > 0) {
-                 this._narrativeManager.gotoSubSection(destSectionPos, destSlidPos).then(function(pos) {
+                this._narrativeManager.gotoSubSection(destSectionPos, destSlidPos).then(function(pos) {
                     this._subPosition = pos;
                     this._videoModalView = new VideoModalView($('.js-videoModal'));
                 }.bind(this)).catch(log);
+
+                if (subPosition > 1) {
+                    this._updateCtas(false);
+                }
+
             // Anything Else
             } else {
                 this._subPosition = (breakpointManager.isMobile) ? destinationSubsLength : destinationSubsLength;
@@ -433,9 +440,13 @@ define(function(require, exports, module) { // jshint ignore:line
                         this._videoModalView = new VideoModalView($('.js-videoModal'));
                     }.bind(this)).catch(log);
                 }
-            }
 
-            // this._updateCtas();
+
+                if (destinationSubsLength > 0) {
+                    this._updateCtas(false);
+                }
+
+            }
         }
     };
 
@@ -454,6 +465,8 @@ define(function(require, exports, module) { // jshint ignore:line
             var sectionsLength = this._sectionConf.length;
             var destSectionPos = this._position;
             var destSlidPos = this._subPosition += 1;
+
+            this._updateCtas(true);
 
             // if has subs
             // and subs pos is not at the end
@@ -480,8 +493,6 @@ define(function(require, exports, module) { // jshint ignore:line
                         this._videoModalView = new VideoModalView($('.js-videoModal'));
                     }.bind(this)).catch(log);
                 }
-
-                this._updateCtas(true);
             }
         }
     };
