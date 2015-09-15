@@ -194,6 +194,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.onEnable = function() {
         this.$progress.show();
+        this._updateIndicators(0);
         this.$narrative[0].scrollTop = this.scrollTop;
         this._currentlyMobile = breakpointManager.isMobile;
         breakpointManager.subscribe(function() {
@@ -496,6 +497,11 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._updateIndicators = function(pos) {
+        var slidesLength = this._sectionConf.length;
+        if (pos < 0 || pos > (slidesLength - 1)) {
+            return;
+        }
+
         var $progressIndicators = this.$progress.find('> *');
         var i = 0;
         var l = $progressIndicators.length;
@@ -522,7 +528,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         var slidesLength = this._sectionConf.length;
 
-        if (pos === 0 || pos === (slidesLength - 1)) {
+        if (pos <= 0 || pos >= (slidesLength - 1)) {
             this.$progress.addClass(CONFIG.PROGRESS_HIDDEN);
         } else {
             this.$progress.removeClass(CONFIG.PROGRESS_HIDDEN);
