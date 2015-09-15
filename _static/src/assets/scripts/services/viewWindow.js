@@ -90,7 +90,10 @@ define(function(require, exports, module) { // jshint ignore:line
             }
 
             $panel = this._getPanelWrap();
-            $panel.children().css('background-image', 'url(' + imagePath + ')');
+            $panel.children().css({
+                'background-color': '#efede4',
+                'background-image': 'url(' + imagePath + ')'
+            });
             this._featureImage = imagePath;
 
             return this._updatePanel(
@@ -118,7 +121,10 @@ define(function(require, exports, module) { // jshint ignore:line
             this._featureImage = html;
 
             if (typeof bgImg !== 'undefined') {
-                $panel.children().css('background-image', 'url(' + bgImg + ')');
+                $panel.children().css({
+                    'background-color': '#efede4',
+                    'background-image': 'url(' + bgImg + ')'
+                });
             }
 
             return this._updatePanel(
