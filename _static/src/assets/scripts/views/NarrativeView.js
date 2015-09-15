@@ -118,6 +118,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._onResizeHandler = this._onResize.bind(this);
         this._onResizeHandler = debounce(this._onResizeHandler, 50);
         this._onClickIndicatorHandler = this._onClickIndicator.bind(this);
+        this._onMenuToggleHandler = this._onMenuToggle.bind(this);
     };
 
     /**
@@ -208,6 +209,7 @@ define(function(require, exports, module) { // jshint ignore:line
         window.addEventListener('orientationchange', this._onResizeHandler);
         this._$narrativeAdvance.on('click', this._onClickAdvance.bind(this));
         this.$progress.on('click', '> *', this._onClickIndicatorHandler);
+        eventHub.subscribe('MainMenu:change', this._onMenuToggleHandler);
     };
 
     /**
@@ -524,6 +526,20 @@ define(function(require, exports, module) { // jshint ignore:line
             this.$progress.addClass(CONFIG.PROGRESS_HIDDEN);
         } else {
             this.$progress.removeClass(CONFIG.PROGRESS_HIDDEN);
+        }
+    };
+
+    /**
+     * menu toggle event handler
+     *
+     * @method _onMenuToggle
+     * @private
+     */
+    proto._onMenuToggle = function(isOpen) {
+        if (isOpen) {
+            this.disable();
+        } else {
+            this.enable();
         }
     };
 
