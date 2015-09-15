@@ -207,13 +207,23 @@ define(function(require, exports, module) { // jshint ignore:line
             }
         }.bind(this));
 
+        this._enableScrolling();
+        eventHub.subscribe('MainMenu:change', this._onMenuToggleHandler);
+    };
+
+    /**
+     * Enables the component scrolling.
+     *
+     * @method _enableScrolling
+     * @private
+     */
+    proto._enableScrolling = function() {
         $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
         $(window).on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
         window.addEventListener('resize', this._onResizeHandler);
         window.addEventListener('orientationchange', this._onResizeHandler);
         this._$narrativeAdvance.on('click', this._onClickAdvance.bind(this));
         this.$progress.on('click', '> *', this._onClickIndicatorHandler);
-        eventHub.subscribe('MainMenu:change', this._onMenuToggleHandler);
         eventHub.subscribe('Router:topScroll', this._onTopScrollHandler);
     };
 
@@ -228,13 +238,23 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.onDisable = function() {
         this.$progress.hide();
         this.scrollTop = this.$narrative[0].scrollTop;
+        this._disableScrolling();
+        eventHub.unsubscribe('MainMenu:change', this._onMenuToggleHandler);
+    };
+
+    /**
+     * Disables the component scrolling.
+     *
+     * @method _disableScrolling
+     * @private
+     */
+    proto._disableScrolling = function() {
         $(window).off('mousewheel DOMMouseScroll', this._onWheelEventHandler);
         $(window).off(this._eventTouchNamespace);
         window.removeEventListener('resize', this._onResizeHandler);
         window.removeEventListener('orientationchange', this._onResizeHandler);
         this._$narrativeAdvance.off('click', this._onClickAdvance.bind(this));
         this.$progress.off('click', '> *', this._onClickIndicatorHandler);
-        eventHub.unsubscribe('MainMenu:change', this._onMenuToggleHandler);
         eventHub.unsubscribe('Router:topScroll', this._onTopScrollHandler);
     };
 
@@ -578,9 +598,9 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._onMenuToggle = function(isOpen) {
         if (isOpen) {
-            this.disable();
+            this._disableScrolling();
         } else {
-            this.enable();
+            this._enableScrolling();
         }
     };
 
