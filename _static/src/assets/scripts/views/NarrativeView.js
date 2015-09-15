@@ -119,6 +119,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._onResizeHandler = debounce(this._onResizeHandler, 50);
         this._onClickIndicatorHandler = this._onClickIndicator.bind(this);
         this._onMenuToggleHandler = this._onMenuToggle.bind(this);
+        this._onTopScrollHandler = this._onTopScrollTrigger.bind(this);
     };
 
     /**
@@ -211,6 +212,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._$narrativeAdvance.on('click', this._onClickAdvance.bind(this));
         this.$progress.on('click', '> *', this._onClickIndicatorHandler);
         eventHub.subscribe('MainMenu:change', this._onMenuToggleHandler);
+        eventHub.subscribe('Router:topScroll', this._onTopScrollHandler);
     };
 
     /**
@@ -230,6 +232,8 @@ define(function(require, exports, module) { // jshint ignore:line
         window.removeEventListener('orientationchange', this._onResizeHandler);
         this._$narrativeAdvance.off('click', this._onClickAdvance.bind(this));
         this.$progress.off('click', '> *', this._onClickIndicatorHandler);
+        eventHub.unsubscribe('MainMenu:change', this._onMenuToggleHandler);
+        eventHub.unsubscribe('Router:topScroll', this._onTopScrollHandler);
     };
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -325,6 +329,22 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
+     * Utility function to change sections
+     *
+     * @method _changeSection
+     * @private
+     */
+    proto._changeSection = function(pos) {
+        if (this._position === pos) {
+            return;
+        }
+        this._updateIndicators(pos);
+        this._narrativeManager.gotoSection(this._position, pos).then(function(pos) {
+            this._position = pos;
+        }.bind(this));
+    };
+
+    /**
      * Indicator click event handler
      *
      * @method _onClickIndicator
@@ -334,10 +354,17 @@ define(function(require, exports, module) { // jshint ignore:line
         event.preventDefault();
         var $indicator = $(event.currentTarget);
         var pos = $indicator.index();
-        this._updateIndicators(pos);
-        this._narrativeManager.gotoSection(this._position, pos).then(function(pos) {
-            this._position = pos;
-        }.bind(this));
+        this._changeSection(pos);
+    };
+
+    /**
+     * Top scroll event handler
+     *
+     * @method _onTopScrollTrigger
+     * @private
+     */
+    proto._onTopScrollTrigger = function() {
+        this._changeSection(0);
     };
 
     /**
@@ -435,11 +462,7 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     proto._updateCtas = function(show) {
-        if (show) {
-            $('.narrative-section-bd-link').show();
-        } else {
-            $('.narrative-section-bd-link').hide();
-        }
+        $('.narrative-section-bd-link').toggle(show);
     };
 
     /**
