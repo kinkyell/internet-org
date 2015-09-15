@@ -56,15 +56,6 @@ define(function(require, exports, module) { // jshint ignore:line
          */
         this._sectionsConf = sectionsConf;
 
-        /**
-         * sections configuration params
-         *
-         * @property _currentSection
-         * @type {obj}
-         * @private
-         */
-        this._currentSection = 0;
-
         this._init();
     };
 
@@ -343,7 +334,6 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._onTransitionComplete = function(destPos, resolve) {
         this._isAnimating = false;
-        eventHub.publish('Narrative:sectionChange', this._currentSection);
         resolve(destPos);
     };
 
