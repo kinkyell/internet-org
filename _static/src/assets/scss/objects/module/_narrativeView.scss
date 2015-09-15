@@ -5,31 +5,37 @@
 ------------------------------------------------------------------------ */
 .narrativeView-progress {
     position: fixed;
-    bottom: 24px;
-    left: 24px;
+    bottom: 21px;
+    left: 21px;
     opacity: 1;
     transition: opacity 0.25s ease-out;
     z-index: 2;
 }
 
 .narrativeView-progress > * {
+    padding: 3px;
+    cursor: pointer;
+}
+
+.narrativeView-progress > *:before {
+    content: "";
+    display: block;
     width: 4px;
     height: 4px;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.4);
     transition: background-color 0.25s ease-out;
-    cursor: pointer;
 }
 
-.narrativeView-progress > * + * {
-    margin-top: 6px;
-}
+// .narrativeView-progress > * + * {
+//     margin-top: 6px;
+// }
 
-.narrativeView-progress > *.isActive:nth-child(1) { background-color: #ffcc02; }
-.narrativeView-progress > *.isActive:nth-child(2) { background-color: #9d25a0; }
-.narrativeView-progress > *.isActive:nth-child(3) { background-color: #fa5cb6; }
-.narrativeView-progress > *.isActive:nth-child(4) { background-color: #ff6b00; }
-.narrativeView-progress > *.isActive:nth-child(5) { background-color: #ffcc02; }
+.narrativeView-progress > *.isActive:nth-child(1):before { background-color: #ffcc02; }
+.narrativeView-progress > *.isActive:nth-child(2):before { background-color: #9d25a0; }
+.narrativeView-progress > *.isActive:nth-child(3):before { background-color: #fa5cb6; }
+.narrativeView-progress > *.isActive:nth-child(4):before { background-color: #ff6b00; }
+.narrativeView-progress > *.isActive:nth-child(5):before { background-color: #ffcc02; }
 
 .narrativeView-progress_isHidden {
     opacity: 0;
@@ -38,18 +44,22 @@
 
 @include breakpoint(MD) {
     .narrativeView-progress {
-        margin-bottom: -40px;
+        margin-bottom: -50px;
         left: auto;
         bottom: 50%;
-        right: 20px;
+        right: 14px;
     }
 
     .narrativeView-progress > * {
+        padding: 6px;
+    }
+
+    .narrativeView-progress > *:before {
         width: 8px;
         height: 8px;
     }
 
-    .narrativeView-progress > * + * {
-        margin-top: 12px;
-    }
+    // .narrativeView-progress > * + * {
+    //     margin-top: 12px;
+    // }
 }

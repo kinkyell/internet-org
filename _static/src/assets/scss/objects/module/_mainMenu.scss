@@ -52,10 +52,15 @@
     height: 100%;
     min-height: 200px;
     // max-height: 500px;
-    max-height: 300px;
+    max-height: 355px;
     margin: auto;
     flex-direction: column;
     justify-content: space-around;
+}
+
+.mainMenu-panel-primary > * > * {
+    /* Pulling in menu items to compensate for .topicLink:after height */ 
+    margin-bottom: -24px;
 }
 
 .mainMenu-panel-secondary {
@@ -71,9 +76,9 @@
         float: right;
     }
 
-    .mainMenu-panel-primary > * {
-        max-height: none;
-    }
+    // .mainMenu-panel-primary > * {
+    //     max-height: none;
+    // }
 
     .mainMenu-panel-secondary {
         // bottom: 100px; Will need to reintroduce when language select is reintroduced in Phase 2

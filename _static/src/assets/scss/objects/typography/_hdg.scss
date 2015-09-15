@@ -87,7 +87,8 @@
 @include breakpoint(MD) {
     .hdg_1 {
         @include remify(font-size, 64px);
-        line-height: 1.28;
+        // line-height: 1.28;
+        line-height: 1.18;
     }
 
     .hdg_2 {
