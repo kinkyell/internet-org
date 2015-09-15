@@ -390,7 +390,6 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._onTransitionComplete = function(destPos, resolve) {
         this._isAnimating = false;
-        eventHub.publish('Narrative:sectionChange');
         resolve(destPos);
     };
 

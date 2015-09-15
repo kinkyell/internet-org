@@ -343,6 +343,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._updateIndicators(pos);
         this._narrativeManager.gotoSection(this._position, pos).then(function(pos) {
             this._position = pos;
+            eventHub.publish('Narrative:sectionChange', this._position);
         }.bind(this));
     };
 
@@ -408,6 +409,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 if (destPos >= 0) {
                     this._narrativeManager.gotoSection(currPos, destPos).then(function(pos) {
                         this._position = pos;
+                        eventHub.publish('Narrative:sectionChange', this._position);
                         this._videoModalView = new VideoModalView($('.js-videoModal'));
                     }.bind(this)).catch(log);
                 }
@@ -454,6 +456,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 if (destPos < sectionsLength) {
                     this._narrativeManager.gotoSection(currPos, destPos).then(function(pos) {
                         this._position = pos;
+                        eventHub.publish('Narrative:sectionChange', this._position);
                         this._videoModalView = new VideoModalView($('.js-videoModal'));
                     }.bind(this)).catch(log);
                 }

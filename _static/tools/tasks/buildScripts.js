@@ -125,7 +125,8 @@ module.exports = function(grunt) {
 
                 // full set of tests here:
                 // https://github.com/Modernizr/modernizr.com/blob/gh-pages/i/js/modulizr.js#L15-157
-                tests: grunt.file.readJSON('modernizr-tests.json').tests
+                tests: grunt.file.readJSON('modernizr-tests.json').tests,
+                'matchCommunityTests': false
             }
         },
 
