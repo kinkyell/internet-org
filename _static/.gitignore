@@ -12,5 +12,4 @@ node_modules/
 npm-debug.log
 tools/node/
 web/
-modernizr.build.js
 templates.build.js

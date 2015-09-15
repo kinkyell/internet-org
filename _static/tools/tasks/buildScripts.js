@@ -150,7 +150,6 @@ module.exports = function(grunt) {
     grunt.registerTask('buildScripts',
         shouldMinify
             ? [
-                'modernizr:buildScripts:bust',
                 'copy:buildScripts',
                 'requirejs:buildScripts',
                 'useminPrepare:buildScripts',
@@ -159,7 +158,6 @@ module.exports = function(grunt) {
             ]
             : [
                 'handlebars:buildScripts',
-                'modernizr:buildScripts',
                 'copy:buildScripts'
             ]
     );
