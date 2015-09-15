@@ -122,11 +122,11 @@ define(function(require, exports, module) { // jshint ignore:line
         this._timeLineReverse = this._createTimeline('reverse');
 
         if (position > 0) {
-            this.gotoSection(this._sectionsConf[position - 1], 'up');
-            this.gotoSection(this._sectionsConf[position], 'down');
+            this.gotoSection(position, position - 1);
+            this.gotoSection(position - 1, position);
         } else {
-            this.gotoSection(this._sectionsConf[position + 1], 'down');
-            this.gotoSection(this._sectionsConf[position], 'up');
+            this.gotoSection(position, position + 1);
+            this.gotoSection(position + 1, position);
         }
 
         $('body')[0].scrollTop = 0;
@@ -251,9 +251,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {string} direction the direction of the transition
      * @public
      */
-    proto.gotoSection = function(section, direction) {
+    proto.gotoSection = function(currPos, destPos) {
         this._isAnimating = true;
-        return this._sectionTransition(section, direction);
+        return this._sectionTransition(currPos, destPos);
     };
 
     /**
@@ -264,10 +264,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {string} direction the direction of the transition
      * @public
      */
-    proto.gotoSubSection = function(section, direction, rootSection) {
-        rootSection = (typeof rootSection === 'undefined') ? null : rootSection;
+    proto.gotoSubSection = function(destSectionPos, destSlidPos) {
         this._isAnimating = true;
-        return this._subSectionTransition(section, direction, rootSection);
+        return this._subSectionTransition(destSectionPos, destSlidPos);
     };
 
     /**
@@ -278,22 +277,22 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {string} direction the direction of the transition
      * @private
      */
-    proto._sectionTransition = function(section, direction) {
-        var sectionPosition = this._sectionsConf.indexOf(section);
-        var prevSection = (direction === 'down') ?
-            this._sectionsConf[sectionPosition - 1] :
-            this._sectionsConf[sectionPosition + 1];
-
-        this._currentSection = sectionPosition;
-
+    proto._sectionTransition = function(currPos, destPos) {
         return new Promise(function(resolve) {
-            var fromLabel = prevSection.label;
-            var toLabel = section.label;
+            var currSection = this._sectionsConf[currPos];
+            var destSection = this._sectionsConf[destPos];
+
+            var fromLabel = currSection.label;
+            var toLabel = destSection.label;
             // var timeline = (state.position < state.destinationPos) ? this._timeLine : this._timeLineReverse;
             var timeline = this._timeLine;
+            var diff = Math.abs(currPos - destPos);
+
+            var timeScale = (diff > 1) ? TIME_SCALE * 2 : TIME_SCALE;
+            timeline.timeScale(timeScale);
 
             timeline.tweenFromTo(fromLabel, toLabel, {
-                onComplete: this._onSectionComplete.bind(this, resolve)
+                onComplete: this._onSectionComplete.bind(this, destPos, resolve)
             });
         }.bind(this));
     };
@@ -306,23 +305,19 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {string} direction the direction of the transition
      * @private
      */
-    proto._subSectionTransition = function(section, direction, rootSection, content) {
+    proto._subSectionTransition = function(destSectionPos, destSlidPos) {
         return new Promise(function(resolve) {
-            var sectionPosition = this._sectionsConf.indexOf(rootSection);
-            var subsectionPosition = rootSection.subSections.indexOf(section);
-            var $slidesContainer = this._$sections.eq(sectionPosition).find('.narrative-section-slides');
+            var $slidesContainer = this._$sections.eq(destSectionPos).find('.narrative-section-slides');
             var $slides = $slidesContainer.find('> *');
-            var destinationPos = (direction === 'down') ? subsectionPosition + 1 : subsectionPosition;
-            this._currentSection = sectionPosition;
 
             var offsetY = 0;
             var i = 0;
-            for (; i < destinationPos; i++) {
+            for (; i < destSlidPos; i++) {
                 offsetY += $slides.eq(i).height();
             }
 
             TweenLite.to($slidesContainer, 0.35, { scrollTo: { y: offsetY }, onComplete: function() {
-                this._onTransitionComplete(resolve);
+                this._onTransitionComplete(destSlidPos, resolve);
             }.bind(this)});
 
         }.bind(this));
@@ -335,8 +330,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {function} resolve promise resolution method
      * @private
      */
-    proto._onSectionComplete = function(resolve) {
-        this._onTransitionComplete(resolve);
+    proto._onSectionComplete = function(destPos, resolve) {
+        this._onTransitionComplete(destPos, resolve);
     };
 
     /**
@@ -346,10 +341,10 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {function} resolve promise resolution method
      * @private
      */
-    proto._onTransitionComplete = function(resolve) {
+    proto._onTransitionComplete = function(destPos, resolve) {
         this._isAnimating = false;
         eventHub.publish('Narrative:sectionChange', this._currentSection);
-        resolve();
+        resolve(destPos);
     };
 
     module.exports = NarrativeMobileManager;

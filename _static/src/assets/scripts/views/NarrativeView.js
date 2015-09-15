@@ -9,6 +9,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var log = require('util/log');
     var debounce = require('stark/function/debounce');
     var eventHub = require('services/eventHub');
+    var VideoModalView = require('views/VideoModalView');
 
     var CONFIG = {
         NARRATIVE_DT: '.narrativeDT',
@@ -114,9 +115,10 @@ define(function(require, exports, module) { // jshint ignore:line
         this._onTouchMoveHandler = this._onTouchMove.bind(this);
         this._onTouchEndHandler = this._onTouchEnd.bind(this);
         this.refreshNarrativeManager = this.refreshNarrativeManager.bind(this);
-
         this._onResizeHandler = this._onResize.bind(this);
         this._onResizeHandler = debounce(this._onResizeHandler, 50);
+        this._onClickIndicatorHandler = this._onClickIndicator.bind(this);
+        this._onMenuToggleHandler = this._onMenuToggle.bind(this);
     };
 
     /**
@@ -171,7 +173,6 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$viewWindow.before(this.$progress);
         this.$progress.find(':first-child').addClass('isActive');
         this._displayIndicators(0);
-
     };
 
     proto.refreshNarrativeManager = function() {
@@ -193,6 +194,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.onEnable = function() {
         this.$progress.show();
+        this._updateIndicators(0);
         this.$narrative[0].scrollTop = this.scrollTop;
         this._currentlyMobile = breakpointManager.isMobile;
         breakpointManager.subscribe(function() {
@@ -204,10 +206,11 @@ define(function(require, exports, module) { // jshint ignore:line
 
         $(window).on('mousewheel DOMMouseScroll', this._onWheelEventHandler);
         $(window).on('touchstart' + this._eventTouchNamespace, this._onTouchStartHandler);
-
         window.addEventListener('resize', this._onResizeHandler);
         window.addEventListener('orientationchange', this._onResizeHandler);
         this._$narrativeAdvance.on('click', this._onClickAdvance.bind(this));
+        this.$progress.on('click', '> *', this._onClickIndicatorHandler);
+        eventHub.subscribe('MainMenu:change', this._onMenuToggleHandler);
     };
 
     /**
@@ -223,10 +226,10 @@ define(function(require, exports, module) { // jshint ignore:line
         this.scrollTop = this.$narrative[0].scrollTop;
         $(window).off('mousewheel DOMMouseScroll', this._onWheelEventHandler);
         $(window).off(this._eventTouchNamespace);
-
         window.removeEventListener('resize', this._onResizeHandler);
         window.removeEventListener('orientationchange', this._onResizeHandler);
         this._$narrativeAdvance.off('click', this._onClickAdvance.bind(this));
+        this.$progress.off('click', '> *', this._onClickIndicatorHandler);
     };
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -321,9 +324,22 @@ define(function(require, exports, module) { // jshint ignore:line
         this._scrollDown();
     };
 
-    //////////////////////////////////////////////////////////////////////////////////
-    // HELPERS
-    //////////////////////////////////////////////////////////////////////////////////
+    /**
+     * Indicator click event handler
+     *
+     * @method _onClickIndicator
+     * @private
+     */
+    proto._onClickIndicator = function(event) {
+        event.preventDefault();
+        var $indicator = $(event.currentTarget);
+        var pos = $indicator.index();
+        this._updateIndicators(pos);
+        this._narrativeManager.gotoSection(this._position, pos).then(function(pos) {
+            this._position = pos;
+        }.bind(this));
+    };
+
     /**
      * Scoll up to previous section
      *
@@ -341,39 +357,34 @@ define(function(require, exports, module) { // jshint ignore:line
             var destinationSection = this._sectionConf[destinationSectionPos];
             var destinationSubsLength = destinationSection.subSections.length;
 
+            var currPos = this._position;
+            var destPos = currPos - 1;
+
+            var destSectionPos = this._position;
+            var destSlidPos = this._subPosition -= 1;
+
             // if has subs
             // and subs pos MORE THAN 0
             if (subsLength > 0 && subPosition > 0) {
-                var destinationSubPos = subPosition - 1;
-                var destinationSub = section.subSections[destinationSubPos];
-                section = (breakpointManager.isMobile) ? section : null;
-
-                this._narrativeManager.gotoSubSection(destinationSub, direction, section, true).then(function() {
-                    this._subPosition -= 1;
-                }.bind(this));
-
-                this._updateCtas(false);
-
-            // subs pos IS 0
-            } else if (subPosition === 0 && breakpointManager.isMobile === false) {
-                this._narrativeManager.gotoSubSection(section, direction, section).then(function() {
-                    this._subPosition = -1;
-                }.bind(this));
-
+                 this._narrativeManager.gotoSubSection(destSectionPos, destSlidPos).then(function(pos) {
+                    this._subPosition = pos;
+                    this._videoModalView = new VideoModalView($('.js-videoModal'));
+                }.bind(this)).catch(log);
             // Anything Else
             } else {
-                this._subPosition = (breakpointManager.isMobile) ? destinationSubsLength : destinationSubsLength - 1;
+                this._subPosition = (breakpointManager.isMobile) ? destinationSubsLength : destinationSubsLength;
                 this._updateIndicators(this._position - 1);
                 this._displayIndicators(this._position - 1);
 
-                if (destinationSectionPos >= 0) {
-                    this._narrativeManager.gotoSection(destinationSection, direction).then(function() {
-                        this._position -= 1;
-                    }.bind(this));
+                if (destPos >= 0) {
+                    this._narrativeManager.gotoSection(currPos, destPos).then(function(pos) {
+                        this._position = pos;
+                        this._videoModalView = new VideoModalView($('.js-videoModal'));
+                    }.bind(this)).catch(log);
                 }
-
-                this._updateCtas(true);
             }
+
+            // this._updateCtas();
         }
     };
 
@@ -389,32 +400,32 @@ define(function(require, exports, module) { // jshint ignore:line
             var section = this._sectionConf[this._position];
             var subsLength = section.subSections.length;
             var subPosition = this._subPosition;
+            var sectionsLength = this._sectionConf.length;
+            var destSectionPos = this._position;
+            var destSlidPos = this._subPosition += 1;
 
             // if has subs
             // and subs pos is not at the end
-            if (subsLength > 0 && subPosition < subsLength - 1) {
-                var destinationSubPos = subPosition + 1;
-                var destinationSub = section.subSections[destinationSubPos];
-                section = (breakpointManager.isMobile) ? section : null;
-
-                this._narrativeManager.gotoSubSection(destinationSub, direction, section, true).then(function() {
-                    this._subPosition += 1;
+            if (subsLength > 0 && subPosition < subsLength) {
+                this._narrativeManager.gotoSubSection(destSectionPos, destSlidPos, subPosition).then(function(pos) {
+                    this._subPosition = pos;
+                    this._videoModalView = new VideoModalView($('.js-videoModal'));
                 }.bind(this));
 
                 this._updateCtas(false);
-
             // Anything Else
             } else {
-                var sectionsLength = this._sectionConf.length;
-                var destinationSectionPos = this._position + 1;
-                var destinationSection = this._sectionConf[destinationSectionPos];
-                this._subPosition = -1;
+                this._subPosition = 0;
                 this._updateIndicators(this._position + 1);
                 this._displayIndicators(this._position + 1);
 
-                if (destinationSectionPos < sectionsLength) {
-                    this._narrativeManager.gotoSection(destinationSection, direction).then(function() {
-                        this._position += 1;
+                var currPos = this._position;
+                var destPos = currPos + 1;
+
+                if (destPos < sectionsLength) {
+                    this._narrativeManager.gotoSection(currPos, destPos).then(function(pos) {
+                        this._position = pos;
+                        this._videoModalView = new VideoModalView($('.js-videoModal'));
                     }.bind(this)).catch(log);
                 }
 
@@ -486,6 +497,11 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._updateIndicators = function(pos) {
+        var slidesLength = this._sectionConf.length;
+        if (pos < 0 || pos > (slidesLength - 1)) {
+            return;
+        }
+
         var $progressIndicators = this.$progress.find('> *');
         var i = 0;
         var l = $progressIndicators.length;
@@ -505,7 +521,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._displayIndicators = function(pos) {
-
         if (!breakpointManager.isMobile) {
             this.$progress.removeClass(CONFIG.PROGRESS_HIDDEN);
             return;
@@ -513,10 +528,24 @@ define(function(require, exports, module) { // jshint ignore:line
 
         var slidesLength = this._sectionConf.length;
 
-        if (pos === 0 || pos === (slidesLength - 1)) {
+        if (pos <= 0 || pos >= (slidesLength - 1)) {
             this.$progress.addClass(CONFIG.PROGRESS_HIDDEN);
         } else {
             this.$progress.removeClass(CONFIG.PROGRESS_HIDDEN);
+        }
+    };
+
+    /**
+     * menu toggle event handler
+     *
+     * @method _onMenuToggle
+     * @private
+     */
+    proto._onMenuToggle = function(isOpen) {
+        if (isOpen) {
+            this.disable();
+        } else {
+            this.enable();
         }
     };
 
