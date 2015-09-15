@@ -265,7 +265,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.gotoSubSection = function(destSectionPos, destSlidPos) {
-        // rootSection = (typeof rootSection === 'undefined') ? null : rootSection;
         this._isAnimating = true;
         return this._subSectionTransition(destSectionPos, destSlidPos);
     };

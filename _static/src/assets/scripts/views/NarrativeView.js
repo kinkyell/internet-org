@@ -9,6 +9,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var log = require('util/log');
     var debounce = require('stark/function/debounce');
     var eventHub = require('services/eventHub');
+    var VideoModalView = require('views/VideoModalView');
 
     var CONFIG = {
         NARRATIVE_DT: '.narrativeDT',
@@ -171,7 +172,6 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$viewWindow.before(this.$progress);
         this.$progress.find(':first-child').addClass('isActive');
         this._displayIndicators(0);
-
     };
 
     proto.refreshNarrativeManager = function() {
@@ -365,9 +365,8 @@ define(function(require, exports, module) { // jshint ignore:line
             if (subsLength > 0 && subPosition > 0) {
                  this._narrativeManager.gotoSubSection(destSectionPos, destSlidPos).then(function(pos) {
                     this._subPosition = pos;
+                    this._videoModalView = new VideoModalView($('.js-videoModal'));
                 }.bind(this)).catch(log);
-
-                this._updateCtas(false);
             // Anything Else
             } else {
                 this._subPosition = (breakpointManager.isMobile) ? destinationSubsLength : destinationSubsLength;
@@ -377,11 +376,12 @@ define(function(require, exports, module) { // jshint ignore:line
                 if (destPos >= 0) {
                     this._narrativeManager.gotoSection(currPos, destPos).then(function(pos) {
                         this._position = pos;
+                        this._videoModalView = new VideoModalView($('.js-videoModal'));
                     }.bind(this)).catch(log);
                 }
-
-                this._updateCtas(true);
             }
+
+            // this._updateCtas();
         }
     };
 
@@ -406,6 +406,7 @@ define(function(require, exports, module) { // jshint ignore:line
             if (subsLength > 0 && subPosition < subsLength) {
                 this._narrativeManager.gotoSubSection(destSectionPos, destSlidPos, subPosition).then(function(pos) {
                     this._subPosition = pos;
+                    this._videoModalView = new VideoModalView($('.js-videoModal'));
                 }.bind(this));
 
                 this._updateCtas(false);
@@ -421,6 +422,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 if (destPos < sectionsLength) {
                     this._narrativeManager.gotoSection(currPos, destPos).then(function(pos) {
                         this._position = pos;
+                        this._videoModalView = new VideoModalView($('.js-videoModal'));
                     }.bind(this)).catch(log);
                 }
 

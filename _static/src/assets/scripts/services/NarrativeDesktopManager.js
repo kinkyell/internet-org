@@ -291,7 +291,7 @@ define(function(require, exports, module) { // jshint ignore:line
             var subsLast = section.subSections.length - 1;
 
             var diff = Math.abs(currPos - destPos);
-            var timeScale = (diff > 1) ? TIME_SCALE * 2 : TIME_SCALE;
+            var timeScale = TIME_SCALE * diff;
             timeline.timeScale(timeScale);
 
             timeline.tweenFromTo(fromLabel, toLabel, {
@@ -376,7 +376,7 @@ define(function(require, exports, module) { // jshint ignore:line
             $postItem.removeClass(CONFIG.ACTIVE_POST);
         }
 
-        this._$transformBlockPost.eq(destPos).addClass('transformBlock-post-item_isActive');
+        this._$transformBlockPost.eq(destPos - 1).addClass('transformBlock-post-item_isActive');
 
         window.setTimeout(this._onTransitionComplete.bind(this, destPos, resolve), 0);
     };
