@@ -199,6 +199,7 @@ define(function(require, exports, module) { // jshint ignore:line
             (len && prevStates[len - 1].type === 'home') ||
             (!len && !this._initialState)
         ) {
+            eventHub.publish('Router:topScroll');
             return;
         }
 
