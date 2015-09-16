@@ -209,6 +209,11 @@ $home_background_image_url = '';
 										<div class="transformBlock-post-item">
 											<div class="splashFooter">
 												<?php echo wp_kses_post( ! empty( $get_involved_content_widget_post ) ? $get_involved_content_widget_post->post_content : '' ); ?>
+												<div class="splashFooter-section">
+													<div class="splashFooter-section-bd">
+														<?php internetorg_vip_powered_wpcom(); ?>
+													</div>
+												</div>
 											</div>
 										</div>
 
@@ -394,6 +399,11 @@ $home_background_image_url = '';
 										<div class="statementBlock-bd">
 											<div class="splashFooter">
 												<?php echo wp_kses_post( ! empty( $get_involved_content_widget_post ) ? $get_involved_content_widget_post->post_content : '' ); ?>
+												<div class="splashFooter-section">
+													<div class="splashFooter-section-bd">
+														<?php internetorg_vip_powered_wpcom(); ?>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
