@@ -7,22 +7,20 @@
 <!-- END MOBILE ONLY CONTENT HERE -->
 <div class="introBlock">
     <div class="introBlock-inner">
-        <div class="container">
-            <div class="topicBlock">
-                <div class="topicBlock-hd topicBlock-hd_mega {{#if theme}}topicBlock-hd_theme{{theme}}{{/if}}">
-                    <h2 class="hdg hdg_2 mix-hdg_bold">{{title}}</h2>
-                </div>
-                {{#if desc}}
-                <div class="topicBlock-bd">
-                    <p class="bdcpy">{{description}}</p>
-                </div>
-                {{/if}}
-                {{#if image}}{{#if isImageBelow}}
-                <div class="topicBlock-media isHidden u-isHiddenMedium" aria-hidden="true">
-                	<img src="{{image}}" alt="">
-                </div>
-                {{/if}}{{/if}}
+        <div class="topicBlock">
+            <div class="topicBlock-hd topicBlock-hd_mega {{#if theme}}topicBlock-hd_theme{{theme}}{{/if}}">
+                <h2 class="hdg hdg_2 mix-hdg_bold">{{title}}</h2>
             </div>
+            {{#if desc}}
+            <div class="topicBlock-bd">
+                <p class="bdcpy">{{description}}</p>
+            </div>
+            {{/if}}
+            {{#if image}}{{#if isImageBelow}}
+            <div class="topicBlock-media isHidden u-isHiddenMedium" aria-hidden="true">
+                <img src="{{image}}" alt="">
+            </div>
+            {{/if}}{{/if}}
         </div>
     </div>
 </div>
