@@ -70,11 +70,45 @@ $home_background_image_url = '';
 														if ( internetorg_is_video_url( $cta['link'] ) ) {
 															$js_class = 'js-videoModal';
 														}
+														$social_attr = '';
+														if ($cta['cta_src'] === 'page' && absint($cta['link_src'])){
+															$url = esc_url( get_the_permalink( $cta['link_src'] ) );
+															$title = esc_attr( get_the_title( $cta['link_src'] ) );
+															$desc = wp_kses_post( get_post_field( 'post_excerpt', $cta['link_src' ]) );
+															$img = (wp_get_attachment_url(get_post_thumbnail_id( $cta['link_src' ] ), 'panel-image'))
+																?  wp_get_attachment_url( get_post_thumbnail_id( $cta['link_src' ] ), 'panel-image' )
+																: '';
+															$mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type($cta['link_src' ]), $cta['link_src' ]) );
+															if(get_post_type($cta['link_src']) === 'post'){
+																$social_attr = 'data-social="true"';
+															}
+														}else {
+															$url = esc_url( $cta['link'] );
+															$title = esc_attr( $cta['title'] );
+															$desc = esc_attr( strip_tags( nl2br( $cta['text'] ) ) );
+															$img =  ( ! empty( $cf_content_section['call-to-action'][0] ) ? wp_get_attachment_url( $cf_content_section['call-to-action'][0]['image'], 'panel-image' ) : ''  );
+															$mobile_image = esc_url( ( ! empty( $cf_content_section['call-to-action'][0] ) ? wp_get_attachment_url( $cf_content_section['call-to-action'][0]['image'], 'inline-image' ) : ''  ) );
+														}
+
+
+														$theme =  (!empty($fieldset['theme']) )
+															? $fieldset['theme']
+															: $fieldset['slug'];
 
 														?>
-														<a href="<?php echo esc_url( $cta['link'] ); ?>" class="tertiaryCta <?php echo esc_attr( $js_class ); ?>" <?php if ( ! internetorg_is_video_url( $cta['link'] ) ) : ?>data-type="titled" data-theme="<?php echo esc_attr( strtolower( $fieldset['slug'] ) ); ?>" data-title="<?php echo esc_attr( $cta['title'] ); ?>" data-desc="<?php echo esc_attr( strip_tags( $cta['text'] ) ); ?>" <?php endif; ?>>
+														<a href="<?php echo esc_url( $cta['link'] ); ?>"
+														   class="tertiaryCta <?php echo esc_attr( $js_class ); ?>"
+														   <?php if ( ! internetorg_is_video_url( $cta['link'] ) ) : ?>
+															   data-type="titled"
+															   <?php echo $social_attr; ?>
+															   data-theme="<?php echo esc_attr( strtolower( $theme ) ); ?>"
+															   data-title="<?php echo $title; ?>"
+															   data-desc="<?php echo $desc; ?>"
+															   data-image="<?php echo esc_url($img);?>"
+															   data-mobile-image="<?php echo esc_url($mobile_image);?>"
+														   <?php endif; ?>>
 															<?php echo esc_html( strip_tags( $cta['title'] ) ); ?>
-															<span class="circleBtn circleBtn_theme<?php echo esc_attr( ucwords( $fieldset['slug'] ) ); ?><?php if ( internetorg_is_video_url( $cta['link'] ) ) : ?> circleBtn_play<?php endif; ?>"></span>
+															<span class="circleBtn circleBtn_theme<?php echo esc_attr( ucwords( $theme ) ); ?><?php if ( internetorg_is_video_url( $cta['link'] ) ) : ?> circleBtn_play<?php endif; ?>"></span>
 														</a>
 													</div>
 													<?php endif; ?>
@@ -126,14 +160,42 @@ $home_background_image_url = '';
 															<div class="transformBlock-post-item-bd">
 																<p class="bdcpy bdcpy_narrative"><?php echo wp_kses_post( ltrim( rtrim( $cf_content_section['content'], '</p>' ), '<p>' ) ); ?></p>
 															</div>
-															<a href="/<?php echo esc_attr( $cf_content_section['slug'] ); ?>"
-																class="link link_theme<?php echo esc_attr( ucwords( $cf_content_section['slug'] ) ); ?> js-stateLink"
+															<?php
+
+															if ($cf_content_section['src'] === 'page' && absint($cf_content_section['url-src'])){
+																$url = esc_url( get_the_permalink( $cf_content_section['url-src'] ) );
+																$title = esc_attr( get_the_title( $cf_content_section['url-src'] ) );
+																$desc = wp_kses_post( get_post_field( 'post_excerpt', $cf_content_section['url-src' ]) );
+																$img = (wp_get_attachment_url(get_post_thumbnail_id($cf_content_section['url-src']), 'panel-image'))
+																		?  wp_get_attachment_url(get_post_thumbnail_id($cf_content_section['url-src']), 'panel-image')
+																		: '';
+																$mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type($cf_content_section['url-src']), $cf_content_section['url-src']) );
+
+															}else {
+																$url = '/' . esc_attr($cf_content_section['slug']);
+																$title = esc_attr( $cf_content_section['name'] );
+																$desc = esc_attr( strip_tags( nl2br( $cf_content_section['content'] ) ) );
+																$img =  ( ! empty( $cf_content_section['call-to-action'][0] ) ? wp_get_attachment_url( $cf_content_section['call-to-action'][0]['image'], 'panel-image' ) : ''  );
+																$mobile_image = esc_url( ( ! empty( $cf_content_section['call-to-action'][0] ) ? wp_get_attachment_url( $cf_content_section['call-to-action'][0]['image'], 'inline-image' ) : ''  ) );
+															}
+
+															$theme =  (!empty($cf_content_section['theme']) )
+																	? $cf_content_section['theme']
+																	: $cf_content_section['slug'];
+															?>
+															<a href="<?php echo $url; ?>"
+																class="link link_theme<?php echo esc_attr( ucwords( $theme ) ); ?> js-stateLink"
 																data-type="panel"
-																data-image="<?php echo esc_url( ( ! empty( $cf_content_section['call-to-action'][0] ) ? wp_get_attachment_url( $cf_content_section['call-to-action'][0]['image'], 'panel-image' ) : ''  ) ); ?>"
-																data-mobile-image="<?php echo esc_url( ( ! empty( $cf_content_section['call-to-action'][0] ) ? wp_get_attachment_url( $cf_content_section['call-to-action'][0]['image'], 'inline-image' ) : ''  ) ); ?>"
-																data-theme="<?php echo esc_attr( $cf_content_section['slug'] ); ?>"
-																data-title="<?php echo esc_attr( $cf_content_section['name'] ); ?>"
-																data-desc="<?php echo esc_attr( strip_tags( nl2br( $cf_content_section['content'] ) ) ); ?>">
+																data-image="<?php echo esc_url($img); ?>"
+															    data-theme="<?php echo esc_attr( $theme ); ?>"
+																<?php if (is_string($mobile_image)): ?>
+																	data-mobile-image="<?php echo esc_url( $mobile_image ); ?>"
+																<?php endif; ?>
+																<?php if (is_string($img)): ?>
+																	data-image="<?php echo esc_url( $img ); ?>"
+																<?php endif; ?>
+																data-title="<?php echo $title; ?>"
+																data-desc="<?php echo $desc; ?>">
 																<?php echo esc_html( $cf_content_section['name'] ); ?>
 															</a>
 														</div>
@@ -203,11 +265,49 @@ $home_background_image_url = '';
 																	$js_class = 'js-videoModal';
 																}
 
+																$social_attr = '';
+
+																if ($cta['cta_src'] === 'page' && absint($cta['link_src'])){
+																	$url = esc_url( get_the_permalink( $cta['link_src'] ) );
+																	$title = esc_attr( get_the_title( $cta['link_src'] ) );
+																	$desc = wp_kses_post( get_post_field( 'post_excerpt', $cta['link_src' ]) );
+																	$img = (wp_get_attachment_url(get_post_thumbnail_id( $cta['link_src' ] ), 'panel-image'))
+																		?  wp_get_attachment_url( get_post_thumbnail_id( $cta['link_src' ] ), 'panel-image' )
+																		: '';
+																	$mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type($cta['link_src' ]), $cta['link_src' ]) );
+
+																}else {
+																	$url = esc_url( $cta['link'] );
+																	$title = esc_attr( $cta['title'] );
+																	$desc = esc_attr( strip_tags( nl2br( $cta['text'] ) ) );
+																	$img =  ( ! empty( $cf_content_section['call-to-action'][0] ) ? wp_get_attachment_url( $cf_content_section['call-to-action'][0]['image'], 'panel-image' ) : ''  );
+																	$mobile_image = esc_url( ( ! empty( $cf_content_section['call-to-action'][0] ) ? wp_get_attachment_url( $cf_content_section['call-to-action'][0]['image'], 'inline-image' ) : ''  ) );
+																}
+																if(get_post_type($cta['link_src']) === 'post'){
+																	$social_attr = 'data-social="true"';
+																}
+																$theme =  (!empty($cf_content_section['theme']) )
+																	? $cf_content_section['theme']
+																	: $cf_content_section['slug'];
 																?>
-																<a href="<?php echo esc_url( $cta['link'] ); ?>" class="tertiaryCta <?php echo esc_attr( $js_class ); ?>" <?php if ( ! internetorg_is_video_url( $cta['link'] ) ) : ?>data-type="titled" data-theme="<?php echo esc_attr( strtolower( $cf_content_section['slug'] ) ); ?>" data-title="<?php echo esc_attr( $cta['title'] ); ?>" data-desc="<?php echo esc_attr( strip_tags( $cta['text'] ) ); ?>"<?php endif; ?>>
+																<a href="<?php echo $url; ?>"
+																   class="tertiaryCta <?php echo esc_attr( $js_class ); ?>"
+																   <?php if ( ! internetorg_is_video_url( $cta['link'] ) ) : ?>
+																	   data-type="titled"
+																	   <?php echo $social_attr; ?>
+																	   data-theme="<?php echo esc_attr( strtolower( $theme ) ); ?>"
+																	   data-title="<?php echo $title; ?>"
+																	   data-desc="<?php echo $desc; ?>"
+																	   <?php if (is_string($mobile_image)): ?>
+																		   data-mobile-image="<?php echo esc_url( $mobile_image ); ?>"
+																	   <?php endif; ?>
+																	   <?php if (is_string($img)): ?>
+																		   data-image="<?php echo esc_url( $img ); ?>"
+																	   <?php endif; ?>
+																   <?php endif; ?>>
 
 																	<?php echo esc_html( strip_tags( $cta['title'] ) ); ?>
-																	<span class="circleBtn circleBtn_theme<?php echo esc_attr( ucwords( $cf_content_section['slug'] ) ); ?><?php if ( internetorg_is_video_url( $cta['link'] ) ) : ?> circleBtn_play<?php endif; ?>"></span>
+																	<span class="circleBtn circleBtn_theme<?php echo esc_attr( ucwords( $theme ) ); ?><?php if ( internetorg_is_video_url( $cta['link'] ) ) : ?> circleBtn_play<?php endif; ?>"></span>
 																</a>
 															</div>
 														<?php endif; ?>
@@ -232,14 +332,45 @@ $home_background_image_url = '';
 														</div>
 													</div>
 												</div>
+
+												<?php
+												if ($cf_content_section['src'] === 'page' && absint($cf_content_section['url-src'])){
+													$url = esc_url( get_the_permalink( $cf_content_section['url-src'] ) );
+													$title = esc_attr( get_the_title( $cf_content_section['url-src'] ) );
+													$desc = wp_kses_post( get_post_field( 'post_excerpt', $cf_content_section['url-src' ]) );
+													$img = (wp_get_attachment_url(get_post_thumbnail_id($cf_content_section['url-src']), 'panel-image'))
+														?  wp_get_attachment_url(get_post_thumbnail_id($cf_content_section['url-src']), 'panel-image')
+														: '';
+													$mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type($cf_content_section['url-src']), $cf_content_section['url-src']) );
+
+												}else {
+													$url = '/' . esc_attr($cf_content_section['slug']);
+													$title = esc_attr( $cf_content_section['name'] );
+													$desc = esc_attr( strip_tags( nl2br( $cf_content_section['content'] ) ) );
+													$img =  ( ! empty( $cf_content_section['call-to-action'][0] ) ? wp_get_attachment_url( $cf_content_section['call-to-action'][0]['image'], 'panel-image' ) : ''  );
+													$mobile_image = esc_url( ( ! empty( $cf_content_section['call-to-action'][0] ) ? wp_get_attachment_url( $cf_content_section['call-to-action'][0]['image'], 'inline-image' ) : ''  ) );
+												}
+
+												$theme =  (!empty($cf_content_section['theme']) )
+													? $cf_content_section['theme']
+													: $cf_content_section['slug'];
+												?>
 												<div class="narrative-section-bd-link u-isHiddenMedium">
-													<a href="/<?php echo esc_attr( $cf_content_section['slug'] ); ?>"
-														class="circleBtn circleBtn_theme<?php echo esc_attr( ucwords( $cf_content_section['slug'] ) ); ?> js-stateLink"
+													<a href="<?php echo $url; ?>"
+														class="circleBtn circleBtn_theme<?php echo esc_attr( ucwords( $theme ) ); ?> js-stateLink"
 														data-type="panel"
-														data-theme="<?php echo esc_attr( $cf_content_section['slug'] ); ?>"
-														data-title="<?php echo esc_attr( $cf_content_section['name'] ); ?>"
-														data-desc="<?php echo esc_attr( strip_tags( nl2br( $cf_content_section['content'] ) ) ); ?>"
-														<?php if (is_string($data_img)): ?>data-image="<?php echo esc_url( $data_img ); ?>"<?php endif; ?>><?php echo esc_html( $cf_content_section['name'] ); ?></a>
+														data-theme="<?php echo esc_attr( $theme ); ?>"
+														data-title="<?php echo $title; ?>"
+														data-desc="<?php echo $desc; ?>"
+														<?php if (is_string($mobile_image)): ?>
+															data-mobile-image="<?php echo esc_url( $mobile_image ); ?>"
+														<?php endif; ?>
+														<?php if (is_string($img)): ?>
+															data-image="<?php echo esc_url( $img ); ?>"
+														<?php endif; ?>
+														>
+														<?php echo esc_html( $cf_content_section['name'] ); ?>
+													</a>
 												</div>
 											</div>
 										</div>
