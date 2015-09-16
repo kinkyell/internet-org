@@ -12,6 +12,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var LanguageView = require('./LanguageView');
 
     var SPEEDS = require('appConfig').animationSpeeds;
+    var $window = $(window);
 
     /**
      * A view for displaying main menu
@@ -25,7 +26,7 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     var proto = AbstractView.createChild(MenuView);
-    var $win = $(window);
+    var $win = $window;
 
     /**
      * Binds the scope of any handler functions.
@@ -39,6 +40,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handleStateChange = this._onStateChange.bind(this);
         this._handleBgClick = this._onBgClick.bind(this);
         this._handleEscPress = this._onEscPress.bind(this);
+        this._handleResize = this._onResize.bind(this);
     };
 
     /**
@@ -83,6 +85,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.onEnable = function() {
         eventHub.subscribe('StateStack:change', this._handleStateChange);
+        $window.on('resize orientationchange', this._handleResize);
     };
 
     /**
@@ -94,6 +97,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.onDisable = function() {
         eventHub.unsubscribe('StateStack:change', this._handleStateChange);
+        $window.off('resize orientationchange', this._handleResize);
     };
 
     /**
@@ -138,7 +142,7 @@ define(function(require, exports, module) { // jshint ignore:line
         Tween.from(this.element, SPEEDS.MENU_IN, wrapperOpts);
         this._animateSliders(panelOpts.delay);
 
-        this.element.style.minHeight = $(window).height() + 'px';
+        this.$element.css('min-height', $window.height());
     };
 
     /**
@@ -160,6 +164,7 @@ define(function(require, exports, module) { // jshint ignore:line
                     panelTween.kill();
                 }
                 this.isAnimating = false;
+                this.$element.css('min-height', 0);
             },
             callbackScope: this
         };
@@ -188,8 +193,6 @@ define(function(require, exports, module) { // jshint ignore:line
         }
 
         wrapperTween = Tween.to(this.element, SPEEDS.MENU_OUT, wrapperOpts);
-
-        this.element.style.minHeight = '0';
     };
 
     /**
@@ -228,6 +231,19 @@ define(function(require, exports, module) { // jshint ignore:line
     //////////////////////////////////////////////////////////////////////////////////
     // EVENT HANDLERS
     //////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Reset height on window resize
+     *
+     * @method _onResize
+     * @param {Array} states Active states
+     * @private
+     */
+    proto._onResize = function(states) {
+        if (this.isOpen) {
+            this.$element.css('min-height', $window.height());
+        }
+    };
 
     /**
      * Sets the menu state after state change
