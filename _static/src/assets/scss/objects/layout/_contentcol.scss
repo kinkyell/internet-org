@@ -20,12 +20,12 @@ Layout for padded columns of content.
 	padding-top: 0;
 }
 
-.contentCol_fluch + .contentCol {
-	padding-top: 0;
-}
-
 .contentCol_divided {
 	border-bottom: 1px solid $CLR_GRAY_LIGHT;
+}
+
+.contentCol_flushTight {
+	padding-bottom: 11px;
 }
 
 @include breakpoint(MD) {
@@ -38,4 +38,11 @@ Layout for padded columns of content.
 	.contentCol_flush + .contentCol {
 		padding-top: 0;
 	}
+	.contentCol_flushTight {
+		padding: 0 0 40px 0;
+	}
+	.contentCol_tight {
+		padding: 40px 0;
+	}
+
 }
