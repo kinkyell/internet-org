@@ -70,6 +70,11 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 			)
 		);
 
+		$datasource_post = new Fieldmanager_Datasource_Post( array(
+			'query_args' => array( 'post_type' => array( 'io_story', 'post', 'page'), 'posts_per_page' => -1 ),
+			'use_ajax' => false
+		) );
+
 		$next_post->add_meta_box( 'Next Page', 'page' );
 
 		$fm = new Fieldmanager_Group(
@@ -86,7 +91,40 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 					'title'          => new Fieldmanager_TextField( __( 'Section Title', 'internetorg' ) ),
 					'name'           => new Fieldmanager_TextField( __( 'Section Name', 'internetorg' ) ),
 					'content'        => new Fieldmanager_RichTextarea( __( 'Description', 'internetorg' ) ),
-					'slug'           => new Fieldmanager_TextField( __( 'Section Slug', 'internetorg' ) ),
+					'src' => new Fieldmanager_Radios( __( 'Source', 'internetorg' ), array(
+						'name'    => 'src',
+						'default_value' => 'page',
+						'options' => array(
+							'page' => 'Page, Post, or Story',
+							'custom' => 'Custom Link'
+							),
+						)
+					),
+					'slug'  => new Fieldmanager_TextField( __( 'Section Slug', 'internetorg'),
+						array(
+							'display_if' => array(
+								'src' => 'src',
+								'value' => 'custom'
+							),
+						)
+					),
+					'url-src' => new Fieldmanager_Select( __( 'URL Source', 'internetorg' ),
+						array(
+							'datasource' => $datasource_post,
+							'display_if' => array(
+								'src' => 'src',
+								'value' => 'page'
+							)
+						)
+					),
+					'theme' => new Fieldmanager_Select( array(
+						'label' => 'Select a Theme',
+						'options' => array(
+							'approach' => 'Approach',
+							'mission' => 'Mission',
+							'impact' => 'Impact'
+						)
+					) ),
 					'image'          => new Fieldmanager_Media( __( 'Background Image', 'internetorg' ) ),
 					'call-to-action' => new Fieldmanager_Group(
 						array(
@@ -98,7 +136,32 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 							'children'       => array(
 								'title' => new Fieldmanager_TextField( __( 'CTA Title', 'internetorg' ) ),
 								'text'  => new Fieldmanager_RichTextarea( __( 'Content', 'internetorg' ) ),
-								'link'  => new Fieldmanager_TextField( __( 'Link', 'internetorg' ) ),
+								'cta_src' => new Fieldmanager_Radios( __( 'Link Source', 'internetorg' ), array(
+										'name'    => 'cta_src',
+										'default_value' => 'page',
+										'options' => array(
+											'page' => __('Page, Post, or Story'),
+											'custom' => 'Custom Link'
+										),
+									)
+								),
+								'link'  => new Fieldmanager_TextField( __( 'Link', 'internetorg' ),
+									array(
+										'display_if' => array(
+											'src' => 'cta_src',
+											'value' => 'custom'
+										),
+									)
+								),
+								'link_src' => new Fieldmanager_Select( __( 'URL Source', 'internetorg' ),
+									array(
+										'datasource' => $datasource_post,
+										'display_if' => array(
+											'src' => 'cta_src',
+											'value' => 'page'
+										)
+									)
+								),
 								'image' => new Fieldmanager_Media( __( 'Image', 'internetorg' ) ),
 							),
 						)

@@ -168,9 +168,12 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     ViewWindow.prototype._getPanelWrap = function() {
-        var content = $('<div class="viewWindow-panel-content"></div>');
-        content.append('<div class="viewWindow-panel-content-inner"></div>');
-        return content;
+        var contentDiv = document.createElement('div');
+        contentDiv.className = 'viewWindow-panel-content';
+        var contentInnerDiv = document.createElement('div');
+        contentInnerDiv.className = 'viewWindow-panel-content-inner';
+        contentDiv.appendChild(contentInnerDiv);
+        return $(contentDiv);
     };
 
     /**

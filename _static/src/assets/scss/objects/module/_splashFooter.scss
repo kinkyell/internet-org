@@ -41,15 +41,32 @@
         @include verticalConstrain();
     }
 
-    // .statementBlock_end .statementBlock-pre {
-    //     @include verticalConstrain();
-    // }
-
-    // .statementBlock_end .statementBlock-hd {
-    //     @include verticalConstrain();
-    // }
-
     .statementBlock_end .statementBlock-bd {
         height: 52%;
+    }
+}
+
+@media (max-height: 320px) {
+    .statementBlock_end .statementBlock-pre {
+        @include verticalConstrain();
+    }
+
+    .statementBlock_end .statementBlock-hd {
+        @include verticalConstrain();
+    }
+
+    .splashFooter:before,
+    .splashFooter:after {
+        content: '';
+        display: table;
+    }
+
+    .splashFooter:after {
+        clear: both;
+    }
+
+    .splashFooter-section {
+        width: 48%;
+        float: left;
     }
 }

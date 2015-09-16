@@ -1453,7 +1453,7 @@ function internetorg_custom_link_shortcode($attr = array()){
 	$data_type = 'titled';
 	$lg_image = '';
 	$sm_image = '';
-
+	$data_theme = '';
 
 	if(get_post_thumbnail_id($source)) {
 		$lg_image = wp_get_attachment_image_src(get_post_thumbnail_id($source), 'panel-image');
@@ -1466,15 +1466,18 @@ function internetorg_custom_link_shortcode($attr = array()){
 	if ( $post_type == 'post' ) {
 		$data_attr .= 'data-social="true"';
 	}
-
+	if($post_type = 'io_story'){
+		$data_theme = 'Approach';
+	}
 	$url = str_replace( home_url(), '', get_permalink($source) );
 	?>
 
 	<a class="<?php echo esc_attr( $attr['css_class'] ); ?> js-stateLink"
 	    href="<?php echo esc_url( $url ); ?>"
 	    data-title="<?php echo esc_attr( get_the_title($source)); ?>"
-	    data-desc="<?php echo wp_kses_post( get_post_field( 'post_excerpt', $prev_post->ID ) ); ?>"
+	    data-desc="<?php echo wp_kses_post( get_post_field( 'post_excerpt', $source ) ); ?>"
 	    data-date="<?php echo esc_attr( get_the_date( '', $source ) ); ?>"
+	    data-theme="<?php echo esc_attr($data_theme);?>"
 	    <?php echo $data_attr; ?>
 	    data-type="<?php echo esc_attr( $data_type  ); ?>"
 		><?php echo esc_html( $attr['link_text'] ); ?></a>

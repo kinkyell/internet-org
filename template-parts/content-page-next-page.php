@@ -26,6 +26,7 @@ if ( empty( $next_page_id ) ) {
 		class="introBlock introBlock_foot js-stateSwap"
 		data-title="<?php echo esc_attr( get_the_title( $next_page_id ) ); ?>"
 		data-image="<?php echo esc_url( internetorg_get_post_thumbnail( $next_page_id, 'panel-image' ) ); ?>"
+	    data-mobile-image="<?php echo esc_url( internetorg_get_mobile_featured_image( get_post_type($next_page_id), $next_page_id) ); ?>"
 		data-theme="<?php echo esc_attr( ucwords( basename( get_permalink( $next_page_id ) ) ) ); ?>">
 		<div class="introBlock-inner">
 			<div class="topicBlock">

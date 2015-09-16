@@ -52,18 +52,27 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto.createChildren = function() {
-        this.$element.wrap('<div class="' + this._options.prefix + '"></div>');
+        var wrapDiv = document.createElement('div');
+        wrapDiv.className = this._options.prefix;
+        var labelDiv = document.createElement('div');
+        labelDiv.className = this._options.prefix + '-label';
+        var menuDiv = document.createElement('div');
+        menuDiv.className = this._options.prefix + '-menu';
+        this.$element.wrap(wrapDiv);
         this.$wrap = this.$element.parent();
-        this.$label = $('<div class="' + this._options.prefix + '-label"></div>');
+        this.$label = $(labelDiv);
         this._isMenuOpen = false;
         this._isAnimating = false;
 
-        this.$menu = $('<div class="' + this._options.prefix + '-menu"></div>');
+        this.$menu = $(menuDiv);
 
         // create options
         Array.prototype.forEach.call(this.element.options, function(el) {
-            var $el = $('<div class="' + this._options.prefix + '-menu-item" tabIndex="0"></div>');
-            var $textWrap = $('<span></span>').appendTo($el);
+            var elementDiv = document.createElement('div');
+            elementDiv.className = this._options.prefix + '-menu-item';
+            elementDiv.tabIndex = '0';
+            var $el = $(elementDiv);
+            var $textWrap = $(document.createElement('span')).appendTo($el);
             var displayText = el.getAttribute('data-display');
 
             // set text
