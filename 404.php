@@ -86,7 +86,11 @@ get_header();
 							</div>
 						</div>
 
-
+						<div class="contentCol contentCol_tight">
+							<div class="container">
+								<?php internetorg_vip_powered_wpcom(); ?>
+							</div>
+						</div>
 
 					</div>
 

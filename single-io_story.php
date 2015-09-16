@@ -60,6 +60,11 @@ get_header();
 							<div class="container">
 								<?php internet_org_get_content_widget_html( 'get-involved', false ); ?>
 							</div>
+							<div class="footBox-ft">
+								<div class="container">
+									<?php internetorg_vip_powered_wpcom( 'pwdByVip-txt' ); ?>
+								</div>
+							</div>
 						</div>
 
 					</div>

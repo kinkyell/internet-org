@@ -42,6 +42,15 @@ get_header();
 
 								</div>
 							</div>
+
+							<div class="contentCol contentCol_flushTight">
+								<div class="container">
+
+									<?php internetorg_vip_powered_wpcom(); ?>
+
+								</div>
+							</div>
+
 						</div>
 
 						<?php get_template_part( 'template-parts/content', 'page-next-page' ); ?>
