@@ -9,7 +9,7 @@ Sections of content that introduce landing and story pages
     display: flex;
     box-sizing: border-box;
     width: 100%;
-    height: 200px;
+    min-height: 200px;
     padding: 126px 0 45px;
     position: relative;
     background: url("../media/images/icons/io-mark-bg.svg") no-repeat $CLR_GRAY_LIGHTER;
