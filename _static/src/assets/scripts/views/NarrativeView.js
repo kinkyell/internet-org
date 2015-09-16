@@ -376,6 +376,7 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
         this._updateIndicators(pos);
+        this._displayIndicators(pos);
         this._narrativeManager.gotoSection(this._position, pos).then(function(pos) {
             this._position = pos;
             eventHub.publish('Narrative:sectionChange', this._position);
