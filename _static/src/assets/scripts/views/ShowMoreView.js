@@ -5,6 +5,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var apiService = require('services/apiService');
     var tweenAsync = require('util/tweenAsync');
     var animationSpeeds = require('appConfig').animationSpeeds;
+    var eventHub = require('services/eventHub');
 
     /**
      * A view to load in more content
@@ -30,6 +31,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.setupHandlers = function() {
         this._handleTriggerClick = this._onTriggerClick.bind(this);
         this._handleContentLoad = this._onContentLoad.bind(this);
+        this._handleFilterChange = this._onFilterChange.bind(this);
         this.enableButton = this.enableButton.bind(this);
         this.disableButton = this.disableButton.bind(this);
     };
@@ -47,6 +49,8 @@ define(function(require, exports, module) { // jshint ignore:line
         this.targetEl = document.getElementById(targetId);
         this.contentType = this.element.getAttribute('data-src');
         this.contentArgs = this.element.getAttribute('data-args');
+        this.filterId = this.element.getAttribute('data-filter');
+        this.currentFilter = null;
         this.nextPage = 2;
     };
 
@@ -69,6 +73,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.onEnable = function() {
         this.$element.on('click', this._handleTriggerClick);
+        eventHub.subscribe('SelectView:change', this._handleFilterChange);
     };
 
     /**
@@ -79,6 +84,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.onDisable = function() {
         this.$element.off('click', this._handleTriggerClick);
+        eventHub.unsubscribe('SelectView:change', this._handleFilterChange);
     };
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -122,6 +128,22 @@ define(function(require, exports, module) { // jshint ignore:line
         });
     };
 
+    /**
+     * Handle filter change, refresh results
+     *
+     * @method _onFilterChange
+     * @param {String} html HTML string content
+     * @private
+     */
+    proto._onFilterChange = function(select) {
+        this._clearPosts();
+        this.nextPage = 1;
+        this.disableButton();
+        this._loadAddlContent(select.value)
+            .then(this._handleContentLoad)
+            .then(this.enableButton);
+    };
+
 
     //////////////////////////////////////////////////////////////////////////////////
     // HELPERS
@@ -136,10 +158,22 @@ define(function(require, exports, module) { // jshint ignore:line
      * @returns {Promise} content promise
      * @private
      */
-    proto._loadAddlContent = function() {
+    proto._loadAddlContent = function(year) {
+        year = parseInt(year, 10) || this.currentFilter;
         var currentPage = this.nextPage;
         this.nextPage++;
-        return apiService.getMoreContent(this.contentType, currentPage, this.contentArgs);
+        this.currentFilter = year;
+        return apiService.getMoreContent(this.contentType, currentPage, this.contentArgs, year);
+    };
+
+    /**
+     * Clear loaded posts
+     *
+     * @method _clearPosts
+     * @private
+     */
+    proto._clearPosts = function() {
+        this.targetEl.innerHTML = '';
     };
 
     /**

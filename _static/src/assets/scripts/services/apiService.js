@@ -120,13 +120,14 @@ define(function(require, exports, module) { // jshint ignore:line
          * @param {Number} page Page Number
          * @returns {Promise} represents value of html returned
          */
-        getMoreContent: function(contentType, page, args) {
+        getMoreContent: function(contentType, page, args, yearFilter) {
             var resultsPath = PATHS[contentType + 'Results'];
+            var filterSection = yearFilter ? 'year/' + yearFilter + '/' : '';
 
             if (contentType === 'search') {
                 return apiService.getSearchResults(args, page);
             }
-            return Promise.resolve($.get('/' + resultsPath + 'page/' + page)).then(function(res) {
+            return Promise.resolve($.get('/' + resultsPath + filterSection + 'page/' + page)).then(function(res) {
                 if (typeof res === 'string') {
                     res = JSON.parse(res);
                 }
