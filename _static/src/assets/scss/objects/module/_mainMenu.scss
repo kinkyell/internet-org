@@ -44,7 +44,7 @@
     display: flex;
     height: 100%;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .mainMenu-panel-primary > * {
@@ -59,7 +59,7 @@
 }
 
 .mainMenu-panel-primary > * > * {
-    /* Pulling in menu items to compensate for .topicLink:after height */ 
+    /* Pulling in menu items to compensate for .topicLink:after height */
     margin-bottom: -24px;
 }
 
