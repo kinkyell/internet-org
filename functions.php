@@ -840,14 +840,47 @@ function internetorg_get_media_image_url( $attachment_id = 0, $size = 'full' ) {
  */
 function internetorg_add_ajax_endpoints() {
 
-	/** AJAX search endpoint */
+	/** Add the ajax_search_term rewrite tag. */
 	add_rewrite_tag( '%ajax_search_term%', '(.+)' );
-	add_rewrite_rule( 'io-ajax-search/([^/]+)/page/?([0-9]{1,})/?$', 'index.php?ajax_search_term=$matches[1]&paged=$matches[2]', 'top' );
+
+	/** Add a rewrite rule to match ajax_search_term with paging param. */
+	add_rewrite_rule(
+		'io-ajax-search/([^/]+)/page/?([0-9]{1,})/?$',
+		'index.php?ajax_search_term=$matches[1]&paged=$matches[2]',
+		'top'
+	);
+
+	/** Add a rewrite rule to match ajax_search_term. */
 	add_rewrite_rule( 'io-ajax-search/([^/]+)/?$', 'index.php?ajax_search_term=$matches[1]', 'top' );
 
-	/** AJAX load more posts endpoint */
+	/** Add the ajax_post_type rewrite tag. */
 	add_rewrite_tag( '%ajax_post_type%', '(.+)' );
-	add_rewrite_rule( 'io-ajax-posts/([^/]+)/page/?([0-9]{1,})/?$', 'index.php?ajax_post_type=$matches[1]&paged=$matches[2]', 'top' );
+
+	/** Add the ajax_year rewrite tag. */
+	add_rewrite_tag( '%ajax_year%', '(/d{4})' );
+
+	/** Add a rewrite rule to match ajax_post_type with ajax_year and paging param. */
+	add_rewrite_rule(
+		'io-ajax-posts/([^/]+)/year/?([0-9]{4})/?page/?([0-9]{1,})/?$',
+		'index.php?ajax_post_type=$matches[1]&ajax_year=$matches[2]&paged=$matches[3]',
+		'top'
+	);
+
+	/** Add a rewrite rule to match ajax_post_type with ajax_year param. */
+	add_rewrite_rule(
+		'io-ajax-posts/([^/]+)/year/?([0-9]{4})/?$',
+		'index.php?ajax_post_type=$matches[1]&ajax_year=$matches[2]',
+		'top'
+	);
+
+	/** Add a rewrite rule to match ajax_post_type with paging param. */
+	add_rewrite_rule(
+		'io-ajax-posts/([^/]+)/page/?([0-9]{1,})/?$',
+		'index.php?ajax_post_type=$matches[1]&paged=$matches[2]',
+		'top'
+	);
+
+	/** Add a rewrite rule to match ajax_post_type. */
 	add_rewrite_rule( 'io-ajax-posts/([^/]+)/?$', 'index.php?ajax_post_type=$matches[1]', 'top' );
 }
 
@@ -867,6 +900,7 @@ add_action( 'init', 'internetorg_add_ajax_endpoints' );
 function internetorg_add_ajax_query_vars( $public_query_vars ) {
 	$public_query_vars[] = 'ajax_search_term';
 	$public_query_vars[] = 'ajax_post_type';
+	$public_query_vars[] = 'ajax_year';
 
 	return $public_query_vars;
 }
@@ -1010,6 +1044,26 @@ function internetorg_do_ajax_more_posts() {
 	}
 
 	/**
+	 * An array of WP_Query args.
+	 *
+	 * @var array $args
+	 */
+	$args = array(
+		'post_type' => $ajax_post_type,
+	);
+
+	/**
+	 * The year query var if present, else 0.
+	 *
+	 * @var int $ajax_year
+	 */
+	$ajax_year = absint( get_query_var( 'ajax_year' ) );
+
+	if ( ! empty( $ajax_year ) ) {
+		$args['year'] = $ajax_year;
+	}
+
+	/**
 	 * Pagination query var if present else 0.
 	 *
 	 * @var int $ajax_paged
@@ -1020,15 +1074,7 @@ function internetorg_do_ajax_more_posts() {
 		$ajax_paged = 1;
 	}
 
-	/**
-	 * An array of WP_Query args.
-	 *
-	 * @var array $args
-	 */
-	$args = array(
-		'post_type' => $ajax_post_type,
-		'paged'     => $ajax_paged,
-	);
+	$args['paged'] = $ajax_paged;
 
 	/**
 	 * A WP_Query for the specified "page" of post type archive results.
@@ -1588,3 +1634,89 @@ function internetorg_wrap_oembed_html($html, $url, $attr, $post_id) {
 	return '<div class="video">' . $html . '</div>';
 }
 add_filter('embed_oembed_html', 'internetorg_wrap_oembed_html', 99, 4);
+
+/**
+ * Retrieve a list of "years" that have posts.
+ *
+ * @uses wp_get_archives, preg_match_all, array_unique
+ *
+ * @return array An array of years, else empty array on failure.
+ */
+function internetorg_get_archives_years() {
+
+	/**
+	 * An array of arguments to pass to wp_get_archives.
+	 *
+	 * @link https://developer.wordpress.org/reference/functions/wp_get_archives/
+	 *
+	 * @var array $args
+	 */
+	$args = array(
+		'type'            => 'yearly',
+		'limit'           => '',
+		'format'          => 'custom',
+		'before'          => '',
+		'after'           => '',
+		'show_post_count' => false,
+		'echo'            => 0,
+		'order'           => 'DESC',
+	);
+
+	/**
+	 * A string of anchor "links" to yearly archives.
+	 *
+	 * @var string $archive_list
+	 */
+	$archive_list = wp_get_archives( $args );
+
+	if ( empty( $archive_list ) ) {
+		return array();
+	}
+
+	/**
+	 * An array of 4 digit matches representing years, else false on failure.
+	 *
+	 * @var array|bool $matches
+	 */
+	preg_match_all( '/\d{4}/', $archive_list, $matches );
+
+	if ( empty( $matches ) ) {
+		return array();
+	}
+
+	/**
+	 * Remove duplicates matches.
+	 */
+	$matches = array_unique( $matches[0] );
+
+	return $matches;
+}
+
+/**
+ * Print the "press filter" markup.
+ *
+ * @param array $years An array of "years." Optional. Defaults to result of internetorg_get_archives_years();
+ */
+function internetorg_the_press_filter( $years = array() ) {
+
+	if ( empty( $years ) ) {
+		$years = internetorg_get_archives_years();
+	}
+
+	if ( empty( $years ) ) {
+		echo '';
+	}
+
+	?>
+
+	<select id="press-filter" name="year" class="js-select select_inline">
+		<option value="post"><?php esc_html_e( 'All Posts', 'internetorg' ); ?></option>
+		<?php
+		foreach ( $years as $year ) {
+			echo '<option value="' . esc_attr( absint( $year ) ) . '">' . absint( $year ) . '</option>';
+		}
+		?>
+	</select>
+
+	<?php
+}

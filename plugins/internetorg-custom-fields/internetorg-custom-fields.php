@@ -95,8 +95,8 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 						'name'    => 'src',
 						'default_value' => 'page',
 						'options' => array(
-							'page' => 'Page, Post, or Story',
-							'custom' => 'Custom Link'
+							'page' => __('Page, Post, or Story'),
+							'custom' => __( 'Custom Link', 'internetorg' )
 							),
 						)
 					),
@@ -120,9 +120,9 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 					'theme' => new Fieldmanager_Select( array(
 						'label' => 'Select a Theme',
 						'options' => array(
-							'approach' => 'Approach',
-							'mission' => 'Mission',
-							'impact' => 'Impact'
+							'approach' => __( 'Approach', 'internetorg' ),
+							'mission' => __( 'Mission', 'internetorg' ),
+							'impact' => __( 'Impact', 'internetorg' )
 						)
 					) ),
 					'image'          => new Fieldmanager_Media( __( 'Background Image', 'internetorg' ) ),
@@ -141,7 +141,7 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 										'default_value' => 'page',
 										'options' => array(
 											'page' => __('Page, Post, or Story'),
-											'custom' => 'Custom Link'
+											'custom' => __( 'Custom Link', 'internetorg' )
 										),
 									)
 								),
