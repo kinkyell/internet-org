@@ -136,6 +136,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onFilterChange = function(select) {
+        if (select.id !== this.filterId) {
+            return;
+        }
         this._clearPosts();
         this.nextPage = 1;
         this.disableButton();
