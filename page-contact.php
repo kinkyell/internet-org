@@ -112,6 +112,11 @@ get_header();
 						</div>
 
 					</div><!-- /.contentCol -->
+					<div class="contentCol contentCol_flushTight">
+						<div class="container">
+							<?php internetorg_vip_powered_wpcom(); ?>
+						</div>
+					</div>
 				</div>
 
 

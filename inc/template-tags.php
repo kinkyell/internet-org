@@ -153,3 +153,21 @@ function internetorg_category_transient_flusher() {
 
 add_action( 'edit_category', 'internetorg_category_transient_flusher' );
 add_action( 'save_post', 'internetorg_category_transient_flusher' );
+
+/**
+ * Print the vip_powered_wpcom function, wrapped with our legal tag markup.
+ *
+ * @param string $class The classes to apply to the inner wrapper div. Defaults to "pwdByVip-txt pwdByVip-txt_left".
+ */
+function internetorg_vip_powered_wpcom( $class = 'pwdByVip-txt pwdByVip-txt_left' ) {
+	?>
+
+	<legal class="pwdByVip">
+		<div class="<?php echo esc_attr( $class ); ?>">
+			<?php printf( esc_html__( 'Facebook © %1$s', 'internetorg' ), date( 'Y' ) ); ?>
+			<?php echo wp_kses_data( vip_powered_wpcom() ); ?>
+		</div>
+	</legal>
+
+	<?php
+}
