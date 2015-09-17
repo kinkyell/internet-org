@@ -30,10 +30,10 @@ Layout for padded columns of content.
 
 @include breakpoint(MD) {
 	.contentCol {
-		padding: 80px 0;
+		padding: $SPACE_x5 0;
 	}
 	.contentCol_flush {
-		padding: 0 0 80px 0;
+		padding: 0 0 $SPACE_x5 0;
 	}
 	.contentCol_flush + .contentCol {
 		padding-top: 0;

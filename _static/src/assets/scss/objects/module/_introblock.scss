@@ -5,8 +5,7 @@ Sections of content that introduce landing and story pages
 ------------------------------------------------------------------------ */
 
 .introBlock {
-    display: table; // fallback
-    display: flex;
+    display: block;
     box-sizing: border-box;
     width: 100%;
     min-height: 200px;
@@ -71,6 +70,8 @@ Sections of content that introduce landing and story pages
 
 @include breakpoint(MD) {
     .introBlock {
+        display: table; // fallback
+        display: flex;
         height: 620px;
         padding-top: 45px;
         padding: 126px 0 45px;
