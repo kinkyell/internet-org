@@ -79,7 +79,7 @@ define(function(require, exports, module) { // jshint ignore:line
             if (displayText) {
                 $textWrap.html(displayText);
             } else {
-                $textWrap.text(el.innerText);
+                $textWrap.text(el.innerText || el.textContent);
             }
 
             if (el === this._getSelected()) {
@@ -193,6 +193,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._onTriggerClick = function(event) {
         var openKey = event.keyCode === 32 || event.keyCode === 38 || event.keyCode === 40;
+        event.preventDefault();
 
         if (
             breakpointManager.isMobile ||
@@ -203,6 +204,7 @@ define(function(require, exports, module) { // jshint ignore:line
         }
 
         event.preventDefault();
+
         this._toggleMenu();
     };
 
@@ -222,7 +224,8 @@ define(function(require, exports, module) { // jshint ignore:line
             .off('click', this._handleBodyClick)
             .off('keydown', this._handleBodyKey);
 
-        this.element.focus();
+        //TODO: find a way to add focus without opening menu in FF
+        // this.element.focus();
     };
 
     /**
@@ -346,7 +349,7 @@ define(function(require, exports, module) { // jshint ignore:line
         if (displayText) {
             this.$label.html(displayText);
         } else {
-            this.$label.text(option.innerText);
+            this.$label.text(option.innerText || option.textContent);
         }
     };
 
