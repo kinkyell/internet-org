@@ -162,12 +162,12 @@ add_action( 'save_post', 'internetorg_category_transient_flusher' );
 function internetorg_vip_powered_wpcom( $class = 'pwdByVip-txt pwdByVip-txt_left' ) {
 	?>
 
-	<legal class="pwdByVip">
+	<small class="pwdByVip">
 		<div class="<?php echo esc_attr( $class ); ?>">
-			<?php printf( esc_html__( 'Facebook © %1$s', 'internetorg' ), date( 'Y' ) ); ?>
+			<?php printf( esc_html__( 'Facebook &copy; %1$s', 'internetorg' ), date( 'Y' ) ); ?>
 			<?php echo wp_kses_data( vip_powered_wpcom() ); ?>
 		</div>
-	</legal>
+	</small>
 
 	<?php
 }

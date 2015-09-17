@@ -807,7 +807,7 @@ function internetorg_is_internal_url( $url ) {
  *
  * @return string The URL of the image attachment or empty string on failure.
  */
-function internetorg_get_media_image_url( $attachment_id = 0, $size = 'full' ) {
+function internetorg_get_media_image_url( $attachment_id = 0, $size = 'panel-image' ) {
 
 	$attachment_id = absint( $attachment_id );
 
@@ -986,8 +986,8 @@ function internetorg_do_ajax_search() {
 		 * @var string $post_thumbnail
 		 */
 		$post_thumbnail = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'listing-image' );
-		$panel_image = (wp_get_attachment_url(get_post_thumbnail_id( get_the_ID() ), 'panel-image'))
-			?  wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ), 'panel-image' )
+		$panel_image = (internetorg_get_media_image_url(get_post_thumbnail_id( get_the_ID() ), 'panel-image'))
+			?  internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'panel-image' )
 			: '';
 		$mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type(get_the_ID()), get_the_ID()) );
 
