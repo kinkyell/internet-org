@@ -19,7 +19,7 @@ if ( ! empty( $after_title_custom_fields['Subtitle'] ) ) {
 	<div class="narrative-section">
 		<?php if ( has_post_thumbnail() ) : ?>
 			<div class="narrative-section-slides">
-				<div class="narrative-section-slides-item" style="background-image: url('<?php echo esc_attr( wp_get_attachment_url( get_post_thumbnail_id() ) ); ?>')"></div>
+				<div class="narrative-section-slides-item" style="background-image: url('<?php echo esc_attr( internetorg_get_media_image_url( get_post_thumbnail_id() ) ); ?>')"></div>
 			</div>
 		<?php endif; ?>
 		<div class="narrative-section-bd">

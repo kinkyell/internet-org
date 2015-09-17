@@ -8,16 +8,17 @@
 
 get_header();
 
-$home_background_image_url = '';
+if ( ! has_post_thumbnail( get_the_ID() ) ) {
+	$home_bg_url = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'panel-image' );
+} else {
+	$home_bg_url = '';
+}
 
 ?>
 
 <div class="viewWindow viewWindow_flush js-viewWindow" id="main-content" role="main" data-route="<?php echo esc_url( home_url( '/' ) ); ?>" data-type="home">
 <?php while ( have_posts() ) : the_post(); ?>
 	<?php
-	if ( has_post_thumbnail() ) {
-		$home_background_image_url = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'panel-image' );
-	}
 
 	// Pull the custom fields and parse for placement.
 	$custom_fields					   = get_post_meta( get_the_ID(), 'home-content-section', false );
@@ -46,20 +47,20 @@ $home_background_image_url = '';
 					<div class="narrativeDT">
 					<?php if ( ! empty( $custom_fields ) ) : ?>
 						<ul class="narrativeDT-sections">
-							<li class="narrativeDT-sections-item" data-feature="<?php echo esc_url( $home_background_image_url ); ?>">
+							<li class="narrativeDT-sections-item" data-feature="<?php echo esc_url( $home_bg_url ); ?>">
 						<?php foreach ( $custom_fields as $group ) : ?>
 							<?php if ( ! empty( $group ) ) : ?>
 								<?php foreach ( $group as $fieldset ) : ?>
 
 									<?php if ( ! empty( $fieldset['call-to-action'] ) ) : ?>
-										<li class="narrativeDT-sections-item" data-feature="<?php echo esc_url( ( ! empty( $fieldset['call-to-action'][0] ) ? wp_get_attachment_url( $fieldset['call-to-action'][0]['image'], 'panel-image' ) : ''	 ) ); ?>">
+										<li class="narrativeDT-sections-item" data-feature="<?php echo esc_url( ( ! empty( $fieldset['call-to-action'][0] ) ? internetorg_get_media_image_url( $fieldset['call-to-action'][0]['image'], 'panel-image' ) : ''	 ) ); ?>">
 
 										<?php if ( count( $fieldset['call-to-action'] ) > 1 ) : ?>
 											<ul>
 											<?php for ( $i = 1; $i < count( $fieldset['call-to-action'] ); ++$i ) : ?>
 												<?php $cta = $fieldset['call-to-action'][ $i ]; ?>
 												<?php if ( ! empty( $cta['image'] ) ) :
-													$imgUrl = wp_get_attachment_url( $cta['image'], 'panel-image' ); ?>
+													$imgUrl = internetorg_get_media_image_url( $cta['image'], 'panel-image' ); ?>
 
 												<li data-feature="<?php echo esc_url( $imgUrl ); ?>">
 													<?php if ( ! empty( $cta['link'] ) ) : ?>
@@ -75,8 +76,8 @@ $home_background_image_url = '';
 															$url = esc_url( get_the_permalink( $cta['link_src'] ) );
 															$title = esc_attr( get_the_title( $cta['link_src'] ) );
 															$desc = wp_kses_post( get_post_field( 'post_excerpt', $cta['link_src' ]) );
-															$img = (wp_get_attachment_url(get_post_thumbnail_id( $cta['link_src' ] ), 'panel-image'))
-																?  wp_get_attachment_url( get_post_thumbnail_id( $cta['link_src' ] ), 'panel-image' )
+															$img = (internetorg_get_media_image_url(get_post_thumbnail_id( $cta['link_src' ] ), 'panel-image'))
+																?  internetorg_get_media_image_url( get_post_thumbnail_id( $cta['link_src' ] ), 'panel-image' )
 																: '';
 															$mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type($cta['link_src' ]), $cta['link_src' ]) );
 															if(get_post_type($cta['link_src']) === 'post'){
@@ -86,8 +87,8 @@ $home_background_image_url = '';
 															$url = esc_url( $cta['link'] );
 															$title = esc_attr( $cta['title'] );
 															$desc = esc_attr( strip_tags( nl2br( $cta['text'] ) ) );
-															$img =  ( ! empty( $cf_content_section['call-to-action'][0] ) ? wp_get_attachment_url( $cf_content_section['call-to-action'][0]['image'], 'panel-image' ) : ''  );
-															$mobile_image = esc_url( ( ! empty( $cf_content_section['call-to-action'][0] ) ? wp_get_attachment_url( $cf_content_section['call-to-action'][0]['image'], 'inline-image' ) : ''  ) );
+															$img =  ( ! empty( $cf_content_section['call-to-action'][0] ) ? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'panel-image' ) : ''  );
+															$mobile_image = esc_url( ( ! empty( $cf_content_section['call-to-action'][0] ) ? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'inline-image' ) : ''  ) );
 														}
 
 
@@ -166,8 +167,8 @@ $home_background_image_url = '';
 																$url = esc_url( get_the_permalink( $cf_content_section['url-src'] ) );
 																$title = esc_attr( get_the_title( $cf_content_section['url-src'] ) );
 																$desc = wp_kses_post( get_post_field( 'post_excerpt', $cf_content_section['url-src' ]) );
-																$img = (wp_get_attachment_url(get_post_thumbnail_id($cf_content_section['url-src']), 'panel-image'))
-																		?  wp_get_attachment_url(get_post_thumbnail_id($cf_content_section['url-src']), 'panel-image')
+																$img = (internetorg_get_media_image_url(get_post_thumbnail_id($cf_content_section['url-src']), 'panel-image'))
+																		?  internetorg_get_media_image_url(get_post_thumbnail_id($cf_content_section['url-src']), 'panel-image')
 																		: '';
 																$mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type($cf_content_section['url-src']), $cf_content_section['url-src']) );
 
@@ -175,8 +176,8 @@ $home_background_image_url = '';
 																$url = '/' . esc_attr($cf_content_section['slug']);
 																$title = esc_attr( $cf_content_section['name'] );
 																$desc = esc_attr( strip_tags( nl2br( $cf_content_section['content'] ) ) );
-																$img =  ( ! empty( $cf_content_section['call-to-action'][0] ) ? wp_get_attachment_url( $cf_content_section['call-to-action'][0]['image'], 'panel-image' ) : ''  );
-																$mobile_image = esc_url( ( ! empty( $cf_content_section['call-to-action'][0] ) ? wp_get_attachment_url( $cf_content_section['call-to-action'][0]['image'], 'inline-image' ) : ''  ) );
+																$img =  ( ! empty( $cf_content_section['call-to-action'][0] ) ? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'panel-image' ) : ''  );
+																$mobile_image = esc_url( ( ! empty( $cf_content_section['call-to-action'][0] ) ? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'inline-image' ) : ''  ) );
 															}
 
 															$theme =  (!empty($cf_content_section['theme']) )
@@ -226,7 +227,7 @@ $home_background_image_url = '';
 					<div class="narrative">
 						<div class="narrative-section">
 							<div class="narrative-section-slides">
-								<div class="narrative-section-slides-item" style="background-image: url('<?php echo esc_attr( $home_background_image_url ); ?>')"></div>
+								<div class="narrative-section-slides-item" style="background-image: url('<?php echo esc_attr( $home_bg_url ); ?>')"></div>
 							</div>
 							<div class="narrative-section-bd narrative-section-bd_low">
 								<div class="container container_wide">
@@ -260,7 +261,7 @@ $home_background_image_url = '';
 														if ( empty( $data_img ) ) {
 															$data_img = $cta['image'];
 														} ?>
-														<div class="narrative-section-slides-item" style="background-image: url('<?php echo esc_url( wp_get_attachment_url( $cta['image'], 'panel-image' ) ); ?>')">
+														<div class="narrative-section-slides-item" style="background-image: url('<?php echo esc_url( internetorg_get_media_image_url( $cta['image'], 'panel-image' ) ); ?>')">
 														<?php if ( ! empty( $cta['link'] ) ) : ?>
 															<div class="narrative-section-slides-item-inner">
 																<?php
@@ -276,8 +277,8 @@ $home_background_image_url = '';
 																	$url = esc_url( get_the_permalink( $cta['link_src'] ) );
 																	$title = esc_attr( get_the_title( $cta['link_src'] ) );
 																	$desc = wp_kses_post( get_post_field( 'post_excerpt', $cta['link_src' ]) );
-																	$img = (wp_get_attachment_url(get_post_thumbnail_id( $cta['link_src' ] ), 'panel-image'))
-																		?  wp_get_attachment_url( get_post_thumbnail_id( $cta['link_src' ] ), 'panel-image' )
+																	$img = (internetorg_get_media_image_url(get_post_thumbnail_id( $cta['link_src' ] ), 'panel-image'))
+																		?  internetorg_get_media_image_url( get_post_thumbnail_id( $cta['link_src' ] ), 'panel-image' )
 																		: '';
 																	$mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type($cta['link_src' ]), $cta['link_src' ]) );
 
@@ -285,8 +286,8 @@ $home_background_image_url = '';
 																	$url = esc_url( $cta['link'] );
 																	$title = esc_attr( $cta['title'] );
 																	$desc = esc_attr( strip_tags( nl2br( $cta['text'] ) ) );
-																	$img =  ( ! empty( $cf_content_section['call-to-action'][0] ) ? wp_get_attachment_url( $cf_content_section['call-to-action'][0]['image'], 'panel-image' ) : ''  );
-																	$mobile_image = esc_url( ( ! empty( $cf_content_section['call-to-action'][0] ) ? wp_get_attachment_url( $cf_content_section['call-to-action'][0]['image'], 'inline-image' ) : ''  ) );
+																	$img =  ( ! empty( $cf_content_section['call-to-action'][0] ) ? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'panel-image' ) : ''  );
+																	$mobile_image = esc_url( ( ! empty( $cf_content_section['call-to-action'][0] ) ? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'inline-image' ) : ''  ) );
 																}
 																if(get_post_type($cta['link_src']) === 'post'){
 																	$social_attr = 'data-social="true"';
@@ -343,8 +344,8 @@ $home_background_image_url = '';
 													$url = esc_url( get_the_permalink( $cf_content_section['url-src'] ) );
 													$title = esc_attr( get_the_title( $cf_content_section['url-src'] ) );
 													$desc = wp_kses_post( get_post_field( 'post_excerpt', $cf_content_section['url-src' ]) );
-													$img = (wp_get_attachment_url(get_post_thumbnail_id($cf_content_section['url-src']), 'panel-image'))
-														?  wp_get_attachment_url(get_post_thumbnail_id($cf_content_section['url-src']), 'panel-image')
+													$img = (internetorg_get_media_image_url(get_post_thumbnail_id($cf_content_section['url-src']), 'panel-image'))
+														?  internetorg_get_media_image_url(get_post_thumbnail_id($cf_content_section['url-src']), 'panel-image')
 														: '';
 													$mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type($cf_content_section['url-src']), $cf_content_section['url-src']) );
 
@@ -352,8 +353,8 @@ $home_background_image_url = '';
 													$url = '/' . esc_attr($cf_content_section['slug']);
 													$title = esc_attr( $cf_content_section['name'] );
 													$desc = esc_attr( strip_tags( nl2br( $cf_content_section['content'] ) ) );
-													$img =  ( ! empty( $cf_content_section['call-to-action'][0] ) ? wp_get_attachment_url( $cf_content_section['call-to-action'][0]['image'], 'panel-image' ) : ''  );
-													$mobile_image = esc_url( ( ! empty( $cf_content_section['call-to-action'][0] ) ? wp_get_attachment_url( $cf_content_section['call-to-action'][0]['image'], 'inline-image' ) : ''  ) );
+													$img =  ( ! empty( $cf_content_section['call-to-action'][0] ) ? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'panel-image' ) : ''  );
+													$mobile_image = esc_url( ( ! empty( $cf_content_section['call-to-action'][0] ) ? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'inline-image' ) : ''  ) );
 												}
 
 												$theme =  (!empty($cf_content_section['theme']) )
@@ -425,7 +426,7 @@ $home_background_image_url = '';
 	</div>
 	<div class="viewWindow-panel viewWindow-panel_feature">
 		<div class="viewWindow-panel-content">
-			<div class="viewWindow-panel-content-inner" style="background-image: url('<?php echo esc_attr( $home_background_image_url ); ?>');"></div>
+			<div class="viewWindow-panel-content-inner" style="background-image: url('<?php echo esc_attr( $home_bg_url ); ?>');"></div>
 		</div>
 	</div>
 	<div class="viewWindow-panel viewWindow-panel_story">
