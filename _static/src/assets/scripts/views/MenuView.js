@@ -110,6 +110,10 @@ define(function(require, exports, module) { // jshint ignore:line
         var wrapperOpts = {
             onComplete: function() {
                 this.isAnimating = false;
+                // setTimeout(function() {
+                //     this.element.removeAttribute('style');
+                //     this.$element.css('min-height', $window.height());
+                // }.bind(this), 1000);
             },
             callbackScope: this
         };
@@ -216,8 +220,12 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$sliders.each(function(idx, el) {
             Tween.from(el, SPEEDS.SLIDERS_IN, {
                 onComplete: function() {
-                    if (idx === this.$sliders.length - 1) {
+                    var isIE = (document.all && !window.atob) || window.navigator.msPointerEnabled;
+                    // IE bug fix
+                    if (idx === this.$sliders.length - 1 && isIE) {
                         document.querySelector('.mainMenu').style.transform = 'scale(1)';
+                    } else {
+                        document.querySelector('.mainMenu').style.transform = null;
                     }
                 },
                 callbackScope: this,
