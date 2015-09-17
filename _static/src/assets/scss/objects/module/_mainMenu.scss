@@ -4,7 +4,7 @@
 .mainMenu {
     width: 100%;
     height: 100%;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     z-index: $Z-mainMenu;
@@ -37,6 +37,9 @@
     border-bottom: 1px solid rgba(109, 110, 100, 0.2);
     top: 0;
     bottom: auto;
+    position: fixed;
+    z-index: 1;
+    background: #f1efe7;
 }
 
 .mainMenu-panel-primary {

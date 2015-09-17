@@ -986,6 +986,10 @@ function internetorg_do_ajax_search() {
 		 * @var string $post_thumbnail
 		 */
 		$post_thumbnail = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'listing-image' );
+		$panel_image = (wp_get_attachment_url(get_post_thumbnail_id( get_the_ID() ), 'panel-image'))
+			?  wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ), 'panel-image' )
+			: '';
+		$mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type(get_the_ID()), get_the_ID()) );
 
 		$data['posts'][] = array(
 			'ID'           => get_the_ID(),
@@ -993,6 +997,8 @@ function internetorg_do_ajax_search() {
 			'post_excerpt' => get_the_excerpt(),
 			'permalink'    => get_the_permalink(),
 			'post_thumbnail' => $post_thumbnail,
+			'mobile_image' => $mobile_image,
+			'panel_image' => $panel_image,
 			'post_type' => get_post_type(),
 			'post_date' => get_the_date('')
 		);

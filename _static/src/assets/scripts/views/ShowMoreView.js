@@ -123,6 +123,7 @@ define(function(require, exports, module) { // jshint ignore:line
             height: 0,
             opacity: 0
         }).then(function() {
+            newContent.style.height = 'auto';
             // return if it's the last page
             return !res.hasNextPage;
         });
