@@ -96,7 +96,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 * @type String
 	 * @final
 	 */
-	SETTINGS.COPYRIGHT_STRING = 'PUT STRING IN HERE';
+	SETTINGS.COPYRIGHT_STRING = '<?php internetorg_vip_powered_wpcom(); ?>';
 
 	/**
 	 * routes for static and WP endpoints
