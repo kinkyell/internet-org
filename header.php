@@ -32,6 +32,8 @@
 
 <body <?php body_class(); ?>>
 
+		<a href="#main-content" class="u-isVisuallyHidden">Skip to main content</a>
+
 		<!-- header -->
 		<div class="header js-headerView" role="banner">
 			<?php get_template_part( 'template-parts/header', 'logo' ); ?>

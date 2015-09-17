@@ -12,7 +12,7 @@ $home_background_image_url = '';
 
 ?>
 
-<div class="viewWindow viewWindow_flush js-viewWindow" role="main" data-route="<?php echo esc_url( home_url( '/' ) ); ?>" data-type="home">
+<div class="viewWindow viewWindow_flush js-viewWindow" id="main-content" role="main" data-route="<?php echo esc_url( home_url( '/' ) ); ?>" data-type="home">
 <?php while ( have_posts() ) : the_post(); ?>
 	<?php
 	if ( has_post_thumbnail() ) {

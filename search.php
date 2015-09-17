@@ -10,7 +10,7 @@ global $wp_query;
 
 get_header(); ?>
 
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault" role="main" data-route="<?php echo esc_url( get_search_link() ); ?>" data-type="search" data-title="Search">
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php echo esc_url( get_search_link() ); ?>" data-type="search" data-title="Search">
 
 
 		<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
