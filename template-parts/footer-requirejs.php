@@ -90,6 +90,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	SETTINGS.SEARCH_PATH = 'io-ajax-search/';
 
 	/**
+	 * Powered by logo string
+	 *
+	 * @property COPYRIGHT_STRING
+	 * @type String
+	 * @final
+	 */
+	SETTINGS.COPYRIGHT_STRING = 'PUT STRING IN HERE';
+
+	/**
 	 * routes for static and WP endpoints
 	 *
 	 * @property ROUTES
