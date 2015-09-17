@@ -193,7 +193,6 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._onTriggerClick = function(event) {
         var openKey = event.keyCode === 32 || event.keyCode === 38 || event.keyCode === 40;
-        event.preventDefault();
 
         if (
             breakpointManager.isMobile ||
