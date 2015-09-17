@@ -8,7 +8,7 @@
 
 get_header();
 
-if ( ! has_post_thumbnail( get_the_ID() ) ) {
+if ( has_post_thumbnail( get_the_ID() ) ) {
 	$home_bg_url = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'panel-image' );
 } else {
 	$home_bg_url = '';
