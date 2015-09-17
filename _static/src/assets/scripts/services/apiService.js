@@ -104,7 +104,10 @@ define(function(require, exports, module) { // jshint ignore:line
                             url: result.permalink,
                             type: result.post_type,
                             date: result.post_date,
-                            isPost: result.post_type === 'post'
+                            image: result.panel_image,
+                            mobileImage: result.mobile_image,
+                            isPost: result.post_type === 'post',
+                            isStory: result.post_type === 'io_story'
                         });
                     }).join('')
                 };

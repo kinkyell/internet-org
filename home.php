@@ -104,9 +104,13 @@ $archives_years = internetorg_get_archives_years();
 									</div>
 								</div>
 							</div>
+							<div class="footBox-ft">
+								<div class="container">
+									<?php internetorg_vip_powered_wpcom( 'pwdByVip-txt' ); ?>
+								</div>
+							</div>
 						</div>
 					</div>
-
 
 				</div>
 			</div>
