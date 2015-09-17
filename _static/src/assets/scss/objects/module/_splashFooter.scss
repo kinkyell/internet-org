@@ -24,16 +24,16 @@
         @include unContain();
     }
 
-    .splashFooter:before {
-        content: "";
-        display: inline-block;
-        height: 4px;
-        width: 40px;
-        position: absolute;
-        top: 32px;
-        text-align: center;
-        background-color: $CLR_ACCENT;
-    }
+    // .splashFooter:before {
+    //     content: "";
+    //     display: inline-block;
+    //     height: 4px;
+    //     width: 40px;
+    //     position: absolute;
+    //     top: 32px;
+    //     text-align: center;
+    //     background-color: $CLR_ACCENT;
+    // }
 }
 
 @media (max-height: 480px) {

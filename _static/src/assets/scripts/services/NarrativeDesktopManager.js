@@ -7,7 +7,6 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     var $ = require('jquery');
-    var eventHub = require('services/eventHub');
     var AppConfig = require('appConfig');
     var Timeline = require('gsap-timeline');
     var ViewWindow = require('services/viewWindow');
@@ -145,88 +144,138 @@ define(function(require, exports, module) { // jshint ignore:line
             ease: EASE[easeDirection]
         };
 
-        //  transition 01
-        ///////////////////////
-        tl.fromTo(
-            this._$transformBlock,
-            SECTION_DURATION,
-            { y: '0px' },
-            { y: '-90px', ease: EASE[easeDirection] });
-
         tl.fromTo(
             this._$transformBlockPre.eq(0),
             SECTION_DURATION,
-            { opacity: 1, },
-            { opacity: 0, ease: EASE[easeDirection] },
-            '-=' + SECTION_DURATION);
+            { opacity: 1, y: '0px' },
+            { opacity: 0, y: '-90px', ease: EASE[easeDirection] });
 
         tl.fromTo(
             this._$transformBlockPost.eq(0),
             SECTION_DURATION,
-            postIn[0],
-            postIn[1],
+            { opacity: 1, y: 0 },
+            { opacity: 0, y: '-90px', ease: EASE[easeDirection] },
             '-=' + SECTION_DURATION);
 
-        //  transition 02
-        ///////////////////////
-        tl.to(
-            this._$transformBlockPost.eq(0),
+        tl.fromTo(
+            this._$transformBlockPre.eq(1),
             SECTION_DURATION,
-            postOut);
+            { opacity: 0, y: '90px' },
+            { opacity: 1, y: '0px', ease: EASE[easeDirection] },
+            '-=' + SECTION_DURATION);
 
         tl.fromTo(
             this._$transformBlockPost.eq(1),
             SECTION_DURATION,
-            postIn[0],
-            postIn[1],
+            { opacity: 0, y: '90px' },
+            { opacity: 1, y: '0px', ease: EASE[easeDirection] },
+            '-=' + SECTION_DURATION);
+
+        tl.fromTo(
+            $('.transformBlock-bar'),
+            SECTION_DURATION,
+            { 'background-color': '#ffcc02'},
+            { 'background-color': '#9d25a0'},
+            '-=' + SECTION_DURATION);
+
+
+        //  transition 02
+        ///////////////////////
+        tl.to(
+            this._$transformBlockPre.eq(1),
+            SECTION_DURATION,
+            { opacity: 0, ease: EASE[easeDirection] });
+
+        tl.to(
+            this._$transformBlockPost.eq(1),
+            SECTION_DURATION,
+            { opacity: 0, y: '-90px', ease: EASE[easeDirection] },
+            '-=' + SECTION_DURATION);
+
+        tl.fromTo(
+            this._$transformBlockPre.eq(2),
+            SECTION_DURATION,
+            { opacity: 0 },
+            { opacity: 1, ease: EASE[easeDirection] },
+            '-=' + SECTION_DURATION);
+
+        tl.fromTo(
+            this._$transformBlockPost.eq(2),
+            SECTION_DURATION,
+            { opacity: 0, y: '90px' },
+            { opacity: 1, y: '0px', ease: EASE[easeDirection] },
+            '-=' + SECTION_DURATION);
+
+        tl.to(
+            $('.transformBlock-bar'),
+            SECTION_DURATION,
+            { 'background-color': '#fa5cb6'},
             '-=' + SECTION_DURATION);
 
         //  transition 03
         ///////////////////////
         tl.to(
-            this._$transformBlockPost.eq(1),
+            this._$transformBlockPre.eq(2),
             SECTION_DURATION,
-            postOut);
+            { opacity: 0, ease: EASE[easeDirection] });
 
-        tl.fromTo(
+        tl.to(
             this._$transformBlockPost.eq(2),
             SECTION_DURATION,
-            postIn[0],
-            postIn[1],
+            { opacity: 0, y: '-90px', ease: EASE[easeDirection] },
             '-=' + SECTION_DURATION);
 
-        //  transition 04
-        ///////////////////////
-        tl.to(
-            this._$transformBlock,
-            SECTION_DURATION, {
-                y: '-=90px',
-                ease: EASE[easeDirection]
-            });
-
         tl.fromTo(
-            this._$transformBlockPre.eq(1),
-            SECTION_DURATION, {
-                opacity: 0,
-                y: '50px',
-                ease: EASE[easeDirection]
-            }, {
-                opacity: 1,
-                y: '0px',
-                ease: EASE[easeDirection]
-            }, '-=' + SECTION_DURATION);
-
-        tl.to(
-            this._$transformBlockPost.eq(2),
+            this._$transformBlockPre.eq(3),
             SECTION_DURATION,
-            postOut,
+            { opacity: 0 },
+            { opacity: 1, ease: EASE[easeDirection] },
             '-=' + SECTION_DURATION);
 
         tl.fromTo(
             this._$transformBlockPost.eq(3),
             SECTION_DURATION,
-            postIn[0],
-            postIn[1],
+            { opacity: 0, y: '90px' },
+            { opacity: 1, y: '0px', ease: EASE[easeDirection] },
+            '-=' + SECTION_DURATION);
+
+        tl.to(
+            $('.transformBlock-bar'),
+            SECTION_DURATION,
+            { 'background-color': '#ff6b00'},
+            '-=' + SECTION_DURATION);
+
+        //  transition 04
+        ///////////////////////
+        tl.to(
+            this._$transformBlockPre.eq(3),
+            SECTION_DURATION,
+            { opacity: 0, ease: EASE[easeDirection] });
+
+        tl.to(
+            this._$transformBlockPost.eq(3),
+            SECTION_DURATION,
+            { opacity: 0, y: '-90px', ease: EASE[easeDirection] },
+            '-=' + SECTION_DURATION);
+
+        tl.fromTo(
+            this._$transformBlockPre.eq(4),
+            SECTION_DURATION,
+            { opacity: 0, y: '90px' },
+            { opacity: 1, y: '0px', ease: EASE[easeDirection] },
+            '-=' + SECTION_DURATION);
+
+        tl.fromTo(
+            this._$transformBlockPost.eq(4),
+            SECTION_DURATION,
+            { opacity: 0, y: '90px' },
+            { opacity: 1, y: '0px', ease: EASE[easeDirection] },
+            '-=' + SECTION_DURATION);
+
+        tl.to(
+            $('.transformBlock-bar'),
+            SECTION_DURATION,
+            { 'background-color': '#ffcc02'},
             '-=' + SECTION_DURATION);
 
         var i = 0;
