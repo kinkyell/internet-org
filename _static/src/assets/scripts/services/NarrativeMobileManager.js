@@ -103,7 +103,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @method refresh
      * @public
      */
-    proto.refresh = function(position) {
+    proto.refresh = function(position, slidePos) {
         // reset css properties from previous timeline initialization
         TweenLite.set($('.narrative-section-bd'), { clearProps: 'transform' });
         TweenLite.set($('.statementBlock'), { clearProps: 'transform' });
@@ -119,6 +119,8 @@ define(function(require, exports, module) { // jshint ignore:line
             this.gotoSection(position, position + 1);
             this.gotoSection(position + 1, position);
         }
+
+        this.gotoSubSection(position, slidePos);
 
         $('body')[0].scrollTop = 0;
     };

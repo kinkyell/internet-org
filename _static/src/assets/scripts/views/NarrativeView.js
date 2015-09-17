@@ -285,7 +285,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onResize = function() {
-        this._narrativeManager.refresh(this._position);
+        this._narrativeManager.refresh(this._position, this._subPosition);
     };
 
     /**
