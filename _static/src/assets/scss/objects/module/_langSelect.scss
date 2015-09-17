@@ -88,9 +88,29 @@
     border-bottom: 2px solid $CLR_ACCENT;
 }
 
+/* inActive state */
+.langSelect_inActive > .langSelect-label {
+    @include remify(font-size, 10px);
+    cursor: default;
+    padding: 11px 20px 11px;
+}
+
+.langSelect_inActive >.langSelect-label:after {
+    content: none;
+}
+
 /* OPEN state */
 .langSelect.isOpen > .langSelect-menu {
     display: block;
+}
+
+@include breakpoint(MD) {
+    /* inActive state */
+    .langSelect_inActive > .langSelect-label {
+        @include remify(font-size, 13px);
+        cursor: default;
+        padding: 23px 20px;
+    }
 }
 
 /* Right to Left Language support */

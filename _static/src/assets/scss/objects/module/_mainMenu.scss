@@ -24,7 +24,6 @@
 }
 
 .mainMenu-panel-hd,
-.mainMenu-panel-secondary,
 .mainMenu-panel-lang {
     position: absolute;
     left: 0;
@@ -66,7 +65,8 @@
 .mainMenu-panel-secondary {
     padding: 0 8.8%;
     // bottom: 60px; Will need to reintroduce when language select is reintroduced in Phase 2
-    bottom: 0;
+    bottom: 18px;
+    position: relative;
 }
 
 @include breakpoint(MD) {
@@ -82,7 +82,8 @@
 
     .mainMenu-panel-secondary {
         // bottom: 100px; Will need to reintroduce when language select is reintroduced in Phase 2
-        bottom: 45px;
+        bottom: 59px;
+        position: absolute;
     }
 }
 
