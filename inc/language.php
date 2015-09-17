@@ -10,39 +10,61 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 	/**
 	 * Builds the language switcher needed for the FE of the site.
 	 *
+	 * @todo This is static placeholder for now at request of FED.
+	 * @todo Remove static and use bbl_get_switcher_links when Babble is actualy integrated.
+	 *
 	 * @return void
 	 */
 	function internetorg_language_switcher() {
 
-		if ( ! function_exists( 'bogo_language_switcher_links' ) ) {
+		if ( ! function_exists( 'bbl_get_switcher_links' ) ) {
+
+			?>
+
+			<div class="mainMenu-panel-lang">
+				<div class="langSelect langSelect_inActive">
+					<div class="langSelect-label"><?php esc_html_e( 'English', 'internetorg' ); ?></div>
+				</div>
+			</div>
+
+			<?php
+
 			return;
 		}
 
-		$list = bogo_language_switcher_links();
+		$list = bbl_get_switcher_links();
 
-		$selectedLang = null;
+		$selected_lang = null;
 
-		// Display the selector, NOTE: we are not caching here because each user will need their own selection.
+		// Select list of items, hidden from the user but recreated with css/js.
 		echo '<select onchange="document.location.href=this.options[this.selectedIndex].value;">';
 		foreach ( $list as $item ) {
-			if ( ! empty( $item ) ) {
-				echo '<option value="' . esc_url( $item['href'] ) . '">' . esc_html( $item['title'] ) . '</option>';
+			// Skip languages for which there is no translation.
+			if ( in_array( 'bbl-add', $item['classes'] ) ) {
+				continue;
+			}
+			if ( $item['active'] ) {
+				$selected_lang = $item;
+			}
+			if ( $item['href'] ) {
+				echo '<option value="' . esc_url( $item['href'] ) . '">' . esc_html( $item['lang']->display_name ) . '</option>';
 			}
 		}
 		echo '</select>';
 
+		// Display the current language to the user.
 		echo '<div class="langSelect-label">';
-		echo esc_html( ! empty( $selectedLang ) ? $selectedLang['title'] : '' );
+		echo esc_html( ! empty( $selected_lang ) ? $selected_lang['lang']->display_name : '' );
 		echo '</div>';
 
+		// Display list of available languages to the user (recreated select).
 		echo '<div class="langSelect-menu" style="height: auto;">';
 		foreach ( $list as $item ) {
 			if ( ! empty( $item ) ) {
-				echo '<div class="langSelect-menu-item"><span>' . esc_html( $item['native_name'] ) . '</span></div>';
+				echo '<div class="langSelect-menu-item"><span>' . esc_html( $item['lang']->display_name ) . '</span></div>';
 			}
 		}
 		echo '</div>';
-
 	}
 endif;
 

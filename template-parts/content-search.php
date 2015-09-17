@@ -9,8 +9,8 @@
 global $post;
 $type = (get_post_type(get_the_ID()) == 'io_story') ? 'panel' : 'titled';
 
-$img = (wp_get_attachment_url(get_post_thumbnail_id( get_the_ID() ), 'panel-image'))
-	?  wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ), 'panel-image' )
+$img = (internetorg_get_media_image_url(get_post_thumbnail_id( get_the_ID() ), 'panel-image'))
+	?  internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'panel-image' )
 	: '';
 $mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type(get_the_ID()), get_the_ID()) );
 $theme = (get_post_type(get_the_ID()) == 'io_story') ? 'approach' : '';

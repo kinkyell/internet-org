@@ -14,7 +14,7 @@ get_header();
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-<div class="viewWindow isShifted js-viewWindow js-stateDefault" role="main" data-route="<?php the_permalink(); ?>" data-type="titled" data-title="<?php the_title(); ?>" data-desc="<?php echo esc_attr( internetorg_get_the_subtitle( get_the_ID() ) ); ?>">
+<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php the_permalink(); ?>" data-type="titled" data-title="<?php the_title(); ?>" data-desc="<?php echo esc_attr( internetorg_get_the_subtitle( get_the_ID() ) ); ?>">
 
 	<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
 
@@ -92,8 +92,8 @@ get_header();
 										$url = esc_url( get_the_permalink( $cta['link_src'] ) );
 										$title = esc_attr( get_the_title( $cta['link_src'] ) );
 										$desc = wp_kses_post( get_post_field( 'post_excerpt', $cta['link_src' ]) );
-										$img = (wp_get_attachment_url(get_post_thumbnail_id( $cta['link_src' ] ), 'panel-image'))
-											?  wp_get_attachment_url( get_post_thumbnail_id( $cta['link_src' ] ), 'panel-image' )
+										$img = (internetorg_get_media_image_url(get_post_thumbnail_id( $cta['link_src' ] ), 'panel-image'))
+											?  internetorg_get_media_image_url( get_post_thumbnail_id( $cta['link_src' ] ), 'panel-image' )
 											: '';
 										$mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type($cta['link_src' ]), $cta['link_src' ]) );
 										if(get_post_type($cta['link_src']) === 'io_story') {
@@ -103,8 +103,8 @@ get_header();
 										$url = esc_url( $cta['link'] );
 										$title = esc_attr( $cta['title'] );
 										$desc = esc_attr( strip_tags( nl2br( $cta['text'] ) ) );
-										$img =  ( ! empty( $fieldset['call-to-action'][0] ) ? wp_get_attachment_url( $fieldset['call-to-action'][0]['image'], 'panel-image' ) : ''  );
-										$mobile_image = esc_url( ( ! empty( $fieldset['call-to-action'][0] ) ? wp_get_attachment_url($fieldset['call-to-action'][0]['image'], 'inline-image' ) : ''  ) );
+										$img =  ( ! empty( $fieldset['call-to-action'][0] ) ? internetorg_get_media_image_url( $fieldset['call-to-action'][0]['image'], 'panel-image' ) : ''  );
+										$mobile_image = esc_url( ( ! empty( $fieldset['call-to-action'][0] ) ? internetorg_get_media_image_url($fieldset['call-to-action'][0]['image'], 'inline-image' ) : ''  ) );
 									}
 									if(get_post_type($cta['link_src']) === 'post'){
 										$social_attr = 'data-social="true"';

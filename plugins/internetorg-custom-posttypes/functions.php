@@ -74,7 +74,7 @@ if ( ! function_exists( 'internetorg_get_content_widget_by_slug' ) ) :
 					if ( ! empty( $data ) ) {
 						foreach ( $data as $index => $item ) {
 							if ( ! empty( $item['image'] ) ) {
-								$data[ $index ]['image'] = wp_get_attachment_url( $item['image'] );
+								$data[ $index ]['image'] = internetorg_get_media_image_url( $item['image'] );
 							}
 						}
 					}
