@@ -178,6 +178,7 @@ define(function(require, exports, module) { // jshint ignore:line
         var idx = $(event.currentTarget).index();
         this.$element.children().removeAttr('selected');
         this.element.options[idx].setAttribute('selected', '');
+        this.element.selectedIndex = idx;
         this._render();
         eventHub.publish('SelectView:change', this.element, this._getSelected().value);
         this._toggleMenu();
