@@ -113,6 +113,11 @@ get_header();
 								</div>
 							</div>
 						</div>
+						<div class="footBox-ft">
+							<div class="container">
+								<?php internetorg_vip_powered_wpcom( 'pwdByVip-txt' ); ?>
+							</div>
+						</div>
 					</div>
 
 				</div>

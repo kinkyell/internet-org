@@ -61,15 +61,16 @@ get_header();
 							</div>
 						</div>
 
-
 						<div class="footBox">
 							<div class="container">
-
 								<?php get_template_part( 'template-parts/content', 'single-more' ); ?>
-
+							</div>
+							<div class="footBox-ft">
+								<div class="container">
+									<?php internetorg_vip_powered_wpcom( 'pwdByVip-txt' ); ?>
+								</div>
 							</div>
 						</div>
-
 
 					</div>
 				</div>

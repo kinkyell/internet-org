@@ -85,10 +85,51 @@ get_header();
 							<?php endif; ?>
 
 							<?php if ( ! empty( $fieldset['call-to-action'] ) ) : ?>
-								<?php foreach ( $fieldset['call-to-action'] as $cta ) : ?>
+								<?php foreach ( $fieldset['call-to-action'] as $cta ) :
+									$social_attr = '';
+									$type = 'titled';
+									if ($cta['cta_src'] === 'page' && absint($cta['link_src'])){
+										$url = esc_url( get_the_permalink( $cta['link_src'] ) );
+										$title = esc_attr( get_the_title( $cta['link_src'] ) );
+										$desc = wp_kses_post( get_post_field( 'post_excerpt', $cta['link_src' ]) );
+										$img = (wp_get_attachment_url(get_post_thumbnail_id( $cta['link_src' ] ), 'panel-image'))
+											?  wp_get_attachment_url( get_post_thumbnail_id( $cta['link_src' ] ), 'panel-image' )
+											: '';
+										$mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type($cta['link_src' ]), $cta['link_src' ]) );
+										if(get_post_type($cta['link_src']) === 'io_story') {
+											$type = 'panel';
+										}
+									}else {
+										$url = esc_url( $cta['link'] );
+										$title = esc_attr( $cta['title'] );
+										$desc = esc_attr( strip_tags( nl2br( $cta['text'] ) ) );
+										$img =  ( ! empty( $fieldset['call-to-action'][0] ) ? wp_get_attachment_url( $fieldset['call-to-action'][0]['image'], 'panel-image' ) : ''  );
+										$mobile_image = esc_url( ( ! empty( $fieldset['call-to-action'][0] ) ? wp_get_attachment_url($fieldset['call-to-action'][0]['image'], 'inline-image' ) : ''  ) );
+									}
+									if(get_post_type($cta['link_src']) === 'post'){
+										$social_attr = 'data-social="true"';
+									}
+									$theme =  (!empty($fieldset['theme']) )
+										? $fieldset['theme']
+										: $fieldset['slug'];
+									?>
 									<div class="feaure-cta">
-									<?php if ( ! empty( $cta['link'] ) ) : ?>
-										<a href="<?php echo esc_attr__( $cta['link'] ); ?>" class="link"><?php echo esc_html__( 'Learn More', 'internetorg' ); ?></a>
+									<?php if ( ! empty( $url ) ) : ?>
+										<a href="<?php echo $url; ?>"
+										   class="link js-stateLink"
+										   data-type="<?php esc_attr($type);?>"
+											<?php echo $social_attr; ?>
+										   data-theme="<?php echo esc_attr( strtolower( $theme ) ); ?>"
+										   data-title="<?php echo $title; ?>"
+										   data-desc="<?php echo $desc; ?>"
+											<?php if (is_string($mobile_image)): ?>
+												data-mobile-image="<?php echo esc_url( $mobile_image ); ?>"
+											<?php endif; ?>
+											<?php if (is_string($img)): ?>
+												data-image="<?php echo esc_url( $img ); ?>"
+											<?php endif; ?>>
+											<?php echo esc_html__( 'Learn More', 'internetorg' ); ?>
+										</a>
 									<?php endif; ?>
 									</div>
 								<?php endforeach; ?>
@@ -112,6 +153,11 @@ get_header();
 						</div>
 
 					</div><!-- /.contentCol -->
+					<div class="contentCol contentCol_flushTight">
+						<div class="container">
+							<?php internetorg_vip_powered_wpcom(); ?>
+						</div>
+					</div>
 				</div>
 
 
