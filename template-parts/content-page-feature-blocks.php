@@ -28,7 +28,7 @@ foreach ( $section_meta as $section_key => $section_fields ) :
 			<div class="hdg hdg_3"><?php echo esc_html( $section_fields['title'] ); ?></div>
 		</div>
 		<div class="feature-bd wysiwyg quarantine">
-			<?php echo apply_filters( 'the_content', wp_kses_post( $section_fields['content'] ) ); ?>
+			<?php echo wp_kses_post( apply_filters( 'the_content',  $section_fields['content'] ) ); ?>
 		</div>
 	</div>
 
