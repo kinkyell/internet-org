@@ -18,7 +18,7 @@
 
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php esc_attr_e( get_bloginfo( 'pingback_url' ) ); ?>">
-	<meta http-equiv="content-language" content="<?php esc_attr_e( get_bloginfo('language') ); ?>" />
+	<meta http-equiv="content-language" content="<?php esc_attr_e( get_bloginfo( 'language' ) ); ?>" />
 
 	<?php wp_head(); ?>
 
