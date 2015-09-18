@@ -36,7 +36,7 @@
     }
 }
 
-@media (max-height: 480px) {
+@media (max-height: 520px) {
     .splashFooter {
         @include verticalConstrain();
     }
@@ -68,5 +68,9 @@
     .splashFooter-section {
         width: 48%;
         float: left;
+    }
+
+    .splashFooter-section:nth-child(2n+3) {
+        clear: left;
     }
 }
