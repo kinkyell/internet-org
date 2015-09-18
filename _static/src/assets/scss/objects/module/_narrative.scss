@@ -70,7 +70,44 @@
     text-align: center;
 }
 
-@include breakpoint(SM) {
+// @include breakpoint(SM) {
+//
+//     //NOTE: Contextual selection used to clean up extension, styles apply only for
+//     //      large mobile viewports.
+//     .narrative {
+//         .hdg_1 {
+//             @include remify(font-size, 43px);
+//         }
+//
+//         .hdg_4 {
+//             @include remify(font-size, 24px);
+//         }
+//
+//         .hdg_heavy {
+//             @include remify(font-size, 19px);
+//         }
+//
+//         .bdcpy_narrative {
+//             @include remify(font-size, 25px);
+//         }
+//
+//         .link {
+//             @include remify(font-size, 15px);
+//         }
+//
+//         .statementBlock {
+//             margin-top: 60px;
+//         }
+//     }
+// }
+
+@include breakpoint(MD) {
+    .narrative {
+        display: none;
+    }
+}
+
+@media (min-width: 600px) and (min-height: 376px) {
 
     //NOTE: Contextual selection used to clean up extension, styles apply only for
     //      large mobile viewports.
@@ -101,8 +138,41 @@
     }
 }
 
-@include breakpoint(MD) {
-    .narrative {
-        display: none;
+@media (max-height: 480px) {
+    .narrative .statementBlock_end .statementBlock-bd {
+        height: 56%;
+    }
+}
+
+@media (max-height: 375px) {
+    .narrative .hdg_1 {
+        @include remify(font-size, 24px);
+    }
+
+	.narrative .hdg_heavy {
+        @include remify(font-size, 13px);
+    }
+
+	.narrative .bdcpy_narrative {
+        @include remify(font-size, 14px);
+    }
+
+    .narrative-section-bd {
+        min-height: 45%;
+        padding: 60px 0 0;
+    }
+
+    .narrative-section-bd_low {
+        min-height: 65%;
+    }
+
+    .narrative-section-slides-item-inner {
+        bottom: auto;
+        top: 160px;
+    }
+
+    .narrative .statementBlock_end .statementBlock-bd {
+        height: 65%;
+        padding: 18px 0 28px;
     }
 }
