@@ -25,7 +25,7 @@ if ( empty( $next_post ) && empty( $prev_post ) ) {
 			<div class="topicBlock">
 				<div class="topicBlock-hd">
 					<h2 class="hdg hdg_8 mix-hdg_bold">
-						<?php echo apply_filters( 'the_title', esc_html( $next_post->post_title ) ); ?>
+						<?php echo esc_html( apply_filters( 'the_title',  $next_post->post_title ) ); ?>
 					</h2>
 				</div>
 				<div class="topicBlock-bd">
@@ -35,7 +35,7 @@ if ( empty( $next_post ) && empty( $prev_post ) ) {
 				</div>
 				<div class="topicBlock-cta">
 					<a class="btn js-stateLink" href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>"
-					   data-title="<?php echo apply_filters( 'the_title', esc_attr( $next_post->post_title ) ); ?>"
+					   data-title="<?php echo esc_attr( apply_filters( 'the_title',  $next_post->post_title ) ); ?>"
 					   data-date="<?php echo esc_attr( get_the_date( '', $next_post->ID ) ); ?>"
 					   data-social="true"
 					   data-desc="<?php echo wp_kses_post( get_post_field( 'post_excerpt', $next_post->ID ) ); ?>"
@@ -52,7 +52,7 @@ if ( empty( $next_post ) && empty( $prev_post ) ) {
 			<div class="topicBlock">
 				<div class="topicBlock-hd">
 					<h2 class="hdg hdg_8 mix-hdg_bold">
-						<?php echo apply_filters( 'the_title', esc_html( $prev_post->post_title ) ); ?>
+						<?php echo  esc_html( apply_filters( 'the_title', $prev_post->post_title ) ); ?>
 					</h2>
 				</div>
 				<div class="topicBlock-bd">
@@ -63,7 +63,7 @@ if ( empty( $next_post ) && empty( $prev_post ) ) {
 				<div class="topicBlock-cta">
 					<a class="btn js-stateLink"
 					   href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>"
-					   data-title="<?php echo apply_filters( 'the_title', esc_attr( $prev_post->post_title ) ); ?>"
+					   data-title="<?php echo  esc_attr( apply_filters( 'the_title', $prev_post->post_title ) ); ?>"
 					   data-social="true"
 					   data-date="<?php echo esc_attr( get_the_date( '', $prev_post->ID ) ); ?>"
 					   data-desc="<?php echo wp_kses_post( get_post_field( 'post_excerpt', $prev_post->ID ) ); ?>"
