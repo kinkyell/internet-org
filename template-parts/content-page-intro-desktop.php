@@ -7,7 +7,7 @@
 
 $intro_block = internetorg_get_the_intro_block();
 
-if ( empty( $intro_block ) ) {
+if ( empty( $intro_block['intro_title'] ) && empty( $intro_block['intro_content'] ) )  {
 	return;
 }
 
