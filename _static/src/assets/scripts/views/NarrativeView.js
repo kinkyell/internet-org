@@ -122,6 +122,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._onMenuToggleHandler = this._onMenuToggle.bind(this);
         this._onTopScrollHandler = this._onTopScrollTrigger.bind(this);
         this._onKeyDownHandler = this._onKeyDown.bind(this);
+        this._onSectionLinkFocusHandler = this._onSectionLinkFocus.bind(this);
     };
 
     /**
@@ -143,6 +144,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$viewWindow = $('.viewWindow');
         this._$narrativeAdvance = $('.js-narrativeAdvance');
         this._$interactionPrompt = $('.interactionPrompt');
+        this._$narrativeDTLinks = $('.transformBlock a');
     };
 
     /**
@@ -161,6 +163,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$viewWindow = null;
         this._$narrativeAdvance = null;
         this._$interactionPrompt = null;
+        this._$narrativeDTLinks = null;
     };
 
     /**
@@ -230,8 +233,9 @@ define(function(require, exports, module) { // jshint ignore:line
         this._$narrativeAdvance.on('click', this._onClickAdvance.bind(this));
         this.$progress.on('click', '> *', this._onClickIndicatorHandler);
         eventHub.subscribe('Router:topScroll', this._onTopScrollHandler);
-
         $(document).on('keydown', this._onKeyDownHandler);
+
+        this._$narrativeDTLinks.on('focus', this._onSectionLinkFocusHandler);
     };
 
     /**
@@ -269,6 +273,19 @@ define(function(require, exports, module) { // jshint ignore:line
     //////////////////////////////////////////////////////////////////////////////////
     // EVENT HANDLERS
     //////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Focus handler for narrative section links
+     *
+     * @method _onSectionLinkFocus
+     * @private
+     */
+    proto._onSectionLinkFocus = function(event) {
+        var $link = $(event.currentTarget);
+        var $parent = $link.parents('.transformBlock-post-item');
+        var sectionPos = $parent.index() + 1; //accounting for the first section containing no links
+        this._changeSection(sectionPos);
+    }
 
     /**
      * Window resize event handler

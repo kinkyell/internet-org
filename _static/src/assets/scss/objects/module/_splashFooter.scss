@@ -69,4 +69,8 @@
         width: 48%;
         float: left;
     }
+
+    .splashFooter-section:nth-child(2n+3) {
+        clear: left;
+    }
 }
