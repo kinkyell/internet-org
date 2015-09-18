@@ -9,6 +9,11 @@
 get_header();
 
 if ( has_post_thumbnail( get_the_ID() ) ) {
+	/**
+	 * URL to the panel-image sized Featured Image, else empty string.
+	 *
+	 * @var string $home_bg_url
+	 */
 	$home_bg_url = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'panel-image' );
 } else {
 	$home_bg_url = '';
@@ -32,18 +37,24 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 			$custom_fields = get_post_meta( get_the_ID(), 'home-content-section', false );
 
 			/**
-			 * An array containing the requested internetorg_cntntwdgt WP_Post.
+			 * An array containing the requested io_ctntwdgt WP_Post.
 			 *
 			 * @var WP_Post[] $get_involved_content_widget
 			 */
 			$get_involved_content_widget = internetorg_get_content_widget_by_slug( 'home-get-involved' );
 
 			/**
-			 * An array of io_ctntwdgt Posts and associated meta, else null.
+			 * A WP_Post of type io_ctntwdgt, else null.
 			 *
 			 * @var null|WP_Post $get_involved_content_widget_post
 			 */
 			$get_involved_content_widget_post  = null;
+
+			/**
+			 * A string representing a panel-image associated with the io_ctntwdgt post, else null.
+			 *
+			 * @var null|string $get_involved_content_widget_image
+			 */
 			$get_involved_content_widget_image = null;
 
 			if ( ! empty( $get_involved_content_widget ) ) {
@@ -84,24 +95,35 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																		if ( internetorg_is_video_url( $cta['link'] ) ) {
 																			$js_class = 'js-videoModal';
 																		}
-																		$social_attr = '';
+																		$social_attr = 'false';
 																		if ( 'page' === $cta['cta_src'] && absint( $cta['link_src'] ) ) {
+
 																			$url          = esc_url( get_the_permalink( $cta['link_src'] ) );
+
 																			$title        = esc_attr( get_the_title( $cta['link_src'] ) );
+
 																			$desc         = wp_kses_post( get_post_field( 'post_excerpt', $cta['link_src'] ) );
+
 																			$img          = ( internetorg_get_media_image_url( get_post_thumbnail_id( $cta['link_src'] ), 'panel-image' ) )
 																				? internetorg_get_media_image_url( get_post_thumbnail_id( $cta['link_src'] ), 'panel-image' ) : '';
+
 																			$mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type( $cta['link_src'] ), $cta['link_src'] ) );
+
 																			if ( 'post' === get_post_type( $cta['link_src'] ) ) {
-																				$social_attr = 'data-social="true"';
+																				$social_attr = 'true';
 																			}
 																		} else {
+
 																			$url          = esc_url( $cta['link'] );
+
 																			$title        = esc_attr( $cta['title'] );
+
 																			$desc         = esc_attr( strip_tags( nl2br( $cta['text'] ) ) );
+
 																			$img          = ( ! empty( $cf_content_section['call-to-action'][0] )
 																				? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'panel-image' )
 																				: '' );
+
 																			$mobile_image = esc_url( ( ! empty( $cf_content_section['call-to-action'][0] )
 																				? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'inline-image' )
 																				: '' ) );
@@ -115,7 +137,8 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																		   class="tertiaryCta <?php echo esc_attr( $js_class ); ?>"
 																			<?php if ( ! internetorg_is_video_url( $cta['link'] ) ) : ?>
 																				data-type="titled"
-																				<?php echo esc_attr( $social_attr ); ?>
+																				data-date="<?php echo esc_attr( get_the_date() ); ?>"
+																				data-social="<?php echo esc_attr( $social_attr ); ?>"
 																				data-theme="<?php echo esc_attr( strtolower( $theme ) ); ?>"
 																				data-title="<?php echo esc_attr( $title ); ?>"
 																				data-desc="<?php echo esc_attr( $desc ); ?>"
@@ -291,7 +314,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																					$js_class = 'js-videoModal';
 																				}
 
-																				$social_attr = '';
+																				$social_attr = 'false';
 
 																				if ( 'page' === $cta['cta_src'] && absint( $cta['link_src'] ) ) {
 																					$url          = esc_url( get_the_permalink( $cta['link_src'] ) );
@@ -312,7 +335,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																						? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'inline-image' ) : '' ) );
 																				}
 																				if ( 'post' === get_post_type( $cta['link_src'] ) ) {
-																					$social_attr = 'data-social="true"';
+																					$social_attr = 'true';
 																				}
 																				$theme = ( ! empty( $cf_content_section['theme'] ) )
 																					? $cf_content_section['theme']
@@ -322,7 +345,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																				   class="tertiaryCta <?php echo esc_attr( $js_class ); ?>"
 																					<?php if ( ! internetorg_is_video_url( $cta['link'] ) ) : ?>
 																						data-type="titled"
-																						<?php echo esc_attr( $social_attr ); ?>
+																						data-social="<?php echo esc_attr( $social_attr ); ?>"
 																						data-theme="<?php echo esc_attr( strtolower( $theme ) ); ?>"
 																						data-title="<?php echo esc_attr( $title ); ?>"
 																						data-desc="<?php echo esc_attr( $desc ); ?>"
