@@ -47,9 +47,11 @@ table {
     border-spacing: 0;
 }
 
-// :focus {
-//     outline: 0;
-// }
+@media (max-width: 767px) {
+    :focus {
+        outline: 0;
+    }
+}
 
 html {
     -webkit-text-size-adjust: 100%;
