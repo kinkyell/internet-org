@@ -8,7 +8,7 @@
  */
 
 global $post;
-$type = ( get_post_type( get_the_ID() ) == 'io_story') ? 'panel' : 'titled';
+$type = ( get_post_type( get_the_ID() ) === 'io_story') ? 'panel' : 'titled';
 
 $img = ( internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'panel-image' ) )
 	?  internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'panel-image' )
