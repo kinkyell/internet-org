@@ -8,13 +8,13 @@
  */
 
 global $post;
-$type = ( get_post_type( get_the_ID() ) == 'io_story') ? 'panel' : 'titled';
+$type = ( get_post_type( get_the_ID() ) === 'io_story') ? 'panel' : 'titled';
 
 $img = ( internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'panel-image' ) )
 	?  internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'panel-image' )
 	: '';
 $mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type( get_the_ID() ), get_the_ID() ) );
-$theme = ( get_post_type( get_the_ID() ) == 'io_story') ? 'approach' : '';
+$theme = ( get_post_type( get_the_ID() ) === 'io_story') ? 'approach' : '';
 ?>
 
 <div class="resultsList-list-item">
@@ -27,7 +27,7 @@ $theme = ( get_post_type( get_the_ID() ) == 'io_story') ? 'approach' : '';
 		</div>
 		<div class="feature-cta">
 			<a href="<?php the_permalink(); ?>" class="link mix-link_small js-stateLink"
-			    data-title="<?php echo esc_attr(apply_filters( 'the_title',  $post->post_title  ) ); ?>"
+			    data-title="<?php echo esc_attr( apply_filters( 'the_title',  $post->post_title ) ); ?>"
 			    data-desc="<?php echo wp_kses_post( get_post_field( 'post_excerpt', get_the_ID() ) ); ?>"
 			    data-image="<?php echo esc_url( $img );?>"
 			    data-mobile-image="<?php echo esc_url( $mobile_image );?>"
