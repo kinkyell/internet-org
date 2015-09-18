@@ -1435,7 +1435,7 @@ function internetorg_video_shortcode( $atts = array() ) {
 	$duration = get_post_meta( $post_id, 'video-duration', true );
 
 	/**
-	 * The return markup
+	 * The return markup.
 	 *
 	 * @var string $markup
 	 */
@@ -1457,32 +1457,30 @@ function internetorg_video_shortcode( $atts = array() ) {
 
 add_shortcode( 'io_video', 'internetorg_video_shortcode' );
 
-
 /**
- * Shortcode UI Registration for Video
- * See: https://github.com/fusioneng/Shortcake
+ * Shortcode UI Registration for Video.
+ *
+ * @link https://github.com/fusioneng/Shortcake
  */
+function internetorg_register_video_shortcode_ui() {
 
-
-function internetorg_register_video_shortcode_ui(){
 	/**
-	 * Register a UI for the Custom Link shortcode
+	 * Register a UI for the Custom Link shortcode.
 	 *
 	 * @param string The shortcode tag
-	 * @param array The various fields, name of ui element and other attributes
-	 *
+	 * @param array  The various fields, name of ui element and other attributes
 	 */
 	shortcode_ui_register_for_shortcode(
 		'io-video',
 		array(
-			'label' => esc_html__('Video','internetorg'),
+			'label'         => esc_html__( 'Video', 'internetorg' ),
 			'listItemImage' => 'dashicons-format-video',
-			'attrs' => array(
+			'attrs'         => array(
 				array(
-					'label'       => esc_html__('Video To Insert','internetorg'),
-					'attr'        => 'id',
-					'type'        => 'post_select',
-					'query'    => array(
+					'label' => esc_html__( 'Video To Insert', 'internetorg' ),
+					'attr'  => 'id',
+					'type'  => 'post_select',
+					'query' => array(
 						'post_type' => 'io_video',
 					),
 				),
@@ -1497,108 +1495,117 @@ add_action( 'init', 'internetorg_register_video_shortcode_ui' );
 /**
  * IO Custom Link shortcode.
  *
- * Generate the markup for a custom link
+ * Generate the markup for a custom link.
  *
- * @param array $atts Array of shortcode atts.
+ * @param array $attr Array of shortcode atts.
  *
  * @return string
  */
+function internetorg_custom_link_shortcode( $attr = array() ) {
 
-function internetorg_custom_link_shortcode($attr = array()){
-	$attr = wp_parse_args( $attr, array(
-		'css_class' => 'link',
-		'source' => '',
-		'image' => '',
-		'link_text' => esc_html__( 'Click Me', 'internetorg' )
-	) );
+	$attr = wp_parse_args(
+		$attr,
+		array(
+			'css_class' => 'link',
+			'source'    => '',
+			'image'     => '',
+			'link_text' => esc_html__( 'Click Me', 'internetorg' ),
+		)
+	);
+
 	ob_start();
 
 	$source = absint( $attr['source'] );
 
-	//return if we don't have a url
-	if( empty( $source ) ) {
+	// Return early if we don't have a url.
+	if ( empty( $source ) ) {
 		return '';
-	};
-	$post_type = get_post_type($source);
-	$data_attr = '';
-	$data_type = 'titled';
-	$lg_image = '';
-	$sm_image = '';
+	}
+
+	$post_type  = get_post_type( $source );
+	$data_attr  = '';
+	$data_type  = 'titled';
+	$lg_image   = '';
+	$sm_image   = '';
 	$data_theme = '';
 
-	if(get_post_thumbnail_id($source)) {
-		$lg_image = wp_get_attachment_image_src(get_post_thumbnail_id($source), 'panel-image');
-		$sm_image = internetorg_get_mobile_featured_image( get_post_type($source), $source);
-		$data_attr .= 'data-image="'. esc_url( $lg_image[0] ) .'" ';
-		$data_attr .= 'data-mobile-image="'. esc_url( $sm_image ) .'" ';
+	if ( get_post_thumbnail_id( $source ) ) {
+		$lg_image = wp_get_attachment_image_src( get_post_thumbnail_id( $source ), 'panel-image' );
+		$sm_image = internetorg_get_mobile_featured_image( get_post_type( $source ), $source );
+		$data_attr .= 'data-image="' . esc_url( $lg_image[0] ) . '" ';
+		$data_attr .= 'data-mobile-image="' . esc_url( $sm_image ) . '" ';
 		$data_type = 'panel';
 	}
 
-	if ( $post_type == 'post' ) {
+	if ( 'post' === $post_type ) {
 		$data_attr .= 'data-social="true"';
 	}
-	if($post_type = 'io_story'){
+
+	if ( 'io_story' === $post_type ) {
 		$data_theme = 'Approach';
 	}
-	$url = str_replace( home_url(), '', get_permalink($source) );
+
+	$url = str_replace( home_url(), '', get_permalink( $source ) );
+
 	?>
 
 	<a class="<?php echo esc_attr( $attr['css_class'] ); ?> js-stateLink"
-	    href="<?php echo esc_url( $url ); ?>"
-	    data-title="<?php echo esc_attr( get_the_title($source)); ?>"
-	    data-desc="<?php echo wp_kses_post( get_post_field( 'post_excerpt', $source ) ); ?>"
-	    data-date="<?php echo esc_attr( get_the_date( '', $source ) ); ?>"
-	    data-theme="<?php echo esc_attr($data_theme);?>"
-	    <?php echo $data_attr; ?>
-	    data-type="<?php echo esc_attr( $data_type  ); ?>"
+	   href="<?php echo esc_url( $url ); ?>"
+	   data-title="<?php echo esc_attr( get_the_title( $source ) ); ?>"
+	   data-desc="<?php echo esc_attr( get_post_field( 'post_excerpt', $source ) ); ?>"
+	   data-date="<?php echo esc_attr( get_the_date( '', $source ) ); ?>"
+	   data-theme="<?php echo esc_attr( $data_theme ); ?>"
+		<?php echo esc_attr( $data_attr ); ?>
+       data-type="<?php echo esc_attr( $data_type ); ?>"
 		><?php echo esc_html( $attr['link_text'] ); ?></a>
+
 	<?php
+
 	return ob_get_clean();
 }
 
 add_shortcode( 'io-custom-link', 'internetorg_custom_link_shortcode' );
 
-
 /**
- * Shortcode UI Registration for Dynamic Link
- * See: https://github.com/fusioneng/Shortcake
+ * Shortcode UI Registration for Dynamic Link.
+ *
+ * @link https://github.com/fusioneng/Shortcake
  */
+function internetorg_register_custom_link_shortcode_ui() {
 
-function internetorg_register_custom_link_shortcode_ui(){
 	/**
-	 * Register a UI for the Custom Link shortcode
+	 * Register a UI for the Custom Link shortcode.
 	 *
-	 * @param string The shortcode tag
-	 * @param array The various fields, name of ui element and other attributes
-	 *
+	 * @param string The shortcode tag.
+	 * @param array  The various fields, name of ui element and other attributes.
 	 */
 	shortcode_ui_register_for_shortcode(
 		'io-custom-link',
 		array(
-			'label' => esc_html__('Link', 'internetorg'),
+			'label'         => esc_html__( 'Link', 'internetorg' ),
 			'listItemImage' => 'dashicons-admin-links',
-			'attrs' => array(
+			'attrs'         => array(
 				array(
-					'label' => esc_html__('Link CSS Class', 'internetorg'),
-					'attr' => 'css_class',
-					'type' => 'radio',
+					'label'   => esc_html__( 'Link CSS Class', 'internetorg' ),
+					'attr'    => 'css_class',
+					'type'    => 'radio',
 					'options' => array(
-						'link' => esc_attr__('Arrow Link', 'internetorg'),
-						'link link_inline' => esc_attr__('Inline Link', 'internetorg'),
+						'link'             => esc_attr__( 'Arrow Link', 'internetorg' ),
+						'link link_inline' => esc_attr__( 'Inline Link', 'internetorg' ),
 					),
 				),
 				array(
-					'label' => esc_html__('URL', 'internetorg'),
-					'attr' => 'source',
-					'type' => 'post_select',
+					'label' => esc_html__( 'URL', 'internetorg' ),
+					'attr'  => 'source',
+					'type'  => 'post_select',
 					'query' => array(
 						'post_type' => 'page, io_story, post',
 					),
 				),
 				array(
-					'label' => esc_html__('Link Text', 'internetorg'),
-					'attr' => 'link_text',
-					'type' => 'text',
+					'label' => esc_html__( 'Link Text', 'internetorg' ),
+					'attr'  => 'link_text',
+					'type'  => 'text',
 				),
 			),
 		)
@@ -1618,29 +1625,36 @@ add_action( 'enqueue_shortcode_ui', function() {
 });
 
 /**
- * Change the confirmation message from the contact form
+ * Change the confirmation message from the contact form.
+ *
  * @filter grunion_contact_form_success_message
- * @param string $msg default response message
- * @return string new response message
+ *
+ * @param string $msg Default response message.
+ *
+ * @return string New response message.
  */
 function internetorg_change_contact_form_response( $msg ) {
-	return '<div class="vr vr_x1"><div class="hdg hdg_3 mix-hdg_centerInMobile">' . __( 'Thank you!', 'internetorg' ) . '</div></div>';
+	return '<div class="vr vr_x1"><div class="hdg hdg_3 mix-hdg_centerInMobile">'
+	       . esc_html__( 'Thank you!', 'internetorg' )
+	       . '</div></div>';
 }
+
 add_filter( 'grunion_contact_form_success_message', 'internetorg_change_contact_form_response' );
 
 /**
- * Check if specified url is a video URL
+ * Check if specified url is a video URL.
  *
- * Note: currently only checks for vimeo.com in the URL, if more video hosts are added this
- *       function will need to be updated.
+ * Note: currently only checks for vimeo.com in the URL,
+ * if more video hosts are added this function will need to be updated.
  *
- * @param string $url the url to check
- * @return boolean true if url is a video url
+ * @param string $url The URL to check.
+ *
+ * @return boolean True if URL is a video url.
  */
 function internetorg_is_video_url( $url ) {
 	$check_val = 'vimeo.com';
 
-	// url too short, go away
+	// URL too short, go away.
 	if ( strlen( $url ) <= strlen( $check_val ) ) {
 		return false;
 	}
@@ -1651,14 +1665,22 @@ function internetorg_is_video_url( $url ) {
 }
 
 /**
- * Wrap oembed videos with a responsive video wrapper div
+ * Wrap oEmbed videos with a responsive video wrapper div.
+ *
  * @filter embed_oembed_html
- * @return string new oembed wraped in video wrapper
+ *
+ * @param mixed  $html    The cached HTML result, stored in post meta.
+ * @param string $url     The attempted embed URL.
+ * @param array  $attr    An array of shortcode attributes.
+ * @param int    $post_ID Post ID.
+ *
+ * @return string New oEmbed markup with a video div wrapper.
  */
-function internetorg_wrap_oembed_html($html, $url, $attr, $post_id) {
+function internetorg_wrap_oembed_html( $html, $url, $attr, $post_ID ) {
 	return '<div class="video">' . $html . '</div>';
 }
-add_filter('embed_oembed_html', 'internetorg_wrap_oembed_html', 99, 4);
+
+add_filter( 'embed_oembed_html', 'internetorg_wrap_oembed_html', 99, 4 );
 
 /**
  * Retrieve a list of "years" that have posts.
