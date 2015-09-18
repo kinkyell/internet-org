@@ -247,10 +247,17 @@ define(function(require, exports, module) { // jshint ignore:line
 
         //  transition 04
         ///////////////////////
+        tl.fromTo(
+            this._$transformBlock,
+            SECTION_DURATION,
+            { y: '0px' },
+            { y: '-90px', ease: EASE[easeDirection] });
+
         tl.to(
             this._$transformBlockPre.eq(3),
             SECTION_DURATION,
-            { opacity: 0, ease: EASE[easeDirection] });
+            { opacity: 0, ease: EASE[easeDirection] },
+            '-=' + SECTION_DURATION);
 
         tl.to(
             this._$transformBlockPost.eq(3),
