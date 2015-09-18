@@ -71,8 +71,8 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 		);
 
 		$datasource_post = new Fieldmanager_Datasource_Post( array(
-			'query_args' => array( 'post_type' => array( 'io_story', 'post', 'page'), 'posts_per_page' => -1 ),
-			'use_ajax' => false
+			'query_args' => array( 'post_type' => array( 'io_story', 'post', 'page' ), 'posts_per_page' => -1 ),
+			'use_ajax' => false,
 		) );
 
 		$next_post->add_meta_box( 'Next Page', 'page' );
@@ -95,16 +95,16 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 						'name'    => 'src',
 						'default_value' => 'page',
 						'options' => array(
-							'page' => __('Page, Post, or Story'),
-							'custom' => __( 'Custom Link', 'internetorg' )
+							'page' => __( 'Page, Post, or Story' ),
+							'custom' => __( 'Custom Link', 'internetorg' ),
 							),
 						)
 					),
-					'slug'  => new Fieldmanager_TextField( __( 'Section Slug', 'internetorg'),
+					'slug'  => new Fieldmanager_TextField( __( 'Section Slug', 'internetorg' ),
 						array(
 							'display_if' => array(
 								'src' => 'src',
-								'value' => 'custom'
+								'value' => 'custom',
 							),
 						)
 					),
@@ -113,8 +113,8 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 							'datasource' => $datasource_post,
 							'display_if' => array(
 								'src' => 'src',
-								'value' => 'page'
-							)
+								'value' => 'page',
+							),
 						)
 					),
 					'theme' => new Fieldmanager_Select( array(
@@ -122,7 +122,7 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 						'options' => array(
 							'approach' => __( 'Approach', 'internetorg' ),
 							'mission' => __( 'Mission', 'internetorg' ),
-							'impact' => __( 'Impact', 'internetorg' )
+							'impact' => __( 'Impact', 'internetorg' ),
 						)
 					) ),
 					'image'          => new Fieldmanager_Media( __( 'Background Image', 'internetorg' ) ),
@@ -140,8 +140,8 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 										'name'    => 'cta_src',
 										'default_value' => 'page',
 										'options' => array(
-											'page' => __('Page, Post, or Story'),
-											'custom' => __( 'Custom Link', 'internetorg' )
+											'page' => __( 'Page, Post, or Story' ),
+											'custom' => __( 'Custom Link', 'internetorg' ),
 										),
 									)
 								),
@@ -149,7 +149,7 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 									array(
 										'display_if' => array(
 											'src' => 'cta_src',
-											'value' => 'custom'
+											'value' => 'custom',
 										),
 									)
 								),
@@ -158,7 +158,7 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 										'datasource' => $datasource_post,
 										'display_if' => array(
 											'src' => 'cta_src',
-											'value' => 'page'
+											'value' => 'page',
 										)
 									)
 								),
