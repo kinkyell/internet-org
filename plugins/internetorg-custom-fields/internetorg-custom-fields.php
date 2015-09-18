@@ -123,7 +123,7 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 							'approach' => __( 'Approach', 'internetorg' ),
 							'mission' => __( 'Mission', 'internetorg' ),
 							'impact' => __( 'Impact', 'internetorg' ),
-						)
+						),
 					) ),
 					'image'          => new Fieldmanager_Media( __( 'Background Image', 'internetorg' ) ),
 					'call-to-action' => new Fieldmanager_Group(
@@ -159,7 +159,7 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 										'display_if' => array(
 											'src' => 'cta_src',
 											'value' => 'page',
-										)
+										),
 									)
 								),
 								'image' => new Fieldmanager_Media( __( 'Image', 'internetorg' ) ),
