@@ -498,7 +498,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 this._narrativeManager.gotoSubSection(destSectionPos, destSlidPos, subPosition).then(function(pos) {
                     this._subPosition = pos;
                     this._videoModalView = new VideoModalView($('.js-videoModal'));
-                }.bind(this).catch(log));
+                }.bind(this));
 
                 this._updateCtas(false);
             // Anything Else
@@ -636,6 +636,10 @@ define(function(require, exports, module) { // jshint ignore:line
             this._disableScrolling();
         } else {
             this._enableScrolling();
+
+            if (typeof this._narrativeManager.refresh == 'function') {
+                this._narrativeManager.refresh(this._position);
+            }
         }
     };
 
