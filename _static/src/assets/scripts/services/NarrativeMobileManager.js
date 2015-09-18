@@ -121,12 +121,42 @@ define(function(require, exports, module) { // jshint ignore:line
 
         this.gotoSubSection(position, slidePos);
 
+        var i = 0;
+        var l = position;
+        for (; i < l; i++) {
+            this._gotoLastSlide(i);
+        }
+
         $('body')[0].scrollTop = 0;
     };
 
     // /////////////////////////////////////////////////////////////////////////////////////////
     // Helpers
     // /////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Reset slide position to last
+     *
+     * @method _gotoLastSlide
+     * @private
+     */
+    proto._gotoLastSlide = function(section) {
+        var sectionConf = this._sectionsConf[section];
+        var subSectionsLength = sectionConf.subSections.length;
+
+        if (subSectionsLength > 0) {
+            var $slidesContainer = this._$sections.eq(section).find('.narrative-section-slides');
+            var $slides = $slidesContainer.find('> *');
+
+            var offsetY = 0;
+            var i = 0;
+            for (; i < subSectionsLength; i++) {
+                offsetY += $slides.eq(i).height();
+            }
+
+            TweenLite.to($slidesContainer, 0.35, { scrollTo: { y: offsetY } });
+        }
+    };
 
     /**
      * Records the scroll position offset for
