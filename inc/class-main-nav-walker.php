@@ -50,17 +50,36 @@ class Internetorg_Main_Nav_Walker extends Walker_Nav_Menu {
 		$attributes .= ! empty( $item->xfn ) ? ' rel="' . esc_attr( $item->xfn ) . '"' : '';
 		$attributes .= ! empty( $item->url ) ? ' href="' . esc_attr( $item->url ) . '"' : '';
 		$attributes .= ' ';
+
 		if ( internetorg_is_internal_url( $item->url ) ) {
 			$attributes .= ' class="topicLink-link js-stateLink"';
 		} else {
 			$attributes .= ' class="topicLink-link"';
 		}
+
 		$attributes .= ' data-type="panel"';
+
 		$attributes .= ' data-title="' . esc_attr( apply_filters( 'the_title', $item->title, $item->ID ) ) . '"';
+
 		if ( 'page' === $item->object ) {
-			$attributes .= ' data-image="' . esc_url( internetorg_get_post_thumbnail( $item->object_id, 'panel-image' ) ) . '"';
-			$attributes .= ' data-mobile-image="' . esc_url( internetorg_get_mobile_featured_image( get_post_type($item->object_id), $item->object_id) ) . '"';
+			$attributes .= ' data-image="'
+			               . esc_url(
+				               internetorg_get_post_thumbnail(
+					               $item->object_id,
+					               'panel-image'
+				               )
+			               )
+			               . '"';
+			$attributes .= ' data-mobile-image="'
+			               . esc_url(
+				               internetorg_get_mobile_featured_image(
+					               get_post_type( $item->object_id ),
+					               $item->object_id
+				               )
+			               )
+			               . '"';
 		}
+
 		$attributes .= ' data-theme="' . esc_attr( substr( $item->title, 4 ) ) . '"';
 
 		if ( is_array( $args ) && ! empty( $args ) ) {
