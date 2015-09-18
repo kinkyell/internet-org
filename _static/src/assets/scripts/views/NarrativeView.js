@@ -115,6 +115,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._onTouchMoveHandler = this._onTouchMove.bind(this);
         this._onTouchEndHandler = this._onTouchEnd.bind(this);
         this.refreshNarrativeManager = this.refreshNarrativeManager.bind(this);
+        this.refreshNarrativeManagerHandler = this.refreshNarrativeManager;
         this._onResizeHandler = this._onResize.bind(this);
         this._onResizeHandler = debounce(this._onResizeHandler, 50);
         this._onClickIndicatorHandler = this._onClickIndicator.bind(this);
@@ -173,7 +174,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.layout = function() {
         this.$narrativeSections.eq(0).addClass('isActive');
         this._sectionLength = this.$narrativeSections.length;
-        this._getSectionContent().then(this.refreshNarrativeManager);
+        this._getSectionContent().then(this.refreshNarrativeManager).catch(log);
         this.$viewWindow.before(this.$progress);
         this.$progress.find(':first-child').addClass('isActive');
         this._displayIndicators(0);
@@ -184,7 +185,10 @@ define(function(require, exports, module) { // jshint ignore:line
         var isMobile = breakpointManager.isMobile;
         var NarrativeManager = isMobile ? NarrativeMobileManager : NarrativeDesktopManager;
         this._narrativeManager = new NarrativeManager(this._sectionConf);
-        this._narrativeManager.refresh(this._position);
+
+        if (typeof this._narrativeManager.refresh == 'function') {
+            this._narrativeManager.refresh(this._position);
+        }
     };
 
     /**
@@ -494,7 +498,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 this._narrativeManager.gotoSubSection(destSectionPos, destSlidPos, subPosition).then(function(pos) {
                     this._subPosition = pos;
                     this._videoModalView = new VideoModalView($('.js-videoModal'));
-                }.bind(this));
+                }.bind(this).catch(log));
 
                 this._updateCtas(false);
             // Anything Else
