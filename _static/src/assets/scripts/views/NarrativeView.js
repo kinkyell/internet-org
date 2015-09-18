@@ -115,11 +115,13 @@ define(function(require, exports, module) { // jshint ignore:line
         this._onTouchMoveHandler = this._onTouchMove.bind(this);
         this._onTouchEndHandler = this._onTouchEnd.bind(this);
         this.refreshNarrativeManager = this.refreshNarrativeManager.bind(this);
+        this.refreshNarrativeManagerHandler = this.refreshNarrativeManager;
         this._onResizeHandler = this._onResize.bind(this);
         this._onResizeHandler = debounce(this._onResizeHandler, 50);
         this._onClickIndicatorHandler = this._onClickIndicator.bind(this);
         this._onMenuToggleHandler = this._onMenuToggle.bind(this);
         this._onTopScrollHandler = this._onTopScrollTrigger.bind(this);
+        this._onKeyDownHandler = this._onKeyDown.bind(this);
     };
 
     /**
@@ -172,7 +174,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.layout = function() {
         this.$narrativeSections.eq(0).addClass('isActive');
         this._sectionLength = this.$narrativeSections.length;
-        this._getSectionContent().then(this.refreshNarrativeManager);
+        this._getSectionContent().then(this.refreshNarrativeManager).catch(log);
         this.$viewWindow.before(this.$progress);
         this.$progress.find(':first-child').addClass('isActive');
         this._displayIndicators(0);
@@ -183,7 +185,10 @@ define(function(require, exports, module) { // jshint ignore:line
         var isMobile = breakpointManager.isMobile;
         var NarrativeManager = isMobile ? NarrativeMobileManager : NarrativeDesktopManager;
         this._narrativeManager = new NarrativeManager(this._sectionConf);
-        this._narrativeManager.refresh(this._position);
+
+        if (typeof this._narrativeManager.refresh == 'function') {
+            this._narrativeManager.refresh(this._position);
+        }
     };
 
     /**
@@ -226,20 +231,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$progress.on('click', '> *', this._onClickIndicatorHandler);
         eventHub.subscribe('Router:topScroll', this._onTopScrollHandler);
 
-        $(document).keydown(function(e) {
-            switch(e.which) {
-                case 38: // up
-                    this._changeSection(this._position - 1);
-                    break;
-
-                case 40: // down
-                    this._changeSection(this._position + 1);
-                    break;
-
-                default: return; // exit this handler for other keys
-            }
-            e.preventDefault(); // prevent the default action (scroll / move caret)
-        }.bind(this));
+        $(document).on('keydown', this._onKeyDownHandler);
     };
 
     /**
@@ -271,6 +263,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._$narrativeAdvance.off('click', this._onClickAdvance.bind(this));
         this.$progress.off('click', '> *', this._onClickIndicatorHandler);
         eventHub.unsubscribe('Router:topScroll', this._onTopScrollHandler);
+        $(document).off('keydown', this._onKeyDownHandler);
     };
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -285,7 +278,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onResize = function() {
-        this._narrativeManager.refresh(this._position);
+        this._narrativeManager.refresh(this._position, this._subPosition);
     };
 
     /**
@@ -363,6 +356,21 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._onClickAdvance = function(event) {
         event.preventDefault();
         this._scrollDown();
+    };
+
+    proto._onKeyDown = function(e) {
+        switch(e.which) {
+            case 38: // up
+                this._changeSection(this._position - 1);
+                break;
+
+            case 40: // down
+                this._changeSection(this._position + 1);
+                break;
+
+            default: return; // exit this handler for other keys
+        }
+        e.preventDefault(); // prevent the default action (scroll / move caret)
     };
 
     /**
@@ -490,7 +498,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 this._narrativeManager.gotoSubSection(destSectionPos, destSlidPos, subPosition).then(function(pos) {
                     this._subPosition = pos;
                     this._videoModalView = new VideoModalView($('.js-videoModal'));
-                }.bind(this));
+                }.bind(this).catch(log));
 
                 this._updateCtas(false);
             // Anything Else

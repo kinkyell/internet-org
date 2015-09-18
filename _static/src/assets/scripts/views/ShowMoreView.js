@@ -187,10 +187,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto.enableButton = function(isLastPage) {
-        if (isLastPage) {
-            this.$element.remove();
-            return;
-        }
+        this.$element.toggle(!isLastPage);
         this.$element.removeClass('isLoading').removeAttr('disabled');
     };
 

@@ -104,7 +104,7 @@ Sections of content that introduce landing and story pages
 // NOTE: moved below to override media query
 .introBlock_fill {
     // height: calc(100vh - 45px); NEED TO FIND A IOS only solution for this
-    min-height: 100vh;
+    min-height: 100%;
     height: auto;
     background-position: -300px top;
 }

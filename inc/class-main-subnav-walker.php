@@ -52,9 +52,9 @@ class Internetorg_Main_SubNav_Walker extends Walker_Nav_Menu {
 		$attributes .= ' ';
 
 		if ( internetorg_is_internal_url( $item->url ) ) {
-			$attributes .= ' class="auxLink js-stateLink" data-type="titled" data-title="' . esc_attr( $item->title ) . '"';
+			$attributes .= ' class="js-stateLink" data-type="titled" data-title="' . esc_attr( $item->title ) . '"';
 		} else {
-			$attributes .= ' class="auxLink"';
+			$attributes .= ' class=""';
 		}
 
 		if ( is_array( $args ) && ! empty( $args ) ) {
@@ -62,7 +62,7 @@ class Internetorg_Main_SubNav_Walker extends Walker_Nav_Menu {
 		}
 
 		$item_output = sprintf(
-			'%1$s<a%2$s>%3$s%4$s%5$s</a>%6$s',
+			'%1$s<div class="auxLink"><a%2$s>%3$s%4$s%5$s</a></div>%6$s',
 			$args->before,
 			$attributes,
 			$args->link_before,
