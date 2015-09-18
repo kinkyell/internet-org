@@ -12,11 +12,16 @@
     text-transform: uppercase;
     color: $CLR_ACCENT;
     position: relative;
-    padding-right: 35px;
+    // padding-right: 35px;
     display: inline-flex;
     display: -webkit-inline-flex;
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased;
+
+    /* Additional padding to increase hit state */
+    padding: 15px 50px 15px 15px;
+    margin: -15px;
+
 }
 
 .link:after,
@@ -25,7 +30,8 @@
     content: "";
     display: block;
     position: absolute;
-    right: -8px;
+    // right: -8px;
+    right: 10px;
     -webkit-font-smoothing: none;
     font-smoothing: none;
     margin-top: -1px;
@@ -71,7 +77,8 @@
 .link_twoArrows {
     @include remify(font-size, 16px);
     color: $CLR_GRAY;
-    padding-right: 15px;
+    padding: 0 15px 0 0;
+    margin: 0;
 }
 
 .link_twoArrows:after,

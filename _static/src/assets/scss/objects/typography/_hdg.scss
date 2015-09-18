@@ -133,3 +133,45 @@
         text-align: initial; 
     }
 }
+
+
+@include breakpoint(LG) {
+    body { background-color: red; }
+
+    .hdg_1 {
+        font-size: 5vw;
+    }
+
+    .hdg_2 {
+        font-size: 3.8vw;
+    }
+
+    .hdg_3 {
+        font-size: 2.5vw;
+    }
+
+    .hdg_4 {
+        font-size: 2vw;
+    }
+
+    .hdg_5 {
+        font-size: 1.7vw;
+    }
+
+    .hdg_6 {
+        font-size: 1.55vw;
+    }
+
+    .hdg_7 {
+        font-size: 1.36vw;
+    }
+
+    .hdg_8 {
+        font-size: 3.1vw;
+    }
+
+    .hdg_subHdg {
+        font-size: 2.1vw;
+    }
+
+}

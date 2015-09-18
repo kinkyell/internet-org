@@ -18,6 +18,7 @@
     background-color: $CLR_ACCENT;
 }
 
+
 .topicLink-link {
     @include font(SERIF);
     @include remify(font-size, 21px);
@@ -45,7 +46,12 @@
     .topicLink:after {
         height: 4px;
         width: 30px;
+        transition: width 0.2s ease-in-out;
     }
+
+    .topicLink:hover:after {
+        width: 50px;
+    }   
 
     .topicLink-link {
         @include remify(font-size, 34px);

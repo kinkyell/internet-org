@@ -72,7 +72,7 @@ Sections of content that introduce landing and story pages
     .introBlock {
         display: table; // fallback
         display: flex;
-        height: 620px;
+        // height: 620px;
         padding-top: 45px;
         padding: 126px 0 45px;
         background-position: -725px top;
@@ -85,10 +85,20 @@ Sections of content that introduce landing and story pages
         padding-bottom: $SPACE_x3;
     }
 
-    // reset border
+    /* reset border */
     .viewWindow-panel-content-inner > .introBlock {
         margin-top: 0;
     }
+
+    .introBlock {
+        min-height: 330px;
+    }
+
+    /* Targeting Firefox */
+    _::-moz-range-track, body:last-child .selector {
+        height: 420px;   
+    }
+
 }
 
 // NOTE: moved below to override media query
