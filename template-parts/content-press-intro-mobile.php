@@ -17,7 +17,7 @@
 			</div>
 
 			<?php $featured_image = internetorg_get_mobile_featured_image( get_post_type(), get_the_ID() );
-			if(!empty($featured_image)) { ?>
+			if ( !empty( $featured_image ) ) { ?>
 				<div class="topicBlock-media">
 					<img src="<?php echo esc_url( internetorg_get_mobile_featured_image( get_post_type(), get_the_ID() ) ); ?>" alt="" />
 				</div>

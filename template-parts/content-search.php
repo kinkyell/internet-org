@@ -27,7 +27,7 @@ $theme = ( get_post_type( get_the_ID() ) == 'io_story') ? 'approach' : '';
 		</div>
 		<div class="feature-cta">
 			<a href="<?php the_permalink(); ?>" class="link mix-link_small js-stateLink"
-			    data-title="<?php echo esc_attr(apply_filters( 'the_title',  $post->post_title  ) ); ?>"
+			    data-title="<?php echo esc_attr( apply_filters( 'the_title',  $post->post_title ) ); ?>"
 			    data-desc="<?php echo wp_kses_post( get_post_field( 'post_excerpt', get_the_ID() ) ); ?>"
 			    data-image="<?php echo esc_url( $img );?>"
 			    data-mobile-image="<?php echo esc_url( $mobile_image );?>"
