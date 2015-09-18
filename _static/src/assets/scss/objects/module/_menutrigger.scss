@@ -67,6 +67,13 @@
 
 .menuTrigger-icon.isOpen:before,
 .menuTrigger-icon.isOpen:after {
+    background-color: $CLR_GRAY;
+}
+
+
+
+.menuTrigger-icon.isOpen:hover:before,
+.menuTrigger-icon.isOpen:hover:after {
     background-color: $CLR_BLACK;
 }
 
