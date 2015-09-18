@@ -186,7 +186,7 @@ define(function(require, exports, module) { // jshint ignore:line
         var NarrativeManager = isMobile ? NarrativeMobileManager : NarrativeDesktopManager;
         this._narrativeManager = new NarrativeManager(this._sectionConf);
 
-        if (typeof this._narrativeManager.refresh == 'function') {
+        if (typeof this._narrativeManager.refresh === 'function') {
             this._narrativeManager.refresh(this._position);
         }
     };
@@ -422,7 +422,6 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._scrollUp = function(event) {
         if (!this._narrativeManager._isAnimating) {
-            var direction = 'up';
             var section = this._sectionConf[this._position];
             var subsLength = section.subSections.length;
             var subPosition = this._subPosition;
@@ -482,7 +481,6 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._scrollDown = function(event) {
         if (!this._narrativeManager._isAnimating) {
-            var direction = 'down';
             var section = this._sectionConf[this._position];
             var subsLength = section.subSections.length;
             var subPosition = this._subPosition;
@@ -498,7 +496,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 this._narrativeManager.gotoSubSection(destSectionPos, destSlidPos, subPosition).then(function(pos) {
                     this._subPosition = pos;
                     this._videoModalView = new VideoModalView($('.js-videoModal'));
-                }.bind(this).catch(log));
+                }.bind(this));
 
                 this._updateCtas(false);
             // Anything Else
@@ -636,6 +634,10 @@ define(function(require, exports, module) { // jshint ignore:line
             this._disableScrolling();
         } else {
             this._enableScrolling();
+
+            if (typeof this._narrativeManager.refresh === 'function') {
+                this._narrativeManager.refresh(this._position);
+            }
         }
     };
 

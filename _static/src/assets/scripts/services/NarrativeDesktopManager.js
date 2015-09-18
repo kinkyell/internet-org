@@ -7,7 +7,6 @@ define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     var $ = require('jquery');
-    var eventHub = require('services/eventHub');
     var AppConfig = require('appConfig');
     var Timeline = require('gsap-timeline');
     var ViewWindow = require('services/viewWindow');

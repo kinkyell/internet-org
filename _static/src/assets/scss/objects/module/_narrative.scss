@@ -94,10 +94,6 @@
         .link {
             @include remify(font-size, 15px);
         }
-
-        .statementBlock {
-            margin-top: 60px;
-        }
     }
 }
 
