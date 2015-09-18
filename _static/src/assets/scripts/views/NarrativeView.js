@@ -120,6 +120,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._onClickIndicatorHandler = this._onClickIndicator.bind(this);
         this._onMenuToggleHandler = this._onMenuToggle.bind(this);
         this._onTopScrollHandler = this._onTopScrollTrigger.bind(this);
+        this._onKeyDownHandler = this._onKeyDown.bind(this);
     };
 
     /**
@@ -226,20 +227,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$progress.on('click', '> *', this._onClickIndicatorHandler);
         eventHub.subscribe('Router:topScroll', this._onTopScrollHandler);
 
-        $(document).keydown(function(e) {
-            switch(e.which) {
-                case 38: // up
-                    this._changeSection(this._position - 1);
-                    break;
-
-                case 40: // down
-                    this._changeSection(this._position + 1);
-                    break;
-
-                default: return; // exit this handler for other keys
-            }
-            e.preventDefault(); // prevent the default action (scroll / move caret)
-        }.bind(this));
+        $(document).on('keydown', this._onKeyDownHandler);
     };
 
     /**
@@ -271,6 +259,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._$narrativeAdvance.off('click', this._onClickAdvance.bind(this));
         this.$progress.off('click', '> *', this._onClickIndicatorHandler);
         eventHub.unsubscribe('Router:topScroll', this._onTopScrollHandler);
+        $(document).off('keydown', this._onKeyDownHandler);
     };
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -363,6 +352,21 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._onClickAdvance = function(event) {
         event.preventDefault();
         this._scrollDown();
+    };
+
+    proto._onKeyDown = function(e) {
+        switch(e.which) {
+            case 38: // up
+                this._changeSection(this._position - 1);
+                break;
+
+            case 40: // down
+                this._changeSection(this._position + 1);
+                break;
+
+            default: return; // exit this handler for other keys
+        }
+        e.preventDefault(); // prevent the default action (scroll / move caret)
     };
 
     /**
