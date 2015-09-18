@@ -232,10 +232,10 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																	   data-type="panel"
 																	   data-image="<?php echo esc_url( $img ); ?>"
 																	   data-theme="<?php echo esc_attr( $theme ); ?>"
-																		<?php if ( is_string( $mobile_image ) ): ?>
+																		<?php if ( is_string( $mobile_image ) ) : ?>
 																			data-mobile-image="<?php echo esc_url( $mobile_image ); ?>"
 																		<?php endif; ?>
-																		<?php if ( is_string( $img ) ): ?>
+																		<?php if ( is_string( $img ) ) : ?>
 																			data-image="<?php echo esc_url( $img ); ?>"
 																		<?php endif; ?>
                                                                        data-title="<?php echo esc_attr( $title ); ?>"
@@ -349,10 +349,10 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																						data-theme="<?php echo esc_attr( strtolower( $theme ) ); ?>"
 																						data-title="<?php echo esc_attr( $title ); ?>"
 																						data-desc="<?php echo esc_attr( $desc ); ?>"
-																						<?php if ( is_string( $mobile_image ) ): ?>
+																						<?php if ( is_string( $mobile_image ) ) : ?>
 																							data-mobile-image="<?php echo esc_url( $mobile_image ); ?>"
 																						<?php endif; ?>
-																						<?php if ( is_string( $img ) ): ?>
+																						<?php if ( is_string( $img ) ) : ?>
 																							data-image="<?php echo esc_url( $img ); ?>"
 																						<?php endif; ?>
 																					<?php endif; ?>>
@@ -415,10 +415,10 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 															   data-theme="<?php echo esc_attr( $theme ); ?>"
 															   data-title="<?php echo esc_attr( $title ); ?>"
 															   data-desc="<?php echo esc_attr( $desc ); ?>"
-																<?php if ( is_string( $mobile_image ) ): ?>
+																<?php if ( is_string( $mobile_image ) ) : ?>
 																	data-mobile-image="<?php echo esc_url( $mobile_image ); ?>"
 																<?php endif; ?>
-																<?php if ( is_string( $img ) ): ?>
+																<?php if ( is_string( $img ) ) : ?>
 																	data-image="<?php echo esc_url( $img ); ?>"
 																<?php endif; ?>
 																>

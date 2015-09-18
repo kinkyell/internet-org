@@ -11,7 +11,7 @@ require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
 vip_allow_title_orphans();
 
-//Shortcake VIP Plugin
+// Shortcake VIP Plugin.
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/shortcode-ui/shortcode-ui.php' );
 
 wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
@@ -117,7 +117,7 @@ add_action( 'after_setup_theme', 'internetorg_setup' );
  */
 function internetorg_setup_image_sizes() {
 
-	// Hard cropped image 960 x 1200 for use in "Panel."
+	// Hard cropped image 960 x 1200 for use in "Panel".
 	add_image_size( 'panel-image', 960, 1200, true );
 
 	// Soft cropped image 720 x whatever for use in content or the "mobile only" thumbnail.
@@ -139,7 +139,7 @@ add_action( 'after_setup_theme', 'internetorg_setup_image_sizes' );
  * @return array
  */
 function internetorg_custom_sizes( $sizes ) {
-	return array_merge( $sizes, array( 'inline-image' => __( 'Inline Image' ), ) );
+	return array_merge( $sizes, array( 'inline-image' => __( 'Inline Image' ) ) );
 }
 
 add_filter( 'image_size_names_choose', 'internetorg_custom_sizes' );
@@ -1186,7 +1186,7 @@ if ( class_exists( 'MultiPostThumbnails' ) ) {
  *
  * @param string $post_type The post type that we are retrieving the "mobile featured image" for.
  * @param int    $post_id   The ID of the post that we are retrieving the "mobile featured image" for.
- * @param string $size      Optional. The registered image size to retrieve. Defaults to "inline-image."
+ * @param string $size      Optional. The registered image size to retrieve. Defaults to "inline-image".
  *
  * @return string
  */
@@ -1437,19 +1437,33 @@ function internetorg_video_shortcode( $atts = array() ) {
 	/**
 	 * The return markup.
 	 *
+	 * @var string $markup_template
+	 */
+	$markup_template = '
+	<div class="contentOnMedia">
+		<img class="contentOnMedia-media" src="%1$s" alt="">
+		<div class="contentOnMedia-details">
+			<div class="contentOnMedia-details-title">%2$s</div>
+			<div class="contentOnMedia-details-duration">%3$s</div>
+		</div>
+		<a href="%4$s" class="contentOnMedia-link contentOnMedia-link_ct js-videoModal swipebox-video" rel="vimeo2">
+			<span class="circleBtn circleBtn_play"></span>
+		</a>
+	</div>
+	';
+
+	/**
+	 * The assembled markup.
+	 *
 	 * @var string $markup
 	 */
-	$markup = '<div class="contentOnMedia">'
-	          . '<img class="contentOnMedia-media" src="' . esc_url( $image ) . '" alt="">'
-	          . '<div class="contentOnMedia-details">'
-	          . '<div class="contentOnMedia-details-title">' . esc_html( $title ) . '</div>'
-	          . '<div class="contentOnMedia-details-duration">' . esc_html( $duration ) . '</div>'
-	          . '</div>'
-	          . '<a href="' . esc_url( $url )
-	          . '" class="contentOnMedia-link contentOnMedia-link_ct js-videoModal swipebox-video" rel="vimeo2">'
-	          . '<span class="circleBtn circleBtn_play"></span>'
-	          . '</a>'
-	          . '</div>';
+	$markup = sprintf(
+		$markup_template,
+		esc_url( $image ),
+		esc_html( $title ),
+		esc_html( $duration ),
+		esc_url( $url )
+	);
 
 	return $markup;
 
@@ -1661,7 +1675,11 @@ function internetorg_is_video_url( $url ) {
 
 	$found_loc = strpos( $url, $check_val );
 
-	return $found_loc !== false;
+	if ( false === $found_loc ) {
+		return false;
+	}
+
+	return true;
 }
 
 /**
@@ -1742,7 +1760,9 @@ function internetorg_get_archives_years() {
 /**
  * Print the "press filter" markup.
  *
- * @param array $years An array of "years." Optional. Defaults to result of internetorg_get_archives_years();
+ * @uses internetorg_get_archives_years
+ *
+ * @param array $years An array of "years." Optional. Defaults to result of internetorg_get_archives_years().
  */
 function internetorg_the_press_filter( $years = array() ) {
 
