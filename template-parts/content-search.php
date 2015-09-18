@@ -32,7 +32,7 @@ $theme = ( get_post_type( get_the_ID() ) === 'io_story') ? 'approach' : '';
 			    data-image="<?php echo esc_url( $img );?>"
 			    data-mobile-image="<?php echo esc_url( $mobile_image );?>"
 			    data-theme="<?php echo esc_attr( strtolower( $theme ) ); ?>"
-			    <?php if ( $post->post_type === 'post' ) { ?>
+			    <?php if ( 'post' === $post->post_type ) { ?>
 				    data-date="<?php echo esc_attr( get_the_date( '', $post->ID ) ); ?>"
 				    data-social="true"
 			    <?php } ?>
