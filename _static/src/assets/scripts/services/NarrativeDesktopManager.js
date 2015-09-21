@@ -465,7 +465,7 @@ define(function(require, exports, module) { // jshint ignore:line
             $postItem.removeClass(CONFIG.ACTIVE_POST);
         }
 
-        this._$transformBlockPost.eq(destPos - 1).addClass('transformBlock-post-item_isActive');
+        this._$transformBlockPost.eq(destPos).addClass('transformBlock-post-item_isActive');
 
         window.setTimeout(this._onTransitionComplete.bind(this, destPos, resolve), 0);
     };
