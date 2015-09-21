@@ -704,11 +704,19 @@ function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button 
 				$file  = ( ! empty( $cta['image'] ) ? $cta['image'] : '' );
 
 				$link = $url ? $url : $file;
+
 				if ( ! empty( $link ) ) {
+
+					if ( internetorg_is_internal_url( $link ) ) {
+						$target = '';
+					} else {
+						$target = 'target="_blank"';
+					}
+
 					$out .=
 						'<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? $link : '' )
 						. '" class="' . ( $cta_as_button ? 'btn' : 'link link_twoArrows' )
-						. '">' . esc_html( $label ) . '</a></div>';
+						. '" ' . $target . '>' . esc_html( $label ) . '</a></div>';
 				}
 			}
 		}
