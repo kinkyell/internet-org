@@ -76,6 +76,10 @@
     transition: all 0.3s ease;
 }
 
+.header-menuBtn:focus {
+    outline: 0;
+}
+
 .header-backBtn {
     display: block;
     width: 22px;

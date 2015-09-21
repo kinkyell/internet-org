@@ -62,7 +62,7 @@ class Internetorg_Main_SubNav_Walker extends Walker_Nav_Menu {
 		}
 
 		$item_output = sprintf(
-			'%1$s<a%2$s>%3$s%4$s%5$s</a>%6$s',
+			'%1$s<a%2$s><span>%3$s%4$s%5$s</span></a>%6$s',
 			$args->before,
 			$attributes,
 			$args->link_before,

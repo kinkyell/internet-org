@@ -15,7 +15,7 @@ if ( ! empty( $custom_fields ) ) : ?>
 				<div class="narrative-section">
 					<div class="narrative-section-slides">
 						<?php if ( ! empty( $fieldset['image'] ) ) : ?>
-							<div class="narrative-section-slides-item" style="background-image: url('<?php echo esc_attr( wp_get_attachment_url( $fieldset['image'], 'full' ) ); ?>')"></div>
+							<div class="narrative-section-slides-item" style="background-image: url('<?php echo esc_attr( internetorg_get_media_image_url( $fieldset['image'], 'full' ) ); ?>')"></div>
 						<?php endif; ?>
 					</div>
 

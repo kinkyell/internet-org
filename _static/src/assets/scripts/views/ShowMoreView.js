@@ -163,10 +163,10 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._loadAddlContent = function(year) {
-        year = parseInt(year, 10) || this.currentFilter;
+        this.currentFilter = year;
+        year = parseInt(year || this.currentFilter, 10);
         var currentPage = this.nextPage;
         this.nextPage++;
-        this.currentFilter = year;
         return apiService.getMoreContent(this.contentType, currentPage, this.contentArgs, year);
     };
 
@@ -187,10 +187,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto.enableButton = function(isLastPage) {
-        if (isLastPage) {
-            this.$element.remove();
-            return;
-        }
+        this.$element.toggle(!isLastPage);
         this.$element.removeClass('isLoading').removeAttr('disabled');
     };
 

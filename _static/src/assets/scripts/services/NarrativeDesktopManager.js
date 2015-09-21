@@ -16,7 +16,8 @@ define(function(require, exports, module) { // jshint ignore:line
     var SECTION_DURATION = AppConfig.narrative.desktop.SECTION_DURATION;
     var TIME_SCALE = AppConfig.narrative.desktop.TIME_SCALE;
 
-    var EASE = AppConfig.narrative.desktop.EASE;
+    // var EASE = AppConfig.narrative.desktop.EASE == undefined ? window.Expo : AppConfig.narrative.desktop.EASE;
+    var EASE = window.Expo;
     var EASE_DIRECTION_FORWARD = AppConfig.narrative.desktop.EASE_DIRECTION_FORWARD;
     var EASE_DIRECTION_REVERSE = AppConfig.narrative.desktop.EASE_DIRECTION_REVERSE;
 

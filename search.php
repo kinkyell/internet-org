@@ -6,11 +6,12 @@
  *
  * @package Internet.org
  */
+
 global $wp_query;
 
 get_header(); ?>
 
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault" role="main" data-route="<?php echo esc_url( get_search_link() ); ?>" data-type="search" data-title="Search">
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php echo esc_url( get_search_link() ); ?>" data-type="search" data-title="Search">
 
 
 		<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
@@ -50,7 +51,7 @@ get_header(); ?>
 								<div class="resultsList-hd">
 
 									<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray">
-										<?php esc_html__( printf( '%d Results Found', $wp_query->found_posts ), 'internetorg' ); ?>
+										<?php printf( '%d Results Found', esc_html( $wp_query->found_posts ) ,'internetorg' ); ?>
 									</div>
 
 								</div>

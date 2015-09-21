@@ -72,9 +72,9 @@ Sections of content that introduce landing and story pages
     .introBlock {
         display: table; // fallback
         display: flex;
-        height: 620px;
+        // height: 620px;
         padding-top: 45px;
-        padding: 126px 0 45px;
+        padding: 120px 0 80px;
         background-position: -725px top;
         background-size: 1450px 2035px;
     }
@@ -85,16 +85,26 @@ Sections of content that introduce landing and story pages
         padding-bottom: $SPACE_x3;
     }
 
-    // reset border
+    /* reset border */
     .viewWindow-panel-content-inner > .introBlock {
         margin-top: 0;
     }
+
+    .introBlock {
+        min-height: 330px;
+    }
+
+    /* Targeting Firefox */
+    _::-moz-range-track, body:last-child .selector {
+        height: 420px;   
+    }
+
 }
 
 // NOTE: moved below to override media query
 .introBlock_fill {
     // height: calc(100vh - 45px); NEED TO FIND A IOS only solution for this
-    min-height: 100vh;
+    min-height: 100%;
     height: auto;
     background-position: -300px top;
 }

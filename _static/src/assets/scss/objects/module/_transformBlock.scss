@@ -70,6 +70,7 @@
     position: absolute;
     opacity: 0;
     z-index: 0;
+    pointer-events: none;
 }
 
 .transformBlock-post-item:nth-child(1) {
@@ -78,4 +79,5 @@
 
 .transformBlock-post-item_isActive {
     z-index: 1;
+    pointer-events: auto;
 }
