@@ -18,7 +18,7 @@
 
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php esc_attr_e( get_bloginfo( 'pingback_url' ) ); ?>">
-	<meta http-equiv="content-language" content="<?php echo get_bloginfo('language'); ?>" />
+	<meta http-equiv="content-language" content="<?php esc_attr_e( get_bloginfo( 'language' ) ); ?>" />
 
 	<?php wp_head(); ?>
 
@@ -40,7 +40,7 @@
 			<?php get_template_part( 'template-parts/header', 'buttons' ); ?>
 		</div>
 
-		<div class="mainMenu js-menuView u-isVisuallyHidden" role="navigation">
+		<div class="mainMenu js-menuView u-isHidden" role="navigation">
 			<div class="mainMenu-panel js-menuView-panel">
 				<div class="mainMenu-panel-hd">
 					<?php get_template_part( 'template-parts/header', 'search' ); ?>

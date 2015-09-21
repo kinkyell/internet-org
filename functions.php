@@ -11,7 +11,7 @@ require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
 vip_allow_title_orphans();
 
-//Shortcake VIP Plugin
+// Shortcake VIP Plugin.
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/shortcode-ui/shortcode-ui.php' );
 
 wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
@@ -117,7 +117,7 @@ add_action( 'after_setup_theme', 'internetorg_setup' );
  */
 function internetorg_setup_image_sizes() {
 
-	// Hard cropped image 960 x 1200 for use in "Panel."
+	// Hard cropped image 960 x 1200 for use in "Panel".
 	add_image_size( 'panel-image', 960, 1200, true );
 
 	// Soft cropped image 720 x whatever for use in content or the "mobile only" thumbnail.
@@ -139,7 +139,7 @@ add_action( 'after_setup_theme', 'internetorg_setup_image_sizes' );
  * @return array
  */
 function internetorg_custom_sizes( $sizes ) {
-	return array_merge( $sizes, array( 'inline-image' => __( 'Inline Image' ), ) );
+	return array_merge( $sizes, array( 'inline-image' => __( 'Inline Image' ) ) );
 }
 
 add_filter( 'image_size_names_choose', 'internetorg_custom_sizes' );
@@ -1186,7 +1186,7 @@ if ( class_exists( 'MultiPostThumbnails' ) ) {
  *
  * @param string $post_type The post type that we are retrieving the "mobile featured image" for.
  * @param int    $post_id   The ID of the post that we are retrieving the "mobile featured image" for.
- * @param string $size      Optional. The registered image size to retrieve. Defaults to "inline-image."
+ * @param string $size      Optional. The registered image size to retrieve. Defaults to "inline-image".
  *
  * @return string
  */
@@ -1437,19 +1437,33 @@ function internetorg_video_shortcode( $atts = array() ) {
 	/**
 	 * The return markup.
 	 *
+	 * @var string $markup_template
+	 */
+	$markup_template = '
+	<div class="contentOnMedia">
+		<img class="contentOnMedia-media" src="%1$s" alt="">
+		<div class="contentOnMedia-details">
+			<div class="contentOnMedia-details-title">%2$s</div>
+			<div class="contentOnMedia-details-duration">%3$s</div>
+		</div>
+		<a href="%4$s" class="contentOnMedia-link contentOnMedia-link_ct js-videoModal swipebox-video" rel="vimeo2">
+			<span class="circleBtn circleBtn_play"></span>
+		</a>
+	</div>
+	';
+
+	/**
+	 * The assembled markup.
+	 *
 	 * @var string $markup
 	 */
-	$markup = '<div class="contentOnMedia">'
-	          . '<img class="contentOnMedia-media" src="' . esc_url( $image ) . '" alt="">'
-	          . '<div class="contentOnMedia-details">'
-	          . '<div class="contentOnMedia-details-title">' . esc_html( $title ) . '</div>'
-	          . '<div class="contentOnMedia-details-duration">' . esc_html( $duration ) . '</div>'
-	          . '</div>'
-	          . '<a href="' . esc_url( $url )
-	          . '" class="contentOnMedia-link contentOnMedia-link_ct js-videoModal swipebox-video" rel="vimeo2">'
-	          . '<span class="circleBtn circleBtn_play"></span>'
-	          . '</a>'
-	          . '</div>';
+	$markup = sprintf(
+		$markup_template,
+		esc_url( $image ),
+		esc_html( $title ),
+		esc_html( $duration ),
+		esc_url( $url )
+	);
 
 	return $markup;
 
@@ -1513,8 +1527,6 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 		)
 	);
 
-	ob_start();
-
 	$source = absint( $attr['source'] );
 
 	// Return early if we don't have a url.
@@ -1528,17 +1540,16 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 	$lg_image   = '';
 	$sm_image   = '';
 	$data_theme = '';
+	$data_social = 'false';
 
 	if ( get_post_thumbnail_id( $source ) ) {
-		$lg_image = wp_get_attachment_image_src( get_post_thumbnail_id( $source ), 'panel-image' );
+		$lg_image = internetorg_get_media_image_url( get_post_thumbnail_id( $source ), 'panel-image' );
 		$sm_image = internetorg_get_mobile_featured_image( get_post_type( $source ), $source );
-		$data_attr .= 'data-image="' . esc_url( $lg_image[0] ) . '" ';
-		$data_attr .= 'data-mobile-image="' . esc_url( $sm_image ) . '" ';
 		$data_type = 'panel';
 	}
 
 	if ( 'post' === $post_type ) {
-		$data_attr .= 'data-social="true"';
+		$data_social = 'true';
 	}
 
 	if ( 'io_story' === $post_type ) {
@@ -1547,21 +1558,47 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 
 	$url = str_replace( home_url(), '', get_permalink( $source ) );
 
-	?>
+	/**
+	 * The return markup.
+	 *
+	 * @var string $markup_template
+	 */
+	$markup_template = '
+	<a class="%1$s js-stateLink"
+	   href="%2$s"
+	   data-title="%3$s"
+	   data-desc="%4$s"
+	   data-date="%5$s"
+	   data-theme="%6$s"
+	   data-image="%7$s"
+	   data-mobile-image="%8$s"
+       data-social="%9$s"
+       data-type="%10$s"
+		>%11$s</a>
+		';
 
-	<a class="<?php echo esc_attr( $attr['css_class'] ); ?> js-stateLink"
-	   href="<?php echo esc_url( $url ); ?>"
-	   data-title="<?php echo esc_attr( get_the_title( $source ) ); ?>"
-	   data-desc="<?php echo esc_attr( get_post_field( 'post_excerpt', $source ) ); ?>"
-	   data-date="<?php echo esc_attr( get_the_date( '', $source ) ); ?>"
-	   data-theme="<?php echo esc_attr( $data_theme ); ?>"
-		<?php echo esc_attr( $data_attr ); ?>
-       data-type="<?php echo esc_attr( $data_type ); ?>"
-		><?php echo esc_html( $attr['link_text'] ); ?></a>
+	/**
+	 * The assembled markup.
+	 *
+	 * @var string $markup
+	 */
+	$markup = sprintf(
+		$markup_template,
+		esc_attr( $attr['css_class'] ),
+		esc_url( $url ),
+		esc_attr( get_the_title( $source ) ),
+		esc_attr( get_post_field( 'post_excerpt', $source ) ),
+		esc_attr( get_the_date( '', $source ) ),
+		esc_attr( $data_theme ),
+		esc_url( $lg_image ),
+		esc_url( $sm_image ),
+		esc_attr( $data_social ),
+		esc_attr( $data_type ),
+		esc_html( $attr['link_text'] )
+	);
 
-	<?php
+	return $markup;
 
-	return ob_get_clean();
 }
 
 add_shortcode( 'io-custom-link', 'internetorg_custom_link_shortcode' );
@@ -1661,7 +1698,11 @@ function internetorg_is_video_url( $url ) {
 
 	$found_loc = strpos( $url, $check_val );
 
-	return $found_loc !== false;
+	if ( false === $found_loc ) {
+		return false;
+	}
+
+	return true;
 }
 
 /**
@@ -1742,7 +1783,9 @@ function internetorg_get_archives_years() {
 /**
  * Print the "press filter" markup.
  *
- * @param array $years An array of "years." Optional. Defaults to result of internetorg_get_archives_years();
+ * @uses internetorg_get_archives_years
+ *
+ * @param array $years An array of "years." Optional. Defaults to result of internetorg_get_archives_years().
  */
 function internetorg_the_press_filter( $years = array() ) {
 

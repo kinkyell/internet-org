@@ -7,10 +7,9 @@
 
 $intro_block = internetorg_get_the_intro_block();
 
-if ( empty( $intro_block['intro_title'] ) && empty( $intro_block['intro_content'] ) )  {
+if ( empty( $intro_block['intro_title'] ) && empty( $intro_block['intro_content'] ) ) {
 	return;
 }
-
 ?>
 
 <!-- START ADD DESKTOP ONLY CONTENT HERE -->

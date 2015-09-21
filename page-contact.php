@@ -139,10 +139,10 @@ get_header();
                                                                    data-theme="<?php echo esc_attr( strtolower( $theme ) ); ?>"
                                                                    data-title="<?php echo esc_attr( $title ); ?>"
                                                                    data-desc="<?php echo esc_attr( $desc ); ?>"
-																	<?php if ( is_string( $mobile_image ) ): ?>
+																	<?php if ( is_string( $mobile_image ) ) : ?>
 																		data-mobile-image="<?php echo esc_url( $mobile_image ); ?>"
 																	<?php endif; ?>
-																	<?php if ( is_string( $img ) ): ?>
+																	<?php if ( is_string( $img ) ) : ?>
 																		data-image="<?php echo esc_url( $img ); ?>"
 																	<?php endif; ?>>
 																	<?php echo esc_html__( 'Learn More', 'internetorg' ); ?>

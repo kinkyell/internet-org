@@ -285,7 +285,7 @@ define(function(require, exports, module) { // jshint ignore:line
         var $parent = $link.parents('.transformBlock-post-item');
         var sectionPos = $parent.index() + 1; //accounting for the first section containing no links
         this._changeSection(sectionPos);
-    }
+    };
 
     /**
      * Window resize event handler

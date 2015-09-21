@@ -47,9 +47,11 @@ table {
     border-spacing: 0;
 }
 
-// :focus {
-//     outline: 0;
-// }
+@media (max-width: 767px) {
+    :focus {
+        outline: 0;
+    }
+}
 
 html {
     -webkit-text-size-adjust: 100%;
@@ -95,7 +97,13 @@ textarea {
     resize: vertical;
 }
 
-// ::-moz-focus-inner {
-//     border: 0;
-//     padding: 0;
-// }
+input:focus,
+input[type="search"]:focus,
+textarea:focus {
+    outline: 0;
+}
+
+::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
