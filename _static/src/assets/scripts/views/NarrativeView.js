@@ -247,6 +247,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onDisable = function() {
+        console.log('ondisable');
         this.$progress.hide();
         this.scrollTop = this.$narrative[0].scrollTop;
         this._disableScrolling();
@@ -619,7 +620,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._displayIndicators = function(pos) {
-
         if (!breakpointManager.isMobile && pos <= 0) {
             this._$interactionPrompt.show();
         } else {

@@ -28,6 +28,8 @@
         @include breakpoint(MD) {
             width: 78.125%;
         }
+    } @else if $type == xl {
+        width: 85.3125%;
     } @else {
         width: 82.5%;
 
