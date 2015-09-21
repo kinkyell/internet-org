@@ -124,6 +124,8 @@ define(function(require, exports, module) { // jshint ignore:line
         var tl = new Timeline({ paused: true });
         var easeDirection = (direction === 'forward') ? EASE_DIRECTION_FORWARD : EASE_DIRECTION_REVERSE;
 
+        var $fistAnchor = this._$transformBlockPost.eq(1).find('> a');
+
         //  transition partials
         ///////////////////////
         var postIn = [
@@ -175,6 +177,13 @@ define(function(require, exports, module) { // jshint ignore:line
             '-=' + SECTION_DURATION);
 
         tl.fromTo(
+            this._$transformBlockPost.eq(1).find('.transformBlock-post-item-ft'),
+            SECTION_DURATION,
+            { y: '45px' },
+            { y: '0px' },
+            '-=' + SECTION_DURATION);
+
+        tl.fromTo(
             $('.transformBlock-bar'),
             SECTION_DURATION,
             { 'background-color': '#ffcc02'},
@@ -209,6 +218,13 @@ define(function(require, exports, module) { // jshint ignore:line
             { opacity: 1, y: '0px', ease: EASE[easeDirection] },
             '-=' + SECTION_DURATION);
 
+        tl.fromTo(
+            this._$transformBlockPost.eq(2).find('.transformBlock-post-item-ft'),
+            SECTION_DURATION,
+            { y: '45px' },
+            { y: '0px' },
+            '-=' + SECTION_DURATION);
+
         tl.to(
             $('.transformBlock-bar'),
             SECTION_DURATION,
@@ -240,6 +256,13 @@ define(function(require, exports, module) { // jshint ignore:line
             SECTION_DURATION,
             { opacity: 0, y: '90px' },
             { opacity: 1, y: '0px', ease: EASE[easeDirection] },
+            '-=' + SECTION_DURATION);
+
+        tl.fromTo(
+            this._$transformBlockPost.eq(3).find('.transformBlock-post-item-ft'),
+            SECTION_DURATION,
+            { y: '45px' },
+            { y: '0px' },
             '-=' + SECTION_DURATION);
 
         tl.to(
@@ -280,6 +303,13 @@ define(function(require, exports, module) { // jshint ignore:line
             SECTION_DURATION,
             { opacity: 0, y: '90px' },
             { opacity: 1, y: '0px', ease: EASE[easeDirection] },
+            '-=' + SECTION_DURATION);
+
+        tl.fromTo(
+            this._$transformBlockPost.eq(4).find('.transformBlock-post-item-ft'),
+            SECTION_DURATION,
+            { y: '45px' },
+            { y: '0px' },
             '-=' + SECTION_DURATION);
 
         tl.to(
