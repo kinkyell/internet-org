@@ -144,6 +144,8 @@ define(function(require, exports, module) { // jshint ignore:line
             ease: EASE[easeDirection]
         };
 
+        //  transition 01
+        ///////////////////////
         tl.fromTo(
             this._$transformBlockPre.eq(0),
             SECTION_DURATION,
@@ -153,7 +155,7 @@ define(function(require, exports, module) { // jshint ignore:line
         tl.fromTo(
             this._$transformBlockPost.eq(0),
             SECTION_DURATION,
-            { opacity: 1, y: 0 },
+            { opacity: 1, y: '0px' },
             { opacity: 0, y: '-90px', ease: EASE[easeDirection] },
             '-=' + SECTION_DURATION);
 
