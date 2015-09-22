@@ -48,15 +48,11 @@ $BASE_FONT_SIZE: 16px;
     } @else if $style == SANS_BLACK {
         font-family: "Basis Grotesque Pro", Comic Sans, Tahoma, Arial, Helvetica, sans-serif;
         font-weight: 500;
-        // font-weight: 500;
         font-style: normal;
-        // font-family: "Basis Grotesque Pro Black", Tahoma, Arial, Helvetica, sans-serif;
-        // font-weight: 800;
-        // font-style: normal;
     } @else if $style == SERIF {
         font-family: "Lava", "Harir Regular", Times New Roman, Georia, serif ;
         font-style: Normal;
-        font-weight: 500;
+        font-weight: 600;
         font-stretch: normal;
     } @else if $style == SERIF_ITALIC {
         font-family: "Lava", "Harir Regular", Times New Roman, Georia, serif ;
@@ -64,7 +60,7 @@ $BASE_FONT_SIZE: 16px;
         font-weight: 400;
         font-stretch: normal;
     } @else if $style == SERIF_MED_ITALIC {
-        font-family: "Lava", "Harir Bold", Times New Roman, Georia, serif ;
+        font-family: "Lava", "Harir Bold", Timesgri New Roman, Georia, serif ;
         font-style: Italic;
         font-weight: 500;
         font-stretch: normal;

@@ -1,11 +1,6 @@
 /* ---------------------------------------------------------------------
  Fonts
 ------------------------------------------------------------------------ */
-// BGP-Regular
-// BGP-Black
-// Lava-Regular-Italic
-// Lava-Medium
-
 @font-face {
 	font-family: "Basis Grotesque Pro"; // Basis Grotesque Pro Regular
 	src: url("../../assets/media/fonts/basis_grotesque_pro_light-web.eot");
@@ -22,48 +17,42 @@
 	font-weight: 500;
 	font-stretch: normal;
 	}
-
 @font-face {
 	font-family: "Lava"; // Lava Regular
-	src: url("../../assets/media/fonts/WF-026395-008647-001183-1440171530.eot");
-	src: url("../../assets/media/fonts/WF-026395-008647-001183-1440171530.eot?#iefix") format("embedded-opentype"), url("../../assets/media/fonts/WF-026395-008647-001183-1440171530.woff") format("woff"), url("../../assets/media/fonts/WF-026395-008647-001183-1440171530.svg#typotheque_webfonts_service") format("svg");
+	src: url("../../assets/media/fonts/WF-026412-008719-001183.eot");
+	src: url("../../assets/media/fonts/WF-026412-008719-001183.eot?#iefix") format("embedded-opentype"), url("../../assets/media/fonts/WF-026412-008719-001183.woff") format("woff"), url("../../assets/media/fonts/WF-026412-008719-001183.svg#typotheque_webfonts_service") format("svg");
 	font-style: Normal;
-	font-weight: 500;
+	font-weight: 600;
 	font-stretch: normal;
 	}
 @font-face {
 	font-family: "Lava"; // Lava Regular Italic
-	src: url("../../assets/media/fonts/WF-026395-008647-001182-1440171530.eot");
-	src: url("../../assets/media/fonts/WF-026395-008647-001182-1440171530.eot?#iefix") format("embedded-opentype"), url("../../assets/media/fonts/WF-026395-008647-001182-1440171530.woff") format("woff"), url("../../assets/media/fonts/WF-026395-008647-001182-1440171530.svg#typotheque_webfonts_service") format("svg");
+	src: url("../../assets/media/fonts/WF-026412-008719-001182.eot");
+	src: url("../../assets/media/fonts/WF-026412-008719-001182.eot?#iefix") format("embedded-opentype"), url("../../assets/media/fonts/WF-026412-008719-001182.woff") format("woff"), url("../../assets/media/fonts/WF-026412-008719-001182.svg#typotheque_webfonts_service") format("svg");
 	font-style: Italic;
 	font-weight: 400;
 	font-stretch: normal;
 	}
 @font-face {
-	font-family: "Lava"; // Lava Medium
-	src: url("../../assets/media/fonts/WF-026395-008647-001183-1440171530.eot");
-	src: url("../../assets/media/fonts/WF-026395-008647-001183-1440171530.eot?#iefix") format("embedded-opentype"), url("../../assets/media/fonts/WF-026395-008647-001183-1440171530.woff") format("woff"), url("../../assets/media/fonts/WF-026395-008647-001183-1440171530.svg#typotheque_webfonts_service") format("svg");
-	}
-@font-face {
 	font-family: "Lava"; // Lava Medium Italic
-	src: url("../../assets/media/fonts/WF-026395-008647-001184-1440171530.eot");
-	src: url("../../assets/media/fonts/WF-026395-008647-001184-1440171530.eot?#iefix") format("embedded-opentype"), url("../../assets/media/fonts/WF-026395-008647-001184-1440171530.woff") format("woff"), url("../../assets/media/fonts/WF-026395-008647-001184-1440171530.svg#typotheque_webfonts_service") format("svg");
+	src: url("../../assets/media/fonts/WF-026412-008719-001184.eot");
+	src: url("../../assets/media/fonts/WF-026412-008719-001184.eot?#iefix") format("embedded-opentype"), url("../../assets/media/fonts/WF-026412-008719-001184.woff") format("woff"), url("../../assets/media/fonts/WF-026412-008719-001184.svg#typotheque_webfonts_service") format("svg");
 	font-style: Italic;
 	font-weight: 500;
 	font-stretch: normal;
 	}
 @font-face {
 	font-family: "Harir"; // Harir Regular
-	src: url("../../assets/media/fonts/WF-026395-008647-001233-1440171531.eot");
-	src: url("../../assets/media/fonts/WF-026395-008647-001233-1440171531.eot?#iefix") format("embedded-opentype"), url("../../assets/media/fonts/WF-026395-008647-001233-1440171531.woff") format("woff"), url("../../assets/media/fonts/WF-026395-008647-001233-1440171531.svg#typotheque_webfonts_service") format("svg");
+	src: url("../../assets/media/fonts/WF-026412-008719-001231.eot");
+	src: url("../../assets/media/fonts/WF-026412-008719-001231.eot?#iefix") format("embedded-opentype"), url("../../assets/media/fonts/WF-026412-008719-001231.woff") format("woff"), url("../../assets/media/fonts/WF-026412-008719-001231.svg#typotheque_webfonts_service") format("svg");
 	font-style: Normal;
 	font-weight: 400;
 	font-stretch: normal;
 	}
 @font-face {
 	font-family: "Harir"; // Harir Bold
-	src: url("../../assets/media/fonts/WF-026395-008647-001233-1440171531.eot");
-	src: url("../../assets/media/fonts/WF-026395-008647-001233-1440171531.eot?#iefix") format("embedded-opentype"), url("../../assets/media/fonts/WF-026395-008647-001233-1440171531.woff") format("woff"), url("../../assets/media/fonts/WF-026395-008647-001233-1440171531.svg#typotheque_webfonts_service") format("svg");
+	src: url("../../assets/media/fonts/WF-026412-008719-001233.eot");
+	src: url("../../assets/media/fonts/WF-026412-008719-001233.eot?#iefix") format("embedded-opentype"), url("../../assets/media/fonts/WF-026412-008719-001233.woff") format("woff"), url("../../assets/media/fonts/WF-026412-008719-001233.svg#typotheque_webfonts_service") format("svg");
 	font-style: Normal;
 	font-weight: 700;
 	font-stretch: normal;
