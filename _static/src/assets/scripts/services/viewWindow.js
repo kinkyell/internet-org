@@ -16,6 +16,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var log = require('util/log');
     var vwConfig = require('appConfig').viewWindow;
     var eventHub = require('services/eventHub');
+    var assetLoader = require('services/assetLoader');
 
     // speed of shift and feature transitions
     var TRANSITION_SPEED = require('appConfig').animationSpeeds.PANEL_SHIFT;
@@ -78,30 +79,34 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     ViewWindow.prototype.replaceFeatureImage = function(imagePath, direction) {
         imagePath = parseUrl(imagePath).href;
-        return this._featureQueue.queue(function() {
+        var swapImage = function() {
+            return this._featureQueue.queue(function() {
 
-            var $panel;
+                var $panel;
 
-            if (this._featureImage === imagePath || !imagePath) {
-                if (!imagePath) {
-                    log('ViewWindow: [warning] image path is undefined!');
+                if (this._featureImage === imagePath || !imagePath) {
+                    if (!imagePath) {
+                        log('ViewWindow: [warning] image path is undefined!');
+                    }
+                    return Promise.resolve(this.$feature.children());
                 }
-                return Promise.resolve(this.$feature.children());
-            }
 
-            $panel = this._getPanelWrap();
-            $panel.children().css({
-                'background-color': '#efede4',
-                'background-image': 'url(' + imagePath + ')'
-            });
-            this._featureImage = imagePath;
+                $panel = this._getPanelWrap();
+                $panel.children().css({
+                    'background-color': '#efede4',
+                    'background-image': 'url(' + imagePath + ')'
+                });
+                this._featureImage = imagePath;
 
-            return this._updatePanel(
-                $panel,
-                this.$feature,
-                direction
-            );
-        }, this);
+                return this._updatePanel(
+                    $panel,
+                    this.$feature,
+                    direction
+                );
+            }, this);
+        }.bind(this);
+        
+        return assetLoader.loadImage(imagePath).then(swapImage, swapImage);
     };
 
     /**

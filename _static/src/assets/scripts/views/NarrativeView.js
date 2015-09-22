@@ -10,6 +10,8 @@ define(function(require, exports, module) { // jshint ignore:line
     var debounce = require('stark/function/debounce');
     var eventHub = require('services/eventHub');
     var VideoModalView = require('views/VideoModalView');
+    var assetLoader = require('services/assetLoader');
+    var identity = require('stark/function/identity');
 
     var CONFIG = {
         NARRATIVE_DT: '.narrativeDT',
@@ -584,6 +586,12 @@ define(function(require, exports, module) { // jshint ignore:line
 
                 this._sectionConf.push(confItem);
             }
+
+            var imageUrls = this._sectionConf.map(function(conf) {
+                return conf.featureImage;
+            }).filter(identity);
+
+            assetLoader.loadImages(imageUrls);
 
             resolve();
 
