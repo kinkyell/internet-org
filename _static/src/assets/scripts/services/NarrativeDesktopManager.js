@@ -124,8 +124,6 @@ define(function(require, exports, module) { // jshint ignore:line
         var tl = new Timeline({ paused: true });
         var easeDirection = (direction === 'forward') ? EASE_DIRECTION_FORWARD : EASE_DIRECTION_REVERSE;
 
-        var $fistAnchor = this._$transformBlockPost.eq(1).find('> a');
-
         //  transition partials
         ///////////////////////
         var postIn = [
@@ -150,172 +148,85 @@ define(function(require, exports, module) { // jshint ignore:line
         //  transition 01
         ///////////////////////
         tl.fromTo(
-            this._$transformBlockPre.eq(0),
-            SECTION_DURATION,
-            { opacity: 1, y: '0px' },
-            { opacity: 0, y: '-90px', ease: EASE[easeDirection] });
-
-        tl.fromTo(
-            this._$transformBlockPost.eq(0),
-            SECTION_DURATION,
-            { opacity: 1, y: '0px' },
-            { opacity: 0, y: '-90px', ease: EASE[easeDirection] },
-            '-=' + SECTION_DURATION);
-
-        tl.fromTo(
-            this._$transformBlockPre.eq(1),
-            SECTION_DURATION,
-            { opacity: 0, y: '90px' },
-            { opacity: 1, y: '0px', ease: EASE[easeDirection] },
-            '-=' + SECTION_DURATION);
-
-        tl.fromTo(
-            this._$transformBlockPost.eq(1),
-            SECTION_DURATION,
-            { opacity: 0, y: '90px' },
-            { opacity: 1, y: '0px', ease: EASE[easeDirection] },
-            '-=' + SECTION_DURATION);
-
-        tl.fromTo(
-            this._$transformBlockPost.eq(1).find('.transformBlock-post-item-ft'),
-            SECTION_DURATION,
-            { y: '45px' },
-            { y: '0px' },
-            '-=' + SECTION_DURATION);
-
-        tl.fromTo(
-            $('.transformBlock-bar'),
-            SECTION_DURATION,
-            { 'background-color': '#ffcc02'},
-            { 'background-color': '#9d25a0'},
-            '-=' + SECTION_DURATION);
-
-
-        //  transition 02
-        ///////////////////////
-        tl.to(
-            this._$transformBlockPre.eq(1),
-            SECTION_DURATION,
-            { opacity: 0, ease: EASE[easeDirection] });
-
-        tl.to(
-            this._$transformBlockPost.eq(1),
-            SECTION_DURATION,
-            { opacity: 0, y: '-90px', ease: EASE[easeDirection] },
-            '-=' + SECTION_DURATION);
-
-        tl.fromTo(
-            this._$transformBlockPre.eq(2),
-            SECTION_DURATION,
-            { opacity: 0 },
-            { opacity: 1, ease: EASE[easeDirection] },
-            '-=' + SECTION_DURATION);
-
-        tl.fromTo(
-            this._$transformBlockPost.eq(2),
-            SECTION_DURATION,
-            { opacity: 0, y: '90px' },
-            { opacity: 1, y: '0px', ease: EASE[easeDirection] },
-            '-=' + SECTION_DURATION);
-
-        tl.fromTo(
-            this._$transformBlockPost.eq(2).find('.transformBlock-post-item-ft'),
-            SECTION_DURATION,
-            { y: '45px' },
-            { y: '0px' },
-            '-=' + SECTION_DURATION);
-
-        tl.to(
-            $('.transformBlock-bar'),
-            SECTION_DURATION,
-            { 'background-color': '#fa5cb6'},
-            '-=' + SECTION_DURATION);
-
-        //  transition 03
-        ///////////////////////
-        tl.to(
-            this._$transformBlockPre.eq(2),
-            SECTION_DURATION,
-            { opacity: 0, ease: EASE[easeDirection] });
-
-        tl.to(
-            this._$transformBlockPost.eq(2),
-            SECTION_DURATION,
-            { opacity: 0, y: '-90px', ease: EASE[easeDirection] },
-            '-=' + SECTION_DURATION);
-
-        tl.fromTo(
-            this._$transformBlockPre.eq(3),
-            SECTION_DURATION,
-            { opacity: 0 },
-            { opacity: 1, ease: EASE[easeDirection] },
-            '-=' + SECTION_DURATION);
-
-        tl.fromTo(
-            this._$transformBlockPost.eq(3),
-            SECTION_DURATION,
-            { opacity: 0, y: '90px' },
-            { opacity: 1, y: '0px', ease: EASE[easeDirection] },
-            '-=' + SECTION_DURATION);
-
-        tl.fromTo(
-            this._$transformBlockPost.eq(3).find('.transformBlock-post-item-ft'),
-            SECTION_DURATION,
-            { y: '45px' },
-            { y: '0px' },
-            '-=' + SECTION_DURATION);
-
-        tl.to(
-            $('.transformBlock-bar'),
-            SECTION_DURATION,
-            { 'background-color': '#ff6b00'},
-            '-=' + SECTION_DURATION);
-
-        //  transition 04
-        ///////////////////////
-        tl.fromTo(
             this._$transformBlock,
             SECTION_DURATION,
             { y: '0px' },
             { y: '-90px', ease: EASE[easeDirection] });
 
-        tl.to(
-            this._$transformBlockPre.eq(3),
+        tl.fromTo(
+            this._$transformBlockPre.eq(0),
             SECTION_DURATION,
+            { opacity: 1, },
             { opacity: 0, ease: EASE[easeDirection] },
             '-=' + SECTION_DURATION);
 
+        tl.fromTo(
+            this._$transformBlockPost.eq(0),
+            SECTION_DURATION,
+            postIn[0],
+            postIn[1],
+            '-=' + SECTION_DURATION);
+
+        //  transition 02
+        ///////////////////////
         tl.to(
+            this._$transformBlockPost.eq(0),
+            SECTION_DURATION,
+            postOut);
+
+        tl.fromTo(
+            this._$transformBlockPost.eq(1),
+            SECTION_DURATION,
+            postIn[0],
+            postIn[1],
+            '-=' + SECTION_DURATION);
+
+        //  transition 03
+        ///////////////////////
+        tl.to(
+            this._$transformBlockPost.eq(1),
+            SECTION_DURATION,
+            postOut);
+
+        tl.fromTo(
+            this._$transformBlockPost.eq(2),
+            SECTION_DURATION,
+            postIn[0],
+            postIn[1],
+            '-=' + SECTION_DURATION);
+
+        //  transition 04
+        ///////////////////////
+        tl.to(
+            this._$transformBlock,
+            SECTION_DURATION, {
+                y: '-=90px',
+                ease: EASE[easeDirection]
+            });
+
+        tl.fromTo(
+            this._$transformBlockPre.eq(1),
+            SECTION_DURATION, {
+                opacity: 0,
+                y: '50px',
+                ease: EASE[easeDirection]
+            }, {
+                opacity: 1,
+                y: '0px',
+                ease: EASE[easeDirection]
+            }, '-=' + SECTION_DURATION);
+
+        tl.to(
+            this._$transformBlockPost.eq(2),
+            SECTION_DURATION,
+            postOut,
+            '-=' + SECTION_DURATION);
+
+        tl.fromTo(
             this._$transformBlockPost.eq(3),
             SECTION_DURATION,
-            { opacity: 0, y: '-90px', ease: EASE[easeDirection] },
-            '-=' + SECTION_DURATION);
-
-        tl.fromTo(
-            this._$transformBlockPre.eq(4),
-            SECTION_DURATION,
-            { opacity: 0, y: '90px' },
-            { opacity: 1, y: '0px', ease: EASE[easeDirection] },
-            '-=' + SECTION_DURATION);
-
-        tl.fromTo(
-            this._$transformBlockPost.eq(4),
-            SECTION_DURATION,
-            { opacity: 0, y: '90px' },
-            { opacity: 1, y: '0px', ease: EASE[easeDirection] },
-            '-=' + SECTION_DURATION);
-
-        tl.fromTo(
-            this._$transformBlockPost.eq(4).find('.transformBlock-post-item-ft'),
-            SECTION_DURATION,
-            { y: '45px' },
-            { y: '0px' },
-            '-=' + SECTION_DURATION);
-
-        tl.to(
-            $('.transformBlock-bar'),
-            SECTION_DURATION,
-            { 'background-color': '#ffcc02'},
+            postIn[0],
+            postIn[1],
             '-=' + SECTION_DURATION);
 
         var i = 0;
@@ -465,7 +376,7 @@ define(function(require, exports, module) { // jshint ignore:line
             $postItem.removeClass(CONFIG.ACTIVE_POST);
         }
 
-        this._$transformBlockPost.eq(destPos).addClass('transformBlock-post-item_isActive');
+        this._$transformBlockPost.eq(destPos - 1).addClass('transformBlock-post-item_isActive');
 
         window.setTimeout(this._onTransitionComplete.bind(this, destPos, resolve), 0);
     };
