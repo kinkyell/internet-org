@@ -7,17 +7,6 @@
     position: relative;
 }
 
-.transformBlock_divide:before {
-    content: "";
-    display: inline-block;
-    height: 4px;
-    width: 40px;
-    position: absolute;
-    top: -32px;
-    text-align: center;
-    background-color: $CLR_ACCENT;
-}
-
 .transformBlock-bar {
     display: inline-block;
     height: 4px;
