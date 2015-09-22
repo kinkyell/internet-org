@@ -17,15 +17,15 @@
     display: -webkit-inline-flex;
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased;
-
-    /* Additional padding to increase hit state */
 }
 
-
+/* Additional padding to increase hit state */
 .link:not(.link_preArrows):not(.link_inline):not(.link_twoArrows) {
     padding: 15px 50px 15px 15px;
     margin: -15px;
 }
+
+// .quaren
 
 .link:after,
 .link:before {
