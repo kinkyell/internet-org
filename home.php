@@ -68,8 +68,9 @@ $archives_years = internetorg_get_archives_years();
 									<div class="resultsList-ft">
 										<div class="resultsList-list resultsList-list_spread">
 
+											<div class="resultsList-list-item">
 											<?php if ( ! empty( $next_posts_link ) ) : ?>
-												<div class="resultsList-list-item">
+												<div class="vr vr_x2">
 													<button type="button" class="btn js-ShowMoreView" data-src="press" data-target="addl-results" data-filter="press-filter">
 														<?php esc_html_e( 'Show More', 'internetorg' ); ?>
 													</button>
@@ -77,10 +78,9 @@ $archives_years = internetorg_get_archives_years();
 											<?php endif; ?>
 
 											<?php if ( ! empty( $archives_years ) ) : ?>
-												<div class="resultsList-list-item">
 													<?php internetorg_the_press_filter( $archives_years ); ?>
-												</div>
 											<?php endif; ?>
+											</div>
 
 										</div>
 									</div>
