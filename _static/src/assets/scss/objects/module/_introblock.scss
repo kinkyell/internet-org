@@ -21,7 +21,6 @@ Sections of content that introduce landing and story pages
 }
 
 .introBlock_foot {
-    min-height: 100vh;
     padding-top: 45px;
 }
 
@@ -68,6 +67,10 @@ Sections of content that introduce landing and story pages
     padding-bottom: 0;
 }
 
+.introBlock_media {
+    padding-bottom: 0;
+}
+
 @include breakpoint(MD) {
     .introBlock {
         display: table; // fallback
@@ -96,7 +99,7 @@ Sections of content that introduce landing and story pages
 
     /* Targeting Firefox */
     _::-moz-range-track, body:last-child .selector {
-        height: 420px;   
+        height: 420px;
     }
 
 }

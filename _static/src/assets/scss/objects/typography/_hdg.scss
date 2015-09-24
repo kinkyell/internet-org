@@ -73,6 +73,7 @@
 .mix-hdg_bold   { font-weight: 700; }
 .mix-hdg_splash { color: $CLR_WHITE; }
 .mix-hdg_centerInMobile { text-align: center; }
+.mix-hdg_light { font-weight: 400; }
 
 /* Theme Mixins */
 .mix-hdg_themeImpact { color: $CLR_IMPACT; }
@@ -129,8 +130,8 @@
     .mix-hdg_blackThenWhite {
         color: $CLR_WHITE;
     }
-    .mix-hdg_centerInMobile { 
-        text-align: initial; 
+    .mix-hdg_centerInMobile {
+        text-align: initial;
     }
 }
 

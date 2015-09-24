@@ -7,7 +7,7 @@
 
 ?>
 
-<div class="introBlock">
+<div class="introBlock introBlock_media">
 	<div class="introBlock-inner">
 
 		<div class="topicBlock">
