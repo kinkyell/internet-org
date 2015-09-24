@@ -133,6 +133,7 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 							'add_more_label' => __( 'Add another CTA', 'internetorg' ),
 							'limit'          => 5,
 							'collapsible'    => true,
+							'sortable'       => true,
 							'children'       => array(
 								'title' => new Fieldmanager_TextField( __( 'CTA Title', 'internetorg' ) ),
 								'text'  => new Fieldmanager_RichTextarea( __( 'Content', 'internetorg' ) ),
