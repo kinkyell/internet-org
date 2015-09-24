@@ -84,7 +84,7 @@
 
 /* Right to Left Language support */
 [dir="rtl"] {
-    
+
     .contentOnMedia-details {
         left: initial;
         right: 20px;
@@ -115,4 +115,9 @@
         }
     }
 
+}
+
+/* Disabled for now */
+.contentOnMedia-details {
+    display: none;
 }

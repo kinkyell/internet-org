@@ -1450,10 +1450,10 @@ function internetorg_video_shortcode( $atts = array() ) {
 	$markup_template = '
 	<div class="contentOnMedia">
 		<img class="contentOnMedia-media" src="%1$s" alt="">
-		<div class="contentOnMedia-details">
+		<!--<div class="contentOnMedia-details">
 			<div class="contentOnMedia-details-title">%2$s</div>
 			<div class="contentOnMedia-details-duration">%3$s</div>
-		</div>
+		</div>-->
 		<a href="%4$s" class="contentOnMedia-link contentOnMedia-link_ct js-videoModal swipebox-video" rel="vimeo2">
 			<span class="circleBtn circleBtn_play"></span>
 		</a>
