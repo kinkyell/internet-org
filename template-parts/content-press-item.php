@@ -19,9 +19,9 @@
 
 			<div class="feature feature_tight">
 				<div class="feature-hd">
-					<h2 class="hdg hdg_4">
+					<h3 class="hdg hdg_4">
 						<?php the_title(); ?>
-					</h2>
+					</h3>
 				</div>
 				<div class="feature-date">
 					<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray">
