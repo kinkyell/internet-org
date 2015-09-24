@@ -108,9 +108,6 @@ get_header();
 								<div>
 									<?php internet_org_get_content_widget_html( 'contact' ); ?>
 								</div>
-								<div>
-									<?php internet_org_get_content_widget_html( 'media-kit' ); ?>
-								</div>
 							</div>
 						</div>
 						<div class="footBox-ft">
