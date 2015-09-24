@@ -195,7 +195,7 @@ get_header();
 											<h2 class="hdg hdg_3 mix-hdg_blackThenWhite"><?php echo esc_html__( 'Follow the Project', 'internetorg' ); ?></h2>
 										</div>
 										<div class="fbFollowBlock-bd">
-											<p class="bdcpy mix-bdcpy_blackThenWhite"><?php echo esc_html__( 'Stay updated about Internet.org and lorem ipsum dolor sit amet.', 'internetorg' ); ?></p>
+											<p class="bdcpy mix-bdcpy_blackThenWhite"><?php echo esc_html__( 'Stay updated about Internet.org.', 'internetorg' ); ?></p>
 										</div>
 									</div>
 									<div class="fbFollowBlock-cta">
