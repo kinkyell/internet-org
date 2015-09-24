@@ -67,4 +67,10 @@
     .arrowCta {
         transform: scale(1) rotate(45deg);
     }
+
+    // light arrow only applies to mobile
+    .arrowCta_light:before,
+    .arrowCta_light:after {
+        border-color: $CLR_BLACK;
+    }
 }
