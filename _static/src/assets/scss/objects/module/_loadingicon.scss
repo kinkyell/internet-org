@@ -16,6 +16,10 @@ the targeted element. ex: <div class="loadingIcon"><?div>
     background-color: rgba(239, 237, 228, 0.85);
 }
 
+.loadingIcon_opaque {
+    background-color: rgba(239, 237, 228, 1);
+}
+
 .loadingIcon:before {
     content: "";
     position: absolute;

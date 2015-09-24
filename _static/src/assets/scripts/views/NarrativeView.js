@@ -12,6 +12,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var VideoModalView = require('views/VideoModalView');
     var assetLoader = require('services/assetLoader');
     var identity = require('stark/function/identity');
+    var Tween = require('gsap-tween');
 
     var CONFIG = {
         NARRATIVE_DT: '.narrativeDT',
@@ -591,7 +592,19 @@ define(function(require, exports, module) { // jshint ignore:line
                 return conf.featureImage;
             }).filter(identity);
 
-            assetLoader.loadImages(imageUrls);
+            var removeAssetShade = function() {
+                var shade = document.querySelector('.js-assetShade');
+                if (shade) {
+                    Tween.to(shade, 0.25, {
+                        onComplete: function() {
+                            shade.parentNode.removeChild(shade);
+                        },
+                        opacity: 0
+                    });
+                }
+            };
+
+            assetLoader.loadImages(imageUrls).then(removeAssetShade, removeAssetShade);
 
             resolve();
 
