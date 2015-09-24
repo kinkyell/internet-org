@@ -49,7 +49,6 @@
 @import "objects/module/narrative";
 @import "objects/module/narrativeDT";
 @import "objects/module/panel";
-@import "objects/module/quarantine";
 @import "objects/module/quote";
 @import "objects/module/contentonmedia";
 @import "objects/module/menutrigger";
@@ -99,3 +98,9 @@
 ------------------------------------------------------------------------ */
 @import "objects/typography/hdg";
 @import "objects/typography/bdcpy";
+
+
+/* ---------------------------------------------------------------------
+ Objects: module / WYSIWYG
+------------------------------------------------------------------------ */
+@import "objects/module/quarantine";
