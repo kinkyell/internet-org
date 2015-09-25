@@ -33,6 +33,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handleOpen = this._onOpen.bind(this);
         this._handleClose = this._onClose.bind(this);
         this._handleOverlayClick = this._onOverlayClick.bind(this);
+        this._handleEscKey = this._onEscKey.bind(this);
     };
 
     /**
@@ -69,33 +70,59 @@ define(function(require, exports, module) { // jshint ignore:line
     //////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * Tears down any event binding to handlers.
+     * Attaches events on lightbox open
      *
      * @method _onOpen
      * @private
      */
     proto._onOpen = function() {
         $('#swipebox-overlay').on('click', this._handleOverlayClick);
+        $(document.body).on('keydown', this._handleEscKey);
+        this._previousFocus = document.activeElement;
+        var closeBtn = $('#swipebox-close');
+        if (closeBtn.length) {
+            closeBtn[0].setAttribute('href', '#');
+            closeBtn[0].onclick = function(event) {
+                event.preventDefault();
+            };
+            closeBtn[0].focus();
+        }
     };
 
     /**
-     * Tears down any event binding to handlers.
+     * Detaches events on close
      *
      * @method _onClose
      * @private
      */
     proto._onClose = function() {
         $('#swipebox-overlay').off('click', this._handleOverlayClick);
+        $(document.body).off('keydown', this._handleEscKey);
+        if (this._previousFocus) {
+            this._previousFocus.focus();
+        }
     };
 
     /**
-     * Tears down any event binding to handlers.
+     * Close lightbox on click
      *
      * @method _onOverlayClick
      * @private
      */
     proto._onOverlayClick = function() {
         $.swipebox.close();
+    };
+
+    /**
+     * Close lightbox on esc
+     *
+     * @method _onEscKey
+     * @private
+     */
+    proto._onEscKey = function(event) {
+        if (event.keyCode === 27) {
+            $.swipebox.close();
+        }
     };
 
 
