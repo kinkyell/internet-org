@@ -128,7 +128,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.isAnimating = true;
         eventHub.publish('MainMenu:change', this.isOpen);
         eventHub.publish('MainMenu:open');
-        this.$element.removeClass('u-isHidden');
+        this.$element.removeClass('u-isVisuallyHidden').children().removeClass('u-isHidden');
 
         this.$element.on('click', this._handleBgClick);
         $win.on('keyup', this._handleEscPress);
@@ -160,7 +160,7 @@ define(function(require, exports, module) { // jshint ignore:line
         var panelTween;
         var wrapperOpts = {
             onComplete: function() {
-                this.$element.addClass('u-isHidden');
+                this.$element.addClass('u-isVisuallyHidden').children().addClass('u-isHidden');
                 wrapperTween.progress(0);
                 wrapperTween.kill();
                 if (panelTween) {

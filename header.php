@@ -40,8 +40,8 @@
 			<?php get_template_part( 'template-parts/header', 'buttons' ); ?>
 		</div>
 
-		<div class="mainMenu js-menuView u-isHidden" role="navigation">
-			<div class="mainMenu-panel js-menuView-panel">
+		<div class="mainMenu js-menuView u-isVisuallyHidden" role="navigation">
+			<div class="mainMenu-panel js-menuView-panel u-isHidden">
 				<div class="mainMenu-panel-hd">
 					<?php get_template_part( 'template-parts/header', 'search' ); ?>
 				</div>
