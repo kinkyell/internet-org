@@ -81,9 +81,7 @@ body .contact-form label.radio
     }
 
     .grunion-radio-label > .radio {
-        position: absolute;
-        visibility: hidden;
-        margin-right: 20px;
+        @include isVisuallyHidden();
     }
 
     /* TARGET Internet Explorer ≤ 9 */
@@ -114,6 +112,10 @@ body .contact-form label.radio
     .grunion-radio-label > .radio:checked + span {
         border-color: transparent;
         background-color: #ffcc01;
+    }
+
+    .grunion-radio-label > .radio:focus + span {
+        border-color: #666666;
     }
 
     input[submit],
