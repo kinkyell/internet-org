@@ -135,7 +135,6 @@
     }
 }
 
-
 @include breakpoint(LG) {
     .hdg_1 {
         font-size: 5vw;
@@ -173,4 +172,20 @@
         font-size: 2.1vw;
     }
 
+}
+
+
+// Shame code -- specific client direction
+@media (min-width: 321px) and (max-width: $BP_MD) {
+    .narrative .hdg_1 {
+        font-size: 12vw;
+    }
+
+    .narrative .bdcpy_narrative {
+        font-size: 5vw;
+    }
+
+    .narrative .hdg_heavy {
+        font-size: 4vw;
+    }
 }
