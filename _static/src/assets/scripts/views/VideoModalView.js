@@ -79,13 +79,22 @@ define(function(require, exports, module) { // jshint ignore:line
         $('#swipebox-overlay').on('click', this._handleOverlayClick);
         $(document.body).on('keydown', this._handleEscKey);
         this._previousFocus = document.activeElement;
-        var closeBtn = $('#swipebox-close');
-        if (closeBtn.length) {
-            closeBtn[0].setAttribute('href', '#');
-            closeBtn[0].onclick = function(event) {
+        var closeBtn = $('#swipebox-close')[0];
+
+        // create label for close btn
+        var closeBtnLabel = document.createElement('span');
+        closeBtnLabel.appendChild(document.createTextNode('Close lightbox'))
+        closeBtnLabel.className = 'u-isVisuallyHidden';
+        closeBtnLabel.id = 'swipebox-close-label';
+
+        if (closeBtn) {
+            closeBtn.parentNode.insertBefore(closeBtnLabel, closeBtn);
+            closeBtn.setAttribute('href', '#');
+            closeBtn.setAttribute('aria-describedby', 'swipebox-close-label');
+            closeBtn.onclick = function(event) {
                 event.preventDefault();
             };
-            closeBtn[0].focus();
+            closeBtn.focus();
         }
     };
 

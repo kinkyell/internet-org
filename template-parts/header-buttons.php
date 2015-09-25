@@ -16,7 +16,7 @@
 
 <button type="button" class="header-menuBtn js-headerView-menuBtn u-disableTransitions">
     <span class="menuTrigger">
-        <span class="menuTrigger-label js-headerView-menuBtn-text"><?php esc_html_e( 'Menu', 'internetorg' ); ?></span>
-        <span class="menuTrigger-icon js-headerView-menuBtn-icon"></span>
+        <span id="menu-trigger-label" class="menuTrigger-label js-headerView-menuBtn-text"><span class="u-isVisuallyHidden"><?php esc_html_e( 'Toggle', 'internetorg' ); ?> </span><?php esc_html_e( 'Menu', 'internetorg' ); ?></span>
+        <span aria-describedby="menu-trigger-label" class="menuTrigger-icon js-headerView-menuBtn-icon"></span>
     </span>
 </button>
