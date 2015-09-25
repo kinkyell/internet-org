@@ -443,7 +443,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._scrollUp = function(event) {
-        if (!this._narrativeManager._isAnimating) {
+        if (!this._narrativeManager._isAnimating && this._position > 0) {
             var section = this._sectionConf[this._position];
             var subsLength = section.subSections.length;
             var subPosition = this._subPosition;
