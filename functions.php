@@ -1538,7 +1538,7 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 	);
 
 	$source = absint( $attr['source'] );
-	$link_type = esc_attr($attr['link_src']);
+	$link_type = esc_attr( $attr['link_src'] );
 
 	// Return early if we don't have a url or source ID.
 	if ( empty( $source ) && empty( $attr['external_url'] ) ) {
@@ -1551,7 +1551,6 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 	$sm_image   = '';
 	$data_theme = '';
 	$data_social = 'false';
-
 
 	if ( get_post_thumbnail_id( $source ) ) {
 		$lg_image = internetorg_get_media_image_url( get_post_thumbnail_id( $source ), 'panel-image' );
@@ -1595,7 +1594,7 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 	 */
 	$markup_template_alt = '<a class="%1$s" target="_blank" href="%2$s">%3$s</a>';
 
-	if( $link_type === 'internal' ) {
+	if ( 'internal' === $link_type ) {
 		/**
 		 * The assembled markup.
 		 *
@@ -1615,7 +1614,7 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 			esc_attr( $data_type ),
 			esc_html( $attr['link_text'] )
 		);
-	} elseif( $link_type === 'external' ) {
+	} elseif ( 'external' === $link_type ) {
 		/**
 		 * The assembled markup.
 		 *
