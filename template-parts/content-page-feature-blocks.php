@@ -21,6 +21,11 @@ if ( empty( $section_meta ) ) {
 }
 
 foreach ( $section_meta as $section_key => $section_fields ) :
+
+	if ( empty( $section_fields['title'] ) || empty( $section_fields['content'] ) ) {
+		continue;
+	}
+
 	?>
 
 	<div class="feature"> <!-- TEXT -->
@@ -33,4 +38,5 @@ foreach ( $section_meta as $section_key => $section_fields ) :
 	</div>
 
 	<?php
+
 endforeach;
