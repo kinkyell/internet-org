@@ -1538,7 +1538,10 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 	);
 
 	$source = absint( $attr['source'] );
-	$link_type = esc_attr( $attr['link_src'] );
+
+	if ( ! empty( $attr['link_src'] ) ) {
+		$link_type = $attr['link_src'];
+	}
 
 	// Return early if we don't have a url or source ID.
 	if ( empty( $source ) && empty( $attr['external_url'] ) ) {
@@ -1594,7 +1597,19 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 	 */
 	$markup_template_alt = '<a class="%1$s" target="_blank" href="%2$s">%3$s</a>';
 
-	if ( 'internal' === $link_type ) {
+	if ( ! empty( $link_type ) && 'external' === $link_type ) {
+		/**
+		 * The assembled markup.
+		 *
+		 * @var string $markup
+		 */
+		$markup = sprintf(
+			$markup_template_alt,
+			esc_attr( $attr['css_class'] ),
+			esc_url( $attr['external_url'] ),
+			esc_html( $attr['link_text'] )
+		);
+	} else {
 		/**
 		 * The assembled markup.
 		 *
@@ -1612,18 +1627,6 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 			esc_url( $sm_image ),
 			esc_attr( $data_social ),
 			esc_attr( $data_type ),
-			esc_html( $attr['link_text'] )
-		);
-	} elseif ( 'external' === $link_type ) {
-		/**
-		 * The assembled markup.
-		 *
-		 * @var string $markup
-		 */
-		$markup = sprintf(
-			$markup_template_alt,
-			esc_attr( $attr['css_class'] ),
-			esc_url( $attr['external_url'] ),
 			esc_html( $attr['link_text'] )
 		);
 	}
