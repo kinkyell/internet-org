@@ -75,7 +75,8 @@ define(function(require, exports, module) { // jshint ignore:line
 
         eventHub.subscribe('HistoryManager:popState', this._handlePopState);
         eventHub.subscribe('Search:submit', this._handleSearch);
-        $(document.body)
+
+        $(document)
             .on('click', ROUTER_LINK_SELECTOR, this._handleStateTrigger)
             .on('click', ROUTER_BACK_SELECTOR, this._handleStateBack)
             .on('click', ROUTER_SWAP_SELECTOR, this._handleStateSwap)
@@ -140,6 +141,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     Router.prototype._onStateTrigger = function(event) {
+        debugger;
         event.preventDefault();
         var prevStates = this._currentStates.slice(0);
         var stateData = extend({
@@ -159,6 +161,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     Router.prototype._onStateSwap = function(event) {
+        debugger;
         var prevStates = this._currentStates.slice(0);
         event.preventDefault();
 
@@ -178,6 +181,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     Router.prototype._onStateBack = function(event) {
+        debugger;
         event.preventDefault();
         this.historyManager.back();
     };
