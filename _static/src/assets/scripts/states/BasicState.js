@@ -105,6 +105,9 @@ define(function(require, exports, module) { // jshint ignore:line
         $element.find('button,input[type="button"],input[type="submit"]').on('mousedown', function(event) {
             event.preventDefault();
         });
+
+        // add accessibility attributes to labels
+        $('label.radio').attr('role', 'button');
     };
 
     /**
