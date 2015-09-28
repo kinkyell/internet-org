@@ -109,6 +109,10 @@ define(function(require, exports, module) { // jshint ignore:line
         eventHub.subscribe('viewWindow:scrollBarrier', this._handleScrollBarrier);
         breakpointManager.subscribe(this._handleBreakpointChange);
         this.$menuBtn.on('click', this._handleMenuBtnClick);
+
+        this.$menuBtn.on('mousedown', function(event) {
+            event.preventDefault(); // prevent focus by mouse
+        });
     };
 
     /**
@@ -161,7 +165,8 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$backBtn
             .toggleClass('header-backBtn_invert', shouldHaveInvertedLogo)
             .toggleClass('isActive', shouldHaveBackBtn)
-            .attr('aria-hidden', shouldHaveBackBtn ? 'false' : 'true');
+            .attr('aria-hidden', shouldHaveBackBtn ? 'false' : 'true')
+            .attr('tabindex', shouldHaveBackBtn ? '0' : '-1')
 
         // update menu btn icon
         this.$menuBtnIcon.toggleClass('menuTrigger_onDark', shouldHaveInvertedMenu);
