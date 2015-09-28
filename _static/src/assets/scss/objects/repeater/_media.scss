@@ -22,27 +22,46 @@ Common media layout construct
 	display: block;
 }
 
+.media-figure {
+	margin-top: 25px;
+}
+
+@include breakpoint(LG) {
+	.media-figure {
+		margin-top: 0;
+	}
+}
+
 @include breakpoint(LG) {
 	.media-figure {
 	    float: left;
-	    margin: 0 $SPACE_x4 0 0;
+	    // margin: 0 $SPACE_x4 0 0;
+	    margin: 15px 45px 25px 0
 	}
 
-	.media_inline > * {
-		display: inline-block;
-		vertical-align: middle;
-		float: none;
+	.media-bd {
+		padding-bottom: 15px;
+	}
+
+	.media-bd > .feature_tight{
 		padding: 0;
-		margin: 0;
 	}
 
-	.media_inline > .media-figure {
-		width: 52%;
-	}
+	// .media_inline > * {
+	// 	display: inline-block;
+	// 	vertical-align: middle;
+	// 	float: none;
+	// 	padding: 0;
+	// 	margin: 0;
+	// }
 
-	.media_inline > .media-bd {
-		width: 46%;
-		padding-left: 2%;
-	}
+	// .media_inline > .media-figure {
+	// 	width: 52%;
+	// }
+
+	// .media_inline > .media-bd {
+	// 	width: 46%;
+	// 	padding-left: 2%;
+	// }
 
 }
