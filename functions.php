@@ -1945,7 +1945,7 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 			);
 		}
 
-		if ( 'post' === get_post_type( $cta['link_src'] ) ) {
+		if ( ! empty( $cta['link_src'] ) && 'post' === get_post_type( $cta['link_src'] ) ) {
 			$social_attr = 'true';
 		}
 
