@@ -10,6 +10,13 @@
 
 get_header();
 
+/**
+ * An array of custom meta associated with this post via Fieldmanager.
+ *
+ * @var array $custom_fields
+ */
+$custom_fields = get_post_meta( get_the_ID(), 'home-content-section', false );
+
 ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
@@ -60,115 +67,73 @@ get_header();
 						</div>
 					</div>
 
-					<?php
-					$custom_fields = get_post_meta( get_the_ID(), 'home-content-section', false );
-					if ( ! empty( $custom_fields ) ) :
-						foreach ( $custom_fields as $group ) : ?>
-							<div class="contentCol contentCol_divided">
-								<div class="container">
-									<?php if ( ! empty( $group ) ) :
-										foreach ( $group as $fieldset ) : ?>
+					<?php if ( ! empty( $custom_fields ) ) : ?>
 
-											<div class="feature">
-												<?php if ( ! empty( $fieldset['title'] ) ) : ?>
-													<div class="feature-hd">
-														<div class="hdg hdg_3"><?php echo esc_html( $fieldset['title'] ); ?></div>
-													</div>
-												<?php endif; ?>
+						<?php foreach ( $custom_fields as $group ) : ?>
 
-												<?php if ( ! empty( $fieldset['content'] ) ) : ?>
-													<div class="feature-bd">
-														<p class="bdcpy">
-															<?php echo esc_html( strip_tags( $fieldset['content'] ) ); ?>
-														</p>
-													</div>
-												<?php endif; ?>
+							<?php if ( ! empty( $group ) ) : ?>
 
-												<?php if ( ! empty( $fieldset['call-to-action'] ) ) : ?>
+								<div class="contentCol contentCol_divided">
+									<div class="container">
 
-													<?php foreach ( $fieldset['call-to-action'] as $cta ) :
+										<?php foreach ( $group as $fieldset ) : ?>
 
-														$social_attr = 'false';
+											<?php if ( ! empty( $fieldset ) ) : ?>
 
-														$type = 'titled';
+												<div class="feature">
+													<?php if ( ! empty( $fieldset['title'] ) ) : ?>
+														<div class="feature-hd">
+															<div class="hdg hdg_3"><?php echo esc_html( $fieldset['title'] ); ?></div>
+														</div>
+													<?php endif; ?>
 
-														if ( 'page' === $cta['cta_src'] && absint( $cta['link_src'] ) ) {
+													<?php if ( ! empty( $fieldset['content'] ) ) : ?>
+														<div class="feature-bd">
+															<p class="bdcpy">
+																<?php echo esc_html( strip_tags( $fieldset['content'] ) ); ?>
+															</p>
+														</div>
+													<?php endif; ?>
 
-															$url = esc_url( get_the_permalink( $cta['link_src'] ) );
+													<?php if ( ! empty( $fieldset['call-to-action'] ) ) : ?>
 
-															$title = esc_attr( get_the_title( $cta['link_src'] ) );
-
-															$desc = wp_kses_post( get_post_field( 'post_excerpt', $cta['link_src'] ) );
-
-															$img = ( internetorg_get_media_image_url( get_post_thumbnail_id( $cta['link_src'] ), 'panel-image' ) )
-																? internetorg_get_media_image_url( get_post_thumbnail_id( $cta['link_src'] ), 'panel-image' )
-																: '';
-
-															$mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type( $cta['link_src'] ), $cta['link_src'] ) );
-
-															if ( 'io_story' === get_post_type( $cta['link_src'] ) ) {
-																$type = 'panel';
-															}
-														} else {
-															$url          = esc_url( $cta['link'] );
-															$title        = esc_attr( $cta['title'] );
-															$desc         = esc_attr( strip_tags( nl2br( $cta['text'] ) ) );
-															$img          = ( ! empty( $fieldset['call-to-action'][0] )
-																? internetorg_get_media_image_url( $fieldset['call-to-action'][0]['image'], 'panel-image' )
-																: '' );
-															$mobile_image = esc_url( ( ! empty( $fieldset['call-to-action'][0] )
-																? internetorg_get_media_image_url( $fieldset['call-to-action'][0]['image'], 'inline-image' )
-																: '' ) );
-														}
-
-														if ( 'post' === get_post_type( $cta['link_src'] ) ) {
-															$social_attr = 'true';
-														}
+														<?php
 
 														$theme = ( ! empty( $fieldset['theme'] ) )
 															? $fieldset['theme']
 															: $fieldset['slug'];
 
+														if ( ! empty( $fieldset['call-to-action'][0]['image'] ) ) {
+															$fieldset_image = $fieldset['call-to-action'][0]['image'];
+														} else {
+															$fieldset_image = '';
+														}
+
+														internetorg_contact_call_to_action(
+															$fieldset['call-to-action'],
+															$theme,
+															$fieldset_image
+														);
+
 														?>
-														<div class="feaure-cta">
-															<?php if ( ! empty( $url ) ) : ?>
-																<a href="<?php echo esc_url( $url ); ?>"
-																   class="link js-stateLink"
-																   data-type="<?php esc_attr( $type ); ?>"
-																   data-social="<?php echo esc_attr( $social_attr ); ?>"
-                                                                   data-theme="<?php echo esc_attr( strtolower( $theme ) ); ?>"
-                                                                   data-title="<?php echo esc_attr( $title ); ?>"
-                                                                   data-desc="<?php echo esc_attr( $desc ); ?>"
-																	<?php if ( is_string( $mobile_image ) ) : ?>
-																		data-mobile-image="<?php echo esc_url( $mobile_image ); ?>"
-																	<?php endif; ?>
-																	<?php if ( is_string( $img ) ) : ?>
-																		data-image="<?php echo esc_url( $img ); ?>"
-																	<?php endif; ?>>
-																	<?php echo esc_html__( 'Learn More', 'internetorg' ); ?>
-																</a>
-															<?php endif; ?>
-														</div>
 
-													<?php endforeach; ?>
+													<?php endif; ?>
 
-												<?php endif; ?>
+												</div>
 
-											</div>
+											<?php endif; ?>
 
-											<?php
+										<?php endforeach; ?>
 
-										endforeach;
+									</div>
 
-									endif;
-
-									?>
 								</div>
-							</div>
 
-							<?php
-						endforeach;
-					endif; ?>
+							<?php endif; ?>
+
+						<?php endforeach; ?>
+
+					<?php endif; ?>
 
 					<div class="container">
 						<div class="contentCol">
@@ -185,26 +150,7 @@ get_header();
 						</div>
 					</div>
 
-
-					<div class="socialBlock">
-						<div class="socialBlock-inner">
-							<div class="container">
-								<div class="fbFollowBlock">
-									<div class="fbFollowBlock-inner">
-										<div class="fbFollowBlock-hd">
-											<h2 class="hdg hdg_3 mix-hdg_blackThenWhite"><?php echo esc_html__( 'Follow the Project', 'internetorg' ); ?></h2>
-										</div>
-										<div class="fbFollowBlock-bd">
-											<p class="bdcpy mix-bdcpy_blackThenWhite"><?php echo esc_html__( 'Stay updated about Internet.org.', 'internetorg' ); ?></p>
-										</div>
-									</div>
-									<div class="fbFollowBlock-cta">
-										<a href="<?php echo esc_attr__( 'https://fb.me/Internetdotorg', 'internetorg' ); ?>" class="btn btn_facebook" target="_blank"><?php echo esc_html__( 'Like us on Facebook', 'internetorg' ); ?></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<?php get_template_part( 'template-parts/content-page-contact-social-block' ); ?>
 
 				</div>
 			</div>
