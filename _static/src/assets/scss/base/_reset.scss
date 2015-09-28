@@ -97,7 +97,7 @@ textarea {
     resize: vertical;
 }
 
-input:focus,
+input:not([type="submit"]):focus,
 input[type="search"]:focus,
 textarea:focus {
     outline: 0;

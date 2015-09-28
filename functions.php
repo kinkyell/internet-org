@@ -1846,3 +1846,131 @@ function internetorg_the_press_filter( $years = array() ) {
 
 	<?php
 }
+
+/**
+ * Output a call to action for the contact page.
+ *
+ * @param array  $fieldset       Array of custom field data.
+ * @param string $theme          The "theme" (color styling) to apply.
+ * @param int    $fieldset_image Attachment ID.
+ */
+function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'approach', $fieldset_image ) {
+
+	if ( empty( $fieldset ) ) {
+		return;
+	}
+
+	foreach ( $fieldset as $cta ) {
+
+		if ( empty( $cta ) ) {
+			continue;
+		}
+
+		/**
+		 * The value for the data-social attribute on the call to action link.
+		 *
+		 * @var string $social_attr
+		 */
+		$social_attr = 'false';
+
+		/**
+		 * The value for the data-type attribute on the call to action link.
+		 *
+		 * @var string $type
+		 */
+		$type = 'titled';
+
+		if ( ! empty( $cta['link_src'] ) ) {
+			/**
+			 * @var string $url
+			 */
+			$url = get_the_permalink( $cta['link_src'] );
+		} else if ( ! empty( $cta['link'] ) ) {
+			$url = $cta['link'];
+		}
+
+		if ( empty( $url ) ) {
+			continue;
+		}
+
+		if ( ! empty( $cta['cta_src'] ) && 'page' === $cta['cta_src'] && ! empty( $cta['link_src'] ) ) {
+
+			/**
+			 * Title for the link.
+			 *
+			 * @var string $title
+			 */
+			$title = get_the_title( $cta['link_src'] );
+
+			/**
+			 * Description.
+			 *
+			 * @var string $desc
+			 */
+			$desc = get_post_field( 'post_excerpt', $cta['link_src'] );
+
+			/**
+			 * Panel image URL.
+			 *
+			 * @var string $panel_image
+			 */
+			$panel_image = internetorg_get_media_image_url( get_post_thumbnail_id( $cta['link_src'] ), 'panel-image' );
+
+			/**
+			 * Mobile image URL.
+			 *
+			 * @var string $mobile_image
+			 */
+			$mobile_image = internetorg_get_mobile_featured_image( get_post_type( $cta['link_src'] ), $cta['link_src'] );
+
+			if ( 'io_story' === get_post_type( $cta['link_src'] ) ) {
+				$type = 'panel';
+			}
+		} else {
+
+			$title = ( ! empty( $cta['title'] ) ? $cta['title'] : '' );
+
+			$desc = ( ! empty( $cta['text'] ) ? strip_tags( nl2br( $cta['text'] ) ) : '' );
+
+			$panel_image = ( ! empty( $fieldset_image )
+				? internetorg_get_media_image_url( $fieldset_image, 'panel-image' )
+				: ''
+			);
+
+			$mobile_image = ( ! empty( $fieldset_image )
+				? internetorg_get_media_image_url( $fieldset_image, 'inline-image' )
+				: ''
+			);
+		}
+
+		if ( 'post' === get_post_type( $cta['link_src'] ) ) {
+			$social_attr = 'true';
+		}
+
+		$theme = ( ! empty( $theme ) )
+			? $theme
+			: 'approach';
+
+		?>
+
+		<div class="feaure-cta">
+			<a href="<?php echo esc_url( $url ); ?>"
+			   class="link js-stateLink"
+			   data-type="<?php esc_attr( $type ); ?>"
+			   data-social="<?php echo esc_attr( $social_attr ); ?>"
+			   data-theme="<?php echo esc_attr( strtolower( $theme ) ); ?>"
+			   data-title="<?php echo esc_attr( $title ); ?>"
+			   data-desc="<?php echo esc_attr( wp_kses_post( $desc ) ); ?>"
+				<?php if ( ! empty( $mobile_image ) ) : ?>
+					data-mobile-image="<?php echo esc_url( $mobile_image ); ?>"
+				<?php endif; ?>
+				<?php if ( ! empty( $panel_image ) ) : ?>
+					data-image="<?php echo esc_url( $panel_image ); ?>"
+				<?php endif; ?>>
+				<?php echo esc_html__( 'Learn More', 'internetorg' ); ?>
+			</a>
+		</div>
+
+		<?php
+	}
+}
