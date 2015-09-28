@@ -100,6 +100,11 @@ define(function(require, exports, module) { // jshint ignore:line
                 $el.data('_initialized', true);
             }, this);
         }, this);
+
+        // disable button outlines on click
+        $element.find('button,input[type="button"],input[type="submit"]').on('mousedown', function(event) {
+            event.preventDefault();
+        });
     };
 
     /**
