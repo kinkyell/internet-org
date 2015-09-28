@@ -83,7 +83,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         // create label for close btn
         var closeBtnLabel = document.createElement('span');
-        closeBtnLabel.appendChild(document.createTextNode('Close lightbox'))
+        closeBtnLabel.appendChild(document.createTextNode('Close lightbox'));
         closeBtnLabel.className = 'u-isVisuallyHidden';
         closeBtnLabel.id = 'swipebox-close-label';
 
