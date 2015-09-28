@@ -51,7 +51,8 @@
     }    
 
     a.link {
-        margin-top: 4px;
+        /* Forcing to retain top margin as designed */
+        margin-top: 4px !important;
     }
 
     strong {

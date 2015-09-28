@@ -296,3 +296,10 @@
     }
 
 }
+
+// specific client direction adjustments
+@include breakpoint(LG) {
+    .narrative .link_preArrows {
+        font-size: 0.95vw;
+    }
+}

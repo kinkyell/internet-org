@@ -99,9 +99,13 @@ $custom_fields = get_post_meta( get_the_ID(), 'home-content-section', false );
 
 														<?php
 
-														$theme = ( ! empty( $fieldset['theme'] ) )
-															? $fieldset['theme']
-															: $fieldset['slug'];
+														if ( ! empty( $fieldset['theme'] ) ) {
+															$theme = $fieldset['theme'];
+														} else if ( ! empty( $fieldset['slug'] ) ) {
+															$theme = $fieldset['slug'];
+														} else {
+															$theme = '';
+														}
 
 														if ( ! empty( $fieldset['call-to-action'][0]['image'] ) ) {
 															$fieldset_image = $fieldset['call-to-action'][0]['image'];
