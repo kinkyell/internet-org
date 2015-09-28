@@ -1531,24 +1531,27 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 			'css_class' => 'link',
 			'source'    => '',
 			'image'     => '',
+			'link_type' => 'internal',
+			'external_url' => '',
 			'link_text' => esc_html__( 'Click Me', 'internetorg' ),
 		)
 	);
 
 	$source = absint( $attr['source'] );
+	$link_type = esc_attr($attr['link_src']);
 
-	// Return early if we don't have a url.
-	if ( empty( $source ) ) {
+	// Return early if we don't have a url or source ID.
+	if ( empty( $source ) && empty( $attr['external_url'] ) ) {
 		return '';
 	}
 
 	$post_type  = get_post_type( $source );
-	$data_attr  = '';
 	$data_type  = 'titled';
 	$lg_image   = '';
 	$sm_image   = '';
 	$data_theme = '';
 	$data_social = 'false';
+
 
 	if ( get_post_thumbnail_id( $source ) ) {
 		$lg_image = internetorg_get_media_image_url( get_post_thumbnail_id( $source ), 'panel-image' );
@@ -1567,7 +1570,7 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 	$url = str_replace( home_url(), '', get_permalink( $source ) );
 
 	/**
-	 * The return markup.
+	 * The return markup if it's an internal Link.
 	 *
 	 * @var string $markup_template
 	 */
@@ -1586,24 +1589,45 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 		';
 
 	/**
-	 * The assembled markup.
+	 * The return markup if it's an external Link.
 	 *
-	 * @var string $markup
+	 * @var string $markup_template_alt
 	 */
-	$markup = sprintf(
-		$markup_template,
-		esc_attr( $attr['css_class'] ),
-		esc_url( $url ),
-		esc_attr( get_the_title( $source ) ),
-		esc_attr( get_post_field( 'post_excerpt', $source ) ),
-		esc_attr( get_the_date( '', $source ) ),
-		esc_attr( $data_theme ),
-		esc_url( $lg_image ),
-		esc_url( $sm_image ),
-		esc_attr( $data_social ),
-		esc_attr( $data_type ),
-		esc_html( $attr['link_text'] )
-	);
+	$markup_template_alt = '<a class="%1$s" target="_blank" href="%2$s">%3$s</a>';
+
+	if( $link_type === 'internal' ) {
+		/**
+		 * The assembled markup.
+		 *
+		 * @var string $markup
+		 */
+		$markup = sprintf(
+			$markup_template,
+			esc_attr( $attr['css_class'] ),
+			esc_url( $url ),
+			esc_attr( get_the_title( $source ) ),
+			esc_attr( get_post_field( 'post_excerpt', $source ) ),
+			esc_attr( get_the_date( '', $source ) ),
+			esc_attr( $data_theme ),
+			esc_url( $lg_image ),
+			esc_url( $sm_image ),
+			esc_attr( $data_social ),
+			esc_attr( $data_type ),
+			esc_html( $attr['link_text'] )
+		);
+	} elseif( $link_type === 'external' ) {
+		/**
+		 * The assembled markup.
+		 *
+		 * @var string $markup
+		 */
+		$markup = sprintf(
+			$markup_template_alt,
+			esc_attr( $attr['css_class'] ),
+			esc_url( $attr['external_url'] ),
+			esc_html( $attr['link_text'] )
+		);
+	}
 
 	return $markup;
 
@@ -1640,6 +1664,20 @@ function internetorg_register_custom_link_shortcode_ui() {
 					),
 				),
 				array(
+					'label'   => esc_html__( 'Link Type', 'internetorg' ),
+					'attr'    => 'link_src',
+					'type'    => 'select',
+					'options' => array(
+						'internal' => esc_attr__( 'Internal Link', 'internetorg' ),
+						'external' => esc_attr__( 'External Link', 'internetorg' ),
+					),
+				),
+				array(
+					'label' => esc_html__( 'External URL', 'internetorg' ),
+					'attr'  => 'external_url',
+					'type'  => 'text',
+				),
+				array(
 					'label' => esc_html__( 'URL', 'internetorg' ),
 					'attr'  => 'source',
 					'type'  => 'post_select',
@@ -1658,16 +1696,6 @@ function internetorg_register_custom_link_shortcode_ui() {
 }
 
 add_action( 'init', 'internetorg_register_custom_link_shortcode_ui' );
-
-add_action( 'enqueue_shortcode_ui', function() {
-	wp_enqueue_script(
-		'io-shortcodeui',
-		get_stylesheet_directory_uri() . '/js/internet-org-shortcode.js',
-		array(),
-		false,
-		true
-	);
-});
 
 /**
  * Change the confirmation message from the contact form.
