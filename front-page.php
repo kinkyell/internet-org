@@ -22,7 +22,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 ?>
 
 	<div class="interactionPrompt">
-		<a href="#" class="arrowCta arrowCta_light js-narrativeAdvance"></a>
+		<button class="arrowCta arrowCta_light js-narrativeAdvance">Skip to Content</button>
 	</div>
 
 	<div class="viewWindow viewWindow_flush js-viewWindow" id="main-content" role="main" data-route="<?php echo esc_url( home_url( '/' ) ); ?>" data-type="home">
@@ -284,7 +284,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 											</div>
 										</div>
 										<div class="narrative-section-bd-ft">
-											<a href="#" class="arrowCta arrowCta_light js-narrativeAdvance"></a>
+											<button class="arrowCta arrowCta_light js-narrativeAdvance">Skip to Content</button>
 										</div>
 									</div>
 								</div>

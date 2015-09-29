@@ -35,7 +35,6 @@ Common media layout construct
 @include breakpoint(LG) {
 	.media-figure {
 	    float: left;
-	    // margin: 0 $SPACE_x4 0 0;
 	    margin: 15px 45px 25px 0
 	}
 

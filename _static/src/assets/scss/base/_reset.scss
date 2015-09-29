@@ -97,13 +97,13 @@ textarea {
     resize: vertical;
 }
 
-input:not([type="submit"]):focus,
 input[type="search"]:focus,
-textarea:focus {
+textarea:focus,
+input:not([type="submit"]):focus {
     outline: 0;
 }
 
-::-moz-focus-inner {
-    border: 0;
-    padding: 0;
-}
+// ::-moz-focus-inner {
+//     border: 0;
+//     padding: 0;
+// }
