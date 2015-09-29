@@ -58,6 +58,12 @@ html {
     -ms-text-size-adjust: 100%;
 }
 
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
 /* ---------------------------------------------------------------------
  HTML5 Element Reset
 ------------------------------------------------------------------------ */
@@ -97,13 +103,13 @@ textarea {
     resize: vertical;
 }
 
-input:not([type="submit"]):focus,
 input[type="search"]:focus,
-textarea:focus {
+textarea:focus,
+input:not([type="submit"]):focus {
     outline: 0;
 }
 
-::-moz-focus-inner {
-    border: 0;
-    padding: 0;
-}
+// ::-moz-focus-inner {
+//     border: 0;
+//     padding: 0;
+// }

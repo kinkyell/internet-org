@@ -1882,13 +1882,24 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 		 */
 		$type = 'titled';
 
-		if ( ! empty( $cta['link_src'] ) ) {
-			/**
-			 * @var string $url
-			 */
-			$url = get_the_permalink( $cta['link_src'] );
-		} else if ( ! empty( $cta['link'] ) ) {
-			$url = $cta['link'];
+		/**
+		 * The value for the URL
+		 *
+		 * @var string $url
+		 */
+		$url = '';
+
+		if ( 'page' === $cta['cta_src'] ) {
+			if ( ! empty( $cta['link_src'] ) ) {
+				/**
+				 * @var string $url
+				 */
+				$url = get_the_permalink( $cta['link_src'] );
+			}
+		} else {
+			if ( ! empty( $cta['link'] ) ) {
+				$url = $cta['link'];
+			}
 		}
 
 		if ( empty( $url ) ) {
