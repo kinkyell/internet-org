@@ -31,7 +31,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var identity = require('stark/function/identity');
 
-    var FastClick = require('fastclick');
+    //var FastClick = require('fastclick');
     //FastClick.attach(document.body);
 
     var STATE_TYPES = {

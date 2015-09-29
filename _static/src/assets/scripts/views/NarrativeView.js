@@ -383,12 +383,10 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._onKeyDown = function(e) {
         switch(e.which) {
             case 38: // up
-                // this._changeSection(this._position - 1);
                 this._scrollUp();
                 break;
 
             case 40: // down
-                // this._changeSection(this._position + 1);
                 this._scrollDown();
                 break;
 

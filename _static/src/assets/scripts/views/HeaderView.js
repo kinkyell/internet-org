@@ -166,7 +166,7 @@ define(function(require, exports, module) { // jshint ignore:line
             .toggleClass('header-backBtn_invert', shouldHaveInvertedLogo)
             .toggleClass('isActive', shouldHaveBackBtn)
             .attr('aria-hidden', 'false')
-            .attr('tabindex', shouldHaveBackBtn ? '0' : '-1')
+            .attr('tabindex', shouldHaveBackBtn ? '0' : '-1');
 
         // update menu btn icon
         this.$menuBtnIcon.toggleClass('menuTrigger_onDark', shouldHaveInvertedMenu);
