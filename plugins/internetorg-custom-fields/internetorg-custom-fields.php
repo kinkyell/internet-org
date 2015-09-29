@@ -91,9 +91,9 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 					'title'          => new Fieldmanager_TextField( __( 'Section Title', 'internetorg' ) ),
 					'name'           => new Fieldmanager_TextField( __( 'Section Name', 'internetorg' ) ),
 					'content'        => new Fieldmanager_RichTextarea( __( 'Description', 'internetorg' ) ),
-					'src' => new Fieldmanager_Radios( __( 'Source', 'internetorg' ), array(
+					'src' => new Fieldmanager_Select( __( 'Source', 'internetorg' ), array(
 						'name'    => 'src',
-						'default_value' => '',
+						'first_empty' => true,
 						'options' => array(
 							'page' => __( 'Page, Post, or Story' ),
 							'custom' => __( 'Custom Link', 'internetorg' ),
@@ -138,9 +138,9 @@ if ( ! function_exists( 'internetorg_create_fields_internetorg_page_home' ) ) {
 							'children'       => array(
 								'title' => new Fieldmanager_TextField( __( 'CTA Title', 'internetorg' ) ),
 								'text'  => new Fieldmanager_RichTextarea( __( 'Content', 'internetorg' ) ),
-								'cta_src' => new Fieldmanager_Radios( __( 'Link Source', 'internetorg' ), array(
+								'cta_src' => new Fieldmanager_Select( __( 'Link Source', 'internetorg' ), array(
 										'name'    => 'cta_src',
-										'default_value' => '',
+										'first_empty' => true,
 										'options' => array(
 											'page' => __( 'Page, Post, or Story' ),
 											'custom' => __( 'Custom Link', 'internetorg' ),
