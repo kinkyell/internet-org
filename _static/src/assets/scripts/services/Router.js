@@ -181,6 +181,7 @@ define(function(require, exports, module) { // jshint ignore:line
     Router.prototype._onStateBack = function(event) {
         event.preventDefault();
         this.historyManager.back();
+        $(ROUTER_HOME_SELECTOR)[0].focus()
     };
 
     /**
