@@ -14,9 +14,11 @@
 	</svg>
 </button>
 
-<button type="button" class="header-menuBtn js-headerView-menuBtn u-disableTransitions">
-    <span class="menuTrigger">
-        <span id="menu-trigger-label" class="menuTrigger-label js-headerView-menuBtn-text"><span class="u-isVisuallyHidden"><?php esc_html_e( 'Toggle', 'internetorg' ); ?> </span><?php esc_html_e( 'Menu', 'internetorg' ); ?></span>
-        <span aria-describedby="menu-trigger-label" class="menuTrigger-icon js-headerView-menuBtn-icon"></span>
-    </span>
-</button>
+<div role="navigation">
+	<button type="button" class="header-menuBtn js-headerView-menuBtn u-disableTransitions" aria-controls="mainNav" aria-label="Toggle Main Navigation">
+	    <span class="menuTrigger">
+	        <span id="menu-trigger-label" class="menuTrigger-label js-headerView-menuBtn-text"><span class="u-isVisuallyHidden"><?php esc_html_e( 'Toggle Navigation', 'internetorg' ); ?> </span><?php esc_html_e( 'Menu', 'internetorg' ); ?></span>
+	        <span aria-describedby="menu-trigger-label" class="menuTrigger-icon js-headerView-menuBtn-icon"></span>
+	    </span>
+	</button>
+</div>

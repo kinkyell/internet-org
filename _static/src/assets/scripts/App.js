@@ -32,7 +32,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var identity = require('stark/function/identity');
 
     var FastClick = require('fastclick');
-    FastClick.attach(document.body);
+    //FastClick.attach(document.body);
 
     var STATE_TYPES = {
         panel: PanelState,
@@ -58,6 +58,7 @@ define(function(require, exports, module) { // jshint ignore:line
         if (!this._cutsTheMustard()) {
             return;
         }
+        // return function() {};
         this.init();
     };
 
@@ -72,7 +73,6 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.init = function() {
         // bind methods
         this._handleStateChange = this._onStateChange.bind(this);
-
         this._setupLayout();
         this._setupStates();
         this._preloadImages(); // load images initially on the page

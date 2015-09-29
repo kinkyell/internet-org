@@ -4,6 +4,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var $ = require('jquery');
     var BasicState = require('./BasicState');
     var NarrativeView = require('views/NarrativeView');
+    var VideoModalView = require('views/VideoModalView');
     var viewWindow = require('services/viewWindow');
 
     /**
@@ -31,7 +32,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @static
      * @type {Object}
      */
-    HomeState.prototype.COMPONENTS = {};
+    HomeState.prototype.COMPONENTS = {
+        '.js-videoModal': VideoModalView
+    };
 
     /**
      * Activate state
