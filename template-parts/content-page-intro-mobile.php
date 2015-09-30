@@ -26,10 +26,6 @@ $mobile_intro_title = internetorg_get_the_intro_block( get_the_ID(), 'intro_titl
  */
 $mobile_intro_content = internetorg_get_the_intro_block( get_the_ID(), 'intro_content' );
 
-if ( empty( $mobile_featured_image ) && empty( $mobile_intro_title ) && empty( $mobile_intro_content ) ) {
-	return;
-}
-
 ?>
 
 <?php if ( ! empty( $mobile_featured_image ) ) : ?>
@@ -37,6 +33,8 @@ if ( empty( $mobile_featured_image ) && empty( $mobile_intro_title ) && empty( $
 	<div class="topicBlock-media isHidden u-isHiddenMedium" aria-hidden="true">
 		<img src="<?php echo esc_url( $mobile_featured_image ); ?>" alt="" />
 	</div>
+<?php else: ?>
+	<div class="mix-topicBlock_push"></div>
 <?php endif; ?>
 
 <?php
