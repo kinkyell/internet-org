@@ -10,6 +10,8 @@ the targeted element. ex: <div class="loadingIcon"><?div>
     position: absolute;
     min-height: 100%;
     width: 100%;
+    top: 0;
+    left: 0;
     z-index: 98;
     // scss-lint:disable DuplicateProperty
     background-color: $CLR_GRAY;
@@ -18,6 +20,10 @@ the targeted element. ex: <div class="loadingIcon"><?div>
 
 .loadingIcon_opaque {
     background-color: rgba(239, 237, 228, 1);
+}
+
+.loadingIcon_topLayer {
+    z-index: 999;
 }
 
 .loadingIcon:before {
