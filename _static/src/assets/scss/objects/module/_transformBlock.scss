@@ -38,12 +38,17 @@
 }
 
 .transformBlock-stmnt {
+    height: 150px;
     margin-bottom: 7px;
 }
 
 .transformBlock-stmnt-item {
     position: absolute;
     opacity: 0;
+}
+
+.transformBlock-stmnt-item:nth-child(1) {
+    opacity: 1;
 }
 
 .transformBlock-post {

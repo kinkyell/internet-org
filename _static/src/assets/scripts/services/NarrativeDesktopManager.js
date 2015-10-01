@@ -114,7 +114,8 @@ define(function(require, exports, module) { // jshint ignore:line
     };
 
     /**
-     *
+     * Performs measurements and applys any positioning style logic.
+     * Should be run anytime the parent layout changes.
      *
      * @method layout
      * @public
@@ -143,13 +144,51 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto._createTimeline = function(direction) {
-        console.log(this._$transformBlockStmnt);
         var tl = new Timeline({ paused: true });
         var easeDirection = (direction === 'forward') ? EASE_DIRECTION_FORWARD : EASE_DIRECTION_REVERSE;
 
-        //  transition partials
+        //  transition 01
         ///////////////////////
-        var postIn = [
+
+        tl.fromTo(
+            this._$transformBlock,
+            SECTION_DURATION,
+            { y: '0px' },
+            { y: '-25px', ease: EASE[easeDirection] });
+
+        tl.fromTo(
+            this._$transformBlockPre.eq(0),
+            SECTION_DURATION,
+            {
+                y: '0px',
+                opacity: 1,
+                ease: EASE[easeDirection]
+            },
+            {
+                y: '-90px',
+                opacity: 0,
+                ease: EASE[easeDirection]
+            },
+            '-=' + SECTION_DURATION);
+
+        tl.fromTo(
+            this._$transformBlockStmnt.eq(0),
+            SECTION_DURATION,
+            {
+                y: '0px',
+                opacity: 1,
+                ease: EASE[easeDirection]
+            },
+            {
+                y: '-90px',
+                opacity: 0,
+                ease: EASE[easeDirection]
+            },
+            '-=' + SECTION_DURATION);
+
+        tl.fromTo(
+            this._$transformBlockStmnt.eq(1),
+            SECTION_DURATION,
             {
                 y: '90px',
                 opacity: 0,
@@ -159,78 +198,124 @@ define(function(require, exports, module) { // jshint ignore:line
                 y: '0px',
                 opacity: 1,
                 ease: EASE[easeDirection]
-            }
-        ];
-
-        var postOut = {
-            y: '-45px',
-            opacity: 0,
-            ease: EASE[easeDirection]
-        };
-
-        //  transition 01
-        ///////////////////////
-        tl.fromTo(
-            this._$transformBlock,
-            SECTION_DURATION,
-            { y: '0px' },
-            { y: '-90px', ease: EASE[easeDirection] });
-
-        tl.fromTo(
-            this._$transformBlockPre.eq(0),
-            SECTION_DURATION,
-            { opacity: 1, },
-            { opacity: 0, ease: EASE[easeDirection] },
+            },
             '-=' + SECTION_DURATION);
 
         tl.fromTo(
             this._$transformBlockPost.eq(0),
             SECTION_DURATION,
-            postIn[0],
-            postIn[1],
+            {
+                y: '90px',
+                opacity: 0,
+                ease: EASE[easeDirection]
+            },
+            {
+                y: '0px',
+                opacity: 1,
+                ease: EASE[easeDirection]
+            },
             '-=' + SECTION_DURATION);
-
-        tl.fromTo(
-            this._$transformBlockStmnt.eq(0),
-            SECTION_DURATION,
-            { opacity: 1, },
-            { opacity: 0, ease: EASE[easeDirection] },
-            '-=' + SECTION_DURATION);
-
-        tl.fromTo(
-            this._$transformBlockStmnt.eq(1),
-            SECTION_DURATION,
-            postIn[0],
-            postIn[1],
-            '-=' + SECTION_DURATION);
-
 
         //  transition 02
         ///////////////////////
         tl.to(
+            this._$transformBlockStmnt.eq(1),
+            SECTION_DURATION,
+            {
+                y: '-90px',
+                opacity: 0,
+                ease: EASE[easeDirection]
+            });
+
+        tl.fromTo(
+            this._$transformBlockStmnt.eq(2),
+            SECTION_DURATION,
+            {
+                y: '90px',
+                opacity: 0,
+                ease: EASE[easeDirection]
+            },
+            {
+                y: '0px',
+                opacity: 1,
+                ease: EASE[easeDirection]
+            },
+            '-=' + SECTION_DURATION);
+
+        tl.to(
             this._$transformBlockPost.eq(0),
             SECTION_DURATION,
-            postOut);
+            {
+                y: '-90px',
+                opacity: 0,
+                ease: EASE[easeDirection]
+            },
+            '-=' + SECTION_DURATION);
 
         tl.fromTo(
             this._$transformBlockPost.eq(1),
             SECTION_DURATION,
-            postIn[0],
-            postIn[1],
+            {
+                y: '90px',
+                opacity: 0,
+                ease: EASE[easeDirection]
+            },
+            {
+                y: '0px',
+                opacity: 1,
+                ease: EASE[easeDirection]
+            },
             '-=' + SECTION_DURATION);
 
         //  transition 03
         ///////////////////////
         tl.to(
+            this._$transformBlockStmnt.eq(2),
+            SECTION_DURATION,
+            {
+                y: '-90px',
+                opacity: 0,
+                ease: EASE[easeDirection]
+            });
+
+        tl.fromTo(
+            this._$transformBlockStmnt.eq(3),
+            SECTION_DURATION,
+            {
+                y: '90px',
+                opacity: 0,
+                ease: EASE[easeDirection]
+            },
+            {
+                y: '0px',
+                opacity: 1,
+                ease: EASE[easeDirection]
+            },
+            '-=' + SECTION_DURATION);
+
+        tl.to(
             this._$transformBlockPost.eq(1),
             SECTION_DURATION,
-            postOut);
+            {
+                y: '-90px',
+                opacity: 0,
+                ease: EASE[easeDirection]
+            },
+            '-=' + SECTION_DURATION);
 
         tl.fromTo(
             this._$transformBlockPost.eq(2),
             SECTION_DURATION,
-            postIn[0],
-            postIn[1],
+            {
+                y: '90px',
+                opacity: 0,
+                ease: EASE[easeDirection]
+            },
+            {
+                y: '0px',
+                opacity: 1,
+                ease: EASE[easeDirection]
+            },
             '-=' + SECTION_DURATION);
 
         //  transition 04
@@ -242,9 +327,35 @@ define(function(require, exports, module) { // jshint ignore:line
                 ease: EASE[easeDirection]
             });
 
+        tl.to(
+            this._$transformBlockStmnt.eq(3),
+            SECTION_DURATION,
+            {
+                y: '-90px',
+                opacity: 0,
+                ease: EASE[easeDirection]
+            },
+            '-=' + SECTION_DURATION);
+
+        tl.fromTo(
+            this._$transformBlockStmnt.eq(4),
+            SECTION_DURATION,
+            {
+                y: '90px',
+                opacity: 0,
+                ease: EASE[easeDirection]
+            },
+            {
+                y: '0px',
+                opacity: 1,
+                ease: EASE[easeDirection]
+            },
+            '-=' + SECTION_DURATION);
+
         tl.fromTo(
             this._$transformBlockPre.eq(1),
-            SECTION_DURATION, {
+            SECTION_DURATION,
+            {
                 opacity: 0,
                 y: '50px',
                 ease: EASE[easeDirection]
@@ -252,43 +363,34 @@ define(function(require, exports, module) { // jshint ignore:line
                 opacity: 1,
                 y: '0px',
                 ease: EASE[easeDirection]
-            }, '-=' + SECTION_DURATION);
+            },
+            '-=' + SECTION_DURATION);
 
         tl.to(
             this._$transformBlockPost.eq(2),
             SECTION_DURATION,
-            postOut,
+            {
+                y: '-90px',
+                opacity: 0,
+                ease: EASE[easeDirection]
+            },
             '-=' + SECTION_DURATION);
 
         tl.fromTo(
             this._$transformBlockPost.eq(3),
             SECTION_DURATION,
-            postIn[0],
-            postIn[1],
+            {
+                y: '90px',
+                opacity: 0,
+                ease: EASE[easeDirection]
+            },
+            {
+                y: '0px',
+                opacity: 1,
+                ease: EASE[easeDirection]
+            },
             '-=' + SECTION_DURATION);
 
-
-
-
-
-
-        tl.fromTo(
-            this._$transformBlockStmnt.eq(2),
-            SECTION_DURATION,
-            postIn[0],
-            postIn[1]);
-
-        tl.fromTo(
-            this._$transformBlockStmnt.eq(3),
-            SECTION_DURATION,
-            postIn[0],
-            postIn[1]);
-
-        tl.fromTo(
-            this._$transformBlockStmnt.eq(4),
-            SECTION_DURATION,
-            postIn[0],
-            postIn[1]);
 
 
         var i = 0;
