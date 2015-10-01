@@ -78,8 +78,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._init = function() {
-        this._createChildren();
         this.viewWindow = ViewWindow;
+        this._createChildren();
+        this.layout();
         this._timeLine = this._createTimeline('forward');
         this._timeLineReverse = this._createTimeline('reverse');
     };
@@ -94,6 +95,8 @@ define(function(require, exports, module) { // jshint ignore:line
         this._$transformBlock = $('.js-transformBlock');
         this._$transformBlockPre = $('.transformBlock-pre-item');
         this._$transformBlockPost = $('.transformBlock-post-item');
+        this._$transformBlockStmnt = $('.transformBlock-stmnt-item');
+        this._$statement = $('.transformBlock-stmnt');
     };
 
     /**
@@ -106,6 +109,25 @@ define(function(require, exports, module) { // jshint ignore:line
         this._$transformBlock = null;
         this._$transformBlockPre = null;
         this._$transformBlockPost = null;
+        this._$transformBlockStmnt = null;
+        this._$statement = null;
+    };
+
+    /**
+     *
+     *
+     * @method layout
+     * @public
+     */
+    proto.layout = function() {
+        var $innerStmnt = this._$statement.find('.transformBlock-stmnt-item');
+        var i = 1;
+        var l = this._sectionsConf.length;
+        for (; i < l; i++) {
+            $innerStmnt.clone().appendTo(this._$statement);
+        }
+
+        this._$transformBlockStmnt = $('.transformBlock-stmnt-item');
     };
 
     // /////////////////////////////////////////////////////////////////////////////////////////
@@ -121,6 +143,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto._createTimeline = function(direction) {
+        console.log(this._$transformBlockStmnt);
         var tl = new Timeline({ paused: true });
         var easeDirection = (direction === 'forward') ? EASE_DIRECTION_FORWARD : EASE_DIRECTION_REVERSE;
 
@@ -166,6 +189,21 @@ define(function(require, exports, module) { // jshint ignore:line
             postIn[0],
             postIn[1],
             '-=' + SECTION_DURATION);
+
+        tl.fromTo(
+            this._$transformBlockStmnt.eq(0),
+            SECTION_DURATION,
+            { opacity: 1, },
+            { opacity: 0, ease: EASE[easeDirection] },
+            '-=' + SECTION_DURATION);
+
+        tl.fromTo(
+            this._$transformBlockStmnt.eq(1),
+            SECTION_DURATION,
+            postIn[0],
+            postIn[1],
+            '-=' + SECTION_DURATION);
+
 
         //  transition 02
         ///////////////////////
@@ -228,6 +266,30 @@ define(function(require, exports, module) { // jshint ignore:line
             postIn[0],
             postIn[1],
             '-=' + SECTION_DURATION);
+
+
+
+
+
+
+        tl.fromTo(
+            this._$transformBlockStmnt.eq(2),
+            SECTION_DURATION,
+            postIn[0],
+            postIn[1]);
+
+        tl.fromTo(
+            this._$transformBlockStmnt.eq(3),
+            SECTION_DURATION,
+            postIn[0],
+            postIn[1]);
+
+        tl.fromTo(
+            this._$transformBlockStmnt.eq(4),
+            SECTION_DURATION,
+            postIn[0],
+            postIn[1]);
+
 
         var i = 0;
         var l = this._sectionsConf.length;
