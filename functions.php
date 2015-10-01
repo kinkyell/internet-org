@@ -12,7 +12,7 @@ require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 vip_allow_title_orphans();
 
 // Shortcake VIP Plugin.
-require_once( WP_CONTENT_DIR . '/themes/vip/plugins/shortcode-ui/shortcode-ui.php' );
+wpcom_vip_load_plugin( 'shortcode-ui' );
 
 wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
 wpcom_vip_load_plugin( 'wpcom-thumbnail-editor' );
@@ -23,6 +23,12 @@ require IO_DIR . '/plugins/internetorg-custom-posttypes/internetorg-custom-postt
 /** Fieldmanager and Fields. */
 wpcom_vip_load_plugin( 'fieldmanager' );
 require IO_DIR . '/plugins/internetorg-custom-fields/internetorg-custom-fields.php';
+
+/** Babble */
+require IO_DIR . '/plugins/babble/babble.php';
+require IO_DIR . '/plugins/babble/globals.php';
+require IO_DIR . '/plugins/babble/translation-group-tool.php';
+require IO_DIR . '/inc/babble-fieldmanager-context.php';
 
 if ( ! function_exists( 'internetorg_setup' ) ) :
 	/**
