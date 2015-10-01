@@ -35,6 +35,9 @@ class Internetorg_ContentWidget_PostType extends Internetorg_PostType {
 				'has_archive'   => true,
 				'menu_position' => 5,
 				'menu_icon'     => 'dashicons-text',
+				'exclude_from_search' => true,
+				'publicly_queryable'  => false,
+				'query_var' => false,
 				'supports'      => array(
 					'title',
 					'editor',
@@ -53,23 +56,42 @@ class Internetorg_ContentWidget_PostType extends Internetorg_PostType {
 	 * @return void
 	 */
 	public function add_meta_boxes() {
-		$fmLink = new Fieldmanager_Group(
+		$fmLink1 = new Fieldmanager_Group(
 			array(
-				'name'        => 'widget-data',
-				'label'       => __( 'Call to Action', 'internetorg' ),
-				'label_macro' => __( 'Call to Action: %s', 'internetorg' ),
-				'collapsed'   => false,
-				'sortable'    => false,
-				'limit'       => 0,
-				'children'    => array(
+				'name'           => 'widget-data-1',
+				'serialize_data' => false,
+				'label'          => __( 'Call to Action', 'internetorg' ),
+				'label_macro'    => __( 'Call to Action: %s', 'internetorg' ),
+				'collapsed'      => true,
+				'collapsible'    => true,
+				'sortable'       => false,
+				'limit'          => 1,
+				'children'       => array(
 					'label' => new Fieldmanager_TextField( __( 'Button Label', 'internetorg' ) ),
 					'url'   => new Fieldmanager_Link( __( 'URL', 'internetorg' ) ),
 					'image' => new Fieldmanager_Media( __( 'File', 'internetorg' ) ),
 				),
 			)
 		);
-		$fmLink->add_meta_box( __( 'Call to Action', 'internetorg' ), array( 'io_ctntwdgt' ) );
+		$fmLink1->add_meta_box( __( 'Call to Action', 'internetorg' ), array( 'io_ctntwdgt' ) );
+
+		$fmLink2 = new Fieldmanager_Group(
+			array(
+				'name'           => 'widget-data-2',
+				'serialize_data' => false,
+				'label'          => __( 'Call to Action', 'internetorg' ),
+				'label_macro'    => __( 'Call to Action: %s', 'internetorg' ),
+				'collapsed'      => true,
+				'collapsible'    => true,
+				'sortable'       => false,
+				'limit'          => 1,
+				'children'       => array(
+					'label' => new Fieldmanager_TextField( __( 'Button Label', 'internetorg' ) ),
+					'url'   => new Fieldmanager_Link( __( 'URL', 'internetorg' ) ),
+					'image' => new Fieldmanager_Media( __( 'File', 'internetorg' ) ),
+				),
+			)
+		);
+		$fmLink2->add_meta_box( __( 'Call to Action', 'internetorg' ), array( 'io_ctntwdgt' ) );
 	}
-
-
 }

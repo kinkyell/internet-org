@@ -40,6 +40,8 @@ class Internetorg_Video_PostType extends Internetorg_PostType {
 					'thumbnail',
 					'custom-fields',
 				),
+				'publicly_queryable'  => false,
+				'query_var' => false,
 				'can_export'          => true,
 				'rewrite'             => array(
 					'slug'       => 'video',

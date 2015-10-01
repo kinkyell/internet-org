@@ -45,6 +45,9 @@ class Internetorg_FreeService_PostType extends Internetorg_PostType {
 				'taxonomies'    => array(
 					'categories',
 				),
+				'exclude_from_search' => true,
+				'publicly_queryable'  => false,
+				'query_var' => false,
 				'can_export'    => true,
 				'rewrite'       => array(
 					'slug'        => 'free-service',
