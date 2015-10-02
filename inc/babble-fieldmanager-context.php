@@ -147,6 +147,14 @@ class Babble_Fieldmanager_Autocomplete extends Fieldmanager_Autocomplete {
 	}
 }
 
+class Babble_Fieldmanager_Link extends Fieldmanager_Link {
+	public function render_field( $name, $value, $title, $post ) {
+		$context = new Babble_Fieldmanager_Context( $title, $this );
+
+		return $context->render_fields( $post, $value );
+	}
+}
+
 /**
  * Class Babble_Fieldmanager_Meta_Field
  *
