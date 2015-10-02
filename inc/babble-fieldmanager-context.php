@@ -130,24 +130,35 @@ class Babble_Fieldmanager_Group extends Fieldmanager_Group {
 	}
 }
 
-//No Visial Editor for Babble since it's not working properly
-class Babble_Fieldmanager_RichTextarea extends Fieldmanager_TextArea {
+class Babble_Fieldmanager_RichTextarea extends Fieldmanager_RichTextarea {
+
+	public $babble_element_id = null;
+
 	public function render_field( $name, $value, $title, $post ) {
 		$context = new Babble_Fieldmanager_Context( $title, $this );
 
 		return $context->render_fields( $post, $value, true );;
 	}
-}
 
-class Babble_Fieldmanager_Autocomplete extends Fieldmanager_Autocomplete {
-	public function render_field( $name, $value, $title, $post ) {
-		$context = new Babble_Fieldmanager_Context( $title, $this );
+	public function get_element_id() {
+		//allows different id for Babble edit screen
+		if ( true == isset( $this->babble_element_id ) && false === empty( $this->babble_element_id ) ) {
+			return $this->babble_element_id;
+		}
+		$el       = $this;
+		$id_slugs = array();
+		while ( $el ) {
+			$slug = $el->is_proto ? 'proto' : $el->seq;
+			array_unshift( $id_slugs, $el->name . '-' . $slug );
+			$el = $el->parent;
+		}
 
-		return $context->render_fields( $post, $value );
+		//wp_editor can not take ID containintg '[]'
+		return str_replace( array( '[', ']' ), '-', 'fm-' . implode( '-', $id_slugs ) );
 	}
 }
 
-class Babble_Fieldmanager_Link extends Fieldmanager_Link {
+class Babble_Fieldmanager_Autocomplete extends Fieldmanager_Autocomplete {
 	public function render_field( $name, $value, $title, $post ) {
 		$context = new Babble_Fieldmanager_Context( $title, $this );
 
@@ -169,6 +180,12 @@ class Babble_Fieldmanager_Meta_Field extends Babble_Meta_Field {
 
 	public $fm;
 
+	public $name;
+
+	public $args;
+
+	public $translation_meta_key = 'bbl_translation[meta]';
+
 	public function __construct( WP_Post $post, $meta_key, $meta_title, array $args = array() ) {
 
 		$this->post       = $post;
@@ -183,7 +200,8 @@ class Babble_Fieldmanager_Meta_Field extends Babble_Meta_Field {
 		$type = "Babble_{$type}";
 
 		//rename
-		$fm_args['name'] = "bbl_translation[meta][{$meta_key}]";
+		$this->name      = "{$this->translation_meta_key}[{$meta_key}]";
+		$fm_args['name'] = $this->name;
 
 		$this->fm = new $type( $fm_args );
 
@@ -196,7 +214,66 @@ class Babble_Fieldmanager_Meta_Field extends Babble_Meta_Field {
 	}
 
 	public function get_output() {
-		return serialize( $this->get_value() );
+		$this->set_readonly_attribute();
+		$this->maybe_update_ids();
+
+		add_filter( 'tiny_mce_before_init', array( $this, 'readonly_for_tinymce' ) );
+		add_filter( 'the_editor', array( $this, 'readonly_for_editor_textarea' ) );
+
+		ob_start();
+		echo $this->fm->render_field( $this->name, $this->get_value(), $this->meta_title, $this->post );
+		$field = ob_get_clean();
+
+		remove_filter( 'tiny_mce_before_init', array( $this, 'readonly_for_tinymce' ) );
+		remove_filter( 'the_editor', array( $this, 'readonly_for_editor_textarea' ) );
+
+		$original_meta = 'bbl_translation_original[meta]';
+		$field         = str_replace(
+			sprintf( 'name="%s', $this->translation_meta_key ),
+		    sprintf( 'name="%s', $original_meta ),
+		    $field
+		);
+
+		//echoing the field instead of properly returing it will preserve HTML
+		echo $field;
+	}
+
+	public function readonly_for_tinymce( $args ) {
+		$args['readonly'] = 1;
+
+		return $args;
+	}
+
+	public function readonly_for_editor_textarea( $the_editor ) {
+		$the_editor = str_replace( '>%s</textarea></div>', ' readonly="readonly">%s</textarea></div>', $the_editor );
+
+		return $the_editor;
+	}
+
+	public function maybe_update_ids( $el = null ) {
+		if ( null === $el ) {
+			$el = $this->fm;
+		}
+		if ( $el instanceof Babble_Fieldmanager_RichTextarea ) {
+			$el->babble_element_id = $el->get_element_id( $el ) . "-original";
+		}
+		if ( false === empty( $el->children ) ) {
+			foreach ( $el->children as $child ) {
+				$this->maybe_update_ids( $child );
+			}
+		}
+	}
+
+	public function set_readonly_attribute( $el = null ) {
+		if ( null === $el ) {
+			$el = $this->fm;
+		}
+		$el->attributes = array_merge( $el->attributes, array( 'readonly' => 'readonly' ) );
+		if ( false === empty( $el->children ) ) {
+			foreach ( $el->children as $child ) {
+				$this->set_readonly_attribute( $child );
+			}
+		}
 	}
 
 	public function get_title() {
