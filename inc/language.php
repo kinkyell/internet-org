@@ -424,3 +424,67 @@ function internetorg_page_metaboxes() {
 }
 
 add_action( 'init', 'internetorg_page_metaboxes' );
+
+
+function internetorg_content_widget_metaboxes() {
+	//bail early as this should go to admin only
+	if ( ! is_admin() ) {
+		return;
+	}
+
+	new Babble_Translatable_Fieldmanager(
+		'Fieldmanager_Group',
+		array(
+			'name'        => 'widget-data',
+			'label'       => __( 'Call to Action', 'internetorg' ),
+			'label_macro' => __( 'Call to Action: %s', 'internetorg' ),
+			'collapsed'   => false,
+			'sortable'    => false,
+			'limit'       => 0,
+			'children'    => array(
+				'label' => new Fieldmanager_TextField( __( 'Button Label', 'internetorg' ) ),
+				'url'   => new Fieldmanager_Link( __( 'URL', 'internetorg' ) ),
+				'image' => new Fieldmanager_Media( __( 'File', 'internetorg' ) ),
+			),
+		),
+		array(
+			'add_meta_box' => array(
+				__( 'Call to Action', 'internetorg' ),
+				array(
+					'io_ctntwdgt',
+				),
+			),
+		)
+	);
+}
+add_action( 'init', 'internetorg_content_widget_metaboxes' );
+
+function internetorg_story_metaboxes() {
+	if ( ! is_admin() ) {
+		return;
+	}
+
+	new Babble_Translatable_Fieldmanager(
+		'Fieldmanager_TextArea',
+		array(
+			'name'       => 'page_subtitle',
+			'label'      => __( 'Subtitle', 'internetorg' ),
+			'attributes' => array(
+				'rows' => 3,
+				'cols' => 30,
+			),
+		),
+		array(
+			'add_meta_box' => array(
+				__( 'Additional page configuration', 'internetorg' ),
+				array(
+					'io_story'
+				),
+				'internetorg_page_home_after_title',
+				'high',
+			),
+		)
+	);
+
+}
+add_action( 'init', 'internetorg_story_metaboxes' );
