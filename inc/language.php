@@ -189,7 +189,7 @@ add_filter( 'language_attributes', 'internetorg_language_attributes' );
 
 function internetorg_video_metaboxes() {
 
-	//bail early as this should go to admin only
+	// Bail early as this should go to admin only.
 	if ( ! is_admin() ) {
 		return;
 	}
@@ -227,7 +227,7 @@ add_action( 'init', 'internetorg_video_metaboxes' );
 
 function internetorg_page_metaboxes() {
 
-	//bail early as this should go to admin only
+	// Bail early as this should go to admin only.
 	if ( ! is_admin() ) {
 		return;
 	}
@@ -266,7 +266,7 @@ function internetorg_page_metaboxes() {
 			'children'       => array(
 				'title'          => new Fieldmanager_TextField( __( 'Section Title', 'internetorg' ) ),
 				'name'           => new Fieldmanager_TextField( __( 'Section Name', 'internetorg' ) ),
-				'content'        => new Fieldmanager_RichTextarea( __( 'Description', 'internetorg' ) ),
+				'content'        => new Babble_Fieldmanager_RichTextarea( __( 'Description', 'internetorg' ) ),
 				'src' => new Fieldmanager_Select(
 					__( 'Source', 'internetorg' ),
 					array(
@@ -335,7 +335,7 @@ function internetorg_page_metaboxes() {
 							'title' => new Fieldmanager_TextField(
 								__( 'CTA Title', 'internetorg' )
 							),
-							'text'  => new Fieldmanager_RichTextarea(
+							'text'  => new Babble_Fieldmanager_RichTextarea(
 								__( 'Content', 'internetorg' )
 							),
 							'cta_src' => new Fieldmanager_Select(
