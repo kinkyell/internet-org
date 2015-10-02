@@ -187,131 +187,240 @@ function internetorg_language_attributes( $language_attributes = '' ) {
 
 add_filter( 'language_attributes', 'internetorg_language_attributes' );
 
-add_action( 'init',
-	function () {
+function internetorg_video_metaboxes() {
 
-		//bail early as this should go to admin only
-		if ( ! is_admin() ) {
-			return;
-		}
-
-		new Babble_Translatable_Fieldmanager(
-			'Fieldmanager_TextField',
-			array(
-				'name' => 'demo-field',
-			),
-			array(
-				'add_meta_box' => array(
-					'TextField Demo',
-					array( 'page' ),
-				)
-			)
-		);
-
-		new Babble_Translatable_Fieldmanager(
-			'Fieldmanager_Group',
-			array(
-				'name'     => 'demo-group',
-				'children' => array(
-					'field-one' => new Babble_Fieldmanager_TextField( 'First Field' ),
-					'field-two' => new Babble_Fieldmanager_TextField( 'Second Field' ),
-				),
-			),
-			array(
-				'add_meta_box' => array(
-					'Group demo',
-					array( 'page' ),
-				)
-			)
-		);
-
-		new Babble_Translatable_Fieldmanager(
-			'Fieldmanager_Group',
-			array(
-				'name'     => 'tabbed_meta_fields',
-				'tabbed'   => 'vertical',
-				'children' => array(
-					'tab-1' => new Babble_Fieldmanager_Group(
-						array(
-							'label'    => 'First Tab',
-							'children' => array(
-								'text' => new Babble_Fieldmanager_Textfield( 'Text Field' ),
-								'media'    => new Babble_Fieldmanager_Media( 'Media File' ),
-							)
-						)
-					),
-					'tab-2' => new Fieldmanager_Group(
-						array(
-							'label'    => 'Second Tab',
-							'children' => array(
-								'textarea' => new Babble_Fieldmanager_TextArea( 'TextArea' ),
-								'media'    => new Babble_Fieldmanager_Media( 'Media File' ),
-							)
-						)
-					),
-				)
-			),
-			array(
-				'add_meta_box' => array(
-					'Tabbed Demo',
-					array( 'page' ),
-				)
-			)
-		);
-
-		// using Fieldmanager for a slideshow - any number of slides,
-		// with any number of related links
-		new Babble_Translatable_Fieldmanager(
-			'Fieldmanager_Group',
-			array(
-				'name'           => 'slideshow',
-				'limit'          => 0,
-				'label'          => __( 'New Slide', 'your-domain' ),
-				'label_macro'    => array( __( 'Slide: %s', 'your-domain' ), 'title' ),
-				'add_more_label' => __( 'Add another slide', 'your-domain' ),
-				'collapsed'      => true,
-				'sortable'       => true,
-				'children'       => array(
-					'title'       => new Babble_Fieldmanager_Textfield( __( 'Slide Title', 'your-domain' ) ),
-					'slide'       => new Babble_Fieldmanager_Media( __( 'Slide', 'your-domain' ) ),
-					'description' => new Babble_Fieldmanager_RichTextarea( __( 'Description', 'your-domain' ) ),
-					'posts'       => new Babble_Fieldmanager_Autocomplete(
-						array(
-							'label'              => __( 'Related Posts', 'your-domain' ),
-							'limit'              => 0,
-							'sortable'           => true,
-							'one_label_per_item' => false,
-							'add_more_label'     => __( 'Add another related link', 'your-domain' ),
-							'datasource'         => new Fieldmanager_Datasource_Post(
-								array(
-										'query_args' => array(
-											'post_status' => 'any',
-										),
-									)
-							),
-							)
-					),
-				),
-			),
-			array(
-				'add_meta_box' => array(
-					__( 'Slides', 'your-domain' ),
-					'page',
-				)
-			)
-		);
-
-		new Babble_Translatable_Fieldmanager(
-			'Fieldmanager_RichTextarea',
-			array(
-				'name' => 'demo-editor',
-			),
-			array(
-				'add_meta_box' => array(
-					'Editor Demo',
-					array( 'page', ),
-				)
-			)
-		);
+	//bail early as this should go to admin only
+	if ( ! is_admin() ) {
+		return;
 	}
-);
+
+	new Babble_Translatable_Fieldmanager(
+		'Fieldmanager_TextField',
+		array(
+			'name'  => 'video-duration',
+			'label' => __( 'Video Duration', 'internetorg' ),
+		),
+		array(
+			'add_meta_box' => array(
+				'Video Duration',
+				array( 'io_video' ),
+			)
+		)
+	);
+
+	new Babble_Translatable_Fieldmanager(
+		'Fieldmanager_Link',
+		array(
+			'name'  => 'video-url',
+			'label' => __( 'Video URL', 'internetorg' ),
+		),
+		array(
+			'add_meta_box' => array(
+				'Video URL',
+				array( 'io_video' ),
+			)
+		)
+	);
+}
+
+add_action( 'init', 'internetorg_video_metaboxes' );
+
+function internetorg_page_metaboxes() {
+
+	//bail early as this should go to admin only
+	if ( ! is_admin() ) {
+		return;
+	}
+
+	new Babble_Translatable_Fieldmanager(
+		'Fieldmanager_TextArea',
+		array(
+			'name'       => 'page_subtitle',
+			'label'      => __( 'Subtitle', 'internetorg' ),
+			'attributes' => array(
+				'rows' => 3,
+				'cols' => 30,
+			),
+		),
+		array(
+			'add_meta_box' => array(
+				__( 'Additional page configuration', 'internetorg' ),
+				array( 'page' ),
+				'internetorg_page_home_after_title',
+				'high',
+			)
+		)
+	);
+
+	new Babble_Translatable_Fieldmanager(
+		'Fieldmanager_Group',
+		array(
+			'name'           => 'home-content-section',
+			'label'          => __( 'Section', 'internetorg' ),
+			'label_macro'    => __( 'Section: %s', 'internetorg' ),
+			'add_more_label' => __( 'Add another Content Area', 'internetorg' ),
+			'collapsed'      => false,
+			'collapsible'    => true,
+			'sortable'       => true,
+			'limit'          => 0,
+			'children'       => array(
+				'title'          => new Fieldmanager_TextField( __( 'Section Title', 'internetorg' ) ),
+				'name'           => new Fieldmanager_TextField( __( 'Section Name', 'internetorg' ) ),
+				'content'        => new Fieldmanager_RichTextarea( __( 'Description', 'internetorg' ) ),
+				'src' => new Fieldmanager_Select(
+					__( 'Source', 'internetorg' ),
+					array(
+						'name'    => 'src',
+						'first_empty' => true,
+						'options' => array(
+							'page' => __( 'Page, Post, or Story' ),
+							'custom' => __( 'Custom Link', 'internetorg' ),
+						),
+					)
+				),
+				'slug'  => new Fieldmanager_TextField(
+					__( 'Section Slug', 'internetorg' ),
+					array(
+						'display_if' => array(
+							'src' => 'src',
+							'value' => 'custom',
+						),
+					)
+				),
+				'url-src' => new Fieldmanager_Select(
+					__( 'URL Source', 'internetorg' ),
+					array(
+						'datasource' => new Fieldmanager_Datasource_Post(
+							array(
+								'query_args' => array(
+									'post_type' => array(
+										'io_story',
+										'post',
+										'page',
+									),
+									'posts_per_page' => 50,
+								),
+								'use_ajax' => false,
+							)
+						),
+						'display_if' => array(
+							'src' => 'src',
+							'value' => 'page',
+						),
+					)
+				),
+				'theme' => new Fieldmanager_Select(
+					array(
+						'label' => 'Select a Theme',
+						'options' => array(
+							'approach' => __( 'Approach', 'internetorg' ),
+							'mission' => __( 'Mission', 'internetorg' ),
+							'impact' => __( 'Impact', 'internetorg' ),
+						),
+					)
+				),
+				'image' => new Fieldmanager_Media(
+					__( 'Background Image', 'internetorg' )
+				),
+				'call-to-action' => new Fieldmanager_Group(
+					array(
+						'label'          => __( 'Call to action', 'internetorg' ),
+						'label_macro'    => __( 'Call to action: %s', 'internetorg' ),
+						'add_more_label' => __( 'Add another CTA', 'internetorg' ),
+						'limit'          => 5,
+						'collapsed'      => false,
+						'collapsible'    => true,
+						'sortable'       => true,
+						'children'       => array(
+							'title' => new Fieldmanager_TextField(
+								__( 'CTA Title', 'internetorg' )
+							),
+							'text'  => new Fieldmanager_RichTextarea(
+								__( 'Content', 'internetorg' )
+							),
+							'cta_src' => new Fieldmanager_Select(
+								__( 'Link Source', 'internetorg' ),
+								array(
+									'name'    => 'cta_src',
+									'first_empty' => true,
+									'options' => array(
+										'page' => __( 'Page, Post, or Story' ),
+										'custom' => __( 'Custom Link', 'internetorg' ),
+									),
+								)
+							),
+							'link' => new Fieldmanager_TextField(
+								__( 'Link', 'internetorg' ),
+								array(
+									'display_if' => array(
+										'src' => 'cta_src',
+										'value' => 'custom',
+									),
+								)
+							),
+							'link_src' => new Fieldmanager_Select(
+								__( 'URL Source', 'internetorg' ),
+								array(
+									'datasource' => new Fieldmanager_Datasource_Post(
+										array(
+											'query_args' => array(
+												'post_type' => array(
+													'io_story',
+													'post',
+													'page',
+												),
+												'posts_per_page' => 50,
+											),
+											'use_ajax' => false,
+										)
+									),
+									'display_if' => array(
+										'src' => 'cta_src',
+										'value' => 'page',
+									),
+								)
+							),
+							'image' => new Fieldmanager_Media(
+								__( 'Image', 'internetorg' )
+							),
+						),
+					)
+				),
+			),
+		),
+		array(
+			'add_meta_box' => array(
+				__( 'Content Areas', 'internetorg' ),
+				array(
+					'page',
+				),
+			)
+		)
+	);
+
+	new Babble_Translatable_Fieldmanager(
+		'Fieldmanager_Autocomplete',
+		array(
+			'name'           => 'next_page',
+			'show_edit_link' => true,
+			'datasource'     => new Fieldmanager_Datasource_Post(
+				array(
+					'query_args' => array(
+						'post_type' => 'page',
+					),
+				)
+			),
+		),
+		array(
+			'add_meta_box' => array(
+				__( 'Next Page', 'internetorg' ),
+				array(
+					'page',
+				),
+			)
+		)
+	);
+
+}
+
+add_action( 'init', 'internetorg_page_metaboxes' );
