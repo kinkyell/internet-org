@@ -233,6 +233,37 @@ function internetorg_page_metaboxes() {
 	}
 
 	new Babble_Translatable_Fieldmanager(
+		'Fieldmanager_Group',
+		array(
+			'name'     => 'page_intro_block',
+			'children' => array(
+				'intro_title'   => new Fieldmanager_Textfield(
+					array(
+						'label' => __( 'Intro Title', 'internetorg' ),
+					)
+				),
+				'intro_content' => new Fieldmanager_TextArea(
+					array(
+						'label'      => __( 'Intro Copy', 'internetorg' ),
+						'attributes' => array(
+							'rows' => 3,
+							'cols' => 30,
+						),
+					)
+				),
+			),
+		),
+		array(
+			'add_meta_box' => array(
+				__( 'Page Intro', 'internetorg' ),
+				array( 'page' ),
+				'internetorg_page_home_after_title',
+				'high',
+			)
+		)
+	);
+
+	new Babble_Translatable_Fieldmanager(
 		'Fieldmanager_TextArea',
 		array(
 			'name'       => 'page_subtitle',
@@ -298,7 +329,7 @@ function internetorg_page_metaboxes() {
 										'post',
 										'page',
 									),
-									'posts_per_page' => 50,
+									'posts_per_page' => -1,
 								),
 								'use_ajax' => false,
 							)
@@ -369,7 +400,7 @@ function internetorg_page_metaboxes() {
 													'post',
 													'page',
 												),
-												'posts_per_page' => 50,
+												'posts_per_page' => -1,
 											),
 											'use_ajax' => false,
 										)
@@ -488,3 +519,22 @@ function internetorg_story_metaboxes() {
 
 }
 add_action( 'init', 'internetorg_story_metaboxes' );
+
+/**
+ * Adds fields directly below the title of the post title on the edit screen.
+ *
+ * @global \WP_Post $post          The WP_Post object to which to add a meta box to.
+ * @global array    $wp_meta_boxes The array of metaboxes.
+ *
+ * @return void
+ */
+function internetorg_page_home_after_title_fields() {
+	// Get the global vars we need to work with.
+	global $post, $wp_meta_boxes;
+
+	// Render the FM meta box in 'internetorg_home_after_title' context.
+	do_meta_boxes( get_current_screen(), 'internetorg_page_home_after_title', $post );
+
+	// Unset 'internetorg_home_after_title' context from the post's meta boxes.
+	unset( $wp_meta_boxes['post']['internetorg_page_home_after_title'] );
+}
