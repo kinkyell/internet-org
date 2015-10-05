@@ -46,6 +46,9 @@ class Internetorg_Campaign_PostType extends Internetorg_PostType {
 					'category',
 					'post_tag',
 				),
+				'exclude_from_search' => true,
+				'publicly_queryable'  => false,
+				'query_var' => false,
 				'can_export'    => true,
 				'rewrite'       => array(
 					'slug'       => 'campaign',
