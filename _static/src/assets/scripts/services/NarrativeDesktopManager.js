@@ -122,6 +122,11 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.layout = function() {
         var $innerStmnt = this._$statement.find('.transformBlock-stmnt-item');
+
+        if ($innerStmnt.length > 1) {
+            return;
+        }
+
         var i = 1;
         var l = this._sectionsConf.length;
         for (; i < l; i++) {
@@ -136,9 +141,21 @@ define(function(require, exports, module) { // jshint ignore:line
     // /////////////////////////////////////////////////////////////////////////////////////////
 
     /**
+     * Refresh the objects attributes: used for orientation
+     * and related changes
+     *
+     * @method refresh
+     * @public
+     */
+    proto.refresh = function(position, slidePos) {
+        this.gotoSection(position, position);
+        this.gotoSubSection(position, slidePos, 0);
+    };
+
+    /**
      * Begins the sequece for section change
      *
-     * @method gotoSection
+     * @method _createTimeline
      * @param {object} section section config params
      * @param {string} direction the direction of the transition
      * @public
@@ -482,6 +499,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 img: featureImage,
                 content: content
             };
+
         }.bind(this));
     };
 
