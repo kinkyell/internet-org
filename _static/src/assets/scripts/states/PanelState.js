@@ -13,6 +13,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var CarouselView = require('views/CarouselView');
     var SelectView = require('views/SelectView');
+    var CustomRadioView = require('views/CustomRadioView');
     var ImagePlaceholderView = require('views/ImagePlaceholderView');
     var SearchFormView = require('views/SearchFormView');
     var VideoModalView = require('views/VideoModalView');
@@ -65,6 +66,7 @@ define(function(require, exports, module) { // jshint ignore:line
         '.js-select': SelectView,
         '.js-videoModal': VideoModalView,
         '.js-searchFormView': SearchFormView,
+        'input.radio': CustomRadioView,
         'img': ImagePlaceholderView
     };
 
