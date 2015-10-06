@@ -118,9 +118,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._onTouchMoveHandler = this._onTouchMove.bind(this);
         this._onTouchEndHandler = this._onTouchEnd.bind(this);
         this.refreshNarrativeManager = this.refreshNarrativeManager.bind(this);
-        this.refreshNarrativeManagerHandler = this.refreshNarrativeManager;
-        this._onResizeHandler = this._onResize.bind(this);
-        this._onResizeHandler = debounce(this._onResizeHandler, 50);
+        this._onResizeHandler = debounce(this._onResize.bind(this), 500);
         this._onClickIndicatorHandler = this._onClickIndicator.bind(this);
         this._onMenuToggleHandler = this._onMenuToggle.bind(this);
         this._onTopScrollHandler = this._onTopScrollTrigger.bind(this);
@@ -180,20 +178,22 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.layout = function() {
         this.$narrativeSections.eq(0).addClass('isActive');
         this._sectionLength = this.$narrativeSections.length;
-        this._getSectionContent().then(this.refreshNarrativeManager).catch(log);
+        this._getSectionContent().then(this.refreshNarrativeManager.bind(this, true)).catch(log);
         this.$viewWindow.before(this.$progress);
         this.$progress.find(':first-child').addClass('isActive');
         this._displayIndicators(0);
     };
 
-    proto.refreshNarrativeManager = function() {
+    proto.refreshNarrativeManager = function(initial) {
         // determine bp specific narrative handle
         var isMobile = breakpointManager.isMobile;
         var NarrativeManager = isMobile ? NarrativeMobileManager : NarrativeDesktopManager;
         this._narrativeManager = new NarrativeManager(this._sectionConf);
 
-        if (typeof this._narrativeManager.refresh === 'function') {
-            this._narrativeManager.refresh(this._position);
+        if (!initial) {
+            if (typeof this._narrativeManager.refresh === 'function') {
+                this._narrativeManager.refresh(this._position, this._subPosition);
+            }
         }
     };
 
@@ -216,6 +216,10 @@ define(function(require, exports, module) { // jshint ignore:line
             if (breakpointManager.isMobile !== this._currentlyMobile) {
                 this._currentlyMobile = breakpointManager.isMobile;
                 this.refreshNarrativeManager();
+
+                if (typeof this._narrativeManager.orentationRefresh === 'function') {
+                    this._narrativeManager.orentationRefresh();
+                }
             }
         }.bind(this));
 
@@ -300,7 +304,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onResize = function() {
-        this._narrativeManager.refresh(this._position, this._subPosition);
+        if (breakpointManager.isMobile) {
+            this._narrativeManager.refresh(this._position, this._subPosition);
+        }
     };
 
     /**
@@ -675,7 +681,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._enableScrolling();
 
             if (typeof this._narrativeManager.refresh === 'function') {
-                this._narrativeManager.refresh(this._position);
+                this._narrativeManager.refresh(this._position, this._subPosition);
             }
         }
     };

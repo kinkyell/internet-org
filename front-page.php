@@ -186,7 +186,9 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 												</div>
 											</div>
 											<div class="transformBlock-stmnt">
-												<h2 class="hdg hdg_1 mix-hdg_splash"><?php echo wp_kses_post( internetorg_get_the_subtitle( get_the_ID() ) ); ?></h2>
+                        						<div class="transformBlock-stmnt-item">
+													<h2 class="hdg hdg_1 mix-hdg_splash"><?php echo wp_kses_post( internetorg_get_the_subtitle( get_the_ID() ) ); ?></h2>
+												</div>
 											</div>
 											<div class="transformBlock-post">
 
