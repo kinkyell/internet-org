@@ -39,18 +39,19 @@ define(function(require, exports, module) { // jshint ignore:line
         },
         narrative: {
             mobile: {
-                EASE: window.Expo, // gsap ease type
+                EASE: window.Circ, // gsap ease type
                 EASE_DIRECTION_FORWARD: 'easeNone', // gsap ease direction when progressing forward
                 EASE_DIRECTION_REVERSE: 'easeNone', // gsap ease direction when progressing backward
                 SECTION_DURATION: 0.65, // uniform transformBlock section durations
                 TIME_SCALE: 1.5 // Timeline speed multiplier
             },
             desktop: {
-                EASE: window.Expo, // gsap ease type
+                EASE: window.Power0, // gsap ease type
                 EASE_DIRECTION_FORWARD: 'easeOut', // gsap ease direction when progressing forward
                 EASE_DIRECTION_REVERSE: 'easeIn', // gsap ease direction when progressing backward
                 SCROLL_BUFFER: 250, // Buffer for scroll jacking (ms)
                 TIME_SCALE: 0.4, // Timeline speed multiplier
+                // TIME_SCALE: 0.08, // Timeline speed multiplier
                 SECTION_DURATION: 0.35, // uniform transformBlock section durations
                 featureImages: { // Featured images
                     HOME: '/assets/media/uploads/home_DT.jpg',
