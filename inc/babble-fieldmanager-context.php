@@ -216,9 +216,29 @@ class Babble_Fieldmanager_Meta_Field extends Babble_Meta_Field {
 	}
 
 	public function get_input( $name, $value ) {
-		$field = $this->fm->render_field( $name, $value, $this->meta_title, $this->post );
+		add_filter( 'wp_editor_settings', array( $this, 'wp_editor_css_styles' ) );
+		ob_start();
+		$this->fm->render_field( $name, $value, $this->meta_title, $this->post );
+		$field = ob_get_clean();
+		remove_filter( 'wp_editor_settings', array( $this, 'wp_editor_css_styles' ) );
 
-		return $field;
+		//escape related-element for use in jQuery
+		$data_related_element_old = sprintf( 'data-related-element="%s"', esc_attr( $this->name ) );
+		$escaped_name = str_replace( '[', '\\[', $this->name );
+		$escaped_name = str_replace( ']', '\\]', $escaped_name );
+		$data_related_element_new = sprintf( 'data-related-element="%s"', $escaped_name );
+		$field = str_replace( $data_related_element_old, $data_related_element_new, $field );
+
+		//Adjust array position for bbl_translation[meta][home-content-section] format
+		$field = preg_replace_callback( '/data\-fm\-array\-position\=\"(\d+)\"/', function( $matches ) {
+			$pos = intval( $matches[1] );
+			if ( 0 !== $pos ) {
+				$pos += 2;
+			}
+			return sprintf( 'data-fm-array-position="%d"', $pos );
+		}, $field );
+
+		echo $field; //@todo might want to echo
 	}
 
 	public function get_output() {
@@ -227,6 +247,7 @@ class Babble_Fieldmanager_Meta_Field extends Babble_Meta_Field {
 
 		add_filter( 'tiny_mce_before_init', array( $this, 'readonly_for_tinymce' ) );
 		add_filter( 'the_editor', array( $this, 'readonly_for_editor_textarea' ) );
+		add_filter( 'wp_editor_settings', array( $this, 'wp_editor_css_styles' ) );
 
 		ob_start();
 		echo $this->fm->render_field( $this->name, $this->get_value(), $this->meta_title, $this->post );
@@ -234,6 +255,7 @@ class Babble_Fieldmanager_Meta_Field extends Babble_Meta_Field {
 
 		remove_filter( 'tiny_mce_before_init', array( $this, 'readonly_for_tinymce' ) );
 		remove_filter( 'the_editor', array( $this, 'readonly_for_editor_textarea' ) );
+		remove_filter( 'wp_editor_settings', array( $this, 'wp_editor_css_styles' ) );
 
 		$original_meta = 'bbl_translation_original[meta]';
 		$field         = str_replace(
@@ -258,12 +280,22 @@ class Babble_Fieldmanager_Meta_Field extends Babble_Meta_Field {
 		return $the_editor;
 	}
 
+	public function wp_editor_css_styles( $settings ) {
+		//in case it does not exists
+		if ( false === array_key_exists( 'editor_css', $settings ) ) {
+			$settings['editor_css'] = '';
+		}
+		$settings['editor_css'] .= '<style type="text/css">.fm-richtext textarea {color: #333 !important}</style>';
+		return $settings;
+	}
+
+
 	public function maybe_update_ids( $el = null ) {
 		if ( null === $el ) {
 			$el = $this->fm;
 		}
 		if ( $el instanceof Babble_Fieldmanager_RichTextarea ) {
-			$el->babble_element_id = $el->get_element_id( $el ) . "-original";
+			$el->babble_element_id = $el->get_element_id( $el ) . '-original';
 		}
 		if ( false === empty( $el->children ) ) {
 			foreach ( $el->children as $child ) {

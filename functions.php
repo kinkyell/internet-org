@@ -17,6 +17,10 @@ wpcom_vip_load_plugin( 'shortcode-ui' );
 wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
 wpcom_vip_load_plugin( 'wpcom-thumbnail-editor' );
 
+wpcom_vip_load_plugin( 'babble', 'plugins', true );
+wpcom_vip_load_plugin( 'babble-globals', 'plugins', true );
+wpcom_vip_load_plugin( 'babble-translation-group-tool', 'plugins', true );
+
 /** Custom Post Types. */
 require IO_DIR . '/plugins/internetorg-custom-posttypes/internetorg-custom-posttypes.php';
 
@@ -25,9 +29,6 @@ wpcom_vip_load_plugin( 'fieldmanager' );
 require IO_DIR . '/plugins/internetorg-custom-fields/internetorg-custom-fields.php';
 
 /** Babble */
-require IO_DIR . '/plugins/babble/babble.php';
-require IO_DIR . '/plugins/babble/globals.php';
-require IO_DIR . '/plugins/babble/translation-group-tool.php';
 require IO_DIR . '/inc/babble-fieldmanager-context.php';
 
 if ( ! function_exists( 'internetorg_setup' ) ) :
