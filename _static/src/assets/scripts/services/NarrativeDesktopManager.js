@@ -163,8 +163,8 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._createTimeline = function(direction) {
         var tl = new Timeline({ paused: true });
         var easeDirection = (direction === 'forward') ? EASE_DIRECTION_FORWARD : EASE_DIRECTION_REVERSE;
-        var durationPrimary = (direction === 'forward') ? 0.75 : 1;
-        var durationSecondary = (direction === 'forward') ? 0.5 : 1;
+        var staggerPrimary = (direction === 'forward') ? 0.5 : 1;
+        var staggerSecondary = (direction === 'forward') ? 0.75 : 1;
         var modifier = 0.5;
 
         //  transition 01
@@ -212,10 +212,10 @@ define(function(require, exports, module) { // jshint ignore:line
             { y: '-90px', ease: EASE[easeDirection] });
 
         tl.fromTo(
-            this._$transformBlockPost.eq(0),
-            SECTION_DURATION * modifier,
+            this._$transformBlockStmnt.eq(1),
+            (SECTION_DURATION * modifier) * staggerPrimary,
             {
-                y: '90px',
+                y: '180px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             },
@@ -227,10 +227,10 @@ define(function(require, exports, module) { // jshint ignore:line
             '-=' + SECTION_DURATION * modifier);
 
         tl.fromTo(
-            this._$transformBlockStmnt.eq(1),
-            SECTION_DURATION * modifier,
+            this._$transformBlockPost.eq(0),
+            (SECTION_DURATION * modifier) * staggerSecondary,
             {
-                y: '90px',
+                y: '180px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             },
@@ -240,6 +240,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 ease: EASE[easeDirection]
             },
             '-=' + SECTION_DURATION * modifier);
+
 
 
 
@@ -287,7 +288,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         tl.fromTo(
             this._$transformBlockStmnt.eq(2),
-            SECTION_DURATION * modifier,
+            SECTION_DURATION * modifier * staggerPrimary,
             {
                 y: '180px',
                 opacity: 0,
@@ -299,6 +300,8 @@ define(function(require, exports, module) { // jshint ignore:line
                 ease: EASE[easeDirection]
             },
             '-=' + SECTION_DURATION * modifier);
+
+
 
         //  transition 03
         ///////////////////////
@@ -344,7 +347,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         tl.fromTo(
             this._$transformBlockStmnt.eq(3),
-            SECTION_DURATION * modifier,
+            (SECTION_DURATION * modifier) * staggerPrimary,
             {
                 y: '180px',
                 opacity: 0,
@@ -399,7 +402,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._$transformBlockPost.eq(3),
             SECTION_DURATION * modifier,
             {
-                y: '90px',
+                y: '180px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             },
@@ -411,9 +414,9 @@ define(function(require, exports, module) { // jshint ignore:line
 
         tl.fromTo(
             this._$transformBlockStmnt.eq(4),
-            SECTION_DURATION * modifier,
+            (SECTION_DURATION * modifier) * staggerSecondary,
             {
-                y: '90px',
+                y: '180px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             },
@@ -426,10 +429,10 @@ define(function(require, exports, module) { // jshint ignore:line
 
         tl.fromTo(
             this._$transformBlockPre.eq(1),
-            SECTION_DURATION * modifier,
+            (SECTION_DURATION * modifier) * staggerPrimary,
             {
                 opacity: 0,
-                y: '50px',
+                y: '180px',
                 ease: EASE[easeDirection]
             }, {
                 opacity: 1,
