@@ -679,10 +679,6 @@ define(function(require, exports, module) { // jshint ignore:line
             this._disableScrolling();
         } else {
             this._enableScrolling();
-
-            if (typeof this._narrativeManager.refresh === 'function') {
-                this._narrativeManager.refresh(this._position, this._subPosition);
-            }
         }
     };
 
