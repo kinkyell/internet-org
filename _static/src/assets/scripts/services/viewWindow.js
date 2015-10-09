@@ -105,7 +105,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 );
             }, this);
         }.bind(this);
-        
+
         return assetLoader.loadImage(imagePath).then(swapImage, swapImage);
     };
 
@@ -320,6 +320,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
             this._isShifted = !this._isShifted;
 
+            silent = true;
             if (silent) {
                 this.$panels.removeClass('isAnimating');
                 return Promise.resolve();
