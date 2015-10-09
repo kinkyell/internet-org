@@ -1580,7 +1580,6 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 	<a class="%1$s js-stateLink"
 	   href="%2$s"
 	   data-title="%3$s"
-	   data-desc="%4$s"
 	   data-date="%5$s"
 	   data-theme="%6$s"
 	   data-image="%7$s"
@@ -1970,7 +1969,6 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 			   data-social="<?php echo esc_attr( $social_attr ); ?>"
 			   data-theme="<?php echo esc_attr( strtolower( $theme ) ); ?>"
 			   data-title="<?php echo esc_attr( $title ); ?>"
-			   data-desc="<?php echo esc_attr( wp_kses_post( $desc ) ); ?>"
 				<?php if ( ! empty( $mobile_image ) ) : ?>
 					data-mobile-image="<?php echo esc_url( $mobile_image ); ?>"
 				<?php endif; ?>

@@ -9,7 +9,7 @@ get_header();
 
 ?>
 
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-type="titled" data-route="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-social="true" data-desc="<?php echo wp_kses_post( get_post_field( 'post_excerpt', get_the_ID() ) ); ?>" data-date="<?php internetorg_posted_on_date(); ?>">
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-type="titled" data-route="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-social="true" data-date="<?php internetorg_posted_on_date(); ?>">
 		<?php while ( have_posts() ) : the_post(); ?>
 
 			<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
@@ -27,11 +27,6 @@ get_header();
 									</div>
 									<div class="topicBlock-subHd">
 										<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray"><?php internetorg_posted_on_date(); ?></div>
-									</div>
-									<div class="topicBlock-bd">
-										<p class="bdcpy">
-											<?php echo wp_kses_post( get_post_field( 'post_excerpt', get_the_ID() ) ); ?>
-										</p>
 									</div>
 
 								</div>

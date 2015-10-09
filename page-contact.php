@@ -21,7 +21,7 @@ $custom_fields = get_post_meta( get_the_ID(), 'home-content-section', false );
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php the_permalink(); ?>" data-type="titled" data-title="<?php the_title(); ?>" data-desc="<?php echo esc_attr( internetorg_get_the_subtitle( get_the_ID() ) ); ?>">
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php the_permalink(); ?>" data-type="titled" data-title="<?php the_title(); ?>" >
 
 		<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
 
