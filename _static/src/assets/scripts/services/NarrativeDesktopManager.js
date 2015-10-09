@@ -172,13 +172,13 @@ define(function(require, exports, module) { // jshint ignore:line
             this._$transformBlock,
             SECTION_DURATION,
             { y: '0px' },
-            { y: '-25px', ease: EASE[easeDirection] });
+            { y: '-90px', ease: EASE[easeDirection] });
 
         tl.fromTo(
             this._$transformBlockPost.eq(0),
             SECTION_DURATION,
             {
-                y: '90px',
+                y: '180px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             },
@@ -198,7 +198,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 ease: EASE[easeDirection]
             },
             {
-                y: '-90px',
+                y: '-180px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             },
@@ -208,7 +208,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._$transformBlockStmnt.eq(1),
             SECTION_DURATION * durationPrimary,
             {
-                y: '90px',
+                y: '180px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             },
@@ -228,7 +228,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 ease: EASE[easeDirection]
             },
             {
-                y: '-90px',
+                y: '-180px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             },
@@ -240,7 +240,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._$transformBlockPost.eq(0),
             SECTION_DURATION,
             {
-                y: '-90px',
+                y: '-180px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             });
@@ -249,7 +249,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._$transformBlockPost.eq(1),
             SECTION_DURATION,
             {
-                y: '90px',
+                y: '180px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             },
@@ -264,7 +264,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._$transformBlockStmnt.eq(1),
             SECTION_DURATION * durationPrimary,
             {
-                y: '-90px',
+                y: '-180px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             },
@@ -274,7 +274,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._$transformBlockStmnt.eq(2),
             SECTION_DURATION * durationPrimary,
             {
-                y: '90px',
+                y: '180px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             },
@@ -291,7 +291,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._$transformBlockPost.eq(1),
             SECTION_DURATION,
             {
-                y: '-90px',
+                y: '-180px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             });
@@ -300,7 +300,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._$transformBlockPost.eq(2),
             SECTION_DURATION,
             {
-                y: '90px',
+                y: '180px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             },
@@ -315,7 +315,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._$transformBlockStmnt.eq(2),
             SECTION_DURATION * durationPrimary,
             {
-                y: '-90px',
+                y: '-180px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             },
@@ -325,7 +325,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._$transformBlockStmnt.eq(3),
             SECTION_DURATION * durationPrimary,
             {
-                y: '90px',
+                y: '180px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             },

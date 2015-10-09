@@ -9,4 +9,5 @@ wp-config.php
 
 .DS_Store
 ._*
+.svn
 

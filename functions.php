@@ -2053,9 +2053,6 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 
 		if ( 'page' === $cta['cta_src'] ) {
 			if ( ! empty( $cta['link_src'] ) ) {
-				/**
-				 * @var string $url
-				 */
 				$url = get_the_permalink( $cta['link_src'] );
 			}
 		} else {
