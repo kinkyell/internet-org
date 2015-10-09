@@ -67,7 +67,7 @@ if ( ! function_exists( 'internetorg_setup' ) ) :
 		add_theme_support( 'post-thumbnails' );
 
 		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus(
+		internetorg_register_menus(
 			array(
 				'primary'         => esc_html__( 'Primary Menu', 'internetorg' ),
 				'primary-sub-nav' => esc_html__( 'Primary Menu Sub Nav', 'internetorg' ),
@@ -1857,6 +1857,161 @@ function internetorg_the_press_filter( $years = array() ) {
 }
 
 /**
+ * Wrapper function for register_nav_menus.
+ *
+ * Registers a default Primary and Secondary nav menu and returns early if Babble is not present.
+ * If Babble is present, registers a Primary and Secondary menu for each available language.
+ *
+ * @used-by internetorg_setup
+ */
+function internetorg_register_menus() {
+
+	if ( ! function_exists( 'bbl_get_active_langs' ) ) {
+
+		// This theme uses wp_nav_menu() in two locations, if Babble's bbl_get_active_langs is not present.
+		register_nav_menus(
+			array(
+				'primary'   => esc_html__( 'Primary Menu', 'internetorg' ),
+				'secondary' => esc_html__( 'Secondary Menu', 'internetorg' ),
+			)
+		);
+
+		return;
+	}
+
+	/**
+	 * An array of active language stdClass objects returned by Babble.
+	 *
+	 * Babble will return an array that is structured thusly...
+	 *
+	 *     $bbl_active_langs = Array
+	 *     (
+	 *         [en] => stdClass Object
+	 *             (
+	 *                 [name] => English (US)
+	 *                 [code] => en_US
+	 *                 [url_prefix] => en
+	 *                 [text_direction] => ltr
+	 *                 [display_name] => English (US)
+	 *             )
+	 *     )
+	 *
+	 * @var stdClass[] $bbl_active_langs
+	 */
+	$bbl_active_langs = bbl_get_active_langs();
+
+	foreach ( $bbl_active_langs as $lang ) {
+		register_nav_menus(
+			array(
+				'primary-' . $lang->code => sprintf(
+					esc_html__( '%s Primary Menu', 'internetorg' ),
+					$lang->display_name
+				),
+				'secondary-' . $lang->code => sprintf(
+					esc_html__( '%s Secondary Menu', 'internetorg' ),
+					$lang->display_name
+				),
+			)
+		);
+	}
+
+	return;
+}
+
+/**
+ * Get the current content language code.
+ *
+ * Wrapper for bbl_get_current_content_lang_code. If Babble's not available, returns empty string.
+ *
+ * @return string Current content language code according to Babble, else empty string.
+ */
+function internetorg_get_current_lang_code() {
+
+	$lang_code = '';
+
+	if ( function_exists( 'bbl_get_current_content_lang_code' ) ) {
+		$lang_code = bbl_get_current_content_lang_code();
+	}
+
+	return $lang_code;
+}
+
+/**
+ * Output a nav menu.
+ *
+ * Wrapper for wp_nav_menu, if Babble is available, outputs menu based on location and current content language.
+ *
+ * @param string $location The general theme location of the menu. Allowed values, primary, secondary.
+ */
+function internetorg_nav_menu( $location = 'primary' ) {
+
+	/**
+	 * Allowed menu locations in the theme.
+	 *
+	 * When Babble is not present, primary and secondary are the only menu locations.
+	 * However, when Babble is present, each language has a primary and secondary location specific to that language.
+	 * primary-en_US and secondary-en_US, primary-es_MX and secondary-es_MX, for example.
+	 * If Babble is present, the primary and secondary $allowed_locations will be concatenated with the $lang_code.
+	 *
+	 * @see internetorg_register_menus
+	 *
+	 * @var array $locations_whitelist
+	 */
+	$locations_whitelist = array(
+		'primary',
+		'secondary',
+	);
+
+	if ( empty( $location ) || ! in_array( $location, $locations_whitelist ) ) {
+		$location = 'primary';
+	}
+
+	$lang_code = internetorg_get_current_lang_code();
+
+	/**
+	 * An array of non-default wp_nav_menu parameters, to be merged with the $args array and passed to wp_nav_menu.
+	 *
+	 * Refer to the default wp_nav_menu parameters in the Codex to determine if you need to override them here.
+	 *
+	 * @link https://codex.wordpress.org/Function_Reference/wp_nav_menu#Parameters
+	 *
+	 * @var array $defaults
+	 */
+	$nav_override_params = array(
+		'menu_class' => '',
+		'menu_id'    => '',
+	);
+
+	/**
+	 * An array of arguments to be merged with the $nav_override_params array and passed to wp_nav_menu.
+	 *
+	 * @var array $args
+	 */
+	$args = array();
+
+	if ( 'primary' === $location ) {
+		$args['container_class'] = 'mainMenu-panel-primary';
+		$args['walker']          = new Internetorg_Main_Nav_Walker();
+	} else {
+		$args['container_class'] = 'mainMenu-panel-secondary';
+		$args['menu_class']      = 'borderBlocks borderBlocks_2up';
+		$args['walker']          = new Internetorg_Main_SubNav_Walker();
+	}
+
+	if ( empty( $lang_code ) || ! class_exists( 'Babble' ) ) {
+		$args['theme_location'] = $location;
+	} else {
+		$args['theme_location'] = $location . '-' . $lang_code;
+	}
+
+	$args = wp_parse_args( $args, $nav_override_params );
+
+	wp_nav_menu( $args );
+
+	return;
+}
+
+/**
  * Output a call to action for the contact page.
  *
  * @param array  $fieldset       Array of custom field data.
@@ -1994,3 +2149,5 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 		<?php
 	}
 }
+
+
