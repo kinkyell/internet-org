@@ -1,9 +1,3 @@
-{{#if image}}{{#if isImageAbove}}
-<!-- START MOBILE ONLY CONTENT HERE -->
-<div class="isHidden u-isHiddenMedium" aria-hidden="true">
-	<img src="{{image}}" alt="" />
-</div>
-{{/if}}{{/if}}
 <!-- END MOBILE ONLY CONTENT HERE -->
 <div class="introBlock {{#if image}}introBlock_media{{/if}}">
     <div class="introBlock-inner">
@@ -16,11 +10,11 @@
                 <p class="bdcpy">{{description}}</p>
             </div>
             {{/if}}
-            {{#if image}}{{#if isImageBelow}}
+            {{#if image}}
             <div class="topicBlock-media isHidden u-isHiddenMedium" aria-hidden="true">
                 <img src="{{image}}" alt="">
             </div>
-            {{/if}}{{/if}}
+            {{/if}}
         </div>
     </div>
 </div>

@@ -82,8 +82,6 @@ define(function(require, exports, module) { // jshint ignore:line
         var transitions = this.getAnimationDirections(event);
         var theme = this._options.theme;
         var mobileImage = this._options['mobile-image'];
-        var isImageAbove = this._options.path && parseUrl(this._options.path).pathname.split('/').length > 3;
-        // put image above if above a second tier page (ie., /mission/ -> ["", "mission", ""])
 
         if (event.silent) {
             viewWindow.getCurrentStory().then(this._handleStaticContent);
@@ -96,9 +94,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 title: this._options.title,
                 desc: this._options.desc,
                 image: mobileImage ? mobileImage : this._options.image,
-                theme: (typeof theme === 'string' && theme.length) ? capitalize(theme) : theme,
-                isImageAbove: isImageAbove,
-                isImageBelow: !isImageAbove
+                theme: (typeof theme === 'string' && theme.length) ? capitalize(theme) : theme
             }), transitions.content).then(tap(this._handleLoaderInit))
         ];
 
