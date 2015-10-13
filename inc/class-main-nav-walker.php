@@ -80,7 +80,9 @@ class Internetorg_Main_Nav_Walker extends Walker_Nav_Menu {
 			               . '"';
 		}
 
-		$attributes .= ' data-theme="' . esc_attr( substr( $item->title, 4 ) ) . '"';
+		$theme = ( empty( $item->classes ) ? '' : $item->classes );
+
+		$attributes .= ' data-theme="' . esc_attr( $theme ) . '"';
 
 		if ( is_array( $args ) && ! empty( $args ) ) {
 			$args = (object) $args;
@@ -96,7 +98,7 @@ class Internetorg_Main_Nav_Walker extends Walker_Nav_Menu {
 			$args->after
 		);
 
-		$customDiv = '<div class="topicLink topicLink_theme' . esc_attr( substr( $item->title, 4 ) )
+		$customDiv = '<div class="topicLink topicLink_theme' . esc_attr( $theme )
 		             . ' js-menuView-slider" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">';
 
 		$item_output = $customDiv . $item_output . '</div>';
