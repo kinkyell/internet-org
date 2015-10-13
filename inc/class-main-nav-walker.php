@@ -80,7 +80,7 @@ class Internetorg_Main_Nav_Walker extends Walker_Nav_Menu {
 			               . '"';
 		}
 
-		$theme = ( empty( $item->classes ) ? '' : $item->classes );
+		$theme = ( empty( $item->classes ) && ! empty( $item->classes[0] ) ? '' : ucwords( $item->classes[0] ) );
 
 		$attributes .= ' data-theme="' . esc_attr( $theme ) . '"';
 
