@@ -21,6 +21,12 @@ wpcom_vip_load_plugin( 'babble', 'plugins', true );
 wpcom_vip_load_plugin( 'babble-globals', 'plugins', true );
 wpcom_vip_load_plugin( 'babble-translation-group-tool', 'plugins', true );
 
+// Google Analytics
+wpcom_vip_load_plugin( 'wp-google-analytics' );
+
+// Additional Caching
+wpcom_vip_load_plugin( 'cache-nav-menu' );
+
 /** Custom Post Types. */
 require IO_DIR . '/plugins/internetorg-custom-posttypes/internetorg-custom-posttypes.php';
 
