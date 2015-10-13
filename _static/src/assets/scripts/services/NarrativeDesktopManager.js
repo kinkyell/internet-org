@@ -163,50 +163,57 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._createTimeline = function(direction) {
         var tl = new Timeline({ paused: true });
         var easeDirection = (direction === 'forward') ? EASE_DIRECTION_FORWARD : EASE_DIRECTION_REVERSE;
-        var durationPrimary = (direction === 'forward') ? 0.75 : 1;
-        var durationSecondary = (direction === 'forward') ? 0.5 : 1;
+        var staggerPrimary = (direction === 'forward') ? 0.5 : 1;
+        var staggerSecondary = (direction === 'forward') ? 0.75 : 1;
+        var modifier = 0.5;
 
         //  transition 01
         ///////////////////////
+
+        // ---------
+        // ----- OUT
+        // ---------
+        tl.fromTo(
+            this._$transformBlockStmnt.eq(0),
+            SECTION_DURATION * modifier,
+            {
+                y: '0px',
+                opacity: 1,
+                ease: EASE[easeDirection]
+            },
+            {
+                y: '-90px',
+                opacity: 0,
+                ease: EASE[easeDirection]
+            });
+
+        tl.fromTo(
+            this._$transformBlockPre.eq(0),
+            SECTION_DURATION * modifier,
+            {
+                y: '0px',
+                opacity: 1,
+                ease: EASE[easeDirection]
+            },
+            {
+                y: '-90px',
+                opacity: 0,
+                ease: EASE[easeDirection]
+            },
+            '-=' + SECTION_DURATION * modifier);
+
+        // ---------
+        // ----- IN
+        // ---------
         tl.fromTo(
             this._$transformBlock,
-            SECTION_DURATION,
+            SECTION_DURATION * modifier,
             { y: '0px' },
             { y: '-90px', ease: EASE[easeDirection] });
 
         tl.fromTo(
-            this._$transformBlockPost.eq(0),
-            SECTION_DURATION,
-            {
-                y: '180px',
-                opacity: 0,
-                ease: EASE[easeDirection]
-            },
-            {
-                y: '0px',
-                opacity: 1,
-                ease: EASE[easeDirection]
-            },
-            '-=' + SECTION_DURATION);
-
-        tl.fromTo(
-            this._$transformBlockStmnt.eq(0),
-            SECTION_DURATION * durationPrimary,
-            {
-                y: '0px',
-                opacity: 1,
-                ease: EASE[easeDirection]
-            },
-            {
-                y: '-180px',
-                opacity: 0,
-                ease: EASE[easeDirection]
-            },
-            '-=' + SECTION_DURATION);
-
-        tl.fromTo(
             this._$transformBlockStmnt.eq(1),
-            SECTION_DURATION * durationPrimary,
+            (SECTION_DURATION * modifier) * staggerPrimary,
             {
                 y: '180px',
                 opacity: 0,
@@ -217,62 +224,71 @@ define(function(require, exports, module) { // jshint ignore:line
                 opacity: 1,
                 ease: EASE[easeDirection]
             },
-            '-=' + SECTION_DURATION);
+            '-=' + SECTION_DURATION * modifier);
 
         tl.fromTo(
-            this._$transformBlockPre.eq(0),
-            SECTION_DURATION * durationSecondary,
+            this._$transformBlockPost.eq(0),
+            (SECTION_DURATION * modifier) * staggerSecondary,
+            {
+                y: '180px',
+                opacity: 0,
+                ease: EASE[easeDirection]
+            },
             {
                 y: '0px',
                 opacity: 1,
                 ease: EASE[easeDirection]
             },
-            {
-                y: '-180px',
-                opacity: 0,
-                ease: EASE[easeDirection]
-            },
-            '-=' + SECTION_DURATION);
+            '-=' + SECTION_DURATION * modifier);
+
+
+
 
         //  transition 02
         ///////////////////////
+
+        // ---------
+        // ----- OUT
+        // ---------
         tl.to(
             this._$transformBlockPost.eq(0),
-            SECTION_DURATION,
+            SECTION_DURATION * modifier,
             {
                 y: '-180px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             });
-
-        tl.fromTo(
-            this._$transformBlockPost.eq(1),
-            SECTION_DURATION,
-            {
-                y: '180px',
-                opacity: 0,
-                ease: EASE[easeDirection]
-            },
-            {
-                y: '0px',
-                opacity: 1,
-                ease: EASE[easeDirection]
-            },
-            '-=' + SECTION_DURATION);
 
         tl.to(
             this._$transformBlockStmnt.eq(1),
-            SECTION_DURATION * durationPrimary,
+            SECTION_DURATION * modifier,
             {
                 y: '-180px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             },
-            '-=' + SECTION_DURATION);
+            '-=' + SECTION_DURATION * modifier);
+
+        // ---------
+        // ----- IN
+        // ---------
+        tl.fromTo(
+            this._$transformBlockPost.eq(1),
+            SECTION_DURATION * modifier,
+            {
+                y: '180px',
+                opacity: 0,
+                ease: EASE[easeDirection]
+            },
+            {
+                y: '0px',
+                opacity: 1,
+                ease: EASE[easeDirection]
+            });
 
         tl.fromTo(
             this._$transformBlockStmnt.eq(2),
-            SECTION_DURATION * durationPrimary,
+            SECTION_DURATION * modifier * staggerPrimary,
             {
                 y: '180px',
                 opacity: 0,
@@ -283,47 +299,55 @@ define(function(require, exports, module) { // jshint ignore:line
                 opacity: 1,
                 ease: EASE[easeDirection]
             },
-            '-=' + SECTION_DURATION);
+            '-=' + SECTION_DURATION * modifier);
+
+
 
         //  transition 03
         ///////////////////////
+
+        // ---------
+        // ----- OUT
+        // ---------
         tl.to(
             this._$transformBlockPost.eq(1),
-            SECTION_DURATION,
+            SECTION_DURATION * modifier,
             {
                 y: '-180px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             });
 
-        tl.fromTo(
-            this._$transformBlockPost.eq(2),
-            SECTION_DURATION,
-            {
-                y: '180px',
-                opacity: 0,
-                ease: EASE[easeDirection]
-            },
-            {
-                y: '0px',
-                opacity: 1,
-                ease: EASE[easeDirection]
-            },
-            '-=' + SECTION_DURATION);
-
         tl.to(
             this._$transformBlockStmnt.eq(2),
-            SECTION_DURATION * durationPrimary,
+            SECTION_DURATION * modifier,
             {
                 y: '-180px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             },
-            '-=' + SECTION_DURATION);
+            '-=' + SECTION_DURATION * modifier);
+
+        // ---------
+        // ----- IN
+        // ---------
+        tl.fromTo(
+            this._$transformBlockPost.eq(2),
+            SECTION_DURATION * modifier,
+            {
+                y: '180px',
+                opacity: 0,
+                ease: EASE[easeDirection]
+            },
+            {
+                y: '0px',
+                opacity: 1,
+                ease: EASE[easeDirection]
+            });
 
         tl.fromTo(
             this._$transformBlockStmnt.eq(3),
-            SECTION_DURATION * durationPrimary,
+            (SECTION_DURATION * modifier) * staggerPrimary,
             {
                 y: '180px',
                 opacity: 0,
@@ -334,14 +358,18 @@ define(function(require, exports, module) { // jshint ignore:line
                 opacity: 1,
                 ease: EASE[easeDirection]
             },
-            '-=' + SECTION_DURATION);
+            '-=' + SECTION_DURATION * modifier);
 
 
         //  transition 04
         ///////////////////////
+
+        // ---------
+        // ----- OUT
+        // ---------
         tl.to(
             this._$transformBlock,
-            SECTION_DURATION,
+            SECTION_DURATION * modifier,
             {
                 y: '-=90px',
                 ease: EASE[easeDirection]
@@ -349,44 +377,46 @@ define(function(require, exports, module) { // jshint ignore:line
 
         tl.to(
             this._$transformBlockPost.eq(2),
-            SECTION_DURATION,
+            SECTION_DURATION * modifier,
             {
                 y: '-90px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             },
-            '-=' + SECTION_DURATION);
-
-        tl.fromTo(
-            this._$transformBlockPost.eq(3),
-            SECTION_DURATION,
-            {
-                y: '90px',
-                opacity: 0,
-                ease: EASE[easeDirection]
-            },
-            {
-                y: '0px',
-                opacity: 1,
-                ease: EASE[easeDirection]
-            },
-            '-=' + SECTION_DURATION);
+            '-=' + SECTION_DURATION * modifier);
 
         tl.to(
             this._$transformBlockStmnt.eq(3),
-            SECTION_DURATION * durationPrimary,
+            SECTION_DURATION * modifier,
             {
                 y: '-90px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             },
-            '-=' + SECTION_DURATION);
+            '-=' + SECTION_DURATION * modifier);
+
+        // ---------
+        // ----- IN
+        // ---------
+        tl.fromTo(
+            this._$transformBlockPost.eq(3),
+            SECTION_DURATION * modifier,
+            {
+                y: '180px',
+                opacity: 0,
+                ease: EASE[easeDirection]
+            },
+            {
+                y: '0px',
+                opacity: 1,
+                ease: EASE[easeDirection]
+            });
 
         tl.fromTo(
             this._$transformBlockStmnt.eq(4),
-            SECTION_DURATION * durationPrimary,
+            (SECTION_DURATION * modifier) * staggerSecondary,
             {
-                y: '90px',
+                y: '180px',
                 opacity: 0,
                 ease: EASE[easeDirection]
             },
@@ -395,21 +425,21 @@ define(function(require, exports, module) { // jshint ignore:line
                 opacity: 1,
                 ease: EASE[easeDirection]
             },
-            '-=' + SECTION_DURATION);
+            '-=' + SECTION_DURATION * modifier);
 
         tl.fromTo(
             this._$transformBlockPre.eq(1),
-            SECTION_DURATION * durationSecondary,
+            (SECTION_DURATION * modifier) * staggerPrimary,
             {
                 opacity: 0,
-                y: '50px',
+                y: '180px',
                 ease: EASE[easeDirection]
             }, {
                 opacity: 1,
                 y: '0px',
                 ease: EASE[easeDirection]
             },
-            '-=' + SECTION_DURATION);
+            '-=' + SECTION_DURATION * modifier);
 
 
         var i = 0;
@@ -562,7 +592,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         this._$transformBlockPost.eq(destPos - 1).addClass('transformBlock-post-item_isActive');
 
-        window.setTimeout(this._onTransitionComplete.bind(this, destPos, resolve), 0);
+        window.setTimeout(this._onTransitionComplete.bind(this, destPos, resolve), this._scrollBuffer);
     };
 
     /**

@@ -34,7 +34,7 @@
 					</p>
 				</div>
 				<div class="feature-cta">
-					<a class="link js-stateLink" href="<?php echo esc_url( get_the_permalink() ); ?>" data-title="<?php echo esc_attr( get_the_title() ); ?>" data-social="true" data-desc="<?php echo wp_kses_post( get_post_field( 'post_excerpt', get_the_ID() ) ); ?>" data-date="<?php echo esc_attr( get_the_date() ); ?>" data-type="titled">
+					<a class="link js-stateLink" href="<?php echo esc_url( get_the_permalink() ); ?>" data-title="<?php echo esc_attr( get_the_title() ); ?>" data-social="true" data-date="<?php echo esc_attr( get_the_date() ); ?>" data-type="titled">
 						<?php esc_html_e( 'Read More', 'internetorg' ); ?>
 					</a>
 				</div>

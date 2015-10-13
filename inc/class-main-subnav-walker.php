@@ -161,7 +161,6 @@ class Internetorg_Main_SubNav_Walker extends Walker_Nav_Menu {
 		$attributes .= ! empty( $data_title )
 			? ' data-title="' . esc_attr( $data_title ) . '"'
 			: ' data-title="' . esc_attr( $item->title ) . '"';
-		$attributes .= ! empty( $data_desc ) ? ' data-desc="' . esc_attr( $data_desc ) . '"' : '';
 		$attributes .= ! empty( $data_date ) ? ' data-date="' . esc_attr( $data_date ) . '"' : '';
 		$attributes .= ! empty( $post_thumbnail ) ? ' data-image="' . esc_url( $post_thumbnail ) . '"' : '';
 		$attributes .= ! empty( $mobile_thumbnail ) ? ' data-mobile-image="' . esc_url( $mobile_thumbnail ) . '"' : '';
