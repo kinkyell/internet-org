@@ -268,28 +268,22 @@ foreach ( $post_types as $processing_post_type ) {
 			}
 
 			/**
-			 * Array of "regsitered" meta_fields keyed by post type.
+			 * Array of post meta.
 			 *
-			 * @var array $meta_fields
+			 * @var array $post_data
 			 */
-			$meta_fields = array(
-				'page' => array(
-					'page_subtitle',
-					'page_intro_block',
-					'home-content-section',
-					'next_page',
-				),
-				'io_video' => array(
-					'video-duration',
-					'video-url',
-				),
-			);
+			$post_data = get_post_meta( $post->ID );
 
-			foreach ( $meta_fields[ $processing_post_type ] as $meta_field ) {
-				/** the custom fields registered for babble UI */
-				add_post_meta( $bbl_job->ID, 'bbl_job_meta', $meta_field );
-				/** the custom field contents for babble UI */
-				add_post_meta( $bbl_job->ID, 'bbl_meta_' . $meta_field, get_post_meta( $post->ID, $meta_field, true ), true );
+			foreach ( $post_data as $meta_key => $meta_value ) {
+
+				/** Meta value is sometimes array when it should be string, set single to true. */
+				$meta_value = get_post_meta( $post->ID, $meta_key, true );
+
+				/** The custom fields registered for babble UI. */
+				add_post_meta( $bbl_job->ID, 'bbl_job_meta', $meta_key );
+
+				/** The custom field contents for babble UI. */
+				add_post_meta( $bbl_job->ID, 'bbl_meta_' . $meta_key, $meta_value );
 			}
 
 			/**
