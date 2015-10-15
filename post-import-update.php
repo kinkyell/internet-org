@@ -82,19 +82,24 @@ foreach ( $post_types as $processing_post_type ) {
 		continue;
 	}
 
-	/**
-	 * Get the list of active languages according to Babble.
-	 *
-	 * @var stdClass[] $langs
-	 */
-	$langs = bbl_get_active_langs();
+	if ( empty( $debug_script ) ) {
+		/**
+		 * Get the list of active languages according to Babble.
+		 *
+		 * @var stdClass[] $langs
+		 */
+		$langs = bbl_get_active_langs();
 
-	/**
-	 * An array of the 'code' fields from the stdClass "language objects".
-	 *
-	 * @var array $lang_codes
-	 */
-	$lang_codes = wp_list_pluck( $langs, 'code' );
+		/**
+		 * An array of the 'code' fields from the stdClass "language objects".
+		 *
+		 * @var array $lang_codes
+		 */
+		$lang_codes = wp_list_pluck( $langs, 'code' );
+	} else {
+		/** testing lang_codes set to fr */
+		$lang_codes['fr'] = 'fr';
+	}
 
 	/**
 	 * Bail early.
