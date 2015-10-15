@@ -62,7 +62,7 @@ foreach ( $post_types as $processing_post_type ) {
 	 * Bail early.
 	 */
 	if (!$bbl_jobs_query->have_posts()) {
-		exit;
+		continue;
 	}
 
 	/*
@@ -158,7 +158,7 @@ foreach ( $post_types as $processing_post_type ) {
 		$lang_query = new WP_Query($lang_args);
 
 		if (!$lang_query->have_posts()) {
-			exit;
+			continue;
 		}
 
 		while ($lang_query->have_posts()) {
