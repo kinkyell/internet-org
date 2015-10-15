@@ -56,13 +56,13 @@ foreach ( $post_types as $processing_post_type ) {
 	 *
 	 * @var WP_Query $bbl_jobs_query
 	 */
-	$bbl_jobs_query = new WP_Query($bbl_jobs_args);
+	$bbl_jobs_query = new WP_Query( $bbl_jobs_args );
 
 	/**
 	 * Bail early.
 	 */
-	if (!$bbl_jobs_query->have_posts()) {
-		continue;
+	if ( ! $bbl_jobs_query->have_posts() ) {
+		exit;
 	}
 
 	/*
@@ -74,7 +74,7 @@ foreach ( $post_types as $processing_post_type ) {
 	/**
 	 * We have posts, let's generate the bbl_jobs.
 	 */
-	while ($bbl_jobs_query->have_posts()) {
+	while ( $bbl_jobs_query->have_posts() ) {
 
 		/** Sets up $post object for loop. */
 		$bbl_jobs_query->the_post();
@@ -96,7 +96,7 @@ foreach ( $post_types as $processing_post_type ) {
 		 *
 		 * @var array $lang_codes
 		 */
-		$lang_codes = wp_list_pluck($langs, 'code');
+		$lang_codes = wp_list_pluck( $langs, 'code' );
 
 		 #
 		##############################################################################################
@@ -111,7 +111,7 @@ foreach ( $post_types as $processing_post_type ) {
 		 *
 		 * @var array $jobs
 		 */
-		$jobs = $babble_jobs->create_post_jobs($post->ID, $lang_codes);
+		$jobs = $babble_jobs->create_post_jobs( $post->ID, $lang_codes );
 	}
 
 	/**
@@ -139,14 +139,13 @@ foreach ( $post_types as $processing_post_type ) {
 	 *
 	 * @todo All of the following needs to be wrapped in a loop that iterates over each language code.
 	 */
-	foreach ($lang_codes as $code) {
+	foreach ( $lang_codes as $code ) {
 		/**
 		 * The posttype_languagecode post_type that we are operating on, page_fr for example.
 		 *
 		 * @var array $lang_args
 		 */
 		$lang_args = array(
-			// 'post_type' => $processing_post_type . '_fr',
 			'post_type' => $processing_post_type . '_' . $code,
 		);
 
@@ -157,11 +156,11 @@ foreach ( $post_types as $processing_post_type ) {
 		 */
 		$lang_query = new WP_Query($lang_args);
 
-		if (!$lang_query->have_posts()) {
-			continue;
+		if ( ! $lang_query->have_posts() ) {
+			exit;
 		}
 
-		while ($lang_query->have_posts()) {
+		while ( $lang_query->have_posts() ) {
 
 			/** Sets up $post object for loop. */
 			$lang_query->the_post();
@@ -172,7 +171,11 @@ foreach ( $post_types as $processing_post_type ) {
 			 */
 			$guid = $post->guid;
 
-			preg_match('/.*?(\d+)$/', $guid, $matches);
+			preg_match( '/.*?(\d+)$/', $guid, $matches );
+
+			if ( empty( $matches ) ) {
+				continue;
+			}
 
 			/**
 			 * The post_id of the original English version of this posttype_languagecode post.
@@ -187,21 +190,21 @@ foreach ( $post_types as $processing_post_type ) {
 			 *
 			 * @var WP_Term[] $post_translation_term
 			 */
-			$post_translation_terms = wp_get_post_terms($original_post_id, 'post_translation');
+			$post_translation_terms = wp_get_post_terms( $original_post_id, 'post_translation' );
 
 			/**
 			 * Array of term_ids for the post_translation taxonomy that was assigned to the original English post.
 			 *
 			 * @var array $post_translation_term_ids
 			 */
-			$post_translation_term_ids = wp_list_pluck($post_translation_terms, 'term_id');
+			$post_translation_term_ids = wp_list_pluck( $post_translation_terms, 'term_id' );
 
 			/**
 			 * Set the post_translation term from the original English version on the current posttype_languagecode post.
 			 *
 			 * @var array|WP_Error|string $set_object_terms
 			 */
-			$set_object_terms = wp_set_object_terms($post->ID, $post_translation_term_ids, 'post_translation');
+			$set_object_terms = wp_set_object_terms( $post->ID, $post_translation_term_ids, 'post_translation' );
 
 			/**
 			 * THIS IS INCOMPLETE!!!
