@@ -242,7 +242,6 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$progress.on('click', '> *', this._onClickIndicatorHandler);
         eventHub.subscribe('Router:topScroll', this._onTopScrollHandler);
         $(document).on('keydown', this._onKeyDownHandler);
-
         this._$narrativeDTLinks.on('focus', this._onSectionLinkFocusHandler);
     };
 
@@ -277,6 +276,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$progress.off('click', '> *', this._onClickIndicatorHandler);
         eventHub.unsubscribe('Router:topScroll', this._onTopScrollHandler);
         $(document).off('keydown', this._onKeyDownHandler);
+        this._$narrativeDTLinks.on('focus', this._onSectionLinkFocusHandler);
     };
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -290,10 +290,10 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onSectionLinkFocus = function(event) {
-        var $link = $(event.currentTarget);
-        var $parent = $link.parents('.transformBlock-post-item');
-        var sectionPos = $parent.index() + 1; //accounting for the first section containing no links
-        this._changeSection(sectionPos);
+        // var $link = $(event.currentTarget);
+        // var $parent = $link.parents('.transformBlock-post-item');
+        // var sectionPos = $parent.index() + 1; //accounting for the first section containing no links
+        // this._changeSection(sectionPos);
     };
 
     /**
@@ -679,10 +679,6 @@ define(function(require, exports, module) { // jshint ignore:line
             this._disableScrolling();
         } else {
             this._enableScrolling();
-
-            if (typeof this._narrativeManager.refresh === 'function') {
-                this._narrativeManager.refresh(this._position, this._subPosition);
-            }
         }
     };
 
