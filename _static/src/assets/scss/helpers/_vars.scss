@@ -49,27 +49,27 @@ $BASE_FONT_SIZE: 16px;
         font-weight: 500;
         font-style: normal;
     } @else if $style == SERIF {
-        font-family: "Lava", "Harir Regular", Times New Roman, Georia, serif ;
+        font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif ;
         font-style: Normal;
         font-weight: 600;
         font-stretch: normal;
     } @else if $style == SERIF_ITALIC {
-        font-family: "Lava", "Harir Regular", Times New Roman, Georia, serif ;
+        font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif ;
         font-style: Italic;
         font-weight: 400;
         font-stretch: normal;
     } @else if $style == SERIF_MED_ITALIC {
-        font-family: "Lava", "Harir Bold", Timesgri New Roman, Georia, serif ;
+        font-family: "Lava", "Harir Bold", Timesgri New Roman, Georgia, serif ;
         font-style: Italic;
         font-weight: 500;
         font-stretch: normal;
     } @else if $style == SERIF_ALT {
-        font-family: "Harir", Times New Roman, Georia, serif ;
+        font-family: "Harir", Times New Roman, Georgia, serif ;
         font-style: Normal;
         font-weight: 400;
         font-stretch: normal;
     } @else if $style == SERIF_ALT_BOLD {
-        font-family: "Harir", Times New Roman, Georia, serif ;
+        font-family: "Harir", Times New Roman, Georgia, serif ;
         font-style: Normal;
         font-weight: 700;
         font-stretch: normal;
