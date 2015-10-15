@@ -240,9 +240,45 @@ foreach ( $post_types as $processing_post_type ) {
 			 *
 			 * @see Babble_Jobs::save_job to see some of what we need to emulate/do here.
 			 */
-			$objects = $babble_jobs->get_object_jobs( $original_post_id, 'post', $processing_post_type );
 
-			$meta_data = get_post_meta( $post->ID );
+			/**
+			 * An array of WP_Post objects of post_type bbl_job that correspond to the original post_id for the
+			 * currently processing language code.
+			 *
+			 * @var WP_Post[] $objects
+			 */
+			$bbl_job_objects = $babble_jobs->get_object_jobs( $original_post_id, 'post', $processing_post_type );
+
+			/**
+			 * The bbl_job to set meta on.
+			 *
+			 * @var WP_Post $bbl_job
+			 */
+			$bbl_job = $bbl_job_objects[ $abbr_code ];
+
+			/**
+			 * Translated post details for storing in the meta of the bbl_job.
+			 *
+			 * The add_post_meta function will serialize for us.
+			 *
+			 * @see add_post_meta
+			 *
+			 * @var array $bbl_post_meta_value
+			 */
+			$bbl_post_meta_value = array(
+				'post_title'   => $post->post_title,
+				'post_name'    => $post->post_name,
+				'post_content' => $post->post_content,
+				'id'           => $post->ID,
+				'filter'       => 'db',
+			);
+
+			if ( ! add_post_meta( $bbl_job->ID, 'bbl_post_' . $original_post_id, $bbl_post_meta_value, true ) ) {
+				update_post_meta( $bbl_job->ID, 'bbl_post_' . $original_post_id, $bbl_post_meta_value );
+			}
+
+			// $meta_data = get_post_meta( $post->ID );
+
 
 //			foreach ( $objects['meta'] as $meta_key => $meta_field ) {
 //
@@ -257,19 +293,6 @@ foreach ( $post_types as $processing_post_type ) {
 //				}
 //
 //			}
-
-
-
-
-
-			/**
-			 * This is some of the data that will be used as meta in the corresponding bbl_job.
-			 */
-			$post_title   = $post->post_title;
-			$post_name    = $post->post_name;
-			$post_content = $post->post_content;
-			$id           = $post->ID;
-			$filter       = 'db';
 		}
 	}
 }
