@@ -27,7 +27,12 @@ require_once( '../../../../wp/wp-load.php' );
  */
 remove_all_filters( 'pre_get_posts' );
 
-$debug_script = true;
+/**
+ * Force this script to only deal with page post type and fr language code for simplified testing purposes.
+ *
+ * @var bool $debug_script
+ */
+$debug_script = false;
 
 if ( empty( $debug_script ) ) {
 	/**
@@ -66,7 +71,7 @@ foreach ( $post_types as $processing_post_type ) {
 	 *
 	 * @var array $babble_job_ids
 	 */
-	$babble_job_ids = [];
+	$babble_job_ids = [ ];
 
 	/**
 	 * Create a new query.
