@@ -8,6 +8,7 @@
  * 2. Ensure you have activated all the languages in Babble's Available Languages setting page.
  * 3. Make sure you've set the correct post type for each <item> in the XML (page_fr for example) before import.
  * 4. Import the translated content XML files with WordPress Importer in WP-Admin.
+ * 5. Run this script.
  *
  * @todo not a whole lot of empty or error checking going on here, might want to work on that, or maybe doesn't matter.
  */
@@ -26,20 +27,29 @@ require_once( '../../../../wp/wp-load.php' );
  */
 remove_all_filters( 'pre_get_posts' );
 
-/**
- * The post_types we'll be operating on.
- *
- * @var array $post_types
- */
-$post_types = array(
-	'post',
-	'page',
-	'io_campaign',
-	'io_ctntwdgt',
-	'io_freesvc',
-	'io_story',
-	'io_video',
-);
+$debug_script = true;
+
+if ( empty( $debug_script ) ) {
+	/**
+	 * The post_types we'll be operating on.
+	 *
+	 * @var array $post_types
+	 */
+	$post_types = array(
+		'post',
+		'page',
+		'io_campaign',
+		'io_ctntwdgt',
+		'io_freesvc',
+		'io_story',
+		'io_video',
+	);
+} else {
+	/** Debug and testing post type(s). */
+	$post_types = array(
+		'page',
+	);
+}
 
 foreach ( $post_types as $processing_post_type ) {
 	/**
@@ -52,54 +62,54 @@ foreach ( $post_types as $processing_post_type ) {
 	);
 
 	/**
+	 * An array of bbl_job post_ids keyed by original English post_id.
+	 *
+	 * @var array $babble_job_ids
+	 */
+	$babble_job_ids = [];
+
+	/**
 	 * Create a new query.
 	 *
 	 * @var WP_Query $bbl_jobs_query
 	 */
-	$bbl_jobs_query = new WP_Query($bbl_jobs_args);
+	$bbl_jobs_query = new WP_Query( $bbl_jobs_args );
 
 	/**
 	 * Bail early.
 	 */
-	if (!$bbl_jobs_query->have_posts()) {
+	if ( ! $bbl_jobs_query->have_posts() ) {
 		continue;
 	}
 
-	/*
-     * set up a place to put the codes in a scope that works for all processing
-     * for this post_type
-     */
-	$lang_codes = [];
+	/**
+	 * Get the list of active languages according to Babble.
+	 *
+	 * @var stdClass[] $langs
+	 */
+	$langs = bbl_get_active_langs();
+
+	/**
+	 * An array of the 'code' fields from the stdClass "language objects".
+	 *
+	 * @var array $lang_codes
+	 */
+	$lang_codes = wp_list_pluck( $langs, 'code' );
+
+	/**
+	 * Bail early.
+	 */
+	if ( empty( $lang_codes ) ) {
+		continue;
+	}
 
 	/**
 	 * We have posts, let's generate the bbl_jobs.
 	 */
-	while ($bbl_jobs_query->have_posts()) {
+	while ( $bbl_jobs_query->have_posts() ) {
 
 		/** Sets up $post object for loop. */
 		$bbl_jobs_query->the_post();
-
-		##############################################################################################
-		#
-		#                    Can these calls be moved out of this loop?
-		#
-
-		/**
-		 * Get the list of active languages according to Babble.
-		 *
-		 * @var stdClass[] $langs
-		 */
-		$langs = bbl_get_active_langs();
-
-		/**
-		 * An array of the 'code' fields from the stdClass "language objects".
-		 *
-		 * @var array $lang_codes
-		 */
-		$lang_codes = wp_list_pluck($langs, 'code');
-
-		 #
-		##############################################################################################
 
 		/**
 		 * Create a Babble_Jobs object so we can utilize it's create_post_jobs method.
@@ -111,7 +121,9 @@ foreach ( $post_types as $processing_post_type ) {
 		 *
 		 * @var array $jobs
 		 */
-		$jobs = $babble_jobs->create_post_jobs($post->ID, $lang_codes);
+		$jobs = $babble_jobs->create_post_jobs( $post->ID, $lang_codes );
+
+		$babble_job_ids[ $post->ID ] = $jobs;
 	}
 
 	/**
@@ -139,14 +151,21 @@ foreach ( $post_types as $processing_post_type ) {
 	 *
 	 * @todo All of the following needs to be wrapped in a loop that iterates over each language code.
 	 */
-	foreach ($lang_codes as $code) {
+	foreach ( $lang_codes as $code ) {
+
+		/**
+		 * For testing, only use 'fr' for easier to parse results.
+		 */
+		if ( ! empty( $debug_script ) && 'fr' !== $code ) {
+			continue;
+		}
+
 		/**
 		 * The posttype_languagecode post_type that we are operating on, page_fr for example.
 		 *
 		 * @var array $lang_args
 		 */
 		$lang_args = array(
-			// 'post_type' => $processing_post_type . '_fr',
 			'post_type' => $processing_post_type . '_' . $code,
 		);
 
@@ -155,13 +174,13 @@ foreach ( $post_types as $processing_post_type ) {
 		 *
 		 * @var WP_Query $lang_query
 		 */
-		$lang_query = new WP_Query($lang_args);
+		$lang_query = new WP_Query( $lang_args );
 
-		if (!$lang_query->have_posts()) {
+		if ( ! $lang_query->have_posts() ) {
 			continue;
 		}
 
-		while ($lang_query->have_posts()) {
+		while ( $lang_query->have_posts() ) {
 
 			/** Sets up $post object for loop. */
 			$lang_query->the_post();
@@ -172,7 +191,7 @@ foreach ( $post_types as $processing_post_type ) {
 			 */
 			$guid = $post->guid;
 
-			preg_match('/.*?(\d+)$/', $guid, $matches);
+			preg_match( '/.*?(\d+)$/', $guid, $matches );
 
 			/**
 			 * The post_id of the original English version of this posttype_languagecode post.
@@ -182,26 +201,31 @@ foreach ( $post_types as $processing_post_type ) {
 			$original_post_id = $matches[1];
 
 			/**
+			 * The bbl_job post_ids that were created for the $original_post_id, we'll need to figure out the correct language based on taxonomy... see wp_terms
+			 */
+			$bbl_job_post_ids = $babble_job_ids[ $original_post_id ];
+
+			/**
 			 * Get the post_translation term assigned to the original English post. We need that to associate our translated
 			 * version with the original.
 			 *
 			 * @var WP_Term[] $post_translation_term
 			 */
-			$post_translation_terms = wp_get_post_terms($original_post_id, 'post_translation');
+			$post_translation_terms = wp_get_post_terms( $original_post_id, 'post_translation' );
 
 			/**
 			 * Array of term_ids for the post_translation taxonomy that was assigned to the original English post.
 			 *
 			 * @var array $post_translation_term_ids
 			 */
-			$post_translation_term_ids = wp_list_pluck($post_translation_terms, 'term_id');
+			$post_translation_term_ids = wp_list_pluck( $post_translation_terms, 'term_id' );
 
 			/**
 			 * Set the post_translation term from the original English version on the current posttype_languagecode post.
 			 *
 			 * @var array|WP_Error|string $set_object_terms
 			 */
-			$set_object_terms = wp_set_object_terms($post->ID, $post_translation_term_ids, 'post_translation');
+			$set_object_terms = wp_set_object_terms( $post->ID, $post_translation_term_ids, 'post_translation' );
 
 			/**
 			 * THIS IS INCOMPLETE!!!
@@ -215,11 +239,11 @@ foreach ( $post_types as $processing_post_type ) {
 			/**
 			 * This is some of the data that will be used as meta in the corresponding bbl_job.
 			 */
-			$post_title = $post->post_title;
-			$post_name = $post->post_name;
+			$post_title   = $post->post_title;
+			$post_name    = $post->post_name;
 			$post_content = $post->post_content;
-			$id = $post->ID;
-			$filter = 'db';
+			$id           = $post->ID;
+			$filter       = 'db';
 		}
 	}
 }
