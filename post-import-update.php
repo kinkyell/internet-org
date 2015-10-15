@@ -153,11 +153,11 @@ foreach ( $post_types as $processing_post_type ) {
 	 *     )
 	 *
 	 */
-	foreach ( $lang_codes as $abbr_code => $full_code ) {
+	foreach ( $lang_codes as $lang_code => $full_code ) {
 		/**
 		 * For testing, only use 'fr' for easier to parse results.
 		 */
-		if ( ! empty( $debug_script ) && 'fr' !== $abbr_code ) {
+		if ( ! empty( $debug_script ) && 'fr' !== $lang_code ) {
 			continue;
 		}
 
@@ -167,7 +167,7 @@ foreach ( $post_types as $processing_post_type ) {
 		 * @var array $lang_args
 		 */
 		$lang_args = array(
-			'post_type' => $processing_post_type . '_' . $abbr_code,
+			'post_type' => $processing_post_type . '_' . $lang_code,
 		);
 
 		/**
@@ -190,9 +190,7 @@ foreach ( $post_types as $processing_post_type ) {
 			 * The files we get back from translators still have the original guid after import, we can extract the original
 			 * post_id from that guid field.
 			 */
-			$guid = $post->guid;
-
-			$match_res = preg_match( '/.*?(\d+)$/', $guid, $matches );
+			$match_res = preg_match( '/.*?(\d+)$/', $post->guid, $matches );
 
 			if ( 1 !== $match_res ) {
 				continue;
@@ -233,15 +231,6 @@ foreach ( $post_types as $processing_post_type ) {
 			$set_object_terms = wp_set_object_terms( $post->ID, $post_translation_term_ids, 'post_translation' );
 
 			/**
-			 * THIS IS INCOMPLETE!!!
-			 *
-			 * @todo FINISH THIS!
-			 * @todo Complete processing of imported posttype_languagecode posts.
-			 *
-			 * @see Babble_Jobs::save_job to see some of what we need to emulate/do here.
-			 */
-
-			/**
 			 * An array of WP_Post objects of post_type bbl_job that correspond to the original post_id for the
 			 * currently processing language code.
 			 *
@@ -254,7 +243,7 @@ foreach ( $post_types as $processing_post_type ) {
 			 *
 			 * @var WP_Post $bbl_job
 			 */
-			$bbl_job = $bbl_job_objects[ $abbr_code ];
+			$bbl_job = $bbl_job_objects[ $lang_code ];
 
 			/**
 			 * Translated post details for storing in the meta of the bbl_job.
@@ -273,26 +262,37 @@ foreach ( $post_types as $processing_post_type ) {
 				'filter'       => 'db',
 			);
 
+			/** Unique meta key. */
 			if ( ! add_post_meta( $bbl_job->ID, 'bbl_post_' . $original_post_id, $bbl_post_meta_value, true ) ) {
 				update_post_meta( $bbl_job->ID, 'bbl_post_' . $original_post_id, $bbl_post_meta_value );
 			}
 
-			// $meta_data = get_post_meta( $post->ID );
+			foreach ( $babble_jobs->get_post_meta_to_translate( $post, $lang_code ) as $key => $field ) {
+				add_post_meta( $bbl_job->ID, 'bbl_job_meta', $key, false );
+			}
 
+			$post_data = get_post_meta( $post->ID );
 
-//			foreach ( $objects['meta'] as $meta_key => $meta_field ) {
-//
-//				$value = apply_filters( 'bbl_meta_before_save', $meta_data[ $meta_key ], $job, $meta_key, $meta_field, $meta_data );
-//
-//				update_post_meta( $job->ID, "bbl_meta_{$meta_key}", $value );
-//
-//				if ( 'complete' == $job->post_status ) {
-//					if ( current_user_can( 'publish_post', $job->ID ) ) {
-//						update_post_meta( $trans->ID, $meta_key, $value );
-//					}
-//				}
-//
-//			}
+			/**
+			 * THIS IS NOT WORKING AS EXPECTED AT THE MOMENT.
+			 */
+			foreach ( $post_data as $meta_key => $meta_field ) {
+				$value = apply_filters( 'bbl_meta_before_save', $post_data[ $meta_key ], $bbl_job, $meta_key, $meta_field, $post_data );
+				update_post_meta( $bbl_job->ID, "bbl_meta_{$meta_key}", $value );
+			}
+
+			/**
+			 * Fields to pass to wp_update_post to set the post_status to complete for the bbl_job.
+			 *
+			 * @var array $post_status_update
+			 */
+			$post_status_update = array(
+				'ID'          => $bbl_job->ID,
+				'post_status' => 'complete',
+			);
+
+			/** Update the post_status */
+			wp_update_post( $post_status_update );
 		}
 	}
 }
