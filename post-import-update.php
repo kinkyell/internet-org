@@ -79,28 +79,6 @@ foreach ( $post_types as $processing_post_type ) {
 	 * Bail early.
 	 */
 	if ( ! $bbl_jobs_query->have_posts() ) {
-		exit;
-	}
-
-	/*
-	 * set up a place to put the codes in a scope that works for all processing
-	 * for this post_type
-	 */
-	$lang_codes = [];
-
-	/**
-	 * We have posts, let's generate the bbl_jobs.
-	 */
-	while ( $bbl_jobs_query->have_posts() ) {
-
-		/** Sets up $post object for loop. */
-		$bbl_jobs_query->the_post();
-
-		##############################################################################################
-		#
-		#                    Can these calls be moved out of this loop?
-		#
-
 		continue;
 	}
 
