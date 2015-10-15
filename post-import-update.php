@@ -66,9 +66,9 @@ foreach ( $post_types as $processing_post_type ) {
 	}
 
 	/*
-     * set up a place to put the codes in a scope that works for all processing
-     * for this post_type
-     */
+	 * set up a place to put the codes in a scope that works for all processing
+	 * for this post_type
+	 */
 	$lang_codes = [];
 
 	/**
@@ -135,18 +135,15 @@ foreach ( $post_types as $processing_post_type ) {
 	 *         [filter] => db
 	 *     )
 	 *
-	 * I'm just testing on 'fr' language code for now.
-	 *
-	 * @todo All of the following needs to be wrapped in a loop that iterates over each language code.
 	 */
-	foreach ( $lang_codes as $code ) {
+	foreach ( $lang_codes as $abbr_code => $full_code ) {
 		/**
 		 * The posttype_languagecode post_type that we are operating on, page_fr for example.
 		 *
 		 * @var array $lang_args
 		 */
 		$lang_args = array(
-			'post_type' => $processing_post_type . '_' . $code,
+			'post_type' => $processing_post_type . '_' . $abbr_code,
 		);
 
 		/**
@@ -157,7 +154,7 @@ foreach ( $post_types as $processing_post_type ) {
 		$lang_query = new WP_Query($lang_args);
 
 		if ( ! $lang_query->have_posts() ) {
-			exit;
+			continue;
 		}
 
 		while ( $lang_query->have_posts() ) {
@@ -171,9 +168,9 @@ foreach ( $post_types as $processing_post_type ) {
 			 */
 			$guid = $post->guid;
 
-			preg_match( '/.*?(\d+)$/', $guid, $matches );
+			$match_res = preg_match( '/.*?(\d+)$/', $guid, $matches );
 
-			if ( empty( $matches ) ) {
+			if ( 1 !== $match_res ) {
 				continue;
 			}
 
@@ -214,6 +211,27 @@ foreach ( $post_types as $processing_post_type ) {
 			 *
 			 * @see Babble_Jobs::save_job to see some of what we need to emulate/do here.
 			 */
+			$objects = $babble_jobs->get_object_jobs( $original_post_id, 'post', $processing_post_type );
+
+			$meta_data = get_post_meta( $post->ID );
+
+//			foreach ( $objects['meta'] as $meta_key => $meta_field ) {
+//
+//				$value = apply_filters( 'bbl_meta_before_save', $meta_data[ $meta_key ], $job, $meta_key, $meta_field, $meta_data );
+//
+//				update_post_meta( $job->ID, "bbl_meta_{$meta_key}", $value );
+//
+//				if ( 'complete' == $job->post_status ) {
+//					if ( current_user_can( 'publish_post', $job->ID ) ) {
+//						update_post_meta( $trans->ID, $meta_key, $value );
+//					}
+//				}
+//
+//			}
+
+
+
+
 
 			/**
 			 * This is some of the data that will be used as meta in the corresponding bbl_job.
