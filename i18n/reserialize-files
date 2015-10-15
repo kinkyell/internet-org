@@ -1,0 +1,53 @@
+#!/usr/bin/env php
+<?php
+
+require_once 'XMLToSerialized.php';
+
+$valid_exts = array( 'wxr', 'xml' );
+
+if ( ! isset( $argv[1] ) ) {
+	throw new Exception( 'Missing required argument <input-directory>' );
+}
+$input_dir = $argv[1];
+
+if ( ! is_dir( $input_dir ) ) {
+	throw new Exception( 'Invalid input directory specified' );
+}
+
+// defaulting to "serialized" as that's what are doing with content
+$output_dir = 'serialized';
+if ( isset( $argv[2] ) ) {
+	$output_dir = $argv[2];
+}
+
+// create the directory if it doesn't exist
+if ( ! is_dir( $output_dir ) ) {
+	mkdir( $output_dir );
+}
+
+// create an instance of the worker
+$changer = new Xml_To_Serialized();
+
+// open the output dir and start looping through the files
+$di = new DirectoryIterator( $input_dir );
+echo 'Processing';
+foreach ( $di as $file ) {
+	echo '.';
+	$path_parts = pathinfo( $file->getPathname() );
+
+	if ( $file->isDir() || $file->isDot() || ! in_array( strtolower( $path_parts['extension'] ), $valid_exts ) ) {
+		continue;
+	}
+
+	// load original file
+	$changer->load_file( $file->getPathname() );
+
+	// do magic
+	$changer->convert_data_xml_to_serialized();
+
+	// save to new file
+	$save_file_path = $output_dir . DIRECTORY_SEPARATOR . $path_parts['basename'];
+	$changer->save_to_file( $save_file_path );
+}
+
+echo PHP_EOL;
