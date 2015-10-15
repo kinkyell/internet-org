@@ -267,18 +267,29 @@ foreach ( $post_types as $processing_post_type ) {
 				update_post_meta( $bbl_job->ID, 'bbl_post_' . $original_post_id, $bbl_post_meta_value );
 			}
 
-			foreach ( $babble_jobs->get_post_meta_to_translate( $post, $lang_code ) as $key => $field ) {
-				add_post_meta( $bbl_job->ID, 'bbl_job_meta', $key, false );
-			}
-
-			$post_data = get_post_meta( $post->ID );
-
 			/**
-			 * THIS IS NOT WORKING AS EXPECTED AT THE MOMENT.
+			 * Array of "regsitered" meta_fields keyed by post type.
+			 *
+			 * @var array $meta_fields
 			 */
-			foreach ( $post_data as $meta_key => $meta_field ) {
-				$value = apply_filters( 'bbl_meta_before_save', $post_data[ $meta_key ], $bbl_job, $meta_key, $meta_field, $post_data );
-				update_post_meta( $bbl_job->ID, "bbl_meta_{$meta_key}", $value );
+			$meta_fields = array(
+				'page' => array(
+					'page_subtitle',
+					'page_intro_block',
+					'home-content-section',
+					'next_page',
+				),
+				'io_video' => array(
+					'video-duration',
+					'video-url',
+				),
+			);
+
+			foreach ( $meta_fields[ $processing_post_type ] as $meta_field ) {
+				/** the custom fields registered for babble UI */
+				add_post_meta( $bbl_job->ID, 'bbl_job_meta', $meta_field );
+				/** the custom field contents for babble UI */
+				add_post_meta( $bbl_job->ID, 'bbl_meta_' . $meta_field, get_post_meta( $post->ID, $meta_field, true ), true );
 			}
 
 			/**
