@@ -43,11 +43,8 @@ if ( empty( $debug_script ) ) {
 	$post_types = array(
 		'post',
 		'page',
-		'io_campaign',
 		'io_ctntwdgt',
-		'io_freesvc',
 		'io_story',
-		'io_video',
 	);
 } else {
 	/** Debug and testing post type(s). */
