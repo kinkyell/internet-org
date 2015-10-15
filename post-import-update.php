@@ -8,6 +8,7 @@
  * 2. Ensure you have activated all the languages in Babble's Available Languages setting page.
  * 3. Make sure you've set the correct post type for each <item> in the XML (page_fr for example) before import.
  * 4. Import the translated content XML files with WordPress Importer in WP-Admin.
+ * 5. Run this script.
  *
  * @todo not a whole lot of empty or error checking going on here, might want to work on that, or maybe doesn't matter.
  */
@@ -26,20 +27,29 @@ require_once( '../../../../wp/wp-load.php' );
  */
 remove_all_filters( 'pre_get_posts' );
 
-/**
- * The post_types we'll be operating on.
- *
- * @var array $post_types
- */
-$post_types = array(
-	'post',
-	'page',
-	'io_campaign',
-	'io_ctntwdgt',
-	'io_freesvc',
-	'io_story',
-	'io_video',
-);
+$debug_script = true;
+
+if ( empty( $debug_script ) ) {
+	/**
+	 * The post_types we'll be operating on.
+	 *
+	 * @var array $post_types
+	 */
+	$post_types = array(
+		'post',
+		'page',
+		'io_campaign',
+		'io_ctntwdgt',
+		'io_freesvc',
+		'io_story',
+		'io_video',
+	);
+} else {
+	/** Debug and testing post type(s). */
+	$post_types = array(
+		'page',
+	);
+}
 
 foreach ( $post_types as $processing_post_type ) {
 	/**
@@ -50,6 +60,13 @@ foreach ( $post_types as $processing_post_type ) {
 	$bbl_jobs_args = array(
 		'post_type' => $processing_post_type,
 	);
+
+	/**
+	 * An array of bbl_job post_ids keyed by original English post_id.
+	 *
+	 * @var array $babble_job_ids
+	 */
+	$babble_job_ids = [];
 
 	/**
 	 * Create a new query.
@@ -84,6 +101,10 @@ foreach ( $post_types as $processing_post_type ) {
 		#                    Can these calls be moved out of this loop?
 		#
 
+		continue;
+	}
+
+	if ( empty( $debug_script ) ) {
 		/**
 		 * Get the list of active languages according to Babble.
 		 *
@@ -97,9 +118,25 @@ foreach ( $post_types as $processing_post_type ) {
 		 * @var array $lang_codes
 		 */
 		$lang_codes = wp_list_pluck( $langs, 'code' );
+	} else {
+		/** testing lang_codes set to fr */
+		$lang_codes['fr'] = 'fr';
+	}
 
-		 #
-		##############################################################################################
+	/**
+	 * Bail early.
+	 */
+	if ( empty( $lang_codes ) ) {
+		continue;
+	}
+
+	/**
+	 * We have posts, let's generate the bbl_jobs.
+	 */
+	while ( $bbl_jobs_query->have_posts() ) {
+
+		/** Sets up $post object for loop. */
+		$bbl_jobs_query->the_post();
 
 		/**
 		 * Create a Babble_Jobs object so we can utilize it's create_post_jobs method.
@@ -112,6 +149,8 @@ foreach ( $post_types as $processing_post_type ) {
 		 * @var array $jobs
 		 */
 		$jobs = $babble_jobs->create_post_jobs( $post->ID, $lang_codes );
+
+		$babble_job_ids[ $post->ID ] = $jobs;
 	}
 
 	/**
@@ -138,6 +177,13 @@ foreach ( $post_types as $processing_post_type ) {
 	 */
 	foreach ( $lang_codes as $abbr_code => $full_code ) {
 		/**
+		 * For testing, only use 'fr' for easier to parse results.
+		 */
+		if ( ! empty( $debug_script ) && 'fr' !== $abbr_code ) {
+			continue;
+		}
+
+		/**
 		 * The posttype_languagecode post_type that we are operating on, page_fr for example.
 		 *
 		 * @var array $lang_args
@@ -151,7 +197,7 @@ foreach ( $post_types as $processing_post_type ) {
 		 *
 		 * @var WP_Query $lang_query
 		 */
-		$lang_query = new WP_Query($lang_args);
+		$lang_query = new WP_Query( $lang_args );
 
 		if ( ! $lang_query->have_posts() ) {
 			continue;
@@ -180,6 +226,11 @@ foreach ( $post_types as $processing_post_type ) {
 			 * @var int $original_post_id
 			 */
 			$original_post_id = $matches[1];
+
+			/**
+			 * The bbl_job post_ids that were created for the $original_post_id, we'll need to figure out the correct language based on taxonomy... see wp_terms
+			 */
+			$bbl_job_post_ids = $babble_job_ids[ $original_post_id ];
 
 			/**
 			 * Get the post_translation term assigned to the original English post. We need that to associate our translated
@@ -236,11 +287,11 @@ foreach ( $post_types as $processing_post_type ) {
 			/**
 			 * This is some of the data that will be used as meta in the corresponding bbl_job.
 			 */
-			$post_title = $post->post_title;
-			$post_name = $post->post_name;
+			$post_title   = $post->post_title;
+			$post_name    = $post->post_name;
 			$post_content = $post->post_content;
-			$id = $post->ID;
-			$filter = 'db';
+			$id           = $post->ID;
+			$filter       = 'db';
 		}
 	}
 }
