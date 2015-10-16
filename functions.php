@@ -27,6 +27,9 @@ wpcom_vip_load_plugin( 'wp-google-analytics' );
 // Additional Caching
 wpcom_vip_load_plugin( 'cache-nav-menu' );
 
+// Opengraph
+wpcom_vip_enable_opengraph();
+
 /** Custom Post Types. */
 require IO_DIR . '/plugins/internetorg-custom-posttypes/internetorg-custom-posttypes.php';
 
