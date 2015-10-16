@@ -26,6 +26,7 @@ define(function(require, exports, module) { // jshint ignore:line
         apiBase: window.SETTINGS.STATIC_PATH,
         searchPath: window.SETTINGS.SEARCH_PATH, // include prefix '/'
         apiRoutes: window.SETTINGS.ROUTES,
+        langPath: window.SETTINGS.CURRENT_LANGUAGE_URL_PREFIX,
         animationSpeeds: {
             CONTENT_IN: 0.4, // content fade in
             MENU_IN: 0.25, // menu in speed

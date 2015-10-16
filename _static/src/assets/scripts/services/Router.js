@@ -4,7 +4,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var $ = require('jquery');
     var Modernizr = require('modernizr');
     var eventHub = require('services/eventHub');
-    // var appConfig = require('appConfig');
+    var appConfig = require('appConfig');
     var extend = require('stark/object/extend');
 
     var UrlHistoryManager = require('util/history/UrlHistoryManager');
@@ -229,7 +229,7 @@ define(function(require, exports, module) { // jshint ignore:line
             type: 'search',
             searchText: event.searchText
         });
-        this.historyManager.pushState(this._currentStates, null, '/search/' + encodeURIComponent(event.searchText));
+        this.historyManager.pushState(this._currentStates, null, appConfig.langPath + '/search/' + encodeURIComponent(event.searchText));
         eventHub.publish('Router:stateChange', this._currentStates, prevStates);
     };
 
