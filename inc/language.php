@@ -174,7 +174,7 @@ function internetorg_video_metaboxes() {
 		array(
 			'add_meta_box' => array(
 				'Video Duration',
-				array( 'io_video' ),
+				internetorg_get_post_types( 'io_video' ),
 			)
 		)
 	);
@@ -188,7 +188,7 @@ function internetorg_video_metaboxes() {
 		array(
 			'add_meta_box' => array(
 				'Video URL',
-				array( 'io_video' ),
+				internetorg_get_post_types( 'io_video' ),
 			)
 		)
 	);
@@ -227,7 +227,7 @@ function internetorg_page_metaboxes() {
 		array(
 			'add_meta_box' => array(
 				__( 'Page Intro', 'internetorg' ),
-				array( 'page' ),
+				internetorg_get_post_types( 'page' ),
 				'internetorg_page_home_after_title',
 				'high',
 			)
@@ -247,7 +247,7 @@ function internetorg_page_metaboxes() {
 		array(
 			'add_meta_box' => array(
 				__( 'Additional page configuration', 'internetorg' ),
-				array( 'page' ),
+				internetorg_get_post_types( 'page' ),
 				'internetorg_page_home_after_title',
 				'high',
 			)
@@ -295,10 +295,12 @@ function internetorg_page_metaboxes() {
 						'datasource' => new Fieldmanager_Datasource_Post(
 							array(
 								'query_args' => array(
-									'post_type' => array(
-										'io_story',
-										'post',
-										'page',
+									'post_type' => internetorg_get_multiple_post_types(
+										array(
+											'page',
+											'post',
+											'io_story',
+										)
 									),
 									'posts_per_page' => -1,
 								),
@@ -366,10 +368,12 @@ function internetorg_page_metaboxes() {
 									'datasource' => new Fieldmanager_Datasource_Post(
 										array(
 											'query_args' => array(
-												'post_type' => array(
-													'io_story',
-													'post',
-													'page',
+												'post_type' => internetorg_get_multiple_post_types(
+													array(
+														'page',
+														'post',
+														'io_story',
+													)
 												),
 												'posts_per_page' => -1,
 											),
@@ -408,7 +412,11 @@ function internetorg_page_metaboxes() {
 			'datasource'     => new Fieldmanager_Datasource_Post(
 				array(
 					'query_args' => array(
-						'post_type' => 'page',
+						'post_type' => internetorg_get_multiple_post_types(
+							array(
+								'page',
+							)
+						),
 					),
 				)
 			),
@@ -508,4 +516,81 @@ function internetorg_page_home_after_title_fields() {
 
 	// Unset 'internetorg_home_after_title' context from the post's meta boxes.
 	unset( $wp_meta_boxes['post']['internetorg_page_home_after_title'] );
+}
+
+/**
+ * Retrieve a list of the active language codes from babble.
+ *
+ * @return array
+ */
+function internetorg_get_active_lang_codes() {
+
+	if ( ! function_exists( 'bbl_get_active_langs' ) ) {
+		return array();
+	}
+
+	$active_langs = bbl_get_active_langs();
+
+	if ( empty( $active_langs ) ) {
+		return array();
+	}
+
+	return wp_list_pluck( $active_langs, 'code' );
+}
+
+/**
+ * Retrieve a list of Babble's "shadow" post_types for a given post_type.
+ *
+ * If bbl_get_shadow_post_types function is not available, will return a single element array of the given post_type.
+ * If there are no shadow post types, will return a single element array of the given post_type.
+ * If there are shadow post types, will prepend the array with the given post_type.
+ * A shadow post type is essentially a post_type appended with language code, posttype_languagecode.
+ *
+ * @todo Restrict to the lanuage of the current translation screen to reduce the queries.
+ * @todo Babble API doesn't appear to offer the correct language of the current translation screen, may require trickery.
+ *
+ * @param string $post_type The post_type to get shadow_post_types for. Optional. Defaults to 'page'.
+ *
+ * @return array An array of post_types.
+ */
+function internetorg_get_post_types( $post_type = 'page' ) {
+
+	if ( ! function_exists( 'bbl_get_shadow_post_types' ) ) {
+		return array( $post_type );
+	}
+
+	$bbl_shadow_post_types = bbl_get_shadow_post_types( $post_type );
+
+	if ( empty( $bbl_shadow_post_types ) ) {
+		return array( $post_type );
+	}
+
+	array_unshift( $bbl_shadow_post_types, $post_type );
+
+	return $bbl_shadow_post_types;
+}
+
+/**
+ * Retrieve a list of Babble's "shadow" post_types for an array of post_types.
+ *
+ * @todo Restrict to the lanuage of the current translation screen to reduce the queries.
+ * @todo Babble API doesn't appear to offer the correct language of the current translation screen, may require trickery.
+ *
+ * @param array $post_types An array of post_types to get shadow_post_types for. Optional. Defaults to array( 'page' ).
+ *
+ * @return array
+ */
+function internetorg_get_multiple_post_types( $post_types = array( 'page' ) ) {
+
+	foreach ( $post_types as $post_type ) {
+		$types[] = array_values( internetorg_get_post_types( $post_type ) );
+	}
+
+	foreach ( $types as $key => $type_array ) {
+		foreach ( $type_array as $key => $type ) {
+			array_push( $post_types, $type );
+		}
+	}
+
+	return $post_types;
 }
