@@ -130,7 +130,8 @@ define(function(require, exports, module) { // jshint ignore:line
         var i = 1;
         var l = this._sectionsConf.length;
         for (; i < l; i++) {
-            $innerStmnt.clone().appendTo(this._$statement);
+            $innerStmnt.clone().appendTo(this._$statement)
+            .addClass('transformBlock-stmnt-item_divide');
         }
 
         this._$transformBlockStmnt = $('.transformBlock-stmnt-item');
