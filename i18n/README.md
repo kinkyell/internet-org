@@ -69,14 +69,14 @@ filename(s) and directories will be used in this example:
 The following is an example of the process for exporting content for translation:
 
 1. Export content from WordPress install
-  * This files should be place along side these scripts
-  * This file will be name localhost-2015-10-01.wxr in this example
+   * This files should be place along side these scripts
+   * This file will be name localhost-2015-10-01.wxr in this example
 2. Run the wxr-split script `./wxr-split localhost-2015-10-01.wxr input`
 3. Run the transform-files script `./transform-files input output`
 4. (Optional) Run the expand-for-languages script `./expand-for-languages output output`
 5. Package out files to send to translator
-  * `zip -r output.zip output` if you want to zip just the output directory
-  * `zip -r output.zip *_output` if you expanded for languages
+   * `zip -r output.zip output` if you want to zip just the output directory
+   * `zip -r output.zip *_output` if you expanded for languages
 6. Send output.zip to translator
 
 ### Import
@@ -84,10 +84,26 @@ The following is an example of the process for exporting content for translation
 The import process is similar fairly quick compared to the export process. Here 
 is an example of the import process:
 
+1. The data within WordPress needs to prepared for the data about to imported. 
+   This means flagging the content as ready for translation. There is, currently, 
+   no way to flag the content en masse so each piece of content needs to be updated
+   individually. On the edit screen of the content to be flagged the checkbox "Ready 
+   for Translation" needs to be checked and the content needs to be publshed.
 1. Re-serialize the contents of "input" directory `./reserialize-files output serialized`
-  * **NOTE:** if you ran the "expand-for-languages" script you will need to pass
+   * **NOTE:** if you ran the "expand-for-languages" script you will need to pass
    each of the language directories as well as specify a separate "serialized"
    directory for each language (ex. for language code es_MX input directory is
    es_MX_output output (serialized) directory should be es_MX_serialized.)
-2. Import resulting files into WordPress.
+1. For each langauge you will need for convert the post type of the content to be
+   imported. The exported content contains the original post type and these were not
+   modifed by the translators. You will also need to modify the language code used in
+   each of the files.
+   * For post_type (2 character language code ex. es): `sed -i '' -e 's/\]\]><\/wp\:post_type>/\_LANGCODE2\]\]><\/wp\:post_type>/g' *.xml`
+   * For Language (5 character language code ex. es_SP): `sed -i '' -e 's/<language>en\-US<\/language>/<language>LANGCODE5<\/language>/g' *.xml`
+1. Import resulting files into WordPress.
+1. Run the "post-import-update.php" script to put the imported data into the correct 
+   locations within the internal Babble constructs.
+1. Test/review all content thoroughly to ensure the translations were correclty 
+   imported. Although content was added in different languages make sure the original 
+   language version didn't get messed up.
 
