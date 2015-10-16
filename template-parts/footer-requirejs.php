@@ -15,6 +15,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * The Current Language URL Prefix.
+ *
+ * If Babble is not present, will be an empty string.
+ *
+ * @var string $url_prefix
+ */
+$url_prefix = '';
+
+if ( class_exists( 'Babble' ) ) {
+	$url_prefix = bbl_get_prefix_from_lang_code( bbl_get_current_content_lang_code() );
+}
+
 ?>
 
 <script>
@@ -25,6 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 * @static
 	 */
 	window.SETTINGS = {};
+
 	/**
 	 * Indicates whether we are running on a production environment
 	 *
@@ -33,6 +47,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 * @final
 	 */
 	SETTINGS.IS_PRODUCTION = <?php echo esc_html( defined( 'WPCOM_IS_VIP_ENV' ) && true === WPCOM_IS_VIP_ENV ? 'true' : 'false' ); ?>;
+
 	/**
 	 * Appended to query string for versioning of network resources (CSS,
 	 * JavaScript, etc). This version number should be updated in production
@@ -43,6 +58,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 * @final
 	 */
 	SETTINGS.APP_VERSION = '1.0.0';
+
 	/**
 	 * Set to true to allow application to output to browser console, false
 	 * to silence all console output. This should be set to `false` on
@@ -53,6 +69,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 * @final
 	 */
 	SETTINGS.LOG_CONSOLE = !SETTINGS.IS_PRODUCTION;
+
 	/**
 	 * Appended to query string to defeat caching of network resources (CSS,
 	 * JavaScript, etc). Should be set to '' on production
@@ -62,6 +79,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 * @final
 	 */
 	SETTINGS.CACHE_BUSTER = SETTINGS.IS_PRODUCTION ? '' : '&bust=' + Math.random();
+
 	/**
 	 * Root path for all JavaScript files
 	 *
@@ -87,7 +105,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 * @type String
 	 * @final
 	 */
-	SETTINGS.SEARCH_PATH = 'io-ajax-search/';
+	SETTINGS.SEARCH_PATH = '<?php echo esc_html( $url_prefix . '/io-ajax-search/' ); ?>';
+
+	/**
+	 * URL prefix for current language
+	 *
+	 * @property CURRENT_LANGUAGE_URL_PREFIX
+	 * @type String
+	 */
+	SETTINGS.CURRENT_LANGUAGE_URL_PREFIX = '<?php echo esc_html( $url_prefix ); ?>';
 
 	/**
 	 * Powered by logo string
@@ -106,7 +132,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 * @final
 	 */
 	SETTINGS.ROUTES = {
-		'pressResults': 'io-ajax-posts/press/',
+		'pressResults': '<?php echo esc_html( $url_prefix . '/io-ajax-posts/press/' ); ?>',
 		'searchResults': window.SETTINGS.SEARCH_PATH,
 		'404': 'not-found/index.html'
 	};
