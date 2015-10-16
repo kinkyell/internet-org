@@ -103,6 +103,9 @@ is an example of the import process:
 1. Import resulting files into WordPress.
 1. Run the "post-import-update.php" script to put the imported data into the correct 
    locations within the internal Babble constructs.
+1. Setup and assign menus for each of the languages used on the site.
+    * For main menu items, add the appropriate CSS Class (mission, approach, impact). CSS 
+    classes are not necessary for the secondary nav menu for the menu item.
 1. Test/review all content thoroughly to ensure the translations were correclty 
    imported. Although content was added in different languages make sure the original 
    language version didn't get messed up.
