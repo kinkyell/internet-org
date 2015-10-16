@@ -68,35 +68,6 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'internetorg_add_translatable_posttypes' ) ) :
-	/**
-	 * Add our CPTs to the list of translatable post types.
-	 *
-	 * @param array $posttypes Current list of translatable post types.
-	 *
-	 * @return array New list of translatable post types.
-	 */
-	function internetorg_add_translatable_posttypes( $posttypes ) {
-		if ( ! is_array( $posttypes ) ) {
-			$posttypes = array();
-		}
-
-		$cptlist = array(
-			'io_press',
-			'io_story',
-			'io_campaign',
-			'io_freesvc',
-			'io_ctntwdgt',
-		);
-
-		return array_merge( $posttypes, $cptlist );
-	}
-
-	// Hook on to the filter so our CPTs get listed.
-	add_filter( 'bogo_localizable_post_types', 'internetorg_add_translatable_posttypes' );
-endif;
-
-
 /**
  * Test the provided locale to determine if it is a right-to-left language.
  *
