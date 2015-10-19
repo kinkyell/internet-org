@@ -27,10 +27,6 @@
     transition: background-color 0.25s ease-out;
 }
 
-// .narrativeView-progress > * + * {
-//     margin-top: 6px;
-// }
-
 .narrativeView-progress > *.isActive:nth-child(1):before { background-color: #ffcc02; }
 .narrativeView-progress > *.isActive:nth-child(2):before { background-color: #9d25a0; }
 .narrativeView-progress > *.isActive:nth-child(3):before { background-color: #fa5cb6; }
@@ -58,8 +54,14 @@
         width: 8px;
         height: 8px;
     }
+}
 
-    // .narrativeView-progress > * + * {
-    //     margin-top: 12px;
-    // }
+/* Right to Left Language support */
+[dir="rtl"] {
+
+    .narrativeView-progress {
+        right: initial;
+        left: 14px;
+    }
+
 }

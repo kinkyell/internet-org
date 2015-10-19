@@ -232,26 +232,29 @@
 /* Right to Left Language support */
 [dir="rtl"] {
 
-    .link {
-        padding-right: initial;
-        padding-left: 35px;
+    .link:not(.link_preArrows):not(.link_inline):not(.link_twoArrows) {
+        padding: 15px 15px 15px 50px;
+        margin: -15px;
+    }
+
+    .link:not(.link_preArrows):not(.link_inline):not(.link_twoArrows):hover:before {
+        transform: translateX(-8px);
+    }
+
+    .link:hover:after {
+        transform: translate3d(-8px, 0, 0) rotate(-44deg);
     }
 
     .link:after,
     .link:before {
         right: initial;
-        left: -8px;
+        left: 8px;
     }
 
     .link:after {
         border: none;
         border-top: 1px solid;
         border-left: 1px solid;
-    }
-
-    .link:hover:after,
-    .link:hover:before {
-        left: -15px;
     }
 
     .link_twoArrows {
@@ -272,6 +275,10 @@
     .link_twoArrows:before {
         right: initial;
         left: -5px;
+    }
+
+    .link_twoArrows:hover:before {
+        left: -23px;   
     }
 
     .link_preArrows {
