@@ -136,6 +136,9 @@ function internetorg_language_attributes( $language_attributes = '' ) {
 
 add_filter( 'language_attributes', 'internetorg_language_attributes' );
 
+/**
+ * Add Babble/Fieldmanager metaboxes to io_video post_type.
+ */
 function internetorg_video_metaboxes() {
 
 	// Bail early as this should go to admin only.
@@ -152,7 +155,7 @@ function internetorg_video_metaboxes() {
 		array(
 			'add_meta_box' => array(
 				'Video Duration',
-				internetorg_get_post_types( 'io_video' ),
+				'io_video',
 			)
 		)
 	);
@@ -166,7 +169,7 @@ function internetorg_video_metaboxes() {
 		array(
 			'add_meta_box' => array(
 				'Video URL',
-				internetorg_get_post_types( 'io_video' ),
+				'io_video',
 			)
 		)
 	);
@@ -174,6 +177,9 @@ function internetorg_video_metaboxes() {
 
 add_action( 'init', 'internetorg_video_metaboxes' );
 
+/**
+ * Add Babble/Fieldmanager metaboxes to page post_type.
+ */
 function internetorg_page_metaboxes() {
 
 	// Bail early as this should go to admin only.
@@ -181,11 +187,16 @@ function internetorg_page_metaboxes() {
 		return;
 	}
 
+	/**
+	 * We're on an admin screen with the post_id available.
+	 */
 	if ( ! empty( $_GET['post'] ) ) {
-		$post_id         = absint( $_GET['post'] );
-		$language_object = wp_get_post_terms( $post_id, 'bbl_job_language' );
-		$language_object = $language_object[0];
-		$language        = $language_object->slug;
+		$post_id = absint( $_GET['post'] );
+		if ( 'bbl_job' === get_post_type( $post_id ) ) {
+			$language_object = wp_get_post_terms( $post_id, 'bbl_job_language' );
+			$language_object = $language_object[0];
+			$language        = $language_object->slug;
+		}
 	}
 
 	if ( empty( $language ) ) {
@@ -216,7 +227,7 @@ function internetorg_page_metaboxes() {
 		array(
 			'add_meta_box' => array(
 				__( 'Page Intro', 'internetorg' ),
-				internetorg_get_post_types( 'page', $language ),
+				'page',
 				'internetorg_page_home_after_title',
 				'high',
 			)
@@ -236,7 +247,7 @@ function internetorg_page_metaboxes() {
 		array(
 			'add_meta_box' => array(
 				__( 'Additional page configuration', 'internetorg' ),
-				internetorg_get_post_types( 'page', $language ),
+				'page',
 				'internetorg_page_home_after_title',
 				'high',
 			)
@@ -284,7 +295,7 @@ function internetorg_page_metaboxes() {
 						'datasource' => new Fieldmanager_Datasource_Post(
 							array(
 								'query_args' => array(
-									'post_type'      => internetorg_get_multiple_post_types(
+									'post_type'      => internetorg_get_multiple_shadow_post_types(
 										array(
 											'page',
 											'post',
@@ -292,7 +303,6 @@ function internetorg_page_metaboxes() {
 										),
 										$language
 									),
-									'posts_per_page' => - 1,
 								),
 								'use_ajax'   => false,
 							)
@@ -358,7 +368,7 @@ function internetorg_page_metaboxes() {
 									'datasource' => new Fieldmanager_Datasource_Post(
 										array(
 											'query_args' => array(
-												'post_type'      => internetorg_get_multiple_post_types(
+												'post_type'      => internetorg_get_multiple_shadow_post_types(
 													array(
 														'page',
 														'post',
@@ -366,7 +376,6 @@ function internetorg_page_metaboxes() {
 													),
 													$language
 												),
-												'posts_per_page' => - 1,
 											),
 											'use_ajax'   => false,
 										)
@@ -403,12 +412,7 @@ function internetorg_page_metaboxes() {
 			'datasource'     => new Fieldmanager_Datasource_Post(
 				array(
 					'query_args' => array(
-						'post_type' => internetorg_get_multiple_post_types(
-							array(
-								'page',
-							),
-							$language
-						),
+						'post_type' => internetorg_get_shadow_post_types_for_ajax( 'page' ),
 					),
 				)
 			),
@@ -427,9 +431,12 @@ function internetorg_page_metaboxes() {
 
 add_action( 'init', 'internetorg_page_metaboxes' );
 
-
+/**
+ * Add Babble/Fieldmanager metaboxes to io_ctntwdgt post_type.
+ */
 function internetorg_content_widget_metaboxes() {
-	//bail early as this should go to admin only
+
+	// Bail early as this should go to admin only.
 	if ( ! is_admin() ) {
 		return;
 	}
@@ -462,6 +469,9 @@ function internetorg_content_widget_metaboxes() {
 
 add_action( 'init', 'internetorg_content_widget_metaboxes' );
 
+/**
+ * Add Babble/Fieldmanager metaboxes to io_story post_type.
+ */
 function internetorg_story_metaboxes() {
 	if ( ! is_admin() ) {
 		return;
@@ -533,22 +543,23 @@ function internetorg_get_active_lang_codes() {
 }
 
 /**
- * Retrieve a list of Babble's "shadow" post_types for a given post_type and language.
+ * Retrieve a list of Babble's "shadow" post_types for a given post_type and a language.
  *
- * If bbl_get_post_type_in_lang function is not available, will return a single element array of the given post_type.
- * If default language is supplied, will return a single element array of the given post_type.
- * If there are no shadow post types, will return a single element array of the given post_type.
- * If there are shadow post types, will return an array of the given post_type and the shadow post_type.
+ * Useful for Fieldmanager_Datasource_Post in conjunction with Fieldmanager_Select.
+ * Don't use this with Fieldmanager_Autocomplete, $language doesn't appear to be available when FM does AJAX.
  * A shadow post type is essentially a post_type appended with language code, posttype_languagecode.
+ * If bbl_get_post_type_in_lang function is not available, will return a single element array of the given post_type.
+ * If there are no shadow post types for the language, will return a single element array of the given post_type.
+ * If there are shadow post types, returns an array of the given original and the corresponding shadow post_type.
  *
- * @used-by internetorg_get_multiple_post_types
+ * @used-by internetorg_get_multiple_shadow_post_types
  *
  * @param string $post_type The post_type to get shadow_post_types for. Optional. Defaults to 'page'.
  * @param string $language
  *
  * @return array An array of post_types.
  */
-function internetorg_get_post_types( $post_type = 'page', $language = 'en_US' ) {
+function internetorg_get_shadow_post_types_by_lang( $post_type = 'page', $language = 'en_US' ) {
 
 	if ( ! function_exists( 'bbl_get_post_type_in_lang' ) ) {
 		return array( $post_type );
@@ -573,17 +584,21 @@ function internetorg_get_post_types( $post_type = 'page', $language = 'en_US' ) 
 /**
  * Retrieve a list of Babble's "shadow" post_types for a given array of original post_types and a language.
  *
- * @uses internetorg_get_post_types
+ * Useful for Fieldmanager_Datasource_Post in conjunction with Fieldmanager_Select.
+ * Don't use this with Fieldmanager_Autocomplete, $language doesn't appear to be available when FM does AJAX.
+ * A shadow post type is essentially a post_type appended with language code, posttype_languagecode.
+ *
+ * @uses internetorg_get_shadow_post_types_by_lang
  *
  * @param array $post_types An array of post_types to get shadow_post_types for. Optional. Defaults to array( 'page' ).
  * @param string $language
  *
  * @return array An array of post_types.
  */
-function internetorg_get_multiple_post_types( $post_types = array( 'page' ), $language = 'en_US' ) {
+function internetorg_get_multiple_shadow_post_types( $post_types = array( 'page' ), $language = 'en_US' ) {
 
 	foreach ( $post_types as $post_type ) {
-		$types[] = array_values( internetorg_get_post_types( $post_type, $language ) );
+		$types[] = array_values( internetorg_get_shadow_post_types_by_lang( $post_type, $language ) );
 	}
 
 	if ( empty( $types ) ) {
@@ -596,5 +611,32 @@ function internetorg_get_multiple_post_types( $post_types = array( 'page' ), $la
 		}
 	}
 
-	return $post_types;
+	return array_unique( $post_types );
+}
+
+/**
+ * Retrieve a list of all of Babble's "shadow" post_types for all languages for a given original post_type.
+ *
+ * Useful for Fieldmanager_Datasource_Post using AJAX, for example in conjunction with Fieldmanager_Autocomplete.
+ * Don't use this with Fieldmanager_Select, the select menu gets rather large.
+ *
+ * @param string $post_type A post_type to get all shadow_post_types for. Optional. Defaults to 'page'.
+ *
+ * @return array An array of post_types.
+ */
+function internetorg_get_shadow_post_types_for_ajax ( $post_type = 'page' ) {
+
+	if ( ! function_exists( 'bbl_get_shadow_post_types' ) ) {
+		return array( $post_type );
+	}
+
+	$post_types = bbl_get_shadow_post_types( $post_type );
+
+	if ( empty( $post_types ) ) {
+		return array( $post_type );
+	}
+
+	array_push( $post_types, $post_type );
+
+	return array_unique( $post_types );
 }
