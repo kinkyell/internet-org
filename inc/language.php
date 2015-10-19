@@ -520,51 +520,57 @@ function internetorg_get_active_lang_codes() {
 }
 
 /**
- * Retrieve a list of Babble's "shadow" post_types for a given post_type.
+ * Retrieve a list of Babble's "shadow" post_types for a given post_type and language.
  *
- * If bbl_get_shadow_post_types function is not available, will return a single element array of the given post_type.
+ * If bbl_get_post_type_in_lang function is not available, will return a single element array of the given post_type.
+ * If default language is supplied, will return a single element array of the given post_type.
  * If there are no shadow post types, will return a single element array of the given post_type.
- * If there are shadow post types, will prepend the array with the given post_type.
+ * If there are shadow post types, will return an array of the given post_type and the shadow post_type.
  * A shadow post type is essentially a post_type appended with language code, posttype_languagecode.
  *
- * @todo Restrict to the lanuage of the current translation screen to reduce the queries.
- * @todo Babble API doesn't appear to offer the correct language of the current translation screen, may require trickery.
+ * @used-by internetorg_get_multiple_post_types
  *
  * @param string $post_type The post_type to get shadow_post_types for. Optional. Defaults to 'page'.
+ * @param null $language
  *
  * @return array An array of post_types.
  */
-function internetorg_get_post_types( $post_type = 'page' ) {
+function internetorg_get_post_types( $post_type = 'page', $language = 'en_US' ) {
 
-	if ( ! function_exists( 'bbl_get_shadow_post_types' ) ) {
+	if ( ! function_exists( 'bbl_get_post_type_in_lang' ) ) {
 		return array( $post_type );
 	}
 
-	$bbl_shadow_post_types = bbl_get_shadow_post_types( $post_type );
+	if ( $language === bbl_get_default_lang_code() ) {
+		return array( $post_type );
+	}
+
+	$bbl_shadow_post_types = bbl_get_post_type_in_lang( $post_type, $language );
 
 	if ( empty( $bbl_shadow_post_types ) ) {
 		return array( $post_type );
 	}
 
-	array_unshift( $bbl_shadow_post_types, $post_type );
-
-	return $bbl_shadow_post_types;
+	return array(
+		$post_type,
+		$bbl_shadow_post_types,
+	);
 }
 
 /**
- * Retrieve a list of Babble's "shadow" post_types for an array of post_types.
+ * Retrieve a list of Babble's "shadow" post_types for a given array of original post_types and a language.
  *
- * @todo Restrict to the lanuage of the current translation screen to reduce the queries.
- * @todo Babble API doesn't appear to offer the correct language of the current translation screen, may require trickery.
+ * @uses internetorg_get_post_types
  *
  * @param array $post_types An array of post_types to get shadow_post_types for. Optional. Defaults to array( 'page' ).
+ * @param null $language
  *
- * @return array
+ * @return array An array of post_types.
  */
-function internetorg_get_multiple_post_types( $post_types = array( 'page' ) ) {
+function internetorg_get_multiple_post_types( $post_types = array( 'page' ), $language = 'en_US' ) {
 
 	foreach ( $post_types as $post_type ) {
-		$types[] = array_values( internetorg_get_post_types( $post_type ) );
+		$types[] = array_values( internetorg_get_post_types( $post_type, $language ) );
 	}
 
 	foreach ( $types as $key => $type_array ) {
