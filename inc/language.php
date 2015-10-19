@@ -181,6 +181,17 @@ function internetorg_page_metaboxes() {
 		return;
 	}
 
+	if ( ! empty( $_GET['post'] ) ) {
+		$post_id         = absint( $_GET['post'] );
+		$language_object = wp_get_post_terms( $post_id, 'bbl_job_language' );
+		$language_object = $language_object[0];
+		$language        = $language_object->slug;
+	}
+
+	if ( empty( $language ) ) {
+		$language = 'en_US';
+	}
+
 	new Babble_Translatable_Fieldmanager(
 		'Fieldmanager_Group',
 		array(
@@ -205,7 +216,7 @@ function internetorg_page_metaboxes() {
 		array(
 			'add_meta_box' => array(
 				__( 'Page Intro', 'internetorg' ),
-				internetorg_get_post_types( 'page' ),
+				internetorg_get_post_types( 'page', $language ),
 				'internetorg_page_home_after_title',
 				'high',
 			)
@@ -225,7 +236,7 @@ function internetorg_page_metaboxes() {
 		array(
 			'add_meta_box' => array(
 				__( 'Additional page configuration', 'internetorg' ),
-				internetorg_get_post_types( 'page' ),
+				internetorg_get_post_types( 'page', $language ),
 				'internetorg_page_home_after_title',
 				'high',
 			)
@@ -247,61 +258,62 @@ function internetorg_page_metaboxes() {
 				'title'          => new Fieldmanager_TextField( __( 'Section Title', 'internetorg' ) ),
 				'name'           => new Fieldmanager_TextField( __( 'Section Name', 'internetorg' ) ),
 				'content'        => new Babble_Fieldmanager_RichTextarea( __( 'Description', 'internetorg' ) ),
-				'src' => new Fieldmanager_Select(
+				'src'            => new Fieldmanager_Select(
 					__( 'Source', 'internetorg' ),
 					array(
-						'name'    => 'src',
+						'name'        => 'src',
 						'first_empty' => true,
-						'options' => array(
-							'page' => __( 'Page, Post, or Story' ),
+						'options'     => array(
+							'page'   => __( 'Page, Post, or Story' ),
 							'custom' => __( 'Custom Link', 'internetorg' ),
 						),
 					)
 				),
-				'slug'  => new Fieldmanager_TextField(
+				'slug'           => new Fieldmanager_TextField(
 					__( 'Section Slug', 'internetorg' ),
 					array(
 						'display_if' => array(
-							'src' => 'src',
+							'src'   => 'src',
 							'value' => 'custom',
 						),
 					)
 				),
-				'url-src' => new Fieldmanager_Select(
+				'url-src'        => new Fieldmanager_Select(
 					__( 'URL Source', 'internetorg' ),
 					array(
 						'datasource' => new Fieldmanager_Datasource_Post(
 							array(
 								'query_args' => array(
-									'post_type' => internetorg_get_multiple_post_types(
+									'post_type'      => internetorg_get_multiple_post_types(
 										array(
 											'page',
 											'post',
 											'io_story',
-										)
+										),
+										$language
 									),
-									'posts_per_page' => -1,
+									'posts_per_page' => - 1,
 								),
-								'use_ajax' => false,
+								'use_ajax'   => false,
 							)
 						),
 						'display_if' => array(
-							'src' => 'src',
+							'src'   => 'src',
 							'value' => 'page',
 						),
 					)
 				),
-				'theme' => new Fieldmanager_Select(
+				'theme'          => new Fieldmanager_Select(
 					array(
-						'label' => 'Select a Theme',
+						'label'   => 'Select a Theme',
 						'options' => array(
 							'approach' => __( 'Approach', 'internetorg' ),
-							'mission' => __( 'Mission', 'internetorg' ),
-							'impact' => __( 'Impact', 'internetorg' ),
+							'mission'  => __( 'Mission', 'internetorg' ),
+							'impact'   => __( 'Impact', 'internetorg' ),
 						),
 					)
 				),
-				'image' => new Fieldmanager_Media(
+				'image'          => new Fieldmanager_Media(
 					__( 'Background Image', 'internetorg' )
 				),
 				'call-to-action' => new Fieldmanager_Group(
@@ -314,28 +326,28 @@ function internetorg_page_metaboxes() {
 						'collapsible'    => true,
 						'sortable'       => true,
 						'children'       => array(
-							'title' => new Fieldmanager_TextField(
+							'title'    => new Fieldmanager_TextField(
 								__( 'CTA Title', 'internetorg' )
 							),
-							'text'  => new Babble_Fieldmanager_RichTextarea(
+							'text'     => new Babble_Fieldmanager_RichTextarea(
 								__( 'Content', 'internetorg' )
 							),
-							'cta_src' => new Fieldmanager_Select(
+							'cta_src'  => new Fieldmanager_Select(
 								__( 'Link Source', 'internetorg' ),
 								array(
-									'name'    => 'cta_src',
+									'name'        => 'cta_src',
 									'first_empty' => true,
-									'options' => array(
-										'page' => __( 'Page, Post, or Story' ),
+									'options'     => array(
+										'page'   => __( 'Page, Post, or Story' ),
 										'custom' => __( 'Custom Link', 'internetorg' ),
 									),
 								)
 							),
-							'link' => new Fieldmanager_TextField(
+							'link'     => new Fieldmanager_TextField(
 								__( 'Link', 'internetorg' ),
 								array(
 									'display_if' => array(
-										'src' => 'cta_src',
+										'src'   => 'cta_src',
 										'value' => 'custom',
 									),
 								)
@@ -346,25 +358,26 @@ function internetorg_page_metaboxes() {
 									'datasource' => new Fieldmanager_Datasource_Post(
 										array(
 											'query_args' => array(
-												'post_type' => internetorg_get_multiple_post_types(
+												'post_type'      => internetorg_get_multiple_post_types(
 													array(
 														'page',
 														'post',
 														'io_story',
-													)
+													),
+													$language
 												),
-												'posts_per_page' => -1,
+												'posts_per_page' => - 1,
 											),
-											'use_ajax' => false,
+											'use_ajax'   => false,
 										)
 									),
 									'display_if' => array(
-										'src' => 'cta_src',
+										'src'   => 'cta_src',
 										'value' => 'page',
 									),
 								)
 							),
-							'image' => new Fieldmanager_Media(
+							'image'    => new Fieldmanager_Media(
 								__( 'Image', 'internetorg' )
 							),
 						),
@@ -393,7 +406,8 @@ function internetorg_page_metaboxes() {
 						'post_type' => internetorg_get_multiple_post_types(
 							array(
 								'page',
-							)
+							),
+							$language
 						),
 					),
 				)
@@ -445,6 +459,7 @@ function internetorg_content_widget_metaboxes() {
 		)
 	);
 }
+
 add_action( 'init', 'internetorg_content_widget_metaboxes' );
 
 function internetorg_story_metaboxes() {
@@ -475,13 +490,14 @@ function internetorg_story_metaboxes() {
 	);
 
 }
+
 add_action( 'init', 'internetorg_story_metaboxes' );
 
 /**
  * Adds fields directly below the title of the post title on the edit screen.
  *
- * @global \WP_Post $post          The WP_Post object to which to add a meta box to.
- * @global array    $wp_meta_boxes The array of metaboxes.
+ * @global \WP_Post $post The WP_Post object to which to add a meta box to.
+ * @global array $wp_meta_boxes The array of metaboxes.
  *
  * @return void
  */
@@ -528,7 +544,7 @@ function internetorg_get_active_lang_codes() {
  * @used-by internetorg_get_multiple_post_types
  *
  * @param string $post_type The post_type to get shadow_post_types for. Optional. Defaults to 'page'.
- * @param null $language
+ * @param string $language
  *
  * @return array An array of post_types.
  */
@@ -560,7 +576,7 @@ function internetorg_get_post_types( $post_type = 'page', $language = 'en_US' ) 
  * @uses internetorg_get_post_types
  *
  * @param array $post_types An array of post_types to get shadow_post_types for. Optional. Defaults to array( 'page' ).
- * @param null $language
+ * @param string $language
  *
  * @return array An array of post_types.
  */
@@ -570,8 +586,12 @@ function internetorg_get_multiple_post_types( $post_types = array( 'page' ), $la
 		$types[] = array_values( internetorg_get_post_types( $post_type, $language ) );
 	}
 
-	foreach ( $types as $key => $type_array ) {
-		foreach ( $type_array as $key => $type ) {
+	if ( empty( $types ) ) {
+		return $post_types;
+	}
+
+	foreach ( $types as $outer_key => $type_array ) {
+		foreach ( $type_array as $inner_key => $type ) {
 			array_push( $post_types, $type );
 		}
 	}
