@@ -10,9 +10,6 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 	/**
 	 * Builds the language switcher needed for the FE of the site.
 	 *
-	 * @todo This is static placeholder for now at request of FED.
-	 * @todo Remove static and use bbl_get_switcher_links when Babble is actualy integrated.
-	 *
 	 * @return void
 	 */
 	function internetorg_language_switcher() {
@@ -42,7 +39,7 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 				continue;
 			}
 			if ( $item['href'] ) {
-				echo '<option value="' . esc_url( $item['href'] ) . '" ' . ($item['active'] ? 'selected' : '') . '>' . esc_html( $item['lang']->display_name ) . '</option>';
+				echo '<option value="' . esc_url( $item['href'] ) . '" ' . selected( $item['active'] ) . '>' . esc_html( $item['lang']->display_name ) . '</option>';
 			}
 		}
 		echo '</select>';
