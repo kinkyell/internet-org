@@ -34,8 +34,6 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 
 		$list = bbl_get_switcher_links();
 
-		$selected_lang = null;
-
 		// Select list of items, hidden from the user but recreated with css/js.
 		echo '<select id="js-LanguageView" class="js-select" onchange="document.location.href=this.options[this.selectedIndex].value;">';
 		foreach ( $list as $item ) {
@@ -43,11 +41,8 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 			if ( in_array( 'bbl-add', $item['classes'] ) ) {
 				continue;
 			}
-			if ( $item['active'] ) {
-				$selected_lang = $item;
-			}
 			if ( $item['href'] ) {
-				echo '<option value="' . esc_url( $item['href'] ) . '">' . esc_html( $item['lang']->display_name ) . '</option>';
+				echo '<option value="' . esc_url( $item['href'] ) . '" ' . ($item['active'] ? 'selected' : '') . '>' . esc_html( $item['lang']->display_name ) . '</option>';
 			}
 		}
 		echo '</select>';
