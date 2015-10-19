@@ -72,9 +72,14 @@
 
 .transformBlock-post-item {
     position: absolute;
-    opacity: 0;
+    // opacity: 0;
     z-index: 0;
     pointer-events: none;
+}
+
+.transformBlock-post-item-bd,
+.transformBlock-post-item-ft {
+    opacity: 0;
 }
 
 .transformBlock-post-item-bd {

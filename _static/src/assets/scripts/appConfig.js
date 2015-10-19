@@ -50,20 +50,10 @@ define(function(require, exports, module) { // jshint ignore:line
                 EASE_DIRECTION_FORWARD: 'easeOut', // gsap ease direction when progressing forward
                 EASE_DIRECTION_REVERSE: 'easeIn', // gsap ease direction when progressing backward
                 SCROLL_BUFFER: 250, // Buffer for scroll jacking (ms)
-                // TIME_SCALE: 0.6, // Timeline speed multiplier
                 TIME_SCALE: 1, // Timeline speed multiplier
                 SECTION_DURATION: 0.35, // uniform transformBlock section durations
-                featureImages: { // Featured images
-                    HOME: '/assets/media/uploads/home_DT.jpg',
-                    MISSION: '/assets/media/uploads/mission_DT.jpg',
-                    APPROACH: '/assets/media/uploads/approach_DT.jpg',
-                    APPROACH_01: '/assets/media/uploads/approach_DT_02.jpg',
-                    APPROACH_02: '/assets/media/uploads/approach_DT_03.jpg',
-                    IMPACT: '/assets/media/uploads/impact_DT.jpg',
-                    IMPACT_01: '/assets/media/uploads/impact_DT_02.jpg',
-                    IMPACT_02: '/assets/media/uploads/impact_DT_03.jpg',
-                    FOOT: '/assets/media/uploads/contact_DT.jpg'
-                }
+                MOVEMENT_Y: 90, // number of pixels to move elements on the Y axis
+                STAGGER_DELAY: 0.1, // amount of time in seconds to delay stagger affects
             }
         },
         viewWindow: {
