@@ -9,6 +9,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var $ = require('jquery');
     var templates = require('templates'); // jshint ignore:line
     var appConfig = require('appConfig');
+    var eventHub = require('services/eventHub');
 
     // api base url for ajax requests
     // var BASE_URL = appConfig.apiBase;
@@ -22,8 +23,16 @@ define(function(require, exports, module) { // jshint ignore:line
     var PREFIX_STRIPPER = /^\//;
     var SUFFIX_STRIPPER = /\/$/;
 
-    function _getViewWindow(htmlStr) {
-        var parsed = $.parseHTML(htmlStr);
+    function _updateTitle(parsed) {
+        parsed.forEach(function(element) {
+            if (element.nodeName === 'TITLE') {
+                document.title = element.firstChild.nodeValue;
+            }
+        });
+        eventHub.publish('viewWindow:pageLoad', parsed);
+    }
+
+    function _getViewWindow(parsed) {
         var viewWindowEl = parsed.reduce(function(found, element) {
             if (element.nodeName === 'DIV' && element.className.indexOf('viewWindow') > -1) {
                 if (element.id === 'brim-main') {
@@ -40,9 +49,12 @@ define(function(require, exports, module) { // jshint ignore:line
         if (typeof htmlStr !== 'string') {
             htmlStr = htmlStr.responseText;
         }
-        var viewWindowEl = _getViewWindow(htmlStr);
+        var parsed = $.parseHTML(htmlStr);
+        var viewWindowEl = _getViewWindow(parsed);
         var viewWindowStory = viewWindowEl ? viewWindowEl.lastElementChild.firstElementChild.firstElementChild : null;
         viewWindowStory.className = '';
+
+        _updateTitle(parsed);
 
         if (viewWindowStory === null) {
             // this means it had no wrapper, send all html
@@ -62,7 +74,10 @@ define(function(require, exports, module) { // jshint ignore:line
         getPanelContent: function(route) {
             route = route.replace(PREFIX_STRIPPER, '').replace(SUFFIX_STRIPPER, '');
             var path = PATHS[route] || route;
-            return Promise.resolve($.get('/' + path)).then(_parseHtmlResponse, _parseHtmlResponse);
+            if (path.indexOf('http') !== 0) {
+                path = '/' + path;
+            }
+            return Promise.resolve($.get(path)).then(_parseHtmlResponse, _parseHtmlResponse);
         },
 
         /**
@@ -167,7 +182,8 @@ define(function(require, exports, module) { // jshint ignore:line
          */
         getHomepageContent: function() {
             return Promise.resolve($.get('/')).then(function(html) {
-                var viewWindowEl = _getViewWindow(html);
+                var parsed = $.parseHTML(html);
+                var viewWindowEl = _getViewWindow(parsed);
                 var homeEl = viewWindowEl.firstElementChild.firstElementChild.firstElementChild;
                 var imageUrl;
 

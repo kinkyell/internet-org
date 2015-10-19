@@ -66,6 +66,24 @@ define(function(require, exports, module) { // jshint ignore:line
 
         this.$menu = $(menuDiv);
 
+        this._refreshMenu();
+
+        // move classes to wrapper
+        this.$wrap.addClass(this.element.className).removeClass('js-select');
+        this.element.className = '';
+    };
+
+    /**
+     * Refresh menu items
+     *
+     * @method _refreshMenu
+     * @returns {SelectView}
+     * @private
+     */
+    proto._refreshMenu = function() {
+
+        this.$menu.empty();
+
         // create options
         Array.prototype.forEach.call(this.element.options, function(el) {
             var elementDiv = document.createElement('div');
@@ -88,10 +106,6 @@ define(function(require, exports, module) { // jshint ignore:line
 
             this.$menu.append($el);
         }, this);
-
-        // move classes to wrapper
-        this.$wrap.addClass(this.element.className).removeClass('js-select');
-        this.element.className = '';
     };
 
     /**
@@ -343,6 +357,9 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._render = function() {
         var option = this._getSelected();
+        if (!option) {
+            return;
+        }
         var displayText = option.getAttribute('data-display');
 
         if (displayText) {
@@ -421,6 +438,25 @@ define(function(require, exports, module) { // jshint ignore:line
             return null;
         }
         return sel.options[sel.selectedIndex];
+    };
+
+    /**
+     * Update element options
+     *
+     * @method updateElement
+     * @returns {HTMLOptionElement} the selected option
+     * @private
+     */
+    proto.updateElement = function($el) {
+        var parentNode = this.element.parentNode;
+        parentNode.removeChild(this.element);
+        this.$element = $el;
+        this.element = $el[0];
+        parentNode.insertBefore(this.element, parentNode.firstChild);
+        this._refreshMenu();
+        this.disable();
+        this.enable(); // rebind
+        this._render();
     };
 
 
