@@ -229,7 +229,7 @@ define(function(require, exports, module) { // jshint ignore:line
             type: 'search',
             searchText: event.searchText
         });
-        this.historyManager.pushState(this._currentStates, null, appConfig.langPath + '/search/' + encodeURIComponent(event.searchText));
+        this.historyManager.pushState(this._currentStates, null, '/' + appConfig.langPath + '/search/' + encodeURIComponent(event.searchText));
         eventHub.publish('Router:stateChange', this._currentStates, prevStates);
     };
 
