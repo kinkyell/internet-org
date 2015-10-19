@@ -170,7 +170,17 @@ Layout for paneled views
         padding-right: 100%;
     }
 
+    .viewWindow-panel:not(.isAnimating):first-child.isActive > .viewWindow-panel-content {
+        padding-right: 0;
+        padding-left: 100%;
+    }
+
     .viewWindow-panel {
         float: right;
+    }
+
+    .viewWindow-panel_feature,
+    .viewWindow-panel:first-child {
+        margin-right: -2px; // fix white space on left
     }
 }

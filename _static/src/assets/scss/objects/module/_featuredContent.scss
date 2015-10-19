@@ -8,3 +8,11 @@
     bottom: 32px;
     right: 32px;
 }
+
+
+[dir="rtl"] {
+    .featureContent {
+        right: initial;
+        left: 32px;
+    }
+}
