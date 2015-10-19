@@ -65,13 +65,16 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onChange = function(select, value) {
+        debugger;
         if (select !== this.element) {
             return;
         }
 
-        var opt = select.options[select.selectedIndex];
-        var isRtl = (opt.getAttribute('data-dir') === 'rtl');
-        this._setLanguage(value, isRtl);
+        document.location = value;
+
+        // var opt = select.options[select.selectedIndex];
+        // var isRtl = (opt.getAttribute('data-dir') === 'rtl');
+        // this._setLanguage(value, isRtl);
     };
 
     /**

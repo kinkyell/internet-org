@@ -37,7 +37,7 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 		$selected_lang = null;
 
 		// Select list of items, hidden from the user but recreated with css/js.
-		echo '<select onchange="document.location.href=this.options[this.selectedIndex].value;">';
+		echo '<select id="js-LanguageView" class="js-select" onchange="document.location.href=this.options[this.selectedIndex].value;">';
 		foreach ( $list as $item ) {
 			// Skip languages for which there is no translation.
 			if ( in_array( 'bbl-add', $item['classes'] ) ) {
@@ -51,20 +51,6 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 			}
 		}
 		echo '</select>';
-
-		// Display the current language to the user.
-		echo '<div class="langSelect-label">';
-		echo esc_html( ! empty( $selected_lang ) ? $selected_lang['lang']->display_name : '' );
-		echo '</div>';
-
-		// Display list of available languages to the user (recreated select).
-		echo '<div class="langSelect-menu" style="height: auto;">';
-		foreach ( $list as $item ) {
-			if ( ! empty( $item ) ) {
-				echo '<div class="langSelect-menu-item"><span>' . esc_html( $item['lang']->display_name ) . '</span></div>';
-			}
-		}
-		echo '</div>';
 	}
 endif;
 
