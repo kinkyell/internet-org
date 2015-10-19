@@ -65,7 +65,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onChange = function(select, value) {
-        debugger;
         if (select !== this.element) {
             return;
         }
