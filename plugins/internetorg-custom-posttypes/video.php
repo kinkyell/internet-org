@@ -51,28 +51,4 @@ class Internetorg_Video_PostType extends Internetorg_PostType {
 			)
 		);
 	}
-
-	/**
-	 * Add meta boxes to this post type.
-	 *
-	 * @return void
-	 */
-	public function add_meta_boxes() {
-		$video_duration = new Fieldmanager_TextField(
-			array(
-				'name'  => 'video-duration',
-				'label' => __( 'Video Duration', 'internetorg' ),
-			)
-		);
-
-		$video_url = new Fieldmanager_Link(
-			array(
-				'name'  => 'video-url',
-				'label' => __( 'Video URL', 'internetorg' ),
-			)
-		);
-
-		$video_duration->add_meta_box( __( 'Video Duration', 'internetorg' ), array( 'io_video' ) );
-		$video_url->add_meta_box( __( 'Video URL', 'internetorg' ), array( 'io_video' ) );
-	}
 }

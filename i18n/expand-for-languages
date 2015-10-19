@@ -1,0 +1,51 @@
+#!/usr/bin/env php
+<?php
+
+$valid_exts = array( 'wxr', 'xml' );
+$languages  = array( 'es_MX', 'fr_FR' );
+
+if ( ! isset( $argv[1] ) ) {
+	throw new Exception( 'Missing required argument <input-directory>' );
+}
+$input_dir = $argv[1];
+
+if ( ! is_dir( $input_dir ) ) {
+	throw new Exception( 'Invalid input directory specified' );
+}
+
+// get output base directory name
+$output_dir = 'output';
+if ( isset( $argv[2] ) ) {
+	$output_dir = $argv[2];
+}
+$output_dir = rtrim( $output_dir, DIRECTORY_SEPARATOR );
+
+// create any missing directories
+foreach ( $languages as $lang ) {
+	$output_lang_dir = $lang . '_' . $output_dir;
+	if ( ! is_dir( $output_lang_dir ) ) {
+		if ( ! mkdir( $output_lang_dir ) ) {
+			throw new Exception( 'Directory ' . $output_lang_dir . ' could not be created.' );
+		}
+	}
+}
+
+// copy the files to the language directories
+$di = new DirectoryIterator( $input_dir );
+foreach ( $di as $file ) {
+	$path_parts = pathinfo( $file );
+
+	// skip anything we don't want to copy
+	if ( ! $file->isFile()
+	     || $file->isDot()
+	     || ( ! empty( $valid_exts ) && ! in_array( strtolower( $path_parts['extension'] ), $valid_exts ) )
+	) {
+		continue;
+	}
+
+	// copy for each language
+	foreach ( $languages as $lang ) {
+		$output_lang_dir = $lang . '_' . $output_dir;
+		copy( $file->getRealPath(), $output_lang_dir . DIRECTORY_SEPARATOR . $file->getFilename() );
+	}
+}

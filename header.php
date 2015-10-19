@@ -46,38 +46,9 @@
 					<?php get_template_part( 'template-parts/header', 'search' ); ?>
 				</div>
 
-					<?php
-					$main_menu_config = array(
-						'container_class' => 'mainMenu-panel-primary',
-						'container_id'    => '',
-						'menu_class'      => '',
-						'menu_id'         => '',
-						'before'          => '',
-						'after'           => '',
-						'link_before'     => '',
-						'link_after'      => '',
-						'theme_location'  => 'primary',
-						'walker'          => new Internetorg_Main_Nav_Walker(),
-					);
-					wp_nav_menu( $main_menu_config );
-					?>
+				<?php internetorg_nav_menu( 'primary' ); ?>
 
-					<?php
-					$submenu_config = array(
-						'container_class' => 'mainMenu-panel-secondary',
-						'container_id'    => '',
-						'menu_class'      => 'borderBlocks borderBlocks_2up',
-						'menu_id'         => '',
-						'before'          => '',
-						'after'           => '',
-						'link_before'     => '',
-						'link_after'      => '',
-						'theme_location'  => 'primary-sub-nav',
-						'walker'          => new Internetorg_Main_SubNav_Walker(),
-					);
-					wp_nav_menu( $submenu_config );
-
-					?>
+				<?php internetorg_nav_menu( 'secondary' ); ?>
 
 				<div class="mainMenu-panel-lang">
 					<?php internetorg_language_switcher(); ?>
