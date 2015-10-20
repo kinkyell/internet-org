@@ -70,7 +70,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onChange = function(select, value) {
-        if (select !== this.element) {
+        if (select !== this.selectView.element) {
             return;
         }
 

@@ -10,9 +10,6 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 	/**
 	 * Builds the language switcher needed for the FE of the site.
 	 *
-	 * @todo This is static placeholder for now at request of FED.
-	 * @todo Remove static and use bbl_get_switcher_links when Babble is actualy integrated.
-	 *
 	 * @return void
 	 */
 	function internetorg_language_switcher() {
@@ -42,7 +39,7 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 				continue;
 			}
 			if ( $item['href'] ) {
-				echo '<option value="' . esc_url( $item['href'] ) . '" ' . ($item['active'] ? 'selected' : '') . '>' . esc_html( $item['lang']->display_name ) . '</option>';
+				echo '<option value="' . esc_url( $item['href'] ) . '" ' . selected( $item['active'], true, false ) . '>' . esc_html( $item['lang']->display_name ) . '</option>';
 			}
 		}
 		echo '</select>';
@@ -139,6 +136,9 @@ function internetorg_language_attributes( $language_attributes = '' ) {
 
 add_filter( 'language_attributes', 'internetorg_language_attributes' );
 
+/**
+ * Add Babble/Fieldmanager metaboxes to io_video post_type.
+ */
 function internetorg_video_metaboxes() {
 
 	// Bail early as this should go to admin only.
@@ -155,7 +155,7 @@ function internetorg_video_metaboxes() {
 		array(
 			'add_meta_box' => array(
 				'Video Duration',
-				internetorg_get_post_types( 'io_video' ),
+				'io_video',
 			)
 		)
 	);
@@ -169,7 +169,7 @@ function internetorg_video_metaboxes() {
 		array(
 			'add_meta_box' => array(
 				'Video URL',
-				internetorg_get_post_types( 'io_video' ),
+				'io_video',
 			)
 		)
 	);
@@ -177,11 +177,30 @@ function internetorg_video_metaboxes() {
 
 add_action( 'init', 'internetorg_video_metaboxes' );
 
+/**
+ * Add Babble/Fieldmanager metaboxes to page post_type.
+ */
 function internetorg_page_metaboxes() {
 
 	// Bail early as this should go to admin only.
 	if ( ! is_admin() ) {
 		return;
+	}
+
+	/**
+	 * We're on an admin screen with the post_id available.
+	 */
+	if ( ! empty( $_GET['post'] ) ) {
+		$post_id = absint( $_GET['post'] );
+		if ( 'bbl_job' === get_post_type( $post_id ) ) {
+			$language_object = wp_get_post_terms( $post_id, 'bbl_job_language' );
+			$language_object = $language_object[0];
+			$language        = $language_object->slug;
+		}
+	}
+
+	if ( empty( $language ) ) {
+		$language = 'en_US';
 	}
 
 	new Babble_Translatable_Fieldmanager(
@@ -208,7 +227,7 @@ function internetorg_page_metaboxes() {
 		array(
 			'add_meta_box' => array(
 				__( 'Page Intro', 'internetorg' ),
-				internetorg_get_post_types( 'page' ),
+				'page',
 				'internetorg_page_home_after_title',
 				'high',
 			)
@@ -228,7 +247,7 @@ function internetorg_page_metaboxes() {
 		array(
 			'add_meta_box' => array(
 				__( 'Additional page configuration', 'internetorg' ),
-				internetorg_get_post_types( 'page' ),
+				'page',
 				'internetorg_page_home_after_title',
 				'high',
 			)
@@ -250,61 +269,61 @@ function internetorg_page_metaboxes() {
 				'title'          => new Fieldmanager_TextField( __( 'Section Title', 'internetorg' ) ),
 				'name'           => new Fieldmanager_TextField( __( 'Section Name', 'internetorg' ) ),
 				'content'        => new Babble_Fieldmanager_RichTextarea( __( 'Description', 'internetorg' ) ),
-				'src' => new Fieldmanager_Select(
+				'src'            => new Fieldmanager_Select(
 					__( 'Source', 'internetorg' ),
 					array(
-						'name'    => 'src',
+						'name'        => 'src',
 						'first_empty' => true,
-						'options' => array(
-							'page' => __( 'Page, Post, or Story' ),
+						'options'     => array(
+							'page'   => __( 'Page, Post, or Story' ),
 							'custom' => __( 'Custom Link', 'internetorg' ),
 						),
 					)
 				),
-				'slug'  => new Fieldmanager_TextField(
+				'slug'           => new Fieldmanager_TextField(
 					__( 'Section Slug', 'internetorg' ),
 					array(
 						'display_if' => array(
-							'src' => 'src',
+							'src'   => 'src',
 							'value' => 'custom',
 						),
 					)
 				),
-				'url-src' => new Fieldmanager_Select(
+				'url-src'        => new Fieldmanager_Select(
 					__( 'URL Source', 'internetorg' ),
 					array(
 						'datasource' => new Fieldmanager_Datasource_Post(
 							array(
 								'query_args' => array(
-									'post_type' => internetorg_get_multiple_post_types(
+									'post_type'      => internetorg_get_multiple_shadow_post_types(
 										array(
 											'page',
 											'post',
 											'io_story',
-										)
+										),
+										$language
 									),
-									'posts_per_page' => -1,
 								),
-								'use_ajax' => false,
+								'use_ajax'   => false,
 							)
 						),
 						'display_if' => array(
-							'src' => 'src',
+							'src'   => 'src',
 							'value' => 'page',
 						),
 					)
 				),
-				'theme' => new Fieldmanager_Select(
+				'theme'          => new Fieldmanager_Select(
 					array(
-						'label' => 'Select a Theme',
+						'label'   => 'Select a Theme',
 						'options' => array(
 							'approach' => __( 'Approach', 'internetorg' ),
-							'mission' => __( 'Mission', 'internetorg' ),
-							'impact' => __( 'Impact', 'internetorg' ),
+							'mission'  => __( 'Mission', 'internetorg' ),
+							'impact'   => __( 'Impact', 'internetorg' ),
 						),
 					)
 				),
-				'image' => new Fieldmanager_Media(
+				'image'          => new Fieldmanager_Media(
 					__( 'Background Image', 'internetorg' )
 				),
 				'call-to-action' => new Fieldmanager_Group(
@@ -317,28 +336,28 @@ function internetorg_page_metaboxes() {
 						'collapsible'    => true,
 						'sortable'       => true,
 						'children'       => array(
-							'title' => new Fieldmanager_TextField(
+							'title'    => new Fieldmanager_TextField(
 								__( 'CTA Title', 'internetorg' )
 							),
-							'text'  => new Babble_Fieldmanager_RichTextarea(
+							'text'     => new Babble_Fieldmanager_RichTextarea(
 								__( 'Content', 'internetorg' )
 							),
-							'cta_src' => new Fieldmanager_Select(
+							'cta_src'  => new Fieldmanager_Select(
 								__( 'Link Source', 'internetorg' ),
 								array(
-									'name'    => 'cta_src',
+									'name'        => 'cta_src',
 									'first_empty' => true,
-									'options' => array(
-										'page' => __( 'Page, Post, or Story' ),
+									'options'     => array(
+										'page'   => __( 'Page, Post, or Story' ),
 										'custom' => __( 'Custom Link', 'internetorg' ),
 									),
 								)
 							),
-							'link' => new Fieldmanager_TextField(
+							'link'     => new Fieldmanager_TextField(
 								__( 'Link', 'internetorg' ),
 								array(
 									'display_if' => array(
-										'src' => 'cta_src',
+										'src'   => 'cta_src',
 										'value' => 'custom',
 									),
 								)
@@ -349,25 +368,25 @@ function internetorg_page_metaboxes() {
 									'datasource' => new Fieldmanager_Datasource_Post(
 										array(
 											'query_args' => array(
-												'post_type' => internetorg_get_multiple_post_types(
+												'post_type'      => internetorg_get_multiple_shadow_post_types(
 													array(
 														'page',
 														'post',
 														'io_story',
-													)
+													),
+													$language
 												),
-												'posts_per_page' => -1,
 											),
-											'use_ajax' => false,
+											'use_ajax'   => false,
 										)
 									),
 									'display_if' => array(
-										'src' => 'cta_src',
+										'src'   => 'cta_src',
 										'value' => 'page',
 									),
 								)
 							),
-							'image' => new Fieldmanager_Media(
+							'image'    => new Fieldmanager_Media(
 								__( 'Image', 'internetorg' )
 							),
 						),
@@ -393,11 +412,7 @@ function internetorg_page_metaboxes() {
 			'datasource'     => new Fieldmanager_Datasource_Post(
 				array(
 					'query_args' => array(
-						'post_type' => internetorg_get_multiple_post_types(
-							array(
-								'page',
-							)
-						),
+						'post_type' => internetorg_get_shadow_post_types_for_ajax( 'page' ),
 					),
 				)
 			),
@@ -416,9 +431,12 @@ function internetorg_page_metaboxes() {
 
 add_action( 'init', 'internetorg_page_metaboxes' );
 
-
+/**
+ * Add Babble/Fieldmanager metaboxes to io_ctntwdgt post_type.
+ */
 function internetorg_content_widget_metaboxes() {
-	//bail early as this should go to admin only
+
+	// Bail early as this should go to admin only.
 	if ( ! is_admin() ) {
 		return;
 	}
@@ -448,8 +466,12 @@ function internetorg_content_widget_metaboxes() {
 		)
 	);
 }
+
 add_action( 'init', 'internetorg_content_widget_metaboxes' );
 
+/**
+ * Add Babble/Fieldmanager metaboxes to io_story post_type.
+ */
 function internetorg_story_metaboxes() {
 	if ( ! is_admin() ) {
 		return;
@@ -478,13 +500,14 @@ function internetorg_story_metaboxes() {
 	);
 
 }
+
 add_action( 'init', 'internetorg_story_metaboxes' );
 
 /**
  * Adds fields directly below the title of the post title on the edit screen.
  *
- * @global \WP_Post $post          The WP_Post object to which to add a meta box to.
- * @global array    $wp_meta_boxes The array of metaboxes.
+ * @global \WP_Post $post The WP_Post object to which to add a meta box to.
+ * @global array $wp_meta_boxes The array of metaboxes.
  *
  * @return void
  */
@@ -520,58 +543,156 @@ function internetorg_get_active_lang_codes() {
 }
 
 /**
- * Retrieve a list of Babble's "shadow" post_types for a given post_type.
+ * Retrieve a list of Babble's "shadow" post_types for a given post_type and a language.
  *
- * If bbl_get_shadow_post_types function is not available, will return a single element array of the given post_type.
- * If there are no shadow post types, will return a single element array of the given post_type.
- * If there are shadow post types, will prepend the array with the given post_type.
+ * Useful for Fieldmanager_Datasource_Post in conjunction with Fieldmanager_Select.
+ * Don't use this with Fieldmanager_Autocomplete, $language doesn't appear to be available when FM does AJAX.
  * A shadow post type is essentially a post_type appended with language code, posttype_languagecode.
+ * If bbl_get_post_type_in_lang function is not available, will return a single element array of the given post_type.
+ * If there are no shadow post types for the language, will return a single element array of the given post_type.
+ * If there are shadow post types, returns an array of the given original and the corresponding shadow post_type.
  *
- * @todo Restrict to the lanuage of the current translation screen to reduce the queries.
- * @todo Babble API doesn't appear to offer the correct language of the current translation screen, may require trickery.
+ * @used-by internetorg_get_multiple_shadow_post_types
  *
  * @param string $post_type The post_type to get shadow_post_types for. Optional. Defaults to 'page'.
+ * @param string $language
  *
  * @return array An array of post_types.
  */
-function internetorg_get_post_types( $post_type = 'page' ) {
+function internetorg_get_shadow_post_types_by_lang( $post_type = 'page', $language = 'en_US' ) {
 
-	if ( ! function_exists( 'bbl_get_shadow_post_types' ) ) {
+	if ( ! function_exists( 'bbl_get_post_type_in_lang' ) ) {
 		return array( $post_type );
 	}
 
-	$bbl_shadow_post_types = bbl_get_shadow_post_types( $post_type );
+	if ( $language === bbl_get_default_lang_code() ) {
+		return array( $post_type );
+	}
+
+	$bbl_shadow_post_types = bbl_get_post_type_in_lang( $post_type, $language );
 
 	if ( empty( $bbl_shadow_post_types ) ) {
 		return array( $post_type );
 	}
 
-	array_unshift( $bbl_shadow_post_types, $post_type );
-
-	return $bbl_shadow_post_types;
+	return array(
+		$post_type,
+		$bbl_shadow_post_types,
+	);
 }
 
 /**
- * Retrieve a list of Babble's "shadow" post_types for an array of post_types.
+ * Retrieve a list of Babble's "shadow" post_types for a given array of original post_types and a language.
  *
- * @todo Restrict to the lanuage of the current translation screen to reduce the queries.
- * @todo Babble API doesn't appear to offer the correct language of the current translation screen, may require trickery.
+ * Useful for Fieldmanager_Datasource_Post in conjunction with Fieldmanager_Select.
+ * Don't use this with Fieldmanager_Autocomplete, $language doesn't appear to be available when FM does AJAX.
+ * A shadow post type is essentially a post_type appended with language code, posttype_languagecode.
+ *
+ * @uses internetorg_get_shadow_post_types_by_lang
  *
  * @param array $post_types An array of post_types to get shadow_post_types for. Optional. Defaults to array( 'page' ).
+ * @param string $language
  *
- * @return array
+ * @return array An array of post_types.
  */
-function internetorg_get_multiple_post_types( $post_types = array( 'page' ) ) {
+function internetorg_get_multiple_shadow_post_types( $post_types = array( 'page' ), $language = 'en_US' ) {
 
 	foreach ( $post_types as $post_type ) {
-		$types[] = array_values( internetorg_get_post_types( $post_type ) );
+		$types[] = array_values( internetorg_get_shadow_post_types_by_lang( $post_type, $language ) );
 	}
 
-	foreach ( $types as $key => $type_array ) {
-		foreach ( $type_array as $key => $type ) {
+	if ( empty( $types ) ) {
+		return $post_types;
+	}
+
+	foreach ( $types as $outer_key => $type_array ) {
+		foreach ( $type_array as $inner_key => $type ) {
 			array_push( $post_types, $type );
 		}
 	}
 
-	return $post_types;
+	return array_unique( $post_types );
+}
+
+/**
+ * Retrieve a list of all of Babble's "shadow" post_types for all languages for a given original post_type.
+ *
+ * Useful for Fieldmanager_Datasource_Post using AJAX, for example in conjunction with Fieldmanager_Autocomplete.
+ * Don't use this with Fieldmanager_Select, the select menu gets rather large.
+ *
+ * @param string $post_type A post_type to get all shadow_post_types for. Optional. Defaults to 'page'.
+ *
+ * @return array An array of post_types.
+ */
+function internetorg_get_shadow_post_types_for_ajax ( $post_type = 'page' ) {
+
+	if ( ! function_exists( 'bbl_get_shadow_post_types' ) ) {
+		return array( $post_type );
+	}
+
+	$post_types = bbl_get_shadow_post_types( $post_type );
+
+	if ( empty( $post_types ) ) {
+		return array( $post_type );
+	}
+
+	array_push( $post_types, $post_type );
+
+	return array_unique( $post_types );
+}
+
+/**
+ * Wrapper function for bbl_get_the_title_in_lang.
+ *
+ * Will use get_the_title if bbl_get_the_title_in_lang function is not available.
+ *
+ * @param int|object $post Either a WP Post object, or a post ID
+ * @param string $lang_code The code for the language the title is requested in
+ * @param bool $fallback Whether to provide a fallback title in the default language if the requested language is unavailable (defaults to false)
+ *
+ * @return string|void
+ */
+function internetorg_get_the_title_in_lang( $post = null, $lang_code = null, $fallback = false ) {
+
+	if ( ! function_exists( 'bbl_get_the_title_in_lang' ) ) {
+		return get_the_title( $post );
+	}
+
+	return bbl_get_the_title_in_lang( $post, $lang_code, $fallback );
+}
+
+/**
+ * Wrapper function for bbl_get_the_permalink_in_lang.
+ *
+ * Will use get_the_permalink if bbl_get_the_permalink_in_lang function is not available.
+ *
+ * @param int|object $post Either a WP Post object, or a post ID
+ * @param string $lang_code The code for the language the title is requested in
+ * @param bool $fallback Whether to provide a fallback title in the default language if the requested language is unavailable (defaults to false)
+ *
+ * @return false|string|void
+ */
+function internetorg_get_the_permalink_in_lang( $post = null, $lang_code = null, $fallback = false ) {
+
+	if ( ! function_exists( 'bbl_get_the_permalink_in_lang' ) ) {
+		return get_the_permalink( $post );
+	}
+
+	return bbl_get_the_permalink_in_lang( $post, $lang_code, $fallback );
+}
+
+/**
+ * Wrapper function for bbl_get_current_content_lang_code.
+ *
+ * Will use get_locale if bbl_get_current_content_lang_code function is not available.
+ *
+ * @return string
+ */
+function internetorg_get_current_content_lang_code() {
+
+	if ( ! function_exists( 'bbl_get_current_content_lang_code' ) ) {
+		return get_locale();
+	}
+
+	return bbl_get_current_content_lang_code();
 }

@@ -448,14 +448,20 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto.updateElement = function($el) {
+        this.disable();
+
+        // swap element
         var parentNode = this.element.parentNode;
         parentNode.removeChild(this.element);
         this.$element = $el;
         this.element = $el[0];
         parentNode.insertBefore(this.element, parentNode.firstChild);
+
+        // rebuild menu
         this._refreshMenu();
-        this.disable();
-        this.enable(); // rebind
+
+        // re-enable
+        this.enable();
         this._render();
     };
 

@@ -146,6 +146,49 @@ function internetorg_setup_image_sizes() {
 add_action( 'after_setup_theme', 'internetorg_setup_image_sizes' );
 
 /**
+ * intercepts the template before it's loaded to determine if it' correct
+ *
+ * @action   template_include
+ * @priority default (10)
+ *
+ * @link     https://goo.gl/fUD7Yl for "WHY U NO USE template_redirect?"
+ *
+ * @param string $original_template the template that will be used be default
+ *
+ * @return mixed the actual template to load
+ */
+function internetorg_switch_page_template( $original_template ) {
+	global $post;
+
+	$load_template = $original_template;
+
+	/*
+	 * no "default" because we just want to return the $original_template which
+	 * we set into $load template above we want to change the template if we
+	 * are on a non-default language version of a page that has a page template
+	 * explicitly set (think "Our Approach")
+	 */
+	switch( $post->page_template ) {
+		case 'page-approach.php':
+
+			break;
+	}
+
+//	echo '<pre>';
+//	echo $load_template . '<br/>';
+//
+//	print_r( $post );
+//
+//	echo '</pre>';
+//	exit;
+
+
+	return $load_template;
+}
+add_action( 'template_include', 'internetorg_switch_page_template' );
+
+
+/**
  * Add custom image sizes to the media chooser.
  *
  * Default values include 'Thumbnail', 'Medium', 'Large', 'Full Size'.
@@ -1296,12 +1339,18 @@ function internetorg_get_page_theme( $post_id = 0 ) {
 		return $default_theme;
 	}
 
+	// make sure we have the base post ID (original language)
+	$original_post_id = $post_id;
+	if ( function_exists( 'bbl_get_default_lang_post' ) ) {
+		$original_post_id = bbl_get_default_lang_post( $post_id );
+	}
+
 	/**
 	 * The name of the page template, else empty string or false.
 	 *
 	 * @var string|bool $page_template_slug
 	 */
-	$page_template_slug = get_page_template_slug( $post_id );
+	$page_template_slug = get_page_template_slug( $original_post_id );
 
 	if ( empty( $page_template_slug ) ) {
 		return $default_theme;
