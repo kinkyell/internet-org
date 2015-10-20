@@ -3,6 +3,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var AbstractView = require('./AbstractView');
     var eventHub = require('services/eventHub');
+    var $ = require('jquery');
 
     /**
      * A view for updating the language attribute
@@ -11,8 +12,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {jQuery} $element A reference to the containing DOM element.
      * @constructor
      */
-    var LanguageView = function($element) {
+    var LanguageView = function($element, selectView) {
         AbstractView.call(this, $element);
+        this.selectView = selectView;
     };
 
     var proto = AbstractView.createChild(LanguageView);
@@ -27,6 +29,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.setupHandlers = function() {
         this._handleChange = this._onChange.bind(this);
+        this._handlePageChange = this._onPageChange.bind(this);
     };
 
     /**
@@ -38,6 +41,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.onEnable = function() {
         eventHub.subscribe('SelectView:change', this._handleChange);
+        eventHub.subscribe('viewWindow:pageLoad', this._handlePageChange);
     };
 
     /**
@@ -49,6 +53,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.onDisable = function() {
         eventHub.unsubscribe('SelectView:change', this._handleChange);
+        eventHub.unsubscribe('viewWindow:pageLoad', this._handlePageChange);
     };
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -74,6 +79,28 @@ define(function(require, exports, module) { // jshint ignore:line
         // var opt = select.options[select.selectedIndex];
         // var isRtl = (opt.getAttribute('data-dir') === 'rtl');
         // this._setLanguage(value, isRtl);
+    };
+
+    /**
+     * Change page changing
+     *
+     * @method _onPageChange
+     * @param {HTMLSelectElement} select Language switcher select
+     * @param {String} value Country code
+     * @fires LanguageView:change
+     * @private
+     */
+    proto._onPageChange = function(parsedPage) {
+        var select = parsedPage.reduce(function(found, el) {
+            if (el.id === 'mainNav') {
+                return $(el).find('#js-LanguageView');
+            }
+            return found;
+        }, []);
+
+        if (select.length) {
+            this.selectView.updateElement(select);
+        }
     };
 
     /**

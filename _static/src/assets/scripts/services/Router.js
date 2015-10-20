@@ -194,7 +194,7 @@ define(function(require, exports, module) { // jshint ignore:line
     Router.prototype._onStateHome = function(event) {
         var prevStates = this._currentStates.slice(0);
         var len = prevStates.length;
-        var url = '/';
+        var url = event.currentTarget.pathname;
         event.preventDefault();
 
         if (
@@ -222,6 +222,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     Router.prototype._onSearch = function(event) {
         var prevStates = this._currentStates.slice(0);
+        var prefix = '/' + appConfig.langPath + '/search/';
         // .replace(/%20/g, '+')
         //var url = appConfig.searchPath + encodeURIComponent(event.searchText) + '/page/1';
         this._currentStates.push({
@@ -229,7 +230,7 @@ define(function(require, exports, module) { // jshint ignore:line
             type: 'search',
             searchText: event.searchText
         });
-        this.historyManager.pushState(this._currentStates, null, appConfig.langPath + '/search/' + encodeURIComponent(event.searchText));
+        this.historyManager.pushState(this._currentStates, null, prefix + encodeURIComponent(event.searchText));
         eventHub.publish('Router:stateChange', this._currentStates, prevStates);
     };
 

@@ -61,7 +61,7 @@ define(function(require, exports, module) { // jshint ignore:line
             prefix: 'langSelect',
             anchorBottom: true
         });
-        this.langView = new LanguageView($('#js-LanguageView'));
+        this.langView = new LanguageView($('#js-LanguageView'), this.selectView);
     };
 
     /**
