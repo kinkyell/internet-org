@@ -640,3 +640,59 @@ function internetorg_get_shadow_post_types_for_ajax ( $post_type = 'page' ) {
 
 	return array_unique( $post_types );
 }
+
+/**
+ * Wrapper function for bbl_get_the_title_in_lang.
+ *
+ * Will use get_the_title if bbl_get_the_title_in_lang function is not available.
+ *
+ * @param int|object $post Either a WP Post object, or a post ID
+ * @param string $lang_code The code for the language the title is requested in
+ * @param bool $fallback Whether to provide a fallback title in the default language if the requested language is unavailable (defaults to false)
+ *
+ * @return string|void
+ */
+function internetorg_get_the_title_in_lang( $post = null, $lang_code = null, $fallback = false ) {
+
+	if ( ! function_exists( 'bbl_get_the_title_in_lang' ) ) {
+		return get_the_title( $post );
+	}
+
+	return bbl_get_the_title_in_lang( $post, $lang_code, $fallback );
+}
+
+/**
+ * Wrapper function for bbl_get_the_permalink_in_lang.
+ *
+ * Will use get_the_permalink if bbl_get_the_permalink_in_lang function is not available.
+ *
+ * @param int|object $post Either a WP Post object, or a post ID
+ * @param string $lang_code The code for the language the title is requested in
+ * @param bool $fallback Whether to provide a fallback title in the default language if the requested language is unavailable (defaults to false)
+ *
+ * @return false|string|void
+ */
+function internetorg_get_the_permalink_in_lang( $post = null, $lang_code = null, $fallback = false ) {
+
+	if ( ! function_exists( 'bbl_get_the_permalink_in_lang' ) ) {
+		return get_the_permalink( $post );
+	}
+
+	return bbl_get_the_permalink_in_lang( $post, $lang_code, $fallback );
+}
+
+/**
+ * Wrapper function for bbl_get_current_content_lang_code.
+ *
+ * Will use get_locale if bbl_get_current_content_lang_code function is not available.
+ *
+ * @return string
+ */
+function internetorg_get_current_content_lang_code() {
+
+	if ( ! function_exists( 'bbl_get_current_content_lang_code' ) ) {
+		return get_locale();
+	}
+
+	return bbl_get_current_content_lang_code();
+}
