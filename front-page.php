@@ -299,7 +299,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 											foreach ( $group as $cf_content_section ) : ?>
 
 												<div class="narrative-section">
-													<div class="narrative-section-slides">
+													<div class="narrative-section-slides narrative-section-slides_short">
 
 														<?php $data_img = '';
 														if ( ! empty( $cf_content_section['call-to-action'] ) ) {
