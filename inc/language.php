@@ -39,7 +39,7 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 				continue;
 			}
 			if ( $item['href'] ) {
-				echo '<option value="' . esc_url( $item['href'] ) . '" ' . selected( $item['active'] ) . '>' . esc_html( $item['lang']->display_name ) . '</option>';
+				echo '<option value="' . esc_url( $item['href'] ) . '" ' . selected( $item['active'], true, false ) . '>' . esc_html( $item['lang']->display_name ) . '</option>';
 			}
 		}
 		echo '</select>';
