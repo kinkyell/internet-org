@@ -18,8 +18,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var MOVEMENT_Y = AppConfig.narrative.desktop.MOVEMENT_Y;
     var STAGGER_DELAY = AppConfig.narrative.desktop.STAGGER_DELAY;
 
-    // var EASE = AppConfig.narrative.desktop.EASE == undefined ? window.Expo : AppConfig.narrative.desktop.EASE;
-    var EASE = window.Expo;
+    var EASE = AppConfig.narrative.desktop.EASE == undefined ? window.Expo : AppConfig.narrative.desktop.EASE;
     var EASE_DIRECTION_FORWARD = AppConfig.narrative.desktop.EASE_DIRECTION_FORWARD;
     var EASE_DIRECTION_REVERSE = AppConfig.narrative.desktop.EASE_DIRECTION_REVERSE;
 
@@ -377,7 +376,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this._$transformBlockPre.eq(1),
             (SECTION_DURATION) * 0.5,
             {
-                y: '-' + (MOVEMENT_Y * 0.5) + 'px',
+                y: (MOVEMENT_Y * 0.5) + 'px',
                 opacity: 0
             },
             {
