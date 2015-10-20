@@ -18,8 +18,9 @@ class LinkTransformer {
    * Constructor.
    *
    * @param string $languageCode  The two-character language code our transformed links should use
+   * @param string $domain        The current domain
    */
-  public function __construct($languageCode) {
+  public function __construct($languageCode, $domain) {
     $this->languageCode = $languageCode;
   }
 
@@ -31,7 +32,7 @@ class LinkTransformer {
    */
   public function transform($url) {
 
-    // @TODO: Transform the URL based on the given language
+    // @TODO: Transform the URL based on the given language and current domain
 
     return $url;
   }

@@ -9,7 +9,8 @@
 require_once dirname(__FILE__) . '/includes/ContentParser.class.php';
 require_once dirname(__FILE__) . '/includes/LinkTransformer.class.php';
 
-$transformer = new LinkTransformer(bbl_get_current_lang());
+$current_site = get_current_site();
+$transformer = new LinkTransformer(bbl_get_current_lang(), $current_site->domain);
 $parser = new ContentParser($transformer);
 
 add_filter('the_content', array($parser, 'parseLinks'), 100);

@@ -6,6 +6,10 @@
  * Time: 1:00 PM
  */
 
+/**
+ * Class ContentParser. Walks through a given string of HTML content and transforms
+ * the appropriate links into the proper language, utilizing LinkTransformer.
+ */
 class ContentParser {
 
   /**
@@ -49,7 +53,9 @@ class ContentParser {
   }
 
   /**
-   * Recursive method used to traverse the DOM and filter all links.
+   * Recursive method used to traverse the DOM and filter all links. We loop through the current
+   * node's children rather than simply recurse over the children because in order to replace
+   * a child, DOMDocument needs to know the parent.
    *
    * @param DOMDocument $dom
    * @param DomNode $node
@@ -57,23 +63,38 @@ class ContentParser {
   protected function traverseDom(DOMDocument $dom, DomNode &$node) {
     if ($node->childNodes) {
       for ($i = 0; $i < $node->childNodes->length; ++$i) {
-        /**
-         * @var DomElement
-         */
+        /** @var DomElement */
         $childNode = $node->childNodes->item($i);
         if ($childNode->tagName == 'a') {
-          $href = $childNode->getAttribute('href');j
+          $href = $childNode->getAttribute('href');
 
-          // @TODO: pass href to LinkTransformer for transformation.
+          if ($this->shouldHrefBeTransformed($href)) {
+            $transformedHref = $this->linkTransformer->transform($href);
+
+            // @TODO: Update the node. Not sure if we can just set the attribute or if we have to replace the node.
 
 //          $textReplacementNode = $dom->createTextNode($childNode->data);
 //          $node->replaceChild(
 //            $textReplacementNode,
 //            $childNode
 //          );
+          }
         }
         $this->traverseDom($dom, $node->childNodes->item($i));
       }
     }
+  }
+
+  /**
+   * Determines whether a given DOMElement/href should be transformed. We take the
+   * DOMElement in as a parameter because we intend on using HTML classes to manage
+   * exclusions.
+   *
+   * @param DOMElement $element   The element containing the anchor in question
+   * @return boolean
+   */
+  protected function shouldHrefBeTransformed(DOMElement $element) {
+    // @TODO: Account for exclusions here.
+    return true;
   }
 }
