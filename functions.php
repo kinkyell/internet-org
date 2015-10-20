@@ -37,6 +37,9 @@ require IO_DIR . '/plugins/internetorg-custom-posttypes/internetorg-custom-postt
 wpcom_vip_load_plugin( 'fieldmanager' );
 require IO_DIR . '/plugins/internetorg-custom-fields/internetorg-custom-fields.php';
 
+/** Link filter, which corrects anchors for the current language. */
+require_once( __DIR__ . '/plugins/internetorg-link-filter/internetorg-link-filter.php' );
+
 /** Babble */
 require IO_DIR . '/inc/babble-fieldmanager-context.php';
 
