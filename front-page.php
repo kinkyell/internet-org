@@ -175,13 +175,13 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 								<?php endif; ?>
 
 								<div class="narrativeDT-inner">
-									<div class="container">
+									<div class="container container_xl">
 										<div class="transformBlock js-transformBlock">
 											<div class="transformBlock-pre">
 												<div class="transformBlock-pre-item transformBlock-pre-item_divide">
 													<span class="bdcpy bdcpy_narrative mix-bdcpy_splash"><?php the_title(); ?></span>
 												</div>
-												<div class="transformBlock-pre-item">
+												<div class="transformBlock-pre-item transformBlock-pre-item_divide">
 													<span class="bdcpy bdcpy_narrative mix-bdcpy_splash"><?php echo esc_html( ! empty( $get_involved_content_widget_post ) ? $get_involved_content_widget_post->post_title : '' ); ?></span>
 												</div>
 											</div>
@@ -229,21 +229,23 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																		? $cf_content_section['theme']
 																		: $cf_content_section['slug'];
 																	?>
-																	<a href="<?php echo esc_url( $url ); ?>"
-																	   class="link link_theme<?php echo esc_attr( ucwords( $theme ) ); ?> js-stateLink"
-																	   data-type="panel"
-																	   data-image="<?php echo esc_url( $img ); ?>"
-																	   data-theme="<?php echo esc_attr( $theme ); ?>"
-																		<?php if ( is_string( $mobile_image ) ) : ?>
-																			data-mobile-image="<?php echo esc_url( $mobile_image ); ?>"
-																		<?php endif; ?>
-																		<?php if ( is_string( $img ) ) : ?>
-																			data-image="<?php echo esc_url( $img ); ?>"
-																		<?php endif; ?>
-                                                                       data-title="<?php echo esc_attr( $title ); ?>"
-                                                                       data-desc="<?php echo esc_attr( $desc ); ?>">
-																		<?php echo esc_html( $cf_content_section['name'] ); ?>
-																	</a>
+																	<div class="transformBlock-post-item-ft">
+																		<a href="<?php echo esc_url( $url ); ?>"
+																		   class="link link_theme<?php echo esc_attr( ucwords( $theme ) ); ?> js-stateLink"
+																		   data-type="panel"
+																		   data-image="<?php echo esc_url( $img ); ?>"
+																		   data-theme="<?php echo esc_attr( $theme ); ?>"
+																			<?php if ( is_string( $mobile_image ) ) : ?>
+																				data-mobile-image="<?php echo esc_url( $mobile_image ); ?>"
+																			<?php endif; ?>
+																			<?php if ( is_string( $img ) ) : ?>
+																				data-image="<?php echo esc_url( $img ); ?>"
+																			<?php endif; ?>
+	                                                                       data-title="<?php echo esc_attr( $title ); ?>"
+	                                                                       data-desc="<?php echo esc_attr( $desc ); ?>">
+																			<?php echo esc_html( $cf_content_section['name'] ); ?>
+																		</a>
+																	</div>
 																</div>
 															<?php endforeach;
 														endif;
