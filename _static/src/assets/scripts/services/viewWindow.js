@@ -320,7 +320,6 @@ define(function(require, exports, module) { // jshint ignore:line
 
             this._isShifted = !this._isShifted;
 
-            silent = true;
             if (silent) {
                 this.$panels.removeClass('isAnimating');
                 return Promise.resolve();
