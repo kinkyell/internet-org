@@ -1275,6 +1275,11 @@ function internetorg_get_mobile_featured_image( $post_type, $post_id, $size = 'i
 		$post_type = get_post_type( $post_id );
 	}
 
+	/**
+	 * Allowed post_type whitelist.
+	 *
+	 * @var array $allowed_post_types
+	 */
 	$allowed_post_types = get_post_types();
 
 	if ( ! in_array( $post_type, $allowed_post_types ) ) {
@@ -1282,21 +1287,65 @@ function internetorg_get_mobile_featured_image( $post_type, $post_id, $size = 'i
 	}
 
 	if ( ! class_exists( 'MultiPostThumbnails' ) ) {
-		return internetorg_get_post_thumbnail( $post_id, $size );
+		return '';
 	}
 
+	/**
+	 * The ID (or name) of the additional featured image registered with MultiPostThumbnails plugin.
+	 *
+	 * @var string $id
+	 */
 	$id = 'mobile-featured-image';
 
+	/**
+	 * The MultiPostThumbnails plugin prefixes the 'additional' featured images with the post_type.
+	 * Because Babble uses "shadow post_types," for additional languages, we need to account for this.
+	 * The mobile featured image meta will be synced as page_mobile-featured-image_thumbnail_id (for example),
+	 * not page_ar_mobile-featured-image_thumbnail_id (for example).
+	 * So we will use the base post type to get the proper meta_key.
+	 */
+
+	/**
+	 * An array of "base" post_type objects (excluding the shadow post types registered by Babble).
+	 *
+	 * @var stdClass[] $base_post_type_objects
+	 */
+	$base_post_type_objects = internetorg_get_base_post_types();
+
+	/**
+	 * An array of just the "base" post_type names.
+	 *
+	 * @var array $base_post_types
+	 */
+	$base_post_types = wp_list_pluck( $base_post_type_objects, 'name' );
+
+	/**
+	 * If the provided $post_type is a shadow post_type, let's get the base equivalent.
+	 */
+	if ( ! in_array( $post_type, $base_post_types ) ) {
+		$post_type = internetorg_get_base_post_type( $post_type );
+	}
+
+	/**
+	 * Conditional check for the mobile-featured-image.
+	 *
+	 * @var bool $has_post_thumbnail
+	 */
 	$has_post_thumbnail = MultiPostThumbnails::has_post_thumbnail( $post_type, $id, $post_id );
 
 	if ( empty( $has_post_thumbnail ) ) {
 		return '';
 	}
 
+	/**
+	 * Thumbnail url or false if the post doesn't have a thumbnail for the given post type, and id.
+	 *
+	 * @var string|bool $img_url
+	 */
 	$img_url = MultiPostThumbnails::get_post_thumbnail_url( $post_type, $id, $post_id, $size );
 
 	if ( empty( $img_url ) ) {
-		return internetorg_get_post_thumbnail( $post_id, $size );
+		return '';
 	}
 
 	return $img_url;
@@ -2202,5 +2251,3 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 		<?php
 	}
 }
-
-
