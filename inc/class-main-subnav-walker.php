@@ -83,11 +83,24 @@ class Internetorg_Main_SubNav_Walker extends Walker_Nav_Menu {
 		}
 
 		/**
-		 * The page and io_story post types are the only ones that should be paneled.
+		 * Retrieve a list of all the 'io_story' post type names, including Babble's shadow post types for 'io_story'.
 		 *
-		 * But only if we have a post_thumbnail, and not for blog home or page-contact.php.
+		 * @var array $io_story_post_types
 		 */
-		if ( 'io_story' === $item->object || 'page' === $item->object ) {
+		$io_story_post_types = internetorg_get_shadow_post_types_for_ajax( 'io_story' );
+
+		/**
+		 * Retrieve a list of all the 'page' post type names, including Babble's shadow post types for 'page'.
+		 *
+		 * @var array $page_post_types
+		 */
+		$page_post_types = internetorg_get_shadow_post_types_for_ajax( 'page' );
+
+		/**
+		 * The page and io_story post types (and their Babble shadow post_type equivalents) are the only post_types that
+		 * should be paneled. But only if we have a post_thumbnail, and not for blog home or page-contact.php.
+		 */
+		if ( in_array( $item->object, $io_story_post_types ) || in_array( $item->object, $page_post_types ) ) {
 
 			/**
 			 * The page for posts setting is the blog home.
@@ -134,19 +147,27 @@ class Internetorg_Main_SubNav_Walker extends Walker_Nav_Menu {
 				 * @var string $mobile_thumbnail
 				 */
 				$mobile_thumbnail = internetorg_get_mobile_featured_image(
-					get_post_type( $item->object_id ),
+					$item->object,
 					$item->object_id
 				);
 			}
 		}
 
-		if ( 'post' === $item->object ) {
+		/**
+		 * Retrieve a list of all the 'post' post type names, including Babble's shadow post types for 'post'.
+		 *
+		 * @var array $post_post_types
+		 */
+		$post_post_types = internetorg_get_shadow_post_types_for_ajax( 'post' );
+
+		if ( in_array( $item->object, $post_post_types ) ) {
 			/**
 			 * Posts have a date attribute for publish date.
 			 *
 			 * @var string $data_date
 			 */
 			$data_date = get_the_date( '', $item->object_id );
+
 			/**
 			 * Posts have a social attribute.
 			 *
