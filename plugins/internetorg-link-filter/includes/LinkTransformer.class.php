@@ -1,11 +1,19 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: bkoren
- * Date: 10/20/15
- * Time: 1:00 PM
+ * File LinkTransformer.class.php
+ *
+ * @package Internet.org
  */
 
+/**
+ * Class LinkTransformer
+ *
+ * Transform existing link into normalized format specific to
+ * the currently selected language
+ *
+ * @author Ben Koren <bkoren@nerdery.com>
+ * @author Edward Pfremmer <epfremme@nerdery.com>
+ */
 class LinkTransformer {
 
   /**
@@ -47,16 +55,34 @@ class LinkTransformer {
     $parsedUrl = parse_url($url);
     $pathParts = array_values(array_filter(explode('/', $parsedUrl['path'])));
 
-    // Strip out any existing language code
-    if (strlen($pathParts[0]) == 2) {
-      unset($pathParts[0]);
+    // stop at first potential language code
+    foreach ($pathParts as $index => $part) {
+      if (!$this->isLanguageCode($part)) {
+        continue;
+      }
+
+      $pathParts[$index] = $this->languageCode;
+      break;
     }
 
+    $scheme = isset($pathParts['scheme']) ? $pathParts['scheme'] : 'http';
     $newPath = implode('/', $pathParts);
 
-    $newUrl = "http://{$this->domain}/{$newPath}";
+    return sprintf('%s://%s/%s', $scheme, $this->domain, $newPath);
+  }
 
-    return $newUrl;
+  /**
+   * Test if the input string is a potential language code. This tests only that the
+   * string is exactly 2 [a-z] case insensitive characters
+   *
+   * This could be made more accurate by fetching only the supported languages from babble and
+   * testing against that subset, but is sufficient for current requirements.
+   *
+   * @param string $string
+   * @return bool
+   */
+  protected function isLanguageCode($string) {
+    return (bool) preg_match('/^[a-z]{2}/i', $string);
   }
 
   /**

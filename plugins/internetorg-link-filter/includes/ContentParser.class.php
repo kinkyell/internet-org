@@ -1,14 +1,22 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: bkoren
- * Date: 10/20/15
- * Time: 1:00 PM
+ * File ContentParser.class.php
+ *
+ * @package Internet.org
  */
 
 /**
- * Class ContentParser. Walks through a given string of HTML content and transforms
- * the appropriate links into the proper language, utilizing LinkTransformer.
+ * Class LinkTransformer
+ */
+
+/**
+ * Class ContentParser.
+ *
+ * Walks through a given string of HTML content and transforms the appropriate links
+ * into the proper language, utilizing LinkTransformer.
+ *
+ * @author Ben Koren <bkoren@nerdery.com>
+ * @author Edward Pfremmer <epfremme@nerdery.com>
  */
 class ContentParser {
 
@@ -17,7 +25,11 @@ class ContentParser {
    */
   private $linkTransformer;
 
-
+  /**
+   * Constructor
+   *
+   * @param LinkTransformer $linkTransformer
+   */
   public function __construct(LinkTransformer $linkTransformer) {
     $this->linkTransformer = $linkTransformer;
   }
@@ -45,7 +57,7 @@ class ContentParser {
     }
 
     // Recurse through the content, transforming all applicable links
-    $this->traverseDom($dom, $dom);
+    $this->traverseDom($dom);
 
     $transformedContent = $dom->saveHTML();
 
@@ -58,33 +70,19 @@ class ContentParser {
    * a child, DOMDocument needs to know the parent.
    *
    * @param DOMDocument $dom
-   * @param DomNode $node
    */
-  protected function traverseDom(DOMDocument $dom, DomNode &$node) {
-    if ($node->childNodes) {
-      for ($i = 0; $i < $node->childNodes->length; ++$i) {
-
-        /** @var DomElement */
-        $childNode = $node->childNodes->item($i);
-
-        if (get_class($childNode) == 'DOMElement' && $childNode->tagName == 'a') {
-
-          $href = $childNode->getAttribute('href');
-
-          if ($this->shouldHrefBeTransformed($href)) {
-            $transformedHref = $this->linkTransformer->transform($href);
-
-            // @TODO: Update the node. Not sure if we can just set the attribute or if we have to replace the node, but likely the latter.
-
-//          $textReplacementNode = $dom->createTextNode($childNode->data);
-//          $node->replaceChild(
-//            $textReplacementNode,
-//            $childNode
-//          );
-          }
-        }
-        $this->traverseDom($dom, $node->childNodes->item($i));
+  protected function traverseDom(DOMDocument $dom) {
+    /** @var DomElement $item */
+    foreach ($dom->getElementsByTagName('a') as $item) {
+      if (!$this->shouldHrefBeTransformed($item)) {
+        $item->setAttribute('excluded', 'true');
+        continue;
       }
+
+      $href = $item->getAttribute('href');
+      $href = $this->linkTransformer->transform($href);
+
+      $item->setAttribute('href', $href);
     }
   }
 
@@ -96,7 +94,7 @@ class ContentParser {
    * @param DOMElement $element   The element containing the anchor in question
    * @return boolean
    */
-  protected function shouldHrefBeTransformed($element) {
+  protected function shouldHrefBeTransformed(DOMElement $element) {
     // @TODO: Account for exclusions here.
     return true;
   }
