@@ -12,10 +12,23 @@ require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 vip_allow_title_orphans();
 
 // Shortcake VIP Plugin.
-require_once( WP_CONTENT_DIR . '/themes/vip/plugins/shortcode-ui/shortcode-ui.php' );
+wpcom_vip_load_plugin( 'shortcode-ui' );
 
 wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
 wpcom_vip_load_plugin( 'wpcom-thumbnail-editor' );
+
+wpcom_vip_load_plugin( 'babble', 'plugins', true );
+wpcom_vip_load_plugin( 'babble-globals', 'plugins', true );
+wpcom_vip_load_plugin( 'babble-translation-group-tool', 'plugins', true );
+
+// Google Analytics
+wpcom_vip_load_plugin( 'wp-google-analytics' );
+
+// Additional Caching
+wpcom_vip_load_plugin( 'cache-nav-menu' );
+
+// Opengraph
+wpcom_vip_enable_opengraph();
 
 /** Custom Post Types. */
 require IO_DIR . '/plugins/internetorg-custom-posttypes/internetorg-custom-posttypes.php';
@@ -23,6 +36,9 @@ require IO_DIR . '/plugins/internetorg-custom-posttypes/internetorg-custom-postt
 /** Fieldmanager and Fields. */
 wpcom_vip_load_plugin( 'fieldmanager' );
 require IO_DIR . '/plugins/internetorg-custom-fields/internetorg-custom-fields.php';
+
+/** Babble */
+require IO_DIR . '/inc/babble-fieldmanager-context.php';
 
 if ( ! function_exists( 'internetorg_setup' ) ) :
 	/**
@@ -60,7 +76,7 @@ if ( ! function_exists( 'internetorg_setup' ) ) :
 		add_theme_support( 'post-thumbnails' );
 
 		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus(
+		internetorg_register_menus(
 			array(
 				'primary'         => esc_html__( 'Primary Menu', 'internetorg' ),
 				'primary-sub-nav' => esc_html__( 'Primary Menu Sub Nav', 'internetorg' ),
@@ -128,6 +144,49 @@ function internetorg_setup_image_sizes() {
 }
 
 add_action( 'after_setup_theme', 'internetorg_setup_image_sizes' );
+
+/**
+ * intercepts the template before it's loaded to determine if it' correct
+ *
+ * @action   template_include
+ * @priority default (10)
+ *
+ * @link     https://goo.gl/fUD7Yl for "WHY U NO USE template_redirect?"
+ *
+ * @param string $original_template the template that will be used be default
+ *
+ * @return mixed the actual template to load
+ */
+function internetorg_switch_page_template( $original_template ) {
+	global $post;
+
+	$load_template = $original_template;
+
+	/*
+	 * no "default" because we just want to return the $original_template which
+	 * we set into $load template above we want to change the template if we
+	 * are on a non-default language version of a page that has a page template
+	 * explicitly set (think "Our Approach")
+	 */
+	switch( $post->page_template ) {
+		case 'page-approach.php':
+
+			break;
+	}
+
+//	echo '<pre>';
+//	echo $load_template . '<br/>';
+//
+//	print_r( $post );
+//
+//	echo '</pre>';
+//	exit;
+
+
+	return $load_template;
+}
+add_action( 'template_include', 'internetorg_switch_page_template' );
+
 
 /**
  * Add custom image sizes to the media chooser.
@@ -1280,12 +1339,18 @@ function internetorg_get_page_theme( $post_id = 0 ) {
 		return $default_theme;
 	}
 
+	// make sure we have the base post ID (original language)
+	$original_post_id = $post_id;
+	if ( function_exists( 'bbl_get_default_lang_post' ) ) {
+		$original_post_id = bbl_get_default_lang_post( $post_id );
+	}
+
 	/**
 	 * The name of the page template, else empty string or false.
 	 *
 	 * @var string|bool $page_template_slug
 	 */
-	$page_template_slug = get_page_template_slug( $post_id );
+	$page_template_slug = get_page_template_slug( $original_post_id );
 
 	if ( empty( $page_template_slug ) ) {
 		return $default_theme;
@@ -1849,6 +1914,161 @@ function internetorg_the_press_filter( $years = array() ) {
 }
 
 /**
+ * Wrapper function for register_nav_menus.
+ *
+ * Registers a default Primary and Secondary nav menu and returns early if Babble is not present.
+ * If Babble is present, registers a Primary and Secondary menu for each available language.
+ *
+ * @used-by internetorg_setup
+ */
+function internetorg_register_menus() {
+
+	if ( ! function_exists( 'bbl_get_active_langs' ) ) {
+
+		// This theme uses wp_nav_menu() in two locations, if Babble's bbl_get_active_langs is not present.
+		register_nav_menus(
+			array(
+				'primary'   => esc_html__( 'Primary Menu', 'internetorg' ),
+				'secondary' => esc_html__( 'Secondary Menu', 'internetorg' ),
+			)
+		);
+
+		return;
+	}
+
+	/**
+	 * An array of active language stdClass objects returned by Babble.
+	 *
+	 * Babble will return an array that is structured thusly...
+	 *
+	 *     $bbl_active_langs = Array
+	 *     (
+	 *         [en] => stdClass Object
+	 *             (
+	 *                 [name] => English (US)
+	 *                 [code] => en_US
+	 *                 [url_prefix] => en
+	 *                 [text_direction] => ltr
+	 *                 [display_name] => English (US)
+	 *             )
+	 *     )
+	 *
+	 * @var stdClass[] $bbl_active_langs
+	 */
+	$bbl_active_langs = bbl_get_active_langs();
+
+	foreach ( $bbl_active_langs as $lang ) {
+		register_nav_menus(
+			array(
+				'primary-' . $lang->code => sprintf(
+					esc_html__( '%s Primary Menu', 'internetorg' ),
+					$lang->display_name
+				),
+				'secondary-' . $lang->code => sprintf(
+					esc_html__( '%s Secondary Menu', 'internetorg' ),
+					$lang->display_name
+				),
+			)
+		);
+	}
+
+	return;
+}
+
+/**
+ * Get the current content language code.
+ *
+ * Wrapper for bbl_get_current_content_lang_code. If Babble's not available, returns empty string.
+ *
+ * @return string Current content language code according to Babble, else empty string.
+ */
+function internetorg_get_current_lang_code() {
+
+	$lang_code = '';
+
+	if ( function_exists( 'bbl_get_current_content_lang_code' ) ) {
+		$lang_code = bbl_get_current_content_lang_code();
+	}
+
+	return $lang_code;
+}
+
+/**
+ * Output a nav menu.
+ *
+ * Wrapper for wp_nav_menu, if Babble is available, outputs menu based on location and current content language.
+ *
+ * @param string $location The general theme location of the menu. Allowed values, primary, secondary.
+ */
+function internetorg_nav_menu( $location = 'primary' ) {
+
+	/**
+	 * Allowed menu locations in the theme.
+	 *
+	 * When Babble is not present, primary and secondary are the only menu locations.
+	 * However, when Babble is present, each language has a primary and secondary location specific to that language.
+	 * primary-en_US and secondary-en_US, primary-es_MX and secondary-es_MX, for example.
+	 * If Babble is present, the primary and secondary $allowed_locations will be concatenated with the $lang_code.
+	 *
+	 * @see internetorg_register_menus
+	 *
+	 * @var array $locations_whitelist
+	 */
+	$locations_whitelist = array(
+		'primary',
+		'secondary',
+	);
+
+	if ( empty( $location ) || ! in_array( $location, $locations_whitelist ) ) {
+		$location = 'primary';
+	}
+
+	$lang_code = internetorg_get_current_lang_code();
+
+	/**
+	 * An array of non-default wp_nav_menu parameters, to be merged with the $args array and passed to wp_nav_menu.
+	 *
+	 * Refer to the default wp_nav_menu parameters in the Codex to determine if you need to override them here.
+	 *
+	 * @link https://codex.wordpress.org/Function_Reference/wp_nav_menu#Parameters
+	 *
+	 * @var array $defaults
+	 */
+	$nav_override_params = array(
+		'menu_class' => '',
+		'menu_id'    => '',
+	);
+
+	/**
+	 * An array of arguments to be merged with the $nav_override_params array and passed to wp_nav_menu.
+	 *
+	 * @var array $args
+	 */
+	$args = array();
+
+	if ( 'primary' === $location ) {
+		$args['container_class'] = 'mainMenu-panel-primary';
+		$args['walker']          = new Internetorg_Main_Nav_Walker();
+	} else {
+		$args['container_class'] = 'mainMenu-panel-secondary';
+		$args['menu_class']      = 'borderBlocks borderBlocks_2up';
+		$args['walker']          = new Internetorg_Main_SubNav_Walker();
+	}
+
+	if ( empty( $lang_code ) || ! class_exists( 'Babble' ) ) {
+		$args['theme_location'] = $location;
+	} else {
+		$args['theme_location'] = $location . '-' . $lang_code;
+	}
+
+	$args = wp_parse_args( $args, $nav_override_params );
+
+	wp_nav_menu( $args );
+
+	return;
+}
+
+/**
  * Output a call to action for the contact page.
  *
  * @param array  $fieldset       Array of custom field data.
@@ -1982,3 +2202,5 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 		<?php
 	}
 }
+
+

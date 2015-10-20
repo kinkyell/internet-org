@@ -52,6 +52,14 @@ function internetorg_enqueue_scripts() {
 		'screen, projection'
 	);
 
+	wp_enqueue_style(
+		'internetorg-print',
+		get_stylesheet_directory_uri() . '/_static/web/assets/styles/print.css',
+		array(),
+		false,
+		'print'
+	);
+
 	wp_enqueue_script(
 		'requirejs',
 		get_stylesheet_directory_uri() . '/_static/web/assets/vendor/requirejs/require.js',

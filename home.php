@@ -9,11 +9,12 @@
 get_header();
 
 $next_posts_link = get_next_posts_link();
+
 $archives_years = internetorg_get_archives_years();
 
 ?>
 
-<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php echo esc_url( get_permalink( get_queried_object_id() ) ); ?>" data-type="titled" data-title="<?php echo esc_html( get_the_title( get_queried_object_id() ) ); ?>">
+<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php echo esc_url( internetorg_get_the_permalink_in_lang( get_option( 'page_for_posts' ), internetorg_get_current_content_lang_code() ) ); ?>" data-type="titled" data-title="<?php echo esc_html( internetorg_get_the_title_in_lang( get_option( 'page_for_posts' ), internetorg_get_current_content_lang_code() ) ); ?>">
 
 		<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
 
@@ -25,7 +26,7 @@ $archives_years = internetorg_get_archives_years();
 						<div class="introBlock-inner">
 							<div class="topicBlock">
 								<div class="topicBlock-hd topicBlock-hd_plus">
-									<h2 class="hdg hdg_2"><?php echo esc_html( get_the_title( get_queried_object_id() ) ); ?></h2>
+									<h2 class="hdg hdg_2"><?php echo esc_html( internetorg_get_the_title_in_lang( get_option( 'page_for_posts' ), internetorg_get_current_content_lang_code() ) ); ?></h2>
 								</div>
 							</div>
 						</div>
@@ -42,7 +43,7 @@ $archives_years = internetorg_get_archives_years();
 							<div class="container">
 								<div class="topicBlock">
 									<div class="topicBlock-hd topicBlock-hd_plus">
-										<h2 class="hdg hdg_2 mix-hdg_bold"><?php echo esc_html( get_the_title( get_queried_object_id() ) ); ?></h2>
+										<h2 class="hdg hdg_2 mix-hdg_bold"><?php echo esc_html( internetorg_get_the_title_in_lang( get_option( 'page_for_posts' ), internetorg_get_current_content_lang_code() ) ); ?></h2>
 									</div>
 								</div>
 							</div>

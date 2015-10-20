@@ -31,6 +31,11 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var identity = require('stark/function/identity');
 
+    // For promise debugging
+    // window.onerror = function(err) {
+    //     console.error(err);
+    // };
+
     //var FastClick = require('fastclick');
     //FastClick.attach(document.body);
 
