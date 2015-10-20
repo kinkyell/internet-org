@@ -15,6 +15,12 @@ class LinkTransformer {
   private $languageCode;
 
   /**
+   * Our domain name (ex: vip.local)
+   * @var string
+   */
+  private $domain;
+
+  /**
    * Constructor.
    *
    * @param string $languageCode  The two-character language code our transformed links should use
@@ -22,6 +28,7 @@ class LinkTransformer {
    */
   public function __construct($languageCode, $domain) {
     $this->languageCode = $languageCode;
+    $this->domain = $domain;
   }
 
   /**
@@ -38,12 +45,18 @@ class LinkTransformer {
     }
 
     $parsedUrl = parse_url($url);
+    $pathParts = array_values(array_filter(explode('/', $parsedUrl['path'])));
 
-    
+    // Strip out any existing language code
+    if (strlen($pathParts[0]) == 2) {
+      unset($pathParts[0]);
+    }
 
-    // @TODO: Transform the URL based on the given language and current domain. http://domain/langCode/path
+    $newPath = implode('/', $pathParts);
 
-    return $url;
+    $newUrl = "http://{$this->domain}/{$newPath}";
+
+    return $newUrl;
   }
 
   /**

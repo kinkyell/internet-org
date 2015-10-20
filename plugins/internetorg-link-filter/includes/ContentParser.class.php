@@ -63,15 +63,18 @@ class ContentParser {
   protected function traverseDom(DOMDocument $dom, DomNode &$node) {
     if ($node->childNodes) {
       for ($i = 0; $i < $node->childNodes->length; ++$i) {
+
         /** @var DomElement */
         $childNode = $node->childNodes->item($i);
-        if ($childNode->tagName == 'a') {
+
+        if (get_class($childNode) == 'DOMElement' && $childNode->tagName == 'a') {
+
           $href = $childNode->getAttribute('href');
 
           if ($this->shouldHrefBeTransformed($href)) {
             $transformedHref = $this->linkTransformer->transform($href);
 
-            // @TODO: Update the node. Not sure if we can just set the attribute or if we have to replace the node.
+            // @TODO: Update the node. Not sure if we can just set the attribute or if we have to replace the node, but likely the latter.
 
 //          $textReplacementNode = $dom->createTextNode($childNode->data);
 //          $node->replaceChild(
@@ -93,7 +96,7 @@ class ContentParser {
    * @param DOMElement $element   The element containing the anchor in question
    * @return boolean
    */
-  protected function shouldHrefBeTransformed(DOMElement $element) {
+  protected function shouldHrefBeTransformed($element) {
     // @TODO: Account for exclusions here.
     return true;
   }
