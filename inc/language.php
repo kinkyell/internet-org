@@ -696,3 +696,38 @@ function internetorg_get_current_content_lang_code() {
 
 	return bbl_get_current_content_lang_code();
 }
+
+/**
+ * Wrapper function for bbl_get_base_post_type.
+ *
+ * Return the base post type (in the default language) for a provided post type.
+ * Will return the provided $post_type if bbl_get_base_post_type function is not available.
+ *
+ * @param string $post_type The name of a post type
+ *
+ * @return string The name of the base post type
+ */
+function internetorg_get_base_post_type( $post_type ) {
+
+	if ( ! function_exists( 'bbl_get_base_post_type' ) ) {
+		return $post_type;
+	}
+
+	return bbl_get_base_post_type( $post_type );
+}
+
+/**
+ * Wrapper function for bbl_get_base_post_types.
+ *
+ * Will use get_post_types if bbl_get_base_post_types function is not available.
+ *
+ * @return array
+ */
+function internetorg_get_base_post_types(){
+
+	if ( ! function_exists( 'bbl_get_base_post_types' ) ) {
+		return get_post_types( array(), 'objects' );
+	}
+
+	return bbl_get_base_post_types();
+}
