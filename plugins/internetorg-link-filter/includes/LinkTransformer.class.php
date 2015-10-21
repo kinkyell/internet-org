@@ -17,21 +17,6 @@
 class LinkTransformer {
 
   /**
-   * Our domain name (ex: vip.local)
-   * @var string
-   */
-  private $domain;
-
-  /**
-   * Constructor.
-   *
-   * @param string $domain        The current domain
-   */
-  public function __construct($domain) {
-    $this->domain = $domain;
-  }
-
-  /**
    * Transforms the provided link to point to the proper domain and language.
    *
    * @param string $url   The URL to be transformed. May or may not already contain a language code.
@@ -44,6 +29,7 @@ class LinkTransformer {
       return $url;
     }
 
+    $domain = get_current_site()->domain;
     $langCode = bbl_get_current_content_lang_code();
     $urlPrefix = bbl_get_prefix_from_lang_code($langCode);
 
@@ -60,7 +46,7 @@ class LinkTransformer {
     $scheme = isset($pathParts['scheme']) ? $pathParts['scheme'] : 'http';
     $newPath = implode('/', $pathParts);
 
-    return sprintf('%s://%s/%s', $scheme, $this->domain, $newPath);
+    return sprintf('%s://%s/%s', $scheme, $domain, $newPath);
   }
 
   /**
