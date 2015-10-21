@@ -50,14 +50,11 @@ class LinkTransformer {
     $parsedUrl = parse_url($url);
     $pathParts = array_values(array_filter(explode('/', $parsedUrl['path'])));
 
-    // stop at first potential language code
-    foreach ($pathParts as $index => $part) {
-      if (!$this->isLanguageCode($part)) {
-        continue;
-      }
-
-      $pathParts[$index] = $urlPrefix;
-      break;
+    if ($this->isLanguageCode($pathParts[0])) {
+      $pathParts[0] = $urlPrefix;
+    }
+    else {
+      array_unshift($pathParts, $urlPrefix);
     }
 
     $scheme = isset($pathParts['scheme']) ? $pathParts['scheme'] : 'http';
