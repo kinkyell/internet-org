@@ -23,6 +23,8 @@ define(function(require, exports, module) { // jshint ignore:line
     var PREFIX_STRIPPER = /^\//;
     var SUFFIX_STRIPPER = /\/$/;
 
+    var $homepageEl = $('.js-stateHome');
+
     function _updateTitle(parsed) {
         parsed.forEach(function(element) {
             if (element.nodeName === 'TITLE') {
@@ -183,7 +185,8 @@ define(function(require, exports, module) { // jshint ignore:line
          * @returns {Promise} represents value of html returned
          */
         getHomepageContent: function() {
-            return Promise.resolve($.get('/')).then(function(html) {
+            var homepagePath = $homepageEl.length ? $homepageEl[0].href : '/';
+            return Promise.resolve($.get(homepagePath)).then(function(html) {
                 var parsed = $.parseHTML(html);
                 var viewWindowEl = _getViewWindow(parsed);
                 var homeEl = viewWindowEl.firstElementChild.firstElementChild.firstElementChild;

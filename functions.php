@@ -37,6 +37,9 @@ require IO_DIR . '/plugins/internetorg-custom-posttypes/internetorg-custom-postt
 wpcom_vip_load_plugin( 'fieldmanager' );
 require IO_DIR . '/plugins/internetorg-custom-fields/internetorg-custom-fields.php';
 
+/** Link filter, which corrects anchors for the current language. */
+require_once( __DIR__ . '/plugins/internetorg-link-filter/internetorg-link-filter.php' );
+
 /** Babble */
 require IO_DIR . '/inc/babble-fieldmanager-context.php';
 
@@ -725,7 +728,7 @@ function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button 
 					}
 
 					$out .=
-						'<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? $link : '' )
+						'<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? apply_filters('iorg_url', $link) : '' )
 						. '" class="' . ( $cta_as_button ? 'btn' : 'link link_twoArrows' )
 						. '" ' . $target . '>' . esc_html( $label ) . '</a></div>';
 				}
@@ -1540,7 +1543,6 @@ function internetorg_video_shortcode( $atts = array() ) {
 	);
 
 	return $markup;
-
 }
 
 add_shortcode( 'io_video', 'internetorg_video_shortcode' );
@@ -1559,7 +1561,7 @@ function internetorg_register_video_shortcode_ui() {
 	 * @param array  The various fields, name of ui element and other attributes
 	 */
 	shortcode_ui_register_for_shortcode(
-		'io-video',
+		'io_video',
 		array(
 			'label'         => esc_html__( 'Video', 'internetorg' ),
 			'listItemImage' => 'dashicons-format-video',
@@ -1569,10 +1571,13 @@ function internetorg_register_video_shortcode_ui() {
 					'attr'  => 'id',
 					'type'  => 'post_select',
 					'query' => array(
-						'post_type' => 'io_video',
+						'post_type' => internetorg_get_multiple_shadow_post_types_for_ajax(
+							array(
+								'io_video',
+							)
+						),
 					),
 				),
-
 			),
 		)
 	);
@@ -1749,7 +1754,13 @@ function internetorg_register_custom_link_shortcode_ui() {
 					'attr'  => 'source',
 					'type'  => 'post_select',
 					'query' => array(
-						'post_type' => 'page, io_story, post',
+						'post_type' => internetorg_get_multiple_shadow_post_types_for_ajax(
+							array(
+								'page',
+								'post',
+								'io_story',
+							)
+						),
 					),
 				),
 				array(
@@ -2184,7 +2195,7 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 		?>
 
 		<div class="feaure-cta">
-			<a href="<?php echo esc_url( $url ); ?>"
+			<a href="<?php echo esc_url( apply_filters('iorg_url', $url) ); ?>"
 			   class="link js-stateLink"
 			   data-type="<?php esc_attr( $type ); ?>"
 			   data-social="<?php echo esc_attr( $social_attr ); ?>"
