@@ -20,7 +20,7 @@
  * Don't let this get onto production, and don't ever do this in plugins or themes, this is a hack job.
  * There are much better ways to do this when you're not in a hurry creating a little hack utility script.
  */
-require_once( '../../../../wp/wp-load.php' );
+require_once( '../../../../../wp/wp-load.php' );
 
 /**
  * Babble appears to hook into pre_get_posts and is causing unexpected behavior with this script.
