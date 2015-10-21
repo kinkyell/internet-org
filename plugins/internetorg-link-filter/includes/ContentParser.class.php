@@ -45,7 +45,7 @@ class ContentParser {
     }
 
     $dom = new DOMDocument();
-    $dom->loadHTML($content);
+    $dom->loadHTML($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
     // If the content could not be parsed as HTML, do not filter.
     if (!$dom) {
@@ -57,7 +57,13 @@ class ContentParser {
 
     $transformedContent = $dom->saveHTML();
 
-    return $transformedContent;
+    /* Here we are manually removing the DOCTYPE, html, and body tags from the output of saveHTML().
+     * In new versions of PHP and LibXML, passing in the proper "LIBXML_*" flags to loadHTML() result
+     * in the undesirable parent elements from being added. However, the VIP environment is using old
+     * versions so we need to do this manually. */
+    $trimmedContent = $this->removeExtraneousWrappers($transformedContent);
+
+    return $trimmedContent;
   }
 
   /**
@@ -93,5 +99,16 @@ class ContentParser {
   protected function shouldHrefBeTransformed(DOMElement $element) {
     // @TODO: Account for exclusions here.
     return true;
+  }
+
+  /**
+   * Removes the extra DOCTYPE, html, and body HTML wrappers that get added by old versions
+   * of PHP and/or LibXML.
+   *
+   * @param string $content   String containing HTML
+   * @return string
+   */
+  protected function removeExtraneousWrappers($content) {
+    return preg_replace('/^<!DOCTYPE.+?>/', '', str_replace( array('<html>', '</html>', '<body>', '</body>'), array('', '', '', ''), $content));
   }
 }
