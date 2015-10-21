@@ -9,7 +9,8 @@
  * Class ContentParser.
  *
  * Walks through a given string of HTML content and transforms the appropriate links
- * into the proper language, utilizing LinkTransformer.
+ * into the proper language, utilizing LinkTransformer. Does NOT support HTML with
+ * <head> elements as these are stripped out - see parseMarkup() for details.
  *
  * @author Ben Koren <bkoren@nerdery.com>
  * @author Edward Pfremmer <epfremme@nerdery.com>
@@ -44,6 +45,12 @@ class ContentParser {
       return $content;
     }
 
+    /* DOMDocument::loadHTML() does not, by default, support UTF-8 characters. However, we can hint
+     * that our content needs to be processed as UTF-8 by adding the following meta element. The only
+     * caveat to that is that a <head><meta [...] /></head> structure gets automatically added to the
+     * DOM, so we need to remove that later - see below for the call to removeHeadNode(). */
+    $content = '<meta http-equiv="content-type" content="text/html; charset=utf-8">'.$content;
+
     $dom = new DOMDocument();
     $dom->loadHTML($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
@@ -52,15 +59,19 @@ class ContentParser {
       return $content;
     }
 
-    // Recurse through the content, transforming all applicable links
+    // Recurse through the content, transforming all applicable links to use the proper language
     $this->traverseDom($dom);
+
+    /* As mentioned above, we need to remove the <head> element and that was automatically added as a
+     * result of us hinting the charset for the DOM handler. */
+    $this->removeHeadNode($dom);
 
     $transformedContent = $dom->saveHTML();
 
-    /* Here we are manually removing the DOCTYPE, html, and body tags from the output of saveHTML().
-     * In new versions of PHP and LibXML, passing in the proper "LIBXML_*" flags to loadHTML() result
-     * in the undesirable parent elements from being added. However, the VIP environment is using old
-     * versions so we need to do this manually. */
+    /* Removes the extra DOCTYPE, html, and body HTML wrappers that get added by old versions
+     * of PHP and/or LibXML. In new versions of PHP and LibXML, passing in the proper "LIBXML_*"
+     * flags to loadHTML() result in the undesirable parent elements from being added. However,
+     * the VIP environment is using old versions so we need to do this manually. */
     $trimmedContent = $this->removeExtraneousWrappers($transformedContent);
 
     return $trimmedContent;
@@ -110,5 +121,17 @@ class ContentParser {
    */
   protected function removeExtraneousWrappers($content) {
     return preg_replace('/^<!DOCTYPE.+?>/', '', str_replace( array('<html>', '</html>', '<body>', '</body>'), array('', '', '', ''), $content));
+  }
+
+  /**
+   * Removes the entire <head> node and its children from a given DOMDocument.
+   *
+   * @param DOMDocument $dom
+   */
+  protected function removeHeadNode(DOMDocument $dom) {
+    /** @var DomElement $item */
+    foreach ($dom->getElementsByTagName('head') as $item) {
+      $item->parentNode->removeChild($item);
+    }
   }
 }
