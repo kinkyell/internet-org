@@ -122,7 +122,8 @@ define(function(require, exports, module) { // jshint ignore:line
                             image: result.panel_image,
                             mobileImage: result.mobile_image,
                             isPost: result.post_type === 'post',
-                            isStory: result.post_type === 'io_story'
+                            isStory: result.post_type === 'io_story',
+                            readMoreText: window.SETTINGS.READ_MORE_TEXT
                         });
                     }).join('')
                 };
@@ -168,7 +169,8 @@ define(function(require, exports, module) { // jshint ignore:line
                             desc: result.post_excerpt,
                             date: result.post_date,
                             url: result.permalink,
-                            image: result.post_thumbnail
+                            image: result.post_thumbnail,
+                            readMoreText: window.SETTINGS.READ_MORE_TEXT
                         });
                     }).join('')
                 };
