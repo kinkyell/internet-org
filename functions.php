@@ -37,6 +37,9 @@ require IO_DIR . '/plugins/internetorg-custom-posttypes/internetorg-custom-postt
 wpcom_vip_load_plugin( 'fieldmanager' );
 require IO_DIR . '/plugins/internetorg-custom-fields/internetorg-custom-fields.php';
 
+/** Link filter, which corrects anchors for the current language. */
+require_once( __DIR__ . '/plugins/internetorg-link-filter/internetorg-link-filter.php' );
+
 /** Babble */
 require IO_DIR . '/inc/babble-fieldmanager-context.php';
 
@@ -725,7 +728,7 @@ function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button 
 					}
 
 					$out .=
-						'<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? $link : '' )
+						'<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? apply_filters('iorg_url', $link) : '' )
 						. '" class="' . ( $cta_as_button ? 'btn' : 'link link_twoArrows' )
 						. '" ' . $target . '>' . esc_html( $label ) . '</a></div>';
 				}
@@ -2184,7 +2187,7 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 		?>
 
 		<div class="feaure-cta">
-			<a href="<?php echo esc_url( $url ); ?>"
+			<a href="<?php echo esc_url( apply_filters('iorg_url', $url) ); ?>"
 			   class="link js-stateLink"
 			   data-type="<?php esc_attr( $type ); ?>"
 			   data-social="<?php echo esc_attr( $social_attr ); ?>"

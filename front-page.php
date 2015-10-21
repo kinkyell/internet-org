@@ -114,7 +114,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																			}
 																		} else {
 
-																			$url          = esc_url( $cta['link'] );
+																			$url          = esc_url( apply_filters('iorg_url', $cta['link']) );
 
 																			$title        = esc_attr( $cta['title'] );
 
@@ -133,7 +133,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																			? $fieldset['theme'] : $fieldset['slug'];
 
 																		?>
-																		<a href="<?php echo esc_url( $cta['link'] ); ?>"
+																		<a href="<?php echo esc_url( apply_filters('iorg_url', $cta['link']) ); ?>"
 																		   class="tertiaryCta <?php echo esc_attr( $js_class ); ?>"
 																			<?php if ( ! internetorg_is_video_url( $cta['link'] ) ) : ?>
 																				data-type="titled"
@@ -230,7 +230,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																		: $cf_content_section['slug'];
 																	?>
 																	<div class="transformBlock-post-item-ft">
-																		<a href="<?php echo esc_url( $url ); ?>"
+																		<a href="<?php echo esc_url( apply_filters('iorg_url', $url) ); ?>"
 																		   class="link link_theme<?php echo esc_attr( ucwords( $theme ) ); ?> js-stateLink"
 																		   data-type="panel"
 																		   data-image="<?php echo esc_url( $img ); ?>"
@@ -256,7 +256,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 
 												<div class="transformBlock-post-item">
 													<div class="splashFooter">
-														<?php echo wp_kses_post( ! empty( $get_involved_content_widget_post ) ? $get_involved_content_widget_post->post_content : '' ); ?>
+														<?php echo apply_filters('the_content', wp_kses_post( ! empty( $get_involved_content_widget_post ) ? $get_involved_content_widget_post->post_content : '' )); ?>
 														<div class="splashFooter-section">
 															<div class="splashFooter-section-bd">
 																<?php internetorg_vip_powered_wpcom(); ?>
@@ -345,7 +345,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																					? $cf_content_section['theme']
 																					: $cf_content_section['slug'];
 																				?>
-																				<a href="<?php echo esc_url( $url ); ?>"
+																				<a href="<?php echo esc_url( apply_filters('iorg_url', $url) ); ?>"
 																				   class="tertiaryCta <?php echo esc_attr( $js_class ); ?>"
 																					<?php if ( ! internetorg_is_video_url( $cta['link'] ) ) : ?>
 																						data-type="titled"
@@ -413,7 +413,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 															: $cf_content_section['slug'];
 														?>
 														<div class="narrative-section-bd-link u-isHiddenMedium">
-															<a href="<?php echo esc_url( $url ); ?>"
+															<a href="<?php echo esc_url( apply_filters('iorg_url', $url) ); ?>"
 															   class="circleBtn circleBtn_theme<?php echo esc_attr( ucwords( $theme ) ); ?> js-stateLink"
 															   data-type="panel"
 															   data-theme="<?php echo esc_attr( $theme ); ?>"
@@ -450,7 +450,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 												</div>
 												<div class="statementBlock-bd">
 													<div class="splashFooter">
-														<?php echo wp_kses_post( ! empty( $get_involved_content_widget_post ) ? $get_involved_content_widget_post->post_content : '' ); ?>
+														<?php echo apply_filters('the_content', wp_kses_post( ! empty( $get_involved_content_widget_post ) ? $get_involved_content_widget_post->post_content : '' )); ?>
 														<div class="splashFooter-section">
 															<div class="splashFooter-section-bd">
 																<?php internetorg_vip_powered_wpcom(); ?>
