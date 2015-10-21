@@ -1077,6 +1077,11 @@ function internetorg_do_ajax_search() {
 			)
 		);
 
+		$post_type = get_post_type();
+		if ( function_exists( 'bbl_get_base_post_type' ) ) {
+			$post_type = bbl_get_base_post_type( $post_type );
+		}
+
 		$data['posts'][] = array(
 			'ID'             => get_the_ID(),
 			'post_title'     => get_the_title(),
@@ -1085,7 +1090,7 @@ function internetorg_do_ajax_search() {
 			'post_thumbnail' => $post_thumbnail,
 			'mobile_image'   => $mobile_image,
 			'panel_image'    => $panel_image,
-			'post_type'      => get_post_type(),
+			'post_type'      => $post_type,
 			'post_date'      => get_the_date( '' ),
 		);
 	}
