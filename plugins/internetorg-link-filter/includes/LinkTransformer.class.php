@@ -17,12 +17,6 @@
 class LinkTransformer {
 
   /**
-   * The two-character language code our transformed links should use
-   * @var string
-   */
-  private $languageCode;
-
-  /**
    * Our domain name (ex: vip.local)
    * @var string
    */
@@ -31,11 +25,9 @@ class LinkTransformer {
   /**
    * Constructor.
    *
-   * @param string $languageCode  The two-character language code our transformed links should use
    * @param string $domain        The current domain
    */
-  public function __construct($languageCode, $domain) {
-    $this->languageCode = $languageCode;
+  public function __construct($domain) {
     $this->domain = $domain;
   }
 
@@ -52,6 +44,9 @@ class LinkTransformer {
       return $url;
     }
 
+    $langCode = bbl_get_current_content_lang_code();
+    $urlPrefix = bbl_get_prefix_from_lang_code($langCode);
+
     $parsedUrl = parse_url($url);
     $pathParts = array_values(array_filter(explode('/', $parsedUrl['path'])));
 
@@ -61,7 +56,7 @@ class LinkTransformer {
         continue;
       }
 
-      $pathParts[$index] = $this->languageCode;
+      $pathParts[$index] = $urlPrefix;
       break;
     }
 
