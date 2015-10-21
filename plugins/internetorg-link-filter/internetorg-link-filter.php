@@ -18,6 +18,7 @@ add_filter('the_excerpt', array($bridge, 'filterContent'), 100);
 add_filter('the_permalink', array($bridge, 'filterUrl'), 100);
 add_filter('page_link', array( $bridge, 'filterPageLink' ), 100, 2 );
 add_filter('post_link', array($bridge, 'filterPostLink'), 100, 3 );
+add_filter('iorg_url', array($bridge, 'filterUrl'));
 
 /**
  * @TODO Move this to a proper singleton / service provider
