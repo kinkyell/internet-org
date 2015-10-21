@@ -620,6 +620,8 @@ function internetorg_get_multiple_shadow_post_types( $post_types = array( 'page'
  * Useful for Fieldmanager_Datasource_Post using AJAX, for example in conjunction with Fieldmanager_Autocomplete.
  * Don't use this with Fieldmanager_Select, the select menu gets rather large.
  *
+ * @used-by internetorg_get_multiple_shadow_post_types_for_ajax
+ *
  * @param string $post_type A post_type to get all shadow_post_types for. Optional. Defaults to 'page'.
  *
  * @return array An array of post_types.
@@ -730,4 +732,34 @@ function internetorg_get_base_post_types(){
 	}
 
 	return bbl_get_base_post_types();
+}
+
+/**
+ * Retrieve a list of Babble's "shadow" post_types for a given array of original post_types.
+ *
+ * Useful for Shortcake UI.
+ *
+ * @uses internetorg_get_shadow_post_types_for_ajax
+ *
+ * @param array $post_types An array of post_types to get shadow_post_types for. Optional. Defaults to array( 'page' ).
+ *
+ * @return array An array of post_types.
+ */
+function internetorg_get_multiple_shadow_post_types_for_ajax( $post_types = array( 'page' ) ) {
+
+	foreach ( $post_types as $post_type ) {
+		$types[] = array_values( internetorg_get_shadow_post_types_for_ajax( $post_type ) );
+	}
+
+	if ( empty( $types ) ) {
+		return $post_types;
+	}
+
+	foreach ( $types as $outer_key => $type_array ) {
+		foreach ( $type_array as $inner_key => $type ) {
+			array_push( $post_types, $type );
+		}
+	}
+
+	return array_unique( $post_types );
 }
