@@ -25,7 +25,7 @@ wpcom_vip_load_plugin( 'babble-translation-group-tool', 'plugins', true );
 wpcom_vip_load_plugin( 'wp-google-analytics' );
 
 // Additional Caching
-wpcom_vip_load_plugin( 'cache-nav-menu' );
+// wpcom_vip_load_plugin( 'cache-nav-menu' );
 
 // Opengraph
 wpcom_vip_enable_opengraph();
@@ -36,6 +36,9 @@ require IO_DIR . '/plugins/internetorg-custom-posttypes/internetorg-custom-postt
 /** Fieldmanager and Fields. */
 wpcom_vip_load_plugin( 'fieldmanager' );
 require IO_DIR . '/plugins/internetorg-custom-fields/internetorg-custom-fields.php';
+
+/** Link filter, which corrects anchors for the current language. */
+require_once( __DIR__ . '/plugins/internetorg-link-filter/internetorg-link-filter.php' );
 
 /** Babble */
 require IO_DIR . '/inc/babble-fieldmanager-context.php';
@@ -75,13 +78,8 @@ if ( ! function_exists( 'internetorg_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 
-		// This theme uses wp_nav_menu() in one location.
-		internetorg_register_menus(
-			array(
-				'primary'         => esc_html__( 'Primary Menu', 'internetorg' ),
-				'primary-sub-nav' => esc_html__( 'Primary Menu Sub Nav', 'internetorg' ),
-			)
-		);
+		// Register navigation menus.
+		internetorg_register_menus();
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments to output valid HTML5.
@@ -144,49 +142,6 @@ function internetorg_setup_image_sizes() {
 }
 
 add_action( 'after_setup_theme', 'internetorg_setup_image_sizes' );
-
-/**
- * intercepts the template before it's loaded to determine if it' correct
- *
- * @action   template_include
- * @priority default (10)
- *
- * @link     https://goo.gl/fUD7Yl for "WHY U NO USE template_redirect?"
- *
- * @param string $original_template the template that will be used be default
- *
- * @return mixed the actual template to load
- */
-function internetorg_switch_page_template( $original_template ) {
-	global $post;
-
-	$load_template = $original_template;
-
-	/*
-	 * no "default" because we just want to return the $original_template which
-	 * we set into $load template above we want to change the template if we
-	 * are on a non-default language version of a page that has a page template
-	 * explicitly set (think "Our Approach")
-	 */
-	switch( $post->page_template ) {
-		case 'page-approach.php':
-
-			break;
-	}
-
-//	echo '<pre>';
-//	echo $load_template . '<br/>';
-//
-//	print_r( $post );
-//
-//	echo '</pre>';
-//	exit;
-
-
-	return $load_template;
-}
-add_action( 'template_include', 'internetorg_switch_page_template' );
-
 
 /**
  * Add custom image sizes to the media chooser.
@@ -773,7 +728,7 @@ function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button 
 					}
 
 					$out .=
-						'<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? $link : '' )
+						'<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? apply_filters('iorg_url', $link) : '' )
 						. '" class="' . ( $cta_as_button ? 'btn' : 'link link_twoArrows' )
 						. '" ' . $target . '>' . esc_html( $label ) . '</a></div>';
 				}
@@ -1280,6 +1235,11 @@ function internetorg_get_mobile_featured_image( $post_type, $post_id, $size = 'i
 		$post_type = get_post_type( $post_id );
 	}
 
+	/**
+	 * Allowed post_type whitelist.
+	 *
+	 * @var array $allowed_post_types
+	 */
 	$allowed_post_types = get_post_types();
 
 	if ( ! in_array( $post_type, $allowed_post_types ) ) {
@@ -1287,21 +1247,65 @@ function internetorg_get_mobile_featured_image( $post_type, $post_id, $size = 'i
 	}
 
 	if ( ! class_exists( 'MultiPostThumbnails' ) ) {
-		return internetorg_get_post_thumbnail( $post_id, $size );
+		return '';
 	}
 
+	/**
+	 * The ID (or name) of the additional featured image registered with MultiPostThumbnails plugin.
+	 *
+	 * @var string $id
+	 */
 	$id = 'mobile-featured-image';
 
+	/**
+	 * The MultiPostThumbnails plugin prefixes the 'additional' featured images with the post_type.
+	 * Because Babble uses "shadow post_types," for additional languages, we need to account for this.
+	 * The mobile featured image meta will be synced as page_mobile-featured-image_thumbnail_id (for example),
+	 * not page_ar_mobile-featured-image_thumbnail_id (for example).
+	 * So we will use the base post type to get the proper meta_key.
+	 */
+
+	/**
+	 * An array of "base" post_type objects (excluding the shadow post types registered by Babble).
+	 *
+	 * @var stdClass[] $base_post_type_objects
+	 */
+	$base_post_type_objects = internetorg_get_base_post_types();
+
+	/**
+	 * An array of just the "base" post_type names.
+	 *
+	 * @var array $base_post_types
+	 */
+	$base_post_types = wp_list_pluck( $base_post_type_objects, 'name' );
+
+	/**
+	 * If the provided $post_type is a shadow post_type, let's get the base equivalent.
+	 */
+	if ( ! in_array( $post_type, $base_post_types ) ) {
+		$post_type = internetorg_get_base_post_type( $post_type );
+	}
+
+	/**
+	 * Conditional check for the mobile-featured-image.
+	 *
+	 * @var bool $has_post_thumbnail
+	 */
 	$has_post_thumbnail = MultiPostThumbnails::has_post_thumbnail( $post_type, $id, $post_id );
 
 	if ( empty( $has_post_thumbnail ) ) {
 		return '';
 	}
 
+	/**
+	 * Thumbnail url or false if the post doesn't have a thumbnail for the given post type, and id.
+	 *
+	 * @var string|bool $img_url
+	 */
 	$img_url = MultiPostThumbnails::get_post_thumbnail_url( $post_type, $id, $post_id, $size );
 
 	if ( empty( $img_url ) ) {
-		return internetorg_get_post_thumbnail( $post_id, $size );
+		return '';
 	}
 
 	return $img_url;
@@ -1544,7 +1548,6 @@ function internetorg_video_shortcode( $atts = array() ) {
 	);
 
 	return $markup;
-
 }
 
 add_shortcode( 'io_video', 'internetorg_video_shortcode' );
@@ -1563,7 +1566,7 @@ function internetorg_register_video_shortcode_ui() {
 	 * @param array  The various fields, name of ui element and other attributes
 	 */
 	shortcode_ui_register_for_shortcode(
-		'io-video',
+		'io_video',
 		array(
 			'label'         => esc_html__( 'Video', 'internetorg' ),
 			'listItemImage' => 'dashicons-format-video',
@@ -1573,10 +1576,13 @@ function internetorg_register_video_shortcode_ui() {
 					'attr'  => 'id',
 					'type'  => 'post_select',
 					'query' => array(
-						'post_type' => 'io_video',
+						'post_type' => internetorg_get_multiple_shadow_post_types_for_ajax(
+							array(
+								'io_video',
+							)
+						),
 					),
 				),
-
 			),
 		)
 	);
@@ -1753,7 +1759,13 @@ function internetorg_register_custom_link_shortcode_ui() {
 					'attr'  => 'source',
 					'type'  => 'post_select',
 					'query' => array(
-						'post_type' => 'page, io_story, post',
+						'post_type' => internetorg_get_multiple_shadow_post_types_for_ajax(
+							array(
+								'page',
+								'post',
+								'io_story',
+							)
+						),
 					),
 				),
 				array(
@@ -2157,7 +2169,7 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 			 */
 			$mobile_image = internetorg_get_mobile_featured_image( get_post_type( $cta['link_src'] ), $cta['link_src'] );
 
-			if ( 'io_story' === get_post_type( $cta['link_src'] ) ) {
+			if ( in_array( $cta['link_src'], internetorg_get_shadow_post_types_for_ajax( 'io_story' ) ) ) {
 				$type = 'panel';
 			}
 		} else {
@@ -2177,7 +2189,7 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 			);
 		}
 
-		if ( ! empty( $cta['link_src'] ) && 'post' === get_post_type( $cta['link_src'] ) ) {
+		if ( ! empty( $cta['link_src'] ) && in_array( $cta['link_src'], internetorg_get_shadow_post_types_for_ajax( 'post' ) ) ) {
 			$social_attr = 'true';
 		}
 
@@ -2188,7 +2200,7 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 		?>
 
 		<div class="feaure-cta">
-			<a href="<?php echo esc_url( $url ); ?>"
+			<a href="<?php echo esc_url( apply_filters('iorg_url', $url) ); ?>"
 			   class="link js-stateLink"
 			   data-type="<?php esc_attr( $type ); ?>"
 			   data-social="<?php echo esc_attr( $social_attr ); ?>"
@@ -2207,5 +2219,3 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 		<?php
 	}
 }
-
-

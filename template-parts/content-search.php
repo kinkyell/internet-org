@@ -7,14 +7,50 @@
  * @package Internet.org
  */
 
-global $post;
-$type = ( get_post_type( get_the_ID() ) === 'io_story') ? 'panel' : 'titled';
+/**
+ * Shadow post types for and including io_story post_type.
+ *
+ * @var array $io_story_shadow
+ */
+$io_story_shadow = internetorg_get_shadow_post_types_for_ajax( 'io_story' );
 
+/**
+ * Shadow post types for and including post post_type.
+ *
+ * @var array $post_shadow
+ */
+$post_shadow = internetorg_get_shadow_post_types_for_ajax( 'post' );
+
+/**
+ * Whether this is paneled or titled content to link to.
+ *
+ * @var string $type
+ */
+$type = ( in_array( get_post_type( get_the_ID() ), $io_story_shadow ) ) ? 'panel' : 'titled';
+
+/**
+ * Featured image URL for link data-image attribute.
+ *
+ * @var string $img
+ */
 $img = ( internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'panel-image' ) )
 	?  internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'panel-image' )
 	: '';
+
+/**
+ * Mobile featured image URL for link data-mobile-image attribute.
+ *
+ * @var string $mobile_image
+ */
 $mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type( get_the_ID() ), get_the_ID() ) );
-$theme = ( get_post_type( get_the_ID() ) === 'io_story') ? 'approach' : '';
+
+/**
+ * Apply the "theme" for the data-theme attribute.
+ *
+ * @var string $theme
+ */
+$theme = ( in_array( get_post_type( get_the_ID() ), $io_story_shadow ) ) ? 'approach' : '';
+
 ?>
 
 <div class="resultsList-list-item">
@@ -27,14 +63,16 @@ $theme = ( get_post_type( get_the_ID() ) === 'io_story') ? 'approach' : '';
 		</div>
 		<div class="feature-cta">
 			<a href="<?php the_permalink(); ?>" class="link mix-link_small js-stateLink"
-			    data-title="<?php echo esc_attr( apply_filters( 'the_title',  $post->post_title ) ); ?>"
+			    data-title="<?php echo esc_attr( apply_filters( 'the_title',  get_the_title() ) ); ?>"
 			    data-image="<?php echo esc_url( $img );?>"
 			    data-mobile-image="<?php echo esc_url( $mobile_image );?>"
 			    data-theme="<?php echo esc_attr( strtolower( $theme ) ); ?>"
-			    <?php if ( 'post' === $post->post_type ) { ?>
-				    data-date="<?php echo esc_attr( get_the_date( '', $post->ID ) ); ?>"
+
+			    <?php if ( in_array( get_post_type( get_the_ID(), $post_shadow ) ) { ?>
+				    data-date="<?php echo esc_attr( get_the_date( '', get_the_ID() ) ); ?>"
 				    data-social="true"
 			    <?php } ?>
+
 			   data-type="<?php echo esc_attr( $type ); ?>">
 				<?php esc_html_e( 'Read More', 'internetorg' ); ?>
 			</a>

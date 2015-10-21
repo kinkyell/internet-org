@@ -125,6 +125,15 @@ if ( class_exists( 'Babble' ) ) {
 	SETTINGS.COPYRIGHT_STRING = '<?php internetorg_vip_powered_wpcom(); ?>';
 
 	/**
+	 * Read more text translation
+	 *
+	 * @property READ_MORE_TEXT
+	 * @type String
+	 * @final
+	 */
+	SETTINGS.READ_MORE_TEXT = '<?php esc_html_e( 'Read More', 'internetorg' ); ?>';
+
+	/**
 	 * routes for static and WP endpoints
 	 *
 	 * @property ROUTES

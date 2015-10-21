@@ -39,7 +39,7 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 				continue;
 			}
 			if ( $item['href'] ) {
-				echo '<option value="' . esc_url( $item['href'] ) . '" ' . selected( $item['active'] ) . '>' . esc_html( $item['lang']->display_name ) . '</option>';
+				echo '<option value="' . esc_url( $item['href'] ) . '" ' . selected( $item['active'], true, false ) . '>' . esc_html( $item['lang']->display_name ) . '</option>';
 			}
 		}
 		echo '</select>';
@@ -620,6 +620,8 @@ function internetorg_get_multiple_shadow_post_types( $post_types = array( 'page'
  * Useful for Fieldmanager_Datasource_Post using AJAX, for example in conjunction with Fieldmanager_Autocomplete.
  * Don't use this with Fieldmanager_Select, the select menu gets rather large.
  *
+ * @used-by internetorg_get_multiple_shadow_post_types_for_ajax
+ *
  * @param string $post_type A post_type to get all shadow_post_types for. Optional. Defaults to 'page'.
  *
  * @return array An array of post_types.
@@ -695,4 +697,69 @@ function internetorg_get_current_content_lang_code() {
 	}
 
 	return bbl_get_current_content_lang_code();
+}
+
+/**
+ * Wrapper function for bbl_get_base_post_type.
+ *
+ * Return the base post type (in the default language) for a provided post type.
+ * Will return the provided $post_type if bbl_get_base_post_type function is not available.
+ *
+ * @param string $post_type The name of a post type
+ *
+ * @return string The name of the base post type
+ */
+function internetorg_get_base_post_type( $post_type ) {
+
+	if ( ! function_exists( 'bbl_get_base_post_type' ) ) {
+		return $post_type;
+	}
+
+	return bbl_get_base_post_type( $post_type );
+}
+
+/**
+ * Wrapper function for bbl_get_base_post_types.
+ *
+ * Will use get_post_types if bbl_get_base_post_types function is not available.
+ *
+ * @return array
+ */
+function internetorg_get_base_post_types(){
+
+	if ( ! function_exists( 'bbl_get_base_post_types' ) ) {
+		return get_post_types( array(), 'objects' );
+	}
+
+	return bbl_get_base_post_types();
+}
+
+/**
+ * Retrieve a list of Babble's "shadow" post_types for a given array of original post_types.
+ *
+ * Useful for Shortcake UI.
+ *
+ * @uses internetorg_get_shadow_post_types_for_ajax
+ *
+ * @param array $post_types An array of post_types to get shadow_post_types for. Optional. Defaults to array( 'page' ).
+ *
+ * @return array An array of post_types.
+ */
+function internetorg_get_multiple_shadow_post_types_for_ajax( $post_types = array( 'page' ) ) {
+
+	foreach ( $post_types as $post_type ) {
+		$types[] = array_values( internetorg_get_shadow_post_types_for_ajax( $post_type ) );
+	}
+
+	if ( empty( $types ) ) {
+		return $post_types;
+	}
+
+	foreach ( $types as $outer_key => $type_array ) {
+		foreach ( $type_array as $inner_key => $type ) {
+			array_push( $post_types, $type );
+		}
+	}
+
+	return array_unique( $post_types );
 }

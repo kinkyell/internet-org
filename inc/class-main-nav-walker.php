@@ -61,7 +61,15 @@ class Internetorg_Main_Nav_Walker extends Walker_Nav_Menu {
 
 		$attributes .= ' data-title="' . esc_attr( apply_filters( 'the_title', $item->title, $item->ID ) ) . '"';
 
-		if ( 'page' === $item->object ) {
+		/**
+		 * Retrieve a list of all the 'page' post type names, including Babble's shadow post types for 'page'.
+		 *
+		 * @var array $page_post_types
+		 */
+		$page_post_types = internetorg_get_shadow_post_types_for_ajax( 'page' );
+
+		if ( in_array( $item->object, $page_post_types ) ) {
+
 			$attributes .= ' data-image="'
 			               . esc_url(
 				               internetorg_get_post_thumbnail(
@@ -73,7 +81,7 @@ class Internetorg_Main_Nav_Walker extends Walker_Nav_Menu {
 			$attributes .= ' data-mobile-image="'
 			               . esc_url(
 				               internetorg_get_mobile_featured_image(
-					               get_post_type( $item->object_id ),
+					               $item->object,
 					               $item->object_id
 				               )
 			               )

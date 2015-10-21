@@ -6,7 +6,6 @@ define(function(require, exports, module) { // jshint ignore:line
     var spread = require('stark/promise/spread');
     var capitalize = require('stark/string/capitalize');
     var tap = require('stark/promise/tap');
-    var parseUrl = require('stark/string/parseUrl');
 
     var viewWindow = require('services/viewWindow');
     var templates = require('templates');

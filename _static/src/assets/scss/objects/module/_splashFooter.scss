@@ -19,20 +19,13 @@
 
 @include breakpoint(MD) {
     .splashFooter {
-        padding-top: 58px;
+        padding-top: 14px;
         position: relative;
         @include unContain();
     }
 
-    .splashFooter:before {
-        content: "";
-        display: inline-block;
-        height: 4px;
-        width: 40px;
-        position: absolute;
-        top: 32px;
-        text-align: center;
-        background-color: $CLR_ACCENT;
+    .splashFooter-section {
+        opacity: 0;
     }
 }
 

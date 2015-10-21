@@ -52,7 +52,7 @@ if ( ! function_exists( 'internetorg_entry_footer' ) ) :
 	 */
 	function internetorg_entry_footer() {
 		// Hide category and tag text for pages.
-		if ( 'post' === get_post_type() ) {
+		if ( in_array( get_post_type(), internetorg_get_shadow_post_types_for_ajax( 'post' ) ) ) {
 			/* translators: used between list items, there is a space after the comma. */
 			$categories_list = get_the_category_list( esc_html__( ', ', 'internetorg' ) );
 			if ( $categories_list && internetorg_categorized_blog() ) {

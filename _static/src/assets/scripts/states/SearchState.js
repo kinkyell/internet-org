@@ -58,7 +58,7 @@ define(function(require, exports, module) { // jshint ignore:line
     SearchState.prototype.onActivate = function(event) {
         var transitions = this.getAnimationDirections(event);
         var tmplArgs = {
-            searchText: this._options.searchText,
+            searchText: this._options.searchText || this._options['search-text'],
             copyright: window.SETTINGS.COPYRIGHT_STRING
         };
 

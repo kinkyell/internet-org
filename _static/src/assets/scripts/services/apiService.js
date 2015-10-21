@@ -23,6 +23,8 @@ define(function(require, exports, module) { // jshint ignore:line
     var PREFIX_STRIPPER = /^\//;
     var SUFFIX_STRIPPER = /\/$/;
 
+    var $homepageEl = $('.js-stateHome');
+
     function _updateTitle(parsed) {
         parsed.forEach(function(element) {
             if (element.nodeName === 'TITLE') {
@@ -122,7 +124,8 @@ define(function(require, exports, module) { // jshint ignore:line
                             image: result.panel_image,
                             mobileImage: result.mobile_image,
                             isPost: result.post_type === 'post',
-                            isStory: result.post_type === 'io_story'
+                            isStory: result.post_type === 'io_story',
+                            readMoreText: window.SETTINGS.READ_MORE_TEXT
                         });
                     }).join('')
                 };
@@ -168,7 +171,8 @@ define(function(require, exports, module) { // jshint ignore:line
                             desc: result.post_excerpt,
                             date: result.post_date,
                             url: result.permalink,
-                            image: result.post_thumbnail
+                            image: result.post_thumbnail,
+                            readMoreText: window.SETTINGS.READ_MORE_TEXT
                         });
                     }).join('')
                 };
@@ -181,7 +185,8 @@ define(function(require, exports, module) { // jshint ignore:line
          * @returns {Promise} represents value of html returned
          */
         getHomepageContent: function() {
-            return Promise.resolve($.get('/')).then(function(html) {
+            var homepagePath = $homepageEl.length ? $homepageEl[0].href : '/';
+            return Promise.resolve($.get(homepagePath)).then(function(html) {
                 var parsed = $.parseHTML(html);
                 var viewWindowEl = _getViewWindow(parsed);
                 var homeEl = viewWindowEl.firstElementChild.firstElementChild.firstElementChild;
