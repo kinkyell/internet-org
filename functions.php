@@ -25,7 +25,7 @@ wpcom_vip_load_plugin( 'babble-translation-group-tool', 'plugins', true );
 wpcom_vip_load_plugin( 'wp-google-analytics' );
 
 // Additional Caching
-wpcom_vip_load_plugin( 'cache-nav-menu' );
+// wpcom_vip_load_plugin( 'cache-nav-menu' );
 
 // Opengraph
 wpcom_vip_enable_opengraph();
@@ -75,13 +75,8 @@ if ( ! function_exists( 'internetorg_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 
-		// This theme uses wp_nav_menu() in one location.
-		internetorg_register_menus(
-			array(
-				'primary'         => esc_html__( 'Primary Menu', 'internetorg' ),
-				'primary-sub-nav' => esc_html__( 'Primary Menu Sub Nav', 'internetorg' ),
-			)
-		);
+		// Register navigation menus.
+		internetorg_register_menus();
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments to output valid HTML5.
@@ -144,49 +139,6 @@ function internetorg_setup_image_sizes() {
 }
 
 add_action( 'after_setup_theme', 'internetorg_setup_image_sizes' );
-
-/**
- * intercepts the template before it's loaded to determine if it' correct
- *
- * @action   template_include
- * @priority default (10)
- *
- * @link     https://goo.gl/fUD7Yl for "WHY U NO USE template_redirect?"
- *
- * @param string $original_template the template that will be used be default
- *
- * @return mixed the actual template to load
- */
-function internetorg_switch_page_template( $original_template ) {
-	global $post;
-
-	$load_template = $original_template;
-
-	/*
-	 * no "default" because we just want to return the $original_template which
-	 * we set into $load template above we want to change the template if we
-	 * are on a non-default language version of a page that has a page template
-	 * explicitly set (think "Our Approach")
-	 */
-	switch( $post->page_template ) {
-		case 'page-approach.php':
-
-			break;
-	}
-
-//	echo '<pre>';
-//	echo $load_template . '<br/>';
-//
-//	print_r( $post );
-//
-//	echo '</pre>';
-//	exit;
-
-
-	return $load_template;
-}
-add_action( 'template_include', 'internetorg_switch_page_template' );
-
 
 /**
  * Add custom image sizes to the media chooser.
