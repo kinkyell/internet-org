@@ -53,8 +53,14 @@ class LinkTransformer {
 
     $scheme = isset($pathParts['scheme']) ? $pathParts['scheme'] : 'http';
     $newPath = implode('/', $pathParts);
+    $newPath = sprintf('%s://%s/%s', $scheme, $domain, $newPath);
 
-    return sprintf('%s://%s/%s', $scheme, $domain, $newPath);
+    // If the original path had a trailing slash, add it back in.
+    if (substr($parsedUrl['path'], -1) == '/') {
+      $newPath = $newPath.'/';
+    }
+
+    return $newPath;
   }
 
   /**
