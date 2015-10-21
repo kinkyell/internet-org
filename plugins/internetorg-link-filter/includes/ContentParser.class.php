@@ -42,7 +42,7 @@ class ContentParser {
    *                          Received from the_content filter from WP.
    * @return string
    */
-  public function parseLinks($content) {
+  public function parseMarkup($content) {
 
     if (empty($content)) {
       return $content;
