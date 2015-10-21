@@ -2105,6 +2105,14 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 		}
 
 		/**
+		 * Deal with offsite links early to avoid extra processing.
+		 */
+		if ( 'page' !== $cta['cta_src'] && ! empty( $cta['link'] ) && ! internetorg_is_internal_url( $cta['link'] ) ) {
+			internetorg_external_cta_link( $cta['link'] );
+			continue;
+		}
+
+		/**
 		 * The value for the data-social attribute on the call to action link.
 		 *
 		 * @var string $social_attr
@@ -2199,7 +2207,7 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 
 		?>
 
-		<div class="feaure-cta">
+		<div class="feature-cta">
 			<a href="<?php echo esc_url( apply_filters('iorg_url', $url) ); ?>"
 			   class="link js-stateLink"
 			   data-type="<?php esc_attr( $type ); ?>"
@@ -2218,4 +2226,19 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 
 		<?php
 	}
+}
+
+/**
+ * Output an offsite CTA link.
+ *
+ * @param $cta
+ */
+function internetorg_external_cta_link( $link ) {
+	?>
+	<div class="feature-cta">
+		<a href="<?php echo esc_url( $link ); ?>" class="link" target="_blank">
+			<?php echo esc_html__( 'Learn More', 'internetorg' ); ?>
+		</a>
+	</div>
+	<?php
 }
