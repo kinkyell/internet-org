@@ -156,7 +156,7 @@ function internetorg_video_metaboxes() {
 			'add_meta_box' => array(
 				'Video Duration',
 				'io_video',
-			)
+			),
 		)
 	);
 
@@ -170,7 +170,7 @@ function internetorg_video_metaboxes() {
 			'add_meta_box' => array(
 				'Video URL',
 				'io_video',
-			)
+			),
 		)
 	);
 }
@@ -230,7 +230,7 @@ function internetorg_page_metaboxes() {
 				'page',
 				'internetorg_page_home_after_title',
 				'high',
-			)
+			),
 		)
 	);
 
@@ -250,7 +250,7 @@ function internetorg_page_metaboxes() {
 				'page',
 				'internetorg_page_home_after_title',
 				'high',
-			)
+			),
 		)
 	);
 
@@ -295,7 +295,7 @@ function internetorg_page_metaboxes() {
 						'datasource' => new Fieldmanager_Datasource_Post(
 							array(
 								'query_args' => array(
-									'post_type'      => internetorg_get_multiple_shadow_post_types(
+									'post_type' => internetorg_get_multiple_shadow_post_types(
 										array(
 											'page',
 											'post',
@@ -368,7 +368,7 @@ function internetorg_page_metaboxes() {
 									'datasource' => new Fieldmanager_Datasource_Post(
 										array(
 											'query_args' => array(
-												'post_type'      => internetorg_get_multiple_shadow_post_types(
+												'post_type' => internetorg_get_multiple_shadow_post_types(
 													array(
 														'page',
 														'post',
@@ -400,7 +400,7 @@ function internetorg_page_metaboxes() {
 				array(
 					'page',
 				),
-			)
+			),
 		)
 	);
 
@@ -423,7 +423,7 @@ function internetorg_page_metaboxes() {
 				array(
 					'page',
 				),
-			)
+			),
 		)
 	);
 
@@ -506,8 +506,8 @@ add_action( 'init', 'internetorg_story_metaboxes' );
 /**
  * Adds fields directly below the title of the post title on the edit screen.
  *
- * @global \WP_Post $post The WP_Post object to which to add a meta box to.
- * @global array $wp_meta_boxes The array of metaboxes.
+ * @global \WP_Post $post          The WP_Post object to which to add a meta box to.
+ * @global array    $wp_meta_boxes The array of metaboxes.
  *
  * @return void
  */
@@ -555,7 +555,7 @@ function internetorg_get_active_lang_codes() {
  * @used-by internetorg_get_multiple_shadow_post_types
  *
  * @param string $post_type The post_type to get shadow_post_types for. Optional. Defaults to 'page'.
- * @param string $language
+ * @param string $language  The language code.
  *
  * @return array An array of post_types.
  */
@@ -565,7 +565,7 @@ function internetorg_get_shadow_post_types_by_lang( $post_type = 'page', $langua
 		return array( $post_type );
 	}
 
-	if ( $language === bbl_get_default_lang_code() ) {
+	if ( bbl_get_default_lang_code() === $language ) {
 		return array( $post_type );
 	}
 
@@ -590,8 +590,8 @@ function internetorg_get_shadow_post_types_by_lang( $post_type = 'page', $langua
  *
  * @uses internetorg_get_shadow_post_types_by_lang
  *
- * @param array $post_types An array of post_types to get shadow_post_types for. Optional. Defaults to array( 'page' ).
- * @param string $language
+ * @param array  $post_types An array of post_types to get shadow_post_types for. Optional. Defaults to array( 'page' ).
+ * @param string $language   The language code.
  *
  * @return array An array of post_types.
  */
@@ -626,7 +626,7 @@ function internetorg_get_multiple_shadow_post_types( $post_types = array( 'page'
  *
  * @return array An array of post_types.
  */
-function internetorg_get_shadow_post_types_for_ajax ( $post_type = 'page' ) {
+function internetorg_get_shadow_post_types_for_ajax( $post_type = 'page' ) {
 
 	if ( ! function_exists( 'bbl_get_shadow_post_types' ) ) {
 		return array( $post_type );
@@ -648,19 +648,20 @@ function internetorg_get_shadow_post_types_for_ajax ( $post_type = 'page' ) {
  *
  * Will use get_the_title if bbl_get_the_title_in_lang function is not available.
  *
- * @param int|object $post Either a WP Post object, or a post ID
- * @param string $lang_code The code for the language the title is requested in
- * @param bool $fallback Whether to provide a fallback title in the default language if the requested language is unavailable (defaults to false)
+ * @param int|object $post_id   Either a WP Post object, or a post ID.
+ * @param string     $lang_code The code for the language the title is requested in.
+ * @param bool       $fallback  Whether to provide a fallback title in the default language if the requested language
+ *                              is unavailable (defaults to false).
  *
  * @return string|void
  */
-function internetorg_get_the_title_in_lang( $post = null, $lang_code = null, $fallback = false ) {
+function internetorg_get_the_title_in_lang( $post_id = null, $lang_code = null, $fallback = false ) {
 
 	if ( ! function_exists( 'bbl_get_the_title_in_lang' ) ) {
-		return get_the_title( $post );
+		return get_the_title( $post_id );
 	}
 
-	return bbl_get_the_title_in_lang( $post, $lang_code, $fallback );
+	return bbl_get_the_title_in_lang( $post_id, $lang_code, $fallback );
 }
 
 /**
@@ -668,19 +669,20 @@ function internetorg_get_the_title_in_lang( $post = null, $lang_code = null, $fa
  *
  * Will use get_the_permalink if bbl_get_the_permalink_in_lang function is not available.
  *
- * @param int|object $post Either a WP Post object, or a post ID
- * @param string $lang_code The code for the language the title is requested in
- * @param bool $fallback Whether to provide a fallback title in the default language if the requested language is unavailable (defaults to false)
+ * @param int|object $post_id   Either a WP Post object, or a post ID.
+ * @param string     $lang_code The code for the language the title is requested in.
+ * @param bool       $fallback  Whether to provide a fallback title in the default language if the requested language
+ *                              is unavailable (defaults to false).
  *
  * @return false|string|void
  */
-function internetorg_get_the_permalink_in_lang( $post = null, $lang_code = null, $fallback = false ) {
+function internetorg_get_the_permalink_in_lang( $post_id = null, $lang_code = null, $fallback = false ) {
 
 	if ( ! function_exists( 'bbl_get_the_permalink_in_lang' ) ) {
-		return get_the_permalink( $post );
+		return get_the_permalink( $post_id );
 	}
 
-	return bbl_get_the_permalink_in_lang( $post, $lang_code, $fallback );
+	return bbl_get_the_permalink_in_lang( $post_id, $lang_code, $fallback );
 }
 
 /**
@@ -705,9 +707,9 @@ function internetorg_get_current_content_lang_code() {
  * Return the base post type (in the default language) for a provided post type.
  * Will return the provided $post_type if bbl_get_base_post_type function is not available.
  *
- * @param string $post_type The name of a post type
+ * @param string $post_type The name of a post type.
  *
- * @return string The name of the base post type
+ * @return string The name of the base post type.
  */
 function internetorg_get_base_post_type( $post_type ) {
 
@@ -725,7 +727,7 @@ function internetorg_get_base_post_type( $post_type ) {
  *
  * @return array
  */
-function internetorg_get_base_post_types(){
+function internetorg_get_base_post_types() {
 
 	if ( ! function_exists( 'bbl_get_base_post_types' ) ) {
 		return get_post_types( array(), 'objects' );
