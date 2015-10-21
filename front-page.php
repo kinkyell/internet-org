@@ -98,29 +98,29 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																		$social_attr = 'false';
 																		if ( 'page' === $cta['cta_src'] && absint( $cta['link_src'] ) ) {
 
-																			$url          = esc_url( get_the_permalink( $cta['link_src'] ) );
+																			$url = esc_url( get_the_permalink( $cta['link_src'] ) );
 
-																			$title        = esc_attr( get_the_title( $cta['link_src'] ) );
+																			$title = esc_attr( get_the_title( $cta['link_src'] ) );
 
-																			$desc         = wp_kses_post( get_post_field( 'post_excerpt', $cta['link_src'] ) );
+																			$desc = wp_kses_post( get_post_field( 'post_excerpt', $cta['link_src'] ) );
 
-																			$img          = ( internetorg_get_media_image_url( get_post_thumbnail_id( $cta['link_src'] ), 'panel-image' ) )
+																			$img = ( internetorg_get_media_image_url( get_post_thumbnail_id( $cta['link_src'] ), 'panel-image' ) )
 																				? internetorg_get_media_image_url( get_post_thumbnail_id( $cta['link_src'] ), 'panel-image' ) : '';
 
 																			$mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type( $cta['link_src'] ), $cta['link_src'] ) );
 
-																			if ( 'post' === get_post_type( $cta['link_src'] ) ) {
+																			if ( in_array( $cta['link_src'], internetorg_get_shadow_post_types_for_ajax( 'post' ) ) ) {
 																				$social_attr = 'true';
 																			}
 																		} else {
 
-																			$url          = esc_url( apply_filters('iorg_url', $cta['link']) );
+																			$url = esc_url( apply_filters( 'iorg_url', $cta['link'] ) );
 
-																			$title        = esc_attr( $cta['title'] );
+																			$title = esc_attr( $cta['title'] );
 
-																			$desc         = esc_attr( strip_tags( nl2br( $cta['text'] ) ) );
+																			$desc = esc_attr( strip_tags( nl2br( $cta['text'] ) ) );
 
-																			$img          = ( ! empty( $cf_content_section['call-to-action'][0] )
+																			$img = ( ! empty( $cf_content_section['call-to-action'][0] )
 																				? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'panel-image' )
 																				: '' );
 
@@ -133,7 +133,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																			? $fieldset['theme'] : $fieldset['slug'];
 
 																		?>
-																		<a href="<?php echo esc_url( apply_filters('iorg_url', $cta['link']) ); ?>"
+																		<a href="<?php echo esc_url( apply_filters( 'iorg_url', $cta['link'] ) ); ?>"
 																		   class="tertiaryCta <?php echo esc_attr( $js_class ); ?>"
 																			<?php if ( ! internetorg_is_video_url( $cta['link'] ) ) : ?>
 																				data-type="titled"
@@ -230,7 +230,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																		: $cf_content_section['slug'];
 																	?>
 																	<div class="transformBlock-post-item-ft">
-																		<a href="<?php echo esc_url( apply_filters('iorg_url', $url) ); ?>"
+																		<a href="<?php echo esc_url( apply_filters( 'iorg_url', $url ) ); ?>"
 																		   class="link link_theme<?php echo esc_attr( ucwords( $theme ) ); ?> js-stateLink"
 																		   data-type="panel"
 																		   data-image="<?php echo esc_url( $img ); ?>"
@@ -256,7 +256,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 
 												<div class="transformBlock-post-item">
 													<div class="splashFooter">
-														<?php echo apply_filters('the_content', wp_kses_post( ! empty( $get_involved_content_widget_post ) ? $get_involved_content_widget_post->post_content : '' )); ?>
+														<?php echo apply_filters( 'the_content', wp_kses_post( ! empty( $get_involved_content_widget_post ) ? $get_involved_content_widget_post->post_content : '' ) ); ?>
 														<div class="splashFooter-section">
 															<div class="splashFooter-section-bd">
 																<?php internetorg_vip_powered_wpcom(); ?>
@@ -338,14 +338,16 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																					$mobile_image = esc_url( ( ! empty( $cf_content_section['call-to-action'][0] )
 																						? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'inline-image' ) : '' ) );
 																				}
-																				if ( 'post' === get_post_type( $cta['link_src'] ) ) {
+
+																				if ( in_array( $cta['link_src'], internetorg_get_shadow_post_types_for_ajax( 'post' ) ) ) {
 																					$social_attr = 'true';
 																				}
+
 																				$theme = ( ! empty( $cf_content_section['theme'] ) )
 																					? $cf_content_section['theme']
 																					: $cf_content_section['slug'];
 																				?>
-																				<a href="<?php echo esc_url( apply_filters('iorg_url', $url) ); ?>"
+																				<a href="<?php echo esc_url( apply_filters( 'iorg_url', $url ) ); ?>"
 																				   class="tertiaryCta <?php echo esc_attr( $js_class ); ?>"
 																					<?php if ( ! internetorg_is_video_url( $cta['link'] ) ) : ?>
 																						data-type="titled"
@@ -413,7 +415,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 															: $cf_content_section['slug'];
 														?>
 														<div class="narrative-section-bd-link u-isHiddenMedium">
-															<a href="<?php echo esc_url( apply_filters('iorg_url', $url) ); ?>"
+															<a href="<?php echo esc_url( apply_filters( 'iorg_url', $url ) ); ?>"
 															   class="circleBtn circleBtn_theme<?php echo esc_attr( ucwords( $theme ) ); ?> js-stateLink"
 															   data-type="panel"
 															   data-theme="<?php echo esc_attr( $theme ); ?>"
@@ -450,7 +452,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 												</div>
 												<div class="statementBlock-bd">
 													<div class="splashFooter">
-														<?php echo apply_filters('the_content', wp_kses_post( ! empty( $get_involved_content_widget_post ) ? $get_involved_content_widget_post->post_content : '' )); ?>
+														<?php echo apply_filters( 'the_content', wp_kses_post( ! empty( $get_involved_content_widget_post ) ? $get_involved_content_widget_post->post_content : '' ) ); ?>
 														<div class="splashFooter-section">
 															<div class="splashFooter-section-bd">
 																<?php internetorg_vip_powered_wpcom(); ?>
