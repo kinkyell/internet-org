@@ -82,7 +82,7 @@ class LinkTransformer {
    * @return bool
    */
   protected function isLanguageCode($string) {
-    return (bool) preg_match('/^[a-z]{2}/i', $string);
+    return (bool) preg_match('/^[a-z]{2}$/i', $string);
   }
 
   /**
