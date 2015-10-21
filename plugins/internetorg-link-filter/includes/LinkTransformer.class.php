@@ -17,6 +17,27 @@
 class LinkTransformer {
 
   /**
+   * The domain to which we will link
+   * @var string
+   */
+  protected $domain;
+
+  /**
+   * The url prefix for the currently selected language (ex: "en")
+   * @var string
+   */
+  protected $urlPrefix;
+
+  /**
+   * Constructor
+   */
+  public function _construct() {
+    $this->domain = get_current_site()->domain;
+    $langCode = bbl_get_current_content_lang_code();
+    $this->urlPrefix = bbl_get_prefix_from_lang_code($langCode);
+  }
+
+  /**
    * Transforms the provided link to point to the proper domain and language.
    *
    * @param string $url   The URL to be transformed. May or may not already contain a language code.
@@ -29,15 +50,11 @@ class LinkTransformer {
       return $url;
     }
 
-    $domain = get_current_site()->domain;
-    $langCode = bbl_get_current_content_lang_code();
-    $urlPrefix = bbl_get_prefix_from_lang_code($langCode);
-
     $parsedUrl = parse_url($url);
     $pathParts = array_values(array_filter(explode('/', $parsedUrl['path'])));
 
     if ($this->isLanguageCode($pathParts[0])) {
-      $pathParts[0] = $urlPrefix;
+      $pathParts[0] = $this->urlPrefix;
     }
     else {
       array_unshift($pathParts, $urlPrefix);
@@ -46,7 +63,7 @@ class LinkTransformer {
     $scheme = isset($pathParts['scheme']) ? $pathParts['scheme'] : 'http';
     $newPath = implode('/', $pathParts);
 
-    return sprintf('%s://%s/%s', $scheme, $domain, $newPath);
+    return sprintf('%s://%s/%s', $scheme, $this->domain, $newPath);
   }
 
   /**

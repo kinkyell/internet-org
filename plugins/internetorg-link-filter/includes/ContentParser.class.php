@@ -6,10 +6,6 @@
  */
 
 /**
- * Class LinkTransformer
- */
-
-/**
  * Class ContentParser.
  *
  * Walks through a given string of HTML content and transforms the appropriate links
