@@ -34,7 +34,15 @@ class LinkTransformer {
     $urlPrefix = bbl_get_prefix_from_lang_code($langCode);
 
     $parsedUrl = parse_url($url);
-    $pathParts = array_values(array_filter(explode('/', $parsedUrl['path'])));
+    $pathParts = explode('/', $parsedUrl['path']);
+
+    // We're only transforming absolute URLs, not relative.
+    if (!empty($pathParts[0])) {
+      return $url;
+    }
+
+    // Strip out slashes at the beginning and end of our array
+    $pathParts = array_values(array_filter($pathParts));
 
     if ($this->isLanguageCode($pathParts[0])) {
       $pathParts[0] = $urlPrefix;
