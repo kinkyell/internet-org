@@ -2164,7 +2164,7 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 			 */
 			$mobile_image = internetorg_get_mobile_featured_image( get_post_type( $cta['link_src'] ), $cta['link_src'] );
 
-			if ( 'io_story' === get_post_type( $cta['link_src'] ) ) {
+			if ( in_array( $cta['link_src'], internetorg_get_shadow_post_types_for_ajax( 'io_story' ) ) ) {
 				$type = 'panel';
 			}
 		} else {
@@ -2184,7 +2184,7 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 			);
 		}
 
-		if ( ! empty( $cta['link_src'] ) && 'post' === get_post_type( $cta['link_src'] ) ) {
+		if ( ! empty( $cta['link_src'] ) && in_array( $cta['link_src'], internetorg_get_shadow_post_types_for_ajax( 'post' ) ) ) {
 			$social_attr = 'true';
 		}
 
