@@ -1543,7 +1543,6 @@ function internetorg_video_shortcode( $atts = array() ) {
 	);
 
 	return $markup;
-
 }
 
 add_shortcode( 'io_video', 'internetorg_video_shortcode' );
@@ -1562,7 +1561,7 @@ function internetorg_register_video_shortcode_ui() {
 	 * @param array  The various fields, name of ui element and other attributes
 	 */
 	shortcode_ui_register_for_shortcode(
-		'io-video',
+		'io_video',
 		array(
 			'label'         => esc_html__( 'Video', 'internetorg' ),
 			'listItemImage' => 'dashicons-format-video',
@@ -1572,10 +1571,13 @@ function internetorg_register_video_shortcode_ui() {
 					'attr'  => 'id',
 					'type'  => 'post_select',
 					'query' => array(
-						'post_type' => 'io_video',
+						'post_type' => internetorg_get_multiple_shadow_post_types_for_ajax(
+							array(
+								'io_video',
+							)
+						),
 					),
 				),
-
 			),
 		)
 	);
@@ -1752,7 +1754,13 @@ function internetorg_register_custom_link_shortcode_ui() {
 					'attr'  => 'source',
 					'type'  => 'post_select',
 					'query' => array(
-						'post_type' => 'page, io_story, post',
+						'post_type' => internetorg_get_multiple_shadow_post_types_for_ajax(
+							array(
+								'page',
+								'post',
+								'io_story',
+							)
+						),
 					),
 				),
 				array(
