@@ -11,23 +11,28 @@ require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
 vip_allow_title_orphans();
 
-// Shortcake VIP Plugin.
+// Load the Shortcake UI VIP Plugin.
 wpcom_vip_load_plugin( 'shortcode-ui' );
 
+// Load the Multiple Post Thumbnails VIP Plugin.
 wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
-wpcom_vip_load_plugin( 'wpcom-thumbnail-editor' );
 
+// Load the Babble VIP release candidate Plugin.
 wpcom_vip_load_plugin( 'babble', 'plugins', true );
+
+// Load the Babble Globals VIP release candidate Plugin.
 wpcom_vip_load_plugin( 'babble-globals', 'plugins', true );
+
+// Load the Babble Translation Group Tool VIP release candidate Plugin.
 wpcom_vip_load_plugin( 'babble-translation-group-tool', 'plugins', true );
 
-// Google Analytics
+// Load the Google Analytics VIP plugin.
 wpcom_vip_load_plugin( 'wp-google-analytics' );
 
-// Additional Caching
-// wpcom_vip_load_plugin( 'cache-nav-menu' );
+// Load the Cache Nave Menu VIP plugin.
+wpcom_vip_load_plugin( 'cache-nav-menu' );
 
-// Opengraph
+// Load the Opengraph VIP plugin.
 wpcom_vip_enable_opengraph();
 
 /** Custom Post Types. */
@@ -728,7 +733,7 @@ function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button 
 					}
 
 					$out .=
-						'<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? apply_filters('iorg_url', $link) : '' )
+						'<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? apply_filters( 'iorg_url', $link ) : '' )
 						. '" class="' . ( $cta_as_button ? 'btn' : 'link link_twoArrows' )
 						. '" ' . $target . '>' . esc_html( $label ) . '</a></div>';
 				}
@@ -1348,7 +1353,7 @@ function internetorg_get_page_theme( $post_id = 0 ) {
 		return $default_theme;
 	}
 
-	// make sure we have the base post ID (original language)
+	// Make sure we have the base post ID (original language).
 	$original_post_id = $post_id;
 	if ( function_exists( 'bbl_get_default_lang_post' ) ) {
 		$original_post_id = bbl_get_default_lang_post( $post_id );
@@ -2231,7 +2236,7 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 /**
  * Output an offsite CTA link.
  *
- * @param string $link
+ * @param string $link The destination URL.
  */
 function internetorg_external_cta_link( $link = '' ) {
 
