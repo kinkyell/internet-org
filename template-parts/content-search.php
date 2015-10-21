@@ -68,10 +68,10 @@ $theme = ( in_array( get_post_type( get_the_ID() ), $io_story_shadow ) ) ? 'appr
 			    data-mobile-image="<?php echo esc_url( $mobile_image );?>"
 			    data-theme="<?php echo esc_attr( strtolower( $theme ) ); ?>"
 
-			    <?php if ( in_array( get_post_type( get_the_ID(), $post_shadow ) ) { ?>
-				    data-date="<?php echo esc_attr( get_the_date( '', get_the_ID() ) ); ?>"
-				    data-social="true"
-			    <?php } ?>
+				<?php if ( in_array( get_post_type( get_the_ID() ), $post_shadow ) ) : ?>
+					data-date="<?php echo esc_attr( get_the_date( '', get_the_ID() ) ); ?>"
+					data-social="true"
+				<?php endif; ?>
 
 			   data-type="<?php echo esc_attr( $type ); ?>">
 				<?php esc_html_e( 'Read More', 'internetorg' ); ?>
