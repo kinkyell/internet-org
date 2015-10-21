@@ -2208,7 +2208,7 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 		?>
 
 		<div class="feature-cta">
-			<a href="<?php echo esc_url( apply_filters('iorg_url', $url) ); ?>"
+			<a href="<?php echo esc_url( apply_filters( 'iorg_url', $url ) ); ?>"
 			   class="link js-stateLink"
 			   data-type="<?php esc_attr( $type ); ?>"
 			   data-social="<?php echo esc_attr( $social_attr ); ?>"
@@ -2231,9 +2231,14 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 /**
  * Output an offsite CTA link.
  *
- * @param $cta
+ * @param string $link
  */
-function internetorg_external_cta_link( $link ) {
+function internetorg_external_cta_link( $link = '' ) {
+
+	if ( empty( $link ) ) {
+		return;
+	}
+
 	?>
 	<div class="feature-cta">
 		<a href="<?php echo esc_url( $link ); ?>" class="link" target="_blank">
