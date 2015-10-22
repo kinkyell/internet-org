@@ -78,7 +78,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 											<?php foreach ( $group as $fieldset ) : ?>
 
 											<?php if ( ! empty( $fieldset['call-to-action'] ) ) : ?>
-										<li class="narrativeDT-sections-item" data-feature="<?php echo esc_url( ( ! empty( $fieldset['call-to-action'][0] ) ? internetorg_get_media_image_url( $fieldset['call-to-action'][0]['image'], 'panel-image' ) : '' ) ); ?>">
+										<li class="narrativeDT-sections-item" data-feature="<?php echo esc_url( ( ! empty( $fieldset['call-to-action'][0] ) && ! empty( $fieldset['call-to-action'][0]['image'] ) ? internetorg_get_media_image_url( $fieldset['call-to-action'][0]['image'], 'panel-image' ) : '' ) ); ?>">
 
 											<?php if ( count( $fieldset['call-to-action'] ) > 1 ) : ?>
 												<ul>
@@ -118,7 +118,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 
 																			$title = esc_attr( $cta['title'] );
 
-																			$desc = esc_attr( strip_tags( nl2br( $cta['text'] ) ) );
+																			$desc = esc_attr( ( ! empty( $cta['text'] ) ? strip_tags( nl2br( $cta['text'] ) ) : '' ) );
 
 																			$img = ( ! empty( $cf_content_section['call-to-action'][0] )
 																				? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'panel-image' )
@@ -198,15 +198,17 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 													foreach ( $custom_fields as $group ) :
 														if ( ! empty( $group ) ) :
 															foreach ( $group as $cf_content_section ) : ?>
+																<?php $cf_content_section_slug    = ( ! empty( $cf_content_section['slug'] ) ? $cf_content_section['slug'] : '' ); ?>
+																<?php $cf_content_section_content = ( ! empty( $cf_content_section['content'] ) ? ltrim( rtrim( $cf_content_section['content'], '</p>' ), '<p>' ) : '' ); ?>
 																<div class="transformBlock-post-item">
 																	<div class="transformBlock-post-item-bd">
-																		<p class="bdcpy bdcpy_narrative"><?php echo wp_kses_post( ltrim( rtrim( $cf_content_section['content'], '</p>' ), '<p>' ) ); ?></p>
+																		<p class="bdcpy bdcpy_narrative"><?php echo wp_kses_post( $cf_content_section_content ); ?></p>
 																	</div>
 																	<?php
 
-																	if ( 'page' === $cf_content_section['src'] && absint( $cf_content_section['url-src'] ) ) {
-																		$url          = esc_url( get_the_permalink( $cf_content_section['url-src'] ) );
-																		$title        = esc_attr( get_the_title( $cf_content_section['url-src'] ) );
+																	if ( 'page' === $cf_content_section['src'] && ! empty( $cf_content_section['url-src'] ) && absint( $cf_content_section['url-src'] ) ) {
+																		$url          = ( ! empty( $cf_content_section['url-src'] ) ? esc_url( get_the_permalink( $cf_content_section['url-src'] ) ) : '' );
+																		$title        = ( ! empty( $cf_content_section['url-src'] ) ? esc_attr( get_the_title( $cf_content_section['url-src'] ) ) : '' );
 																		$desc         = wp_kses_post( get_post_field( 'post_excerpt', $cf_content_section['url-src'] ) );
 																		$img          = ( internetorg_get_media_image_url( get_post_thumbnail_id( $cf_content_section['url-src'] ), 'panel-image' ) )
 																			? internetorg_get_media_image_url( get_post_thumbnail_id( $cf_content_section['url-src'] ), 'panel-image' )
@@ -214,20 +216,20 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																		$mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type( $cf_content_section['url-src'] ), $cf_content_section['url-src'] ) );
 
 																	} else {
-																		$url          = '/' . esc_attr( $cf_content_section['slug'] );
-																		$title        = esc_attr( $cf_content_section['name'] );
-																		$desc         = esc_attr( strip_tags( nl2br( $cf_content_section['content'] ) ) );
-																		$img          = ( ! empty( $cf_content_section['call-to-action'][0] )
+																		$url          = '/' . esc_attr( $cf_content_section_slug );
+																		$title        = ( ! empty( $cf_content_section['name'] ) ? esc_attr( $cf_content_section['name'] ) : '' );
+																		$desc         = esc_attr( $cf_content_section_content );
+																		$img          = ( ! empty( $cf_content_section['call-to-action'][0] ) && ! empty( $cf_content_section['call-to-action'][0]['image'] )
 																			? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'panel-image' )
 																			: '' );
-																		$mobile_image = esc_url( ( ! empty( $cf_content_section['call-to-action'][0] )
+																		$mobile_image = esc_url( ( ! empty( $cf_content_section['call-to-action'][0] ) && ! empty( $cf_content_section['call-to-action'][0]['image'] )
 																			? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'inline-image' )
 																			: '' ) );
 																	}
 
 																	$theme = ( ! empty( $cf_content_section['theme'] ) )
 																		? $cf_content_section['theme']
-																		: $cf_content_section['slug'];
+																		: $cf_content_section_slug;
 																	?>
 																	<div class="transformBlock-post-item-ft">
 																		<a href="<?php echo esc_url( apply_filters( 'iorg_url', $url ) ); ?>"
@@ -243,7 +245,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																			<?php endif; ?>
 	                                                                       data-title="<?php echo esc_attr( $title ); ?>"
 	                                                                       data-desc="<?php echo esc_attr( $desc ); ?>">
-																			<?php echo esc_html( $cf_content_section['name'] ); ?>
+																			<?php echo esc_html( ! empty( $cf_content_section['name'] ) ? $cf_content_section['name'] : '' ); ?>
 																		</a>
 																	</div>
 																</div>
@@ -297,6 +299,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 									foreach ( $custom_fields as $group ) :
 										if ( ! empty( $group ) ) :
 											foreach ( $group as $cf_content_section ) : ?>
+												<?php $cf_content_section_slug = ( ! empty( $cf_content_section['slug'] ) ? $cf_content_section['slug'] : '' ); ?>
 
 												<div class="narrative-section">
 													<div class="narrative-section-slides narrative-section-slides_short">
@@ -320,9 +323,9 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 
 																				$social_attr = 'false';
 
-																				if ( 'page' === $cta['cta_src'] && absint( $cta['link_src'] ) ) {
-																					$url          = esc_url( get_the_permalink( $cta['link_src'] ) );
-																					$title        = esc_attr( get_the_title( $cta['link_src'] ) );
+																				if ( 'page' === $cta['cta_src'] && ! empty( $cta['link_src'] ) && absint( $cta['link_src'] ) ) {
+																					$url          = ( ! empty( $cta['link_src'] ) ? esc_url( get_the_permalink( $cta['link_src'] ) ) : '' );
+																					$title        = ( ! empty( $cta['link_src'] ) ? esc_attr( get_the_title( $cta['link_src'] ) ) : '' );
 																					$desc         = wp_kses_post( get_post_field( 'post_excerpt', $cta['link_src'] ) );
 																					$img          = ( internetorg_get_media_image_url( get_post_thumbnail_id( $cta['link_src'] ), 'panel-image' ) )
 																						? internetorg_get_media_image_url( get_post_thumbnail_id( $cta['link_src'] ), 'panel-image' )
@@ -330,22 +333,22 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																					$mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type( $cta['link_src'] ), $cta['link_src'] ) );
 
 																				} else {
-																					$url          = esc_url( $cta['link'] );
-																					$title        = esc_attr( $cta['title'] );
-																					$desc         = esc_attr( strip_tags( nl2br( $cta['text'] ) ) );
+																					$url          = ( ! empty( $cta['link'] ) ? esc_url( $cta['link'] ) : '' );
+																					$title        = ( ! empty( $cta['title'] ) ? esc_attr( $cta['title'] ) : '' );
+																					$desc         = ( ! empty( $cta['text'] ) ? esc_attr( strip_tags( nl2br( $cta['text'] ) ) ) : '' );
 																					$img          = ( ! empty( $cf_content_section['call-to-action'][0] )
 																						? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'panel-image' ) : '' );
 																					$mobile_image = esc_url( ( ! empty( $cf_content_section['call-to-action'][0] )
 																						? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'inline-image' ) : '' ) );
 																				}
 
-																				if ( in_array( $cta['link_src'], internetorg_get_shadow_post_types_for_ajax( 'post' ) ) ) {
+																				if ( ! empty( $cta['link_src'] ) && in_array( $cta['link_src'], internetorg_get_shadow_post_types_for_ajax( 'post' ) ) ) {
 																					$social_attr = 'true';
 																				}
 
 																				$theme = ( ! empty( $cf_content_section['theme'] ) )
 																					? $cf_content_section['theme']
-																					: $cf_content_section['slug'];
+																					: $cf_content_section_slug;
 																				?>
 																				<a href="<?php echo esc_url( apply_filters( 'iorg_url', $url ) ); ?>"
 																				   class="tertiaryCta <?php echo esc_attr( $js_class ); ?>"
@@ -379,19 +382,19 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 														<div class="container container_wide">
 															<div class="statementBlock">
 																<div class="statementBlock-pre">
-																	<h2 class="hdg hdg_heavy mix-hdg_theme<?php echo esc_attr( ucwords( $cf_content_section['slug'] ) ); ?> u-isHiddenMedium"><?php echo esc_html( $cf_content_section['name'] ); ?></h2>
+																	<h2 class="hdg hdg_heavy mix-hdg_theme<?php echo esc_attr( ucwords( $cf_content_section_slug ) ); ?> u-isHiddenMedium"><?php echo esc_html( isset( $cf_content_section['name'] ) ? $cf_content_section['name'] : '' ); ?></h2>
 																</div>
 																<div class="statementBlock-hd">
-																	<h2 class="hdg hdg_1"><?php echo esc_html( $cf_content_section['title'] ); ?></h2>
+																	<h2 class="hdg hdg_1"><?php echo esc_html( isset( $cf_content_section['title'] ) ? $cf_content_section['title'] : '' ); ?></h2>
 																</div>
 																<div class="statementBlock-bd">
-																	<p class="bdcpy bdcpy_narrative"><?php echo wp_kses_post( ltrim( rtrim( $cf_content_section['content'], '</p>' ), '<p>' ) ); ?></p>
+																	<p class="bdcpy bdcpy_narrative"><?php echo wp_kses_post( ! empty( $cf_content_section['content'] ) ? ltrim( rtrim( $cf_content_section['content'], '</p>' ), '<p>' ) : '' ); ?></p>
 																</div>
 															</div>
 														</div>
 
 														<?php
-														if ( 'page' === $cf_content_section['src'] && absint( $cf_content_section['url-src'] ) ) {
+														if ( 'page' === $cf_content_section['src'] && ! empty( $cf_content_section['url-src'] ) && absint( $cf_content_section['url-src'] ) ) {
 															$url          = esc_url( get_the_permalink( $cf_content_section['url-src'] ) );
 															$title        = esc_attr( get_the_title( $cf_content_section['url-src'] ) );
 															$desc         = wp_kses_post( get_post_field( 'post_excerpt', $cf_content_section['url-src'] ) );
@@ -399,20 +402,20 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 															$mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type( $cf_content_section['url-src'] ), $cf_content_section['url-src'] ) );
 
 														} else {
-															$url          = '/' . esc_attr( $cf_content_section['slug'] );
-															$title        = esc_attr( $cf_content_section['name'] );
-															$desc         = esc_attr( strip_tags( nl2br( $cf_content_section['content'] ) ) );
-															$img          = ( ! empty( $cf_content_section['call-to-action'][0] )
+															$url          = '/' . esc_attr( $cf_content_section_slug );
+															$title        = esc_attr( ! empty( $cf_content_section['name'] ) ? $cf_content_section['name'] : '' );
+															$desc         = esc_attr( strip_tags( nl2br( ! empty( $cf_content_section['content'] ) ? $cf_content_section['content'] : '' ) ) );
+															$img          = ( ! empty( $cf_content_section['call-to-action'][0] ) && ! empty( $cf_content_section['call-to-action'][0]['image'] )
 																? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'panel-image' )
 																: '' );
-															$mobile_image = esc_url( ( ! empty( $cf_content_section['call-to-action'][0] )
+															$mobile_image = esc_url( ( ! empty( $cf_content_section['call-to-action'][0] ) && ! empty( $cf_content_section['call-to-action'][0]['image'] )
 																? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'inline-image' )
 																: '' ) );
 														}
 
 														$theme = ( ! empty( $cf_content_section['theme'] ) )
 															? $cf_content_section['theme']
-															: $cf_content_section['slug'];
+															: $cf_content_section_slug;
 														?>
 														<div class="narrative-section-bd-link u-isHiddenMedium">
 															<a href="<?php echo esc_url( apply_filters( 'iorg_url', $url ) ); ?>"
@@ -428,7 +431,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																	data-image="<?php echo esc_url( $img ); ?>"
 																<?php endif; ?>
 																>
-																<?php echo esc_html( $cf_content_section['name'] ); ?>
+																<?php echo esc_html( ! empty( $cf_content_section['name'] ) ? $cf_content_section['name'] : '' ); ?>
 															</a>
 														</div>
 													</div>
