@@ -24,13 +24,19 @@ the [VIP Documentation](https://vip.wordpress.com/documentation/) especially in 
 The first thing you need to do is clone yourself a copy of the VIP 
 Quickstart environment (as quickstart in this example):
 
-    $> git clone --recursive https://github.com/Automattic/vip-quickstart quickstart
+    $> cd ~/projects/
+    $> git clone --recursive https://github.com/Automattic/vip-quickstart internetdotorg
 
 Once you have your copy checked out you can start the vagrant instance,
 please note, this will take a long time to start the first time:
 
-    $> cd quickstart
+    $> cd internetdotorg
     $> vagrant up
+    
+Depending on how you have vagrant configured in your environment you may need to
+add the following to your [hosts](http://en.wikipedia.org/wiki/Hosts_\(file\)) file:
+
+    10.86.73.80    vip.local
 
 ## Creating/adding your theme
 
@@ -46,6 +52,13 @@ nothing outside of your theme's directory is allowed in the repo, including any
 site config files, WordPress core code nor the plugins available by default. This
 keeps your repo light and the amount of code to be reviewed by the VIP team to a
 minimum.
+
+To add your thime to the environment:
+
+	$> cd ~/projects/internetdotorg/www/wp-content/themes/vip
+	$> git clone --recursive https://git.nerderylabs.com/FI.INTERNETORG internetorg
+	$> cd internetorg
+	$> git checkout develop
 
 ## Plugins
 
@@ -94,4 +107,30 @@ need to log in to the VM (via ssh) and update the config files manually
 
 ### Error logs
 
-forthcoming
+#### PHP-FPM
+
+The PHP FPM log can log things that may not go into your default log file. You may need to activate the PHP FPM log. This command will setup the FPM log and allow you to tail it from your local machine (ei. not ssh'd into the vagrant instance).
+
+    $> vagrant ssh
+    $> sudo ln -s /srv/php-fpm-www-error.log /var/log/php-fpm-www-error.log && sudo touch /srv/php-fpm-www-error.log && sudo chown www-data:www-data /srv/php-fpm-www-error.log
+    
+Then, to tail the log exit the vm (either type exit or hit ctrl+d).
+
+	$> cd ~/projects/internetdotorg/www/
+	$> tail -f php-fpm-www-error.log
+	
+To stop tailing a file hit ctrl+c.
+
+#### Nginx Error Log
+
+To view the nginx error log you need to log into the vagrant instance and tail the log file from there:
+
+    $> cd ~/projects/internetdotorg/www/
+    $> vagrant ssh
+    $> cd /var/log/nginx
+    $> tail -f error.log
+
+__Note:__ Your error log may be named slightly different (e.g. _.error.log) you can `$> ls -la` in the log directory to see which files are available to you, look for the most recently updated file with error in the name.
+
+
+
