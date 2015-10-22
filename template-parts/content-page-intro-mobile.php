@@ -33,7 +33,7 @@ $mobile_intro_content = internetorg_get_the_intro_block( get_the_ID(), 'intro_co
 	<div class="topicBlock-media isHidden u-isHiddenMedium" aria-hidden="true">
 		<img src="<?php echo esc_url( $mobile_featured_image ); ?>" alt="" />
 	</div>
-<?php else: ?>
+<?php else : ?>
 	<div class="mix-topicBlock_push"></div>
 <?php endif; ?>
 

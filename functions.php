@@ -11,23 +11,28 @@ require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
 vip_allow_title_orphans();
 
-// Shortcake VIP Plugin.
+// Load the Shortcake UI VIP Plugin.
 wpcom_vip_load_plugin( 'shortcode-ui' );
 
+// Load the Multiple Post Thumbnails VIP Plugin.
 wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
-wpcom_vip_load_plugin( 'wpcom-thumbnail-editor' );
 
+// Load the Babble VIP release candidate Plugin.
 wpcom_vip_load_plugin( 'babble', 'plugins', true );
+
+// Load the Babble Globals VIP release candidate Plugin.
 wpcom_vip_load_plugin( 'babble-globals', 'plugins', true );
+
+// Load the Babble Translation Group Tool VIP release candidate Plugin.
 wpcom_vip_load_plugin( 'babble-translation-group-tool', 'plugins', true );
 
-// Google Analytics
+// Load the Google Analytics VIP plugin.
 wpcom_vip_load_plugin( 'wp-google-analytics' );
 
-// Additional Caching
-// wpcom_vip_load_plugin( 'cache-nav-menu' );
+// Load the Cache Nave Menu VIP plugin.
+wpcom_vip_load_plugin( 'cache-nav-menu' );
 
-// Opengraph
+// Load the Opengraph VIP plugin.
 wpcom_vip_enable_opengraph();
 
 /** Custom Post Types. */
@@ -728,7 +733,7 @@ function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button 
 					}
 
 					$out .=
-						'<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? apply_filters('iorg_url', $link) : '' )
+						'<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? apply_filters( 'iorg_url', $link ) : '' )
 						. '" class="' . ( $cta_as_button ? 'btn' : 'link link_twoArrows' )
 						. '" ' . $target . '>' . esc_html( $label ) . '</a></div>';
 				}
@@ -1032,6 +1037,11 @@ function internetorg_do_ajax_search() {
 			)
 		);
 
+		$post_type = get_post_type();
+		if ( function_exists( 'bbl_get_base_post_type' ) ) {
+			$post_type = bbl_get_base_post_type( $post_type );
+		}
+
 		$data['posts'][] = array(
 			'ID'             => get_the_ID(),
 			'post_title'     => get_the_title(),
@@ -1040,7 +1050,7 @@ function internetorg_do_ajax_search() {
 			'post_thumbnail' => $post_thumbnail,
 			'mobile_image'   => $mobile_image,
 			'panel_image'    => $panel_image,
-			'post_type'      => get_post_type(),
+			'post_type'      => $post_type,
 			'post_date'      => get_the_date( '' ),
 		);
 	}
@@ -1343,7 +1353,7 @@ function internetorg_get_page_theme( $post_id = 0 ) {
 		return $default_theme;
 	}
 
-	// make sure we have the base post ID (original language)
+	// Make sure we have the base post ID (original language).
 	$original_post_id = $post_id;
 	if ( function_exists( 'bbl_get_default_lang_post' ) ) {
 		$original_post_id = bbl_get_default_lang_post( $post_id );
@@ -2100,6 +2110,14 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 		}
 
 		/**
+		 * Deal with offsite links early to avoid extra processing.
+		 */
+		if ( 'page' !== $cta['cta_src'] && ! empty( $cta['link'] ) && ! internetorg_is_internal_url( $cta['link'] ) ) {
+			internetorg_external_cta_link( $cta['link'] );
+			continue;
+		}
+
+		/**
 		 * The value for the data-social attribute on the call to action link.
 		 *
 		 * @var string $social_attr
@@ -2164,7 +2182,7 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 			 */
 			$mobile_image = internetorg_get_mobile_featured_image( get_post_type( $cta['link_src'] ), $cta['link_src'] );
 
-			if ( 'io_story' === get_post_type( $cta['link_src'] ) ) {
+			if ( in_array( $cta['link_src'], internetorg_get_shadow_post_types_for_ajax( 'io_story' ) ) ) {
 				$type = 'panel';
 			}
 		} else {
@@ -2184,7 +2202,7 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 			);
 		}
 
-		if ( ! empty( $cta['link_src'] ) && 'post' === get_post_type( $cta['link_src'] ) ) {
+		if ( ! empty( $cta['link_src'] ) && in_array( $cta['link_src'], internetorg_get_shadow_post_types_for_ajax( 'post' ) ) ) {
 			$social_attr = 'true';
 		}
 
@@ -2194,8 +2212,8 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 
 		?>
 
-		<div class="feaure-cta">
-			<a href="<?php echo esc_url( apply_filters('iorg_url', $url) ); ?>"
+		<div class="feature-cta">
+			<a href="<?php echo esc_url( apply_filters( 'iorg_url', $url ) ); ?>"
 			   class="link js-stateLink"
 			   data-type="<?php esc_attr( $type ); ?>"
 			   data-social="<?php echo esc_attr( $social_attr ); ?>"
@@ -2213,4 +2231,24 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 
 		<?php
 	}
+}
+
+/**
+ * Output an offsite CTA link.
+ *
+ * @param string $link The destination URL.
+ */
+function internetorg_external_cta_link( $link = '' ) {
+
+	if ( empty( $link ) ) {
+		return;
+	}
+
+	?>
+	<div class="feature-cta">
+		<a href="<?php echo esc_url( $link ); ?>" class="link" target="_blank">
+			<?php echo esc_html__( 'Learn More', 'internetorg' ); ?>
+		</a>
+	</div>
+	<?php
 }
