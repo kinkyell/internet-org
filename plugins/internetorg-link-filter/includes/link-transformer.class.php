@@ -45,7 +45,7 @@ class LinkTransformer {
 		// Strip out slashes at the beginning and end of our array
 		$pathParts = array_values( array_filter( $pathParts ) );
 
-		if ( $this->is_language_code( $pathParts[0] ) ) {
+		if ( ! empty( $pathParts ) && $this->is_language_code( $pathParts[0] ) ) {
 			$pathParts[0] = $urlPrefix;
 		} else {
 			array_unshift( $pathParts, $urlPrefix );
