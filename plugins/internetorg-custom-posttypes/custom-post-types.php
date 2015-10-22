@@ -80,5 +80,4 @@ class Internetorg_CustomPostTypes {
 	public function deactivate() {
 		flush_rewrite_rules();
 	}
-
 }

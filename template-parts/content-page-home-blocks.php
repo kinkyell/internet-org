@@ -42,7 +42,7 @@ if ( ! empty( $custom_fields ) ) : ?>
 										<?php foreach ( $fieldset['call-to-action'] as $cta ) : ?>
 											<div class="cta">
 											<?php if ( ! empty( $cta['link'] ) ) : ?>
-												<a href="<?php echo esc_attr( apply_filters('iorg_url', $cta['link']) ); ?>"><?php
+												<a href="<?php echo esc_attr( apply_filters( 'iorg_url', $cta['link'] ) ); ?>"><?php
 												if ( ! empty( $cta['image'] ) ) : ?>
 													<?php echo wp_get_attachment_image( $cta['image'], array( 32, 32 ) ); ?>
 												<?php else : ?>
