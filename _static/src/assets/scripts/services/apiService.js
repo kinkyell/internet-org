@@ -11,9 +11,6 @@ define(function(require, exports, module) { // jshint ignore:line
     var appConfig = require('appConfig');
     var eventHub = require('services/eventHub');
 
-    // api base url for ajax requests
-    // var BASE_URL = appConfig.apiBase;
-
     /*
      * Matches path keys to ajax source.
      * TODO: update to point to WP endpoints
