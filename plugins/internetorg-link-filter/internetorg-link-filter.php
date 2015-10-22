@@ -6,9 +6,9 @@
  * Time: 12:14 PM
  */
 
-require_once dirname( __FILE__ ) . '/includes/ContentParser.class.php';
-require_once dirname( __FILE__ ) . '/includes/FilterBridge.php';
-require_once dirname( __FILE__ ) . '/includes/LinkTransformer.class.php';
+require_once dirname( __FILE__ ) . '/includes/content-parser.class.php';
+require_once dirname( __FILE__ ) . '/includes/filter-bridge.php';
+require_once dirname( __FILE__ ) . '/includes/link-transformer.class.php';
 
 $bridge = internetorg_link_filter_bridge();
 
