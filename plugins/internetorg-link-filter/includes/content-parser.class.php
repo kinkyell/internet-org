@@ -18,6 +18,8 @@
 class ContentParser {
 
 	/**
+	 * Link transformer object.
+	 *
 	 * @var LinkTransformer
 	 */
 	private $linkTransformer;
@@ -25,7 +27,7 @@ class ContentParser {
 	/**
 	 * Constructor
 	 *
-	 * @param LinkTransformer $linkTransformer
+	 * @param LinkTransformer $linkTransformer Link transformer object.
 	 */
 	public function __construct( LinkTransformer $linkTransformer ) {
 		$this->linkTransformer = $linkTransformer;
@@ -46,7 +48,8 @@ class ContentParser {
 			return $content;
 		}
 
-		/* DOMDocument::loadHTML() does not, by default, support UTF-8 characters. However, we can hint
+		/*
+		 * DOMDocument::loadHTML() does not, by default, support UTF-8 characters. However, we can hint
 		 * that our content needs to be processed as UTF-8 by adding the following meta element. The only
 		 * caveat to that is that a <head><meta [...] /></head> structure gets automatically added to the
 		 * DOM, so we need to remove that later - see below for the call to removeHeadNode().
@@ -61,17 +64,19 @@ class ContentParser {
 			return $content;
 		}
 
-		// Recurse through the content, transforming all applicable links to use the proper language
+		// Recurse through the content, transforming all applicable links to use the proper language.
 		$this->traverse_dom( $dom );
 
-		/* As mentioned above, we need to remove the <head> element and that was automatically added as a
+		/*
+		 * As mentioned above, we need to remove the <head> element and that was automatically added as a
 		 * result of us hinting the charset for the DOM handler.
 		 */
 		$this->remove_head_node( $dom );
 
 		$transformedContent = $dom->saveHTML();
 
-		/* Removes the extra DOCTYPE, html, and body HTML wrappers that get added by old versions
+		/*
+		 * Removes the extra DOCTYPE, html, and body HTML wrappers that get added by old versions
 		 * of PHP and/or LibXML. In new versions of PHP and LibXML, passing in the proper "LIBXML_*"
 		 * flags to loadHTML() result in the undesirable parent elements from being added. However,
 		 * the VIP environment is using old versions so we need to do this manually.
@@ -86,10 +91,14 @@ class ContentParser {
 	 * node's children rather than simply recurse over the children because in order to replace
 	 * a child, DOMDocument needs to know the parent.
 	 *
-	 * @param DOMDocument $dom
+	 * @param DOMDocument $dom Document to parse.
 	 */
 	protected function traverse_dom( DOMDocument $dom ) {
-		/** @var DomElement $item */
+		/**
+		 * Processing tags.
+		 *
+		 * @var DomElement $item Anchor element.
+		 */
 		foreach ( $dom->getElementsByTagName( 'a' ) as $item ) {
 			if ( ! $this->should_href_be_transformed( $item ) ) {
 				$item->setAttribute( 'excluded', 'true' );
@@ -108,7 +117,7 @@ class ContentParser {
 	 * DOMElement in as a parameter because we intend on using HTML classes to manage
 	 * exclusions.
 	 *
-	 * @param DOMElement $element The element containing the anchor in question
+	 * @param DOMElement $element The element containing the anchor in question.
 	 *
 	 * @return boolean
 	 */
@@ -121,7 +130,7 @@ class ContentParser {
 	 * Removes the extra DOCTYPE, html, and body HTML wrappers that get added by old versions
 	 * of PHP and/or LibXML.
 	 *
-	 * @param string $content String containing HTML
+	 * @param string $content String containing HTML.
 	 *
 	 * @return string
 	 */
@@ -137,10 +146,14 @@ class ContentParser {
 	/**
 	 * Removes the entire <head> node and its children from a given DOMDocument.
 	 *
-	 * @param DOMDocument $dom
+	 * @param DOMDocument $dom Document to parse.
 	 */
 	protected function remove_head_node( DOMDocument $dom ) {
-		/** @var DomElement $item */
+		/**
+		 * Processing head tags.
+		 *
+		 * @var DomElement $item head tag.
+		 */
 		foreach ( $dom->getElementsByTagName( 'head' ) as $item ) {
 			$item->parentNode->removeChild( $item );
 		}

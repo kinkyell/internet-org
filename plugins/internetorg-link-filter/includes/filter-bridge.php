@@ -15,17 +15,25 @@
  */
 class FilterBridge {
 
-	/** @var ContentParser */
+	/**
+	 * Parser object data member.
+	 *
+	 * @var ContentParser Object that does the parsing.
+	 */
 	protected $parser;
 
-	/** @var LinkTransformer */
+	/**
+	 * Link transformer data member.
+	 *
+	 * @var LinkTransformer Link transformer worker object.
+	 */
 	protected $transformer;
 
 	/**
 	 * Constructor.
 	 *
-	 * @param ContentParser $parser
-	 * @param LinkTransformer $transformer
+	 * @param ContentParser   $parser Object that will be used to parse the content.
+	 * @param LinkTransformer $transformer Transformer object to use on URLs.
 	 */
 	public function __construct( ContentParser $parser, LinkTransformer $transformer ) {
 		$this->parser      = $parser;
@@ -33,7 +41,9 @@ class FilterBridge {
 	}
 
 	/**
-	 * @param string $content
+	 * Filter the content.
+	 *
+	 * @param string $content the content to filter.
 	 *
 	 * @return string
 	 */
@@ -42,7 +52,9 @@ class FilterBridge {
 	}
 
 	/**
-	 * @param string $url
+	 * Filters the passed in URL.
+	 *
+	 * @param string $url the URL to process.
 	 *
 	 * @return string
 	 */
@@ -56,8 +68,8 @@ class FilterBridge {
 	 * Handler for page_link filter, which is applied to the permalink URL for a
 	 * post prior to returning the processed url by the function.
 	 *
-	 * @param string $link The permalink for the page
-	 * @param int $pageId The ID for the page represented by this permalink
+	 * @param string $link The permalink for the page.
+	 * @param int    $pageId The ID for the page represented by this permalink.
 	 *
 	 * @return string
 	 **/
@@ -71,9 +83,9 @@ class FilterBridge {
 	 * Handler for post_link filter, which is applied to the permalink URL for a
 	 * post prior to returning the processed url by the function.
 	 *
-	 * @param string $url The post URL
-	 * @param Object $post The post object
-	 * @param bool $leavename Whether to keep the post name or page name.
+	 * @param string $url The post URL.
+	 * @param Object $post The post object.
+	 * @param bool   $leavename Whether to keep the post name or page name.
 	 *
 	 * @return string
 	 */

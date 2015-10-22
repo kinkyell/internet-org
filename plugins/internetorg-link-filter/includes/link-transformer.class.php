@@ -42,7 +42,7 @@ class LinkTransformer {
 			return $url;
 		}
 
-		// Strip out slashes at the beginning and end of our array
+		// Strip out slashes at the beginning and end of our array.
 		$pathParts = array_values( array_filter( $pathParts ) );
 
 		if ( ! empty( $pathParts ) && $this->is_language_code( $pathParts[0] ) ) {
@@ -70,7 +70,7 @@ class LinkTransformer {
 	 * This could be made more accurate by fetching only the supported languages from babble and
 	 * testing against that subset, but is sufficient for current requirements.
 	 *
-	 * @param string $string
+	 * @param string $string the string being checked.
 	 *
 	 * @return bool
 	 */
@@ -82,7 +82,7 @@ class LinkTransformer {
 	 * Determines whether the given URL is internal. This is used to determine whether the link
 	 * should be transformed/localized.
 	 *
-	 * @param string $url
+	 * @param string $url the url being processed.
 	 *
 	 * @return bool
 	 */

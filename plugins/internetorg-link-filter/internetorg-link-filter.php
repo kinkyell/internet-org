@@ -4,6 +4,8 @@
  * User: bkoren
  * Date: 10/20/15
  * Time: 12:14 PM
+ *
+ * @package Internet.org
  */
 
 require_once dirname( __FILE__ ) . '/includes/content-parser.class.php';
@@ -21,6 +23,8 @@ add_filter( 'post_link', array( $bridge, 'filter_post_link' ), 100, 3 );
 add_filter( 'iorg_url', array( $bridge, 'filter_url' ) );
 
 /**
+ * Function used to initialize the plugin and the various required objects.
+ *
  * @TODO Move this to a proper singleton / service provider
  *
  * @return FilterBridge
