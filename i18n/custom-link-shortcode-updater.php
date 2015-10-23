@@ -115,7 +115,11 @@ foreach ( $original_post_types as $processing_post_type ) {
 				/**
 				 * Perform search/replace on content and update the post...
 				 */
-				$translated_post = internetorg_process_content_shortcodes( $translated_post, $post, $bbl_job_post );
+				$translated_post = internetorg_process_content_shortcodes(
+					$translated_post,
+					$post,
+					$bbl_job_post
+				);
 			}
 		}
 	}
@@ -196,23 +200,30 @@ function internetorg_process_content_shortcodes( $translated_post, $original_pos
 		}
 
 		/** @var WP_Post|bool $alternate_destination_post The translated WP_Post object to link to, else false */
-		$alternate_destination_post =
-			bbl_get_post_in_lang( $destination_post_id, bbl_get_post_lang_code( $translated_post ) );
+		$alternate_destination_post = bbl_get_post_in_lang(
+			$destination_post_id,
+			bbl_get_post_lang_code( $translated_post )
+		);
 
 		if ( empty( $alternate_destination_post ) ) {
 			continue;
 		}
 
 		/** @var string $alternate_shortcode_string The full shortcode string updated with translated destination */
-		$alternate_shortcode_string =
-			str_replace( 'source="' . $destination_post_id . '"', 'source="' .
-			                                                      $alternate_destination_post->ID .
-			                                                      '"', $shortcode_string );
+		$alternate_shortcode_string = str_replace(
+			'source="' . $destination_post_id . '"',
+			'source="' . $alternate_destination_post->ID . '"',
+			$shortcode_string
+		);
 
 		/**
 		 * Update the content string with the new link shortcode string.
 		 */
-		$updated_content = str_replace( $shortcode_string, $alternate_shortcode_string, $updated_content );
+		$updated_content = str_replace(
+			$shortcode_string,
+			$alternate_shortcode_string,
+			$updated_content
+		);
 	}
 
 	/**
