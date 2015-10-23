@@ -73,6 +73,7 @@
 /* Facebook Button */
 .btn_facebook {
     background-color: $CLR_FB;
+    overflow: hidden;
 }
 
 .btn_facebook:hover,
@@ -80,10 +81,8 @@
     background-color: $CLR_FB_ACTIVE;
 }
 
-.btn_facebook:before {
-    content: "";
-    display: inline-block;
-    vertical-align: text-bottom;
+.btn_facebook .btn-icon {
+    float: left;
     height: 20px;
     width: 20px;
     margin-right: 18px;
@@ -93,19 +92,28 @@
     background-repeat: no-repeat;
 }
 
+.btn_facebook .btn-txt {
+    display: block;
+    overflow: hidden;
+    padding-top: 3px;
+}
+
 @include breakpoint(MD) {
     .btn {
         padding: 22px;
         @include remify(font-size, 18px);
     }
+
+    .btn_facebook .btn-txt {
+        padding-top: 0;
+    }
 }
 
 /* Right to Left Language support */
 [dir="rtl"] {
-
-    .btn_facebook:before {
+    .btn_facebook .btn-icon {
+        float: right;
         margin-right: 0;
         margin-left: 18px;
     }
-
 }
