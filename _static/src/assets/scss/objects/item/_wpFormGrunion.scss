@@ -179,6 +179,11 @@ body .contact-form label.radio
             margin-left: 20px;
         }
 
+        .grunion-radio-label > .radio + span {
+            margin-left: 10px;
+            margin-right: 4px;
+        }
+
     }
 
 }

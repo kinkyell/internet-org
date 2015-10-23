@@ -110,10 +110,6 @@ define(function(require, exports, module) { // jshint ignore:line
         var wrapperOpts = {
             onComplete: function() {
                 this.isAnimating = false;
-                // setTimeout(function() {
-                //     this.element.removeAttribute('style');
-                //     this.$element.css('min-height', $window.height());
-                // }.bind(this), 1000);
             },
             callbackScope: this
         };
