@@ -25,8 +25,9 @@
 				</div>
 				<div class="fbFollowBlock-cta">
 					<a href="<?php echo esc_attr__( 'https://fb.me/Internetdotorg', 'internetorg' ); ?>"
-					   class="btn btn_facebook" target="_blank">
-						<?php echo esc_html__( 'Like us on Facebook', 'internetorg' ); ?>
+					   	class="btn btn_facebook" target="_blank">
+					   	<span class="btn-icon"></span>
+						<span class="btn-txt"><?php echo esc_html__( 'Like us on Facebook', 'internetorg' ); ?></span>
 					</a>
 				</div>
 			</div>
