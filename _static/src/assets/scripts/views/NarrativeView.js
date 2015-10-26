@@ -304,6 +304,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onResize = function() {
+        window.scrollTo(0, 0); // prevents issue with ios7.1 minimalUI view (http://stackoverflow.com/questions/22391157/gray-area-visible-when-switching-from-portrait-to-landscape-using-ios-7-1-minima)
+
         if (breakpointManager.isMobile) {
             this._narrativeManager.refresh(this._position, this._subPosition);
         }
