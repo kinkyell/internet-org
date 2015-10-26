@@ -84,8 +84,18 @@
     transition: border 0.2s ease-in-out;
 }
 
-.langSelect-menu-item:hover > * {
+.langSelect-menu > *:focus > * {
+    border-bottom: 2px solid $CLR_BLACK;
+}
+
+.langSelect-menu-item:hover > *, 
+.langSelect-menu-item.isSelected > * {
     border-bottom: 2px solid $CLR_ACCENT;
+}
+
+.langSelect-menu > *.isSelected:focus,
+.langSelect-menu > *:focus {
+    outline: 0;
 }
 
 /* inActive state */

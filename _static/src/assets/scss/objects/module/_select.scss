@@ -80,6 +80,7 @@ select:hover + .select-label,
 select:focus + .select-label,
 .select-menu-item:hover,
 .select-menu-item:focus {
+    outline: 0;
     background: #efede4;
 }
 
