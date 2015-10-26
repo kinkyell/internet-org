@@ -41,11 +41,11 @@ $BASE_FONT_SIZE: 16px;
 
 @mixin font($style) {
     @if $style == SANS {
-        font-family: "Basis Grotesque Pro", Comic Sans, Tahoma, Arial, Helvetica, sans-serif;
+        font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
         font-weight: 200; // normal
         font-style: normal;
     } @else if $style == SANS_BLACK {
-        font-family: "Basis Grotesque Pro", Comic Sans, Tahoma, Arial, Helvetica, sans-serif;
+        font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
         font-weight: 500;
         font-style: normal;
     } @else if $style == SERIF {

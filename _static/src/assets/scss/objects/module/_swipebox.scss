@@ -138,6 +138,12 @@ html.swipebox-html.swipebox-touch {
   top: 0;
 }
 
+#swipebox-close:hover, 
+#swipebox-close:focus {
+  background-color: rgba(255,255,255,0.25);
+  outline: 0;  
+}
+
 #swipebox-arrows {
   display: block;
   margin: 0 auto;
@@ -156,8 +162,7 @@ html.swipebox-html.swipebox-touch {
 }
 
 #swipebox-close {
-  top: 0;
-  right: 0;
+  top: 10px;
   position: absolute;
   z-index: 9999;
   background-position: 15px 12px;
