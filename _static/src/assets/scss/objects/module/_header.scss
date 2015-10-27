@@ -175,4 +175,10 @@
         right: 29px;
     }
 
+    @include breakpoint(MD) {
+        .mix-header-logo_center {
+            right: 41px;
+        }
+    }
+
 }

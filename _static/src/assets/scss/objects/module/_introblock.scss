@@ -32,7 +32,6 @@ Sections of content that introduce landing and story pages
     display: table-cell; // fallback
     display: block;
     width: 100%;
-    margin: auto;
     vertical-align: middle;
 }
 
@@ -80,6 +79,7 @@ Sections of content that introduce landing and story pages
         padding: 120px 0 80px;
         background-position: -725px top;
         background-size: 1450px 2035px;
+        align-items: center;
     }
 
     .introBlock-ft_social {
@@ -110,6 +110,11 @@ Sections of content that introduce landing and story pages
     min-height: 100%;
     height: auto;
     background-position: -300px top;
+}
+
+// browser hack for IE 11
+_:-ms-fullscreen, :root .introBlock_fill {
+    height: 100%;
 }
 
 .introBlock_fill > .introBlock-inner {
