@@ -86,13 +86,13 @@
 [dir="rtl"] {
 
     .contentOnMedia-details {
-        left: initial;
+        left: auto;
         right: 20px;
     }
 
     .contentOnMedia-link_br {
         bottom: 0;
-        right: initial;
+        right: auto;
         left: 0;
     }
 
@@ -110,7 +110,7 @@
 
         .contentOnMedia-link_br {
             bottom: $SPACE_x4;
-            right: initial;
+            right: auto;
             left: $SPACE_x4;
         }
     }

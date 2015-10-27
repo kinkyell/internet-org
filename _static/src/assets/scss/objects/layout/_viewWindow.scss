@@ -179,7 +179,7 @@ Layout for paneled views
         }
 
         .viewWindow-panel:not(.isAnimating):last-child.isActive > .viewWindow-panel-content {
-            left: initial;
+            left: auto;
             right: -100%;
             padding-left: 0;
             padding-right: 100%;
