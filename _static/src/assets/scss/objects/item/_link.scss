@@ -313,7 +313,13 @@
 
 @media (max-width: 500px) {
     [lang="hi"] {
-        .link {
+        .quarantine a.link {
+             @include remify(font-size, 16px);
+        }
+    }
+
+    [lang="bn"] {
+        .quarantine a.link {
              @include remify(font-size, 16px);
         }
     }
