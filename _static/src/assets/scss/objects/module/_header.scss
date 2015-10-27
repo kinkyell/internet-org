@@ -149,13 +149,30 @@
 [dir="rtl"] {
 
     .header-logo {
-        left: 0;
+        left: auto;
         right: 41px;
+        margin-left: 0;
+        margin-right: -12px;
+    }
+
+    .mix-header-logo_center {
+        right: 50%;
     }
 
     .header-menuBtn {
         left: 34px;
         right: auto;
+    }
+
+    .header-backBtn {
+        left: auto;
+        // right: 34px;
+        right: -100px;
+        transform: rotate(180deg);
+    }
+
+    .header-backBtn.isActive {
+        right: 29px;
     }
 
 }

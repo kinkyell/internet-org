@@ -87,6 +87,7 @@ define(function(require, exports, module) { // jshint ignore:line
         // create options
         Array.prototype.forEach.call(this.element.options, function(el) {
             var elementDiv = document.createElement('div');
+            var elDir = el.getAttribute('data-dir');
             elementDiv.className = this._options.prefix + '-menu-item';
             elementDiv.tabIndex = '0';
             var $el = $(elementDiv);
@@ -98,6 +99,10 @@ define(function(require, exports, module) { // jshint ignore:line
                 $textWrap.html(displayText);
             } else {
                 $textWrap.text(el.innerText || el.textContent);
+            }
+
+            if (elDir) {
+                $textWrap.attr('dir', elDir);
             }
 
             if (el === this._getSelected()) {
