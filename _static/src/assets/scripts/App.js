@@ -12,9 +12,9 @@ define(function(require, exports, module) { // jshint ignore:line
     require('jquery-swipebox');
 
     // require all gsap plugins so they get registered correctly
+    require('gsap-easePack');
     require('gsap-cssPlugin');
     require('gsap-timeline');
-    require('gsap-easePack');
     require('gsap-tween');
 
     var Router = require('services/Router');
@@ -75,6 +75,13 @@ define(function(require, exports, module) { // jshint ignore:line
         this._setupStates();
         this._preloadImages(); // load images initially on the page
         this.UIOrientationUtil = new UIOrientationUtil();
+
+        window.addEventListener('touchstart', function setHasTouch () {
+            // add touch class to the html/body stuff
+            $('html').addClass('touch');
+
+            window.removeEventListener('touchstart', setHasTouch);
+        }, false);
     };
 
     /**

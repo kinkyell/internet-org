@@ -15,7 +15,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var TIME_SCALE = AppConfig.narrative.mobile.TIME_SCALE;
     var SECTION_DURATION = AppConfig.narrative.mobile.SECTION_DURATION;
-    var EASE = AppConfig.narrative.mobile.EASE;
+    var EASE = AppConfig.narrative.mobile.EASE();
     var EASE_DIRECTION_FORWARD = AppConfig.narrative.mobile.EASE_DIRECTION_FORWARD;
     var EASE_DIRECTION_REVERSE = AppConfig.narrative.mobile.EASE_DIRECTION_REVERSE;
 
