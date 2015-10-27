@@ -18,7 +18,8 @@ define(function(require, exports, module) { // jshint ignore:line
     var MOVEMENT_Y = AppConfig.narrative.desktop.MOVEMENT_Y;
     var STAGGER_DELAY = AppConfig.narrative.desktop.STAGGER_DELAY;
 
-    var EASE = typeof AppConfig.narrative.desktop.EASE() === 'undefined' ? window.Expo : AppConfig.narrative.desktop.EASE();
+    var configEase = AppConfig.narrative.desktop.EASE();
+    var EASE = typeof configEase === 'undefined' ? window.Expo : configEase;
     var EASE_DIRECTION_FORWARD = AppConfig.narrative.desktop.EASE_DIRECTION_FORWARD;
     var EASE_DIRECTION_REVERSE = AppConfig.narrative.desktop.EASE_DIRECTION_REVERSE;
 

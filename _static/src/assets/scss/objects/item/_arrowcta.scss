@@ -9,6 +9,7 @@
     width: 12px;
     transform: scale(0.65) rotate(45deg);
     position: relative;
+    overflow: visible;
 }
 
 .arrowCta:after,
@@ -66,6 +67,11 @@
 @include breakpoint(MD) {
     .arrowCta {
         transform: scale(1) rotate(45deg);
+    }
+
+    // browser hack for IE 11
+    _:-ms-fullscreen, :root .arrowCta {
+        transform: scale(1) rotate(44deg);
     }
 
     // light arrow only applies to mobile

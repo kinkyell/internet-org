@@ -1,10 +1,7 @@
 define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
-    var $ = require('jquery');
-    var breakpointManager = require('services/breakpointManager');
     var debounce = require('stark/function/debounce');
-    var eventHub = require('services/eventHub');
 
     /**
      * A util for addressing an issue in iOS 7.1.2
