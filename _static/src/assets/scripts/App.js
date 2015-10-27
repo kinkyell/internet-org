@@ -30,6 +30,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var viewWindow = require('services/viewWindow');
 
     var identity = require('stark/function/identity');
+    var UIOrientationUtil = require('util/UIOrientationUtil');
 
     var STATE_TYPES = {
         panel: PanelState,
@@ -73,6 +74,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._setupLayout();
         this._setupStates();
         this._preloadImages(); // load images initially on the page
+        this.UIOrientationUtil = new UIOrientationUtil();
     };
 
     /**

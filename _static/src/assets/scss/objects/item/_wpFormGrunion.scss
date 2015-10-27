@@ -108,6 +108,9 @@ body .contact-form label.radio
         border-radius: 50%;
         transition: all 0.25s linear;
         margin-right: 10px;
+        /* Resovling Chrome Animation inconsistancies */
+        backface-visibility: hidden;
+
     }
 
     .grunion-radio-label > .radio:checked + span {

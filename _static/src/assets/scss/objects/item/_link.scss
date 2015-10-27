@@ -17,6 +17,9 @@
     display: -webkit-inline-flex;
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased;
+    /* Resovling Chrome Animation inconsistancies */
+    backface-visibility: hidden;
+
 }
 
 /* Additional padding to increase hit state */
@@ -38,6 +41,9 @@
     -webkit-font-smoothing: none;
     font-smoothing: none;
     margin-top: -1px;
+    /* Resovling Chrome Animation inconsistancies */
+    backface-visibility: hidden;
+
 }
 
 .link:after {
@@ -46,7 +52,7 @@
     width: 10px;
     border-bottom: 1px solid $CLR_ACCENT;
     border-right: 1px solid $CLR_ACCENT;
-    transform: rotate(-44deg) translateZ(0); //44 instead of 45 fixes IE11 aliasing bug
+    transform: rotate(-44deg) translate3d(0,0,0); //44 instead of 45 fixes IE11 aliasing bug
 }
 
 .link:before {
@@ -86,7 +92,7 @@
 
 .link_twoArrows:after,
 .link_twoArrows:before {
-    top: initial;
+    top: auto;
     bottom: 5px;
     right: 0;
     height: 4px;
@@ -247,7 +253,7 @@
 
     .link:after,
     .link:before {
-        right: initial;
+        right: auto;
         left: 8px;
     }
 
@@ -264,7 +270,7 @@
 
     .link_twoArrows:after,
     .link_twoArrows:before {
-        right: initial;
+        right: auto;
         left: 0;
         border-bottom: none;
         border-right: none;
@@ -273,7 +279,7 @@
     }
 
     .link_twoArrows:before {
-        right: initial;
+        right: auto;
         left: -5px;
     }
 
@@ -289,7 +295,7 @@
     .link_preArrows:after,
     .link_preArrows:before {
         top: 2px;
-        left: initial;
+        left: auto;
         right: 0;
         border-bottom: none;
         border-right: none;
@@ -298,7 +304,7 @@
     }
 
     .link_preArrows:before {
-        left: initial;
+        left: auto;
         right: -5px;
     }
 
@@ -313,7 +319,13 @@
 
 @media (max-width: 500px) {
     [lang="hi"] {
-        .link {
+        .quarantine a.link {
+             @include remify(font-size, 16px);
+        }
+    }
+
+    [lang="bn"] {
+        .quarantine a.link {
              @include remify(font-size, 16px);
         }
     }
