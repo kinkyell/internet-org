@@ -250,7 +250,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$progress.hide();
         this.scrollTop = this.$narrative[0].scrollTop;
         this._disableScrolling();
-        breakpointManager.unsubscribe(this._onBreakpointChangeHandler)
+        breakpointManager.unsubscribe(this._onBreakpointChangeHandler);
         eventHub.unsubscribe('MainMenu:change', this._onMenuToggleHandler);
     };
 
