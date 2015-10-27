@@ -12,9 +12,9 @@ define(function(require, exports, module) { // jshint ignore:line
     require('jquery-swipebox');
 
     // require all gsap plugins so they get registered correctly
+    require('gsap-easePack');
     require('gsap-cssPlugin');
     require('gsap-timeline');
-    require('gsap-easePack');
     require('gsap-tween');
 
     var Router = require('services/Router');

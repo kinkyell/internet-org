@@ -190,10 +190,10 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     ViewWindow.prototype._getAnimProps = function(direction) {
         var inOpts = {
-            ease: vwConfig.FEATURE_EASE[vwConfig.EASE_DIRECTION]
+            ease: vwConfig.FEATURE_EASE()[vwConfig.EASE_DIRECTION]
         };
         var outOpts = {
-            ease: vwConfig.FEATURE_EASE[vwConfig.EASE_DIRECTION]
+            ease: vwConfig.FEATURE_EASE()[vwConfig.EASE_DIRECTION]
         };
         var directionInvert = document.documentElement.dir === 'ltr' ? 1 : -1;
 
@@ -327,7 +327,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
             return tweenAsync.from(animateElement, TRANSITION_SPEED, {
                 xPercent: directionInvert * sign * percent,
-                ease: vwConfig.SHIFT_EASE[vwConfig.EASE_DIRECTION],
+                ease: vwConfig.SHIFT_EASE()[vwConfig.EASE_DIRECTION],
                 onComplete: function() {
                     this.$panels.removeClass('isAnimating').removeClass('isActive');
                     this.$panels[method]().addClass('isActive');
