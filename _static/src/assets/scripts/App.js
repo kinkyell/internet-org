@@ -75,6 +75,13 @@ define(function(require, exports, module) { // jshint ignore:line
         this._setupStates();
         this._preloadImages(); // load images initially on the page
         this.UIOrientationUtil = new UIOrientationUtil();
+
+        window.addEventListener('touchstart', function setHasTouch () {
+            // add touch class to the html/body stuff
+            $('html').addClass('touch');
+
+            window.removeEventListener('touchstart', setHasTouch);
+        }, false);
     };
 
     /**
