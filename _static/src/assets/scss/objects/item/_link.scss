@@ -63,23 +63,27 @@
     margin-right: -1px;
 }
 
-.link:hover,
-.link:active {
-    color: $CLR_ACCENT_ACTIVE;
+html:not(.touch) {
+
+    .link:hover,
+    .link:active {
+        color: $CLR_ACCENT_ACTIVE;
+    }
+
+    .link:hover:before {
+        transform: translateX(10px);
+    }
+
+    .link:hover:after,
+    .link_twoArrows:hover:before {
+        transform: translate3d(10px, 0, 0) rotate(-44deg); //44 instead of 45 fixes IE11 aliasing bug
+    }
+
+    .link:hover:after { border-color: $CLR_ACCENT_ACTIVE; }
+
+    .link:hover:before { background-color: $CLR_ACCENT_ACTIVE; }
+
 }
-
-.link:hover:before {
-    transform: translateX(10px);
-}
-
-.link:hover:after,
-.link_twoArrows:hover:before {
-    transform: translate3d(10px, 0, 0) rotate(-44deg); //44 instead of 45 fixes IE11 aliasing bug
-}
-
-.link:hover:after { border-color: $CLR_ACCENT_ACTIVE; }
-
-.link:hover:before { background-color: $CLR_ACCENT_ACTIVE; }
 
 .mix-link_small { @include remify(font-size, 13px); }
 
@@ -284,7 +288,7 @@
     }
 
     .link_twoArrows:hover:before {
-        left: -23px;   
+        left: -23px;
     }
 
     .link_preArrows {
