@@ -310,3 +310,13 @@
         font-size: 0.95vw;
     }
 }
+
+@media (max-width: 500px) {
+    [lang="hi"] {
+        .link {
+             @include remify(font-size, 16px);
+        }
+    }
+}
+
+
