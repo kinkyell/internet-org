@@ -124,6 +124,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._onTopScrollHandler = this._onTopScrollTrigger.bind(this);
         this._onKeyDownHandler = this._onKeyDown.bind(this);
         this._onSectionLinkFocusHandler = this._onSectionLinkFocus.bind(this);
+        this._onBreakpointChangeHandler = this._onBreakpointChange.bind(this);
     };
 
     /**
@@ -212,16 +213,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._updateIndicators(0);
         this.$narrative[0].scrollTop = this.scrollTop;
         this._currentlyMobile = breakpointManager.isMobile;
-        breakpointManager.subscribe(function() {
-            if (breakpointManager.isMobile !== this._currentlyMobile) {
-                this._currentlyMobile = breakpointManager.isMobile;
-                this.refreshNarrativeManager();
-
-                if (typeof this._narrativeManager.orentationRefresh === 'function') {
-                    this._narrativeManager.orentationRefresh();
-                }
-            }
-        }.bind(this));
+        breakpointManager.subscribe(this._onBreakpointChangeHandler);
 
         this._enableScrolling();
         eventHub.subscribe('MainMenu:change', this._onMenuToggleHandler);
@@ -258,6 +250,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$progress.hide();
         this.scrollTop = this.$narrative[0].scrollTop;
         this._disableScrolling();
+        breakpointManager.unsubscribe(this._onBreakpointChangeHandler)
         eventHub.unsubscribe('MainMenu:change', this._onMenuToggleHandler);
     };
 
@@ -308,6 +301,17 @@ define(function(require, exports, module) { // jshint ignore:line
 
         if (breakpointManager.isMobile) {
             this._narrativeManager.refresh(this._position, this._subPosition);
+        }
+    };
+
+    proto._onBreakpointChange = function() {
+        if (breakpointManager.isMobile !== this._currentlyMobile) {
+            this._currentlyMobile = breakpointManager.isMobile;
+            this.refreshNarrativeManager();
+
+            if (typeof this._narrativeManager.orentationRefresh === 'function') {
+                this._narrativeManager.orentationRefresh();
+            }
         }
     };
 
