@@ -303,6 +303,7 @@ function internetorg_page_metaboxes() {
 										),
 										$language
 									),
+									'posts_per_page' => 100,
 								),
 								'use_ajax'   => false,
 							)
@@ -376,6 +377,7 @@ function internetorg_page_metaboxes() {
 													),
 													$language
 												),
+												'posts_per_page' => 100,
 											),
 											'use_ajax'   => false,
 										)
@@ -413,6 +415,7 @@ function internetorg_page_metaboxes() {
 				array(
 					'query_args' => array(
 						'post_type' => internetorg_get_shadow_post_types_for_ajax( 'page' ),
+						'posts_per_page' => 100,
 					),
 				)
 			),

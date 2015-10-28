@@ -2252,3 +2252,35 @@ function internetorg_external_cta_link( $link = '' ) {
 	</div>
 	<?php
 }
+
+/**
+ * Recursively run array_filter to scrub empty values from multidimensional array.
+ *
+ * @param array $array The array to act on.
+ *
+ * @return array The recursively filtered array.
+ */
+function internetorg_array_filter_recursive( $array ) {
+	foreach ( $array as &$value ) {
+		if ( is_array( $value ) ) {
+			$value = internetorg_array_filter_recursive( $value );
+		}
+	}
+
+	return array_filter( $array );
+}
+
+/**
+ * Recursively unset unwanted keys from a multidimensional array.
+ *
+ * @param array  $array        The array to act on.
+ * @param string $unwanted_key The key to recursively unset.
+ */
+function internetorg_recursive_unset( &$array, $unwanted_key ) {
+	unset( $array[ $unwanted_key ] );
+	foreach ( $array as &$value ) {
+		if ( is_array( $value ) ) {
+			internetorg_recursive_unset( $value, $unwanted_key );
+		}
+	}
+}

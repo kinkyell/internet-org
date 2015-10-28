@@ -36,6 +36,12 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 			 */
 			$custom_fields = get_post_meta( get_the_ID(), 'home-content-section', false );
 
+			/** Scrub the array to remove the 'proto' keys. */
+			internetorg_recursive_unset( $custom_fields, 'proto' );
+
+			/** Scrub the array to remove 'empty' values. */
+			$custom_fields = internetorg_array_filter_recursive( $custom_fields );
+
 			/**
 			 * An array containing the requested io_ctntwdgt WP_Post.
 			 *
@@ -70,20 +76,26 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 					<div class="viewWindow-panel-content-inner viewWindow-panel-content-inner_home">
 						<div class="narrativeView js-narrativeView">
 							<div class="narrativeDT">
+
 								<?php if ( ! empty( $custom_fields ) ) : ?>
+
 									<ul class="narrativeDT-sections">
+
 										<li class="narrativeDT-sections-item" data-feature="<?php echo esc_url( $home_bg_url ); ?>">
+
 											<?php foreach ( $custom_fields as $group ) : ?>
+
 											<?php if ( ! empty( $group ) ) : ?>
+
 											<?php foreach ( $group as $fieldset ) : ?>
 
-											<?php if ( ! empty( $fieldset['call-to-action'] ) ) : ?>
-										<li class="narrativeDT-sections-item" data-feature="<?php echo esc_url( ( ! empty( $fieldset['call-to-action'][0] ) && ! empty( $fieldset['call-to-action'][0]['image'] ) ? internetorg_get_media_image_url( $fieldset['call-to-action'][0]['image'], 'panel-image' ) : '' ) ); ?>">
+											<?php if ( ! empty( $fieldset['image'] ) ) : ?>
 
-											<?php if ( count( $fieldset['call-to-action'] ) > 1 ) : ?>
+										<li class="narrativeDT-sections-item" data-feature="<?php echo esc_url( internetorg_get_media_image_url( $fieldset['image'], 'panel-image' ) ); ?>">
+
+										<?php if ( ! empty( $fieldset['call-to-action'] ) ) : ?>
 												<ul>
-													<?php for ( $i = 1; $i < count( $fieldset['call-to-action'] ); ++ $i ) : ?>
-														<?php $cta = $fieldset['call-to-action'][ $i ]; ?>
+													<?php foreach ( $fieldset['call-to-action'] as $cta ) : ?>
 														<?php if ( ! empty( $cta['image'] ) ) : $imgUrl = internetorg_get_media_image_url( $cta['image'], 'panel-image' ); ?>
 
 															<li data-feature="<?php echo esc_url( $imgUrl ); ?>">
@@ -153,7 +165,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 															</li>
 
 														<?php endif; ?>
-													<?php endfor; ?>
+													<?php endforeach; ?>
 												</ul>
 											<?php endif; ?>
 										</li>
@@ -296,15 +308,28 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 								</div>
 
 								<?php if ( ! empty( $custom_fields ) ) :
+
 									foreach ( $custom_fields as $group ) :
+
 										if ( ! empty( $group ) ) :
+
 											foreach ( $group as $cf_content_section ) : ?>
+
 												<?php $cf_content_section_slug = ( ! empty( $cf_content_section['slug'] ) ? $cf_content_section['slug'] : '' ); ?>
 
 												<div class="narrative-section">
 													<div class="narrative-section-slides narrative-section-slides_short">
 
-														<?php $data_img = '';
+														<?php if ( ! empty( $cf_content_section['image'] ) ) : ?>
+
+															<div class="narrative-section-slides-item" style="background-image: url('<?php echo esc_url( internetorg_get_media_image_url( $cf_content_section['image'], 'panel-image' ) ); ?>')">
+																<div class="narrative-section-slides-item-inner"></div>
+															</div>
+
+														<?php endif; ?>
+
+														<?php
+														$data_img = '';
 														if ( ! empty( $cf_content_section['call-to-action'] ) ) {
 															foreach ( $cf_content_section['call-to-action'] as $cta ) {
 																if ( ! empty( $cta['image'] ) ) {

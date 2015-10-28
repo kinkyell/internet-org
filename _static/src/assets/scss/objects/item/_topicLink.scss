@@ -57,3 +57,11 @@
         @include remify(font-size, 34px);
     }
 }
+
+[lang="ar"], 
+[lang="ur"] {
+    .topicLink-link {
+        @include font(SERIF_MED);
+    }   
+
+}

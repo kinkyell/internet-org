@@ -177,14 +177,24 @@
 // specific client direction adjustments
 @media (min-width: 321px) and (max-width: $BP_MD) {
     .narrative .hdg_1 {
-        font-size: 12vw;
+        font-size: 48px;
     }
 
     .narrative .bdcpy_narrative {
-        font-size: 5vw;
+        font-size: 4vh;
     }
 
     .narrative .hdg_heavy {
-        font-size: 4vw;
+        font-size: 3vh;
     }
 }
+
+
+[lang="ar"], 
+[lang="ur"] {
+    .hdg {
+        @include font(SERIF_MED);
+    }   
+
+}
+
