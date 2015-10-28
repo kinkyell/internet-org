@@ -68,14 +68,6 @@ function internetorg_enqueue_scripts() {
 		true
 	);
 
-	wp_enqueue_script(
-		'requireconfig',
-		get_stylesheet_directory_uri() . '/_static/web/assets/scripts/config.js',
-		array( 'requirejs' ),
-		false,
-		true
-	);
-
 	return;
 }
 

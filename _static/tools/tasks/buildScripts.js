@@ -19,7 +19,7 @@ module.exports = function(grunt) {
                     dest: '<%= env.DIR_DEST %>',
                     src: shouldMinify
                        ? [
-                           'assets/scripts/config.js',
+                           //'assets/scripts/config.js',
                            'assets/vendor/requirejs/require.js',
                            'assets/vendor/jquery/jquery.min.js'
                          ]
