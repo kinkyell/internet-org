@@ -11,6 +11,8 @@ define('jquery', function() {
     return window.jQuery;
 });
 
+require(['./config'], function(){});
+
 /**
  * Bootstrap.
  */
