@@ -4,6 +4,8 @@
 wp-content/uploads
 wp-content/debug.log
 robots.txt
+assets
+ssh
 
 wp-config.php
 
