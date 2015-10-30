@@ -9,7 +9,7 @@
 define( 'IO_DIR', __DIR__ );
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
-vip_allow_title_orphans();
+//vip_allow_title_orphans();
 
 // Load the Shortcake UI VIP Plugin.
 wpcom_vip_load_plugin( 'shortcode-ui' );
