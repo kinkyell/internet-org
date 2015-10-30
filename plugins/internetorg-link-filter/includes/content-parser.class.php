@@ -57,7 +57,8 @@ class ContentParser {
 		$content = '<meta http-equiv="content-type" content="text/html; charset=utf-8">' . $content;
 
 		$dom = new DOMDocument();
-		$dom->loadHTML( $content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
+		//$dom->loadHTML( $content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
+		$dom->loadHTML( $content, LIBXML_HTML_NODEFDTD );
 
 		// If the content could not be parsed as HTML, do not filter.
 		if ( ! $dom ) {
