@@ -1632,6 +1632,7 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 			'link_type' => 'internal',
 			'external_url' => '',
 			'link_text' => esc_html__( 'Click Me', 'internetorg' ),
+			'link_image_id' => '',
 		)
 	);
 
@@ -1639,6 +1640,10 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 
 	if ( ! empty( $attr['link_src'] ) ) {
 		$link_type = $attr['link_src'];
+	}
+
+	if ( ! empty( $attr['link_image_id'] ) ) {
+		$link_image_id = $attr['link_image_id'];
 	}
 
 	// Return early if we don't have a url or source ID.
@@ -1674,18 +1679,18 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 	 *
 	 * @var string $markup_template
 	 */
+
 	$markup_template = '
-	<a class="%1$s js-stateLink"
-	   href="%2$s"
-	   data-title="%3$s"
-	   data-date="%5$s"
-	   data-theme="%6$s"
-	   data-image="%7$s"
-	   data-mobile-image="%8$s"
-       data-social="%9$s"
-       data-type="%10$s"
-		>%11$s</a>
-		';
+		<a 	class="%1$s js-stateLink"
+			href="%2$s"
+			data-title="%3$s"
+			data-date="%5$s"
+			data-theme="%6$s"
+			data-image="%7$s"
+			data-mobile-image="%8$s"
+			data-social="%9$s"
+			data-type="%10$s"
+		>' . ( empty( $link_image_id ) ? '%11$s' : '<img src="%12$s">' ) . '</a>';
 
 	/**
 	 * The return markup if it's an external Link.
@@ -1712,6 +1717,8 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 		 *
 		 * @var string $markup
 		 */
+		$link_image_scr = wp_get_attachment_image_src( $link_image_id, "medium" )[0];
+
 		$markup = sprintf(
 			$markup_template,
 			esc_attr( $attr['css_class'] ),
@@ -1724,7 +1731,8 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 			esc_url( $sm_image ),
 			esc_attr( $data_social ),
 			esc_attr( $data_type ),
-			esc_html( $attr['link_text'] )
+			esc_html( $attr['link_text'] ),
+			esc_url( $link_image_scr )
 		);
 	}
 
@@ -1760,6 +1768,8 @@ function internetorg_register_custom_link_shortcode_ui() {
 					'options' => array(
 						'link'             => esc_attr__( 'Arrow Link', 'internetorg' ),
 						'link link_inline' => esc_attr__( 'Inline Link', 'internetorg' ),
+						'link_title'       => esc_attr__( 'Title Link', 'internetorg' ),
+						'link_image'       => esc_attr__( 'Image Link', 'internetorg' ),
 					),
 				),
 				array(
@@ -1793,6 +1803,11 @@ function internetorg_register_custom_link_shortcode_ui() {
 				array(
 					'label' => esc_html__( 'Link Text', 'internetorg' ),
 					'attr'  => 'link_text',
+					'type'  => 'text',
+				),
+				array(
+					'label' => esc_html__( 'Image Library ID', 'internetorg' ),
+					'attr'  => 'link_image_id',
 					'type'  => 'text',
 				),
 			),

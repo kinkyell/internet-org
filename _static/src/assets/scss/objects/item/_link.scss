@@ -153,7 +153,9 @@ html:not(.touch) {
 }
 
 .link_inline:after,
-.link_inline:before {
+.link_inline:before,
+.link_title:before,
+.link_title:after {
     content: none;
 }
 
@@ -196,6 +198,22 @@ html:not(.touch) {
 
 .theme-approach .link:hover:before,
 .link_themeApproach:hover:before { background-color: $CLR_APPROACH_ACTIVE; }
+
+.theme-approach .quarantine .link_title {
+	margin-top: 45px;
+  	@include font(SERIF);
+	font-size: 1.25rem;
+	color: #000;
+}
+@include breakpoint(MD) {
+	.theme-approach .quarantine .link_title {
+		margin-top: 58px;
+		font-size: 2rem;
+  }
+}
+.theme-approach .quarantine .link_image {
+  display: block;
+}
 
 /* MISSION */
 .theme-mission .link,
