@@ -37,9 +37,57 @@ require.config({
         // bower modules automatically. Otherwise it defaults to double quotes.
         requirejs: '../vendor/requirejs/require',
         jquery: '../vendor/jquery/jquery',
+        scroll: '../vendor/scroll/Scroll',
+        stark: '../vendor/starkjs/dist/amd',
+        promise: '../vendor/es6-promise/promise',
+        'gsap-cssPlugin': '../vendor/gsap/src/uncompressed/plugins/CSSPlugin',
+        'gsap-scrollToPlugin': '../vendor/gsap/src/uncompressed/plugins/ScrollToPlugin',
+        'gsap-tween': '../vendor/gsap/src/uncompressed/TweenLite',
+        'gsap-timeline': '../vendor/gsap/src/uncompressed/TimelineMax',
+        'gsap-easePack': '../vendor/gsap/src/uncompressed/easing/EasePack',
+        'jquery-touchswipe': '../vendor/jquery-touchswipe/jquery.touchSwipe',
+        'dragdealer': '../vendor/skidding--dragdealer/src/dragdealer',
+        'fastclick': '../vendor/fastclick/lib/fastclick',
+        'handlebars': '../vendor/handlebars/handlebars.runtime',
+        'jquery-swipebox': '../vendor/swipebox/src/js/jquery.swipebox',
+        'platform': '../vendor/platform.js/platform',
+        'brim': '../vendor/brim/dist/brim',
+        'scream': '../vendor/scream/dist/scream'
+    },
+
+    map: {
+        '*': {
+            'modernizr': 'modernizr.build',
+            'templates': 'templates.build',
+            'TweenLite': 'gsap-tween',
+            'TimelineLite': 'gsap-timeline'
+        }
     },
 
     shim: {
+        'modernizr.build': {
+            exports: 'Modernizr'
+        },
+         'jquery-touchswipe': {
+            deps: ['jquery'],
+            exports: null
+         },
+        'gsap-tween': {
+            exports: 'TweenLite'
+        },
+        'handlebars': {
+            exports: 'Handlebars'
+        },
+        'jquery-swipebox': {
+           deps: ['jquery'],
+           exports: null
+        },
+        'brim': {
+            exports: 'gajus.Brim'
+        },
+        'scream': {
+            exports: 'gajus.Scream'
+        }
     },
 
     waitSeconds: 120

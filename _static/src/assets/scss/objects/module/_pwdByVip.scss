@@ -1,0 +1,30 @@
+/* ---------------------------------------------------------------------
+ Powered by Wordpress VIP language
+
+ Stlyes for the Powered by Wordpress VIP legal line
+------------------------------------------------------------------------ */
+.pwdByVip {
+    width: 100%;
+    display: block;
+}
+
+.pwdByVip_inline {
+    padding: $SPACE_x2 0;
+}
+
+.pwdByVip-txt {
+    @include remify(font-size, 13px);
+    @include font(SANS);
+    line-height: 1.25;
+    text-align: center;
+    color: #9f9e9b;
+}
+
+.pwdByVip-txt > a,
+.pwdByVip-txt > a:hover {
+    color: #9f9e9b;
+}
+
+.pwdByVip-txt_left {
+    text-align: left;
+}

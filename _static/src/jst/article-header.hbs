@@ -1,0 +1,20 @@
+<!-- END MOBILE ONLY CONTENT HERE -->
+<div class="introBlock {{#if image}}introBlock_media{{/if}}">
+    <div class="introBlock-inner">
+        <div class="topicBlock">
+            <div class="topicBlock-hd topicBlock-hd_mega {{#if theme}}topicBlock-hd_theme{{theme}}{{/if}}">
+                <h2 class="hdg hdg_2 mix-hdg_bold">{{title}}</h2>
+            </div>
+            {{#if desc}}
+            <div class="topicBlock-bd">
+                <p class="bdcpy">{{description}}</p>
+            </div>
+            {{/if}}
+            {{#if image}}
+            <div class="topicBlock-media isHidden u-isHiddenMedium" aria-hidden="true">
+                <img src="{{image}}" alt="">
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

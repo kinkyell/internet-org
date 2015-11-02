@@ -1,0 +1,32 @@
+/* ---------------------------------------------------------------------
+ Auxiliary Link
+------------------------------------------------------------------------ */
+
+.auxLink {
+    display: block;
+    // display: inline-block;
+    padding: 19px;
+    @include font(SANS_BLACK);    
+    @include remify(font-size, 10px);
+    line-height: 1.6;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    color: $CLR_BLACK;
+}
+
+.auxLink > * {
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.auxLink:hover > * {
+    border-bottom: 2px solid $CLR_ACCENT;
+    margin-bottom: -2px;
+}
+
+@include breakpoint(MD) {
+    .auxLink {
+        @include remify(font-size, 13px);
+    }
+}

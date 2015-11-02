@@ -1,0 +1,69 @@
+/* ---------------------------------------------------------------------
+ Splash Footer
+
+ Content structure used in last narrative section
+------------------------------------------------------------------------ */
+.splashFooter {
+    @include contain();
+}
+
+.splashFooter-section {
+    margin-bottom: 24px;
+}
+
+.splashFooter-section-hd {
+    margin-bottom: 4px;
+}
+
+.splashFooter-section-bd {}
+
+@include breakpoint(MD) {
+    .splashFooter {
+        padding-top: 14px;
+        position: relative;
+        @include unContain();
+    }
+
+    .splashFooter-section {
+        opacity: 0;
+    }
+}
+
+@media (max-height: 520px) {
+    .splashFooter {
+        @include verticalConstrain();
+    }
+
+    .statementBlock_end .statementBlock-bd {
+        height: 52%;
+    }
+}
+
+@media (max-height: 320px) {
+    .statementBlock_end .statementBlock-pre {
+        @include verticalConstrain();
+    }
+
+    .statementBlock_end .statementBlock-hd {
+        @include verticalConstrain();
+    }
+
+    .splashFooter:before,
+    .splashFooter:after {
+        content: '';
+        display: table;
+    }
+
+    .splashFooter:after {
+        clear: both;
+    }
+
+    .splashFooter-section {
+        width: 48%;
+        float: left;
+    }
+
+    .splashFooter-section:nth-child(2n+3) {
+        clear: left;
+    }
+}

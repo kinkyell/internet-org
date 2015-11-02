@@ -1,0 +1,40 @@
+/* ---------------------------------------------------------------------
+ Results List
+
+ Search results styles
+------------------------------------------------------------------------ */
+
+.resultsList {
+	padding-bottom: $SPACE_x1;
+}
+
+.resultsList-hd {
+	border-bottom: 1px solid $CLR_GRAY_LIGHT;
+	padding-bottom: $SPACE_x1;
+}
+
+.resultsList-list > * + * {
+	border-top: 1px solid $CLR_GRAY_LIGHT;
+	padding: $SPACE_x1 0;
+}
+
+.resultsList-list > *:first-child {
+	padding-bottom: $SPACE_x1;
+}
+
+.resultsList-list_spread > * + * {
+	padding: $SPACE_x2 0 0;
+}
+
+.resultsList-list_spread > *:first-child {
+	padding-bottom: $SPACE_x2;
+}
+
+.resultsList-list-item img {
+	max-width: 210px;
+}
+
+.resultsList-ft {
+	border-top: 1px solid $CLR_GRAY_LIGHT;
+	padding-top: 55px;
+}

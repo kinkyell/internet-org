@@ -1,0 +1,66 @@
+#!/usr/bin/env php
+<?php
+
+require_once 'simplexml_debug/simplexml_dump.php';
+require_once 'simplexml_debug/simplexml_tree.php';
+
+require_once 'SerializedToXML.php';
+require_once 'SimpleXMLElementExtended.php';
+
+function searchAndReplaceCdata(DomDocument $dom, DomNode &$node) {
+    if ($node->childNodes) {
+        for ($i = 0; $i < $node->childNodes->length; ++$i) {
+            $childNode = $node->childNodes->item($i);
+            if ($childNode instanceof DOMCharacterData && !$childNode instanceof DOMComment) {
+                $textReplacementNode = $dom->createTextNode($childNode->data);
+                $node->replaceChild(
+                    $textReplacementNode,
+	                $childNode
+                );
+            }
+            searchAndReplaceCdata($dom, $node->childNodes->item($i));
+        }
+    }
+}
+
+$valid_exts = array( 'wxr', 'xml' );
+
+if ( ! isset( $argv[1] ) ) {
+    throw new Exception("Missing required argument <input-directory>");
+}
+$input_dir = $argv[1];
+
+if ( ! is_dir( $input_dir ) ) {
+    throw new Exception( 'Invalid input directory specified' );
+}
+
+$output_dir = 'output';
+if ( isset( $argv[2] ) ) {
+    $output_dir = $argv[2];
+}
+
+// create the directory if it doesn't exist
+if ( ! is_dir( $output_dir ) ) {
+    mkdir( $output_dir );
+}
+
+// instantiate transformer, this will convert serialized content to xml for us
+$transformer = new SerializedToXML();
+
+$di = new DirectoryIterator( $input_dir );
+foreach ( $di as $file ) {
+    $path_parts = pathinfo( $file->getPathname() );
+
+    if ( $file->isDot() || ! in_array( strtolower( $path_parts['extension'] ), $valid_exts ) ) {
+        continue;
+    }
+
+    // read the file so we can look for serialzed data
+    $dom = new DOMDocument();
+    $dom->load($file->getPathname());
+    searchAndReplaceCdata($dom, $dom);
+
+    $resp = $dom->save( $output_dir . DIRECTORY_SEPARATOR . $path_parts['filename'] );
+}
+
+

@@ -18,7 +18,11 @@ module.exports = function(grunt) {
                     cwd: '<%= env.DIR_SRC %>',
                     dest: '<%= env.DIR_DEST %>',
                     src: shouldMinify
-                       ? ['assets/scripts/config.js', 'assets/vendor/requirejs/require.js']
+                       ? [
+                           //'assets/scripts/config.js',
+                           'assets/vendor/requirejs/require.js',
+                           'assets/vendor/jquery/jquery.min.js'
+                         ]
                        : ['assets/{scripts,vendor}/**/*.js']
                 }]
             }
@@ -109,6 +113,38 @@ module.exports = function(grunt) {
                 }
             },
             buildScripts: ['<%= env.DIR_SRC %>/**/*.hbs']
+        },
+
+        // builds custom modernizr script with opt-in format
+        modernizr: {
+            buildScripts: {
+                devFile: 'remote',
+                outputFile: '<%= env.DIR_SRC %>/assets/scripts/modernizr.build.js',
+                parseFiles: false,
+                uglify: false,
+
+                // full set of tests here:
+                // https://github.com/Modernizr/modernizr.com/blob/gh-pages/i/js/modulizr.js#L15-157
+                tests: grunt.file.readJSON('modernizr-tests.json').tests,
+                'matchCommunityTests': false
+            }
+        },
+
+        handlebars: {
+            buildScripts: {
+                options: {
+                    namespace: 'JST',
+                    amd: true,
+                    processName: function(filePath) {
+                        return filePath.replace(/^src\/jst\//, '').replace(/\.hbs$/, '');
+                    }
+                },
+                files: {
+                    '<%= env.DIR_SRC %>/assets/scripts/templates.build.js': [
+                        '<%= env.DIR_SRC %>/jst/**/*.hbs'
+                    ]
+                }
+            }
         }
     });
 
@@ -122,6 +158,7 @@ module.exports = function(grunt) {
                 'uglify:generated'
             ]
             : [
+                'handlebars:buildScripts',
                 'copy:buildScripts'
             ]
     );

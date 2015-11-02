@@ -1,0 +1,83 @@
+/* ---------------------------------------------------------------------
+ V List
+------------------------------------------------------------------------ */
+.vList > * {
+    display: block;
+    // margin-bottom: $SPACE_x1;
+}
+
+.vList > * + * {
+	margin-top: $SPACE_x1;
+}
+
+.vList_divided > * {
+    padding: $SPACE_x1 0;
+    border-top: 1px solid #cccccc;
+}
+
+.vList_footBox > * + * {
+    padding-top: $SPACE_x2;
+    margin-top: $SPACE_x5;
+    border-top: 1px solid #cccccc;
+}
+
+.vList_bullets > *  {
+	@include font(SANS);
+	line-height: 1.666667;
+	color: $CLR_GRAY;
+	position: relative;
+	padding-left: $SPACE_x3;
+}
+
+.vList_bullets > *:before {
+	content: '•';
+	position: absolute;
+	top: -8px;
+	left: 8px;
+	font-family: Arial, 'Arial', sans-serif;
+	@include remify(font-size, 28px);
+	color: $CLR_ACCENT;
+}
+
+.vList_bullets > * + * {
+	margin-top: 22px;
+}
+
+.vList_tight > * + * {
+	margin-top: 8px;
+}
+
+.vList_spread > * + * {
+	margin-top: 28px;
+}
+
+// THEME CLASSES by contectual or chain selection
+.theme-impact .vList_bullets > *:before,
+.vList_bullets_themeImpact > *:before {
+    color: $CLR_IMPACT;
+}
+
+.theme-approach .vList_bullets > *:before,
+.vList_bullets_themeApproach > *:before {
+    color: $CLR_APPROACH;
+}
+
+.theme-mission .vList_bullets > *:before,
+.vList_bullets_themeMission > *:before {
+    color: $CLR_MISSION;
+}
+
+/* Right to Left Language support */
+[dir="rtl"] {
+
+	.vList_bullets > *  {
+		padding-left: 0;
+		padding-right: $SPACE_x3;
+	}
+
+	.vList_bullets > *:before {
+		left: auto;
+		right: 8px;
+	}
+
+}

@@ -8,30 +8,53 @@
  */
 
 ?><!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> class="no-js">
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="profile" href="http://gmpg.org/xfn/11">
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
-<?php wp_head(); ?>
+	<!-- META DATA -->
+	<meta charset="<?php esc_attr_e( get_bloginfo( 'charset' ) ); ?>">
+    <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1.0" />
+	<!--[if IE]><meta http-equiv="cleartype" content="on" /><![endif]-->
+
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="<?php esc_attr_e( get_bloginfo( 'pingback_url' ) ); ?>">
+	<meta http-equiv="content-language" content="<?php esc_attr_e( get_bloginfo( 'language' ) ); ?>" />
+
+	<?php wp_head(); ?>
+
+	<?php get_template_part( 'template-parts/header', 'icons' ); ?>
+
+	<!-- POLYFILLS -->
+	<!-- build:js <?php echo esc_url( get_stylesheet_directory_uri() ); ?>/_static/web/assets/scripts/head.js -->
+	<!-- endbuild -->
+
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="hfeed site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'internet_org' ); ?></a>
 
-	<header id="masthead" class="site-header" role="banner">
-		<div class="site-branding">
-			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-		</div><!-- .site-branding -->
+		<a href="#main-content" class="u-isVisuallyHidden">Skip to main content</a>
 
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'internet_org' ); ?></button>
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+		<!-- header -->
+		<div class="header js-headerView" role="banner">
+			<?php get_template_part( 'template-parts/header', 'logo' ); ?>
+			<?php get_template_part( 'template-parts/header', 'buttons' ); ?>
+		</div>
 
-	<div id="content" class="site-content">
+		<div class="mainMenu js-menuView u-isVisuallyHidden" id="mainNav">
+			<div class="mainMenu-panel js-menuView-panel u-isHidden">
+				<div class="mainMenu-panel-hd">
+					<?php get_template_part( 'template-parts/header', 'search' ); ?>
+				</div>
+
+				<?php internetorg_nav_menu( 'primary' ); ?>
+
+				<?php internetorg_nav_menu( 'secondary' ); ?>
+
+				<div class="mainMenu-panel-lang">
+					<?php internetorg_language_switcher(); ?>
+				</div>
+
+			</div>
+		</div> <!-- end header -->
+
+		<!-- CONTENT -->

@@ -1,0 +1,32 @@
+#!/usr/bin/env php
+<?php
+
+$scripts = array(
+	'add-cdata %1 %2', // converts serialized content to xml
+	// 'compress-to-wxr %1 %2', // split the main export file into multiple pieces may be an unnecessary step
+);
+
+if ( ! isset( $argv[1] ) ) {
+	throw new Exception( 'Missing required argument <input-directory>' );
+}
+$input_dir = $argv[1];
+
+if ( ! is_dir( $input_dir ) ) {
+	throw new Exception( 'Invalid input directory specified' );
+}
+
+$output_dir = 'for-import';
+if ( isset( $argv[2] ) ) {
+	$output_dir = $argv[2];
+}
+
+// create the directory if it doesn't exist
+if ( ! is_dir( $output_dir ) ) {
+	mkdir( $output_dir );
+}
+
+// execute our scripts - Yes, exec is bad but this is a controlled case for use
+foreach ( $scripts as $script ) {
+	exec( sprintf( $script, $input_dir, $output_dir ) );
+}
+

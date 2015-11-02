@@ -16,17 +16,19 @@ module.exports = function(grunt) {
                         '<%= env.DIR_NPM %>/handlebars-layouts/index.js'
                     ],
                     partials: [
-                        '<%= env.DIR_SRC %>/templates/**/*.hbs'
+                        '<%= env.DIR_SRC %>/templates/**/*.hbs',
+                        '<%= env.DIR_SRC %>/pages/**/*.hbs'
                     ]
                 },
                 files: [{
                     expand: true,
                     cwd: '<%= env.DIR_SRC %>',
-                    dest: '<%= env.DIR_TMP %>',
+                    dest: shouldMinify ? '<%= env.DIR_TMP %>' : '<%= env.DIR_DEST %>',
                     ext: '.html',
                     src: [
                         '**/*.hbs',
                         '!templates/**',
+                        '!jst/**',
                         '!assets/vendor/**'
                     ]
                 }]
@@ -70,8 +72,7 @@ module.exports = function(grunt) {
                 'usemin'
             ]
             : [
-                'hbt:buildMarkup',
-                'prettify:buildMarkup'
+                'hbt:buildMarkup'
             ]
     );
 };

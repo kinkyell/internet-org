@@ -74,6 +74,7 @@
     "it": true,
     "require": true,
     "requirejs": true,
-    "spyOn": true
+    "spyOn": true,
+    "Promise": true
   }
 }

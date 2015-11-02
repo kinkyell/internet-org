@@ -1,9 +1,9 @@
 <!doctype html>
-<html class="no-js" lang="en-us">
+<html class="no-js" lang="en" dir="ltr">
 <head>
     <!-- META DATA -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1.0" />
     <!--[if IE]><meta http-equiv="cleartype" content="on" /><![endif]-->
 
     <!-- SEO -->
@@ -30,8 +30,7 @@
 
     <!-- STYLESHEETS -->
     {{#block "styles"}}
-        <link rel="stylesheet" media="screen, projection" href="assets/styles/modern.css" />
-        <!--[if lte IE 8]><link rel="stylesheet" media="screen, projection" href="assets/styles/legacy.css" /><![endif]-->
+        <link rel="stylesheet" media="screen, projection" href="{{ env.URL_BASE }}assets/styles/screen.css" />
     {{/block}}
 
     <!-- POLYFILLS -->
@@ -41,14 +40,21 @@
     {{/block}}
 </head>
 <body>
+    {{>header-main}}
+
     <!-- CONTENT -->
     {{#block "body"}}
+
     {{/block}}
 
     <!-- JAVASCRIPT -->
     {{#block "scriptsBody"}}
-        <script src="assets/vendor/requirejs/require.js"></script>
-        <script src="assets/scripts/config.js"></script>
+        <script src="{{ env.URL_BASE }}assets/vendor/jquery/jquery.min.js"></script><!-- replace by WP version -->
+        <!-- build:js /assets/scripts/require.js -->
+        <script src="{{ env.URL_BASE }}assets/vendor/requirejs/require.js"></script>
+        <script src="{{ env.URL_BASE }}assets/scripts/config.js"></script>
+        <!-- endbuild -->
+
         <script>
             /**
              * Global constants
@@ -108,7 +114,38 @@
              * @type String
              * @final
              */
-            SETTINGS.SCRIPT_PATH = 'assets/scripts/';
+            SETTINGS.SCRIPT_PATH = '{{ env.URL_BASE }}assets/scripts/';
+
+            /**
+             * Root path for all static files
+             *
+             * @property STATIC_PATH
+             * @type String
+             * @final
+             */
+            SETTINGS.STATIC_PATH = '{{ env.URL_BASE }}';
+
+            /**
+             * Root-relative path for search results
+             *
+             * @property SEARCH_PATH
+             * @type String
+             * @final
+             */
+            SETTINGS.SEARCH_PATH = 'search/data.html';
+
+            /**
+             * routes for static and WP endpoints
+             *
+             * @property ROUTES
+             * @type obj
+             * @final
+             */
+            SETTINGS.ROUTES = {
+                'pressResults': 'press/data.html',
+                'searchResults': window.SETTINGS.SEARCH_PATH,
+                '404': 'not-found/index.html'
+            };
 
             /**
              * Set any RequireJs configuration that is dependent on dynamic

@@ -1,0 +1,74 @@
+/* ---------------------------------------------------------------------
+ Topic Block
+
+ common content structure useded throughout
+------------------------------------------------------------------------ */
+.topicBlock {
+	text-align: center;
+	// position: relative;
+}
+
+.topicBlock > * {
+	@include contain();
+}
+
+.footBox > .topicBlock {
+	margin-top: 0;
+}
+
+.topicBlock-media {
+	@include unContain();
+	margin-bottom: $SPACE_x2;
+}
+
+.topicBlock-hd {
+	margin-bottom: $SPACE_x2;
+}
+
+.topicBlock-hd:after {
+	content: "";
+	display: inline-block;
+	height: 4px;
+	width: 40px;
+	position: relative;
+	text-align: center;
+	background-color: $CLR_ACCENT;
+}
+
+.theme-impact .topicBlock-hd:after,
+.topicBlock-hd_themeImpact:after { background-color: $CLR_IMPACT; }
+
+.theme-mission .topicBlock-hd:after,
+.topicBlock-hd_themeMission:after { background-color: $CLR_MISSION; }
+
+.theme-approach .topicBlock-hd:after,
+.topicBlock-hd_themeApproach:after { background-color: $CLR_APPROACH; }
+
+.topicBlock-preHd {
+	margin-bottom: $SPACE_x1;
+}
+
+.topicBlock-subHd {
+	margin-bottom: $SPACE_x1;
+}
+
+.topicBlock-cta {
+	margin-top: $SPACE_x4;
+}
+
+.mix-topicBlock_push {
+	padding-bottom: 40px;
+}
+
+.topicBlock-ft {
+	border-top: 1px solid #d0cfc6;
+	padding: $SPACE_x3;
+	margin-top: $SPACE_x4;
+}
+
+
+@include breakpoint(MD) {
+	.topicBlock-media {
+		@include isVisuallyHidden();
+	}
+}

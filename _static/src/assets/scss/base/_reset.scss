@@ -47,17 +47,21 @@ table {
     border-spacing: 0;
 }
 
-:focus {
-    outline: 0;
-}
-
-html {
-    overflow-y: scroll; /* Always show a vertical scrollbar, even when there is no scrolling */
+@media (max-width: 767px) {
+    :focus {
+        outline: 0;
+    }
 }
 
 html {
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
 }
 
 /* ---------------------------------------------------------------------
@@ -99,7 +103,13 @@ textarea {
     resize: vertical;
 }
 
-::-moz-focus-inner {
-    border: 0;
-    padding: 0;
+input[type="search"]:focus,
+textarea:focus,
+input:not([type="submit"]):focus {
+    outline: 0;
 }
+
+// ::-moz-focus-inner {
+//     border: 0;
+//     padding: 0;
+// }

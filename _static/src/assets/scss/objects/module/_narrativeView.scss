@@ -1,0 +1,67 @@
+/* ---------------------------------------------------------------------
+ narrativeView
+
+ wrapping layout container for narrative items
+------------------------------------------------------------------------ */
+.narrativeView-progress {
+    position: fixed;
+    bottom: 21px;
+    left: 21px;
+    opacity: 1;
+    transition: opacity 0.25s ease-out;
+    z-index: 2;
+}
+
+.narrativeView-progress > * {
+    padding: 3px;
+    cursor: pointer;
+}
+
+.narrativeView-progress > *:before {
+    content: "";
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    transition: background-color 0.25s ease-out;
+}
+
+.narrativeView-progress > *.isActive:nth-child(1):before { background-color: #ffcc02; }
+.narrativeView-progress > *.isActive:nth-child(2):before { background-color: #9d25a0; }
+.narrativeView-progress > *.isActive:nth-child(3):before { background-color: #fa5cb6; }
+.narrativeView-progress > *.isActive:nth-child(4):before { background-color: #ff6b00; }
+.narrativeView-progress > *.isActive:nth-child(5):before { background-color: #ffcc02; }
+
+.narrativeView-progress_isHidden {
+    opacity: 0;
+}
+
+
+@include breakpoint(MD) {
+    .narrativeView-progress {
+        margin-bottom: -50px;
+        left: auto;
+        bottom: 50%;
+        right: 14px;
+    }
+
+    .narrativeView-progress > * {
+        padding: 6px;
+    }
+
+    .narrativeView-progress > *:before {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+/* Right to Left Language support */
+[dir="rtl"] {
+
+    .narrativeView-progress {
+        right: auto;
+        left: 14px;
+    }
+
+}

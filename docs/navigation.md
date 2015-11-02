@@ -4,4 +4,5 @@
 
 [Project Primer](#!index.md)
 [Plugins](#!plugins.md)
+[Environment Setup](#!setup.md)
 

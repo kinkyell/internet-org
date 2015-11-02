@@ -12,7 +12,7 @@
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
 		<div class="entry-meta">
-			<?php internet_org_posted_on(); ?>
+			<?php internetorg_posted_on_date(); ?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 
@@ -20,14 +20,14 @@
 		<?php the_content(); ?>
 		<?php
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'internet_org' ),
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'internetorg' ),
 				'after'  => '</div>',
 			) );
 		?>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php internet_org_entry_footer(); ?>
+		<?php internetorg_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
 

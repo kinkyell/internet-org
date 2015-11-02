@@ -11,9 +11,9 @@
 	<header class="entry-header">
 		<?php the_title( sprintf( '<h1 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
 
-		<?php if ( 'post' == get_post_type() ) : ?>
+		<?php if ( in_array( get_post_type( get_the_ID() ), internetorg_get_shadow_post_types_for_ajax( 'post' ) ) ) : ?>
 		<div class="entry-meta">
-			<?php internet_org_posted_on(); ?>
+			<?php internetorg_posted_on_date(); ?>
 		</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
@@ -22,20 +22,20 @@
 		<?php
 			/* translators: %s: Name of current post */
 			the_content( sprintf(
-				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'internet_org' ), array( 'span' => array( 'class' => array() ) ) ),
+				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'internetorg' ), array( 'span' => array( 'class' => array() ) ) ),
 				the_title( '<span class="screen-reader-text">"', '"</span>', false )
 			) );
 		?>
 
 		<?php
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'internet_org' ),
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'internetorg' ),
 				'after'  => '</div>',
 			) );
 		?>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php internet_org_entry_footer(); ?>
+		<?php internetorg_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

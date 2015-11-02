@@ -7,35 +7,71 @@
 
 get_header();
 
-
-// NOTE: $wp_query->found_posts should also == 1
-if ( 'page' == get_option('show_on_front') && $page_on_front = get_option('page_on_front') ) {
-	$after_title_custom_fields = get_post_meta( get_the_ID(), 'after_title_fm_fields', true );
-	$custom_fields = get_post_meta( get_the_ID(), 'home-content-section', false );
-}
-
 ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-type="titled" data-route="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-social="true" data-date="<?php internetorg_posted_on_date(); ?>">
 		<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php get_template_part( 'template-parts/content', 'single' ); ?>
+			<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
 
-			<?php the_post_navigation(); ?>
+		<div id="featurePanel" class="viewWindow-panel viewWindow-panel_feature">
+			<div class="viewWindow-panel-content">
+				<div class="viewWindow-panel-content-inner">
+					<div class="introBlock introBlock_fill">
+						<div class="introBlock-inner">
+							<div class="container">
+								<div class="topicBlock">
 
-			<?php
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
-			?>
+									<div class="topicBlock-hd topicBlock-hd_plus">
+										<h2 class="hdg hdg_2 mix-hdg_bold"><?php the_title(); ?></h2>
+									</div>
+									<div class="topicBlock-subHd">
+										<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray"><?php internetorg_posted_on_date(); ?></div>
+									</div>
 
-		<?php endwhile; // End of the loop. ?>
+								</div>
+							</div>
+						</div>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+						<?php get_template_part( 'template-parts/content', 'social-links' ); ?>
 
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="storyPanel" class="viewWindow-panel viewWindow-panel_story isActive">
+			<div class="viewWindow-panel-content">
+				<div class="viewWindow-panel-content-inner">
+					<div>
+						<?php get_template_part( 'template-parts/content', 'press-intro-mobile' ); ?>
+
+						<div class="contentCol">
+							<div class="container">
+								<div class="feature">
+									<div class="feature-bd wysiwyg quarantine">
+										<?php the_content(); ?>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="footBox">
+							<div class="container">
+								<?php get_template_part( 'template-parts/content', 'single-more' ); ?>
+							</div>
+							<div class="footBox-ft">
+								<div class="container">
+									<?php internetorg_vip_powered_wpcom( 'pwdByVip-txt' ); ?>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php endwhile; ?>
+	</div>
+
+<?php get_footer();

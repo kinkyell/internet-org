@@ -8,19 +8,29 @@
  */
 
 ?>
+	<!-- Add asset shade BEFORE scripts are loaded -->
+	<script type="text/javascript">
+		var loader = document.createElement('div');
+		loader.className = 'loadingIcon loadingIcon_opaque loadingIcon_topLayer js-assetShade';
+		document.body.appendChild(loader);
+	</script>
 
-	</div><!-- #content -->
+	<?php /* <div><?php echo vip_powered_wpcom(); ?></div> */ ?>
 
-	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'internet_org' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'internet_org' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'internet_org' ), 'internet_org', '<a href="http://www.nerdery.com" rel="designer">arichard</a>' ); ?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
+	<!-- <script type="text/javascript">
+    		window._define = window.define;
+    		window.define = null;
+	</script> -->
 
-<?php wp_footer(); ?>
+	<?php wp_footer(); /* required */ ?>
+
+	<!-- <script type="text/javascript">
+    		window.define = window._define;
+	</script> -->
+
+	<?php get_template_part( 'template-parts/footer', 'requirejs' ); ?>
+
 
 </body>
+
 </html>

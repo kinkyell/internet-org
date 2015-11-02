@@ -1,0 +1,18 @@
+/* ---------------------------------------------------------------------
+ Featured contnet
+
+ Layout for featured content area
+------------------------------------------------------------------------ */
+.featureContent {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+}
+
+
+[dir="rtl"] {
+    .featureContent {
+        right: auto;
+        left: 32px;
+    }
+}

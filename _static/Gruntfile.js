@@ -62,11 +62,7 @@ module.exports = function(grunt) {
                 tasks: ['buildMarkup']
             },
             watchStatic: {
-                files: [
-                    '<%= env.DIR_SRC %>/**/.htaccess',
-                    '<%= env.DIR_SRC %>/**/*.{php,rb,py,jsp,asp,aspx,cshtml,txt}',
-                    '<%= env.DIR_SRC %>/assets/media/**',
-                ],
+                files: ['<%= env.DIR_SRC %>/assets/media/**'],
                 tasks: ['buildStatic']
             },
             watchStyles: {
@@ -74,7 +70,11 @@ module.exports = function(grunt) {
                 tasks: ['buildStyles']
             },
             watchScripts: {
-                files: ['<%= env.DIR_SRC %>/assets/scripts/**/*'],
+                files: [
+                    '<%= env.DIR_SRC %>/jst/**/*',
+                    '<%= env.DIR_SRC %>/assets/scripts/**/*',
+                    '!<%= env.DIR_SRC %>/assets/scripts/**/*.build.js'
+                ],
                 tasks: ['buildScripts']
             }
         },
@@ -84,7 +84,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', 'Run default tasks for the target environment.',
         // Ran `grunt`
-        grunt.option('dev')   ? ['build'] :
+        grunt.option('dev')   ? ['lint', 'build'] :
         // Ran `grunt --stage`
         grunt.option('stage') ? ['lint', 'build'] :
         // Ran `grunt --prod`
@@ -94,6 +94,10 @@ module.exports = function(grunt) {
     grunt.registerTask('build', 'Compile source code and outputs to destination.',
         ['clean:dest', 'buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts', 'clean:tmp']
     );
+
+    grunt.registerTask('icons', 'Compile icons.', [
+        'buildStatic', 'buildIcons' //TODO: fix grunicon task
+    ]);
 
     grunt.registerTask('docs', 'Generate documentation.',
         ['clean:docs', 'docsScripts', 'clean:tmp']

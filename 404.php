@@ -5,52 +5,102 @@
  * @package Internet.org
  */
 
-get_header(); ?>
+get_header();
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+?>
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'internet_org' ); ?></h1>
-				</header><!-- .page-header -->
 
-				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'internet_org' ); ?></p>
 
-					<?php get_search_form(); ?>
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php echo esc_url( home_url( '/404/' ) ); ?>" data-type="panel" data-theme="<?php echo esc_attr( internetorg_get_page_theme() ); ?>" data-title="<?php esc_attr_e( 'Oops! That page can&rsquo;t be found.', 'internetorg' ); ?>" data-image="<?php echo esc_url( get_stylesheet_directory_uri() . '/_static/web/assets/media/uploads/home.jpg' ); ?>">
 
-					<?php the_widget( 'WP_Widget_Recent_Posts' ); ?>
 
-					<?php if ( internet_org_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'internet_org' ); ?></h2>
-						<ul>
-						<?php
-							wp_list_categories( array(
-								'orderby'    => 'count',
-								'order'      => 'DESC',
-								'show_count' => 1,
-								'title_li'   => '',
-								'number'     => 10,
-							) );
-						?>
-						</ul>
-					</div><!-- .widget -->
-					<?php endif; ?>
+		<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
 
-					<?php
-						/* translators: %1$s: smiley */
-						$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'internet_org' ), convert_smilies( ':)' ) ) . '</p>';
-						the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
-					?>
 
-					<?php the_widget( 'WP_Widget_Tag_Cloud' ); ?>
+		<?php get_template_part( 'template-parts/content', 'feature-panel' ); ?>
 
-				</div><!-- .page-content -->
-			</section><!-- .error-404 -->
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+		<div class="viewWindow-panel viewWindow-panel_story isActive">
+			<div class="viewWindow-panel-content">
 
-<?php get_footer(); ?>
+				<div class="viewWindow-panel-content-inner">
+					<div>
+
+						<div class="introBlock">
+							<div class="introBlock-inner">
+
+								<div class="topicBlock">
+									<div class="topicBlock-hd topicBlock-hd_mega <?php echo esc_attr( 'topicBlock-hd_theme' . internetorg_get_page_theme() ); ?>">
+										<h2 class="hdg hdg_2 mix-hdg_bold"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'internetorg' ); ?></h2>
+									</div>
+
+									<!-- START ADD MOBILE ONLY CONTENT HERE -->
+
+									<!-- Secondary (mobile) Feature Image -->
+									<div class="topicBlock-media isHidden u-isHiddenMedium" aria-hidden="true">
+										<img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/_static/web/assets/media/uploads/home.jpg' ); ?>" alt="" />
+									</div>
+
+									<!-- Duplicate Content - Mobile Only -->
+									<div class="topicBlock-bd isHidden u-isHiddenMedium" aria-hidden="true">
+										<div class="hdg hdg_3"><?php esc_html_e( 'Not found', 'internetorg' ); ?></div>
+										<p class="bdcpy"><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try a search?', 'internetorg' ); ?></p>
+									</div>
+
+									<!-- END ADD MOBILE ONLY CONTENT HERE -->
+
+								</div>
+							</div>
+						</div>
+
+
+						<div class="<?php echo esc_attr( 'theme-' . strtolower( internetorg_get_page_theme() ) ); ?>">
+							<div class="container">
+								<div class="contentCol">
+
+
+									<!-- START ADD DESKTOP ONLY CONTENT HERE -->
+									<!-- Duplicate Content - DESKTOP Only -->
+									<div class="feature isVissuallyHidden u-isVisuallyHiddenSmall">
+										<div class="feature-hd">
+											<div class="hdg hdg_3"><?php esc_html_e( 'Not found', 'internetorg' ); ?></div>
+										</div>
+										<div class="feature-bd">
+											<p class="bdcpy bdcpy_sm">
+												<?php esc_html_e( 'It looks like nothing was found at this location. Maybe try a search?', 'internetorg' ); ?>
+											</p>
+										</div>
+									</div>
+									<!-- END Duplicate Content - DESKTOP Only -->
+									<!-- END ADD DESKTOP ONLY CONTENT HERE -->
+
+
+									<div class="feature">
+										<div class="feature-bd wysiwyg quarantine">
+											<?php get_search_form(); ?>
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+						</div>
+
+						<div class="contentCol contentCol_tight">
+							<div class="container">
+								<?php internetorg_vip_powered_wpcom(); ?>
+							</div>
+						</div>
+
+					</div>
+
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+<?php get_footer();
