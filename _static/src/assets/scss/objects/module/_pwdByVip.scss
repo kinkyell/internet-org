@@ -28,3 +28,21 @@
 .pwdByVip-txt_left {
     text-align: left;
 }
+
+.pwdByVip-txt_contact {
+	position: absolute;
+	bottom: 28px;
+	display: block;
+	width: 100%;
+}
+
+.pwdByVip-txt_front {
+	position: absolute;
+	bottom: 45px;
+}
+
+@include breakpoint(MD) {
+	.pwdByVip-txt_content {
+		bottom: 45px;
+	}
+}

@@ -32,5 +32,6 @@
 				</div>
 			</div>
 		</div>
+		<?php internetorg_vip_powered_wpcom('pwdByVip-txt pwdByVip-txt_contact'); ?></div>
 	</div>
 </div>

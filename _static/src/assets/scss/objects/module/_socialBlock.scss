@@ -13,7 +13,7 @@ Unique area/layout for social media footer content
 .socialBlock-inner {
     display: table-cell;
     vertical-align: middle;
-    padding: 45px 0;
+    padding: 45px 0 80px;
 }
 
 
@@ -24,5 +24,9 @@ Unique area/layout for social media footer content
         background-position: 91% 100%;
         background-size: cover;
     }
+
+  	.socialBlock-inner {
+  		padding: 45px 0;
+	}
 }
 

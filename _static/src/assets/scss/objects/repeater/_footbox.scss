@@ -26,6 +26,10 @@
     margin-top: $SPACE_x4;   
 }
 
+.footBox {
+  	padding: 28px 0;
+}
+
 @include breakpoint(MD) {
     .footBox {
         padding: 80px 0 $SPACE_x4;

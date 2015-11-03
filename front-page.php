@@ -273,7 +273,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 														<?php echo apply_filters( 'the_content', wp_kses_post( ! empty( $get_involved_content_widget_post ) ? $get_involved_content_widget_post->post_content : '' ) ); ?>
 														<div class="splashFooter-section">
 															<div class="splashFooter-section-bd">
-																<?php internetorg_vip_powered_wpcom(); ?>
+																<?php internetorg_vip_powered_wpcom('pwdByVip-txt pwdByVip-txt_front'); ?>
 															</div>
 														</div>
 													</div>

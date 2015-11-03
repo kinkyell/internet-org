@@ -88,7 +88,7 @@ get_header(); ?>
 
 						<div class="contentCol contentCol_tight">
 							<div class="container">
-								<?php internetorg_vip_powered_wpcom(); ?>
+								<?php internetorg_vip_powered_wpcom('pwdByVip-txt pwdByVip-txt_search'); ?>
 							</div>
 						</div>
 

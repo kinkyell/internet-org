@@ -42,7 +42,10 @@ Layout for padded columns of content.
         padding: 0 0 40px 0;
     }
     .contentCol_tight {
-        padding: 40px 0;
+	  	position: absolute;
+	  	bottom: 0;
+	  	width: 100%;
+	  	padding: 45px 0;
     }
 
 }
