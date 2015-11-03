@@ -71,15 +71,16 @@ html:not(.touch) {
     }
 
     .link:hover:before {
-        transform: translateX(10px);
+        transform: translateX(8px);
     }
 
     .link:hover:after,
     .link_twoArrows:hover:before, .link_preArrows:hover:before {
-        transform: translate3d(10px, 0, 0) rotate(-44deg); //44 instead of 45 fixes IE11 aliasing bug
+        background-color: transparent;
+        transform: translate3d(8px, 0, 0) rotate(-44deg); //44 instead of 45 fixes IE11 aliasing bug
     }
 
-    .link:hover:after, .link_preArrows:hover:before { backgroundborder-color: $CLR_ACCENT; }
+    .link:hover:after, .link_preArrows:hover:before { background-color: $CLR_ACCENT; }
 
     .link:hover:before { background-color: $CLR_ACCENT_ACTIVE; }
 
