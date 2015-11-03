@@ -415,10 +415,13 @@ define(function(require, exports, module) { // jshint ignore:line
         if (this._position === pos) {
             return;
         }
+
+        this.isAnimating = true;
         this._updateIndicators(pos);
         this._displayIndicators(pos);
         this._narrativeManager.gotoSection(this._position, pos).then(function(pos) {
             this._position = pos;
+            this.isAnimating = false;
             eventHub.publish('Narrative:sectionChange', this._position);
         }.bind(this));
     };
@@ -430,6 +433,8 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onClickIndicator = function(event) {
+        if (this.isAnimating) return;
+
         event.preventDefault();
         var $indicator = $(event.currentTarget);
         var pos = $indicator.index();
