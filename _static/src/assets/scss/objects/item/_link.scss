@@ -74,6 +74,9 @@ html:not(.touch) {
         transform: translateX(8px);
     }
 
+    .link:hover:before { background-color: $CLR_ACCENT_ACTIVE; }
+
+
     .link:hover:after,
     .link_twoArrows:hover:before, .link_preArrows:hover:before {
         background-color: transparent;
@@ -81,8 +84,6 @@ html:not(.touch) {
     }
 
     .link:hover:after, .link_preArrows:hover:before { border-color: $CLR_ACCENT; }
-
-    .link:hover:before { background-color: $CLR_ACCENT_ACTIVE; }
 
 }
 
