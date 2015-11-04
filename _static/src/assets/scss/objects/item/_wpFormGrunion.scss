@@ -62,6 +62,11 @@ body .contact-form label.radio
     	font-weight: 200;
     }
 
+	.grunion-field-label + textarea[placeholder] {
+	  	height: 200px;
+	  	max-height: none;
+	}
+
     .grunion-radio-label {
         display: inline-flex;
         display: -webkit-inline-flex;
