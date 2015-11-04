@@ -174,38 +174,91 @@ define(function(require, exports, module) { // jshint ignore:line
 
         //  transition 01
         ///////////////////////
+        if(this._sectionsConf[1]){
+            // ---------
+            // ----- OUT
+            // ---------
+            tl.staggerFromTo(
+                [
+                    this._$transformBlockStmnt.eq(0),
+                    this._$transformBlockPre.eq(0)
+                ],
+                SECTION_DURATION,
+                {
+                    y: '0px',
+                    opacity: 1,
+                    ease: EASE[easeDirection]
+                },
+                {
+                    y: '-' + MOVEMENT_Y + 'px',
+                    opacity: 0,
+                    ease: EASE[easeDirection]
+                },
+                0);
 
-        // ---------
-        // ----- OUT
-        // ---------
-        tl.staggerFromTo(
-            [
-                this._$transformBlockStmnt.eq(0),
-                this._$transformBlockPre.eq(0)
-            ],
-            SECTION_DURATION,
-            {
-                y: '0px',
-                opacity: 1,
-                ease: EASE[easeDirection]
-            },
-            {
-                y: '-' + MOVEMENT_Y + 'px',
-                opacity: 0,
-                ease: EASE[easeDirection]
-            },
-            0);
+            // ---------
+            // ----- IN
+            // ---------
+            tl.staggerFromTo(
+                [
+                    this._$transformBlockStmnt.eq(1),
+                    this._$transformBlockPost.eq(0).find('> *:nth-child(1)'),
+                    this._$transformBlockPost.eq(0).find('> *:nth-child(2)')
+                ],
+                (SECTION_DURATION) * 0.5,
+                    {
+                        y: MOVEMENT_Y + 'px',
+                        opacity: 0,
+                        ease: EASE[easeDirection]
+                    },
+                    {
+                        y: '0px',
+                        opacity: 1,
+                        ease: EASE[easeDirection]
+                    },
+                    STAGGER_DELAY,
+                    'staggerOne'
+                );
 
-        // ---------
-        // ----- IN
-        // ---------
-        tl.staggerFromTo(
-            [
-                this._$transformBlockStmnt.eq(1),
-                this._$transformBlockPost.eq(0).find('> *:nth-child(1)'),
-                this._$transformBlockPost.eq(0).find('> *:nth-child(2)')
-            ],
-            (SECTION_DURATION) * 0.5,
+            tl.fromTo(
+                this._$transformBlock,
+                SECTION_DURATION,
+                { y: '0px' },
+                { y: '-' + MOVEMENT_Y + 'px', ease: EASE[easeDirection] },
+                'staggerOne');
+
+            tl.addLabel(this._sectionsConf[1].label, tl.duration());
+        }
+        //  transition 02
+        ///////////////////////
+        if(this._sectionsConf[2]){
+            // ---------
+            // ----- OUT
+            // ---------
+            tl.staggerTo(
+                [
+                    this._$transformBlockStmnt.eq(1),
+                    this._$transformBlockPost.eq(0).find('> *:nth-child(1)'),
+                    this._$transformBlockPost.eq(0).find('> *:nth-child(2)')
+                ],
+                SECTION_DURATION,
+                {
+                    y: '-' + MOVEMENT_Y + 'px',
+                    opacity: 0,
+                    ease: EASE[easeDirection]
+                },
+                0);
+
+            // ---------
+            // ----- IN
+            // ---------
+            tl.staggerFromTo(
+                [
+                    this._$transformBlockStmnt.eq(2),
+                    this._$transformBlockPost.eq(1).find('> *:nth-child(1)'),
+                    this._$transformBlockPost.eq(1).find('> *:nth-child(2)')
+                ],
+                (SECTION_DURATION) * 0.5,
                 {
                     y: MOVEMENT_Y + 'px',
                     opacity: 0,
@@ -216,178 +269,124 @@ define(function(require, exports, module) { // jshint ignore:line
                     opacity: 1,
                     ease: EASE[easeDirection]
                 },
-                STAGGER_DELAY,
-                'staggerOne'
-            );
+                STAGGER_DELAY);
 
-        tl.fromTo(
-            this._$transformBlock,
-            SECTION_DURATION,
-            { y: '0px' },
-            { y: '-' + MOVEMENT_Y + 'px', ease: EASE[easeDirection] },
-            'staggerOne');
-
-        tl.addLabel(this._sectionsConf[1].label, tl.duration());
-
-        //  transition 02
-        ///////////////////////
-
-        // ---------
-        // ----- OUT
-        // ---------
-        tl.staggerTo(
-            [
-                this._$transformBlockStmnt.eq(1),
-                this._$transformBlockPost.eq(0).find('> *:nth-child(1)'),
-                this._$transformBlockPost.eq(0).find('> *:nth-child(2)')
-            ],
-            SECTION_DURATION,
-            {
-                y: '-' + MOVEMENT_Y + 'px',
-                opacity: 0,
-                ease: EASE[easeDirection]
-            },
-            0);
-
-        // ---------
-        // ----- IN
-        // ---------
-        tl.staggerFromTo(
-            [
-                this._$transformBlockStmnt.eq(2),
-                this._$transformBlockPost.eq(1).find('> *:nth-child(1)'),
-                this._$transformBlockPost.eq(1).find('> *:nth-child(2)')
-            ],
-            (SECTION_DURATION) * 0.5,
-            {
-                y: MOVEMENT_Y + 'px',
-                opacity: 0,
-                ease: EASE[easeDirection]
-            },
-            {
-                y: '0px',
-                opacity: 1,
-                ease: EASE[easeDirection]
-            },
-            STAGGER_DELAY);
-
-        tl.addLabel(this._sectionsConf[2].label, tl.duration());
-
-
+            tl.addLabel(this._sectionsConf[2].label, tl.duration());
+        }
         //  transition 03
         ///////////////////////
+        if(this._sectionsConf[3]){
+            // ---------
+            // ----- OUT
+            // ---------
+            tl.staggerTo(
+                [
+                    this._$transformBlockStmnt.eq(2),
+                    this._$transformBlockPost.eq(1).find('> *:nth-child(1)'),
+                    this._$transformBlockPost.eq(1).find('> *:nth-child(2)')
+                ],
+                SECTION_DURATION,
+                {
+                    y: '-' + MOVEMENT_Y + 'px',
+                    opacity: 0,
+                    ease: EASE[easeDirection]
+                },
+                0);
 
-        // ---------
-        // ----- OUT
-        // ---------
-        tl.staggerTo(
-            [
-                this._$transformBlockStmnt.eq(2),
-                this._$transformBlockPost.eq(1).find('> *:nth-child(1)'),
-                this._$transformBlockPost.eq(1).find('> *:nth-child(2)')
-            ],
-            SECTION_DURATION,
-            {
-                y: '-' + MOVEMENT_Y + 'px',
-                opacity: 0,
-                ease: EASE[easeDirection]
-            },
-            0);
+            // ---------
+            // ----- IN
+            // ---------
+            tl.staggerFromTo(
+                [
+                    this._$transformBlockStmnt.eq(3),
+                    this._$transformBlockPost.eq(2).find('> *:nth-child(1)'),
+                    this._$transformBlockPost.eq(2).find('> *:nth-child(2)')
+                ],
+                (SECTION_DURATION) * 0.5,
+                {
+                    y: MOVEMENT_Y + 'px',
+                    opacity: 0,
+                    ease: EASE[easeDirection]
+                },
+                {
+                    y: '0px',
+                    opacity: 1,
+                    ease: EASE[easeDirection]
+                },
+                STAGGER_DELAY);
 
-        // ---------
-        // ----- IN
-        // ---------
-        tl.staggerFromTo(
-            [
-                this._$transformBlockStmnt.eq(3),
-                this._$transformBlockPost.eq(2).find('> *:nth-child(1)'),
-                this._$transformBlockPost.eq(2).find('> *:nth-child(2)')
-            ],
-            (SECTION_DURATION) * 0.5,
-            {
-                y: MOVEMENT_Y + 'px',
-                opacity: 0,
-                ease: EASE[easeDirection]
-            },
-            {
-                y: '0px',
-                opacity: 1,
-                ease: EASE[easeDirection]
-            },
-            STAGGER_DELAY);
+            tl.addLabel(this._sectionsConf[3].label, tl.duration());
 
-        tl.addLabel(this._sectionsConf[3].label, tl.duration());
-
-
+        }
         //  transition 04
         ///////////////////////
+        if(this._sectionsConf[4]){
+            // ---------
+            // ----- OUT
+            // ---------
+            tl.staggerTo(
+                [
+                    this._$transformBlockStmnt.eq(3),
+                    this._$transformBlockPost.eq(2).find('> *:nth-child(1)'),
+                    this._$transformBlockPost.eq(2).find('> *:nth-child(2)')
+                ],
+                SECTION_DURATION,
+                {
+                    y: '-' + MOVEMENT_Y + 'px',
+                    opacity: 0,
+                    ease: EASE[easeDirection]
+                },
+                0);
 
-        // ---------
-        // ----- OUT
-        // ---------
-        tl.staggerTo(
-            [
-                this._$transformBlockStmnt.eq(3),
-                this._$transformBlockPost.eq(2).find('> *:nth-child(1)'),
-                this._$transformBlockPost.eq(2).find('> *:nth-child(2)')
-            ],
-            SECTION_DURATION,
-            {
-                y: '-' + MOVEMENT_Y + 'px',
-                opacity: 0,
-                ease: EASE[easeDirection]
-            },
-            0);
+            tl.to(
+                this._$transformBlock,
+                SECTION_DURATION,
+                {
+                    y: '-' + MOVEMENT_Y + 'px',
+                    ease: EASE[easeDirection]
+                },
+                this._sectionsConf[3].label);
 
-        tl.to(
-            this._$transformBlock,
-            SECTION_DURATION,
-            {
-                y: '-' + MOVEMENT_Y + 'px',
-                ease: EASE[easeDirection]
-            },
-            this._sectionsConf[3].label);
+            // ---------
+            // ----- IN
+            // ---------
+            tl.staggerFromTo(
+                [
+                    this._$transformBlockStmnt.eq(4),
+                    this._$transformBlockPost.eq(3).find('.splashFooter-section:nth-child(1)'),
+                    this._$transformBlockPost.eq(3).find('.splashFooter-section:nth-child(2)'),
+                    this._$transformBlockPost.eq(3).find('.splashFooter-section:nth-child(3)'),
+                    this._$transformBlockPost.eq(3).find('.splashFooter-section:nth-child(4)')
+                ],
+                (SECTION_DURATION) * 0.5,
+                {
+                    y: MOVEMENT_Y + 'px',
+                    opacity: 0,
+                    ease: EASE[easeDirection]
+                },
+                {
+                    y: '0px',
+                    opacity: 1,
+                    ease: EASE[easeDirection]
+                },
+                STAGGER_DELAY / 3,
+                'staggerTwo');
 
-        // ---------
-        // ----- IN
-        // ---------
-        tl.staggerFromTo(
-            [
-                this._$transformBlockStmnt.eq(4),
-                this._$transformBlockPost.eq(3).find('.splashFooter-section:nth-child(1)'),
-                this._$transformBlockPost.eq(3).find('.splashFooter-section:nth-child(2)'),
-                this._$transformBlockPost.eq(3).find('.splashFooter-section:nth-child(3)'),
-                this._$transformBlockPost.eq(3).find('.splashFooter-section:nth-child(4)')
-            ],
-            (SECTION_DURATION) * 0.5,
-            {
-                y: MOVEMENT_Y + 'px',
-                opacity: 0,
-                ease: EASE[easeDirection]
-            },
-            {
-                y: '0px',
-                opacity: 1,
-                ease: EASE[easeDirection]
-            },
-            STAGGER_DELAY / 3,
-            'staggerTwo');
+            tl.fromTo(
+                this._$transformBlockPre.eq(1),
+                (SECTION_DURATION) * 0.5,
+                {
+                    y: (MOVEMENT_Y * 0.5) + 'px',
+                    opacity: 0
+                },
+                {
+                    y: '0px',
+                    opacity: 1
+                },
+                'staggerTwo');
 
-        tl.fromTo(
-            this._$transformBlockPre.eq(1),
-            (SECTION_DURATION) * 0.5,
-            {
-                y: (MOVEMENT_Y * 0.5) + 'px',
-                opacity: 0
-            },
-            {
-                y: '0px',
-                opacity: 1
-            },
-            'staggerTwo');
-
-        tl.addLabel(this._sectionsConf[4].label, tl.duration());
-
+            tl.addLabel(this._sectionsConf[4].label, tl.duration());
+        }
         tl.timeScale(TIME_SCALE);
 
         return tl;
