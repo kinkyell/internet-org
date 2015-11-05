@@ -204,6 +204,7 @@ html:not(.touch) {
 .link_themeApproach:hover:before { background-color: $CLR_APPROACH_ACTIVE; }
 
 .theme-approach .quarantine .link_title {
+  	display: block;
 	margin-top: 45px;
   	@include font(SERIF);
 	font-size: 1.25rem;
