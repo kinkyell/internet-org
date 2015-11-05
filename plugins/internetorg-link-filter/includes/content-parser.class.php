@@ -136,6 +136,7 @@ class ContentParser {
 	 * @return string
 	 */
 	protected function remove_extraneous_wrappers( $content ) {
+		$content = str_replace('&nbsp;', '', $content);
 		return preg_replace( '/^<!DOCTYPE.+?>/', '', str_replace( array(
 			'<html>',
 			'</html>',

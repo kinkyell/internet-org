@@ -23,3 +23,7 @@ body {
     	display: none;
     }
 }
+
+p:empty, h1:empty, h2:empty, h3:empty, h4:empty, h5:empty, h6:empty {
+  margin: 0;
+}
