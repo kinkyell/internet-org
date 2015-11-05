@@ -30,7 +30,7 @@ class LinkTransformer {
 			return $url;
 		}
 
-		$domain    = home_url();
+		$domain    = get_current_site()->domain;
 		$langCode  = bbl_get_current_content_lang_code();
 		$urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
 
@@ -51,9 +51,9 @@ class LinkTransformer {
 			array_unshift( $pathParts, $urlPrefix );
 		}
 
-		// $scheme  = isset( $pathParts['scheme'] ) ? $pathParts['scheme'] : 'http';
+		$scheme  = isset( $pathParts['scheme'] ) ? $pathParts['scheme'] : 'http';
 		$newPath = implode( '/', $pathParts );
-		$newPath = sprintf( '%s/%s', $domain, $newPath );
+		$newPath = sprintf( '%s://%s/%s', $scheme, $domain, $newPath );
 
 		// If the original path had a trailing slash, add it back in.
 		if ( '/' === substr( $parsedUrl['path'], - 1 ) ) {
