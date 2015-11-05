@@ -36,5 +36,11 @@
 
 .resultsList-ft {
 	border-top: 1px solid $CLR_GRAY_LIGHT;
-	padding-top: 55px;
+	padding: 55px 0 25px;
+}
+
+@include breakpoint(MD) {
+	.resultsList-ft {
+	  	padding: 55px 0 0;
+	}
 }

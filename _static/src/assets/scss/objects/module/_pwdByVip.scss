@@ -5,7 +5,8 @@
 ------------------------------------------------------------------------ */
 .pwdByVip {
     width: 100%;
-    display: block;
+    display: inline-block;
+  	text-align: center;
 }
 
 .pwdByVip_inline {
@@ -33,7 +34,8 @@
 	position: absolute;
 	bottom: 28px;
 	display: block;
-	width: 100%;
+	width: 82.5%;
+  	left: 9%;
 }
 
 .pwdByVip-txt_front {
@@ -43,5 +45,14 @@
 @include breakpoint(MD) {
 	.pwdByVip-txt_content {
 		bottom: 45px;
+	}
+
+  	.pwdByVip-txt_front {
+
+  	}
+
+	.pwdByVip-txt_contact {
+	  	width: 100%;
+	  	left: 0;
 	}
 }

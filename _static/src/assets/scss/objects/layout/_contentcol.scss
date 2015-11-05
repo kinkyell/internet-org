@@ -28,6 +28,17 @@ Layout for padded columns of content.
     padding-bottom: 11px;
 }
 
+.contentCol_tight {
+  	position: absolute;
+  	bottom: 0;
+  	width: 100%;
+}
+
+.contentCol_tight.four-o-four, {
+  	position: relative;
+  	width: 100%;
+}
+
 @include breakpoint(MD) {
     .contentCol {
         padding: $SPACE_x5 0;
@@ -42,10 +53,10 @@ Layout for padded columns of content.
         padding: 0 0 40px 0;
     }
     .contentCol_tight {
-	  	position: absolute;
-	  	bottom: 0;
-	  	width: 100%;
 	  	padding: 45px 0;
     }
 
+	.contentCol_tight.four-o-four, {
+	  	position: absolute;
+	}
 }

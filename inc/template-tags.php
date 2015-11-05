@@ -159,9 +159,9 @@ add_action( 'save_post', 'internetorg_category_transient_flusher' );
  *
  * Concatenating the string together is a little bit gross, but our JS dev needs a version with no carriage returns.
  *
- * @param string $class The classes to apply to the inner wrapper div. Defaults to "pwdByVip-txt pwdByVip-txt_left".
+ * @param string $class The classes to apply to the inner wrapper div. Defaults to "pwdByVip-txt".
  */
-function internetorg_vip_powered_wpcom( $class = 'pwdByVip-txt pwdByVip-txt_left' ) {
+function internetorg_vip_powered_wpcom( $class = 'pwdByVip-txt' ) {
 
 	$string = '<small class="pwdByVip"><div class="' . esc_attr( $class ) . '">'
 	          . sprintf( esc_html__( 'Facebook &copy; %1$s', 'internetorg' ), date( 'Y' ) ) . ' ' . vip_powered_wpcom()

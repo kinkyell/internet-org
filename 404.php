@@ -86,7 +86,7 @@ get_header();
 							</div>
 						</div>
 
-						<div class="contentCol contentCol_tight">
+						<div class="contentCol contentCol_tight four-o-four">
 							<div class="container">
 								<?php internetorg_vip_powered_wpcom(); ?>
 							</div>
