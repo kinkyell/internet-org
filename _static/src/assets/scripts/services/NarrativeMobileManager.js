@@ -71,6 +71,8 @@ define(function(require, exports, module) { // jshint ignore:line
         this._getSectionOffsets();
         this._timeLine = this._createTimeline('forward');
         this._timeLineReverse = this._createTimeline('reverse');
+
+        this.refresh();
     };
 
     /**
