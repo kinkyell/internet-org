@@ -2184,6 +2184,8 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 			continue;
 		}
 
+		$linkName = (! empty( $cta['title'] ) ? $cta['title'] : 'Learn More');
+
 		if ( ! empty( $cta['cta_src'] ) && 'page' === $cta['cta_src'] && ! empty( $cta['link_src'] ) ) {
 
 			/**
@@ -2257,7 +2259,7 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 				<?php if ( ! empty( $panel_image ) ) : ?>
 					data-image="<?php echo esc_url( $panel_image ); ?>"
 				<?php endif; ?>>
-				<?php echo esc_html__( 'Learn More', 'internetorg' ); ?>
+				<?php echo esc_html__( $linkName, 'internetorg' ); ?>
 			</a>
 		</div>
 

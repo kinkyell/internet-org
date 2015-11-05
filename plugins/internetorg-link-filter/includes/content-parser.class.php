@@ -136,6 +136,12 @@ class ContentParser {
 	 * @return string
 	 */
 	protected function remove_extraneous_wrappers( $content ) {
+		// replace non-breaking space and remove empty dom elements afterwards.
+		// fix for unwanted extra '&nbsp;' added by WP text editor
+		$content = str_replace('&nbsp;', ' ', $content);
+		$content = preg_replace('~<p>\s*<\/p>~i','',$content);
+		$content = preg_replace('~<h*>\s*<\/h*>~i','',$content);
+
 		return preg_replace( '/^<!DOCTYPE.+?>/', '', str_replace( array(
 			'<html>',
 			'</html>',

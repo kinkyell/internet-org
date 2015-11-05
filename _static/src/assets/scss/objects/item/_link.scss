@@ -77,14 +77,16 @@ html:not(.touch) {
     .link:hover:before { background-color: $CLR_ACCENT_ACTIVE; }
 
 
+    .link:hover:after, .link_preArrows:hover:before { border-color: $CLR_ACCENT; }
+
+}
+
+[dir="ltr"] {
     .link:hover:after,
     .link_twoArrows:hover:before, .link_preArrows:hover:before {
         background-color: transparent;
         transform: translate3d(8px, 0, 0) rotate(-44deg); //44 instead of 45 fixes IE11 aliasing bug
     }
-
-    .link:hover:after, .link_preArrows:hover:before { border-color: $CLR_ACCENT; }
-
 }
 
 .mix-link_small { @include remify(font-size, 13px); }
@@ -202,6 +204,7 @@ html:not(.touch) {
 .link_themeApproach:hover:before { background-color: $CLR_APPROACH_ACTIVE; }
 
 .theme-approach .quarantine .link_title {
+  	display: block;
 	margin-top: 45px;
   	@include font(SERIF);
 	font-size: 1.25rem;
