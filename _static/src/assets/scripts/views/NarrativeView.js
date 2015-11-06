@@ -655,7 +655,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._displayIndicators = function(pos) {
-        if (!breakpointManager.isMobile && pos <= 0) {
+        var slidesLength = this._sectionConf.length;
+
+        if (!breakpointManager.isMobile && pos < (slidesLength - 1)) {
             this._$interactionPrompt.show();
         } else {
             this._$interactionPrompt.hide();
@@ -665,8 +667,6 @@ define(function(require, exports, module) { // jshint ignore:line
             this.$progress.removeClass(CONFIG.PROGRESS_HIDDEN);
             return;
         }
-
-        var slidesLength = this._sectionConf.length;
 
         if (pos <= 0 || pos >= (slidesLength - 1)) {
             this.$progress.addClass(CONFIG.PROGRESS_HIDDEN);
