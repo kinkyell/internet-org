@@ -41,12 +41,25 @@ get_header();
 							</div>
 						</div>
 
-						<?php get_template_part( 'template-parts/content', 'page-next-page' ); ?>
+						<?php //get_template_part( 'template-parts/content', 'page-next-page' ); ?>
+
+						<div class="footBox">
+
+							<div class="container page-impact">
+								<?php internet_org_get_content_widget_html( 'home-get-involved', false ); ?>
+							</div>
+
+							<div class="contentCol contentCol_tight impact">
+								<div class="container">
+									<?php internetorg_vip_powered_wpcom('pwdByVip-txt pwdByVip-txt_impact'); ?>
+								</div>
+							</div>
+
+						</div>
 
 					</div>
 
 				</div>
-
 			</div>
 		</div>
 	</div>

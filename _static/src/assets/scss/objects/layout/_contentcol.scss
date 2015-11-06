@@ -34,6 +34,12 @@ Layout for padded columns of content.
   	width: 100%;
 }
 
+.contentCol_tight.impact {
+  	position: relative;
+  	width: 100%;
+  	padding: 0;
+}
+
 .contentCol_tight.four-o-four, {
   	position: relative;
   	width: 100%;
