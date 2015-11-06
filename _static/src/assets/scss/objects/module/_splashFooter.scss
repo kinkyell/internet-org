@@ -17,6 +17,10 @@
 
 .splashFooter-section-bd {}
 
+.container.page-impact .topicBlock-cta {
+  display: none;
+}
+
 @include breakpoint(MD) {
     .splashFooter {
         padding-top: 14px;
@@ -30,10 +34,6 @@
 
   	.container.page-impact .splashFooter-section {
 	  	opacity: 1;
-	}
-
-  	.container.page-impact .topicBlock-cta {
-	  	display: none;
 	}
 }
 
