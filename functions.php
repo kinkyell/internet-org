@@ -2248,7 +2248,7 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 
 		<div class="feature-cta">
 			<a href="<?php echo esc_url( apply_filters( 'iorg_url', $url ) ); ?>"
-			   class="link js-stateLink"
+			   class="link js-stateDefault"
 			   data-type="<?php esc_attr( $type ); ?>"
 			   data-social="<?php echo esc_attr( $social_attr ); ?>"
 			   data-theme="<?php echo esc_attr( strtolower( $theme ) ); ?>"
