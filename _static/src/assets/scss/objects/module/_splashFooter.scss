@@ -27,6 +27,14 @@
     .splashFooter-section {
         opacity: 0;
     }
+
+  	.container.page-impact .splashFooter-section {
+	  	opacity: 1;
+	}
+
+  	.container.page-impact .topicBlock-cta {
+	  	display: none;
+	}
 }
 
 @media (max-height: 520px) {
