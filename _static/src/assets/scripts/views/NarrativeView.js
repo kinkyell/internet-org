@@ -147,6 +147,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._$narrativeAdvance = $('.js-narrativeAdvance');
         this._$interactionPrompt = $('.interactionPrompt');
         this._$narrativeDTLinks = $('.transformBlock a');
+        this._$narrativePoweredFooter = $('.pwdByVip-txt_front');
     };
 
     /**
@@ -166,6 +167,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._$narrativeAdvance = null;
         this._$interactionPrompt = null;
         this._$narrativeDTLinks = null;
+        this._$narrativePoweredFooter = null;
     };
 
     /**
@@ -246,7 +248,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onDisable = function() {
-        this._$interactionPrompt.hide();
+        Tween.set(this._$interactionPrompt, {autoAlpha: 0});
         this.$progress.hide();
         this.scrollTop = this.$narrative[0].scrollTop;
         this._disableScrolling();
@@ -657,10 +659,14 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._displayIndicators = function(pos) {
         var slidesLength = this._sectionConf.length;
 
+        Tween.killTweensOf([this._$interactionPrompt, this._$narrativePoweredFooter]);
+
         if (!breakpointManager.isMobile && pos < (slidesLength - 1)) {
-            this._$interactionPrompt.show();
+            Tween.to(this._$interactionPrompt, 0.3, {autoAlpha: 1, delay: 0.3});
+            Tween.to(this._$narrativePoweredFooter, 0.2, {autoAlpha: 0});
         } else {
-            this._$interactionPrompt.hide();
+            Tween.to(this._$interactionPrompt, 0.3, {autoAlpha: 0});
+            Tween.to(this._$narrativePoweredFooter, 0.3, {autoAlpha: 1, delay: 0.6});
         }
 
         if (!breakpointManager.isMobile) {
