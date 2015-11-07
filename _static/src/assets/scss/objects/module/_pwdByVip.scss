@@ -43,7 +43,10 @@
 }
 
 .pwdByVip-txt_front {
-
+  	position: absolute;
+  	bottom: 28px;
+  	width: 100%;
+  	font-size: 0.65rem;
 }
 
 @include breakpoint(MD) {
@@ -52,7 +55,8 @@
 	}
 
   	.pwdByVip-txt_front {
-
+		bottom: 45px;
+	  	font-size: 13px;
   	}
 
 	.pwdByVip-txt_contact {
