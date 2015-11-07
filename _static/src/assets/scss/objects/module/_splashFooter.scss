@@ -30,6 +30,13 @@
 
     .splashFooter-section {
         opacity: 0;
+	  	width: 50%;
+
+	  	&:last-of-type {
+			position: absolute;
+		  	top: 12px;
+		  	left: 55%;
+	  	}
     }
 
   	.container.page-impact .splashFooter-section {
