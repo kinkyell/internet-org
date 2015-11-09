@@ -146,6 +146,12 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$viewWindow = $('.viewWindow');
         this._$narrativeAdvance = $('.js-narrativeAdvance');
         this._$interactionPrompt = $('.interactionPrompt');
+        if(this._$interactionPrompt.length < 1){
+            this.$body.append(' <div class="interactionPrompt"><button class="arrowCta arrowCta_light js-narrativeAdvance"></button></div>');
+            this._$interactionPrompt = $('.interactionPrompt');
+            Tween.set(this._$interactionPrompt, {autoAlpha: 0});
+            this.hiddenInteration = true;
+        }
         this._$narrativeDTLinks = $('.transformBlock a');
         this._$narrativePoweredFooter = $('.pwdByVip-txt_front');
     };
@@ -254,6 +260,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._disableScrolling();
         breakpointManager.unsubscribe(this._onBreakpointChangeHandler);
         eventHub.unsubscribe('MainMenu:change', this._onMenuToggleHandler);
+        this.hiddenInteration = false;
     };
 
     /**
@@ -661,7 +668,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         Tween.killTweensOf([this._$interactionPrompt, this._$narrativePoweredFooter]);
 
-        if (!breakpointManager.isMobile && pos < (slidesLength - 1)) {
+        if (!breakpointManager.isMobile && pos < (slidesLength - 1) && !this.hiddenInteration) {
             Tween.to(this._$interactionPrompt, 0.3, {autoAlpha: 1, delay: 0.3});
             Tween.to(this._$narrativePoweredFooter, 0.2, {autoAlpha: 0});
         } else {
