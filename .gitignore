@@ -5,8 +5,7 @@ wp-content/uploads
 wp-content/debug.log
 robots.txt
 assets
-ssh
-
+i18n/input/
 wp-config.php
 
 .DS_Store

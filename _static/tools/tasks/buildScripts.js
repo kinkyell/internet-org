@@ -20,11 +20,16 @@ module.exports = function(grunt) {
                     src: shouldMinify
                        ? [
                            //'assets/scripts/config.js',
+                           'assets/{scripts,vendor}/**/*.js',
                            'assets/vendor/requirejs/require.js',
                            'assets/vendor/jquery/jquery.min.js'
                          ]
                        : ['assets/{scripts,vendor}/**/*.js']
                 }]
+            },
+            moveMain: {
+                src: '<%= env.DIR_SRC %>/assets/scripts/main.js',
+                dest: '<%= env.DIR_DEST %>/assets/scripts/main_unminimized.js'
             }
         },
 
@@ -152,6 +157,7 @@ module.exports = function(grunt) {
         shouldMinify
             ? [
                 'copy:buildScripts',
+                'copy:moveMain',
                 'requirejs:buildScripts',
                 'useminPrepare:buildScripts',
                 'concat:generated',

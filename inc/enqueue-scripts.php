@@ -65,7 +65,7 @@ function internetorg_enqueue_scripts() {
 		get_stylesheet_directory_uri() . '/_static/web/assets/vendor/requirejs/require.js',
 		array( 'jquery' ),
 		false,
-		true
+		false
 	);
 
 	return;
