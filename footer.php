@@ -17,16 +17,7 @@
 
 	<?php /* <div><?php echo vip_powered_wpcom(); ?></div> */ ?>
 
-	<script type="text/javascript">
-    		window._define = window.define;
-    		window.define = null;
-	</script>
-
 	<?php wp_footer(); /* required */ ?>
-
-	<script type="text/javascript">
-    		window.define = window._define;
-	</script>
 
 	<?php get_template_part( 'template-parts/footer', 'requirejs' ); ?>
 
