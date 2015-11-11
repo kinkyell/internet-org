@@ -65,10 +65,10 @@ function internetorg_enqueue_scripts() {
 		get_stylesheet_directory_uri() . '/_static/web/assets/vendor/requirejs/require.js',
 		array( 'jquery' ),
 		false,
-		false
+		true
 	);
 
 	return;
 }
 
-add_action( 'wp_enqueue_scripts', 'internetorg_enqueue_scripts' );
+add_action( 'wp_enqueue_scripts', 'internetorg_enqueue_scripts', 999 );
