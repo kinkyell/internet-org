@@ -49,7 +49,7 @@ require_once( __DIR__ . '/plugins/internetorg-link-filter/internetorg-link-filte
 require IO_DIR . '/inc/babble-fieldmanager-context.php';
 
 /** Hide admin bar */
-add_filter('show_admin_bar', '__return_false');
+// add_filter('show_admin_bar', '__return_false');
 
 /** Disable emoji from loading */
 function disable_wp_emojicons() {
