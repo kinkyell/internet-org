@@ -24,6 +24,7 @@ define(function(require, exports, module) { // jshint ignore:line
     // Additional Variables
     var appConfig = {
         classes: new ClassDict(classes),
+        appTitle: '',
         apiBase: window.SETTINGS.STATIC_PATH,
         searchPath: window.SETTINGS.SEARCH_PATH, // include prefix '/'
         apiRoutes: window.SETTINGS.ROUTES,
