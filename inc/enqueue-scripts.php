@@ -71,4 +71,4 @@ function internetorg_enqueue_scripts() {
 	return;
 }
 
-add_action( 'wp_enqueue_scripts', 'internetorg_enqueue_scripts' );
+add_action( 'wp_enqueue_scripts', 'internetorg_enqueue_scripts', 999 );

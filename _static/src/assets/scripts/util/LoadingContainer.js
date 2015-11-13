@@ -34,7 +34,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this.element.appendChild(this.throbber);
         }
 
-        return tweenAsync.from(this.throbber, 0.1, {
+        return tweenAsync.from(this.throbber, 0.3, {
             opacity: 0
         });
     };
