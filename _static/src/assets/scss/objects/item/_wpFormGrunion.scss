@@ -205,4 +205,12 @@ body .contact-form label.radio
             }
     }
 
+    .vendorForm {
+        .grunion-field-label + input[placeholder],
+        .grunion-field-label + textarea[placeholder] {
+            @include remify(font-size, 14px);
+        }
+    }
+
+
 }
