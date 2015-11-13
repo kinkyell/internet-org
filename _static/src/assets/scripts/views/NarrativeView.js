@@ -212,7 +212,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.onEnable = function() {
         this.$progress.show();
         this._displayIndicators(0);
-        this._updateIndicators(0);
+        this._updateIndicators(this._position);
         this.$narrative[0].scrollTop = this.scrollTop;
         this._currentlyMobile = breakpointManager.isMobile;
         breakpointManager.subscribe(this._onBreakpointChangeHandler);

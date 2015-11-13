@@ -9,7 +9,7 @@
 define( 'IO_DIR', __DIR__ );
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
-//vip_allow_title_orphans();
+vip_allow_title_orphans();
 
 // Load the Shortcake UI VIP Plugin.
 wpcom_vip_load_plugin( 'shortcode-ui' );
@@ -49,7 +49,7 @@ require_once( __DIR__ . '/plugins/internetorg-link-filter/internetorg-link-filte
 require IO_DIR . '/inc/babble-fieldmanager-context.php';
 
 /** Hide admin bar */
-add_filter('show_admin_bar', '__return_false');
+// add_filter('show_admin_bar', '__return_false');
 
 /** Disable emoji from loading */
 function disable_wp_emojicons() {
