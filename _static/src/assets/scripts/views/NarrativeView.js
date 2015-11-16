@@ -267,7 +267,7 @@ define(function(require, exports, module) { // jshint ignore:line
         $(window).off(this._eventTouchNamespace);
         window.removeEventListener('resize', this._onResizeHandler);
         window.removeEventListener('orientationchange', this._onResizeHandler);
-        this._$narrativeAdvance.off('click', this._onClickAdvance.bind(this));
+        this._$narrativeAdvance.off('click');
         this.$progress.off('click', '> *', this._onClickIndicatorHandler);
         eventHub.unsubscribe('Router:topScroll', this._onTopScrollHandler);
         $(document).off('keydown', this._onKeyDownHandler);
