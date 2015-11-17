@@ -26,11 +26,11 @@ function internetorg_enqueue_scripts() {
 	 *
 	 * @var string $domain_name
 	 */
-	$domain_name = parse_url( get_home_url(), PHP_URL_HOST );
+	$domain_name = parse_url( get_get_site_url(), PHP_URL_HOST );
 
 	wp_enqueue_style(
 		'internetorg-basis-font',
-		'//f.fontdeck.com/s/css/Z/ywsIcMc9pMM4qHGxsWmexRb9Q/' . $domain_name . '/59155.css',
+		'//f.fontdeck.com/s/css/O8kUwotSPWxG+4YZdhfCL9LHc4g/' . $domain_name . '/61676.css',
 		array(),
 		null,
 		'all'

@@ -855,7 +855,7 @@ function internetorg_is_internal_url( $url ) {
 	 *
 	 * @var array $home_parsed
 	 */
-	$home_parsed = parse_url( home_url() );
+	$home_parsed = parse_url( get_site_url() );
 
 	// Hostname match.
 	if ( strtolower( $link_parsed['host'] ) === strtolower( $home_parsed['host'] ) ) {
@@ -1502,11 +1502,11 @@ function internetorg_get_archive_link() {
 	} elseif ( is_tax() ) {
 		$link = wpcom_vip_get_term_link( get_queried_object() );
 	} else {
-		$link = home_url( '/' );
+		$link = get_site_url( null, '/' );
 	}
 
 	if ( empty( $link ) || is_wp_error( $link ) ) {
-		$link = home_url( '/' );
+		$link = get_site_url( null, '/' );
 	}
 
 	return $link;
@@ -1712,7 +1712,7 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 		$data_theme = 'Approach';
 	}
 
-	$url = str_replace( home_url(), '', get_permalink( $source ) );
+	$url = str_replace( get_site_url(), '', get_permalink( $source ) );
 
 	/**
 	 * The return markup if it's an internal Link.
