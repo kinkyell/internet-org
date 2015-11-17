@@ -38,7 +38,7 @@ function internetorg_enqueue_scripts() {
 
 	wp_enqueue_style(
 		'internetorg-lava-font',
-		'//fonts.typotheque.com/WF-026395-008647.css',
+		'//fonts.typotheque.com/WF-026832-008977.css',
 		array(),
 		null,
 		'all'
