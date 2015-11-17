@@ -48,9 +48,6 @@ require_once( __DIR__ . '/plugins/internetorg-link-filter/internetorg-link-filte
 /** Babble */
 require IO_DIR . '/inc/babble-fieldmanager-context.php';
 
-/** Hide admin bar */
-// add_filter('show_admin_bar', '__return_false');
-
 /** Disable emoji from loading */
 function disable_wp_emojicons() {
 	remove_action( 'admin_print_styles', 'print_emoji_styles' );
@@ -147,6 +144,49 @@ if ( ! function_exists( 'internetorg_setup' ) ) :
 endif;
 
 add_action( 'after_setup_theme', 'internetorg_setup' );
+
+add_filter( 'template_redirect', 'vip_fb_legacy_redirects',0 , 2 );
+function vip_fb_legacy_redirects() {
+    // To reduce overhead, only run if the requested page is 404.
+    if ( ! is_404() ) {
+        return;
+    }
+
+    $url = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
+
+    if ( preg_match( '/^\/approach\/?$/', $url ) ) {
+        $langCode  = bbl_get_default_lang_code();
+        $urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
+        wp_safe_redirect( "/$urlPrefix/approach/", 301 );
+        exit;
+    }
+
+
+    if ( preg_match( '/^\/mission\/?$/', $url ) ) {
+        $langCode  = bbl_get_default_lang_code();
+        $urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
+        wp_safe_redirect( "/$urlPrefix/mission/", 301 );
+        exit;
+    }
+
+    if ( preg_match( '/^\/contact-us\/?$/', $url ) ) {
+        $langCode  = bbl_get_default_lang_code();
+        $urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
+        wp_safe_redirect( "/$urlPrefix/contact-us/", 301 );
+        exit;
+    }
+
+    if ( preg_match( '/^\/impact\/?$/', $url ) ) {
+        $langCode  = bbl_get_default_lang_code();
+        $urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
+        wp_safe_redirect( "/$urlPrefix/impact/", 301 );
+        exit;
+    }
+
+    return;
+}
+
+
 
 /**
  * Register additional image sizes.
