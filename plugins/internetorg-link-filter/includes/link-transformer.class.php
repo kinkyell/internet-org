@@ -30,7 +30,7 @@ class LinkTransformer {
 			return $url;
 		}
 
-		$domain    = get_site_url();
+		$domain    = home_url( '/' );
 		$langCode  = bbl_get_current_content_lang_code();
 		$urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
 
