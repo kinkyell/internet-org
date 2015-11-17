@@ -26,7 +26,7 @@ function internetorg_enqueue_scripts() {
 	 *
 	 * @var string $domain_name
 	 */
-	$domain_name = parse_url( get_home_url(), PHP_URL_HOST );
+	$domain_name = parse_url( get_get_site_url(), PHP_URL_HOST );
 
 	wp_enqueue_style(
 		'internetorg-basis-font',
