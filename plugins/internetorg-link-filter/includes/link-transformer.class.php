@@ -33,8 +33,6 @@ class LinkTransformer {
 
 		$domain    = home_url( );
 
-		print_r(home_url());
-
 		$langCode  = bbl_get_current_content_lang_code();
 		$urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
 
