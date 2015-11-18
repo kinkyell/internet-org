@@ -7,7 +7,7 @@
  * @package Internet.org
  */
 
-print_r(home_url());
+print_r(home_url('/'));
 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
