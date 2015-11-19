@@ -30,7 +30,7 @@ function internetorg_enqueue_scripts() {
 
 	wp_enqueue_style(
 		'internetorg-basis-font',
-		'//f.fontdeck.com/s/css/Z/ywsIcMc9pMM4qHGxsWmexRb9Q/' . $domain_name . '/59155.css',
+		'//f.fontdeck.com/s/css/O8kUwotSPWxG+4YZdhfCL9LHc4g/' . $domain_name . '/61676.css',
 		array(),
 		null,
 		'all'
@@ -38,7 +38,7 @@ function internetorg_enqueue_scripts() {
 
 	wp_enqueue_style(
 		'internetorg-lava-font',
-		'//fonts.typotheque.com/WF-026395-008647.css',
+		'//fonts.typotheque.com/WF-026832-008977.css',
 		array(),
 		null,
 		'all'

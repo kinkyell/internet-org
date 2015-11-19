@@ -30,7 +30,13 @@ class LinkTransformer {
 			return $url;
 		}
 
-		$domain    = get_site_url();
+
+		if(function_exists('get_domain_from_blog_id')){
+			$domain    = get_domain_from_blog_id( get_current_blog_id() );
+		} else {
+			$domain = get_bloginfo()->domain; 
+		}
+
 		$langCode  = bbl_get_current_content_lang_code();
 		$urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
 
@@ -51,9 +57,9 @@ class LinkTransformer {
 			array_unshift( $pathParts, $urlPrefix );
 		}
 
-		// $scheme  = isset( $pathParts['scheme'] ) ? $pathParts['scheme'] : 'http';
+		$scheme  = isset( $pathParts['scheme'] ) ? $pathParts['scheme'] : 'http';
 		$newPath = implode( '/', $pathParts );
-		$newPath = sprintf( '%s/%s', $domain, $newPath );
+		$newPath = sprintf( '%s://%s/%s', $scheme, $domain, $newPath );
 
 		// If the original path had a trailing slash, add it back in.
 		if ( '/' === substr( $parsedUrl['path'], - 1 ) ) {

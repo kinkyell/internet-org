@@ -148,7 +148,7 @@ if ( class_exists( 'Babble' ) ) {
 
 
 	/**
-	 * Set any RequireJs configuration that is dependent on dynamic
+	 * Set any RequireJs config/uration that is dependent on dynamic
 	 * configuration variables. Note that this config data is merged into
 	 * any other require.config() statements defined elsewhere.
 	 */
