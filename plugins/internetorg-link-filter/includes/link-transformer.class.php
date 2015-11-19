@@ -31,7 +31,11 @@ class LinkTransformer {
 		}
 
 
-		$domain    = get_domain_from_blog_id( get_current_blog_id() );
+		if(function_exists('get_domain_from_blog_id')){
+			$domain    = get_domain_from_blog_id( get_current_blog_id() );
+		} else {
+			$domain = get_blog_info()->domain; 
+		}
 
 		$langCode  = bbl_get_current_content_lang_code();
 		$urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
