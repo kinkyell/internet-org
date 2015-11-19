@@ -17,6 +17,8 @@ body {
     overflow-x: hidden; // NECESSARY for panes
 }
 
+html::-webkit-scrollbar { width: 0 !important }
+
 /* Right to Left Language support */
 [dir="rtl"] {
     direction: rtl;
