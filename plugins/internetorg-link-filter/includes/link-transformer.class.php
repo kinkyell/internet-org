@@ -31,7 +31,7 @@ class LinkTransformer {
 		}
 
 
-		$domain    = get_blog_details()->domain;
+		$domain    = get_domain_from_blog_id( get_current_blog_id() );
 
 		$langCode  = bbl_get_current_content_lang_code();
 		$urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
@@ -50,7 +50,7 @@ class LinkTransformer {
 		if ( ! empty( $pathParts ) && $this->is_language_code( $pathParts[0] ) ) {
 			$pathParts[0] = $urlPrefix;
 		} else {
-			array_shift( $pathParts, $urlPrefix );
+			array_unshift( $pathParts, $urlPrefix );
 		}
 
 		$scheme  = isset( $pathParts['scheme'] ) ? $pathParts['scheme'] : 'http';

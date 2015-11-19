@@ -2367,3 +2367,15 @@ function vip_fb_legacy_redirects() {
 
 
 add_filter( 'template_redirect', 'vip_fb_legacy_redirects',0 , 2 );
+
+/**
+ * Fixes an issue with a 404 error from Widget json
+ */
+
+function vip_fb_internetorg_en_locale( $locale ) {
+    if ( 'en_US' === $locale && wp_in( 'Jetpack_Likes->likes_master', wp_debug_backtrace_summary() ) ) {
+        return 'en';
+    }
+    return $locale;
+}
+add_filter( 'locale', 'vip_fb_internetorg_en_locale', 1000, 1 );
