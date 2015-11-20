@@ -49,7 +49,7 @@ get_header();
 											<?php if ( $is_media ) : ?>
 											<div class="media media_inline">
 												<div class="media-figure">
-													<?php the_post_thumbnail( array( 210, 260 ), array( 'title' => get_the_title() ) ); ?>
+													<?php the_post_thumbnail( array( 960, 960 ), array( 'title' => get_the_title() ) ); ?>
 												</div>
 												<div class="media-bd">
 													<?php endif; ?>
