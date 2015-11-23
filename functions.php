@@ -2362,6 +2362,13 @@ function vip_fb_legacy_redirects() {
         exit;
     }
 
+    if ( preg_match( '/^\/press\/?$/', $url ) ) {
+        $langCode  = bbl_get_default_lang_code();
+        $urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
+        wp_safe_redirect( "/$urlPrefix/press/", 301 );
+        exit;
+    }
+
     return;
 }
 
