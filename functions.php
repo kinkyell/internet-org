@@ -2333,49 +2333,13 @@ function vip_fb_legacy_redirects() {
 
     $url = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
 
-    if ( preg_match( '/^\/approach\/?$/', $url ) ) {
+    // Check for any 404 URL that doesn't start with a potential lang code
+    if ( ! preg_match( '/^\/[a-z]{2}(?:(?:-|_)[A-Z]{2})?\/[a-z0-9\-\/]+(?:[a-z0-9\-\/]+)*$/', $url ) ) {
         $langCode  = bbl_get_default_lang_code();
         $urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
-        wp_safe_redirect( "/$urlPrefix/approach/", 301 );
+        wp_safe_redirect( "/$urlPrefix" . "$url/", 301 );
         exit;
     }
-
-
-    if ( preg_match( '/^\/mission\/?$/', $url ) ) {
-        $langCode  = bbl_get_default_lang_code();
-        $urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
-        wp_safe_redirect( "/$urlPrefix/mission/", 301 );
-        exit;
-    }
-
-    if ( preg_match( '/^\/contact-us\/?$/', $url ) ) {
-        $langCode  = bbl_get_default_lang_code();
-        $urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
-        wp_safe_redirect( "/$urlPrefix/contact-us/", 301 );
-        exit;
-    }
-
-    if ( preg_match( '/^\/impact\/?$/', $url ) ) {
-        $langCode  = bbl_get_default_lang_code();
-        $urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
-        wp_safe_redirect( "/$urlPrefix/impact/", 301 );
-        exit;
-    }
-
-    if ( preg_match( '/^\/story\/?$/', $url ) ) {
-        $langCode  = bbl_get_default_lang_code();
-        $urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
-        wp_safe_redirect( "/$urlPrefix/story/", 301 );
-        exit;
-    }
-
-    if ( preg_match( '/^\/press\/?$/', $url ) ) {
-        $langCode  = bbl_get_default_lang_code();
-        $urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
-        wp_safe_redirect( "/$urlPrefix/press/", 301 );
-        exit;
-    }
-
     return;
 }
 
