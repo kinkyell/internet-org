@@ -7,7 +7,7 @@ robots.txt
 assets
 i18n/input/
 wp-config.php
-
+npm-debug.log
 .DS_Store
 ._*
 .svn
