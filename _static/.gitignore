@@ -16,3 +16,4 @@ npm-debug.log
 tools/node/
 web/
 templates.build.js
+npm-debug.log

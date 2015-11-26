@@ -19,9 +19,11 @@
 
 			<div class="feature feature_tight">
 				<div class="feature-hd">
-					<h3 class="hdg hdg_4">
-						<?php the_title(); ?>
-					</h3>
+				<a class="js-stateLink" href="<?php echo esc_url( get_the_permalink() ); ?>" data-title="<?php echo esc_attr( get_the_title() ); ?>" data-social="true" data-date="<?php echo esc_attr( get_the_date() ); ?>" data-type="titled">						
+						<h3 class="hdg hdg_4">
+							<?php the_title(); ?>
+						</h3>
+					</a>
 				</div>
 				<div class="feature-date">
 					<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray">
