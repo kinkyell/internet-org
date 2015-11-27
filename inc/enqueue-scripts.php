@@ -28,21 +28,21 @@ function internetorg_enqueue_scripts() {
 	 */
 	$domain_name = parse_url( get_home_url(), PHP_URL_HOST );
 
-	wp_enqueue_style(
-		'internetorg-basis-font',
-		'//f.fontdeck.com/s/css/O8kUwotSPWxG+4YZdhfCL9LHc4g/' . $domain_name . '/61676.css',
-		array(),
-		null,
-		'all'
-	);
+	// wp_enqueue_style(
+	// 	'internetorg-basis-font',
+	// 	'//f.fontdeck.com/s/css/O8kUwotSPWxG+4YZdhfCL9LHc4g/' . $domain_name . '/61676.css',
+	// 	array(),
+	// 	null,
+	// 	'all'
+	// );
 
-	wp_enqueue_style(
-		'internetorg-lava-font',
-		'//fonts.typotheque.com/WF-026832-008977.css',
-		array(),
-		null,
-		'all'
-	);
+	// wp_enqueue_style(
+	// 	'internetorg-lava-font',
+	// 	'//fonts.typotheque.com/WF-026832-008977.css',
+	// 	array(),
+	// 	null,
+	// 	'all'
+	// );
 
 	wp_enqueue_style(
 		'internetorg-screen',
