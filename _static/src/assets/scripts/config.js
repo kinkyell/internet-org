@@ -95,7 +95,5 @@ require.config({
         }
     },
     waitSeconds: 120,
-    packages: [
-
-    ]
+    packages: []
 });
