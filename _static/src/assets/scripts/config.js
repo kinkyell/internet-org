@@ -36,6 +36,7 @@ require.config({
         requirejs: '../vendor/requirejs/require',
         jquery: '../vendor/jquery/jquery',
         scroll: '../vendor/scroll/Scroll',
+        'intl-tel-input': '../vendor/intl-tel-input/build/js/intlTelInput',
         stark: '../vendor/starkjs/dist/amd',
         promise: '../vendor/es6-promise/promise',
         'gsap-cssPlugin': '../vendor/gsap/src/uncompressed/plugins/CSSPlugin',
@@ -55,7 +56,8 @@ require.config({
         gsap: '../vendor/gsap/src/uncompressed/TweenMax',
         'nerdery-function-bind': '../vendor/nerdery-function-bind/index',
         'skidding--dragdealer': '../vendor/skidding--dragdealer/src/dragdealer',
-        swipebox: '../vendor/swipebox/src/js/jquery.swipebox'
+        swipebox: '../vendor/swipebox/src/js/jquery.swipebox',
+        utils: '../vendor/intl-tel-input/lib/libphonenumber/build/utils'
     },
     map: {
         '*': {
@@ -81,6 +83,12 @@ require.config({
         handlebars: {
             exports: 'Handlebars'
         },
+        'intl-tel-input': {
+            deps: [
+                'jquery'
+            ],
+            exports: null
+        },
         'jquery-swipebox': {
             deps: [
                 'jquery'
@@ -95,5 +103,7 @@ require.config({
         }
     },
     waitSeconds: 120,
-    packages: []
+    packages: [
+
+    ]
 });

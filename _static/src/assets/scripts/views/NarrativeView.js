@@ -433,8 +433,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onClickIndicator = function(event) {
-        if (this._narrativeManager._isAnimating) return;
-
+        if (this._narrativeManager._isAnimating) {
+            return;
+        }
         event.preventDefault();
         var $indicator = $(event.currentTarget);
         var pos = $indicator.index();

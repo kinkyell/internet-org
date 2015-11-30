@@ -13,6 +13,7 @@
     "es6-promise": "2.2.0",
     "jquery-touchswipe": "1.6.8",
     "dragdealer": "0.9.8",
-    "starkjs": "0.0.8"
+    "starkjs": "0.0.8",
+    "intl-tel-input": "~6.4.3"
   }
 }

@@ -2357,3 +2357,28 @@ function vip_fb_internetorg_en_locale( $locale ) {
     return $locale;
 }
 add_filter( 'locale', 'vip_fb_internetorg_en_locale', 1000, 1 );
+
+function internal_preview( $link ) {
+    $proto = ( strpos( $link, 'https' ) ) ? 'https' : 'http';
+    $host = $_SERVER['HTTP_HOST'];
+    $replace = '';
+    $replacement = '';
+    $domain = '';
+    switch( $host ) {
+    	case 'fbinternetorg.wordpress.com':
+    		$replace = "$proto://fbinternetorg.wordpress.com";
+    		$domain = "info.internet.org";
+    	break;
+    	case 'internetorg.jam3.net':
+    		$replace = "$proto://";
+    	break;
+    	default:
+    		$replace = "$proto://";
+    		$domain = 'vip.local';
+    	break;
+    }
+    $permalink = str_replace( $replace, $replacement, $link );
+    return "$proto://$domain$permalink";
+}
+add_action( 'preview_post_link', 'internal_preview' );
+add_action( 'preview_page_link', 'internal_preview' );

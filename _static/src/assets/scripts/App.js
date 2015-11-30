@@ -10,6 +10,7 @@ define(function(require, exports, module) { // jshint ignore:line
     require('services/apiService');
     var $ = require('jquery');
     require('jquery-swipebox');
+    require('intl-tel-input');
 
     // require all gsap plugins so they get registered correctly
     require('gsap-easePack');
@@ -74,6 +75,8 @@ define(function(require, exports, module) { // jshint ignore:line
         this._setupLayout();
         this._setupStates();
         this._preloadImages(); // load images initially on the page
+        this._setupPhoneValidation();
+
         this.UIOrientationUtil = new UIOrientationUtil();
 
         window.addEventListener('touchstart', function setHasTouch () {
@@ -119,7 +122,6 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._setupStates = function() {
         this.stateStack = new StateStack(HomeState);
-
         eventHub.subscribe('Router:stateChange', this._handleStateChange);
         this.router = new Router();
     };
@@ -156,6 +158,7 @@ define(function(require, exports, module) { // jshint ignore:line
         }
 
         this._preloadImages();
+        this._setupPhoneValidation();
     };
 
     /**
@@ -172,6 +175,17 @@ define(function(require, exports, module) { // jshint ignore:line
         // assetLoader filters out already loaded images, don't worry
         assetLoader.loadImages(stateLinkImgs);
     };
+
+    // Contact Form Phone Number Validation
+    proto._setupPhoneValidation = function() {
+        var lib = '/wp-content/themes/vip/prj-internetorg/_static/web/assets/vendor/intl-tel-input/lib/libphonenumber/build/utils.js';
+        var options = {
+            dropdownContainer: false,
+            utilsScript: lib
+        };
+        $( 'input[name$="-phonenumber"]' ).intlTelInput( options );
+    };
+    proto._setupPhoneValidation();
 
     return App;
 
