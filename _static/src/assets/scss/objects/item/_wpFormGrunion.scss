@@ -10,7 +10,7 @@ body .contact-form label.radio
     display: inline-flex;
 }
 
-.vendorForm {
+.vendorForm, .feature {
 
     .grunion-field-label {
         display: block;
@@ -43,11 +43,11 @@ body .contact-form label.radio
     .grunion-field-label + .text,
     .grunion-field-label + textarea {
         @include font(SANS);
-    	font-style: normal;
+        font-style: italic;
     	@include remify(font-size, 18px);
         box-sizing: border-box;
         width: 100%;
-        max-height: 51px;
+        max-height: none;
         padding: 14px 8px;
         border-width: 0; /* reseting border */
     	border-bottom: 1px solid $CLR_GRAY_LIGHT;

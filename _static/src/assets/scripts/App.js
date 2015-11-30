@@ -57,7 +57,6 @@ define(function(require, exports, module) { // jshint ignore:line
         if (!this._cutsTheMustard()) {
             return;
         }
-        // return function() {};
         this.init();
     };
 
