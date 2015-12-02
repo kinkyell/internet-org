@@ -99,8 +99,12 @@
 @import "objects/typography/hdg";
 @import "objects/typography/bdcpy";
 
-
 /* ---------------------------------------------------------------------
  Objects: module / WYSIWYG
 ------------------------------------------------------------------------ */
 @import "objects/module/quarantine";
+
+/* ---------------------------------------------------------------------
+ Objects: module / intl-tel-input
+------------------------------------------------------------------------ */
+@import "objects/module/intlTelInput";

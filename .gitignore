@@ -4,10 +4,9 @@
 wp-content/uploads
 wp-content/debug.log
 robots.txt
-assets
 i18n/input/
 wp-config.php
-
+npm-debug.log
 .DS_Store
 ._*
 .svn

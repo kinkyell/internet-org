@@ -9,7 +9,7 @@
 define( 'IO_DIR', __DIR__ );
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
-//vip_allow_title_orphans();
+vip_allow_title_orphans();
 
 // Load the Shortcake UI VIP Plugin.
 wpcom_vip_load_plugin( 'shortcode-ui' );
@@ -47,9 +47,6 @@ require_once( __DIR__ . '/plugins/internetorg-link-filter/internetorg-link-filte
 
 /** Babble */
 require IO_DIR . '/inc/babble-fieldmanager-context.php';
-
-/** Hide admin bar */
-add_filter('show_admin_bar', '__return_false');
 
 /** Disable emoji from loading */
 function disable_wp_emojicons() {
@@ -147,6 +144,10 @@ if ( ! function_exists( 'internetorg_setup' ) ) :
 endif;
 
 add_action( 'after_setup_theme', 'internetorg_setup' );
+
+
+
+
 
 /**
  * Register additional image sizes.
@@ -2318,3 +2319,66 @@ function internetorg_recursive_unset( &$array, $unwanted_key ) {
 		}
 	}
 }
+
+/**
+ * Redirect scripts
+ */
+
+
+function vip_fb_legacy_redirects() {
+    // To reduce overhead, only run if the requested page is 404.
+    if ( ! is_404() ) {
+        return;
+    }
+
+    $url = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
+
+    // Check for any 404 URL that doesn't start with a potential lang code
+    if ( ! preg_match( '/^\/[a-z]{2}(?:(?:-|_)[A-Z]{2})?\/[a-z0-9\-\/]+(?:[a-z0-9\-\/]+)*$/', $url ) ) {
+        $langCode  = bbl_get_default_lang_code();
+        $urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
+        wp_safe_redirect( "/$urlPrefix" . "$url/", 301 );
+        exit;
+    }
+    return;
+}
+
+
+add_filter( 'template_redirect', 'vip_fb_legacy_redirects',0 , 2 );
+
+/**
+ * Fixes an issue with a 404 error from Widget json
+ */
+
+function vip_fb_internetorg_en_locale( $locale ) {
+    if ( 'en_US' === $locale && wp_in( 'Jetpack_Likes->likes_master', wp_debug_backtrace_summary() ) ) {
+        return 'en';
+    }
+    return $locale;
+}
+add_filter( 'locale', 'vip_fb_internetorg_en_locale', 1000, 1 );
+
+function internal_preview( $link ) {
+    $proto = ( strpos( $link, 'https' ) ) ? 'https' : 'http';
+    $host = $_SERVER['HTTP_HOST'];
+    $replace = '';
+    $replacement = '';
+    $domain = '';
+    switch( $host ) {
+    	case 'fbinternetorg.wordpress.com':
+    		$replace = "$proto://fbinternetorg.wordpress.com";
+    		$domain = "info.internet.org";
+    	break;
+    	case 'internetorg.jam3.net':
+    		$replace = "$proto://";
+    	break;
+    	default:
+    		$replace = "$proto://";
+    		$domain = 'vip.local';
+    	break;
+    }
+    $permalink = str_replace( $replace, $replacement, $link );
+    return "$proto://$domain$permalink";
+}
+add_action( 'preview_post_link', 'internal_preview' );
+add_action( 'preview_page_link', 'internal_preview' );

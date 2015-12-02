@@ -33,11 +33,10 @@
  */
 require.config({
     paths: {
-        // this empty string tells r.js to use single quotes when injecting
-        // bower modules automatically. Otherwise it defaults to double quotes.
         requirejs: '../vendor/requirejs/require',
         jquery: '../vendor/jquery/jquery',
         scroll: '../vendor/scroll/Scroll',
+        'intl-tel-input': '../vendor/intl-tel-input/build/js/intlTelInput',
         stark: '../vendor/starkjs/dist/amd',
         promise: '../vendor/es6-promise/promise',
         'gsap-cssPlugin': '../vendor/gsap/src/uncompressed/plugins/CSSPlugin',
@@ -46,49 +45,65 @@ require.config({
         'gsap-timeline': '../vendor/gsap/src/uncompressed/TimelineMax',
         'gsap-easePack': '../vendor/gsap/src/uncompressed/easing/EasePack',
         'jquery-touchswipe': '../vendor/jquery-touchswipe/jquery.touchSwipe',
-        'dragdealer': '../vendor/skidding--dragdealer/src/dragdealer',
-        'fastclick': '../vendor/fastclick/lib/fastclick',
-        'handlebars': '../vendor/handlebars/handlebars.runtime',
+        dragdealer: '../vendor/dragdealer/src/dragdealer',
+        fastclick: '../vendor/fastclick/lib/fastclick',
+        handlebars: '../vendor/handlebars/handlebars',
         'jquery-swipebox': '../vendor/swipebox/src/js/jquery.swipebox',
-        'platform': '../vendor/platform.js/platform',
-        'brim': '../vendor/brim/dist/brim',
-        'scream': '../vendor/scream/dist/scream'
+        platform: '../vendor/platform.js/platform',
+        brim: '../vendor/brim/dist/brim',
+        scream: '../vendor/scream/dist/scream',
+        'es6-promise': '../vendor/es6-promise/promise',
+        gsap: '../vendor/gsap/src/uncompressed/TweenMax',
+        'nerdery-function-bind': '../vendor/nerdery-function-bind/index',
+        'skidding--dragdealer': '../vendor/skidding--dragdealer/src/dragdealer',
+        swipebox: '../vendor/swipebox/src/js/jquery.swipebox',
+        utils: '../vendor/intl-tel-input/lib/libphonenumber/build/utils'
     },
-
     map: {
         '*': {
-            'modernizr': 'modernizr.build',
-            'templates': 'templates.build',
-            'TweenLite': 'gsap-tween',
-            'TimelineLite': 'gsap-timeline'
+            modernizr: 'modernizr.build',
+            templates: 'templates.build',
+            TweenLite: 'gsap-tween',
+            TimelineLite: 'gsap-timeline'
         }
     },
-
     shim: {
         'modernizr.build': {
             exports: 'Modernizr'
         },
-         'jquery-touchswipe': {
-            deps: ['jquery'],
+        'jquery-touchswipe': {
+            deps: [
+                'jquery'
+            ],
             exports: null
-         },
+        },
         'gsap-tween': {
             exports: 'TweenLite'
         },
-        'handlebars': {
+        handlebars: {
             exports: 'Handlebars'
         },
-        'jquery-swipebox': {
-           deps: ['jquery'],
-           exports: null
+        'intl-tel-input': {
+            deps: [
+                'jquery'
+            ],
+            exports: null
         },
-        'brim': {
+        'jquery-swipebox': {
+            deps: [
+                'jquery'
+            ],
+            exports: null
+        },
+        brim: {
             exports: 'gajus.Brim'
         },
-        'scream': {
+        scream: {
             exports: 'gajus.Scream'
         }
     },
+    waitSeconds: 120,
+    packages: [
 
-    waitSeconds: 120
+    ]
 });

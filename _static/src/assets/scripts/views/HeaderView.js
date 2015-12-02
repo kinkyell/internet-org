@@ -7,6 +7,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var breakpointManager = require('services/breakpointManager');
     var eventHub = require('services/eventHub');
     var $ = require('jquery');
+    var appConfig = require('appConfig');
 
     /**
      * A view for transitioning display panels
@@ -109,7 +110,9 @@ define(function(require, exports, module) { // jshint ignore:line
         eventHub.subscribe('viewWindow:scrollBarrier', this._handleScrollBarrier);
         breakpointManager.subscribe(this._handleBreakpointChange);
         this.$menuBtn.on('click', this._handleMenuBtnClick);
-
+        if(this._isHome){
+            appConfig.appTitle = document.title;
+        }
         this.$menuBtn.on('mousedown', function(event) {
             event.preventDefault(); // prevent focus by mouse
         });

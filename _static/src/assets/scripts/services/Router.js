@@ -197,7 +197,7 @@ define(function(require, exports, module) { // jshint ignore:line
         var len = prevStates.length;
         var url = event.currentTarget.pathname;
         event.preventDefault();
-
+        document.title = appConfig.appTitle;
         if (
             (len && prevStates[len - 1].type === 'home') ||
             (!len && !this._initialState)

@@ -212,7 +212,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.onEnable = function() {
         this.$progress.show();
         this._displayIndicators(0);
-        this._updateIndicators(0);
+        this._updateIndicators(this._position);
         this.$narrative[0].scrollTop = this.scrollTop;
         this._currentlyMobile = breakpointManager.isMobile;
         breakpointManager.subscribe(this._onBreakpointChangeHandler);
@@ -267,7 +267,7 @@ define(function(require, exports, module) { // jshint ignore:line
         $(window).off(this._eventTouchNamespace);
         window.removeEventListener('resize', this._onResizeHandler);
         window.removeEventListener('orientationchange', this._onResizeHandler);
-        this._$narrativeAdvance.off('click', this._onClickAdvance.bind(this));
+        this._$narrativeAdvance.off('click');
         this.$progress.off('click', '> *', this._onClickIndicatorHandler);
         eventHub.unsubscribe('Router:topScroll', this._onTopScrollHandler);
         $(document).off('keydown', this._onKeyDownHandler);
@@ -433,8 +433,9 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onClickIndicator = function(event) {
-        if (this._narrativeManager._isAnimating) return;
-
+        if (this._narrativeManager._isAnimating) {
+            return;
+        }
         event.preventDefault();
         var $indicator = $(event.currentTarget);
         var pos = $indicator.index();

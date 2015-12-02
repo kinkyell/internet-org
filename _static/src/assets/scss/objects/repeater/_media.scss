@@ -26,6 +26,7 @@ Common media layout construct
 	margin-top: 25px;
 }
 
+
 @include breakpoint(LG) {
 	.media-figure {
 		margin-top: 0;
@@ -34,7 +35,7 @@ Common media layout construct
 
 @include breakpoint(LG) {
 	.media-figure {
-	    float: left;
+	    //float: left;
 	    margin: 15px 45px 25px 0
 	}
 
