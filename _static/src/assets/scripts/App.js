@@ -177,10 +177,11 @@ define(function(require, exports, module) { // jshint ignore:line
 
     // Contact Form Phone Number Validation
     proto._setupPhoneValidation = function() {
-        var lib = '/wp-content/themes/vip/prj-internetorg/_static/web/assets/vendor/intl-tel-input/lib/libphonenumber/build/utils.js';
+        var path = 'assets/vendor/intl-tel-input/lib/libphonenumber/build/utils.js';
+        var script = window.SETTINGS.STATIC_PATH + path;
         var options = {
             dropdownContainer: false,
-            utilsScript: lib
+            utilsScript: script
         };
         $( 'input[name$="-phonenumber"]' ).intlTelInput( options );
     };

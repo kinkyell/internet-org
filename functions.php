@@ -145,10 +145,6 @@ endif;
 
 add_action( 'after_setup_theme', 'internetorg_setup' );
 
-
-
-
-
 /**
  * Register additional image sizes.
  */
@@ -338,6 +334,12 @@ if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 		return $services;
 	}
 endif;
+
+/**
+ * Link specific functions (ex. fix_link() etc.)
+ */
+
+require get_template_directory() . '/inc/links.php';
 
 /**
  * Enqueue Scripts and Styles.
@@ -2370,27 +2372,6 @@ add_filter( 'locale', 'vip_fb_internetorg_en_locale', 1000, 1 );
  * Fixes some routing issues with previewing posts/pages
  */
 
-function internal_preview( $link ) {
-    $proto = ( strpos( $link, 'https' ) ) ? 'https' : 'http';
-    $host = $_SERVER[ 'HTTP_HOST' ];
-    $replace = '';
-    $replacement = '';
-    $domain = '';
-    switch( $host ) {
-    	case 'fbinternetorg.wordpress.com':
-    		$replace = "$proto://fbinternetorg.wordpress.com";
-    		$domain = "info.internet.org";
-    	break;
-    	case 'internetorg.jam3.net':
-    		$replace = "$proto://";
-    	break;
-    	default:
-    		$replace = "$proto://";
-    		$domain = 'vip.local';
-    	break;
-    }
-    $permalink = str_replace( $replace, $replacement, $link );
-    return "$proto://$domain$permalink";
-}
-add_action( 'preview_post_link', 'internal_preview' );
-add_action( 'preview_page_link', 'internal_preview' );
+add_action( 'preview_post_link', 'fix_link' );
+
+add_action( 'preview_page_link', 'fix_link' );
