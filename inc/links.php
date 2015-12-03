@@ -23,5 +23,6 @@ function fix_link( $link ) {
     	break;
     }
     $path = str_replace( array( "$proto://", $domain, $replace ), '', $link );
+    $path = ( $path[ 0 ] === '/' ) ? $path : "/$path";
     return "$proto://$domain$path";
 }
