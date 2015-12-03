@@ -62,7 +62,7 @@ $theme = ( in_array( get_post_type( get_the_ID() ), $io_story_shadow ) ) ? 'appr
 			<div class="bdcpy"><?php the_excerpt(); ?></div>
 		</div>
 		<div class="feature-cta">
-			<a href="<?php the_permalink(); ?>" class="link mix-link_small js-stateLink"
+			<a href="<?php echo fix_link( the_permalink() ); ?>" class="link mix-link_small js-stateLink"
 			    data-title="<?php echo esc_attr( apply_filters( 'the_title',  get_the_title() ) ); ?>"
 			    data-image="<?php echo esc_url( $img );?>"
 			    data-mobile-image="<?php echo esc_url( $mobile_image );?>"

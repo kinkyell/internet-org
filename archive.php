@@ -10,7 +10,7 @@
 get_header();
 
 ?>
-<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php echo esc_url( internetorg_get_archive_link() ); ?>" data-type="titled" data-title="<?php the_archive_title(); ?>">
+<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php echo fix_link( esc_url( internetorg_get_archive_link() ) ); ?>" data-type="titled" data-title="<?php the_archive_title(); ?>">
 
 
 <?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
@@ -63,7 +63,7 @@ get_header();
 															<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray"><?php internetorg_posted_on_date(); ?></div>
 														</div>
 														<div class="feature-cta">
-															<a href="<?php the_permalink(); ?>" class="link link_sm" title="<?php the_title_attribute(); ?>"><?php echo esc_html__( 'Read More', 'internetorg' ) ?></a>
+															<a href="<?php echo fix_link( get_the_permalink() ); ?>" class="link link_sm" title="<?php the_title_attribute(); ?>"><?php echo esc_html__( 'Read More', 'internetorg' ) ?></a>
 														</div>
 													</div>
 
