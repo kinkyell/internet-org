@@ -2324,7 +2324,6 @@ function internetorg_recursive_unset( &$array, $unwanted_key ) {
  * Redirect scripts
  */
 
-
 function vip_fb_legacy_redirects() {
     // To reduce overhead, only run if the requested page is 404.
     if ( ! is_404() ) {
@@ -2333,17 +2332,26 @@ function vip_fb_legacy_redirects() {
 
     $url = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
 
+    $routes = array(
+    	'/contact' => '/contact-us',
+    	'/innovationchallenge' => '/story/innovation-challenge/'
+    );
+
     // Check for any 404 URL that doesn't start with a potential lang code
     if ( ! preg_match( '/^\/[a-z]{2}(?:(?:-|_)[A-Z]{2})?\/[a-z0-9\-\/]+(?:[a-z0-9\-\/]+)*$/', $url ) ) {
-        $langCode  = bbl_get_default_lang_code();
-        $urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
-        wp_safe_redirect( "/$urlPrefix" . "$url/", 301 );
+
+    		// Check for any custom routes to map directly
+    		if ( array_key_exists( $url, $routes ) ) {
+    			wp_safe_redirect( $routes[ $url ], 301 );
+    		} else {
+	        $langCode  = bbl_get_default_lang_code();
+	        $urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
+	        wp_safe_redirect( "/$urlPrefix" . "$url/", 301 );
+	      }
         exit;
     }
     return;
 }
-
-
 add_filter( 'template_redirect', 'vip_fb_legacy_redirects',0 , 2 );
 
 /**
@@ -2358,9 +2366,13 @@ function vip_fb_internetorg_en_locale( $locale ) {
 }
 add_filter( 'locale', 'vip_fb_internetorg_en_locale', 1000, 1 );
 
+/**
+ * Fixes some routing issues with previewing posts/pages
+ */
+
 function internal_preview( $link ) {
     $proto = ( strpos( $link, 'https' ) ) ? 'https' : 'http';
-    $host = $_SERVER['HTTP_HOST'];
+    $host = $_SERVER[ 'HTTP_HOST' ];
     $replace = '';
     $replacement = '';
     $domain = '';
