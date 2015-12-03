@@ -6,10 +6,20 @@
  */
 
 function fix_link( $link ) {
+
     $proto = ( strpos( $link, 'https' ) ) ? 'https' : 'http';
     $host = $_SERVER[ 'HTTP_HOST' ];
     $replace = '';
     $domain = '';
+    $lang  = bbl_get_default_lang_code();
+    $prefix = bbl_get_prefix_from_lang_code( $lang );
+    $parts = explode( '/', $link );
+
+    if ( ( $key = array_search( $prefix, $parts ) ) !== false ) {
+        unset( $parts[ $key ] );
+        $link = implode( '/', $parts );
+    }
+
     switch( $host ) {
     	case 'fbinternetorg.wordpress.com':
     		$replace = 'fbinternetorg.wordpress.com';
@@ -22,7 +32,9 @@ function fix_link( $link ) {
     		$domain = 'vip.local';
     	break;
     }
+
     $path = str_replace( array( "$proto://", $domain, $replace ), '', $link );
     $path = ( $path[ 0 ] === '/' ) ? $path : "/$path";
-    return "$proto://$domain$path";
+    return "$proto://$domain/$prefix$path";
+
 }
