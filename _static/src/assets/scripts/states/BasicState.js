@@ -108,6 +108,32 @@ define(function(require, exports, module) { // jshint ignore:line
 
         // add accessibility attributes to labels
         $('label.radio').attr('role', 'button');
+        
+        // Setup placeholder fields and phone number validation
+        var path = 'assets/vendor/intl-tel-input/lib/libphonenumber/build/utils.js';
+        var script = window.SETTINGS.STATIC_PATH + path;
+        var options = {
+            dropdownContainer: false,
+            utilsScript: script
+        };
+
+        // Find all form fields
+        $('.contact-form label').each( function() { 
+            var $label = $( this );
+            var $input = $label.siblings( 'input, textarea' ).first();
+            var placeholder  =  $label.text().replace( '(', ' (' );
+            options.autoPlaceholder = placeholder;
+
+            // Check for an existing placeholder value
+            if ( !$input.attr( 'placeholder' ) ) {
+                $input.attr( 'placeholder', placeholder );
+            }
+
+            // Add validation to phone number inputs
+            if ( $input.is( '[name$="-phonenumber"]' ) ) {
+                $input.intlTelInput( options );
+            }
+        });
     };
 
     /**

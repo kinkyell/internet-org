@@ -54,19 +54,21 @@ get_header();
 												<div class="media-bd">
 													<?php endif; ?>
 
-
 													<div class="feature feature_tight">
 														<div class="feature-hd">
-															<h2 class="hdg hdg_3"><?php echo esc_html( get_the_title() ); ?></h2>
+															<a href="<?php echo fix_link( get_the_permalink() ); ?>" class="link link_sm" title="<?php the_title_attribute(); ?>">
+																<h2 class="hdg hdg_3"><?php echo esc_html( get_the_title() ); ?></h2>
+															</a>
 														</div>
 														<div class="feature-date">
 															<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray"><?php internetorg_posted_on_date(); ?></div>
 														</div>
 														<div class="feature-cta">
-															<a href="<?php echo fix_link( get_the_permalink() ); ?>" class="link link_sm" title="<?php the_title_attribute(); ?>"><?php echo esc_html__( 'Read More', 'internetorg' ) ?></a>
+															<a href="<?php echo fix_link( get_the_permalink() ); ?>" class="link link_sm" title="<?php the_title_attribute(); ?>">
+																<?php echo esc_html__( 'Read More', 'internetorg' ) ?>
+															</a>
 														</div>
 													</div>
-
 
 													<?php if ( $is_media ) : ?>
 												</div>

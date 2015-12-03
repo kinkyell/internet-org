@@ -26,6 +26,7 @@ body .contact-form label.radio
     .grunion-field-label.name,
     .grunion-field-label.website,
     .grunion-field-label.text,
+    .grunion-field-label.url,
     .grunion-field-label.textarea {
         width: 1px !important;
         height: 1px !important;
@@ -41,6 +42,7 @@ body .contact-form label.radio
     .grunion-field-label + .name,
     .grunion-field-label + .website,
     .grunion-field-label + .text,
+    .grunion-field-label + .url,
     .grunion-field-label + textarea {
         @include font(SANS);
         font-style: italic;
@@ -156,7 +158,7 @@ body .contact-form label.radio
 
 @include breakpoint(MD) {
 
-    .vendorForm {
+    .vendorForm, .feature {
 
         .grunion-field-label {
             @include remify(font-size, 20px);
@@ -176,7 +178,7 @@ body .contact-form label.radio
 /* Right to Left Language support */
 [dir="rtl"] {
 
-    .vendorForm {
+    .vendorForm, .feature {
 
         .grunion-radio-label > .radio {
             margin-right: 0;
@@ -201,7 +203,7 @@ body .contact-form label.radio
             }
     }
 
-    .vendorForm {
+    .vendorForm, .feature {
         .grunion-field-label + input[placeholder],
         .grunion-field-label + textarea[placeholder] {
             @include remify(font-size, 14px);

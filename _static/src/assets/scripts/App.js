@@ -74,7 +74,6 @@ define(function(require, exports, module) { // jshint ignore:line
         this._setupLayout();
         this._setupStates();
         this._preloadImages(); // load images initially on the page
-        this._setupPhoneValidation();
 
         this.UIOrientationUtil = new UIOrientationUtil();
 
@@ -154,10 +153,10 @@ define(function(require, exports, module) { // jshint ignore:line
         isToHome = this.stateStack.getTop().isHomeState();
         if (isFromHome || isToHome) {
             viewWindow.shift(silent);
-        }
+        }  
 
         this._preloadImages();
-        this._setupPhoneValidation();
+
     };
 
     /**
@@ -174,18 +173,6 @@ define(function(require, exports, module) { // jshint ignore:line
         // assetLoader filters out already loaded images, don't worry
         assetLoader.loadImages(stateLinkImgs);
     };
-
-    // Contact Form Phone Number Validation
-    proto._setupPhoneValidation = function() {
-        var path = 'assets/vendor/intl-tel-input/lib/libphonenumber/build/utils.js';
-        var script = window.SETTINGS.STATIC_PATH + path;
-        var options = {
-            dropdownContainer: false,
-            utilsScript: script
-        };
-        $( 'input[name$="-phonenumber"]' ).intlTelInput( options );
-    };
-    proto._setupPhoneValidation();
 
     return App;
 
