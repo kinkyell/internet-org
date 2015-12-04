@@ -10,8 +10,12 @@ This styles and helps validate a contact form's phone number
   display: none;
 }
 .contact-form input[type='text'] {
-  width: 100%;
-  max-width: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
+
+  @media(max-width: 787px) {
+    font-size: 14px !important;
+  }
 }
 .intl-tel-input {
   width: 100%;

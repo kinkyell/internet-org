@@ -70,16 +70,16 @@ $custom_fields = get_post_meta( get_the_ID(), 'home-content-section', false );
 					<div class="container">
 						<div class="contentCol">
 							<div class="vendorForm">
-					
+
 								<?php if ( ! empty( $custom_fields ) ) : ?>
 
 									<?php foreach ( $custom_fields as $group ) : ?>
 
 										<?php if ( ! empty( $group ) ) : ?>
 
-											<div class="contentCol_divided contentCol_flush">
+<!-- 											<div class="contentCol_divided contentCol_flush">
 												<div class="container">
-
+ -->
 													<?php foreach ( $group as $fieldset ) : ?>
 
 														<?php if ( ! empty( $fieldset ) ) : ?>
@@ -133,10 +133,10 @@ $custom_fields = get_post_meta( get_the_ID(), 'home-content-section', false );
 
 													<?php endforeach; ?>
 
-												</div>
+<!-- 												</div>
 
 											</div>
-
+ -->
 										<?php endif; ?>
 
 									<?php endforeach; ?>
