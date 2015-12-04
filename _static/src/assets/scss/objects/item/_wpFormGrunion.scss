@@ -14,11 +14,15 @@ body .contact-form label.radio
 
     .grunion-field-label {
         display: block;
-        @include font(SERIF);
         color: $CLR_BLACK;
-        @include remify(font-size, 16px);
-        line-height: 1.5;
+        @include remify(font-size, 18px !important);
+        font-style: italic;
+        font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+        font-weight: 200 !important;
+        line-height: 1.8em;
+        color: #ccc;
         margin: 56px 0 14px;
+        border: none;
     }
 
     /* Visually hiding input labels */
@@ -56,12 +60,61 @@ body .contact-form label.radio
     	margin: 14px 0;
     	resize: none;
     }
-
+    
+    .grunion-field-label + select, 
     .grunion-field-label + input[placeholder],
     .grunion-field-label + textarea[placeholder] {
     	@include remify(font-size, 18px);
     	font-style: italic;
     	font-weight: 200;
+        line-height: 180%;
+    }
+
+    .grunion-field-label.select {
+        margin-top: 20px;
+        
+        span {
+            font-weight: 200;
+        }
+
+        &:after {
+            display: none;
+        }
+
+        @media(max-width: 787px) {
+            @include remify(font-size, 14px !important);
+        }
+    }
+
+    .grunion-field-label + select {
+        @include remify(font-size, 14px); 
+        line-height: 180%;
+        height: 34px;
+        display: inline-block;
+        width: 100% !important;
+        margin-bottom: 20px;
+        border: 1px solid rgb(199, 199, 191);
+    }
+    
+    .grunion-field-label.checkbox {
+        @include remify(font-size, 14px); 
+        line-height: 180%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        display: inline-block;
+        color: #000000;
+
+        span {
+            display: none;
+        }
+
+        input {
+            @include remify(font-size, 20px !important); 
+            float: left;
+            display: inline-block;
+            margin: 8px 8px 8px 0;
+            line-height: 180%;
+        }
     }
 
 	.grunion-field-label + textarea[placeholder] {
