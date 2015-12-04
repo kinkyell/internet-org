@@ -48,15 +48,17 @@ get_header();
 
 											<?php if ( $is_media ) : ?>
 											<div class="media media_inline">
-												<div class="media-figure">
-													<?php the_post_thumbnail( array( 960, 960 ), array( 'title' => get_the_title() ) ); ?>
-												</div>
+												<a href="<?php echo fix_link( get_the_permalink() ); ?>" class="link_sm" title="<?php the_title_attribute(); ?>">
+													<div class="media-figure">
+														<?php the_post_thumbnail( array( 960, 960 ), array( 'title' => get_the_title() ) ); ?>
+													</div>
+												</a>
 												<div class="media-bd">
 													<?php endif; ?>
 
 													<div class="feature feature_tight">
 														<div class="feature-hd">
-															<a href="<?php echo fix_link( get_the_permalink() ); ?>" class="link link_sm" title="<?php the_title_attribute(); ?>">
+															<a href="<?php echo fix_link( get_the_permalink() ); ?>" class="link_sm" title="<?php the_title_attribute(); ?>">
 																<h2 class="hdg hdg_3"><?php echo esc_html( get_the_title() ); ?></h2>
 															</a>
 														</div>
