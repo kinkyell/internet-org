@@ -56,9 +56,16 @@ if ( empty( $next_post ) && empty( $prev_post ) ) {
 		<div>
 			<div class="topicBlock">
 				<div class="topicBlock-hd">
-					<h2 class="hdg hdg_8 mix-hdg_bold">
-						<?php echo  esc_html( apply_filters( 'the_title', $prev_post->post_title ) ); ?>
-					</h2>
+					<a class="js-stateLink"
+				  href="<?php echo fix_link( esc_url( get_permalink( $prev_post->ID ) ) ); ?>"
+				  data-title="<?php echo  esc_attr( apply_filters( 'the_title', $prev_post->post_title ) ); ?>"
+				  data-social="true"
+				  data-date="<?php echo esc_attr( get_the_date( '', $prev_post->ID ) ); ?>"
+				  data-type="titled">
+						<h2 class="hdg hdg_8 mix-hdg_bold">
+							<?php echo  esc_html( apply_filters( 'the_title', $prev_post->post_title ) ); ?>
+						</h2>
+					</a>
 				</div>
 				<div class="topicBlock-bd">
 					<p class="bdcpy">
