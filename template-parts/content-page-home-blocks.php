@@ -42,7 +42,7 @@ if ( ! empty( $custom_fields ) ) : ?>
 										<?php foreach ( $fieldset['call-to-action'] as $cta ) : ?>
 											<div class="cta">
 											<?php if ( ! empty( $cta['link'] ) ) : ?>
-												<a href="<?php echo fix_link( esc_attr( apply_filters( 'iorg_url', $cta['link'] ) ) ); ?>"><?php
+												<a href="<?php echo esc_url( fix_link( apply_filters( 'iorg_url', $cta['link'] ) ) ); ?>"><?php
 												if ( ! empty( $cta['image'] ) ) : ?>
 													<?php echo wp_get_attachment_image( $cta['image'], array( 32, 32 ) ); ?>
 												<?php else : ?>
@@ -67,7 +67,7 @@ if ( ! empty( $custom_fields ) ) : ?>
 									}
 									?>
 
-									<a href="<?php echo fix_link( esc_attr( $sectionHref ) ); ?>" class="link link_theme<?php echo esc_attr( $sectionSlug ); ?> js-stateLink"><?php echo esc_html( $fieldset['name'] ); ?></a>
+									<a href="<?php echo esc_url( fix_link( $sectionHref ) ); ?>" class="link link_theme<?php echo esc_attr( $sectionSlug ); ?> js-stateLink"><?php echo esc_html( $fieldset['name'] ); ?></a>
 								</div>
 							</div>
 						</div>

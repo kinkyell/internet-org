@@ -25,7 +25,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 		<button class="arrowCta arrowCta_light js-narrativeAdvance"></button>
 	</div>
 
-	<div class="viewWindow viewWindow_flush js-viewWindow" id="main-content" role="main" data-route="<?php echo fix_link( esc_url( home_url( '/' ) ) ); ?>" data-type="home">
+	<div class="viewWindow viewWindow_flush js-viewWindow" id="main-content" role="main" data-route="<?php echo esc_url( fix_link( home_url( '/' ) ) ); ?>" data-type="home">
 		<?php while ( have_posts() ) : the_post(); ?>
 			<?php
 

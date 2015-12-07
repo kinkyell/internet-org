@@ -11,7 +11,7 @@ global $wp_query;
 
 get_header(); ?>
 
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php echo fix_link( esc_url( get_search_link() ) ); ?>" data-type="search" data-title="Search" data-search-text="<?php echo esc_attr( get_search_query() ); ?>">
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php echo esc_url( fix_link( get_search_link() ) ); ?>" data-type="search" data-title="Search" data-search-text="<?php echo esc_attr( get_search_query() ); ?>">
 
 
 		<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
