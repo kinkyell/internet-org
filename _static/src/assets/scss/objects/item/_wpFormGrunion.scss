@@ -197,7 +197,7 @@ body .contact-form label.radio
 @media (max-width: 787px) {
     [lang="ja"] {
             // overriding line breaks in language font issue
-            body .contact-form label.checkbox, 
+            body .contact-form label.checkbox,
             body .contact-form label.radio {
                 @include remify(font-size, 21px);
             }
