@@ -10,7 +10,7 @@
 get_header();
 
 ?>
-<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php echo fix_link( esc_url( internetorg_get_archive_link() ) ); ?>" data-type="titled" data-title="<?php the_archive_title(); ?>">
+<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php echo esc_url( fix_link( internetorg_get_archive_link() ) ); ?>" data-type="titled" data-title="<?php the_archive_title(); ?>">
 
 
 <?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
@@ -48,7 +48,7 @@ get_header();
 
 											<?php if ( $is_media ) : ?>
 											<div class="media media_inline">
-												<a href="<?php echo fix_link( get_the_permalink() ); ?>" class="link_sm" title="<?php the_title_attribute(); ?>">
+												<a href="<?php echo esc_url( fix_link( get_the_permalink() ) ); ?>" class="link_sm" title="<?php the_title_attribute(); ?>">
 													<div class="media-figure">
 														<?php the_post_thumbnail( array( 960, 960 ), array( 'title' => get_the_title() ) ); ?>
 													</div>
@@ -58,7 +58,7 @@ get_header();
 
 													<div class="feature feature_tight">
 														<div class="feature-hd">
-															<a href="<?php echo fix_link( get_the_permalink() ); ?>" class="link_sm" title="<?php the_title_attribute(); ?>">
+															<a href="<?php echo esc_url( fix_link( get_the_permalink() ) ); ?>" class="link_sm" title="<?php the_title_attribute(); ?>">
 																<h2 class="hdg hdg_3"><?php echo esc_html( get_the_title() ); ?></h2>
 															</a>
 														</div>
@@ -66,7 +66,7 @@ get_header();
 															<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray"><?php internetorg_posted_on_date(); ?></div>
 														</div>
 														<div class="feature-cta">
-															<a href="<?php echo fix_link( get_the_permalink() ); ?>" class="link link_sm" title="<?php the_title_attribute(); ?>">
+															<a href="<?php echo esc_url( fix_link( get_the_permalink() ) ); ?>" class="link link_sm" title="<?php the_title_attribute(); ?>">
 																<?php echo esc_html__( 'Read More', 'internetorg' ) ?>
 															</a>
 														</div>

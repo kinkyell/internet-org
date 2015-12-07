@@ -21,7 +21,7 @@ $custom_fields = get_post_meta( get_the_ID(), 'home-content-section', false );
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php echo fix_link( get_the_permalink() ); ?>" data-type="titled" data-title="<?php the_title(); ?>" >
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php echo esc_url( fix_link( get_the_permalink() ) ); ?>" data-type="titled" data-title="<?php the_title(); ?>" >
 
 		<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
 
