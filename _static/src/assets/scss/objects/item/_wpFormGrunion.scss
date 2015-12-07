@@ -133,15 +133,25 @@ body .contact-form label.radio
         /* need to overwrite grunion styles */
         font-weight: 200 !important;
         margin-bottom: 0 !important;
-
-    }
-
-    .grunion-radio-label {
         margin: 14px 0;
     }
 
     .grunion-radio-label > .radio {
         @include isVisuallyHidden();
+    }
+
+    .contact-form label {
+         margin-bottom: 14px;
+         float: none;
+         display: block;
+         // font-family: "Lava","Harir Regular",Times New Roman,Georgia,serif;
+         font-style: Normal;
+         font-weight: 600;
+         font-stretch: normal;
+         // color: rgb(0, 0, 0);
+         // font-size: 1.125rem;
+         line-height: 1.5;
+         // margin: 56px 0 14px;
     }
 
     /* TARGET Internet Explorer ≤ 9 */
@@ -170,7 +180,6 @@ body .contact-form label.radio
         margin-right: 10px;
         /* Resovling Chrome Animation inconsistancies */
         backface-visibility: hidden;
-
     }
 
     .grunion-radio-label > .radio:checked + span {
@@ -236,6 +245,12 @@ body .contact-form label.radio
         .grunion-radio-label > .radio {
             margin-right: 0;
             margin-left: 20px;
+            display: inline-flex;
+            font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+            font-weight: 200;
+            margin: 14px 0;
+            color: rgb(109, 110, 100);
+            font-size: 1.125rem;
         }
 
         .grunion-radio-label > .radio + span {
