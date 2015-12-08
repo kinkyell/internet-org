@@ -22,7 +22,7 @@ if ( empty( $next_page_id ) ) {
 ?>
 
 <div class="js-scrollImage" data-image="<?php echo esc_url( internetorg_get_post_thumbnail( $next_page_id, 'panel-image' ) ); ?>">
-	<a href="<?php echo esc_url( fix_link( get_permalink( $next_page_id ) ) ); ?>"
+	<a href="<?php echo esc_url( internetorg_fix_link( get_permalink( $next_page_id ) ) ); ?>"
 		class="introBlock introBlock_foot js-stateSwap"
 		data-title="<?php echo esc_attr( get_the_title( $next_page_id ) ); ?>"
 		data-image="<?php echo esc_url( internetorg_get_post_thumbnail( $next_page_id, 'panel-image' ) ); ?>"

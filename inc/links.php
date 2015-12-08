@@ -5,10 +5,10 @@
  * This is great for local, development and staging instances.
  */
 
-function fix_link( $link ) {
+function internetorg_fix_link( $link ) {
 
     $proto = ( strpos( $link, 'https' ) ) ? 'https' : 'http';
-    $host = $_SERVER[ 'HTTP_HOST' ];
+    $host = site_url();
     $replace = '';
     $domain = '';
     $lang  = bbl_get_default_lang_code();
@@ -21,16 +21,16 @@ function fix_link( $link ) {
     }
 
     switch( $host ) {
-    	case 'fbinternetorg.wordpress.com':
-    		$replace = 'fbinternetorg.wordpress.com';
+        case 'fbinternetorg.wordpress.com':
+            $replace = 'fbinternetorg.wordpress.com';
             $domain = 'info.internet.org';
-    	break;
-    	case 'internetorg.jam3.net':
+        break;
+        case 'internetorg.jam3.net':
             $domain = 'internetorg.jam3.net';
-    	break;
-    	default:
-    		$domain = 'vip.local';
-    	break;
+        break;
+        default:
+            $domain = 'vip.local';
+        break;
     }
 
     $path = str_replace( array( "$proto://", $domain, $replace ), '', $link );

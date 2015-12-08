@@ -753,7 +753,7 @@ function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button 
 					}
 
 					$out .=
-						'<div class="topicBlock-cta"><a href="' . fix_link( esc_url( ! empty( $link ) ? apply_filters( 'iorg_url', $link ) : '' ) )
+						'<div class="topicBlock-cta"><a href="' . esc_url( internetorg_fix_link( ! empty( $link ) ? apply_filters( 'iorg_url', $link ) : '' ) )
 						. '" class="' . ( $cta_as_button ? 'btn' : 'link link_twoArrows' )
 						. '" ' . $target . '>' . esc_html( $label ) . '</a></div>';
 				}
@@ -2250,7 +2250,7 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 		?>
 
 		<div class="feature-cta">
-			<a href="<?php echo fix_link( esc_url( apply_filters( 'iorg_url', $url ) ) ); ?>"
+			<a href="<?php echo esc_url( internetorg_fix_link( apply_filters( 'iorg_url', $url ) ) ); ?>"
 			   class="link js-stateDefault"
 			   data-type="<?php esc_attr( $type ); ?>"
 			   data-social="<?php echo esc_attr( $social_attr ); ?>"
@@ -2283,7 +2283,7 @@ function internetorg_external_cta_link( $link = '' ) {
 
 	?>
 	<div class="feature-cta">
-		<a href="<?php echo fix_link( esc_url( $link ) ); ?>" class="link" target="_blank">
+		<a href="<?php echo esc_url( internetorg_fix_link( $link ) ); ?>" class="link" target="_blank">
 			<?php echo esc_html__( 'Learn More', 'internetorg' ); ?>
 		</a>
 	</div>
@@ -2346,7 +2346,9 @@ function vip_fb_legacy_redirects() {
     		if ( array_key_exists( $url, $routes ) ) {
     			wp_safe_redirect( $routes[ $url ], 301 );
     		} else {
-	        $langCode  = bbl_get_default_lang_code();
+
+	        // $langCode  = bbl_get_default_lang_code();
+	        $langCode = internetorg_get_current_lang_code();
 	        $urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
 	        wp_safe_redirect( "/$urlPrefix" . "$url/", 301 );
 	      }
@@ -2372,6 +2374,6 @@ add_filter( 'locale', 'vip_fb_internetorg_en_locale', 1000, 1 );
  * Fixes some routing issues with previewing posts/pages
  */
 
-add_action( 'preview_post_link', 'fix_link' );
+add_action( 'preview_post_link', 'internetorg_fix_link' );
 
-add_action( 'preview_page_link', 'fix_link' );
+add_action( 'preview_page_link', 'internetorg_fix_link' );
