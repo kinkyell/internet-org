@@ -47,7 +47,7 @@ body .contact-form input[type='text'], .contact-form input[type='email'] {
 }
 
 @media (max-width: 768px) {
-	.vendorForm .grunion-field-label {
-		font-size: 1rem;
+	.vendorForm .grunion-field-label, .contact-form label.radio, .vendorForm label.contact-form label {
+		font-size: 1rem !important;
 	}
 }
