@@ -180,11 +180,11 @@ define(function(require, exports, module) { // jshint ignore:line
 
 
 // If Browser is IE10 attempt 1
-var isIE = /*@cc_on!@*/false;
+// var isIE = /*@cc_on!@*/false;
 
-if (isIE === true) {
-    document.getElementsByClassName('introBlock-inner').style.marginTop ='200px';
-}
+// if (isIE === true) {
+//     document.getElementsByClassName('introBlock-inner').style.marginTop ='200px';
+// }
 
 // if browser is IE10 attempt 2
 var doc = document.documentElement;
