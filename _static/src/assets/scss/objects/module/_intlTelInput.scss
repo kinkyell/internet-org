@@ -31,7 +31,7 @@ This styles and helps validate a contact form's phone number
 }
 .intl-tel-input {
   width: 100%;
-  margin: 8px 0 0;
+  margin: 0;
   input.text {
     font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
     font-weight: 200;
@@ -44,7 +44,7 @@ This styles and helps validate a contact form's phone number
     padding: 10px 8px 20px;
     border-width: 0;
     border-bottom: 1px solid rgb(213, 212, 202);
-    margin: 14px 0;
+    margin: 24px 0 14px;
     resize: none;
   }
 }
