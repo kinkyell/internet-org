@@ -51,3 +51,12 @@ body .contact-form input[type='text'], .contact-form input[type='email'] {
 		font-size: 1rem !important;
 	}
 }
+
+
+// IE10 fixes
+html[data-useragent*='MSIE 10.0'] div.introBlock-inner {
+  margin-top: 200px;
+}
+
+
+
