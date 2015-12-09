@@ -1,4 +1,4 @@
-<?php
+c<?php
 /**
  * File LinkTransformer.class.php
  *
@@ -30,12 +30,7 @@ class LinkTransformer {
 			return $url;
 		}
 
-
-		if(function_exists('get_domain_from_blog_id')){
-			$domain    = get_domain_from_blog_id( get_current_blog_id() );
-		} else {
-			$domain = get_bloginfo()->domain; 
-		}
+		$domain = preg_replace( array( '/.*?:\/\//', '/^www\./' ), '', get_site_url() );
 
 		$langCode  = bbl_get_current_content_lang_code();
 		$urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
