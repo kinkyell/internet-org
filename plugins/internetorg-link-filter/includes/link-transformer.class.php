@@ -1,4 +1,4 @@
-c<?php
+<?php
 /**
  * File LinkTransformer.class.php
  *
