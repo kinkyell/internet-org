@@ -8,7 +8,7 @@
 function internetorg_fix_link( $link ) {
 
     $proto = ( strpos( $link, 'https' ) ) ? 'https' : 'http';
-    $host = $_SERVER[ 'HTTP_HOST' ];
+    $host = preg_replace( array( '/.*?:\/\//', '/^www\./' ), '', get_site_url() );
     $replace = '';
     $domain = '';
     $lang  = bbl_get_default_lang_code();
