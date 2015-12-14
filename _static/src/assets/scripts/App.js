@@ -186,7 +186,9 @@ define(function(require, exports, module) { // jshint ignore:line
 // }
 
 // Detect Opera Mini take 2
-var isOperaMini = (navigator.userAgent.indexOf('Opera Mini') > -1); if(isOperaMini) {     
+var isOperaMini = (navigator.userAgent.indexOf('Opera Mini') > -1); 
+if(isOperaMini) {     
+    alert('so yeah its opera mini');
     var root = document.getElementByTagName('body')[0];     
     root.className += " opera-mini"; 
 }
