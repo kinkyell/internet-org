@@ -180,18 +180,19 @@ define(function(require, exports, module) { // jshint ignore:line
 
 
 // Detect Opera Mini take 1
-// var isOperaMini = Object.prototype.toString.call(window.operamini) === '[object OperaMini]';
-// if (isOperaMini === true) {
-//     document.getElementByTagName('style').insertAfter('<link rel="stylesheet" media="handheld" href="operaMini.css">');
-// }
+var isOperaMini = Object.prototype.toString.call(window.operamini) === '[object OperaMini]';
+if (isOperaMini === true) {
+    alert('so yeah its opera mini');
+    // document.getElementByTagName('style').insertAfter('<link rel="stylesheet" media="handheld" href="operaMini.css">');
+}
 
 // Detect Opera Mini take 2
-var isOperaMini = (navigator.userAgent.indexOf('Opera Mini') > -1); 
-if(isOperaMini) {     
-    alert('so yeah its opera mini');
-    var root = document.getElementByTagName('body')[0];     
-    root.className += " opera-mini"; 
-}
+// var isOperaMini = (navigator.userAgent.indexOf('Opera Mini') > -1); 
+// if(isOperaMini) {     
+//     alert('so yeah its opera mini');
+//     var root = document.getElementByTagName('body')[0];     
+//     root.className += " opera-mini"; 
+// }
 
 // if browser is IE10 attempt 2
 var doc = document.documentElement;
