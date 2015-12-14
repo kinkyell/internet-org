@@ -179,12 +179,17 @@ define(function(require, exports, module) { // jshint ignore:line
 });
 
 
-// If Browser is IE10 attempt 1
-// var isIE = /*@cc_on!@*/false;
-
-// if (isIE === true) {
-//     document.getElementsByClassName('introBlock-inner').style.marginTop ='200px';
+// Detect Opera Mini take 1
+// var isOperaMini = Object.prototype.toString.call(window.operamini) === '[object OperaMini]';
+// if (isOperaMini === true) {
+//     document.getElementByTagName('style').insertAfter('<link rel="stylesheet" media="handheld" href="operaMini.css">');
 // }
+
+// Detect Opera Mini take 2
+var isOperaMini = (navigator.userAgent.indexOf('Opera Mini') > -1); if(isOperaMini) {     
+    var root = document.getElementByTagName('body')[0];     
+    root.className += " opera-mini"; 
+}
 
 // if browser is IE10 attempt 2
 var doc = document.documentElement;
