@@ -21,7 +21,7 @@ $custom_fields = get_post_meta( get_the_ID(), 'home-content-section', false );
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php echo esc_url( internetorg_fix_link( get_the_permalink() ) ); ?>" data-type="titled" data-title="<?php the_title(); ?>" >
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php the_permalink(); ?>" data-type="titled" data-title="<?php the_title(); ?>" >
 
 		<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
 
@@ -67,84 +67,82 @@ $custom_fields = get_post_meta( get_the_ID(), 'home-content-section', false );
 						</div>
 					</div>
 
+					<?php if ( ! empty( $custom_fields ) ) : ?>
+
+						<?php foreach ( $custom_fields as $group ) : ?>
+
+							<?php if ( ! empty( $group ) ) : ?>
+
+								<div class="contentCol contentCol_divided">
+									<div class="container">
+
+										<?php foreach ( $group as $fieldset ) : ?>
+
+											<?php if ( ! empty( $fieldset ) ) : ?>
+
+												<div class="feature">
+													<?php if ( ! empty( $fieldset['title'] ) ) : ?>
+														<div class="feature-hd">
+															<div class="hdg hdg_3"><?php echo esc_html( $fieldset['title'] ); ?></div>
+														</div>
+													<?php endif; ?>
+
+													<?php if ( ! empty( $fieldset['content'] ) ) : ?>
+														<div class="feature-bd">
+															<p class="bdcpy">
+																<?php echo esc_html( strip_tags( $fieldset['content'] ) ); ?>
+															</p>
+														</div>
+													<?php endif; ?>
+
+													<?php if ( ! empty( $fieldset['call-to-action'] ) ) : ?>
+
+														<?php
+
+														if ( ! empty( $fieldset['theme'] ) ) {
+															$theme = $fieldset['theme'];
+														} else if ( ! empty( $fieldset['slug'] ) ) {
+															$theme = $fieldset['slug'];
+														} else {
+															$theme = '';
+														}
+
+														if ( ! empty( $fieldset['call-to-action'][0]['image'] ) ) {
+															$fieldset_image = $fieldset['call-to-action'][0]['image'];
+														} else {
+															$fieldset_image = '';
+														}
+
+														internetorg_contact_call_to_action(
+															$fieldset['call-to-action'],
+															$theme,
+															$fieldset_image
+														);
+
+														?>
+
+													<?php endif; ?>
+
+												</div>
+
+											<?php endif; ?>
+
+										<?php endforeach; ?>
+
+									</div>
+
+								</div>
+
+							<?php endif; ?>
+
+						<?php endforeach; ?>
+
+					<?php endif; ?>
+
 					<div class="container">
 						<div class="contentCol">
 							<div class="vendorForm">
-
-								<?php if ( ! empty( $custom_fields ) ) : ?>
-
-									<?php foreach ( $custom_fields as $group ) : ?>
-
-										<?php if ( ! empty( $group ) ) : ?>
-
-<!-- 											<div class="contentCol_divided contentCol_flush">
-												<div class="container">
- -->
-													<?php foreach ( $group as $fieldset ) : ?>
-
-														<?php if ( ! empty( $fieldset ) ) : ?>
-
-															<div class="feature">
-																<?php if ( ! empty( $fieldset['title'] ) ) : ?>
-																	<div class="feature-hd">
-																		<div class="hdg hdg_3"><?php echo esc_html( $fieldset['title'] ); ?></div>
-																	</div>
-																<?php endif; ?>
-
-																<?php if ( ! empty( $fieldset['content'] ) ) : ?>
-																	<div class="feature-bd">
-																		<p class="bdcpy">
-																			<?php echo esc_html( strip_tags( $fieldset['content'] ) ); ?>
-																		</p>
-																	</div>
-																<?php endif; ?>
-
-																<?php if ( ! empty( $fieldset['call-to-action'] ) ) : ?>
-
-																	<?php
-
-																	if ( ! empty( $fieldset['theme'] ) ) {
-																		$theme = $fieldset['theme'];
-																	} else if ( ! empty( $fieldset['slug'] ) ) {
-																		$theme = $fieldset['slug'];
-																	} else {
-																		$theme = '';
-																	}
-
-																	if ( ! empty( $fieldset['call-to-action'][0]['image'] ) ) {
-																		$fieldset_image = $fieldset['call-to-action'][0]['image'];
-																	} else {
-																		$fieldset_image = '';
-																	}
-
-																	internetorg_contact_call_to_action(
-																		$fieldset['call-to-action'],
-																		$theme,
-																		$fieldset_image
-																	);
-
-																	?>
-
-																<?php endif; ?>
-
-															</div>
-
-														<?php endif; ?>
-
-													<?php endforeach; ?>
-
-<!-- 												</div>
-
-											</div>
- -->
-										<?php endif; ?>
-
-									<?php endforeach; ?>
-
-								<?php endif; ?>
-
 								<?php the_content(); ?>
-
 							</div>
 
 						</div>

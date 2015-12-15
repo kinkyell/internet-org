@@ -56,7 +56,8 @@ $theme = ( in_array( get_post_type( get_the_ID() ), $io_story_shadow ) ) ? 'appr
 <div class="resultsList-list-item">
 	<div class="feature feature_tight">
 		<div class="feature-hd">
-			<a href="<?php echo esc_url( internetorg_fix_link( get_the_permalink() ) ); ?>" class="mix-link_small js-stateLink"
+			<h2 class="hdg hdg_4">
+				<a href="<?php echo fix_link( get_the_permalink() ); ?>" class="mix-link_small js-stateLink"
 			    data-title="<?php echo esc_attr( apply_filters( 'the_title',  get_the_title() ) ); ?>"
 			    data-image="<?php echo esc_url( $img );?>"
 			    data-mobile-image="<?php echo esc_url( $mobile_image );?>"
@@ -68,12 +69,13 @@ $theme = ( in_array( get_post_type( get_the_ID() ), $io_story_shadow ) ) ? 'appr
 			   data-type="<?php echo esc_attr( $type ); ?>">
 				<h2 class="hdg hdg_4"><?php the_title(); ?></h2>
 			</a>
+			</h2>
 		</div>
 		<div class="feature-bd">
 			<div class="bdcpy"><?php the_excerpt(); ?></div>
 		</div>
 		<div class="feature-cta">
-			<a href="<?php echo esc_url( internetorg_fix_link( get_the_permalink() ) ); ?>" class="link mix-link_small js-stateLink"
+			<a href="<?php the_permalink(); ?>" class="link mix-link_small js-stateLink"
 			    data-title="<?php echo esc_attr( apply_filters( 'the_title',  get_the_title() ) ); ?>"
 			    data-image="<?php echo esc_url( $img );?>"
 			    data-mobile-image="<?php echo esc_url( $mobile_image );?>"
@@ -85,8 +87,6 @@ $theme = ( in_array( get_post_type( get_the_ID() ), $io_story_shadow ) ) ? 'appr
 				<?php endif; ?>
 
 			   data-type="<?php echo esc_attr( $type ); ?>">
-
-
 				<?php esc_html_e( 'Read More', 'internetorg' ); ?>
 			</a>
 		</div>

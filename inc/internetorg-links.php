@@ -1,10 +1,13 @@
 <?php
+
 /**
  * Fix any broken link that may not have had it's data dump exported/imported properly
- *
  * This is great for local, development and staging instances.
+ *
+ * @param string $link the url to be fixed
+ *
+ * @return string the fixed url
  */
-
 function internetorg_fix_link( $link ) {
 
     $proto = ( strpos( $link, 'https' ) ) ? 'https' : 'http';
@@ -25,8 +28,6 @@ function internetorg_fix_link( $link ) {
             $replace = 'fbinternetorg.wordpress.com';
             $domain = 'info.internet.org';
         break;
-        case 'internetorgstage.jam3.net':
-            $domain = 'internetorgstage.jam3.net';
         case 'internetorg.jam3.net':
             $domain = 'internetorg.jam3.net';
         break;

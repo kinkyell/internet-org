@@ -14,7 +14,7 @@ $archives_years = internetorg_get_archives_years();
 
 ?>
 
-<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php echo esc_url( internetorg_fix_link( internetorg_get_the_permalink_in_lang( get_option( 'page_for_posts' ), internetorg_get_current_content_lang_code() ) ) ); ?>" data-type="titled" data-title="<?php echo esc_html( internetorg_get_the_title_in_lang( get_option( 'page_for_posts' ), internetorg_get_current_content_lang_code() ) ); ?>">
+<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php echo esc_url( internetorg_get_the_permalink_in_lang( get_option( 'page_for_posts' ), internetorg_get_current_content_lang_code() ) ); ?>" data-type="titled" data-title="<?php echo esc_html( internetorg_get_the_title_in_lang( get_option( 'page_for_posts' ), internetorg_get_current_content_lang_code() ) ); ?>">
 
 		<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
 

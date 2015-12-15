@@ -7,7 +7,7 @@
 
 ?>
 
-<a class="header-logo js-headerView-logo js-stateHome" title="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" href="<?php echo esc_url( internetorg_fix_link( home_url() ) ); ?>">
+<a class="header-logo js-headerView-logo js-stateHome" title="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" href="<?php echo esc_url( home_url() ); ?>">
 	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          viewBox="-358 260 242.7 42" xml:space="preserve" width="243" height="42">
          <defs>

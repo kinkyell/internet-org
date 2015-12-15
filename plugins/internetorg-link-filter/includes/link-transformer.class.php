@@ -30,7 +30,16 @@ class LinkTransformer {
 			return $url;
 		}
 
-		$domain = preg_replace( array( '/.*?:\/\//', '/^www\./' ), '', get_site_url() );
+		// Check for any filters applied to home_url()
+		// Remove and then re-add filters after setting the domain variable
+		if ( has_filter( 'home_url' ) ) {
+				$filters = internetorg_get_filters( 'home_url' );
+				remove_all_filters( 'home_url' );
+				$domain = preg_replace( array( '/.*?:\/\//', '/^www\./' ), '', home_url() );
+				internetorg_set_filters( 'home_url', $filters );
+		} else {
+				$domain = preg_replace( array( '/.*?:\/\//', '/^www\./' ), '', home_url() );
+		}
 
 		$langCode  = bbl_get_current_content_lang_code();
 		$urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
