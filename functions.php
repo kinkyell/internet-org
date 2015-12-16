@@ -2350,8 +2350,9 @@ function vip_fb_legacy_redirects() {
 				if ( array_key_exists( $url, $routes ) ) {
 					wp_safe_redirect( $routes[ $url ], 301 );
 				} else {
-	        $langCode  = bbl_get_default_lang_code();
-	        $urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
+					$langCode  = bbl_get_current_lang();
+	        // $urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
+	       	$urlPrefix = $langCode->url_prefix;
 	        wp_safe_redirect( "/$urlPrefix" . "$url/", 301 );
 	      }
         exit;
