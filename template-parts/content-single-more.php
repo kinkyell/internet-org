@@ -52,7 +52,7 @@ if ( empty( $next_post ) && empty( $prev_post ) ) {
 				<div class="topicBlock-hd">
 					<h2 class="hdg hdg_8 mix-hdg_bold">
 						<a class="js-stateLink"
-				  href="<?php echo fix_link( esc_url( get_permalink( $prev_post->ID ) ) ); ?>"
+				  href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>"
 				  data-title="<?php echo  esc_attr( apply_filters( 'the_title', $prev_post->post_title ) ); ?>"
 				  data-social="true"
 				  data-date="<?php echo esc_attr( get_the_date( '', $prev_post->ID ) ); ?>"
