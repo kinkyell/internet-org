@@ -179,6 +179,7 @@ define(function(require, exports, module) { // jshint ignore:line
 });
 
 
+<<<<<<< Updated upstream:_static/src/assets/scripts/App.js
 // Detect Opera Mini take 1
 // var isOperaMini = Object.prototype.toString.call(window.operamini) === '[object OperaMini]';
 // if (isOperaMini === true) {
@@ -190,6 +191,14 @@ var isOperaMini = (navigator.userAgent.indexOf('Opera Mini') > -1); if(isOperaMi
     var root = document.getElementByTagName('body')[0];     
     root.className += " opera-mini"; 
 }
+=======
+// If Browser is IE10 attempt 1
+// var isIE = /*@cc_on!@*/false;
+
+// if (isIE === true) {
+//     document.getElementsByClassName('introBlock-inner').style.marginTop ='200px';
+// }
+>>>>>>> Stashed changes:_static/web/assets/scripts/App.js
 
 // if browser is IE10 attempt 2
 var doc = document.documentElement;

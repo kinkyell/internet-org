@@ -1,7 +1,0 @@
-{
-    "description": "Fill the `tests` array with names of Modernizr tests that should be included in custom build. The full list of test names can be found [here](https://github.com/Modernizr/modernizr.com/blob/gh-pages/i/js/modulizr.js#L15-157)",
-
-    "tests": [
-        "history"
-    ]
-}
