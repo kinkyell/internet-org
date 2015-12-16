@@ -6557,6 +6557,82 @@ html[data-useragent*='MSIE 10.0'] div.introBlock-inner {
 /* ---------------------------------------------------------------------
  Browser Hacks
 ------------------------------------------------------------------------ */
-body.opera-mini {
+body.opera-mini,
+body.opera-mini .viewWindow,
+body.opera-mini .viewWindow-panel,
+body.opera-mini .viewWindow-panel-content,
+body.opera-mini .viewWindow-panel-content-inner,
+body.opera-mini .narrative,
+body.opera-mini .narrativeView,
+body.opera-mini .narrative-section,
+body.opera-mini .narrative-section-slides_short,
+body.opera-mini .narrative-section-bd,
+body.opera-mini .narrative-section-bd_low {
+  position: relative !important;
+  overflow: auto !important;
   height: auto !important;
-  overflow: scroll !important; }
+  display: block !important;
+  min-height: auto !important;
+  clear: both !important; }
+
+body.opera-mini .narrative-section-bd {
+  height: auto;
+  overflow: hidden; }
+
+body.opera-mini .narrative-section-bd-link {
+  position: relative;
+  right: 0;
+  bottom: 0; }
+
+body.opera-mini .viewWindow {
+  width: 100%; }
+  body.opera-mini .viewWindow .viewWindow-panel {
+    width: 100%; }
+
+body.opera-mini .narrative,
+body.opera-mini .narrative-section:nth-of-type(1),
+body.opera-mini .narrative-section-slides-item {
+  height: 100% !important; }
+
+body.opera-mini .narrative-section-slides-item {
+  background-position: 50% 35%; }
+
+body.opera-mini .narrative-section:nth-of-type(1) {
+  height: 640px !important;
+  position: relative; }
+  body.opera-mini .narrative-section:nth-of-type(1) .narrative-section-slides,
+  body.opera-mini .narrative-section:nth-of-type(1) .narrative-section-slides-item {
+    height: 100% !important;
+    width: 100% !important;
+    position: absolute !important; }
+  body.opera-mini .narrative-section:nth-of-type(1) .narrative-section-bd,
+  body.opera-mini .narrative-section:nth-of-type(1) .narrative-section-bd_low {
+    position: absolute !important;
+    bottom: 0; }
+
+body.opera-mini .narrative-section-slides-item {
+  min-height: 300px !important; }
+
+body.opera-mini .narrativeView-progress {
+  display: none !important; }
+
+body.opera-mini .loadingIcon {
+  display: none !important; }
+
+body.opera-mini .statementBlock-bd:last-of-type {
+  position: relative; }
+
+body.opera-mini .viewWindow.isShifted > .viewWindow-panel:last-child {
+  left: 0; }
+
+body.opera-mini .introBlock.u-isHiddenMedium {
+  display: none; }
+
+body.opera-mini .viewWindow-panel_story .viewWindow-panel-content-inner {
+  border-top: 0; }
+
+body.opera-mini .viewWindow-panel_story .viewWindow-panel-content-inner > :first-child > .introBlock {
+  margin-top: 0; }
+
+.pwdByVip-txt_front {
+  bottom: 20px; }
