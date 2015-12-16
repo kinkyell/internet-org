@@ -36,6 +36,12 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handlePanelScroll = this._onPanelScroll.bind(this);
         this._handleLoaderInit = this._onLoaderInit.bind(this);
         this.refreshScrollerInfo = this._refreshScrollerInfo.bind(this);
+        this.currentFeatureImage = $('#featurePanel')
+            .find('.viewWindow-panel-content-inner')
+            .first()
+            .css('background-image')
+            .replace(/^url|[\(\)]/g, '')
+            .replace(/"/g, '');
 
         /**
          * The last saved scroll top value
@@ -215,20 +221,23 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     PanelState.prototype._onPanelScroll = function() {
+        var panel = this;
         var scrollTop = this._scrollPanel[0].scrollTop;
         var view = scrollTop + this._windowHeight;
         var image = null;
         var direction = scrollTop > this._lastScrollTop ? 'bottom' : 'top';
 
         this._lastScrollTop = scrollTop;
-
         this._scrollBlocks.forEach(function(block) {
             if (view >= block.top && view <= block.bottom) {
                 image = block.img;
             }
         });
 
-        viewWindow.replaceFeatureImage(image, direction);
+        if ( panel.currentFeatureImage != image ) {
+            panel.currentFeatureImage = image;
+            viewWindow.replaceFeatureImage(image, direction);
+        }
     };
 
     /**
