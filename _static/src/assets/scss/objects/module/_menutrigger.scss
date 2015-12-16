@@ -1,0 +1,121 @@
+/* ---------------------------------------------------------------------
+ Menu Trigger
+
+ Global Menu Icon trigger styles
+------------------------------------------------------------------------ */
+.menuTrigger {
+    display: inline-block;
+    text-align: right;
+    min-width: 80px;
+    position: relatve;
+    cursor: pointer;
+}
+
+.menuTrigger_onDark .menuTrigger-label {
+    color: $CLR_WHITE;
+}
+
+.menuTrigger_onDark .menuTrigger-icon {
+    border-bottom: 2px solid $CLR_WHITE;
+}
+
+.menuTrigger_onDark .menuTrigger-icon:before,
+.menuTrigger_onDark .menuTrigger-icon:after {
+    background-color: $CLR_WHITE;
+}
+
+.menuTrigger-label {
+    @include remify(font-size, 14px);
+    display: none;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: $CLR_BLACK;
+    text-transform: uppercase;
+    vertical-align: text-top;
+}
+
+.menuTrigger-icon {
+    display: inline-block;
+    vertical-align: top;
+    text-align: right;
+    height: 10px;
+    width: 20px;
+    margin-top: 1px;
+    border-bottom: 2px solid $CLR_BLACK;
+    opacity: 1;
+    transition: border 0.2s ease-in-out;
+}
+
+.menuTrigger-icon:before,
+.menuTrigger-icon:after {
+    position: relative;
+    content: "";
+    display: block;
+    height: 2px;
+    background-color: $CLR_BLACK;
+    transition: all 0.5s ease;
+}
+
+.menuTrigger-icon:after {
+    top: 3px;
+}
+
+.menuTrigger-icon.isOpen {
+    border: 0;
+    padding-bottom: 6px;
+}
+
+.menuTrigger-icon.isOpen:before,
+.menuTrigger-icon.isOpen:after {
+    background-color: #afaea5;
+    // background-color: $CLR_GRAY;
+}
+
+.menuTrigger-icon.isOpen:hover:before,
+.menuTrigger-icon.isOpen:hover:after {
+    background-color: $CLR_BLACK;
+}
+
+.menuTrigger-icon.isOpen:before {
+    transform: rotate(-135deg);
+    transform-origin: top middle;
+    top: 6px;
+    transition: all 0.3s linear;
+}
+
+.menuTrigger-icon.isOpen:after {
+    transform: rotate(135deg);
+    transform-origin: top middle;
+    top: 4px;
+    transition: all 0.3s linear;
+}
+// removed for the moment
+/*
+.menuTrigger:hover .menuTrigger-icon.isOpen:before {
+    transform: rotate(45deg); //405
+    transform-origin: middle middle;
+}
+
+.menuTrigger:hover .menuTrigger-icon.isOpen:after {
+    transform: rotate(-45deg); //495
+    transform-origin: middle middle;
+}
+*/
+
+@include breakpoint(MD) {
+    .menuTrigger-label {
+        display: inline-block;
+        margin-right: 8px;
+        letter-spacing: 0.085em;
+    }
+}
+
+/* Right to Left Language support */
+[dir="rtl"] {
+
+    .menuTrigger,
+    .menuTrigger-icon {
+        text-align: left;
+    }
+
+}

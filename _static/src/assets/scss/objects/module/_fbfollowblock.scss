@@ -1,0 +1,47 @@
+/* ---------------------------------------------------------------------
+FB Follow Block
+
+Unique area/layout containing copy and cta to follow on facebook
+------------------------------------------------------------------------ */
+.fbFollowBlock {
+	text-align: center;
+}
+
+.fbFollowBlock-hd > .hdg {
+	@include remify(font-size, 29px);
+}
+
+.fbFollowBlock-bd > .bdcpy {
+	@include remify(font-size, 16px);
+}
+
+.fbFollowBlock-hd:after {
+	content: "";
+    display: inline-block;
+    height: 4px;
+    width: 40px;
+    position: relative;
+    text-align: center;
+    background-color: #3b5998;
+    margin: 15px 0;
+}
+
+.fbFollowBlock-inner {
+	margin-bottom: $SPACE_x2;
+}
+
+.fbFollowBlock-cta {}
+
+@include breakpoint(MD) {
+	.fbFollowBlock-hd:after {
+		content: none;
+	}
+	.fbFollowBlock-hd,
+	.fbFollowBlock-bd {
+		text-align: left;
+	}
+	.fbFollowBlock-inner {
+		width: 50%;
+		float: right;
+	}
+}

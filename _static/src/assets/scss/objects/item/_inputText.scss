@@ -1,0 +1,59 @@
+/* ---------------------------------------------------------------------
+ InputText
+------------------------------------------------------------------------ */
+
+.inputText {
+    @include font(SANS);
+	@include remify(font-size, 18px);
+    box-sizing: border-box;
+    width: 100%;
+    padding: 14px 8px;
+    color: #000000;
+    @include remify(font-size, 12px);
+    border-width: 0; /* reseting border */
+	border-bottom: 1px solid $CLR_GRAY_LIGHT;
+}
+
+.inputText[placeholder] {
+	@include remify(font-size, 18px);
+	font-style: italic;
+	font-weight: 200;
+}
+
+.inputSubmit,
+.inputSubmit input[type="submit"],
+.inputSubmit button {
+    display: inline-block;
+    border: 0;
+    padding: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    @include font(SANS_BLACK);
+    @include remify(font-size, 13px);
+    line-height: normal; /* set to normal to .btn can be usd on inputs in firefox with consistency */
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: $CLR_ACCENT;
+    color: white;
+    @include transition(background-color 0.2s ease-in-out);
+}
+
+.inputSubmit:hover,
+.inputSubmit input[type="submit"]:hover,
+.inputSubmit button:hover,
+.inputSubmit:active,
+.inputSubmit input[type="submit"]:active,
+.inputSubmit button:active {
+    background-color: $CLR_ACCENT_ACTIVE;
+}
+
+@include breakpoint(MD) {    
+	.inputSubmit,
+    .inputSubmit input[type="submit"],
+    .inputSubmit button {
+        padding: 22px;
+        @include remify(font-size, 18px);
+    }
+}

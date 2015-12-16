@@ -1,0 +1,287 @@
+/* ---------------------------------------------------------------------
+ WP Jetpack's Contact Form Plugin styles
+
+ NOTE: Wrap the form php include in <div class="vendorForm"> ... </div>
+------------------------------------------------------------------------ */
+
+body .contact-form label.checkbox, // body selector needed for specificity override of vendor
+body .contact-form label.radio
+{
+    display: inline-flex;
+}
+
+.vendorForm, .feature {
+
+    .grunion-field-label {
+        display: block;
+        color: $CLR_BLACK;
+        @include remify(font-size, 18px !important);
+        font-style: italic;
+        font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+        font-weight: 200 !important;
+        line-height: 1.8em;
+        color: #ccc;
+        margin: 56px 0 14px;
+        border: none;
+    }
+
+    /* Style thank you message */
+    .hdg.hdg_3.mix-hdg_centerInMobile {
+        padding-top: 56px;
+    }
+
+    /* Visually hiding input labels */
+    .grunion-field-label.email,
+    .grunion-field-label.name,
+    .grunion-field-label.website,
+    .grunion-field-label.text,
+    .grunion-field-label.url,
+    .grunion-field-label.textarea {
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        border: 0 !important;
+        position: absolute !important;
+        clip: rect(0 0 0 0) !important;
+        overflow: hidden !important;
+    }
+
+    .grunion-field-label + .email,
+    .grunion-field-label + .name,
+    .grunion-field-label + .website,
+    .grunion-field-label + .text,
+    .grunion-field-label + .url,
+    .grunion-field-label + textarea {
+        @include font(SANS);
+        font-style: italic;
+    	@include remify(font-size, 18px);
+        box-sizing: border-box;
+        width: 100%;
+        max-height: none;
+        padding: 14px 8px;
+        border-width: 0; /* reseting border */
+    	border-bottom: 1px solid $CLR_GRAY_LIGHT;
+    	margin: 14px 0;
+    	resize: none;
+    }
+
+    .grunion-field-label + select,
+    .grunion-field-label + input[placeholder],
+    .grunion-field-label + textarea[placeholder] {
+    	@include remify(font-size, 18px);
+    	font-style: italic;
+    	font-weight: 200;
+        line-height: 180%;
+    }
+
+    .grunion-field-label.select {
+        margin-top: 20px;
+
+        span {
+            font-weight: 200;
+        }
+
+        &:after {
+            display: none;
+        }
+
+        @media(max-width: 787px) {
+            @include remify(font-size, 14px !important);
+        }
+    }
+
+    .grunion-field-label + select {
+        @include remify(font-size, 14px);
+        line-height: 180%;
+        height: 34px;
+        display: inline-block;
+        width: 100% !important;
+        margin-bottom: 20px;
+        border: 1px solid rgb(199, 199, 191);
+    }
+
+    .grunion-field-label.checkbox {
+        @include remify(font-size, 14px);
+        line-height: 180%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        display: inline-block;
+        color: #000000;
+
+        span {
+            display: none;
+        }
+
+        input {
+            @include remify(font-size, 20px !important);
+            float: left;
+            display: inline-block;
+            margin: 8px 8px 8px 0;
+            line-height: 180%;
+        }
+    }
+
+	.grunion-field-label + textarea[placeholder] {
+	  	height: 200px;
+	  	max-height: none;
+	}
+
+    .grunion-radio-label {
+        display: inline-flex;
+        display: -webkit-inline-flex;
+        @include font(SANS);
+        @include remify(font-size, 18px);
+        line-height: 1.25;
+        color: $CLR_GRAY;
+        cursor: pointer;
+        /* need to overwrite grunion styles */
+        font-weight: 200 !important;
+        margin-bottom: 0 !important;
+        margin: 14px 0;
+    }
+
+    .grunion-radio-label > .radio {
+        @include isVisuallyHidden();
+    }
+
+    .contact-form label {
+         margin-bottom: 14px;
+         float: none;
+         display: block;
+         // font-family: "Lava","Harir Regular",Times New Roman,Georgia,serif;
+         font-style: Normal;
+         font-weight: 600;
+         font-stretch: normal;
+         // color: rgb(0, 0, 0);
+         // font-size: 1.125rem;
+         line-height: 1.5;
+         // margin: 56px 0 14px;
+    }
+
+    /* TARGET Internet Explorer ≤ 9 */
+    html[lang='\
+    en'] .grunion-radio-label > .radio {
+        position: static;
+        visibility: visible;
+        margin-right: 0;
+    }
+
+    .grunion-radio-label > .radio + span {
+        content: '';
+        visibility: visible;
+        position: relative;
+        top: 2px;
+        display: inline-block;
+        width: 16px;
+        min-width: 16px;
+        height: 16px;
+        vertical-align: top;
+        cursor: pointer;
+        border: 2px solid #d4d4c8;
+        background-color: transparent;
+        border-radius: 50%;
+        transition: all 0.25s linear;
+        margin-right: 10px;
+        /* Resovling Chrome Animation inconsistancies */
+        backface-visibility: hidden;
+    }
+
+    .grunion-radio-label > .radio:checked + span {
+        border-color: transparent;
+        background-color: #ffcc01;
+    }
+
+    input[submit],
+    .contact-submit > input[submit],
+    .contact-submit > .pushbutton-wide {
+        display: inline-block;
+        border: 0;
+        padding: 16px;
+        width: 100%;
+        box-sizing: border-box;
+        @include font(SANS_BLACK);
+        @include remify(font-size, 13px);
+        line-height: normal; /* set to normal to .btn can be usd on inputs in firefox with consistency */
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        cursor: pointer;
+        background-color: $CLR_ACCENT;
+        color: white;
+        appearance: none;
+        border-radius: 0;
+        @include transition(background-color 0.2s ease-in-out);
+        margin-top: 56px;
+    }
+
+    input[submit]:hover,
+    .contact-submit > .pushbutton-wide:hover,
+    .contact-submit > input[submit]:active,
+    .contact-submit > .pushbutton-wide:active {
+        background-color: $CLR_ACCENT_ACTIVE;
+    }
+}
+
+@include breakpoint(MD) {
+
+    .vendorForm, .feature {
+
+        .grunion-field-label {
+            @include remify(font-size, 20px);
+        }
+
+        input[submit],
+        .contact-submit > input[submit],
+        .contact-submit > .pushbutton-wide {
+            padding: 22px;
+            @include remify(font-size, 18px);
+        }
+
+    }
+
+}
+
+/* Right to Left Language support */
+[dir="rtl"] {
+
+    .vendorForm, .feature {
+
+        .grunion-radio-label > .radio {
+            margin-right: 0;
+            margin-left: 20px;
+            display: inline-flex;
+            font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+            font-weight: 200;
+            margin: 14px 0;
+            color: rgb(109, 110, 100);
+            font-size: 1.125rem;
+        }
+
+        .grunion-radio-label > .radio + span {
+            margin-left: 10px;
+            margin-right: 4px;
+        }
+
+    }
+
+}
+
+@media (max-width: 787px) {
+    [lang="ja"] {
+            // overriding line breaks in language font issue
+            body .contact-form label.checkbox,
+            body .contact-form label.radio {
+                @include remify(font-size, 21px);
+            }
+    }
+
+    .vendorForm, .feature {
+        .grunion-field-label + input[placeholder],
+        .grunion-field-label + textarea[placeholder] {
+            @include remify(font-size, 14px);
+        }
+    }
+
+
+}

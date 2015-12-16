@@ -1,0 +1,117 @@
+/* ---------------------------------------------------------------------
+ Search Box
+------------------------------------------------------------------------ */
+.searchBox {
+    padding: 5px 30px 5px 34px;
+    position: relative;
+}
+
+.searchBox-icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+    margin-top: -10px;
+    position: absolute;
+    left: 0;
+    top: 35%;
+    font-size: 0;
+    cursor: pointer;
+}
+
+.searchBox-icon > svg {
+    width: 100%;
+    height: 100%;
+}
+
+.searchBox-icon_lrg {
+    width: 27px;
+    height: 27px;
+    top: 43%;
+}
+
+.searchBox-input {
+    @include remify(font-size, 16px);
+    visibility: hidden;
+    width: 100%;
+    padding: 5px 0;
+    background: transparent;
+    border: 0;
+}
+
+.searchBox-input_tall {
+    @include font(SERIF);
+    @include remify(font-size, 58px);
+    border-bottom: 1px solid $CLR_GRAY_LIGHT;
+    width: 95%;
+    margin-left: 5%;
+}
+
+.searchBox-input.isOpen,
+.searchBox_inPanel > .searchBox-input {
+    margin-top: -7px;
+    margin-bottom: 7px;
+    visibility: visible;
+}
+
+.searchBox-input::placeholder {
+    color: #6d6e64;
+    text-transform: uppercase;
+}
+
+.searchBox_inPanelMobile {
+    padding: 4px 30px 17px 34px;
+    background-color: $CLR_GRAY_LIGHTER;
+}
+
+.searchBox-icon_inPanelMobile {
+    left: 8.5%;
+}
+
+.searchBox-input_inPanelMobile {
+    @include remify(font-size, 21px);
+    @include font(SERIF);
+    width: 85%;
+    margin-left: 10%;
+    // background-color: lime;
+
+}
+
+.searchBox-input_inPanelMobile.isOpen,
+.searchBox_inPanelMobile > .searchBox-input {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* Diabling IE user agent's 'x' close icon in input */
+.searchBox-input::-ms-clear {
+    display: none;
+}
+
+@include breakpoint(MD) {
+    .searchBox {
+        background-color: transparent;
+    }
+
+    .searchBox-input,
+    .searchBox-input.isOpen,
+    .searchBox_inPanel > .searchBox-input {
+        margin-top: 0;
+        margin-bottom: 0;
+        visibility: visible;
+    }
+
+    .searchBox-icon {
+        top: 50%;
+    }
+}
+
+
+/* Right to Left Language support */
+[dir="rtl"] {
+
+    .searchBox-icon {
+        right: 0;
+    }
+
+}

@@ -246,29 +246,27 @@ https://github.com/Bluefieldscom/intl-tel-input.git
         _appendListItems: function(countries, className) {
             // we create so many DOM elements, it is faster to build a temp string
             // and then add everything to the DOM in one go at the end
-            var $tmp = '';
+            var tmp = "";
             // for each country
             for (var i = 0; i < countries.length; i++) {
                 var c = countries[i];
                 if (this.isMobile) {
-                    $tmp = $('<option></option>');
-                    $tmp.data('dial-code', c.dialCode);
-                    $tmp.val(c.iso2);
-                    $tmp.text(c.name + ' +' + c.dialCode);
-                    this.countryList.append($tmp);
+                    tmp += "<option data-dial-code='" + c.dialCode + "' value='" + c.iso2 + "'>";
+                    tmp += c.name + " +" + c.dialCode;
+                    tmp += "</option>";
                 } else {
-                    $tmp = $('<li></li>');
-                    $tmp.addClass('country ' + className);
-                    $tmp.data('dial-code', c.dialCode);
-                    $tmp.data('country-code', c.iso2);
-                    this.countryList.append($tmp);
-                    $tmp = $('<div class="flag"></div>');
-                    $tmp.append($('<div></div>').addClass('iti-flag ' + c.iso2));
-                    $tmp.append('<span class="country-name"></span>').text(c.name);
-                    $tmp.append('<span class="dial-code"></span>').text(c.dialCode);
-                    this.countryList.append($tmp);
+                    // open the list item
+                    tmp += "<li class='country " + className + "' data-dial-code='" + c.dialCode + "' data-country-code='" + c.iso2 + "'>";
+                    // add the flag
+                    tmp += "<div class='flag'><div class='iti-flag " + c.iso2 + "'></div></div>";
+                    // and the country name and dial code
+                    tmp += "<span class='country-name'>" + c.name + "</span>";
+                    tmp += "<span class='dial-code'>+" + c.dialCode + "</span>";
+                    // close the list item
+                    tmp += "</li>";
                 }
             }
+            this.countryList.append(tmp);
         },
         // set the initial state of the input value and the selected flag
         _setInitialState: function() {

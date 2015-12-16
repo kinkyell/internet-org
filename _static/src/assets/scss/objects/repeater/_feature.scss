@@ -1,0 +1,69 @@
+/* ---------------------------------------------------------------------
+Media
+
+Feature content module
+------------------------------------------------------------------------ */
+
+.feature + .feature {
+    padding: 45px 0 0;
+}
+
+.feature > * + * {
+    margin-top: 19px;
+}
+
+.feature_tight {
+    padding: $SPACE_x1 0;
+}
+
+.feature_tight > * + * {
+    margin-top: $SPACE_x1;   
+}
+
+.feature-date {
+    margin-top: 5px;
+}
+
+.feature-media {
+    margin-top: 30px;
+}
+
+.feature-media > * {
+    // max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+
+.feature-media-caption > * {
+    @include font(SERIF_ITALIC);
+    @include remify(font-size, 14px);
+    line-height: 1.3636363;
+    color: $CLR_GRAY;
+    background-color: $CLR_GRAY_LIGHT;
+    padding: $SPACE_x1;
+}
+
+.feature-cta {
+    margin-top: 14px; /* To compensate for the extra white space added */
+}
+
+.feature-subHd {
+    margin-top: 32px;
+}
+
+.feature-gallery {
+    margin-top: 28px;
+}
+    
+
+.feature-ft {}
+
+@include breakpoint(MD) {
+    .feature + .feature {
+        padding: 58px 0 0;
+    }
+    .feature-media-caption > * {
+        @include remify(font-size, 22px);
+        padding: $SPACE_x2;
+    }
+}

@@ -1,0 +1,24 @@
+{
+  "generator-nerdery": {
+    "title": "internetorg.fi",
+    "name": "internetorg-fi",
+    "description": "internet.org website",
+    "version": "1.0.0",
+    "markup": "MarkupHandlebars",
+    "markupHandlebarsFeatures": [
+      "icons",
+      "seo"
+    ],
+    "styles": "StylesSass",
+    "scripts": "ScriptsRequireJs",
+    "framework": "FrameworkVanilla",
+    "frameworkVanillaFeatures": [
+      "jQuery"
+    ],
+    "scriptsVanillaNamespace": "NRD",
+    "generated": {
+      "version": "2.1.0",
+      "timestamp": "Mon Jun 29 2015 13:27:04 GMT-0500 (CDT)"
+    }
+  }
+}

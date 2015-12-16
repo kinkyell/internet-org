@@ -1,0 +1,87 @@
+//----------------------------------------------------------------------------
+//Colors
+//----------------------------------------------------------------------------
+$CLR_ACCENT: #ffcc02; // yellow
+$CLR_ACCENT_ACTIVE: #efbe02; // yellow ACTIVE
+$CLR_ACCENT_ALT: #efbe02; // yellow ALT
+$CLR_ACCENT_ALT_ACTIVE: #d6aa00; // yellow ALT ACTIVE
+$CLR_IMPACT: #ff6b00; // orange
+$CLR_IMPACT_ACTIVE: #ed6300; // orange ACTIVE
+$CLR_APPROACH: #fa5cb6; // magenta
+$CLR_APPROACH_ACTIVE: #eb4aa6; // magenta ACTIVE
+$CLR_MISSION: #9d25a0; // purple
+$CLR_MISSION_ACTIVE: #811784; // purple ACTIVE
+$CLR_FB: #3b5998; // facebook
+$CLR_FB_ACTIVE: #2d4a88; // facebook
+
+$CLR_BLACK: #000000; //Headlines
+$CLR_GRAY: #6d6e64; // Paragraph Text Color
+$CLR_GRAY_LIGHT: #d5d4ca; //Strokes
+$CLR_GRAY_LIGHTER: #efede4; // Main Background
+$CLR_BEIGE: #e0dccc; // Language Dropdown
+$CLR_BEIGE_LIGHT: #e9e6da; // Logo Watermark
+$CLR_WHITE: #ffffff;
+
+//----------------------------------------------------------------------------
+//Layout
+//----------------------------------------------------------------------------
+$BP_SM: 500px;
+$BP_MD: 769px; // sets tablet to use mobile view
+$BP_LG: 1280px;
+
+//----------------------------------------------------------------------------
+//Fonts
+//----------------------------------------------------------------------------
+
+// $FONT_SANS: 'Basis Grotesque Pro', Tahoma, Arial, Helvetica, sans-serif; // BGP Regular
+// $FONT_SANS_BLACK: 'Basis Grotesque Pro', Tahoma, Arial, Helvetica, sans-serif; // BGP Black
+// $FONT_SERIF: 'Lava Pro', Times New Roman,  serif; // Lava Pro Medium
+// $FONT_SERIF_ITALIC: 'Lava Pro', Times New Roman, serif; // Lava Pro Regular Italic
+$BASE_FONT_SIZE: 16px;
+
+@mixin font($style) {
+    @if $style == SANS {
+        font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+        font-weight: 200; // normal
+        font-style: normal;
+    } @else if $style == SANS_BLACK {
+        font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+        font-weight: 500;
+        font-style: normal;
+    } @else if $style == SERIF {
+        font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif ;
+        font-style: Normal;
+        font-weight: 600;
+        font-stretch: normal;
+    } @else if $style == SERIF_ITALIC {
+        font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif ;
+        font-style: Italic;
+        font-weight: 400;
+        font-stretch: normal;
+    } @else if $style == SERIF_MED_ITALIC {
+        font-family: "Lava", "Harir Bold", Timesgri New Roman, Georgia, serif ;
+        font-style: Italic;
+        font-weight: 500;
+        font-stretch: normal;
+    } @else if $style == SERIF_ALT {
+        font-family: "Harir", Times New Roman, Georgia, serif ;
+        font-style: Normal;
+        font-weight: 400;
+        font-stretch: normal;
+    } @else if $style == SERIF_ALT_BOLD {
+        font-family: "Harir", Times New Roman, Georgia, serif ;
+        font-style: Normal;
+        font-weight: 700;
+        font-stretch: normal;
+    }
+}
+
+//----------------------------------------------------------------------------
+//Spacing Hierarchy
+//----------------------------------------------------------------------------
+$SPACE_DEFAULT: 9px;
+$SPACE_x1: 16px;
+$SPACE_x2: 32px;
+$SPACE_x3: 37px;
+$SPACE_x4: 45px;
+$SPACE_x5: 75px;

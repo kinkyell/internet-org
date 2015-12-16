@@ -1,0 +1,152 @@
+/* ---------------------------------------------------------------------
+ Select Menu
+------------------------------------------------------------------------ */
+.select {
+    border: 1px solid #c7c7bf;
+    border-width: 1px 1px 0 1px;
+    position: relative;
+}
+
+.select.isAbove {
+    border: 1px solid #c7c7bf;
+    border-width: 0 1px 1px 1px;
+}
+
+.select:after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid #c7c7bf;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+
+.select.isAbove:after {
+    top: auto;
+    bottom: 100%;
+}
+
+.select > select {
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    @include remify(font-size, 13px);
+}
+
+.select-label,
+.select-menu-item {
+    padding: 16px;
+    background: #ffffff;
+    @include remify(font-size, 13px);
+    line-height: 1;
+    @include font(SANS_BLACK);
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+}
+
+.select-label:after, {
+    content: "";
+    display: inline-block;
+    width: 11px;
+    height: 7px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    transform: rotate(180deg);
+    transform-origin: center center;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" viewBox="0 0 11 7"><path d="M5.500,-0.005 L0.015,5.630 L1.357,7.009 L5.500,2.753 L9.643,7.009 L10.985,5.630 L5.500,-0.005 Z" /></svg>');
+}
+
+.isOpen > .select-label:after,
+.isAbove > .select-label:after {
+    transform: rotate(0deg);
+}
+
+.isOpen.isAbove > .select-label:after {
+    transform: rotate(180deg);
+}
+
+select:hover + .select-label,
+select:focus + .select-label,
+.select-menu-item:hover,
+.select-menu-item:focus {
+    outline: 0;
+    background: #efede4;
+}
+
+.select-label-light {
+    @include font(SANS);
+}
+
+.select-menu {
+    display: none;
+    max-height: 325px;
+    border: 1px solid #c7c7bf;
+    border-width: 1px 1px 0 1px;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: #ffffff;
+    overflow: auto;
+}
+
+.isAbove > .select-menu {
+    top: auto;
+    bottom: 100%;
+    border-width: 0 1px 1px 1px;
+}
+
+.select-menu-item:not(:focus) {
+    @include font(SANS);
+}
+
+.select > .select-menu {
+    padding-top: 1px;
+    border: 1px solid #c7c7bf;
+    border-width: 0 1px 1px 1px;
+    left: -1px;
+    right: -1px;
+}
+
+.select.isAbove > .select-menu {
+    border-width: 1px 1px 0 1px;
+}
+
+/* OPEN state */
+.select.isOpen > .select-menu {
+    display: block;
+}
+
+.select.isOpen:after {
+    left: 29px;
+    right: 29px;
+}
+
+@include breakpoint(MD) {
+    .select > select {
+        @include remify(font-size, 16px);
+    }
+
+    .select-label,
+    .select-menu-item {
+        padding: 22px;
+        @include remify(font-size, 18px);
+    }
+
+    .select-label:after, {
+        top: 30px;
+        right: 30px;
+    }
+}
