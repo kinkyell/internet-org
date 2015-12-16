@@ -178,22 +178,6 @@ define(function(require, exports, module) { // jshint ignore:line
 
 });
 
-
-// Detect Opera Mini
-var isOperaMini = Object.prototype.toString.call(window.operamini) === '[object OperaMini]';
-
-// If Opera Mini add class to body
-if (isOperaMini === true) {
-    alert('This website is running in Opera Mini');
-    var root = document.getElementsByTagName('body')[0];     
-    root.className += ' opera-mini';
-}
-
-// // Add Class Test
-// var root = document.getElementsByTagName('body')[0];     
-// root.className += ' opera-mini';
-
-
 // if browser is IE10
 var doc = document.documentElement;
 doc.setAttribute('data-useragent', navigator.userAgent);
