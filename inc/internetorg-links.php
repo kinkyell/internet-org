@@ -28,6 +28,9 @@ function internetorg_fix_link( $link ) {
             $replace = 'fbinternetorg.wordpress.com';
             $domain = 'info.internet.org';
         break;
+        case 'internetorgstage.jam3.net':
+            $domain = 'internetorgstage.jam3.net';
+        break;
         case 'internetorg.jam3.net':
             $domain = 'internetorg.jam3.net';
         break;
