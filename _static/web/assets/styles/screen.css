@@ -6685,5 +6685,40 @@ body.opera-mini .viewWindow-panel_story .viewWindow-panel-content-inner {
 body.opera-mini .viewWindow-panel_story .viewWindow-panel-content-inner > :first-child > .introBlock {
   margin-top: 0; }
 
+body.opera-mini .circleBtn::after, body.opera-mini .circleBtn::before {
+  display: none; }
+
+body.opera-mini .circleBtn_play {
+  background: url(../media/images/bg-circle-play.png) no-repeat scroll center center/auto 100%; }
+
+body.opera-mini .circleBtn {
+  margin: 20px; }
+
+body.opera-mini .theme-approach .link::before, body.opera-mini .theme-approach .link::after {
+  display: none; }
+
+body.opera-mini .link_preArrows::before, body.opera-mini .link_preArrows::after {
+  display: none; }
+
+body.opera-mini .contentOnMedia-link_ct {
+  margin-left: -60px;
+  margin-top: -60px; }
+
+body.opera-mini .link_twoArrows::before, body.opera-mini .link_twoArrows::after {
+  display: none; }
+
+body.opera-mini .arrowCta::before, body.opera-mini .arrowCta::after {
+  display: none; }
+
+body.opera-mini .arrowCta {
+  background: url("../media/images/bg-arrow-down-black.png") no-repeat scroll center center/auto 100%;
+  height: 17px;
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none; }
+
+body.opera-mini .link::before, body.opera-mini .link::after {
+  display: none; }
+
 .pwdByVip-txt_front {
   bottom: 20px; }

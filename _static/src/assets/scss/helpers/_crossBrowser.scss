@@ -146,6 +146,49 @@ body.opera-mini {
 	  margin-top: 0;
 	}
 
+	.circleBtn::after, .circleBtn::before {
+		display: none;
+	}
+
+	.circleBtn_play {
+		background: url(../media/images/bg-circle-play.png) no-repeat scroll center center / auto 100%;
+	}
+
+	.circleBtn {
+		margin: 20px;
+	}
+
+	.theme-approach .link::before, .theme-approach .link::after {
+		display: none;
+	}
+
+	.link_preArrows::before, .link_preArrows::after {
+		display: none;
+	}
+
+	.contentOnMedia-link_ct {
+		margin-left: -60px;
+		margin-top: -60px;
+	}
+
+	.link_twoArrows::before, .link_twoArrows::after {
+		display: none;
+	}
+
+	.arrowCta::before, .arrowCta::after {
+		display: none;
+	}
+
+	.arrowCta {
+		background: url("../media/images/bg-arrow-down-black.png") no-repeat scroll center center / auto 100%;
+		height: 17px;
+		transform: none;
+	}
+
+	.link::before, .link::after {
+		display: none;
+	}
+
 }
 
 .pwdByVip-txt_front {
