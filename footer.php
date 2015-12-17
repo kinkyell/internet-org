@@ -35,6 +35,19 @@
 
 	</script>
 
+	<script type="text/javascript">
+	(function() {
+	var s = document.createElement("script");
+	s.type = "text/javascript";
+	s.async = true;
+	s.src = '//api.usersnap.com/load/'+
+	        '6433b6db-f1b1-4f38-9318-a192bc4e2607.js';
+	var x = document.getElementsByTagName('script')[0];
+	x.parentNode.insertBefore(s, x);
+	})();
+	</script>
+
+
 	<?php /* <div><?php echo vip_powered_wpcom(); ?></div> */ ?>
 
 	<?php wp_footer(); /* required */ ?>
