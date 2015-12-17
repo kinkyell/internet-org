@@ -29,9 +29,9 @@
 		}
 
 		// remove this later..its just for testing
-		var root = document.getElementsByTagName('body')[0];     
-		root.className += ' opera-mini';
-		exit( 'Opera Mini Detected' );
+		// var root = document.getElementsByTagName('body')[0];     
+		// root.className += ' opera-mini';
+		// exit( 'Opera Mini Detected' );
 
 	</script>
 

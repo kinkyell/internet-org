@@ -20,15 +20,7 @@ body.opera-mini {
 		min-height: auto !important;
 		clear: both !important;
 	}
-
-	// .narrative-section:nth-child(2) {
-	// 	display: none;
-	// }
 	
-	.narrative-section-slides_short:first-child {
-		// display: none !important;
-	}
-
 	.narrative-section-bd {
 		height: auto;
 		overflow: hidden;
@@ -51,7 +43,6 @@ body.opera-mini {
 	.narrative-section:nth-of-type(1),
 	.narrative-section-slides-item {
 		height: 100% !important;
-		// min-height: 100% !important;
 	}
 
 	.narrative-section-slides-item {
@@ -110,10 +101,11 @@ body.opera-mini {
 	bottom: 20px;
 }
 
-
-
 // IE 10+
 
 // Android 4.0+
 
 // Opera 10
+
+
+
