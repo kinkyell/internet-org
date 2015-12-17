@@ -24,11 +24,6 @@
 			exit( 'Opera Mini Detected' );
 		}
 
-		// remove this later its jsut for testing
-		var root = document.getElementsByTagName('body')[0];
-		root.className += ' opera-mini';
-		exit( 'Opera Mini Detected' );
-
 		var loader = document.createElement('div');
 		loader.className = 'loadingIcon loadingIcon_opaque loadingIcon_topLayer js-assetShade';
 		document.body.appendChild(loader);
