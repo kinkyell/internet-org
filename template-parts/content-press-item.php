@@ -19,9 +19,11 @@
 
 			<div class="feature feature_tight">
 				<div class="feature-hd">
+					<a href="<?php the_permalink(); ?>">
 					<h3 class="hdg hdg_4">
 						<?php the_title(); ?>
 					</h3>
+					</a>
 				</div>
 				<div class="feature-date">
 					<div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray">

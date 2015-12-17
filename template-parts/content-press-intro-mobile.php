@@ -13,7 +13,7 @@
 
 		<div class="topicBlock">
 			<div class="topicBlock-hd topicBlock-hd_plus">
-				<h2 class="hdg hdg_2 mix-hdg_bold"><?php the_title(); ?></h2>
+				<h2 class="hdg hdg_2 mix-hdg_bold"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 			</div>
 
 			<?php $featured_image = internetorg_get_mobile_featured_image( get_post_type(), get_the_ID() );

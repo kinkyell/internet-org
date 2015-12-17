@@ -17,32 +17,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function internetorg_enqueue_scripts() {
 
-	wp_enqueue_style( 'internetorg-style', get_stylesheet_uri() );
-
-	/**
-	 * The domain name of the current website for use with basis font.
-	 *
-	 * @link http://fontdeck.com/support/tutorial
-	 *
-	 * @var string $domain_name
-	 */
-
-	wp_enqueue_style(
-		'internetorg-basis-font',
-		'//f.fontdeck.com/s/css/O8kUwotSPWxG+4YZdhfCL9LHc4g/' . $domain_name . '/61676.css',
-		array(),
-		null,
-		'all'
-	);
-
-	wp_enqueue_style(
-		'internetorg-lava-font',
-		'//fonts.typotheque.com/WF-026832-008977.css',
-		array(),
-		null,
-		'all'
-	);
-
 	wp_enqueue_style(
 		'internetorg-screen',
 		get_stylesheet_directory_uri() . '/_static/web/assets/styles/screen.css',

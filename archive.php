@@ -60,7 +60,7 @@ get_header();
 													<div class="feature feature_tight">
 														<div class="feature-hd">
 															<a href="<?php echo get_the_permalink(); ?>" class="link_sm" title="<?php the_title_attribute(); ?>">
-																<h2 class="hdg hdg_3"><?php echo esc_html( get_the_title() ); ?></h2>
+																<h2 class="hdg hdg_3"><a href="<?php the_permalink(); ?>" class="link"><?php echo esc_html( get_the_title() ); ?></a></h2>
 															</a>
 														</div>
 														<div class="feature-date">

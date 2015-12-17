@@ -234,7 +234,7 @@ define(function(require, exports, module) { // jshint ignore:line
             }
         });
 
-        if ( panel.currentFeatureImage != image ) {
+        if ( panel.currentFeatureImage !== image ) {
             panel.currentFeatureImage = image;
             viewWindow.replaceFeatureImage(image, direction);
         }
