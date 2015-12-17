@@ -6575,6 +6575,57 @@ body.opera-mini .narrative-section-bd_low {
   min-height: auto !important;
   clear: both !important; }
 
+body.opera-mini .arrowCta.arrowCta_light.js-narrativeAdvance {
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none;
+  background: url(../media/images/bg-arrow-down.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: auto 100%;
+  height: 17px; }
+  body.opera-mini .arrowCta.arrowCta_light.js-narrativeAdvance:before, body.opera-mini .arrowCta.arrowCta_light.js-narrativeAdvance:after {
+    display: none; }
+
+body.opera-mini .circleBtn_themeMission {
+  background: none;
+  border: none !important;
+  border-radius: none !important;
+  -webkit-transform: none !important;
+      -ms-transform: none !important;
+          transform: none !important;
+  background-color: none !important;
+  background: url(../media/images/bg-circle-purple.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: auto 100%; }
+
+body.opera-mini .circleBtn_themeImpact {
+  background: none;
+  border: none !important;
+  border-radius: none !important;
+  -webkit-transform: none !important;
+      -ms-transform: none !important;
+          transform: none !important;
+  background-color: none !important;
+  background: url(../media/images/bg-circle-orange.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: auto 100%; }
+
+body.opera-mini .circleBtn_themeApproach {
+  background: none;
+  border: none !important;
+  border-radius: none !important;
+  -webkit-transform: none !important;
+      -ms-transform: none !important;
+          transform: none !important;
+  background-color: none !important;
+  background: url(../media/images/bg-circle-pink.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% auto; }
+
 body.opera-mini .narrative-section-bd {
   height: auto;
   overflow: hidden; }
