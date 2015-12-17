@@ -1,24 +1,111 @@
 
 // Opera Mini
 body.opera-mini {
-	height: auto !important;
-	overflow: scroll !important;
+	
+	&,
+	.viewWindow,
+	.viewWindow-panel,
+	.viewWindow-panel-content,
+	.viewWindow-panel-content-inner,
+	.narrative, 
+	.narrativeView,
+	.narrative-section, 
+	.narrative-section-slides_short,
+	.narrative-section-bd,
+	.narrative-section-bd_low {
+		position: relative !important;
+		overflow: auto !important;
+		height: auto !important;
+		display: block !important;
+		min-height: auto !important;
+		clear: both !important;
+	}
+	
+	.narrative-section-bd {
+		height: auto;
+		overflow: hidden;
+	}
+
+	.narrative-section-bd-link {
+    position: relative;
+    right: 0;
+    bottom: 0;
+	}
+
+	.viewWindow {
+		width: 100%;
+		.viewWindow-panel {
+			width: 100%;
+		}
+	}
+
+	.narrative, 
+	.narrative-section:nth-of-type(1),
+	.narrative-section-slides-item {
+		height: 100% !important;
+	}
+
+	.narrative-section-slides-item {
+		background-position: 50% 35%;
+	}
+	
+	.narrative-section:nth-of-type(1) {
+		height: 640px !important;
+		position: relative;
+		.narrative-section-slides,
+		.narrative-section-slides-item {
+			height: 100% !important;
+			width: 100% !important;
+			position: absolute !important;
+		}
+		.narrative-section-bd,
+		.narrative-section-bd_low {
+			position: absolute !important;
+			bottom: 0;
+		}
+	}
+	.narrative-section-slides-item {
+		min-height: 300px !important;
+	}
+	.narrativeView-progress {
+		display: none !important;
+	}
+
+	.loadingIcon {
+		display: none !important;
+	}
+
+	.statementBlock-bd:last-of-type {
+		position: relative;
+	}
+
+	.viewWindow.isShifted > .viewWindow-panel:last-child {
+	    left: 0;
+	}
+	
+	.introBlock.u-isHiddenMedium {
+		display: none;
+	}
+
+	.viewWindow-panel_story .viewWindow-panel-content-inner {
+		border-top: 0;
+	}
+
+	.viewWindow-panel_story .viewWindow-panel-content-inner > :first-child > .introBlock {
+	  margin-top: 0;
+	}
+
 }
 
-
+.pwdByVip-txt_front {
+	bottom: 20px;
+}
 
 // IE 10+
 
-
-
-
 // Android 4.0+
 
-
-
-
 // Opera 10
-
 
 
 
