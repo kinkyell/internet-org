@@ -36,12 +36,16 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handlePanelScroll = this._onPanelScroll.bind(this);
         this._handleLoaderInit = this._onLoaderInit.bind(this);
         this.refreshScrollerInfo = this._refreshScrollerInfo.bind(this);
-        this.currentFeatureImage = $('#featurePanel')
-            .find('.viewWindow-panel-content-inner')
-            .first()
-            .css('background-image')
-            .replace(/^url|[\(\)]/g, '')
-            .replace(/"/g, '');
+        this.currentFeatureImage = null;
+
+        // Get feature image
+        var $featureImage = $('#featurePanel').find('.viewWindow-panel-content-inner').first();
+        if( $featureImage.length >= 1 ) {
+            this.currentFeatureImage = $featureImage
+                .css('background-image')
+                .replace(/^url|[\(\)]/g, '')
+                .replace(/"/g, '');
+        }
 
         /**
          * The last saved scroll top value
