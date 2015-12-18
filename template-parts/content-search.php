@@ -57,7 +57,7 @@ $theme = ( in_array( get_post_type( get_the_ID() ), $io_story_shadow ) ) ? 'appr
 	<div class="feature feature_tight">
 		<div class="feature-hd">
 			<h2 class="hdg hdg_4">
-				<a href="<?php echo get_the_permalink(); ?>" class="mix-link_small js-stateLink"
+				<a href="<?php the_permalink(); ?>" class="mix-link_small js-stateLink"
 			    data-title="<?php echo esc_attr( apply_filters( 'the_title',  get_the_title() ) ); ?>"
 			    data-image="<?php echo esc_url( $img );?>"
 			    data-mobile-image="<?php echo esc_url( $mobile_image );?>"

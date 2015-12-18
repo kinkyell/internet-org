@@ -5,8 +5,6 @@
  * @package Internet.org
  */
 
-error_reporting( 0 );
-
 // WP VIP Helper Plugin -- gives us access to the VIP only functions.
 define( 'IO_DIR', __DIR__ );
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
