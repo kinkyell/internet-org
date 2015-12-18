@@ -37,9 +37,6 @@ wpcom_vip_load_plugin( 'cache-nav-menu' );
 // Load the Opengraph VIP plugin.
 wpcom_vip_enable_opengraph();
 
-/** Rollerblade feedback plugin. */
-require IO_DIR . '/plugins/rollerblade-app/rollerblade.php';
-
 /** Filtering functions. */
 require IO_DIR . '/inc/internetorg-filters.php';
 
