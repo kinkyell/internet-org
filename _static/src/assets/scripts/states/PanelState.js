@@ -36,7 +36,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this._handlePanelScroll = this._onPanelScroll.bind(this);
         this._handleLoaderInit = this._onLoaderInit.bind(this);
         this.refreshScrollerInfo = this._refreshScrollerInfo.bind(this);
-        this.currentFeatureImage = null;
+        this.currentFeatureImage = '';
 
         // Get feature image
         var $featureImage = $('#featurePanel').find('.viewWindow-panel-content-inner').first();
@@ -44,7 +44,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this.currentFeatureImage = $featureImage
                 .css('background-image')
                 .replace(/^url|[\(\)]/g, '')
-                .replace(/"/g, '');
+                .replace(/"/g, '') || '';
         }
 
         /**
