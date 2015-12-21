@@ -6554,7 +6554,7 @@ body .contact-form input[type='text'], .contact-form input[type='email'] {
   .vendorForm .grunion-field-label, .contact-form label.radio, .vendorForm label.contact-form label {
     font-size: 1rem !important; } }
 
-html[data-useragent*='MSIE 10.0'] div.introBlock-inner {
+html[data-useragent*='MSIE 10.0'] div.introBlock.introBlock_fill {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
