@@ -184,6 +184,11 @@ body.opera-mini {
 		height: 17px;
 		transform: none;
 	}
+	
+	// hide arrows on main page for opera mini
+	.narrative-section-bd-ft {
+		display: none;
+	}
 
 	.link::before, .link::after {
 		display: none;

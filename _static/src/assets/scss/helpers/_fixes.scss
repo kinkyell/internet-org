@@ -52,9 +52,8 @@ body .contact-form input[type='text'], .contact-form input[type='email'] {
 	}
 }
 
-
 // IE10 fixes
-html[data-useragent*='MSIE 10.0'] div.container {
+html[data-useragent*='MSIE 10.0'] div.introBlock {
   display: flex;
   align-items: center;
 }
