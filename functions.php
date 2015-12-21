@@ -2373,3 +2373,11 @@ function vip_fb_internetorg_en_locale( $locale ) {
     return $locale;
 }
 add_filter( 'locale', 'vip_fb_internetorg_en_locale', 1000, 1 );
+
+/**
+ * Customize JetPack Open Graph Meta Tags implementation
+ */
+
+add_filter( 'jetpack_open_graph_tags', function( $og_tags ) {
+  return $og_tags;
+}, 11 );
