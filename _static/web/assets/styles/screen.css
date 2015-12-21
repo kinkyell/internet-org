@@ -6551,7 +6551,12 @@ body .contact-form input[type='text'], .contact-form input[type='email'] {
   .vendorForm .grunion-field-label, .contact-form label.radio, .vendorForm label.contact-form label {
     font-size: 1rem !important; } }
 
-html[data-useragent*='MSIE 10.0'] div.container {
+html[data-useragent*='MSIE 10.0'] div.introBlock-inner {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -6723,6 +6728,9 @@ body.opera-mini .arrowCta {
   -webkit-transform: none;
       -ms-transform: none;
           transform: none; }
+
+body.opera-mini .narrative-section-bd-ft {
+  display: none; }
 
 body.opera-mini .link::before, body.opera-mini .link::after {
   display: none; }
