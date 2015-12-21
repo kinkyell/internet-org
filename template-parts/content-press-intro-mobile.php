@@ -35,7 +35,5 @@
 
 	</div>
 
-	<?php get_template_part( 'template-parts/content', 'social-links' ); ?>
-
 </div>
 <!-- END MOBILE ONLY CONTENT HERE -->
