@@ -1,17 +1,18 @@
 
 // Opera Mini
 body.opera-mini {
-	
+
 	&,
 	.viewWindow,
 	.viewWindow-panel,
 	.viewWindow-panel-content,
 	.viewWindow-panel-content-inner,
-	.narrative, 
+	.narrative,
 	.narrativeView,
-	.narrative-section, 
+	.narrative-section,
 	.narrative-section-slides_short,
-	.narrative-section-bd {
+	.narrative-section-bd,
+	.narrative-section-bd_low {
 		position: relative !important;
 		overflow: auto !important;
 		height: auto !important;
@@ -20,10 +21,103 @@ body.opera-mini {
 		clear: both !important;
 	}
 
-	.narrative-section-slides_short {
-		height: 200px !important;
+    .arrowCta.arrowCta_light.js-narrativeAdvance {
+        transform: none;
+        background: url(../media/images/bg-arrow-down.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: auto 100%;
+        height: 17px;
+
+        &:before,
+        &:after {
+            display: none;
+        }
+    }
+
+    .circleBtn_themeMission {
+        background: none;
+        border: none !important;
+        border-radius: none !important;
+        transform: none !important;
+        background-color: none !important;
+        background: url(../media/images/bg-circle-purple.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: auto 100%;
+    }
+
+    .circleBtn_themeImpact {
+        background: none;
+        border: none !important;
+        border-radius: none !important;
+        transform: none !important;
+        background-color: none !important;
+        background: url(../media/images/bg-circle-orange.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: auto 100%;
+    }
+
+
+    .circleBtn_themeApproach {
+        background: none;
+        border: none !important;
+        border-radius: none !important;
+        transform: none !important;
+        background-color: none !important;
+        background: url(../media/images/bg-circle-pink.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 100% auto;
+    }
+
+	.narrative-section-bd {
+		height: auto;
+		overflow: hidden;
 	}
 
+	.narrative-section-bd-link {
+    position: relative;
+    right: 0;
+    bottom: 0;
+	}
+
+	.viewWindow {
+		width: 100%;
+		.viewWindow-panel {
+			width: 100%;
+		}
+	}
+
+	.narrative,
+	.narrative-section:nth-of-type(1),
+	.narrative-section-slides-item {
+		height: 100% !important;
+	}
+
+	.narrative-section-slides-item {
+		background-position: 50% 35%;
+	}
+
+	.narrative-section:nth-of-type(1) {
+		height: 640px !important;
+		position: relative;
+		.narrative-section-slides,
+		.narrative-section-slides-item {
+			height: 100% !important;
+			width: 100% !important;
+			position: absolute !important;
+		}
+		.narrative-section-bd,
+		.narrative-section-bd_low {
+			position: absolute !important;
+			bottom: 0;
+		}
+	}
+	.narrative-section-slides-item {
+		min-height: 300px !important;
+	}
 	.narrativeView-progress {
 		display: none !important;
 	}
@@ -32,10 +126,88 @@ body.opera-mini {
 		display: none !important;
 	}
 
+	.statementBlock-bd:last-of-type {
+		position: relative;
+	}
+
+	.viewWindow.isShifted > .viewWindow-panel:last-child {
+	    left: 0;
+	}
+
+	.introBlock.u-isHiddenMedium {
+		display: none;
+	}
+
+	.viewWindow-panel_story .viewWindow-panel-content-inner {
+		border-top: 0;
+	}
+
+	.viewWindow-panel_story .viewWindow-panel-content-inner > :first-child > .introBlock {
+	  margin-top: 0;
+	}
+
+	.circleBtn::after, .circleBtn::before {
+		display: none;
+	}
+
+	.circleBtn_play {
+		background: url(../media/images/bg-circle-play.png) no-repeat scroll center center / auto 100%;
+	}
+
+	.circleBtn {
+		margin: 20px;
+	}
+
+	.theme-approach .link::before, .theme-approach .link::after {
+		display: none;
+	}
+
+	.link_preArrows::before, .link_preArrows::after {
+		display: none;
+	}
+
+	.contentOnMedia-link_ct {
+		margin-left: -60px;
+		margin-top: -60px;
+	}
+
+	.link_twoArrows::before, .link_twoArrows::after {
+		display: none;
+	}
+
+	.arrowCta::before, .arrowCta::after {
+		display: none;
+	}
+
+	.arrowCta {
+		display: none;
+		background: url("../media/images/bg-arrow-down-black.png") no-repeat scroll center center / auto 100%;
+		height: 17px;
+		transform: none;
+	}
+
+	.link::before, .link::after {
+		display: none;
+	}
+
 }
 
-// IE 10+
+.pwdByVip-txt_front {
+	bottom: 20px;
+}
+
+// IE 10+ - Busted nav menu fixes
+.mainMenu-panel.js-menuView-panel {
+	z-index: 999;
+	.mainMenu-hd, .mainMenu-primary, .mainMenu-secondary, .mainMenu-lang {
+		z-index: 999999;
+	}
+}
+
 
 // Android 4.0+
 
 // Opera 10
+
+
+
