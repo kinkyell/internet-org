@@ -6554,8 +6554,15 @@ body .contact-form input[type='text'], .contact-form input[type='email'] {
   .vendorForm .grunion-field-label, .contact-form label.radio, .vendorForm label.contact-form label {
     font-size: 1rem !important; } }
 
-html[data-useragent*='MSIE 10.0'] div.introBlock-inner {
-  margin-top: 200px; }
+html[data-useragent*='MSIE 10.0'] div.container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
 
 /* ---------------------------------------------------------------------
  Browser Hacks

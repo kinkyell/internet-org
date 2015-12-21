@@ -1,0 +1,514 @@
+﻿#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Internet.org\n"
+"POT-Creation-Date: 2015-10-05 11:57-0500\n"
+"PO-Revision-Date: 2015-08-13 17:37-0500\n"
+"Last-Translator: Richard Aber <raber@nerdery.com>\n"
+"Language-Team: Richard Aber <raber@nerdery.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: 404.php:14 404.php:34
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "ਓਹੋ! ਉਸ ਪੰਨੇ ਨੂੰ ਲੱਭਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ ਹੈ।"
+
+#: 404.php:46 404.php:66
+msgid "Not found"
+msgstr "ਨਹੀਂ ਲੱਭਿਆ"
+
+#: 404.php:47 404.php:70
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr "ਇੰਝ ਜਾਪਦਾ ਹੈ ਕਿ ਇਸ ਸਥਾਨ ‘ਤੇ ਕੁਝ ਵੀ ਨਹੀਂ ਲੱਭਿਆ। ਕੋਈ ਖੋਜ ਅਜ਼ਮਾ ਸਕਦੇ ਹੋ?"
+
+#: archive.php:69 template-parts/content-press-item.php:38
+#: template-parts/content-search.php:40
+msgid "Read More"
+msgstr "ਹੋਰ ਜਾਣੋ"
+
+#: archive.php:91 home.php:75 search.php:80
+msgid "Show More"
+msgstr "ਹੋਰ ਦਿਖਾਓ"
+
+#: comments.php:29
+#, php-format
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "&ldquo;%2$s&rdquo; ‘ਤੇ ਇੱਕ ਵਿਚਾਰ"
+msgstr[1] "&ldquo;%2$s&rdquo; ‘ਤੇ ਵਿਚਾਰ%1$s"
+
+#: comments.php:38 comments.php:59
+msgid "Comment navigation"
+msgstr "ਟਿੱਪਣੀ ਨੈਵੀਗੇਸ਼ਨ"
+
+#: comments.php:41 comments.php:62
+msgid "Older Comments"
+msgstr "ਪੁਰਾਣੀਆਂ ਟਿੱਪਣੀਆਂ"
+
+#: comments.php:42 comments.php:63
+msgid "Newer Comments"
+msgstr "ਨਵੀਂਆਂ ਟਿੱਪਣੀਆਂ"
+
+#: comments.php:75
+msgid "Comments are closed."
+msgstr "ਟਿੱਪਣੀਆਂ ਬੰਦ ਹਨ।"
+
+#: functions.php:65
+msgid "Primary Menu"
+msgstr "ਮੁੱਖ ਮੀਨੂ"
+
+#: functions.php:66
+msgid "Primary Menu Sub Nav"
+msgstr "ਮੁੱਖ ਮੀਨੂ ਉਪ ਨੈਵੀ"
+
+#: functions.php:142
+msgid "Inline Image"
+msgstr "ਇਨਲਾਈਨ ਤਸਵੀਰ"
+
+#: functions.php:477
+msgctxt "Fieldmanager plugin meta field"
+msgid "Subtitle"
+msgstr "ਉਪਸਿਰਲੇਖ"
+
+#: functions.php:1498 plugins/internetorg-custom-posttypes/video.php:30
+msgid "Video"
+msgstr "ਵੀਡੀਓ"
+
+#: functions.php:1502
+msgid "Video To Insert"
+msgstr "ਸੰਮਿਲਿਤ ਕਰਨ ਲਈ ਵੀਡੀਓ"
+
+#: functions.php:1536
+msgid "Click Me"
+msgstr "ਮੈਨੂੰ ਕਲਿੱਕ ਕਰੋ"
+
+#: functions.php:1656
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:150
+msgid "Link"
+msgstr "ਲਿੰਕ"
+
+#: functions.php:1660
+msgid "Link CSS Class"
+msgstr "CSS ਸ਼੍ਰੇਣੀ ਲਿੰਕ ਕਰੋ"
+
+#: functions.php:1664
+msgid "Arrow Link"
+msgstr "ਤੀਰ ਲਿੰਕ"
+
+#: functions.php:1665
+msgid "Inline Link"
+msgstr "ਇਨਲਾਈਨ ਲਿੰਕ"
+
+#: functions.php:1669
+msgid "Link Type"
+msgstr "ਲਿੰਕ ਦੀ ਕਿਸਮ"
+
+#: functions.php:1673
+msgid "Internal Link"
+msgstr "ਅੰਦਰੂਨੀ ਲਿੰਕ"
+
+#: functions.php:1674
+msgid "External Link"
+msgstr "ਬਾਹਰੀ ਲਿੰਕ"
+
+#: functions.php:1678
+msgid "External URL"
+msgstr "ਬਾਹਰੀ URL"
+
+#: functions.php:1683
+#: plugins/internetorg-custom-posttypes/content-widget.php:71
+#: plugins/internetorg-custom-posttypes/content-widget.php:90
+msgid "URL"
+msgstr "URL"
+
+#: functions.php:1691
+msgid "Link Text"
+msgstr "ਲਿੰਕ ਟੈਕਸਟ"
+
+#: functions.php:1713
+msgid "Thank you!"
+msgstr "ਤੁਹਾਡਾ ਧੰਨਵਾਦ!"
+
+#: functions.php:1841
+msgid "All Posts"
+msgstr "ਸਾਰੀਆਂ ਪੋਸਟ"
+
+#: functions.php:1983
+msgid "Learn More"
+msgstr "ਹੋਰ ਜਾਣੋ"
+
+#: inc/language.php:26
+msgid "English"
+msgstr "ਅੰਗ੍ਰੇਜ਼ੀ"
+
+#: inc/template-tags.php:45
+#, php-format
+msgctxt "post date"
+msgid "%s"
+msgstr "%s"
+
+#: inc/template-tags.php:57 inc/template-tags.php:66
+msgid ", "
+msgstr ", "
+
+#: inc/template-tags.php:60
+#, php-format
+msgid "Posted in %1$s"
+msgstr "%1$s ਵਿੱਚ ਪੋਸਟ ਕੀਤਾ ਗਿਆ"
+
+#: inc/template-tags.php:69
+#, php-format
+msgid "Tagged %1$s"
+msgstr "ਟੈਗ ਕੀਤਾ ਗਿਆ%1$s"
+
+#: inc/template-tags.php:78
+msgid "Leave a comment"
+msgstr "ਕੋਈ ਟਿੱਪਣੀ ਛੱਡੋ"
+
+#: inc/template-tags.php:79
+msgid "1 Comment"
+msgstr "1 ਟਿੱਪਣੀ"
+
+#: inc/template-tags.php:80
+msgid "% Comments"
+msgstr "% ਟਿੱਪਣੀਆਂ"
+
+#: inc/template-tags.php:85 inc/template-tags.php:107
+#: template-parts/content-page-entry-end.php:11
+#: template-parts/content-page.php:26
+msgid "Edit"
+msgstr "ਸੋਧੋ"
+
+#: inc/template-tags.php:103
+msgid "Read More &rarr;"
+msgstr " ਹੋਰ ਪੜ੍ਹੋ &rarr;"
+
+#: inc/template-tags.php:167
+#, php-format
+msgid "Facebook &copy; %1$s"
+msgstr "Facebook &copy; %1$s"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:83
+msgid "Section"
+msgstr "ਸੈਕਸ਼ਨ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:84
+#, php-format
+msgid "Section: %s"
+msgstr "ਸੈਕਸ਼ਨ: %s"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:85
+msgid "Add another Content Area"
+msgstr "ਕੋਈ ਹੋਰ ਸਮੱਗਰੀ ਖੇਤਰ ਸ਼ਾਮਲ ਕਰੋ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:91
+msgid "Section Title"
+msgstr "ਸੈਕਸ਼ਨ ਸਿਰਲੇਖ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:92
+msgid "Section Name"
+msgstr "ਸੈਕਸ਼ਨ ਨਾਂ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:93
+msgid "Description"
+msgstr "ਵਰਣਨ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:94
+msgid "Source"
+msgstr "ਸਰੋਤ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:98
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:145
+msgid "Page, Post, or Story"
+msgstr "ਪੰਨਾ, ਪੋਸਟ ਜਾਂ ਕਹਾਣੀ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:99
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:146
+msgid "Custom Link"
+msgstr "ਕਸਟਮ ਲਿੰਕ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:103
+msgid "Section Slug"
+msgstr "ਸੈਕਸ਼ਨ ਕਿਰਮ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:111
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:158
+msgid "URL Source"
+msgstr "URL ਸਰੋਤ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:123
+msgid "Approach"
+msgstr "ਪਹੁੰਚ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:124
+msgid "Mission"
+msgstr "ਮਿਸ਼ਨ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:125
+msgid "Impact"
+msgstr "ਪ੍ਰਭਾਵ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:128
+#: plugins/internetorg-custom-posttypes/campaign.php:91
+msgid "Background Image"
+msgstr "ਬੈਕਗ੍ਰਾਉਂਡ ਤਸਵੀਰ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:131
+msgid "Call to action"
+msgstr "ਕਾਲ ਟੂ ਐਕਸ਼ਨ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:132
+#, php-format
+msgid "Call to action: %s"
+msgstr "ਕਾਲ ਟੂ ਐਕਸ਼ਨ: %s"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:133
+msgid "Add another CTA"
+msgstr "ਕੋਈ ਹੋਰ CTA ਸ਼ਾਮਲ ਕਰੋ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:139
+msgid "CTA Title"
+msgstr "CTA ਸਿਰਲੇਖ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:140
+msgid "Content"
+msgstr "ਸਮੱਗਰੀ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:141
+msgid "Link Source"
+msgstr "ਲਿੰਕ ਸਰੋਤ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:167
+msgid "Image"
+msgstr "ਤਸਵੀਰ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:174
+msgid "Content Areas"
+msgstr "ਸਮੱਗਰੀ ਖੇਤਰ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:212
+#: plugins/internetorg-custom-posttypes/campaign.php:83
+#: plugins/internetorg-custom-posttypes/campaign.php:92
+#: plugins/internetorg-custom-posttypes/story.php:69
+msgid "Subtitle"
+msgstr "ਉਪਸਿਰਲੇਖ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:221
+#: plugins/internetorg-custom-posttypes/story.php:78
+msgid "Additional page configuration"
+msgstr "ਅਤਿਰਿਕਤ ਪੰਨਾ ਕਨਫ਼ੀਗ੍ਰੇਸ਼ਨ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:233
+msgid "Intro Title"
+msgstr "ਭੂਮਿਕਾ ਸਿਰਲੇਖ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:238
+msgid "Intro Copy"
+msgstr "ਭੂਮਿਕਾ ਪ੍ਰਤੀਲਿਪੀ"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:250
+msgid "Page Intro"
+msgstr "ਪੰਨਾ ਭੂਮਿਕਾ"
+
+#: plugins/internetorg-custom-posttypes/campaign.php:31
+msgid "Campaigns"
+msgstr "ਮੁਹਿੰਮਾਂ"
+
+#: plugins/internetorg-custom-posttypes/campaign.php:32
+msgid "Campaign"
+msgstr "ਮਹਿੰਮ"
+
+#: plugins/internetorg-custom-posttypes/campaign.php:73
+msgid "Add Background"
+msgstr "ਬੈਕਗ੍ਰਾਉਂਡ ਸ਼ਾਮਲ ਕਰੋ"
+
+#: plugins/internetorg-custom-posttypes/campaign.php:74
+msgid "Select Background Image"
+msgstr "ਬੈਕਗ੍ਰਾਉਂਡ ਤਸਵੀਰ ਚੁਣੋ"
+
+#: plugins/internetorg-custom-posttypes/campaign.php:75
+msgid "Use Image as Background"
+msgstr "ਤਸਵੀਰ ਨੂੰ ਬੈਕਗ੍ਰਾਉਂਡ ਵੱਜੋਂ ਉਪਯੋਗ ਕਰੋ"
+
+#: plugins/internetorg-custom-posttypes/content-widget.php:31
+msgid "Content Widgets"
+msgstr "ਸਮੱਗਰੀ ਵਿਜੇਟਸ"
+
+#: plugins/internetorg-custom-posttypes/content-widget.php:32
+msgid "Content Widget"
+msgstr "ਸਮੱਗਰੀ ਵਿਜੇਟਸ"
+
+#: plugins/internetorg-custom-posttypes/content-widget.php:63
+#: plugins/internetorg-custom-posttypes/content-widget.php:76
+#: plugins/internetorg-custom-posttypes/content-widget.php:82
+#: plugins/internetorg-custom-posttypes/content-widget.php:95
+msgid "Call to Action"
+msgstr "ਕਾਲ ਟੂ ਐਕਸ਼ਨ"
+
+#: plugins/internetorg-custom-posttypes/content-widget.php:64
+#: plugins/internetorg-custom-posttypes/content-widget.php:83
+#, php-format
+msgid "Call to Action: %s"
+msgstr "ਕਾਲ ਟੂ ਐਕਸ਼ਨ: %s"
+
+#: plugins/internetorg-custom-posttypes/content-widget.php:70
+#: plugins/internetorg-custom-posttypes/content-widget.php:89
+msgid "Button Label"
+msgstr "ਬਟਨ ਲੇਬਲ"
+
+#: plugins/internetorg-custom-posttypes/content-widget.php:72
+#: plugins/internetorg-custom-posttypes/content-widget.php:91
+msgid "File"
+msgstr "ਫਾਈਲ"
+
+#: plugins/internetorg-custom-posttypes/story.php:31
+msgid "Stories"
+msgstr "ਕਹਾਣੀਆਂ"
+
+#: plugins/internetorg-custom-posttypes/story.php:32
+msgid "Story"
+msgstr "ਕਹਾਣੀਆਂ"
+
+#: plugins/internetorg-custom-posttypes/video.php:29
+msgid "Videos"
+msgstr "ਵੀਡੀਓਜ਼"
+
+#: plugins/internetorg-custom-posttypes/video.php:64
+#: plugins/internetorg-custom-posttypes/video.php:75
+msgid "Video Duration"
+msgstr "ਵੀਡੀਓ ਦੀ ਮਿਆਦ"
+
+#: plugins/internetorg-custom-posttypes/video.php:71
+#: plugins/internetorg-custom-posttypes/video.php:76
+msgid "Video URL"
+msgstr "ਵੀਡੀਓ URL"
+
+#: searchform.php:17 template-parts/content-search-mobile.php:17
+#: template-parts/header-search.php:17
+msgctxt "label"
+msgid "Search"
+msgstr "ਖੋਜ ਕਰੋ"
+
+#: template-parts/content-free-services.php:24
+msgid "Full List of Free Services"
+msgstr "ਮੁਫ਼ਤ ਸੇਵਾਵਾਂ ਦੀ ਸਮੁੱਚੀ ਸੂਚੀ"
+
+#: template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr "ਕੁਝ ਨਹੀਂ ਲੱਭਿਆ"
+
+#: template-parts/content-none.php:20
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+"ਕੀ ਆਪਣੀ ਪਹਿਲੀ ਪੋਸਟ ਨੂੰ ਪ੍ਰਕਾਸ਼ਿਤ ਕਰਨ ਲਈ ਤਿਆਰ ਹੋ? <a href=\"%1$s\">ਇੱਥੇ ਅਰੰਭ ਕਰੋ</a>।"
+
+#: template-parts/content-none.php:24
+#: template-parts/content-search-none.php:14
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"ਮੁਆਫ਼ ਕਰਨਾ, ਲੇਕਿਨ ਤੁਹਾਡੇ ਖੋਜ ਸ਼ਬਦਾਂ ਨਾਲ ਕੁਝ ਵੀ ਮੇਲ ਨਹੀਂ ਖਾਂਦਾ। ਕਿਰਪ ਕਰੇਕ ਕੁਝ ਵੱਖਰੇ ਕੀਵਰਡਸ ਨਾਲ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
+
+#: template-parts/content-none.php:29
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+"ਇੰਜ ਜਾਪਦਾ ਹੈ ਕਿ ਅਸੀਂ ਉਹ ਨਹੀਂ ਲੱਭ ਸਕਦੇ ਹਾਂ ਜੋ ਤੁਸੀਂ ਲੱਭ ਰਹੇ ਹੋ। ਸ਼ਾਇਦ ਖੋਜ ਕਰਨਾ ਮੱਦਦ ਕਰ ਸਕਦਾ ਹੈ।"
+
+#: template-parts/content-page-contact-social-block.php:17
+msgid "Follow the Project"
+msgstr "ਪ੍ਰਾਜੈਕਟ ਦਾ ਅਨੁਸਰਣ ਕਰੋ"
+
+#: template-parts/content-page-contact-social-block.php:22
+msgid "Stay updated about Internet.org."
+msgstr "Internet.org ਬਾਰੇ ਨਵੀਨਤਮ ਰਹੋ"
+
+#: template-parts/content-page-contact-social-block.php:27
+msgid "https://fb.me/Internetdotorg"
+msgstr "https://fb.me/Internetdotorg"
+
+#: template-parts/content-page-contact-social-block.php:29
+msgid "Like us on Facebook"
+msgstr "Facebook ‘ਤੇ ਸਾਨੂੰ ਪਸੰਦ ਕਰੋ"
+
+#: template-parts/content-page-entry-content.php:14
+#: template-parts/content-page.php:19 template-parts/content-single.php:23
+#: template-parts/content.php:32
+msgid "Pages:"
+msgstr "ਪੰਨੇ:"
+
+#: template-parts/content-page-next-page.php:34
+msgid "Learn About"
+msgstr "ਇਸ ਬਾਰੇ ਜਾਣੋ"
+
+#: template-parts/content-search-mobile.php:19
+#: template-parts/header-search.php:19
+msgctxt "placeholder"
+msgid "Search"
+msgstr "ਖੋਜ ਕਰੋ"
+
+#: template-parts/content-single-more.php:18
+msgid "More Posts"
+msgstr "ਹੋਰ ਪੋਸਟ"
+
+#: template-parts/content-single-more.php:43
+#: template-parts/content-single-more.php:71
+msgid "Read"
+msgstr "ਪੜ੍ਹੋ"
+
+#: template-parts/content-social-links.php:12
+msgid "Facebook"
+msgstr "Facebook"
+
+#: template-parts/content-social-links.php:13
+msgid "Twitter"
+msgstr "Twitter"
+
+#: template-parts/content.php:25
+#, php-format
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr "%s <span class=\"meta-nav\">&rarr;</span> ਨੂੰ ਪੜ੍ਹਨਾ ਜਾਰੀ ਰੱਖੋ"
+
+#: template-parts/header-buttons.php:20
+msgid "Toggle Navigation"
+msgstr "ਟੋੱਗਲ ਨੈਵੀਗੇਸ਼ਨ"
+
+#: template-parts/header-buttons.php:20
+msgid "Menu"
+msgstr "ਮੀਨੂ"
+
+#. Theme Name of the plugin/theme
+msgid "Internet.org"
+msgstr "Internet.org"
+
+#. Theme URI of the plugin/theme
+msgid "http://underscores.me/"
+msgstr "http://underscores.me/"
+
+#. Description of the plugin/theme
+msgid "A Custom Theme for Internet.org."
+msgstr "Internet.org ਲਈ ਕਸਟਮ ਥੀਮ।"
+
+#. Author of the plugin/theme
+msgid "The Nerdery"
+msgstr "The Nerdery"
+
+#. Author URI of the plugin/theme
+msgid "http://www.nerdery.com"
+msgstr "http://www.nerdery.com"
+

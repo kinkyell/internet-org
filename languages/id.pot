@@ -1,0 +1,514 @@
+﻿#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Internet.org\n"
+"POT-Creation-Date: 2015-10-05 11:57-0500\n"
+"PO-Revision-Date: 2015-08-13 17:37-0500\n"
+"Last-Translator: Richard Aber <raber@nerdery.com>\n"
+"Language-Team: Richard Aber <raber@nerdery.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: 404.php:14 404.php:34
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Ups! Halaman tersebut tidak dapat ditemukan."
+
+#: 404.php:46 404.php:66
+msgid "Not found"
+msgstr "Tidak ditemukan"
+
+#: 404.php:47 404.php:70
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr "Sepertinya tidak ada yang ditemukan di lokasi ini. Ingin mencoba mencari?"
+
+#: archive.php:69 template-parts/content-press-item.php:38
+#: template-parts/content-search.php:40
+msgid "Read More"
+msgstr "Baca Selengkapnya"
+
+#: archive.php:91 home.php:75 search.php:80
+msgid "Show More"
+msgstr "Tampilkan Selengkapnya"
+
+#: comments.php:29
+#, php-format
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "Satu gagasan di &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s gagasan di &ldquo;%2$s&rdquo;"
+
+#: comments.php:38 comments.php:59
+msgid "Comment navigation"
+msgstr "Navigasi komentar"
+
+#: comments.php:41 comments.php:62
+msgid "Older Comments"
+msgstr "Komentar Lebih Lama"
+
+#: comments.php:42 comments.php:63
+msgid "Newer Comments"
+msgstr "Komentar Lebih Baru"
+
+#: comments.php:75
+msgid "Comments are closed."
+msgstr "Komentar ditutup."
+
+#: functions.php:65
+msgid "Primary Menu"
+msgstr "Menu Utama"
+
+#: functions.php:66
+msgid "Primary Menu Sub Nav"
+msgstr "Sub Nav Menu Utama"
+
+#: functions.php:142
+msgid "Inline Image"
+msgstr "Gambar Inline"
+
+#: functions.php:477
+msgctxt "Fieldmanager plugin meta field"
+msgid "Subtitle"
+msgstr "Subtitle"
+
+#: functions.php:1498 plugins/internetorg-custom-posttypes/video.php:30
+msgid "Video"
+msgstr "Video"
+
+#: functions.php:1502
+msgid "Video To Insert"
+msgstr "Video untuk Disisipkan"
+
+#: functions.php:1536
+msgid "Click Me"
+msgstr "Klik Saya"
+
+#: functions.php:1656
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:150
+msgid "Link"
+msgstr "Tautan"
+
+#: functions.php:1660
+msgid "Link CSS Class"
+msgstr "Kelas CSS Tautan"
+
+#: functions.php:1664
+msgid "Arrow Link"
+msgstr "Tautan Panah"
+
+#: functions.php:1665
+msgid "Inline Link"
+msgstr "Tautan Inline"
+
+#: functions.php:1669
+msgid "Link Type"
+msgstr "Jenis Tautan"
+
+#: functions.php:1673
+msgid "Internal Link"
+msgstr "Tautan Internal"
+
+#: functions.php:1674
+msgid "External Link"
+msgstr "Tautan Eksternal"
+
+#: functions.php:1678
+msgid "External URL"
+msgstr "URL Eksternal"
+
+#: functions.php:1683
+#: plugins/internetorg-custom-posttypes/content-widget.php:71
+#: plugins/internetorg-custom-posttypes/content-widget.php:90
+msgid "URL"
+msgstr "URL"
+
+#: functions.php:1691
+msgid "Link Text"
+msgstr "Teks Tautan"
+
+#: functions.php:1713
+msgid "Thank you!"
+msgstr "Terima kasih!"
+
+#: functions.php:1841
+msgid "All Posts"
+msgstr "Semua Kiriman"
+
+#: functions.php:1983
+msgid "Learn More"
+msgstr "Pelajari Selengkapnya"
+
+#: inc/language.php:26
+msgid "English"
+msgstr "Bahasa Indonesia"
+
+#: inc/template-tags.php:45
+#, php-format
+msgctxt "post date"
+msgid "%s"
+msgstr "%s"
+
+#: inc/template-tags.php:57 inc/template-tags.php:66
+msgid ", "
+msgstr ","
+
+#: inc/template-tags.php:60
+#, php-format
+msgid "Posted in %1$s"
+msgstr "Dikirimkan di %1$s"
+
+#: inc/template-tags.php:69
+#, php-format
+msgid "Tagged %1$s"
+msgstr "Ditandai %1$s"
+
+#: inc/template-tags.php:78
+msgid "Leave a comment"
+msgstr "Tinggalkan komentar"
+
+#: inc/template-tags.php:79
+msgid "1 Comment"
+msgstr "1 Komentar"
+
+#: inc/template-tags.php:80
+msgid "% Comments"
+msgstr "% Komentar"
+
+#: inc/template-tags.php:85 inc/template-tags.php:107
+#: template-parts/content-page-entry-end.php:11
+#: template-parts/content-page.php:26
+msgid "Edit"
+msgstr "Sunting"
+
+#: inc/template-tags.php:103
+msgid "Read More &rarr;"
+msgstr "Baca Selengkapnya &rarr;"
+
+#: inc/template-tags.php:167
+#, php-format
+msgid "Facebook &copy; %1$s"
+msgstr "Facebook &copy; %1$s"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:83
+msgid "Section"
+msgstr "Bagian"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:84
+#, php-format
+msgid "Section: %s"
+msgstr "Bagian: %s"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:85
+msgid "Add another Content Area"
+msgstr "Tambahkan Bidang Konten lainnya"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:91
+msgid "Section Title"
+msgstr "Judul Bagian"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:92
+msgid "Section Name"
+msgstr "Nama Bagian"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:93
+msgid "Description"
+msgstr "Deskripsi"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:94
+msgid "Source"
+msgstr "Sumber"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:98
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:145
+msgid "Page, Post, or Story"
+msgstr "Halaman, Kiriman, atau Cerita"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:99
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:146
+msgid "Custom Link"
+msgstr "Tautan Khusus"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:103
+msgid "Section Slug"
+msgstr "Slug Bagian"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:111
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:158
+msgid "URL Source"
+msgstr "Sumber URL"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:123
+msgid "Approach"
+msgstr "Pendekatan"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:124
+msgid "Mission"
+msgstr "Misi"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:125
+msgid "Impact"
+msgstr "Dampak"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:128
+#: plugins/internetorg-custom-posttypes/campaign.php:91
+msgid "Background Image"
+msgstr "Gambar Latar Belakang"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:131
+msgid "Call to action"
+msgstr "Ajakan bertindak"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:132
+#, php-format
+msgid "Call to action: %s"
+msgstr "Ajakan bertindak: %s"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:133
+msgid "Add another CTA"
+msgstr "Tambahkan CTA lainnya"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:139
+msgid "CTA Title"
+msgstr "Judul CTA"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:140
+msgid "Content"
+msgstr "Konten"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:141
+msgid "Link Source"
+msgstr "Sumber Tautan"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:167
+msgid "Image"
+msgstr "Gambar"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:174
+msgid "Content Areas"
+msgstr "Area Konten"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:212
+#: plugins/internetorg-custom-posttypes/campaign.php:83
+#: plugins/internetorg-custom-posttypes/campaign.php:92
+#: plugins/internetorg-custom-posttypes/story.php:69
+msgid "Subtitle"
+msgstr "Subtitle"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:221
+#: plugins/internetorg-custom-posttypes/story.php:78
+msgid "Additional page configuration"
+msgstr "Konfigurasi halaman tambahan"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:233
+msgid "Intro Title"
+msgstr "Judul Intro"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:238
+msgid "Intro Copy"
+msgstr "Salinan Intro"
+
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:250
+msgid "Page Intro"
+msgstr "Intro Halaman"
+
+#: plugins/internetorg-custom-posttypes/campaign.php:31
+msgid "Campaigns"
+msgstr "Kampanye"
+
+#: plugins/internetorg-custom-posttypes/campaign.php:32
+msgid "Campaign"
+msgstr "Kampanye"
+
+#: plugins/internetorg-custom-posttypes/campaign.php:73
+msgid "Add Background"
+msgstr "Tambahkan Latar Belakang"
+
+#: plugins/internetorg-custom-posttypes/campaign.php:74
+msgid "Select Background Image"
+msgstr "Pilih Gambar Latar Belakang"
+
+#: plugins/internetorg-custom-posttypes/campaign.php:75
+msgid "Use Image as Background"
+msgstr "Gunakan Gambar sebagai Latar Belakang"
+
+#: plugins/internetorg-custom-posttypes/content-widget.php:31
+msgid "Content Widgets"
+msgstr "Widget Konten"
+
+#: plugins/internetorg-custom-posttypes/content-widget.php:32
+msgid "Content Widget"
+msgstr "Widget Konten"
+
+#: plugins/internetorg-custom-posttypes/content-widget.php:63
+#: plugins/internetorg-custom-posttypes/content-widget.php:76
+#: plugins/internetorg-custom-posttypes/content-widget.php:82
+#: plugins/internetorg-custom-posttypes/content-widget.php:95
+msgid "Call to Action"
+msgstr "Ajakan Bertindak"
+
+#: plugins/internetorg-custom-posttypes/content-widget.php:64
+#: plugins/internetorg-custom-posttypes/content-widget.php:83
+#, php-format
+msgid "Call to Action: %s"
+msgstr "Ajakan Bertindak: %s"
+
+#: plugins/internetorg-custom-posttypes/content-widget.php:70
+#: plugins/internetorg-custom-posttypes/content-widget.php:89
+msgid "Button Label"
+msgstr "Label Tombol"
+
+#: plugins/internetorg-custom-posttypes/content-widget.php:72
+#: plugins/internetorg-custom-posttypes/content-widget.php:91
+msgid "File"
+msgstr "File"
+
+#: plugins/internetorg-custom-posttypes/story.php:31
+msgid "Stories"
+msgstr "Berita"
+
+#: plugins/internetorg-custom-posttypes/story.php:32
+msgid "Story"
+msgstr "Berita"
+
+#: plugins/internetorg-custom-posttypes/video.php:29
+msgid "Videos"
+msgstr "Video"
+
+#: plugins/internetorg-custom-posttypes/video.php:64
+#: plugins/internetorg-custom-posttypes/video.php:75
+msgid "Video Duration"
+msgstr "Durasi Video"
+
+#: plugins/internetorg-custom-posttypes/video.php:71
+#: plugins/internetorg-custom-posttypes/video.php:76
+msgid "Video URL"
+msgstr "URL Video"
+
+#: searchform.php:17 template-parts/content-search-mobile.php:17
+#: template-parts/header-search.php:17
+msgctxt "label"
+msgid "Search"
+msgstr "Pencarian"
+
+#: template-parts/content-free-services.php:24
+msgid "Full List of Free Services"
+msgstr "Daftar Lengkap Layanan Gratis"
+
+#: template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr "Tidak Ada yang Ditemukan"
+
+#: template-parts/content-none.php:20
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+"Siap menerbitkan kiriman pertama? <a href=\"%1$s\">Mulai di sini</a>."
+
+#: template-parts/content-none.php:24
+#: template-parts/content-search-none.php:14
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"Maaf, tetapi tidak ada yang cocok dengan istilah pencarian Anda. Harap coba lagi dengan beberapa kata kunci pencarian yang berbeda."
+
+#: template-parts/content-none.php:29
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+"Sepertinya kami tidak dapat menemukan apa yang Anda cari. Mungkin mencari dapat membantu."
+
+#: template-parts/content-page-contact-social-block.php:17
+msgid "Follow the Project"
+msgstr "Ikuti Proyek."
+
+#: template-parts/content-page-contact-social-block.php:22
+msgid "Stay updated about Internet.org."
+msgstr "Tetap dapatkan info terkini tentang Internet.org."
+
+#: template-parts/content-page-contact-social-block.php:27
+msgid "https://fb.me/Internetdotorg"
+msgstr "https://fb.me/Internetdotorg"
+
+#: template-parts/content-page-contact-social-block.php:29
+msgid "Like us on Facebook"
+msgstr "Sukai kami di Facebook"
+
+#: template-parts/content-page-entry-content.php:14
+#: template-parts/content-page.php:19 template-parts/content-single.php:23
+#: template-parts/content.php:32
+msgid "Pages:"
+msgstr "Halaman:"
+
+#: template-parts/content-page-next-page.php:34
+msgid "Learn About"
+msgstr "Pelajari Tentang"
+
+#: template-parts/content-search-mobile.php:19
+#: template-parts/header-search.php:19
+msgctxt "placeholder"
+msgid "Search"
+msgstr "Pencarian"
+
+#: template-parts/content-single-more.php:18
+msgid "More Posts"
+msgstr "Kiriman Lainnya"
+
+#: template-parts/content-single-more.php:43
+#: template-parts/content-single-more.php:71
+msgid "Read"
+msgstr "Baca"
+
+#: template-parts/content-social-links.php:12
+msgid "Facebook"
+msgstr "Facebook"
+
+#: template-parts/content-social-links.php:13
+msgid "Twitter"
+msgstr "Twitter"
+
+#: template-parts/content.php:25
+#, php-format
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Tetap membaca %s <span class=\"meta-nav\">&rarr;</span>"
+
+#: template-parts/header-buttons.php:20
+msgid "Toggle Navigation"
+msgstr "Alihkan Navigasi"
+
+#: template-parts/header-buttons.php:20
+msgid "Menu"
+msgstr "Menu"
+
+#. Theme Name of the plugin/theme
+msgid "Internet.org"
+msgstr "Internet.org"
+
+#. Theme URI of the plugin/theme
+msgid "http://underscores.me/"
+msgstr "http://underscores.me/"
+
+#. Description of the plugin/theme
+msgid "A Custom Theme for Internet.org."
+msgstr "Tema Khusus untuk Internet.org."
+
+#. Author of the plugin/theme
+msgid "The Nerdery"
+msgstr "The Nerdery"
+
+#. Author URI of the plugin/theme
+msgid "http://www.nerdery.com"
+msgstr "http://www.nerdery.com"
+
