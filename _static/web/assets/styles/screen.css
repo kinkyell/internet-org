@@ -2969,6 +2969,9 @@ _:-ms-fullscreen, :root .introBlock_fill {
 .introBlock_fill > .introBlock-inner {
   padding-bottom: 80px; }
 
+.introBlock .fb-like {
+  overflow: hidden; }
+
 /* ---------------------------------------------------------------------
 FB Follow Block
 

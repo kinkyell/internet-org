@@ -41,8 +41,8 @@ class LinkTransformer {
 				$domain = preg_replace( array( '/.*?:\/\//', '/^www\./' ), '', home_url() );
 		}
 
-		$langCode  = bbl_get_current_content_lang_code();
-		$urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
+		$langCode  = bbl_get_current_lang();
+		$urlPrefix = $langCode->url_prefix;
 
 		$parsedUrl = parse_url( $url );
 		$pathParts = explode( '/', $parsedUrl['path'] );
