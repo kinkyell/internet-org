@@ -20,8 +20,8 @@
 		function applyOperaFallbacks () {
 			var root = document.getElementsByTagName('body')[0];
 			root.className += ' opera-mini';
-			var toggle = document.getElementsByClassName( 'header-menuBtn' )[0];
-			var nav = document.getElementsByClassName( '.mainMenu' )[0];
+			var toggle = document.getElementById( 'menu-trigger-label' );
+			var nav = document.getElementById( 'mainNav' );
 			toggle.addEventListener( 'click', function ( event ) {
 				event.preventDefault();
 				if ( nav.style.display != 'block' ) {
