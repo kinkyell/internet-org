@@ -2430,7 +2430,7 @@ add_filter( 'jetpack_open_graph_base_tags', function( $og_tags ) {
 add_action( 'fm_post_post', 'internetorg_open_graph_fields' );
 function internetorg_open_graph_fields () {
 
-	$fm = new Fieldmanager_Group( array(
+ $fm = new Fieldmanager_Group( array(
       'name' => 'internetorg_custom_og',
       'children' => array(
         'iorg_title' => new Fieldmanager_Textfield( __( 'og:title' ) ),
@@ -2438,6 +2438,7 @@ function internetorg_open_graph_fields () {
         'iorg_image' => new Fieldmanager_Media( __( 'og:image' ) ),
       ),
   ) );
+
   $fm->add_meta_box( __( 'Customize Meta Data' ), 'post' );
 
 }

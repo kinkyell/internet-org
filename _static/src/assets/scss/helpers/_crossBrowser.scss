@@ -12,7 +12,8 @@ body.opera-mini {
 	.narrative-section,
 	.narrative-section-slides_short,
 	.narrative-section-bd,
-	.narrative-section-bd_low {
+	.narrative-section-bd_low,
+    .vendorForm .grunion-radio-label>.radio, .feature .grunion-radio-label>.radio {
 		position: relative !important;
 		overflow: auto !important;
 		height: auto !important;
@@ -20,6 +21,18 @@ body.opera-mini {
 		min-height: auto !important;
 		clear: both !important;
 	}
+
+    .vendorForm .grunion-radio-label,
+    .feature .grunion-radio-label {
+        .radio {
+            width: auto !important;
+            margin: auto !important;
+            clip: none !important;
+        }
+        span {
+            display: none !important;
+        }
+    }
 
     .arrowCta.arrowCta_light.js-narrativeAdvance {
         transform: none;
@@ -184,7 +197,7 @@ body.opera-mini {
 		height: 17px;
 		transform: none;
 	}
-	
+
 	// hide arrows on main page for opera mini
 	.narrative-section-bd-ft {
 		display: none;
