@@ -20,18 +20,6 @@
 		function applyOperaFallbacks () {
 			var root = document.getElementsByTagName('body')[0];
 			root.className += ' opera-mini';
-			var toggle = document.getElementById( 'menu-trigger-label' );
-			var nav = document.getElementById( 'mainNav' );
-			toggle.addEventListener( 'click', function ( event ) {
-				event.preventDefault();
-				if ( nav.style.display != 'block' ) {
-					nav.style.display = 'none';
-					nav.style.opacity = '0';
-				} else {
-					nav.style.display = 'block';
-					nav.style.opacity = '1';
-				}
-			}, false );
 			exit( 'Opera Mini Detected' );
 		}
 
