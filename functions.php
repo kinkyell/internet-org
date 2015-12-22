@@ -2419,23 +2419,21 @@ function internetorg_open_graph_fields () {
       'name' => 'internetorg_custom_og',
       'children' => array(
         'iorg_title' => new Fieldmanager_Textfield( __( 'og:title' ) ),
-        'iorg_description' => new Fieldmanager_Textfield( __( 'og:description' ) ),
+        'iorg_description' => new Fieldmanager_TextArea( __( 'og:description' ) ),
         'iorg_image' => new Fieldmanager_Media( __( 'og:image' ) ),
       ),
   ) );
   $fm->add_meta_box( __( 'Customize Meta Data' ), 'post' );
+
 }
 
-
-
-
-
-
-
-
-
-
-
-
+/**
+	* Add meta data character count functionality
+	*/
+add_action('admin_enqueue_scripts', 'internetorg_open_graph_limiter');
+function internetorg_open_graph_limiter() {
+	wp_enqueue_script( 'jquery' );
+	wp_enqueue_script( 'request-scripts', get_bloginfo( 'template_directory' ) . '/js/limit.js' );
+}
 
 
