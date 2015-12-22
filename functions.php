@@ -2337,8 +2337,16 @@ function vip_fb_legacy_redirects() {
         return;
     }
 
+    $langCode = bbl_get_current_lang();
+		$urlPrefix = $langCode->url_prefix;
     $url = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
 
+    // Return early if we found our url prefix
+    if ( strpos( $url, '/' . $urlPrefix . ' /' ) !== false ) {
+    	return;
+    }
+
+    // Define static mapping of old routes
     $routes = array(
 			'/contact' => '/contact-us',
 			'/innovationchallenge' => '/story/innovation-challenge/'
@@ -2350,9 +2358,7 @@ function vip_fb_legacy_redirects() {
 				if ( array_key_exists( $url, $routes ) ) {
 					wp_safe_redirect( $routes[ $url ], 301 );
 				} else {
-					$langCode  = bbl_get_current_lang();
-					$urlPrefix = $langCode->url_prefix;
-	        wp_safe_redirect( "/$urlPrefix" . "$url/", 301 );
+					wp_safe_redirect( "/$urlPrefix" . "$url/", 301 );
 	      }
         exit;
     }
