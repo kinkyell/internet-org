@@ -2378,6 +2378,64 @@ add_filter( 'locale', 'vip_fb_internetorg_en_locale', 1000, 1 );
  * Customize JetPack Open Graph Meta Tags implementation
  */
 
-add_filter( 'jetpack_open_graph_tags', function( $og_tags ) {
+add_filter( 'jetpack_open_graph_base_tags', function( $og_tags ) {
+
+	global $post;
+
+	$fields = get_post_meta( $post->ID, 'internetorg_custom_og', true );
+
+	if ( $fields ) {
+
+		$title = $fields['iorg_title'];
+		$description = $fields['iorg_description'];
+		$image = $fields['iorg_image'];
+
+		if ( $title ) {
+			$og_tags['og:title'] = $title;
+		}
+
+		if ( $description ) {
+			$og_tags['og:description'] = $description;
+		}
+
+		if ( $image ) {
+			$og_tags['og:image'] = $image;
+		}
+
+	}
+
   return $og_tags;
+
 }, 11 );
+
+/**
+	* Add custom fields for Customizing Open Graph Tags
+	*/
+
+add_action( 'fm_post_post', 'internetorg_open_graph_fields' );
+function internetorg_open_graph_fields () {
+
+	$fm = new Fieldmanager_Group( array(
+      'name' => 'internetorg_custom_og',
+      'children' => array(
+        'iorg_title' => new Fieldmanager_Textfield( __( 'og:title' ) ),
+        'iorg_description' => new Fieldmanager_Textfield( __( 'og:description' ) ),
+        'iorg_image' => new Fieldmanager_Media( __( 'og:image' ) ),
+      ),
+  ) );
+  $fm->add_meta_box( __( 'Customize Meta Data' ), 'post' );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
