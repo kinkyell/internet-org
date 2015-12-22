@@ -2362,7 +2362,12 @@ function vip_fb_legacy_redirects() {
 	      }
         exit;
     }
-    return;
+
+		// Check specifically for old stories and map accordingly
+		if ( strpos( $url, '/story_' ) {
+			wp_safe_redirect( str_replace( '/story_', '/story', $url ), 301 );
+		}
+		return;
 }
 
 
