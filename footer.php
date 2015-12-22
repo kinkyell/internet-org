@@ -22,7 +22,8 @@
 			root.className += ' opera-mini';
 			var toggle = document.getElementsByClassName( 'header-menuBtn' )[0];
 			var nav = document.getElementsByClassName( '.mainMenu' )[0];
-			toggle.addEventListener( 'click', function () {
+			toggle.addEventListener( 'click', function ( event ) {
+				event.preventDefault();
 				if ( nav.style.display != 'block' ) {
 					nav.style.display = 'none';
 					nav.style.opacity = '0';
