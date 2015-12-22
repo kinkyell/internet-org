@@ -2369,6 +2369,7 @@ function vip_fb_legacy_redirects() {
 			$parts = preg_filter( '/^story_(.*)/', 'story', $parts );
 			$url = implode( '/', $parts );
  			wp_safe_redirect( $url, 301 );
+ 			exit;
 		}
 		return;
 }
