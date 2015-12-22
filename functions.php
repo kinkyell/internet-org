@@ -2365,7 +2365,10 @@ function vip_fb_legacy_redirects() {
 
 		// Check specifically for old stories and map accordingly
 		if ( strpos( $url, '/story_' ) {
-			wp_safe_redirect( str_replace( '/story_', '/story', $url ), 301 );
+			$parts = explode( '/', $url );
+			$parts = preg_filter( '/^story_(.*)/', 'story', $parts );
+			$url = implode( '/', $parts );
+ 			wp_safe_redirect( $url, 301 );
 		}
 		return;
 }
