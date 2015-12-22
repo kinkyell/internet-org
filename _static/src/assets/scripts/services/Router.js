@@ -101,7 +101,9 @@ define(function(require, exports, module) { // jshint ignore:line
         }
 
         var routePath = routeEl.getAttribute('data-route');
-        routePath = routePath.replace( '/story_', '/story' );
+        routePath = routePath.split( '/' ).map( function ( path ) {
+            return ( path.indexOf( 'story_' ) !== -1 ) ? 'story' : path;
+        }).join( '/' );
         var stateData = extend({
             path: routePath
         }, this._scrapeDataAttrs(routeEl));
