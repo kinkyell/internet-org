@@ -17,7 +17,7 @@ if ( $search == 'all' ) {
 	$args = array(
 		'post_type' => 'post',
 		'post_per_page' => '-1',
-		'order' => 'asc'
+		'order' => 'desc'
 	);
 	$wp_query = new WP_Query( $args );
 }
