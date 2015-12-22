@@ -1,40 +1,39 @@
-﻿#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Internet.org\n"
 "POT-Creation-Date: 2015-10-05 11:57-0500\n"
-"PO-Revision-Date: 2015-08-13 17:37-0500\n"
-"Last-Translator: Richard Aber <raber@nerdery.com>\n"
+"PO-Revision-Date: 2015-12-22 10:06-0500\n"
+"Last-Translator: Darcy Clarke <darcy@darcyclarke.me>\n"
 "Language-Team: Richard Aber <raber@nerdery.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.2\n"
+"X-Generator: Poedit 1.8.6\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: style.css\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
-"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;"
+"esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: bn\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
 #: 404.php:14 404.php:34
 msgid "Oops! That page can&rsquo;t be found."
-msgstr "ওহো! এই পৃষ্ঠাটিকে খুঁজে পাওয়া যাবে না৷"
+msgstr "ওহো! এই পৃষ্ঠাটিকে খুঁজে পাওয়া যাবে না৷"
 
 #: 404.php:46 404.php:66
 msgid "Not found"
-msgstr "খুঁজে পাওয়া যায়নি"
+msgstr "খুঁজে পাওয়া যায়নি"
 
 #: 404.php:47 404.php:70
 msgid "It looks like nothing was found at this location. Maybe try a search?"
-msgstr "এটি দেখে মনে হচ্ছে এই অবস্থানে কোনো এই অবস্থানে কোনো কিছু খুঁজে পাওয়া যায়নি৷ একটি অনুসন্ধান করার চেষ্টা করবেন?"
+msgstr "এটি দেখে মনে হচ্ছে এই অবস্থানে কোনো এই অবস্থানে কোনো কিছু খুঁজে পাওয়া যায়নি৷ একটি অনুসন্ধান করার চেষ্টা করবেন?"
 
-#: archive.php:69 template-parts/content-press-item.php:38
-#: template-parts/content-search.php:40
+#: archive.php:69 template-parts/content-press-item.php:38 template-parts/content-search.php:40
 msgid "Read More"
-msgstr "আরো পড়ুন"
+msgstr "আরো পড়ুন"
 
 #: archive.php:91 home.php:75 search.php:80
 msgid "Show More"
@@ -62,7 +61,7 @@ msgstr "নতুন মন্তব্যগুলি"
 
 #: comments.php:75
 msgid "Comments are closed."
-msgstr "মন্তব্যগুলি বন্ধ হয়েছে৷"
+msgstr "মন্তব্যগুলি বন্ধ হয়েছে৷"
 
 #: functions.php:65
 msgid "Primary Menu"
@@ -93,8 +92,7 @@ msgstr "সন্নিবেশ করানোর ভিডিও"
 msgid "Click Me"
 msgstr "আমাকে ক্লিক করুন"
 
-#: functions.php:1656
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:150
+#: functions.php:1656 plugins/internetorg-custom-fields/internetorg-custom-fields.php:150
 msgid "Link"
 msgstr "লিঙ্ক"
 
@@ -126,8 +124,7 @@ msgstr "অভ্যন্তরীণ লিঙ্ক"
 msgid "External URL"
 msgstr "বাহ্যিক লিঙ্ক"
 
-#: functions.php:1683
-#: plugins/internetorg-custom-posttypes/content-widget.php:71
+#: functions.php:1683 plugins/internetorg-custom-posttypes/content-widget.php:71
 #: plugins/internetorg-custom-posttypes/content-widget.php:90
 msgid "URL"
 msgstr "URL"
@@ -165,12 +162,12 @@ msgstr ", "
 #: inc/template-tags.php:60
 #, php-format
 msgid "Posted in %1$s"
-msgstr "%1$s এ পোস্ট করা হয়েছে"
+msgstr "%1$s এ পোস্ট করা হয়েছে"
 
 #: inc/template-tags.php:69
 #, php-format
 msgid "Tagged %1$s"
-msgstr "%1$s  ট্যাগ করা হয়েছে"
+msgstr "%1$s  ট্যাগ করা হয়েছে"
 
 #: inc/template-tags.php:78
 msgid "Leave a comment"
@@ -184,15 +181,14 @@ msgstr "1টি মন্তব্য"
 msgid "% Comments"
 msgstr "%টি মন্তব্য"
 
-#: inc/template-tags.php:85 inc/template-tags.php:107
-#: template-parts/content-page-entry-end.php:11
+#: inc/template-tags.php:85 inc/template-tags.php:107 template-parts/content-page-entry-end.php:11
 #: template-parts/content-page.php:26
 msgid "Edit"
 msgstr "সম্পাদনা করুন"
 
 #: inc/template-tags.php:103
 msgid "Read More &rarr;"
-msgstr "আরো পড়ুন &rarr;"
+msgstr "আরো পড়ুন &rarr;"
 
 #: inc/template-tags.php:167
 #, php-format
@@ -298,14 +294,12 @@ msgid "Content Areas"
 msgstr "বিষয়বস্তুর এলাকা"
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:212
-#: plugins/internetorg-custom-posttypes/campaign.php:83
-#: plugins/internetorg-custom-posttypes/campaign.php:92
+#: plugins/internetorg-custom-posttypes/campaign.php:83 plugins/internetorg-custom-posttypes/campaign.php:92
 #: plugins/internetorg-custom-posttypes/story.php:69
 msgid "Subtitle"
 msgstr "উপশিরোনাম"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:221
-#: plugins/internetorg-custom-posttypes/story.php:78
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:221 plugins/internetorg-custom-posttypes/story.php:78
 msgid "Additional page configuration"
 msgstr "অতিরিক্ত পাতা কনফিগারেশন"
 
@@ -349,26 +343,21 @@ msgstr "বিষয়বস্তু উইজেটগুলি"
 msgid "Content Widget"
 msgstr "বিষয়বস্তু উইজেট"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:63
-#: plugins/internetorg-custom-posttypes/content-widget.php:76
-#: plugins/internetorg-custom-posttypes/content-widget.php:82
-#: plugins/internetorg-custom-posttypes/content-widget.php:95
+#: plugins/internetorg-custom-posttypes/content-widget.php:63 plugins/internetorg-custom-posttypes/content-widget.php:76
+#: plugins/internetorg-custom-posttypes/content-widget.php:82 plugins/internetorg-custom-posttypes/content-widget.php:95
 msgid "Call to Action"
 msgstr "কল টু অ্যাকশান"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:64
-#: plugins/internetorg-custom-posttypes/content-widget.php:83
+#: plugins/internetorg-custom-posttypes/content-widget.php:64 plugins/internetorg-custom-posttypes/content-widget.php:83
 #, php-format
 msgid "Call to Action: %s"
 msgstr "কল টু অ্যাকশান: %s"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:70
-#: plugins/internetorg-custom-posttypes/content-widget.php:89
+#: plugins/internetorg-custom-posttypes/content-widget.php:70 plugins/internetorg-custom-posttypes/content-widget.php:89
 msgid "Button Label"
 msgstr "বোতাম লেবেল"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:72
-#: plugins/internetorg-custom-posttypes/content-widget.php:91
+#: plugins/internetorg-custom-posttypes/content-widget.php:72 plugins/internetorg-custom-posttypes/content-widget.php:91
 msgid "File"
 msgstr "ফাইল"
 
@@ -384,18 +373,15 @@ msgstr "স্টোরি"
 msgid "Videos"
 msgstr "ভিডিও"
 
-#: plugins/internetorg-custom-posttypes/video.php:64
-#: plugins/internetorg-custom-posttypes/video.php:75
+#: plugins/internetorg-custom-posttypes/video.php:64 plugins/internetorg-custom-posttypes/video.php:75
 msgid "Video Duration"
 msgstr "ভিডিওর সময়কাল"
 
-#: plugins/internetorg-custom-posttypes/video.php:71
-#: plugins/internetorg-custom-posttypes/video.php:76
+#: plugins/internetorg-custom-posttypes/video.php:71 plugins/internetorg-custom-posttypes/video.php:76
 msgid "Video URL"
 msgstr "ভিডিও URL"
 
-#: searchform.php:17 template-parts/content-search-mobile.php:17
-#: template-parts/header-search.php:17
+#: searchform.php:17 template-parts/content-search-mobile.php:17 template-parts/header-search.php:17
 msgctxt "label"
 msgid "Search"
 msgstr "অনুসন্ধান করুন"
@@ -406,29 +392,20 @@ msgstr "বিনামূল্যের তালিকাগুলির স�
 
 #: template-parts/content-none.php:14
 msgid "Nothing Found"
-msgstr "কোনো কিছু খুঁজে পাওয়া যায়নি"
+msgstr "কোনো কিছু খুঁজে পাওয়া যায়নি"
 
 #: template-parts/content-none.php:20
 #, php-format
-msgid ""
-"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr ""
-"আপনার প্রথম পোস্টটি প্রকাশ করার জন্য প্রস্তুত? <a href=\"%1$s\">এখানে শুরু করুন</a>৷"
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "আপনার প্রথম পোস্টটি প্রকাশ করার জন্য প্রস্তুত? <a href=\"%1$s\">এখানে শুরু করুন</a>৷"
 
-#: template-parts/content-none.php:24
-#: template-parts/content-search-none.php:14
-msgid ""
-"Sorry, but nothing matched your search terms. Please try again with some "
-"different keywords."
-msgstr ""
-"দুঃখিত, আপনার অনুসন্ধান শব্দগুলির সাথে কোনো কিছু মিলেনি৷ অনুগ্রহ করে কিছু আলাদা মূলশব্দ দিয়ে আবার চেষ্টা করুন৷"
+#: template-parts/content-none.php:24 template-parts/content-search-none.php:14
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "দুঃখিত, আপনার অনুসন্ধান শব্দগুলির সাথে কোনো কিছু মিলেনি৷ অনুগ্রহ করে কিছু আলাদা মূলশব্দ দিয়ে আবার চেষ্টা করুন৷"
 
 #: template-parts/content-none.php:29
-msgid ""
-"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
-"searching can help."
-msgstr ""
-"এটি দেখে মনে আপনি যা অনুসন্ধান করছেন আমরা তা খুঁজে পায়নি৷ সম্ভবত অনুসন্ধান করা সাহায্য করতে পারে৷"
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "এটি দেখে মনে আপনি যা অনুসন্ধান করছেন আমরা তা খুঁজে পায়নি৷ সম্ভবত অনুসন্ধান করা সাহায্য করতে পারে৷"
 
 #: template-parts/content-page-contact-social-block.php:17
 msgid "Follow the Project"
@@ -436,7 +413,7 @@ msgstr "প্রজেক্ট অনুসরণ করুন"
 
 #: template-parts/content-page-contact-social-block.php:22
 msgid "Stay updated about Internet.org."
-msgstr "Internet.org বিষয়ে আপডেটে থাকুন৷"
+msgstr "Internet.org বিষয়ে আপডেটে থাকুন৷"
 
 #: template-parts/content-page-contact-social-block.php:27
 msgid "https://fb.me/Internetdotorg"
@@ -446,9 +423,8 @@ msgstr "https://fb.me/Internetdotorg"
 msgid "Like us on Facebook"
 msgstr "Facebook এ আমাদের পছন্দ করুন"
 
-#: template-parts/content-page-entry-content.php:14
-#: template-parts/content-page.php:19 template-parts/content-single.php:23
-#: template-parts/content.php:32
+#: template-parts/content-page-entry-content.php:14 template-parts/content-page.php:19
+#: template-parts/content-single.php:23 template-parts/content.php:32
 msgid "Pages:"
 msgstr "পৃষ্ঠাগুলি:"
 
@@ -456,8 +432,7 @@ msgstr "পৃষ্ঠাগুলি:"
 msgid "Learn About"
 msgstr "এর সম্পর্কে জানুন"
 
-#: template-parts/content-search-mobile.php:19
-#: template-parts/header-search.php:19
+#: template-parts/content-search-mobile.php:19 template-parts/header-search.php:19
 msgctxt "placeholder"
 msgid "Search"
 msgstr "অনুসন্ধান করুন"
@@ -466,8 +441,7 @@ msgstr "অনুসন্ধান করুন"
 msgid "More Posts"
 msgstr "আরো পোস্ট"
 
-#: template-parts/content-single-more.php:43
-#: template-parts/content-single-more.php:71
+#: template-parts/content-single-more.php:43 template-parts/content-single-more.php:71
 msgid "Read"
 msgstr "পড়ুন"
 
@@ -511,4 +485,3 @@ msgstr "The Nerdery"
 #. Author URI of the plugin/theme
 msgid "http://www.nerdery.com"
 msgstr "http://www.nerdery.com"
-

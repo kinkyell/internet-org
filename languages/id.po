@@ -1,21 +1,21 @@
-﻿#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Internet.org\n"
 "POT-Creation-Date: 2015-10-05 11:57-0500\n"
-"PO-Revision-Date: 2015-08-13 17:37-0500\n"
-"Last-Translator: Richard Aber <raber@nerdery.com>\n"
+"PO-Revision-Date: 2015-12-22 10:07-0500\n"
+"Last-Translator: Darcy Clarke <darcy@darcyclarke.me>\n"
 "Language-Team: Richard Aber <raber@nerdery.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.2\n"
+"X-Generator: Poedit 1.8.6\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: style.css\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
-"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;"
+"esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: id\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
@@ -31,8 +31,7 @@ msgstr "Tidak ditemukan"
 msgid "It looks like nothing was found at this location. Maybe try a search?"
 msgstr "Sepertinya tidak ada yang ditemukan di lokasi ini. Ingin mencoba mencari?"
 
-#: archive.php:69 template-parts/content-press-item.php:38
-#: template-parts/content-search.php:40
+#: archive.php:69 template-parts/content-press-item.php:38 template-parts/content-search.php:40
 msgid "Read More"
 msgstr "Baca Selengkapnya"
 
@@ -46,7 +45,6 @@ msgctxt "comments title"
 msgid "One thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] "Satu gagasan di &ldquo;%2$s&rdquo;"
-msgstr[1] "%1$s gagasan di &ldquo;%2$s&rdquo;"
 
 #: comments.php:38 comments.php:59
 msgid "Comment navigation"
@@ -93,8 +91,7 @@ msgstr "Video untuk Disisipkan"
 msgid "Click Me"
 msgstr "Klik Saya"
 
-#: functions.php:1656
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:150
+#: functions.php:1656 plugins/internetorg-custom-fields/internetorg-custom-fields.php:150
 msgid "Link"
 msgstr "Tautan"
 
@@ -126,8 +123,7 @@ msgstr "Tautan Eksternal"
 msgid "External URL"
 msgstr "URL Eksternal"
 
-#: functions.php:1683
-#: plugins/internetorg-custom-posttypes/content-widget.php:71
+#: functions.php:1683 plugins/internetorg-custom-posttypes/content-widget.php:71
 #: plugins/internetorg-custom-posttypes/content-widget.php:90
 msgid "URL"
 msgstr "URL"
@@ -184,9 +180,7 @@ msgstr "1 Komentar"
 msgid "% Comments"
 msgstr "% Komentar"
 
-#: inc/template-tags.php:85 inc/template-tags.php:107
-#: template-parts/content-page-entry-end.php:11
-#: template-parts/content-page.php:26
+#: inc/template-tags.php:85 inc/template-tags.php:107 template-parts/content-page-entry-end.php:11 template-parts/content-page.php:26
 msgid "Edit"
 msgstr "Sunting"
 
@@ -259,8 +253,7 @@ msgstr "Misi"
 msgid "Impact"
 msgstr "Dampak"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:128
-#: plugins/internetorg-custom-posttypes/campaign.php:91
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:128 plugins/internetorg-custom-posttypes/campaign.php:91
 msgid "Background Image"
 msgstr "Gambar Latar Belakang"
 
@@ -297,15 +290,12 @@ msgstr "Gambar"
 msgid "Content Areas"
 msgstr "Area Konten"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:212
-#: plugins/internetorg-custom-posttypes/campaign.php:83
-#: plugins/internetorg-custom-posttypes/campaign.php:92
-#: plugins/internetorg-custom-posttypes/story.php:69
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:212 plugins/internetorg-custom-posttypes/campaign.php:83
+#: plugins/internetorg-custom-posttypes/campaign.php:92 plugins/internetorg-custom-posttypes/story.php:69
 msgid "Subtitle"
 msgstr "Subtitle"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:221
-#: plugins/internetorg-custom-posttypes/story.php:78
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:221 plugins/internetorg-custom-posttypes/story.php:78
 msgid "Additional page configuration"
 msgstr "Konfigurasi halaman tambahan"
 
@@ -349,26 +339,21 @@ msgstr "Widget Konten"
 msgid "Content Widget"
 msgstr "Widget Konten"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:63
-#: plugins/internetorg-custom-posttypes/content-widget.php:76
-#: plugins/internetorg-custom-posttypes/content-widget.php:82
-#: plugins/internetorg-custom-posttypes/content-widget.php:95
+#: plugins/internetorg-custom-posttypes/content-widget.php:63 plugins/internetorg-custom-posttypes/content-widget.php:76
+#: plugins/internetorg-custom-posttypes/content-widget.php:82 plugins/internetorg-custom-posttypes/content-widget.php:95
 msgid "Call to Action"
 msgstr "Ajakan Bertindak"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:64
-#: plugins/internetorg-custom-posttypes/content-widget.php:83
+#: plugins/internetorg-custom-posttypes/content-widget.php:64 plugins/internetorg-custom-posttypes/content-widget.php:83
 #, php-format
 msgid "Call to Action: %s"
 msgstr "Ajakan Bertindak: %s"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:70
-#: plugins/internetorg-custom-posttypes/content-widget.php:89
+#: plugins/internetorg-custom-posttypes/content-widget.php:70 plugins/internetorg-custom-posttypes/content-widget.php:89
 msgid "Button Label"
 msgstr "Label Tombol"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:72
-#: plugins/internetorg-custom-posttypes/content-widget.php:91
+#: plugins/internetorg-custom-posttypes/content-widget.php:72 plugins/internetorg-custom-posttypes/content-widget.php:91
 msgid "File"
 msgstr "File"
 
@@ -384,18 +369,15 @@ msgstr "Berita"
 msgid "Videos"
 msgstr "Video"
 
-#: plugins/internetorg-custom-posttypes/video.php:64
-#: plugins/internetorg-custom-posttypes/video.php:75
+#: plugins/internetorg-custom-posttypes/video.php:64 plugins/internetorg-custom-posttypes/video.php:75
 msgid "Video Duration"
 msgstr "Durasi Video"
 
-#: plugins/internetorg-custom-posttypes/video.php:71
-#: plugins/internetorg-custom-posttypes/video.php:76
+#: plugins/internetorg-custom-posttypes/video.php:71 plugins/internetorg-custom-posttypes/video.php:76
 msgid "Video URL"
 msgstr "URL Video"
 
-#: searchform.php:17 template-parts/content-search-mobile.php:17
-#: template-parts/header-search.php:17
+#: searchform.php:17 template-parts/content-search-mobile.php:17 template-parts/header-search.php:17
 msgctxt "label"
 msgid "Search"
 msgstr "Pencarian"
@@ -410,25 +392,17 @@ msgstr "Tidak Ada yang Ditemukan"
 
 #: template-parts/content-none.php:20
 #, php-format
-msgid ""
-"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr ""
-"Siap menerbitkan kiriman pertama? <a href=\"%1$s\">Mulai di sini</a>."
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "Siap menerbitkan kiriman pertama? <a href=\"%1$s\">Mulai di sini</a>."
 
-#: template-parts/content-none.php:24
-#: template-parts/content-search-none.php:14
-msgid ""
-"Sorry, but nothing matched your search terms. Please try again with some "
-"different keywords."
+#: template-parts/content-none.php:24 template-parts/content-search-none.php:14
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
 msgstr ""
 "Maaf, tetapi tidak ada yang cocok dengan istilah pencarian Anda. Harap coba lagi dengan beberapa kata kunci pencarian yang berbeda."
 
 #: template-parts/content-none.php:29
-msgid ""
-"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
-"searching can help."
-msgstr ""
-"Sepertinya kami tidak dapat menemukan apa yang Anda cari. Mungkin mencari dapat membantu."
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Sepertinya kami tidak dapat menemukan apa yang Anda cari. Mungkin mencari dapat membantu."
 
 #: template-parts/content-page-contact-social-block.php:17
 msgid "Follow the Project"
@@ -446,8 +420,7 @@ msgstr "https://fb.me/Internetdotorg"
 msgid "Like us on Facebook"
 msgstr "Sukai kami di Facebook"
 
-#: template-parts/content-page-entry-content.php:14
-#: template-parts/content-page.php:19 template-parts/content-single.php:23
+#: template-parts/content-page-entry-content.php:14 template-parts/content-page.php:19 template-parts/content-single.php:23
 #: template-parts/content.php:32
 msgid "Pages:"
 msgstr "Halaman:"
@@ -456,8 +429,7 @@ msgstr "Halaman:"
 msgid "Learn About"
 msgstr "Pelajari Tentang"
 
-#: template-parts/content-search-mobile.php:19
-#: template-parts/header-search.php:19
+#: template-parts/content-search-mobile.php:19 template-parts/header-search.php:19
 msgctxt "placeholder"
 msgid "Search"
 msgstr "Pencarian"
@@ -466,8 +438,7 @@ msgstr "Pencarian"
 msgid "More Posts"
 msgstr "Kiriman Lainnya"
 
-#: template-parts/content-single-more.php:43
-#: template-parts/content-single-more.php:71
+#: template-parts/content-single-more.php:43 template-parts/content-single-more.php:71
 msgid "Read"
 msgstr "Baca"
 
@@ -511,4 +482,3 @@ msgstr "The Nerdery"
 #. Author URI of the plugin/theme
 msgid "http://www.nerdery.com"
 msgstr "http://www.nerdery.com"
-

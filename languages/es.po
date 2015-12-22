@@ -1,21 +1,22 @@
-﻿#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Internet.org\n"
 "POT-Creation-Date: 2015-10-05 11:57-0500\n"
-"PO-Revision-Date: 2015-08-13 17:37-0500\n"
-"Last-Translator: Richard Aber <raber@nerdery.com>\n"
+"PO-Revision-Date: 2015-12-22 10:06-0500\n"
+"Last-Translator: Darcy Clarke <darcy@darcyclarke.me>\n"
 "Language-Team: Richard Aber <raber@nerdery.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.2\n"
+"X-Generator: Poedit 1.8.6\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: style.css\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
-"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;"
+"esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;"
+"__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
@@ -31,8 +32,7 @@ msgstr "No se encuentra"
 msgid "It looks like nothing was found at this location. Maybe try a search?"
 msgstr "Parece que no se encontró nada en esta ubicación. Realiza una búsqueda."
 
-#: archive.php:69 template-parts/content-press-item.php:38
-#: template-parts/content-search.php:40
+#: archive.php:69 template-parts/content-press-item.php:38 template-parts/content-search.php:40
 msgid "Read More"
 msgstr "Más información"
 
@@ -93,8 +93,7 @@ msgstr "Video para insertar"
 msgid "Click Me"
 msgstr "Haz clic aquí"
 
-#: functions.php:1656
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:150
+#: functions.php:1656 plugins/internetorg-custom-fields/internetorg-custom-fields.php:150
 msgid "Link"
 msgstr "Enlace"
 
@@ -126,8 +125,7 @@ msgstr "Enlace externo"
 msgid "External URL"
 msgstr "URL externa"
 
-#: functions.php:1683
-#: plugins/internetorg-custom-posttypes/content-widget.php:71
+#: functions.php:1683 plugins/internetorg-custom-posttypes/content-widget.php:71
 #: plugins/internetorg-custom-posttypes/content-widget.php:90
 msgid "URL"
 msgstr "URL"
@@ -185,8 +183,7 @@ msgid "% Comments"
 msgstr "% comentarios"
 
 #: inc/template-tags.php:85 inc/template-tags.php:107
-#: template-parts/content-page-entry-end.php:11
-#: template-parts/content-page.php:26
+#: template-parts/content-page-entry-end.php:11 template-parts/content-page.php:26
 msgid "Edit"
 msgstr "Editar"
 
@@ -410,25 +407,18 @@ msgstr "No hay resultados"
 
 #: template-parts/content-none.php:20
 #, php-format
-msgid ""
-"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr ""
-"¿Preparado para tu primera publicación? <a href=\"%1$s\">Empezar aquí</a>."
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "¿Preparado para tu primera publicación? <a href=\"%1$s\">Empezar aquí</a>."
 
-#: template-parts/content-none.php:24
-#: template-parts/content-search-none.php:14
+#: template-parts/content-none.php:24 template-parts/content-search-none.php:14
 msgid ""
-"Sorry, but nothing matched your search terms. Please try again with some "
-"different keywords."
+"Sorry, but nothing matched your search terms. Please try again with some different keywords."
 msgstr ""
 "No hay coincidencias con tus términos de búsqueda. Vuele a intentarlo con otras palabras clave."
 
 #: template-parts/content-none.php:29
-msgid ""
-"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
-"searching can help."
-msgstr ""
-"Parece que no encontramos lo que estás buscando. Realiza una búsqueda."
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Parece que no encontramos lo que estás buscando. Realiza una búsqueda."
 
 #: template-parts/content-page-contact-social-block.php:17
 msgid "Follow the Project"
@@ -446,9 +436,8 @@ msgstr "https://fb.me/Internetdotorg"
 msgid "Like us on Facebook"
 msgstr "Indica que te gusta nuestra página en Facebook"
 
-#: template-parts/content-page-entry-content.php:14
-#: template-parts/content-page.php:19 template-parts/content-single.php:23
-#: template-parts/content.php:32
+#: template-parts/content-page-entry-content.php:14 template-parts/content-page.php:19
+#: template-parts/content-single.php:23 template-parts/content.php:32
 msgid "Pages:"
 msgstr "Páginas:"
 
@@ -456,8 +445,7 @@ msgstr "Páginas:"
 msgid "Learn About"
 msgstr "Información"
 
-#: template-parts/content-search-mobile.php:19
-#: template-parts/header-search.php:19
+#: template-parts/content-search-mobile.php:19 template-parts/header-search.php:19
 msgctxt "placeholder"
 msgid "Search"
 msgstr "Buscar"
@@ -466,8 +454,7 @@ msgstr "Buscar"
 msgid "More Posts"
 msgstr "Más publicaciones"
 
-#: template-parts/content-single-more.php:43
-#: template-parts/content-single-more.php:71
+#: template-parts/content-single-more.php:43 template-parts/content-single-more.php:71
 msgid "Read"
 msgstr "Leer"
 
@@ -511,4 +498,3 @@ msgstr "The Nerdery"
 #. Author URI of the plugin/theme
 msgid "http://www.nerdery.com"
 msgstr "http://www.nerdery.com"
-

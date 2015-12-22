@@ -2348,29 +2348,32 @@ function vip_fb_legacy_redirects() {
 
     // Define static mapping of old routes
     $routes = array(
-			'/contact' => '/contact-us',
+    	'/contact' => '/contact-us',
 			'/innovationchallenge' => '/story/innovation-challenge/'
 		);
 
     // Check for any 404 URL that doesn't start with a potential lang code
     if ( ! preg_match( '/^\/[a-z]{2}(?:(?:-|_)[A-Z]{2})?\/[a-z0-9\-\/]+(?:[a-z0-9\-\/]+)*$/', $url ) ) {
-				// Check for any custom routes to map directly
-				if ( array_key_exists( $url, $routes ) ) {
-					wp_safe_redirect( $routes[ $url ], 301 );
-				} else {
-					wp_safe_redirect( "/$urlPrefix" . "$url/", 301 );
-	      }
-        exit;
-    }
 
-		// Check specifically for old stories and map accordingly
-		if ( strpos( $url, '/story_' ) !== false ) {
-			$parts = explode( '/', $url );
-			$parts = preg_filter( '/^story_(.*)/', 'story', $parts );
-			$url = implode( '/', $parts );
- 			wp_safe_redirect( $url, 301 );
- 			exit;
-		}
+    	// Check specifically for old stories and map accordingly
+			if ( strpos( $url, '/story_' ) !== false ) {
+				$parts = explode( '/', $url );
+				foreach( $parts as $key => $val ) {
+					$parts[ $key ] = ( strpos( $val, 'story_' ) !== false ) ? 'story' : $val;
+				}
+				$url = implode( '/', $parts );
+	 			wp_safe_redirect( $url, 301 );
+	 			exit;
+			}
+
+			// Check for any custom routes to map directly
+			if ( array_key_exists( $url, $routes ) ) {
+				wp_safe_redirect( $routes[ $url ], 301 );
+			} else {
+				wp_safe_redirect( "/$urlPrefix" . "$url/", 301 );
+      }
+      exit;
+    }
 		return;
 }
 
