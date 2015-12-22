@@ -85,7 +85,7 @@ get_header();
 								$next_posts_link = get_next_posts_link();
 								if ( ! empty( $next_posts_link ) ) {
 									?>
-									<div class="resultsList-ft">
+									<div class="show-more resultsList-ft">
 										<div class="resultsList-list resultsList-list_spread">
 											<div class="resultsList-list-item">
 												<button type="button" class="btn js-ShowMoreView" data-src="press" data-target="addl-results">
@@ -97,6 +97,16 @@ get_header();
 									<?php
 								}
 								?>
+
+								<div class="resultsList-ft opera-mini-only">
+									<div class="resultsList-list resultsList-list_spread">
+										<div class="resultsList-list-item">
+											<a href="/search/all" type="button" class="btn js-ShowMoreView" data-src="press" data-target="addl-results">
+												<?php esc_html_e( 'Show More', 'internetorg' ); ?>
+											</a>
+										</div>
+									</div>
+								</div>
 
 							</div>
 						</div>

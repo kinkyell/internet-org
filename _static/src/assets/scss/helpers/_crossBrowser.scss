@@ -1,6 +1,23 @@
 
 // Opera Mini
+.opera-mini-only {
+    display: none !important;
+}
+
 body.opera-mini {
+
+    .show-more {
+        display: none !important;
+    }
+
+    .opera-mini-only {
+        display: block !important;
+    }
+
+    .resultsList-ft {
+        border: none !important;
+        padding: 20px 0 0 !important;
+    }
 
 	&,
 	.viewWindow,
