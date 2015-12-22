@@ -1,8 +1,9 @@
+﻿#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Internet.org\n"
 "POT-Creation-Date: 2015-10-05 11:57-0500\n"
-"PO-Revision-Date: 2015-10-13 13:32-0500\n"
+"PO-Revision-Date: 2015-08-13 17:37-0500\n"
 "Last-Translator: Richard Aber <raber@nerdery.com>\n"
 "Language-Team: Richard Aber <raber@nerdery.com>\n"
 "MIME-Version: 1.0\n"
@@ -12,11 +13,9 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: style.css\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;"
-"esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : "
-"2);\n"
-"Language: ru\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
@@ -32,7 +31,8 @@ msgstr "Не найдено"
 msgid "It looks like nothing was found at this location. Maybe try a search?"
 msgstr "Похоже, что в этом месте ничего не найдено. Выполнить поиск?"
 
-#: archive.php:69 template-parts/content-press-item.php:38 template-parts/content-search.php:40
+#: archive.php:69 template-parts/content-press-item.php:38
+#: template-parts/content-search.php:40
 msgid "Read More"
 msgstr "Подробнее"
 
@@ -93,7 +93,8 @@ msgstr "Вставить видео"
 msgid "Click Me"
 msgstr "Кликните здесь"
 
-#: functions.php:1656 plugins/internetorg-custom-fields/internetorg-custom-fields.php:150
+#: functions.php:1656
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:150
 msgid "Link"
 msgstr "Ссылка"
 
@@ -125,7 +126,8 @@ msgstr "Внешняя ссылка"
 msgid "External URL"
 msgstr "Внешний URL адрес"
 
-#: functions.php:1683 plugins/internetorg-custom-posttypes/content-widget.php:71
+#: functions.php:1683
+#: plugins/internetorg-custom-posttypes/content-widget.php:71
 #: plugins/internetorg-custom-posttypes/content-widget.php:90
 msgid "URL"
 msgstr "URL-адрес:"
@@ -182,7 +184,8 @@ msgstr "1 комментарий"
 msgid "% Comments"
 msgstr "% Комментариев"
 
-#: inc/template-tags.php:85 inc/template-tags.php:107 template-parts/content-page-entry-end.php:11
+#: inc/template-tags.php:85 inc/template-tags.php:107
+#: template-parts/content-page-entry-end.php:11
 #: template-parts/content-page.php:26
 msgid "Edit"
 msgstr "Редактировать"
@@ -295,7 +298,8 @@ msgid "Content Areas"
 msgstr "Области содержимого"
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:212
-#: plugins/internetorg-custom-posttypes/campaign.php:83 plugins/internetorg-custom-posttypes/campaign.php:92
+#: plugins/internetorg-custom-posttypes/campaign.php:83
+#: plugins/internetorg-custom-posttypes/campaign.php:92
 #: plugins/internetorg-custom-posttypes/story.php:69
 msgid "Subtitle"
 msgstr "Подзаголовок"
@@ -380,15 +384,18 @@ msgstr "Информация"
 msgid "Videos"
 msgstr "Видео"
 
-#: plugins/internetorg-custom-posttypes/video.php:64 plugins/internetorg-custom-posttypes/video.php:75
+#: plugins/internetorg-custom-posttypes/video.php:64
+#: plugins/internetorg-custom-posttypes/video.php:75
 msgid "Video Duration"
 msgstr "Длительность видео"
 
-#: plugins/internetorg-custom-posttypes/video.php:71 plugins/internetorg-custom-posttypes/video.php:76
+#: plugins/internetorg-custom-posttypes/video.php:71
+#: plugins/internetorg-custom-posttypes/video.php:76
 msgid "Video URL"
 msgstr "URL видео"
 
-#: searchform.php:17 template-parts/content-search-mobile.php:17 template-parts/header-search.php:17
+#: searchform.php:17 template-parts/content-search-mobile.php:17
+#: template-parts/header-search.php:17
 msgctxt "label"
 msgid "Search"
 msgstr "Поиск"
@@ -403,17 +410,25 @@ msgstr "Ничего не найдено"
 
 #: template-parts/content-none.php:20
 #, php-format
-msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr "Готовы опубликовать вашу первую публикацию? <a href=\"%1$s\">Начните здесь</a>."
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+"Готовы опубликовать вашу первую публикацию? <a href=\"%1$s\">Начните здесь</a>."
 
-#: template-parts/content-none.php:24 template-parts/content-search-none.php:14
-msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+#: template-parts/content-none.php:24
+#: template-parts/content-search-none.php:14
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
 msgstr ""
 "Извините, по вашему поисковому запросу совпадений не найдено. Попытайтесь снова, использовав другие ключевые слова."
 
 #: template-parts/content-none.php:29
-msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
-msgstr "Мы не можем найти то, что вы ищете. Возможно, вам сможет помочь выполнение поиска при помощи запроса."
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+"Мы не можем найти то, что вы ищете. Возможно, вам сможет помочь выполнение поиска при помощи запроса."
 
 #: template-parts/content-page-contact-social-block.php:17
 msgid "Follow the Project"
@@ -431,8 +446,9 @@ msgstr "https://fb.me/Internetdotorg"
 msgid "Like us on Facebook"
 msgstr "Станьте нашим поклонником на Facebook"
 
-#: template-parts/content-page-entry-content.php:14 template-parts/content-page.php:19
-#: template-parts/content-single.php:23 template-parts/content.php:32
+#: template-parts/content-page-entry-content.php:14
+#: template-parts/content-page.php:19 template-parts/content-single.php:23
+#: template-parts/content.php:32
 msgid "Pages:"
 msgstr "Страницы:"
 
@@ -440,7 +456,8 @@ msgstr "Страницы:"
 msgid "Learn About"
 msgstr "Узнать"
 
-#: template-parts/content-search-mobile.php:19 template-parts/header-search.php:19
+#: template-parts/content-search-mobile.php:19
+#: template-parts/header-search.php:19
 msgctxt "placeholder"
 msgid "Search"
 msgstr "Поиск"
@@ -449,7 +466,8 @@ msgstr "Поиск"
 msgid "More Posts"
 msgstr "Больше публикаций"
 
-#: template-parts/content-single-more.php:43 template-parts/content-single-more.php:71
+#: template-parts/content-single-more.php:43
+#: template-parts/content-single-more.php:71
 msgid "Read"
 msgstr "Чтение"
 
@@ -493,3 +511,4 @@ msgstr "Nerdery"
 #. Author URI of the plugin/theme
 msgid "http://www.nerdery.com"
 msgstr "http://www.nerdery.com"
+

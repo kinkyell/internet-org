@@ -1,8 +1,9 @@
+﻿#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Internet.org\n"
 "POT-Creation-Date: 2015-10-05 11:57-0500\n"
-"PO-Revision-Date: 2015-10-13 13:32-0500\n"
+"PO-Revision-Date: 2015-08-13 17:37-0500\n"
 "Last-Translator: Richard Aber <raber@nerdery.com>\n"
 "Language-Team: Richard Aber <raber@nerdery.com>\n"
 "MIME-Version: 1.0\n"
@@ -12,10 +13,9 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: style.css\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;"
-"esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: pa\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
@@ -29,9 +29,10 @@ msgstr "ਨਹੀਂ ਲੱਭਿਆ"
 
 #: 404.php:47 404.php:70
 msgid "It looks like nothing was found at this location. Maybe try a search?"
-msgstr "ਇੰਝ ਜਾਪਦਾ ਹੈ ਕਿ ਇਸ ਸਥਾਨ ‘ਤੇ ਕੁਝ ਵੀ ਨਹੀਂ ਲੱਭਿਆ। ਕੋਈ ਖੋਜ ਅਜ਼ਮਾ ਸਕਦੇ ਹੋ?"
+msgstr "ਇੰਝ ਜਾਪਦਾ ਹੈ ਕਿ ਇਸ ਸਥਾਨ ‘ਤੇ ਕੁਝ ਵੀ ਨਹੀਂ ਲੱਭਿਆ। ਕੋਈ ਖੋਜ ਅਜ਼ਮਾ ਸਕਦੇ ਹੋ?"
 
-#: archive.php:69 template-parts/content-press-item.php:38 template-parts/content-search.php:40
+#: archive.php:69 template-parts/content-press-item.php:38
+#: template-parts/content-search.php:40
 msgid "Read More"
 msgstr "ਹੋਰ ਜਾਣੋ"
 
@@ -49,7 +50,7 @@ msgstr[1] "&ldquo;%2$s&rdquo; ‘ਤੇ ਵਿਚਾਰ%1$s"
 
 #: comments.php:38 comments.php:59
 msgid "Comment navigation"
-msgstr "ਟਿੱਪਣੀ ਨੈਵੀਗੇਸ਼ਨ"
+msgstr "ਟਿੱਪਣੀ ਨੈਵੀਗੇਸ਼ਨ"
 
 #: comments.php:41 comments.php:62
 msgid "Older Comments"
@@ -92,13 +93,14 @@ msgstr "ਸੰਮਿਲਿਤ ਕਰਨ ਲਈ ਵੀਡੀਓ"
 msgid "Click Me"
 msgstr "ਮੈਨੂੰ ਕਲਿੱਕ ਕਰੋ"
 
-#: functions.php:1656 plugins/internetorg-custom-fields/internetorg-custom-fields.php:150
+#: functions.php:1656
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:150
 msgid "Link"
 msgstr "ਲਿੰਕ"
 
 #: functions.php:1660
 msgid "Link CSS Class"
-msgstr "CSS ਸ਼੍ਰੇਣੀ ਲਿੰਕ ਕਰੋ"
+msgstr "CSS ਸ਼੍ਰੇਣੀ ਲਿੰਕ ਕਰੋ"
 
 #: functions.php:1664
 msgid "Arrow Link"
@@ -124,7 +126,8 @@ msgstr "ਬਾਹਰੀ ਲਿੰਕ"
 msgid "External URL"
 msgstr "ਬਾਹਰੀ URL"
 
-#: functions.php:1683 plugins/internetorg-custom-posttypes/content-widget.php:71
+#: functions.php:1683
+#: plugins/internetorg-custom-posttypes/content-widget.php:71
 #: plugins/internetorg-custom-posttypes/content-widget.php:90
 msgid "URL"
 msgstr "URL"
@@ -147,7 +150,7 @@ msgstr "ਹੋਰ ਜਾਣੋ"
 
 #: inc/language.php:26
 msgid "English"
-msgstr "ਅੰਗ੍ਰੇਜ਼ੀ"
+msgstr "ਅੰਗ੍ਰੇਜ਼ੀ"
 
 #: inc/template-tags.php:45
 #, php-format
@@ -181,7 +184,8 @@ msgstr "1 ਟਿੱਪਣੀ"
 msgid "% Comments"
 msgstr "% ਟਿੱਪਣੀਆਂ"
 
-#: inc/template-tags.php:85 inc/template-tags.php:107 template-parts/content-page-entry-end.php:11
+#: inc/template-tags.php:85 inc/template-tags.php:107
+#: template-parts/content-page-entry-end.php:11
 #: template-parts/content-page.php:26
 msgid "Edit"
 msgstr "ਸੋਧੋ"
@@ -197,24 +201,24 @@ msgstr "Facebook &copy; %1$s"
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:83
 msgid "Section"
-msgstr "ਸੈਕਸ਼ਨ"
+msgstr "ਸੈਕਸ਼ਨ"
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:84
 #, php-format
 msgid "Section: %s"
-msgstr "ਸੈਕਸ਼ਨ: %s"
+msgstr "ਸੈਕਸ਼ਨ: %s"
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:85
 msgid "Add another Content Area"
-msgstr "ਕੋਈ ਹੋਰ ਸਮੱਗਰੀ ਖੇਤਰ ਸ਼ਾਮਲ ਕਰੋ"
+msgstr "ਕੋਈ ਹੋਰ ਸਮੱਗਰੀ ਖੇਤਰ ਸ਼ਾਮਲ ਕਰੋ"
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:91
 msgid "Section Title"
-msgstr "ਸੈਕਸ਼ਨ ਸਿਰਲੇਖ"
+msgstr "ਸੈਕਸ਼ਨ ਸਿਰਲੇਖ"
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:92
 msgid "Section Name"
-msgstr "ਸੈਕਸ਼ਨ ਨਾਂ"
+msgstr "ਸੈਕਸ਼ਨ ਨਾਂ"
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:93
 msgid "Description"
@@ -236,7 +240,7 @@ msgstr "ਕਸਟਮ ਲਿੰਕ"
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:103
 msgid "Section Slug"
-msgstr "ਸੈਕਸ਼ਨ ਕਿਰਮ"
+msgstr "ਸੈਕਸ਼ਨ ਕਿਰਮ"
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:111
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:158
@@ -249,7 +253,7 @@ msgstr "ਪਹੁੰਚ"
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:124
 msgid "Mission"
-msgstr "ਮਿਸ਼ਨ"
+msgstr "ਮਿਸ਼ਨ"
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:125
 msgid "Impact"
@@ -262,16 +266,16 @@ msgstr "ਬੈਕਗ੍ਰਾਉਂਡ ਤਸਵੀਰ"
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:131
 msgid "Call to action"
-msgstr "ਕਾਲ ਟੂ ਐਕਸ਼ਨ"
+msgstr "ਕਾਲ ਟੂ ਐਕਸ਼ਨ"
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:132
 #, php-format
 msgid "Call to action: %s"
-msgstr "ਕਾਲ ਟੂ ਐਕਸ਼ਨ: %s"
+msgstr "ਕਾਲ ਟੂ ਐਕਸ਼ਨ: %s"
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:133
 msgid "Add another CTA"
-msgstr "ਕੋਈ ਹੋਰ CTA ਸ਼ਾਮਲ ਕਰੋ"
+msgstr "ਕੋਈ ਹੋਰ CTA ਸ਼ਾਮਲ ਕਰੋ"
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:139
 msgid "CTA Title"
@@ -294,14 +298,16 @@ msgid "Content Areas"
 msgstr "ਸਮੱਗਰੀ ਖੇਤਰ"
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:212
-#: plugins/internetorg-custom-posttypes/campaign.php:83 plugins/internetorg-custom-posttypes/campaign.php:92
+#: plugins/internetorg-custom-posttypes/campaign.php:83
+#: plugins/internetorg-custom-posttypes/campaign.php:92
 #: plugins/internetorg-custom-posttypes/story.php:69
 msgid "Subtitle"
 msgstr "ਉਪਸਿਰਲੇਖ"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:221 plugins/internetorg-custom-posttypes/story.php:78
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:221
+#: plugins/internetorg-custom-posttypes/story.php:78
 msgid "Additional page configuration"
-msgstr "ਅਤਿਰਿਕਤ ਪੰਨਾ ਕਨਫ਼ੀਗ੍ਰੇਸ਼ਨ"
+msgstr "ਅਤਿਰਿਕਤ ਪੰਨਾ ਕਨਫ਼ੀਗ੍ਰੇਸ਼ਨ"
 
 #: plugins/internetorg-custom-fields/internetorg-custom-fields.php:233
 msgid "Intro Title"
@@ -325,7 +331,7 @@ msgstr "ਮਹਿੰਮ"
 
 #: plugins/internetorg-custom-posttypes/campaign.php:73
 msgid "Add Background"
-msgstr "ਬੈਕਗ੍ਰਾਉਂਡ ਸ਼ਾਮਲ ਕਰੋ"
+msgstr "ਬੈਕਗ੍ਰਾਉਂਡ ਸ਼ਾਮਲ ਕਰੋ"
 
 #: plugins/internetorg-custom-posttypes/campaign.php:74
 msgid "Select Background Image"
@@ -343,21 +349,26 @@ msgstr "ਸਮੱਗਰੀ ਵਿਜੇਟਸ"
 msgid "Content Widget"
 msgstr "ਸਮੱਗਰੀ ਵਿਜੇਟਸ"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:63 plugins/internetorg-custom-posttypes/content-widget.php:76
-#: plugins/internetorg-custom-posttypes/content-widget.php:82 plugins/internetorg-custom-posttypes/content-widget.php:95
+#: plugins/internetorg-custom-posttypes/content-widget.php:63
+#: plugins/internetorg-custom-posttypes/content-widget.php:76
+#: plugins/internetorg-custom-posttypes/content-widget.php:82
+#: plugins/internetorg-custom-posttypes/content-widget.php:95
 msgid "Call to Action"
-msgstr "ਕਾਲ ਟੂ ਐਕਸ਼ਨ"
+msgstr "ਕਾਲ ਟੂ ਐਕਸ਼ਨ"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:64 plugins/internetorg-custom-posttypes/content-widget.php:83
+#: plugins/internetorg-custom-posttypes/content-widget.php:64
+#: plugins/internetorg-custom-posttypes/content-widget.php:83
 #, php-format
 msgid "Call to Action: %s"
-msgstr "ਕਾਲ ਟੂ ਐਕਸ਼ਨ: %s"
+msgstr "ਕਾਲ ਟੂ ਐਕਸ਼ਨ: %s"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:70 plugins/internetorg-custom-posttypes/content-widget.php:89
+#: plugins/internetorg-custom-posttypes/content-widget.php:70
+#: plugins/internetorg-custom-posttypes/content-widget.php:89
 msgid "Button Label"
 msgstr "ਬਟਨ ਲੇਬਲ"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:72 plugins/internetorg-custom-posttypes/content-widget.php:91
+#: plugins/internetorg-custom-posttypes/content-widget.php:72
+#: plugins/internetorg-custom-posttypes/content-widget.php:91
 msgid "File"
 msgstr "ਫਾਈਲ"
 
@@ -371,24 +382,27 @@ msgstr "ਕਹਾਣੀਆਂ"
 
 #: plugins/internetorg-custom-posttypes/video.php:29
 msgid "Videos"
-msgstr "ਵੀਡੀਓਜ਼"
+msgstr "ਵੀਡੀਓਜ਼"
 
-#: plugins/internetorg-custom-posttypes/video.php:64 plugins/internetorg-custom-posttypes/video.php:75
+#: plugins/internetorg-custom-posttypes/video.php:64
+#: plugins/internetorg-custom-posttypes/video.php:75
 msgid "Video Duration"
 msgstr "ਵੀਡੀਓ ਦੀ ਮਿਆਦ"
 
-#: plugins/internetorg-custom-posttypes/video.php:71 plugins/internetorg-custom-posttypes/video.php:76
+#: plugins/internetorg-custom-posttypes/video.php:71
+#: plugins/internetorg-custom-posttypes/video.php:76
 msgid "Video URL"
 msgstr "ਵੀਡੀਓ URL"
 
-#: searchform.php:17 template-parts/content-search-mobile.php:17 template-parts/header-search.php:17
+#: searchform.php:17 template-parts/content-search-mobile.php:17
+#: template-parts/header-search.php:17
 msgctxt "label"
 msgid "Search"
 msgstr "ਖੋਜ ਕਰੋ"
 
 #: template-parts/content-free-services.php:24
 msgid "Full List of Free Services"
-msgstr "ਮੁਫ਼ਤ ਸੇਵਾਵਾਂ ਦੀ ਸਮੁੱਚੀ ਸੂਚੀ"
+msgstr "ਮੁਫ਼ਤ ਸੇਵਾਵਾਂ ਦੀ ਸਮੁੱਚੀ ਸੂਚੀ"
 
 #: template-parts/content-none.php:14
 msgid "Nothing Found"
@@ -396,16 +410,25 @@ msgstr "ਕੁਝ ਨਹੀਂ ਲੱਭਿਆ"
 
 #: template-parts/content-none.php:20
 #, php-format
-msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr "ਕੀ ਆਪਣੀ ਪਹਿਲੀ ਪੋਸਟ ਨੂੰ ਪ੍ਰਕਾਸ਼ਿਤ ਕਰਨ ਲਈ ਤਿਆਰ ਹੋ? <a href=\"%1$s\">ਇੱਥੇ ਅਰੰਭ ਕਰੋ</a>।"
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+"ਕੀ ਆਪਣੀ ਪਹਿਲੀ ਪੋਸਟ ਨੂੰ ਪ੍ਰਕਾਸ਼ਿਤ ਕਰਨ ਲਈ ਤਿਆਰ ਹੋ? <a href=\"%1$s\">ਇੱਥੇ ਅਰੰਭ ਕਰੋ</a>।"
 
-#: template-parts/content-none.php:24 template-parts/content-search-none.php:14
-msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
-msgstr "ਮੁਆਫ਼ ਕਰਨਾ, ਲੇਕਿਨ ਤੁਹਾਡੇ ਖੋਜ ਸ਼ਬਦਾਂ ਨਾਲ ਕੁਝ ਵੀ ਮੇਲ ਨਹੀਂ ਖਾਂਦਾ। ਕਿਰਪ ਕਰੇਕ ਕੁਝ ਵੱਖਰੇ ਕੀਵਰਡਸ ਨਾਲ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
+#: template-parts/content-none.php:24
+#: template-parts/content-search-none.php:14
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"ਮੁਆਫ਼ ਕਰਨਾ, ਲੇਕਿਨ ਤੁਹਾਡੇ ਖੋਜ ਸ਼ਬਦਾਂ ਨਾਲ ਕੁਝ ਵੀ ਮੇਲ ਨਹੀਂ ਖਾਂਦਾ। ਕਿਰਪ ਕਰੇਕ ਕੁਝ ਵੱਖਰੇ ਕੀਵਰਡਸ ਨਾਲ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
 
 #: template-parts/content-none.php:29
-msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
-msgstr "ਇੰਜ ਜਾਪਦਾ ਹੈ ਕਿ ਅਸੀਂ ਉਹ ਨਹੀਂ ਲੱਭ ਸਕਦੇ ਹਾਂ ਜੋ ਤੁਸੀਂ ਲੱਭ ਰਹੇ ਹੋ। ਸ਼ਾਇਦ ਖੋਜ ਕਰਨਾ ਮੱਦਦ ਕਰ ਸਕਦਾ ਹੈ।"
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+"ਇੰਜ ਜਾਪਦਾ ਹੈ ਕਿ ਅਸੀਂ ਉਹ ਨਹੀਂ ਲੱਭ ਸਕਦੇ ਹਾਂ ਜੋ ਤੁਸੀਂ ਲੱਭ ਰਹੇ ਹੋ। ਸ਼ਾਇਦ ਖੋਜ ਕਰਨਾ ਮੱਦਦ ਕਰ ਸਕਦਾ ਹੈ।"
 
 #: template-parts/content-page-contact-social-block.php:17
 msgid "Follow the Project"
@@ -423,8 +446,9 @@ msgstr "https://fb.me/Internetdotorg"
 msgid "Like us on Facebook"
 msgstr "Facebook ‘ਤੇ ਸਾਨੂੰ ਪਸੰਦ ਕਰੋ"
 
-#: template-parts/content-page-entry-content.php:14 template-parts/content-page.php:19
-#: template-parts/content-single.php:23 template-parts/content.php:32
+#: template-parts/content-page-entry-content.php:14
+#: template-parts/content-page.php:19 template-parts/content-single.php:23
+#: template-parts/content.php:32
 msgid "Pages:"
 msgstr "ਪੰਨੇ:"
 
@@ -432,7 +456,8 @@ msgstr "ਪੰਨੇ:"
 msgid "Learn About"
 msgstr "ਇਸ ਬਾਰੇ ਜਾਣੋ"
 
-#: template-parts/content-search-mobile.php:19 template-parts/header-search.php:19
+#: template-parts/content-search-mobile.php:19
+#: template-parts/header-search.php:19
 msgctxt "placeholder"
 msgid "Search"
 msgstr "ਖੋਜ ਕਰੋ"
@@ -441,7 +466,8 @@ msgstr "ਖੋਜ ਕਰੋ"
 msgid "More Posts"
 msgstr "ਹੋਰ ਪੋਸਟ"
 
-#: template-parts/content-single-more.php:43 template-parts/content-single-more.php:71
+#: template-parts/content-single-more.php:43
+#: template-parts/content-single-more.php:71
 msgid "Read"
 msgstr "ਪੜ੍ਹੋ"
 
@@ -460,7 +486,7 @@ msgstr "%s <span class=\"meta-nav\">&rarr;</span> ਨੂੰ ਪੜ੍ਹਨਾ �
 
 #: template-parts/header-buttons.php:20
 msgid "Toggle Navigation"
-msgstr "ਟੋੱਗਲ ਨੈਵੀਗੇਸ਼ਨ"
+msgstr "ਟੋੱਗਲ ਨੈਵੀਗੇਸ਼ਨ"
 
 #: template-parts/header-buttons.php:20
 msgid "Menu"
@@ -485,3 +511,4 @@ msgstr "The Nerdery"
 #. Author URI of the plugin/theme
 msgid "http://www.nerdery.com"
 msgstr "http://www.nerdery.com"
+

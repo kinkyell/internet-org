@@ -2364,7 +2364,7 @@ function vip_fb_legacy_redirects() {
     }
 
 		// Check specifically for old stories and map accordingly
-		if ( strpos( $url, '/story_' ) {
+		if ( strpos( $url, '/story_' ) !== false ) {
 			$parts = explode( '/', $url );
 			$parts = preg_filter( '/^story_(.*)/', 'story', $parts );
 			$url = implode( '/', $parts );
