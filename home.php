@@ -86,7 +86,7 @@ $archives_years = internetorg_get_archives_years();
 											<div class="resultsList-ft opera-mini-only">
 												<div class="resultsList-list resultsList-list_spread">
 													<div class="resultsList-list-item">
-														<a href="/search/all" type="button" class="btn js-ShowMoreView" data-src="press" data-target="addl-results">
+														<a href="/search/all" type="button" class="btn" data-src="press" data-target="addl-results">
 															<?php esc_html_e( 'Show More', 'internetorg' ); ?>
 														</a>
 													</div>

@@ -21,13 +21,16 @@ body.opera-mini {
         }
     }
 
-    .opera-mini-only {
-        display: block !important;
-    }
-
     .resultsList-ft {
         border: none !important;
         padding: 20px 0 0 !important;
+    }
+
+    .opera-mini-only {
+        &,
+        .resultsList-ft {
+            display: block !important;
+        }
     }
 
     .header-backBtn,
