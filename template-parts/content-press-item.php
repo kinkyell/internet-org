@@ -30,6 +30,9 @@
 						<?php internetorg_posted_on_date(); ?>
 					</div>
 				</div>
+
+				<?php internetorg_media_embed(); ?>
+
 				<div class="feature-bd">
 					<p class="bdcpy">
 						<?php echo wp_kses_post( get_the_excerpt() ); ?>

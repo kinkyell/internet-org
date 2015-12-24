@@ -2427,7 +2427,44 @@ add_filter( 'jetpack_open_graph_base_tags', function( $og_tags ) {
 }, 11 );
 
 /**
-	* Add custom fields for Customizing Open Graph Tags
+	* Get the Proper Media Embed for the current article
+	*/
+
+function internetorg_media_embed () {
+
+	global $post;
+
+	$fields = get_post_meta( $post->ID, 'internetorg_media_embed', true );
+
+	if ( $fields ) {
+
+		$url = $fields['iorg_media_embed_url'];
+		$visibility = $fields['iorg_media_embed_visibility'];
+
+		// Return early if the visibility doesn't match
+		if ( is_archive() && $visibility === 'single' || is_single() && $visibility === 'listing' ) {
+			return;
+		}
+
+		if ( strpos( $url, 'youtube.com' ) !== false ) {
+			parse_str( parse_url( $url, PHP_URL_QUERY ), $parsed );
+			echo '<div class="feature-video"><iframe src="https://www.youtube.com/embed/' . esc_attr( $parsed[ 'v' ] ) . '" frameborder="0" allowfullscreen></iframe></div>';
+		}
+
+		if ( strpos( $url, 'vimeo.com' ) !== false ) {
+			$parsed = substr( parse_url( $url, PHP_URL_PATH ), 1 );
+			echo '<div class="feature-video"><iframe src="https://player.vimeo.com/video/' . esc_attr( $parsed ) . '" frameborder="0" allowfullscreen></iframe></div>';
+		}
+
+		if ( strpos( $url, 'facebook.com' ) !== false ) {
+			echo '<div class="fb-post" data-href="' . esc_url( $url ) . '"></div>';
+		}
+	}
+
+}
+
+/**
+	* Add custom fields for Customizing Open Graph Tags & Media Embed
 	*/
 
 add_action( 'fm_post_post', 'internetorg_open_graph_fields' );
@@ -2443,6 +2480,25 @@ function internetorg_open_graph_fields () {
   ) );
 
   $fm->add_meta_box( __( 'Customize Meta Data' ), 'post' );
+
+ $fm = new Fieldmanager_Group( array(
+      'name' => 'internetorg_media_embed',
+      'children' => array(
+        'iorg_media_embed_url' => new Fieldmanager_Textfield( __( 'Link to Media (ex. YouTube video url, Vimeo video url or Facebook Post)' ) ),
+        'iorg_media_embed_visibility' => new Fieldmanager_Select( array(
+					  'name' => 'iorg_media_embed_visibility',
+					  'label' => __( 'Where should Media be visible?' ),
+					  'options' => array(
+	        		'both' => 'Both on the Listing & Single Pages',
+	        		'listing' =>'Only on the Listing Page',
+	        		'single' => 'Only on Single Page'
+					  )
+					)
+				)
+      ),
+  ) );
+
+  $fm->add_meta_box( __( 'Media Embed Options' ), 'post' );
 
 }
 

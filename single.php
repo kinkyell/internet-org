@@ -48,6 +48,9 @@ get_header();
 							<div class="container">
 								<div class="feature">
 									<div class="feature-bd wysiwyg quarantine">
+
+										<?php internetorg_media_embed(); ?>
+
 										<?php the_content(); ?>
 
 										<div id="fb-root"></div>
