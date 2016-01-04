@@ -127,6 +127,7 @@ define(function(require, exports, module) { // jshint ignore:line
         if (!this.active) {
             return;
         }
+
         var $markup = $(markup).children();
 
         // remove any duplicate introblocks
@@ -143,6 +144,7 @@ define(function(require, exports, module) { // jshint ignore:line
             this.loader.removeThrobber();
             this.loader = null;
         }
+
     };
 
     /**

@@ -5,7 +5,7 @@
  * @package Internet.org
  */
 
-error_reporting( 0 );
+error_reporting( E_ALL );
 
 // WP VIP Helper Plugin -- gives us access to the VIP only functions.
 define( 'IO_DIR', __DIR__ );
@@ -319,7 +319,7 @@ if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 				 * @var string $image_url
 				 */
 				$image_url = get_stylesheet_directory_uri()
-				             . '/_static/web/assets/media/images/icons/png/icon-services-dictionary.png';
+										 . '/_static/web/assets/media/images/icons/png/icon-services-dictionary.png';
 			} else {
 				$image_url = internetorg_get_post_thumbnail( $svcqry->post->ID, 'listing-image' );
 			}
@@ -1834,8 +1834,8 @@ add_action( 'init', 'internetorg_register_custom_link_shortcode_ui' );
  */
 function internetorg_change_contact_form_response( $msg ) {
 	return '<div class="vr vr_x1"><div class="hdg hdg_3 mix-hdg_centerInMobile">'
-	       . esc_html__( 'Thank you!', 'internetorg' )
-	       . '</div></div>';
+				 . esc_html__( 'Thank you!', 'internetorg' )
+				 . '</div></div>';
 }
 
 add_filter( 'grunion_contact_form_success_message', 'internetorg_change_contact_form_response' );
@@ -2254,11 +2254,11 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 
 		<div class="feature-cta">
 			<a href="<?php echo esc_url( apply_filters( 'iorg_url', $url ) ); ?>"
-			   class="link js-stateDefault"
-			   data-type="<?php esc_attr( $type ); ?>"
-			   data-social="<?php echo esc_attr( $social_attr ); ?>"
-			   data-theme="<?php echo esc_attr( strtolower( $theme ) ); ?>"
-			   data-title="<?php echo esc_attr( $title ); ?>"
+				 class="link js-stateDefault"
+				 data-type="<?php esc_attr( $type ); ?>"
+				 data-social="<?php echo esc_attr( $social_attr ); ?>"
+				 data-theme="<?php echo esc_attr( strtolower( $theme ) ); ?>"
+				 data-title="<?php echo esc_attr( $title ); ?>"
 				<?php if ( ! empty( $mobile_image ) ) : ?>
 					data-mobile-image="<?php echo esc_url( $mobile_image ); ?>"
 				<?php endif; ?>
@@ -2332,38 +2332,38 @@ function internetorg_recursive_unset( &$array, $unwanted_key ) {
 
 function vip_fb_legacy_redirects() {
 
-    // To reduce overhead, only run if the requested page is 404.
-    if ( ! is_404() ) {
-        return;
-    }
+		// To reduce overhead, only run if the requested page is 404.
+		if ( ! is_404() ) {
+				return;
+		}
 
-    $langCode = bbl_get_current_lang();
+		$langCode = bbl_get_current_lang();
 		$urlPrefix = $langCode->url_prefix;
-    $url = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
+		$url = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
 
-    // Return early if we found our url prefix
-    if ( strpos( $url, '/' . $urlPrefix . ' /' ) !== false ) {
-    	return;
-    }
+		// Return early if we found our url prefix
+		if ( strpos( $url, '/' . $urlPrefix . ' /' ) !== false ) {
+			return;
+		}
 
-    // Define static mapping of old routes
-    $routes = array(
-    	'/contact' => '/contact-us',
+		// Define static mapping of old routes
+		$routes = array(
+			'/contact' => '/contact-us',
 			'/innovationchallenge' => '/story/innovation-challenge/'
 		);
 
-    // Check for any 404 URL that doesn't start with a potential lang code
-    if ( ! preg_match( '/^\/[a-z]{2}(?:(?:-|_)[A-Z]{2})?\/[a-z0-9\-\/]+(?:[a-z0-9\-\/]+)*$/', $url ) ) {
+		// Check for any 404 URL that doesn't start with a potential lang code
+		if ( ! preg_match( '/^\/[a-z]{2}(?:(?:-|_)[A-Z]{2})?\/[a-z0-9\-\/]+(?:[a-z0-9\-\/]+)*$/', $url ) ) {
 
-    	// Check specifically for old stories and map accordingly
+			// Check specifically for old stories and map accordingly
 			if ( strpos( $url, '/story_' ) !== false ) {
 				$parts = explode( '/', $url );
 				foreach( $parts as $key => $val ) {
 					$parts[ $key ] = ( strpos( $val, 'story_' ) !== false ) ? 'story' : $val;
 				}
 				$url = implode( '/', $parts );
-	 			wp_safe_redirect( $url, 301 );
-	 			exit;
+				wp_safe_redirect( $url, 301 );
+				exit;
 			}
 
 			// Check for any custom routes to map directly
@@ -2371,9 +2371,9 @@ function vip_fb_legacy_redirects() {
 				wp_safe_redirect( $routes[ $url ], 301 );
 			} else {
 				wp_safe_redirect( "/$urlPrefix" . "$url/", 301 );
-      }
-      exit;
-    }
+			}
+			exit;
+		}
 		return;
 }
 
@@ -2385,10 +2385,10 @@ add_filter( 'template_redirect', 'vip_fb_legacy_redirects',0 , 2 );
  */
 
 function vip_fb_internetorg_en_locale( $locale ) {
-    if ( 'en_US' === $locale && wp_in( 'Jetpack_Likes->likes_master', wp_debug_backtrace_summary() ) ) {
-        return 'en';
-    }
-    return $locale;
+		if ( 'en_US' === $locale && wp_in( 'Jetpack_Likes->likes_master', wp_debug_backtrace_summary() ) ) {
+				return 'en';
+		}
+		return $locale;
 }
 add_filter( 'locale', 'vip_fb_internetorg_en_locale', 1000, 1 );
 
@@ -2403,7 +2403,6 @@ add_filter( 'jetpack_open_graph_base_tags', function( $og_tags ) {
 	$fields = get_post_meta( $post->ID, 'internetorg_custom_og', true );
 
 	if ( $fields ) {
-
 		$title = $fields['iorg_title'];
 		$description = $fields['iorg_description'];
 		$image = $fields['iorg_image'];
@@ -2422,7 +2421,7 @@ add_filter( 'jetpack_open_graph_base_tags', function( $og_tags ) {
 
 	}
 
-  return $og_tags;
+	return $og_tags;
 
 }, 11 );
 
@@ -2468,37 +2467,39 @@ function internetorg_media_embed () {
 	*/
 
 add_action( 'fm_post_post', 'internetorg_open_graph_fields' );
+add_action( 'fm_post_io_story', 'internetorg_open_graph_fields' );
+
 function internetorg_open_graph_fields () {
-
  $fm = new Fieldmanager_Group( array(
-      'name' => 'internetorg_custom_og',
-      'children' => array(
-        'iorg_title' => new Fieldmanager_Textfield( __( 'og:title' ) ),
-        'iorg_description' => new Fieldmanager_TextArea( __( 'og:description' ) ),
-        'iorg_image' => new Fieldmanager_Media( __( 'og:image' ) ),
-      ),
-  ) );
+			'name' => 'internetorg_custom_og',
+			'children' => array(
+				'iorg_title' => new Fieldmanager_Textfield( __( 'og:title' ) ),
+				'iorg_description' => new Fieldmanager_TextArea( __( 'og:description' ) ),
+				'iorg_image' => new Fieldmanager_Media( __( 'og:image' ) ),
+			),
+	) );
 
-  $fm->add_meta_box( __( 'Customize Meta Data' ), 'post' );
+	$fm->add_meta_box( __( 'Customize Meta Data' ), 'io_story' );
+	$fm->add_meta_box( __( 'Customize Meta Data' ), 'post' );
 
- $fm = new Fieldmanager_Group( array(
-      'name' => 'internetorg_media_embed',
-      'children' => array(
-        'iorg_media_embed_url' => new Fieldmanager_Textfield( __( 'Link to Media (ex. YouTube video url, Vimeo video url or Facebook Post)' ) ),
-        'iorg_media_embed_visibility' => new Fieldmanager_Select( array(
-					  'name' => 'iorg_media_embed_visibility',
-					  'label' => __( 'Where should Media be visible?' ),
-					  'options' => array(
-	        		'both' => 'Both on the Listing & Single Pages',
-	        		'listing' =>'Only on the Listing Page',
-	        		'single' => 'Only on Single Page'
-					  )
+	$fm = new Fieldmanager_Group( array(
+			'name' => 'internetorg_media_embed',
+			'children' => array(
+				'iorg_media_embed_url' => new Fieldmanager_Textfield( __( 'Link to Media (ex. YouTube video url, Vimeo video url or Facebook Post)' ) ),
+				'iorg_media_embed_visibility' => new Fieldmanager_Select( array(
+						'name' => 'iorg_media_embed_visibility',
+						'label' => __( 'Where should Media be visible?' ),
+						'options' => array(
+							'both' => 'Both on the Listing & Single Pages',
+							'listing' =>'Only on the Listing Page',
+							'single' => 'Only on Single Page'
+						)
 					)
 				)
-      ),
-  ) );
+			),
+	) );
 
-  $fm->add_meta_box( __( 'Media Embed Options' ), 'post' );
+	$fm->add_meta_box( __( 'Media Embed Options' ), 'post' );
 
 }
 

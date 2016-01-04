@@ -102,6 +102,9 @@ define(function(require, exports, module) { // jshint ignore:line
         // remove loader
         this.loader.removeThrobber();
         this.loader = null;
+
+        FB.XFBML.parse( $markup[0] );
+
     };
 
     /**
