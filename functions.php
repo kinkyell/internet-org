@@ -1075,6 +1075,7 @@ function internetorg_do_ajax_search() {
 			'panel_image'    => $panel_image,
 			'post_type'      => $post_type,
 			'post_date'      => get_the_date( '' ),
+			'media_embed'    => internetorg_media_embed( true ),
 		);
 	}
 
@@ -1196,6 +1197,7 @@ function internetorg_do_ajax_more_posts() {
 			'post_excerpt'   => get_the_excerpt(),
 			'permalink'      => get_the_permalink(),
 			'post_thumbnail' => $post_thumbnail,
+			'media_embed' 	 => internetorg_media_embed( true ),
 		);
 	}
 
@@ -2332,6 +2334,13 @@ function internetorg_recursive_unset( &$array, $unwanted_key ) {
 
 function vip_fb_legacy_redirects() {
 
+		// Set post information if it's a preview
+		if ( is_preview() ) {
+			global $post;
+			parse_str( $_SERVER[ 'QUERY_STRING' ] );
+			$post = get_post( $p );
+		}
+
 		// To reduce overhead, only run if the requested page is 404.
 		if ( !is_404() ) {
 				return;
@@ -2429,11 +2438,12 @@ add_filter( 'jetpack_open_graph_base_tags', function( $og_tags ) {
 	* Get the Proper Media Embed for the current article
 	*/
 
-function internetorg_media_embed () {
+function internetorg_media_embed ( $ret ) {
 
 	global $post;
 
 	$fields = get_post_meta( $post->ID, 'internetorg_media_embed', true );
+	$output = '';
 
 	if ( $fields ) {
 
@@ -2442,24 +2452,30 @@ function internetorg_media_embed () {
 
 		// Return early if the visibility doesn't match
 		if ( is_archive() && $visibility === 'single' || is_single() && $visibility === 'listing' ) {
-			return;
+			return '';
 		}
 
 		if ( strpos( $url, 'youtube.com' ) !== false ) {
 			parse_str( parse_url( $url, PHP_URL_QUERY ), $parsed );
-			echo '<div class="feature-video"><iframe src="https://www.youtube.com/embed/' . esc_attr( $parsed[ 'v' ] ) . '" frameborder="0" allowfullscreen></iframe></div>';
+			$output = '<div class="feature-video"><iframe src="https://www.youtube.com/embed/' . esc_attr( $parsed[ 'v' ] ) . '" frameborder="0" allowfullscreen></iframe></div>';
 		}
 
 		if ( strpos( $url, 'vimeo.com' ) !== false ) {
 			$parsed = substr( parse_url( $url, PHP_URL_PATH ), 1 );
-			echo '<div class="feature-video"><iframe src="https://player.vimeo.com/video/' . esc_attr( $parsed ) . '" frameborder="0" allowfullscreen></iframe></div>';
+			$output = '<div class="feature-video"><iframe src="https://player.vimeo.com/video/' . esc_attr( $parsed ) . '" frameborder="0" allowfullscreen></iframe></div>';
 		}
 
 		if ( strpos( $url, 'facebook.com' ) !== false ) {
-			echo '<div class="fb-post" data-href="' . esc_url( $url ) . '"></div>';
+			$output = '<div class="fb-post" data-href="' . esc_url( $url ) . '"></div>';
 		}
+
 	}
 
+	if ( $ret ) {
+		return $output;
+	} else {
+		echo $output;
+	}
 }
 
 /**
@@ -2514,7 +2530,6 @@ function internetorg_open_graph_limiter() {
 
 function internetorg_update_preview_link( $link ) {
 	$id = get_the_ID();
-	// echo 'link:' . $link . 'id:' . $id;
 	$link = str_replace( '?post_type=io_story&', 'story/?', $link );
 	if ( get_post_type( $id ) === 'post' ) {
 		$link = str_replace( '?preview=true', '?post_type=post&p=' . $id . '&preview=true', $link );
