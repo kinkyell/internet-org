@@ -5,7 +5,7 @@
  * @package Internet.org
  */
 
-error_reporting( E_ALL );
+error_reporting( 0 );
 
 // WP VIP Helper Plugin -- gives us access to the VIP only functions.
 define( 'IO_DIR', __DIR__ );
@@ -2333,7 +2333,7 @@ function internetorg_recursive_unset( &$array, $unwanted_key ) {
 function vip_fb_legacy_redirects() {
 
 		// To reduce overhead, only run if the requested page is 404.
-		if ( ! is_404() ) {
+		if ( !is_404() ) {
 				return;
 		}
 
@@ -2512,4 +2512,15 @@ function internetorg_open_graph_limiter() {
 	wp_enqueue_script( 'request-scripts', get_bloginfo( 'template_directory' ) . '/js/limit.js' );
 }
 
+function internetorg_update_preview_link( $link ) {
+	$id = get_the_ID();
+	// echo 'link:' . $link . 'id:' . $id;
+	$link = str_replace( '?post_type=io_story&', 'story/?', $link );
+	if ( get_post_type( $id ) === 'post' ) {
+		$link = str_replace( '?preview=true', '?post_type=post&p=' . $id . '&preview=true', $link );
+	}
+	return $link;
+}
 
+add_filter( 'preview_page_link', 'internetorg_update_preview_link');
+add_filter( 'preview_post_link', 'internetorg_update_preview_link');
