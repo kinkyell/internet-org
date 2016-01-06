@@ -14,7 +14,7 @@ require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 vip_allow_title_orphans();
 
 // Load the Shortcake UI VIP Plugin.
-wpcom_vip_load_plugin( 'shortcode-ui' );
+wpcom_vip_load_plugin( 'shortcode-ui', 'plugins', true );
 
 // Load the Multiple Post Thumbnails VIP Plugin.
 wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
@@ -2328,17 +2328,39 @@ function internetorg_recursive_unset( &$array, $unwanted_key ) {
 }
 
 /**
- * Redirect scripts
+ * Force usage of a pages proper template
  */
 
+function internetorg_force_page_template() {
+	global $posts;
+	internetorg_preview_post_setup();
+	$template = get_page_template_slug( $posts[ 0 ]->ID );
+	if ( $template ) {
+		include TEMPLATEPATH . '/' . $template;
+		die();
+	}
+}
+
+/**
+ * Resetup post information based on query params
+ */
+
+function internetorg_preview_post_setup() {
+	global $posts;
+	parse_str( $_SERVER[ 'QUERY_STRING' ] );
+	$posts = array( get_post( $p ) );
+}
+
+/**
+ * Redirect scripts
+ */
 
 function vip_fb_legacy_redirects() {
 
 		// Set post information if it's a preview
 		if ( is_preview() ) {
-			global $post;
-			parse_str( $_SERVER[ 'QUERY_STRING' ] );
-			$post = get_post( $p );
+			internetorg_preview_post_setup();
+			add_action( 'template_redirect', 'internetorg_force_page_template' );
 		}
 
 		// To reduce overhead, only run if the requested page is 404.
@@ -2346,6 +2368,7 @@ function vip_fb_legacy_redirects() {
 				return;
 		}
 
+		// Get language prefixes
 		$langCode = bbl_get_current_lang();
 		$urlPrefix = $langCode->url_prefix;
 		$url = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
@@ -2531,8 +2554,9 @@ function internetorg_open_graph_limiter() {
 function internetorg_update_preview_link( $link ) {
 	$id = get_the_ID();
 	$link = str_replace( '?post_type=io_story&', 'story/?', $link );
-	if ( get_post_type( $id ) === 'post' ) {
-		$link = str_replace( '?preview=true', '?post_type=post&p=' . $id . '&preview=true', $link );
+	$type = get_post_type( $id );
+	if ( $type === 'post' || $type === 'page' ) {
+		$link = str_replace( '?preview=true', '?post_type=' . $type . '&p=' . $id . '&preview=true', $link );
 	}
 	return $link;
 }
