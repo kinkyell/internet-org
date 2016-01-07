@@ -2350,22 +2350,6 @@ function internetorg_preview_post_setup() {
 }
 
 /**
- * URL contains scripts
- */
-
-function internetorg_url_replace( $url, $find, $replace, $specific = false ) {
-	$parts = explode( '/', $url );
-	foreach( $parts as $key => $val ) {
-		if ( $specific ) {
-			$parts[ $key ] = ( $val === $find ) ? $replace : $val;
-		} else {
-			$parts[ $key ] = ( strpos( $val, $find ) !== false ) ? $replace : $val;
-		}
-	}
-	return implode( '/', $parts );
-}
-
-/**
  * Redirect scripts
  */
 
@@ -2388,6 +2372,10 @@ function vip_fb_legacy_redirects() {
 	$urlPrefix = $langCode->url_prefix;
 	$url = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
 
+	echo $url;
+
+	exit;
+
 	// Return early if we found our url prefix
 	if ( strpos( $url, '/' . $urlPrefix . ' /' ) !== false ) {
 		return;
@@ -2404,23 +2392,27 @@ function vip_fb_legacy_redirects() {
 
 		// Check specifically for old stories and map accordingly
 		if ( strpos( $url, '/story_' ) !== false ) {
-			$url = internetorg_url_replace( $url, 'story_', 'story' );
+			$parts = explode( '/', $url );
+			foreach( $parts as $key => $val ) {
+				$parts[ $key ] = ( strpos( $val, 'story_' ) !== false ) ? 'story' : $val;
+			}
+			$url = implode( '/', $parts );
 			wp_safe_redirect( $url, 301 );
 			exit;
 		}
-
 		wp_safe_redirect( "/$urlPrefix" . "$url/", 301 );
 		exit;
 	}
 
 	// Check for any custom routes to map directly
-	foreach( $routes as $key => $val ){
-		$url = internetorg_url_replace( $url, $key, $val, true );
-		if ( strpos( $url, $val ) !== false ) {
+	foreach( $routes as $route ){
+		if ( strpos( $url, $route ) !== false ) {
 			wp_safe_redirect( $routes[ $url ], 301 );
 			exit;
 		}
 	}
+
+
 	return;
 }
 
