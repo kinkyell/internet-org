@@ -5,8 +5,6 @@
  * @package Internet.org
  */
 
-error_reporting( 0 );
-
 // WP VIP Helper Plugin -- gives us access to the VIP only functions.
 define( 'IO_DIR', __DIR__ );
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
@@ -14,7 +12,7 @@ require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 vip_allow_title_orphans();
 
 // Load the Shortcake UI VIP Plugin.
-wpcom_vip_load_plugin( 'shortcode-ui', 'plugins', true );
+wpcom_vip_load_plugin( 'shortcode-ui' );
 
 // Load the Multiple Post Thumbnails VIP Plugin.
 wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
@@ -2352,61 +2350,78 @@ function internetorg_preview_post_setup() {
 }
 
 /**
+ * URL contains scripts
+ */
+
+function internetorg_url_replace( $url, $find, $replace, $specific = false ) {
+	$parts = explode( '/', $url );
+	foreach( $parts as $key => $val ) {
+		if ( $specific ) {
+			$parts[ $key ] = ( $val === $find ) ? $replace : $val;
+		} else {
+			$parts[ $key ] = ( strpos( $val, $find ) !== false ) ? $replace : $val;
+		}
+	}
+	return implode( '/', $parts );
+}
+
+/**
  * Redirect scripts
  */
 
 function vip_fb_legacy_redirects() {
 
-		// Set post information if it's a preview
-		if ( is_preview() ) {
-			internetorg_preview_post_setup();
-			add_action( 'template_redirect', 'internetorg_force_page_template' );
-		}
+	// Set post information if it's a preview
+	if ( is_preview() ) {
+		internetorg_preview_post_setup();
+		add_action( 'template_redirect', 'internetorg_force_page_template' );
+		exit;
+	}
 
-		// To reduce overhead, only run if the requested page is 404.
-		if ( !is_404() ) {
-				return;
-		}
+	// To reduce overhead, only run if the requested page is 404.
+	if ( !is_404() ) {
+		return;
+	}
 
-		// Get language prefixes
-		$langCode = bbl_get_current_lang();
-		$urlPrefix = $langCode->url_prefix;
-		$url = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
+	// Get language prefixes
+	$langCode = bbl_get_current_lang();
+	$urlPrefix = $langCode->url_prefix;
+	$url = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
 
-		// Return early if we found our url prefix
-		if ( strpos( $url, '/' . $urlPrefix . ' /' ) !== false ) {
-			return;
-		}
+	// Return early if we found our url prefix
+	if ( strpos( $url, '/' . $urlPrefix . ' /' ) !== false ) {
+		return;
+	}
 
-		// Define static mapping of old routes
-		$routes = array(
-			'/contact' => '/contact-us',
-			'/innovationchallenge' => '/story/innovation-challenge/'
-		);
+	// Define static mapping of old routes
+	$routes = array(
+		'/contact' => '/contact-us',
+		'/innovationchallenge' => '/story/innovation-challenge/'
+	);
 
-		// Check for any 404 URL that doesn't start with a potential lang code
-		if ( ! preg_match( '/^\/[a-z]{2}(?:(?:-|_)[A-Z]{2})?\/[a-z0-9\-\/]+(?:[a-z0-9\-\/]+)*$/', $url ) ) {
+	// Check for any 404 URL that doesn't start with a potential lang code
+	if ( ! preg_match( '/^\/[a-z]{2}(?:(?:-|_)[A-Z]{2})?\/[a-z0-9\-\/]+(?:[a-z0-9\-\/]+)*$/', $url ) ) {
 
-			// Check specifically for old stories and map accordingly
-			if ( strpos( $url, '/story_' ) !== false ) {
-				$parts = explode( '/', $url );
-				foreach( $parts as $key => $val ) {
-					$parts[ $key ] = ( strpos( $val, 'story_' ) !== false ) ? 'story' : $val;
-				}
-				$url = implode( '/', $parts );
-				wp_safe_redirect( $url, 301 );
-				exit;
-			}
-
-			// Check for any custom routes to map directly
-			if ( array_key_exists( $url, $routes ) ) {
-				wp_safe_redirect( $routes[ $url ], 301 );
-			} else {
-				wp_safe_redirect( "/$urlPrefix" . "$url/", 301 );
-			}
+		// Check specifically for old stories and map accordingly
+		if ( strpos( $url, '/story_' ) !== false ) {
+			$url = internetorg_url_replace( $url, 'story_', 'story' );
+			wp_safe_redirect( $url, 301 );
 			exit;
 		}
-		return;
+
+		wp_safe_redirect( "/$urlPrefix" . "$url/", 301 );
+		exit;
+	}
+
+	// Check for any custom routes to map directly
+	foreach( $routes as $key => $val ){
+		$url = internetorg_url_replace( $url, $key, $val, true );
+		if ( strpos( $url, $val ) !== false ) {
+			wp_safe_redirect( $routes[ $url ], 301 );
+			exit;
+		}
+	}
+	return;
 }
 
 
