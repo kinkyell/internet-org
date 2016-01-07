@@ -2396,19 +2396,19 @@ function vip_fb_legacy_redirects() {
 			wp_safe_redirect( $url, 301 );
 			exit;
 		}
+
+		// Check for any custom routes to map directly
+		foreach( $routes as $route ){
+			if ( strpos( $url, $route ) !== false ) {
+				wp_safe_redirect( $routes[ $url ], 301 );
+				exit;
+			}
+		}
+
 		wp_safe_redirect( "/$urlPrefix" . "$url/", 301 );
 		exit;
+
 	}
-
-	// Check for any custom routes to map directly
-	foreach( $routes as $route ){
-		if ( strpos( $url, $route ) !== false ) {
-			wp_safe_redirect( $routes[ $url ], 301 );
-			exit;
-		}
-	}
-
-
 	return;
 }
 
