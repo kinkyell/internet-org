@@ -2372,10 +2372,6 @@ function vip_fb_legacy_redirects() {
 	$urlPrefix = $langCode->url_prefix;
 	$url = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
 
-	echo $url;
-
-	exit;
-
 	// Return early if we found our url prefix
 	if ( strpos( $url, '/' . $urlPrefix . ' /' ) !== false ) {
 		return;
