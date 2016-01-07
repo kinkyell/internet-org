@@ -43,9 +43,7 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
 
-  <?php echo 'server:' . home_url(); ?>
-
-  <?php if ( $_SERVER[ 'SERVER_NAME'] === 'internetorg.jam3.net' ) : ?>
+  <?php if ( strpos( home_url(), 'internetorg.jam3.net' ) !== false ) : ?>
 
 		<script type="text/javascript">
 		(function() {
