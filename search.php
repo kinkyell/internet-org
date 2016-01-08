@@ -16,7 +16,7 @@ $search = get_search_query();
 if ( $search == 'all' ) {
 	$args = array(
 		'post_type' => 'post',
-		'post_per_page' => '-1',
+		'post_per_page' => '100',
 		'order' => 'desc'
 	);
 	$wp_query = new WP_Query( $args );

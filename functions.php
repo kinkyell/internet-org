@@ -2333,7 +2333,7 @@ function internetorg_force_page_template() {
 	global $posts;
 	internetorg_preview_post_setup();
 	$template = get_page_template_slug( $posts[ 0 ]->ID );
-	if ( $template ) {
+	if ( $template && validate_file( TEMPLATEPATH . '/' . $template ) ) {
 		include TEMPLATEPATH . '/' . $template;
 		die();
 	}
