@@ -7,7 +7,7 @@ jQuery( function ( $ ) {
 		$count.text( remaining + ' characters remaining.');
 	};
 
-	$( '.fm-iorg_description textarea' ).each( function () {
+	$( '.fm-iorg_description textarea, .fm-iorg_title input' ).each( function () {
 
 		$( this ).after( '<div class="counter">300 characters remaining.</div>' );
 		setCounter( this );
