@@ -2517,7 +2517,7 @@ function internetorg_open_graph_fields () {
 			'children' => array(
 				'iorg_title' => new Fieldmanager_Textfield( __( 'og:title' ) ),
 				'iorg_description' => new Fieldmanager_TextArea( __( 'og:description' ) ),
-				'iorg_image' => new Fieldmanager_Media( __( 'og:image' ) ),
+				'iorg_image' => new Fieldmanager_Media( __( 'og:image - Image Size Specs: HD ( 1200 x 630px ) Small ( 600 x 315px ) Minimum ( 200 x 200px )' ) ),
 			),
 	) );
 
