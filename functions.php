@@ -2352,6 +2352,37 @@ function internetorg_preview_post_setup() {
 }
 
 /**
+ * Find and route in url
+ */
+
+function internetorg_search_url( $url, $find ) {
+	$parts = explode( '/', $url );
+	foreach( $parts as $key => $val ) {
+		if ( $val === $find ) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ * Find and replace from url
+ */
+
+function internetorg_search_replace_url( $url, $find, $replace, $exact = false ) {
+	$parts = explode( '/', $url );
+	foreach( $parts as $key => $val ) {
+		if ( $exact ) {
+			$parts[ $key ] = ( $val === $find ) ? $replace : $val;
+		} else {
+			$parts[ $key ] = ( strpos( $val, $find ) !== false ) ? $replace : $val;
+		}
+	}
+	$url = implode( '/', $parts );
+	return $url;
+}
+
+/**
  * Redirect scripts
  */
 
@@ -2374,43 +2405,34 @@ function vip_fb_legacy_redirects() {
 	$urlPrefix = $langCode->url_prefix;
 	$url = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
 
-	// Return early if we found our url prefix
-	if ( strpos( $url, '/' . $urlPrefix . ' /' ) !== false ) {
-		return;
-	}
-
 	// Define static mapping of old routes
 	$routes = array(
-		'/contact' => '/contact-us',
-		'/innovationchallenge' => '/story/innovation-challenge/'
+		'contact' => '/contact-us',
+		'innovationchallenge' => '/story/innovation-challenge'
 	);
 
-	// Check for any 404 URL that doesn't start with a potential lang code
-	if ( ! preg_match( '/^\/[a-z]{2}(?:(?:-|_)[A-Z]{2})?\/[a-z0-9\-\/]+(?:[a-z0-9\-\/]+)*$/', $url ) ) {
-
-		// Check specifically for old stories and map accordingly
-		if ( strpos( $url, '/story_' ) !== false ) {
-			$parts = explode( '/', $url );
-			foreach( $parts as $key => $val ) {
-				$parts[ $key ] = ( strpos( $val, 'story_' ) !== false ) ? 'story' : $val;
-			}
-			$url = implode( '/', $parts );
+	// Check for custom routes to map directly
+	foreach( $routes as $key => $val ){
+		if ( internetorg_search_url( $url, $key ) ) {
+			$url = internetorg_search_replace_url( $url, $key, $val, true );
 			wp_safe_redirect( $url, 301 );
 			exit;
 		}
+	}
 
-		// Check for any custom routes to map directly
-		foreach( $routes as $route ){
-			if ( strpos( $url, $route ) !== false ) {
-				wp_safe_redirect( $routes[ $url ], 301 );
-				exit;
-			}
-		}
+	// Check specifically for old story routes and map accordingly
+	if ( strpos( $url, '/story_' ) !== false ) {
+		$url = internetorg_search_replace_url( $url, 'story_', 'story' );
+		wp_safe_redirect( $url, 301 );
+		exit;
+	}
 
+	// Check for any 404 URL that doesn't start with a potential lang code
+	if ( !preg_match( '/^\/[a-z]{2}(?:(?:-|_)[A-Z]{2})?\/[a-z0-9\-\/]+(?:[a-z0-9\-\/]+)*$/', $url ) ) {
 		wp_safe_redirect( "/$urlPrefix" . "$url/", 301 );
 		exit;
-
 	}
+
 	return;
 }
 
