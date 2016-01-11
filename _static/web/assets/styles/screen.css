@@ -1848,6 +1848,10 @@ Layout for padded columns of content.
 /* ---------------------------------------------------------------------
  Main Menu
 ------------------------------------------------------------------------ */
+.mainMenu-center-container {
+  width: 50%;
+  margin-top: 70px; }
+
 .mainMenu {
   width: 100%;
   height: 100%;
