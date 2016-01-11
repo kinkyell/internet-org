@@ -2407,8 +2407,8 @@ function vip_fb_legacy_redirects() {
 
 	// Define static mapping of old routes
 	$routes = array(
-		'contact' => '/contact-us',
-		'innovationchallenge' => '/story/innovation-challenge'
+		'contact' => 'contact-us',
+		'innovationchallenge' => 'story/innovation-challenge'
 	);
 
 	// Check for custom routes to map directly
