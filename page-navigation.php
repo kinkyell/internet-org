@@ -40,8 +40,8 @@ get_header();
       </div>
     </div>
       <video width="320" height="240" controls>
-    <source src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-    <source src="http://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+    <source src="https://skyfiregcs-a.akamaihd.net/exp=1452619692~acl=%2A%2F451348998.mp4%2A~hmac=846c6360415c208468be398117ca741ac227a3b6ac9b0308d5eaca88b0e00cea/vimeo-prod-skyfire-std-us/01/4686/5/148430707/451348998.mp4" type="video/mp4">
+    <source src="https://skyfiregcs-a.akamaihd.net/exp=1452619692~acl=%2A%2F451348998.mp4%2A~hmac=846c6360415c208468be398117ca741ac227a3b6ac9b0308d5eaca88b0e00cea/vimeo-prod-skyfire-std-us/01/4686/5/148430707/451348998.ogg" type="video/ogg">
   Your browser does not support the video tag.
   </video>
   </div>
