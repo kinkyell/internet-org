@@ -56,6 +56,9 @@
 }
 
 @media (max-height: 320px) {
+    .statementBlock_end {
+        padding-top: 75px;
+    }
     .statementBlock_end .statementBlock-pre {
         @include verticalConstrain();
     }

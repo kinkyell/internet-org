@@ -258,6 +258,11 @@ body.opera-mini {
 	bottom: 20px;
 }
 
+@media (max-height: 387px) {
+  .pwdByVip-txt_front{
+    bottom: 5px;
+  }
+}
 // IE 10+
 
 // Android 4.0+

@@ -120,6 +120,23 @@
     }
 }
 
+@media (max-height: 387px) {
+
+
+    .narrative {
+        .statementBlock_end .statementBlock-bd {
+            padding: 20px 0;
+        }
+        .hdg_4 {
+            @include remify(font-size, 18px);
+        }
+
+        .link {
+            @include remify(font-size, 12px);
+        }
+    }
+}
+
 @media (max-height: 375px) {
     .narrative .hdg_1 {
         @include remify(font-size, 24px);

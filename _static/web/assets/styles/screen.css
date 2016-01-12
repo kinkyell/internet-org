@@ -2158,6 +2158,16 @@ _:-ms-input-placeholder .mainMenu-panel-hd, :root .selector .mainMenu-panel-hd {
   .narrative .statementBlock_end .statementBlock-bd {
     height: 56%; } }
 
+@media (max-height: 387px) {
+  .narrative .statementBlock_end .statementBlock-bd {
+    padding: 20px 0; }
+  .narrative .hdg_4 {
+    font-size: 18px;
+    font-size: 1.125rem; }
+  .narrative .link {
+    font-size: 12px;
+    font-size: 0.75rem; } }
+
 @media (max-height: 375px) {
   .narrative .hdg_1 {
     font-size: 24px;
@@ -3372,6 +3382,8 @@ For loading placeholder
     height: 52%; } }
 
 @media (max-height: 320px) {
+  .statementBlock_end {
+    padding-top: 75px; }
   .statementBlock_end .statementBlock-pre {
     width: 100%;
     -webkit-transform: scale(0.75) translateY(-40px);
@@ -6799,3 +6811,7 @@ body.opera-mini .btn.js-ShowMoreView {
 
 .pwdByVip-txt_front {
   bottom: 20px; }
+
+@media (max-height: 387px) {
+  .pwdByVip-txt_front {
+    bottom: 5px; } }
