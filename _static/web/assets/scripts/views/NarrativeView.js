@@ -484,7 +484,7 @@ define(function(require, exports, module) { // jshint ignore:line
                     this._videoModalView = new VideoModalView($('.js-videoModal'));
                 }.bind(this)).catch(log);
 
-                if (subPosition > 1) {
+                if (subPosition === 0) {
                     this._updateCtas(false);
                 }
 
@@ -501,12 +501,6 @@ define(function(require, exports, module) { // jshint ignore:line
                         this._videoModalView = new VideoModalView($('.js-videoModal'));
                     }.bind(this)).catch(log);
                 }
-
-
-                if (destinationSubsLength > 0) {
-                    this._updateCtas(false);
-                }
-
             }
         }
     };
@@ -536,9 +530,12 @@ define(function(require, exports, module) { // jshint ignore:line
                     this._videoModalView = new VideoModalView($('.js-videoModal'));
                 }.bind(this));
 
-                this._updateCtas(false);
             // Anything Else
-            } else {
+            } else {    
+                if(subsLength > 0  && subPosition >= subsLength){
+                    //this._updateCtas(false);
+                }
+
                 this._subPosition = 0;
                 this._updateIndicators(this._position + 1);
                 this._displayIndicators(this._position + 1);
