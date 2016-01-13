@@ -23,6 +23,15 @@
 			exit( 'Opera Mini Detected' );
 		}
 
+		function IE(v) {
+		  return RegExp('msie' + (!isNaN(v)?('\\s'+v):''), 'i').test(navigator.userAgent);
+		}
+		if(IE(10)){
+			var root = document.getElementsByTagName('body')[0];
+			root.className += ' ie10';
+			console.log('Internet Explorer 10');
+		}
+
 		// If Opera Mini add class to body
 		if ( isOperaMini === true ) {
 			applyOperaFallbacks();

@@ -1860,6 +1860,8 @@ Layout for padded columns of content.
   z-index: 99;
   background: rgba(0, 0, 0, 0.7);
   overflow: auto; }
+  .ie10 .mainMenu {
+    position: relative; }
 
 .mainMenu-panel {
   width: 100%;
