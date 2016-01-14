@@ -23,7 +23,7 @@
 				root.className += ' opera-mini';
 				exit( 'Opera Mini Detected' );
 			}
-			
+
 			if (isOpera10) {
 				//root.className += ' opera-10';
 				root.className += ' opera-mini';
@@ -57,7 +57,7 @@
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/<?php echo wp_json_encode( bbl_get_current_lang()->code ); ?>/all.js#xfbml=1&amp;version=v2.3";
+    js.src = <?php echo wp_json_encode( "//connect.facebook.net/" . bbl_get_current_lang()->code . "/all.js#xfbml=1&amp;version=v2.3" ); ?>;
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
 
