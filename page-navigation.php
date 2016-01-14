@@ -40,12 +40,6 @@ get_header();
       </div>
     </div>
   </div>
-  <video width="320" height="240" controls>
-    <source src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-    <source src="http://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
-    <p>Video not supported, download the video from here</p>
-  </video>
-  <a href="http://www.w3schools.com/html/mov_bbb.mp4">Video</a>
 
 <?php endwhile; // End of the loop. ?>
 
