@@ -92,7 +92,7 @@ get_header();
 										<div class="resultsList-list resultsList-list_spread">
 											<div class="resultsList-list-item">
 												<button type="button" class="btn js-ShowMoreView" data-src="press" data-target="addl-results">
-													<?php esc_html_e( 'Show More archive', 'internetorg' ); ?>
+													<?php esc_html_e( 'Show More', 'internetorg' ); ?>
 												</button>
 											</div>
 										</div>
@@ -105,7 +105,7 @@ get_header();
 									<div class="resultsList-list resultsList-list_spread">
 										<div class="resultsList-list-item">
 											<a href="/search/all" type="button" class="btn" data-src="press" data-target="addl-results">
-												<?php esc_html_e( 'Show More archive', 'internetorg' ); ?>
+												<?php esc_html_e( 'Show More', 'internetorg' ); ?>
 											</a>
 										</div>
 									</div>
