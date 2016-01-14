@@ -14,7 +14,9 @@ require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 vip_allow_title_orphans();
 
 // Load the Shortcake UI VIP Plugin.
-wpcom_vip_load_plugin( 'shortcode-ui' );
+// wpcom_vip_load_plugin( 'shortcode-ui' );
+
+wpcom_vip_load_plugin( 'shortcode-ui', 'plugins', true );
 
 // Load the Multiple Post Thumbnails VIP Plugin.
 wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
