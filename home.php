@@ -13,7 +13,6 @@ $next_posts_link = get_next_posts_link();
 $archives_years = internetorg_get_archives_years();
 
 ?>
-
 <div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php echo esc_url( internetorg_get_the_permalink_in_lang( get_option( 'page_for_posts' ), internetorg_get_current_content_lang_code() ) ); ?>" data-type="titled" data-title="<?php echo esc_html( internetorg_get_the_title_in_lang( get_option( 'page_for_posts' ), internetorg_get_current_content_lang_code() ) ); ?>">
 
 		<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
@@ -56,16 +55,27 @@ $archives_years = internetorg_get_archives_years();
 								<div class="resultsList">
 									<div id="addl-results" class="resultsList-list">
 
-										<?php if ( have_posts() ) : ?>
-											<?php while ( have_posts() ) : ?>
-												<?php the_post(); ?>
-												<?php get_template_part( 'template-parts/content', 'press-item' ); ?>
-											<?php endwhile; ?>
-										<?php endif; ?>
+										<?php 
+											$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : '';
+											if ( stristr( $user_agent, 'Opera Mini' ) ) {
+												global $post;
+												$args = array( 'numberposts' => -1);
+												$myposts = query_posts( array ( 'posts_per_page' => -1 ) );
+												foreach( $myposts as $post ) :  setup_postdata($post);
+												    the_post(); 
+														get_template_part( 'template-parts/content', 'press-item' ); 
+												endforeach; wp_reset_postdata();
+											} else {
+												if ( have_posts() ) : 
+													while ( have_posts() ) : 
+														the_post(); 
+														get_template_part( 'template-parts/content', 'press-item' ); 
+													endwhile;
+												endif;
+											}
+										?>
 
 									</div>
-
-
 									<div class="resultsList-ft">
 										<div class="resultsList-list resultsList-list_spread">
 
@@ -82,17 +92,6 @@ $archives_years = internetorg_get_archives_years();
 													<?php internetorg_the_press_filter( $archives_years ); ?>
 											<?php endif; ?>
 											</div>
-
-											<div class="resultsList-ft opera-mini-only">
-												<div class="resultsList-list resultsList-list_spread">
-													<div class="resultsList-list-item">
-														<a href="/search/all" type="button" class="btn" data-src="press" data-target="addl-results">
-															<?php esc_html_e( 'Show More', 'internetorg' ); ?>
-														</a>
-													</div>
-												</div>
-											</div>
-
 										</div>
 									</div>
 
