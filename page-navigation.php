@@ -40,7 +40,12 @@ get_header();
       </div>
     </div>
   </div>
-
+  <video width="320" height="240" controls>
+    <source src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+    <source src="http://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+    <p>Video not supported, download the video from here</p>
+    <a href="http://google.com.uy">link</a>
+  </video>
 <?php endwhile; // End of the loop. ?>
 
 <?php get_footer();
