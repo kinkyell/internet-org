@@ -107,7 +107,6 @@ define(function(require, exports, module) { // jshint ignore:line
         var stateData = extend({
             path: routePath
         }, this._scrapeDataAttrs(routeEl));
-
         this._currentStates.push(stateData);
 
         this.historyManager.replaceState(this._currentStates, null, routePath);

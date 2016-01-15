@@ -38,6 +38,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.refreshScrollerInfo = this._refreshScrollerInfo.bind(this);
         this.currentFeatureImage = '';
 
+
         // Get feature image
         var $featureImage = $('#featurePanel').find('.viewWindow-panel-content-inner').first();
         if( $featureImage.length >= 1 ) {
