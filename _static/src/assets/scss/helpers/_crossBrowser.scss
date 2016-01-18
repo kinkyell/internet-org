@@ -54,7 +54,9 @@ body.opera-mini {
 	.narrative-section-bd_low,
     .vendorForm .grunion-radio-label>.radio,
     .feature .grunion-radio-label>.radio,
-    .menu-main-menu .topicLink {
+    .menu-main-menu .topicLink,
+    .vendorForm .grunion-field-label,
+    .feature .grunion-field-label {
         position: relative !important;
 		overflow: auto !important;
 		height: auto !important;
@@ -62,6 +64,15 @@ body.opera-mini {
 		min-height: auto !important;
 		clear: both !important;
 	}
+
+    .vendorForm .grunion-field-label,
+    .feature .grunion-field-label  {
+        height: auto !important;
+        width: auto !important;
+        clip: none !important;
+        color: black !important;
+        font-size: 13px !important;
+    }
 
     .vendorForm .grunion-radio-label,
     .feature .grunion-radio-label {
