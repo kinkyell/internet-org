@@ -263,19 +263,31 @@ body.opera-mini {
       display: none;
   }
 
+  .viewWindow {
+    &.navigation-opera-mini {
+      min-height: 100% !important;
+    }
+  }
   .navigation-opera-mini {
-    padding-top: 120px;
+    //padding-top: 120px;
     background: #f1efe7;
 
     .mainMenu-panel-primary {
-      #menu-main-menu{
-        margin-bottom: 25px;
-        li{
+      height: calc(100% - 244px);
+      #menu-main-menu {
+        margin-top: 45px;
+        li {
           .topicLink-link{
-            font-size: 23px;
+            font-size: 25px;
           }
         }
       }
+    }
+    .mainMenu-panel-primary > * {
+      min-height: 299px;
+    }
+    .mainMenu-panel-secondary {
+      background:#f1efe7;
     }
   }
 

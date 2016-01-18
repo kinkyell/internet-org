@@ -27,18 +27,22 @@ get_header();
           </li>
         </ul>
       </div>
-      <div class="mainMenu-panel-secondary">
-        <ul id="menu-secondary-menu" class="borderBlocks borderBlocks_2up">
-          <li><a class="auxLink js-stateLink" href="/press"><span>Press</span></a></li>
-          <li><a class="auxLink js-stateLink" href="/story/platform" target="_blank"><span>Platform</span></a></li>
-          <li><a class="auxLink js-stateLink" href="/story/mobile-operator-partnership-program/"><span>Operators</span></a></li>
-          <li><a class="auxLink" href="https://fb.me/Internetdotorg" target="_blank"><span>Facebook Page</span></a></li>
-          <li><a class="auxLink" href="https://www.facebook.com/careers/" target="_blank"><span>Careers</span></a></li>
-          <li><a class="auxLink js-stateLink" href="/contact-us/"><span>Contact</span></a></li>
-        </ul>
-      </div>
-      <div class="mainMenu-panel-lang">
-        <?php internetorg_language_switcher(); ?>
+      <div class="down-container">
+        <div class="mainMenu-panel-secondary">
+          <ul id="menu-secondary-menu" class="borderBlocks borderBlocks_2up">
+            <li><a class="auxLink js-stateLink" href="/press"><span>Press</span></a></li>
+            <li><a class="auxLink js-stateLink" href="/story/platform" target="_blank"><span>Platform</span></a></li>
+            <li><a class="auxLink js-stateLink" href="/story/mobile-operator-partnership-program/"><span>Operators</span></a></li>
+            <li><a class="auxLink" href="https://fb.me/Internetdotorg" target="_blank"><span>Facebook Page</span></a></li>
+            <li><a class="auxLink" href="https://www.facebook.com/careers/" target="_blank"><span>Careers</span></a></li>
+            <li><a class="auxLink js-stateLink" href="/contact-us/"><span>Contact</span></a></li>
+          </ul>
+        </div>
+        <div class="mainMenu-panel-lang">
+          <div class="langSelect js-select">
+              <div class="langSelect-label">English</div>
+          </div>
+        </div>
       </div>
   </div>
 
