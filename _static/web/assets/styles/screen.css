@@ -6649,34 +6649,6 @@ body.opera-mini .menu-main-menu .topicLink {
   display: block !important;
   min-height: auto !important;
   clear: both !important; }
-  body.opera-mini, body.opera-mini .navigation-opera-mini,
-  body.opera-mini .viewWindow,
-  body.opera-mini .viewWindow .navigation-opera-mini,
-  body.opera-mini .viewWindow-panel,
-  body.opera-mini .viewWindow-panel .navigation-opera-mini,
-  body.opera-mini .viewWindow-panel-content,
-  body.opera-mini .viewWindow-panel-content .navigation-opera-mini,
-  body.opera-mini .viewWindow-panel-content-inner,
-  body.opera-mini .viewWindow-panel-content-inner .navigation-opera-mini,
-  body.opera-mini .narrative,
-  body.opera-mini .narrative .navigation-opera-mini,
-  body.opera-mini .narrativeView,
-  body.opera-mini .narrativeView .navigation-opera-mini,
-  body.opera-mini .narrative-section,
-  body.opera-mini .narrative-section .navigation-opera-mini,
-  body.opera-mini .narrative-section-slides_short,
-  body.opera-mini .narrative-section-slides_short .navigation-opera-mini,
-  body.opera-mini .narrative-section-bd,
-  body.opera-mini .narrative-section-bd .navigation-opera-mini,
-  body.opera-mini .narrative-section-bd_low,
-  body.opera-mini .narrative-section-bd_low .navigation-opera-mini,
-  body.opera-mini .vendorForm .grunion-radio-label > .radio,
-  body.opera-mini .vendorForm .grunion-radio-label > .radio .navigation-opera-mini,
-  body.opera-mini .feature .grunion-radio-label > .radio,
-  body.opera-mini .feature .grunion-radio-label > .radio .navigation-opera-mini,
-  body.opera-mini .menu-main-menu .topicLink,
-  body.opera-mini .menu-main-menu .topicLink .navigation-opera-mini {
-    height: 100% !important; }
 
 body.opera-mini .vendorForm .grunion-radio-label .radio,
 body.opera-mini .feature .grunion-radio-label .radio {
@@ -6845,18 +6817,13 @@ body.opera-mini .viewWindow.navigation-opera-mini {
 body.opera-mini .navigation-opera-mini {
   background: #f1efe7; }
   body.opera-mini .navigation-opera-mini .mainMenu-panel-primary {
-    padding-top: 24px;
-    height: calc(100% - 220px); }
+    height: calc(100% - 244px); }
     body.opera-mini .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu {
-      padding-bottom: 25px; }
+      margin-top: 45px; }
       body.opera-mini .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
         font-size: 1.5rem; }
   body.opera-mini .navigation-opera-mini .mainMenu-panel-secondary {
     background: #f1efe7; }
-  body.opera-mini .navigation-opera-mini .down-container {
-    position: absolute;
-    bottom: 0;
-    left: 0; }
 
 .pwdByVip-txt_front {
   bottom: 20px; }
