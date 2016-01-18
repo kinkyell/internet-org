@@ -6821,7 +6821,9 @@ body.opera-mini .navigation-opera-mini {
     body.opera-mini .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu {
       margin-top: 45px; }
       body.opera-mini .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
-        font-size: 1.5rem; }
+        font-size: 25px; }
+  body.opera-mini .navigation-opera-mini .mainMenu-panel-primary > * {
+    min-height: 358px; }
   body.opera-mini .navigation-opera-mini .mainMenu-panel-secondary {
     background: #f1efe7; }
 
