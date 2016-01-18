@@ -248,9 +248,25 @@ body.opera-mini {
 		display: none;
 	}
 
-    .btn.js-ShowMoreView {
-        display: none;
+  .btn.js-ShowMoreView {
+      display: none;
+  }
+
+  .navigation-opera-mini {
+    padding-top: 120px;
+    background: #f1efe7;
+
+    .mainMenu-panel-primary {
+      #menu-main-menu{
+        margin-bottom: 25px;
+        li{
+          .topicLink-link{
+            font-size: 23px;
+          }
+        }
+      }
     }
+  }
 
 }
 
