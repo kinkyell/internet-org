@@ -6811,6 +6811,12 @@ body.opera-mini .link::before, body.opera-mini .link::after {
 body.opera-mini .btn.js-ShowMoreView {
   display: none; }
 
+body.opera-mini .navigation-opera-mini {
+  padding-top: 120px;
+  background: #f1efe7; }
+  body.opera-mini .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu {
+    margin-bottom: 25px; }
+
 .pwdByVip-txt_front {
   bottom: 20px; }
 
