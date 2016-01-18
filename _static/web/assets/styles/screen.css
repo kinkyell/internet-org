@@ -6816,6 +6816,8 @@ body.opera-mini .navigation-opera-mini {
   background: #f1efe7; }
   body.opera-mini .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu {
     margin-bottom: 25px; }
+    body.opera-mini .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
+      font-size: 23px; }
 
 .pwdByVip-txt_front {
   bottom: 20px; }

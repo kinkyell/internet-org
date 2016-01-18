@@ -259,6 +259,11 @@ body.opera-mini {
     .mainMenu-panel-primary {
       #menu-main-menu{
         margin-bottom: 25px;
+        li{
+          .topicLink-link{
+            font-size: 23px;
+          }
+        }
       }
     }
   }
