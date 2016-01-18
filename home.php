@@ -55,21 +55,21 @@ $archives_years = internetorg_get_archives_years();
 								<div class="resultsList">
 									<div id="addl-results" class="resultsList-list">
 
-										<?php 
+										<?php
 											$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : '';
 											if ( stristr( $user_agent, 'Opera Mini' ) ) {
 												global $post;
 												$args = array( 'numberposts' => -1);
-												$myposts = query_posts( array ( 'posts_per_page' => -1 ) );
+												$myposts = query_posts( array ( 'posts_per_page' => 100 ) );
 												foreach( $myposts as $post ) :  setup_postdata($post);
-												    the_post(); 
-														get_template_part( 'template-parts/content', 'press-item' ); 
+												    the_post();
+														get_template_part( 'template-parts/content', 'press-item' );
 												endforeach; wp_reset_postdata();
 											} else {
-												if ( have_posts() ) : 
-													while ( have_posts() ) : 
-														the_post(); 
-														get_template_part( 'template-parts/content', 'press-item' ); 
+												if ( have_posts() ) :
+													while ( have_posts() ) :
+														the_post();
+														get_template_part( 'template-parts/content', 'press-item' );
 													endwhile;
 												endif;
 											}
