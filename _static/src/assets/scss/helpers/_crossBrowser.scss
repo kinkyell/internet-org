@@ -52,15 +52,19 @@ body.opera-mini {
 	.narrative-section-slides_short,
 	.narrative-section-bd,
 	.narrative-section-bd_low,
-    .vendorForm .grunion-radio-label>.radio,
-    .feature .grunion-radio-label>.radio,
-    .menu-main-menu .topicLink {
-        position: relative !important;
+  .vendorForm .grunion-radio-label>.radio,
+  .feature .grunion-radio-label>.radio,
+  .menu-main-menu .topicLink {
+    position: relative !important;
 		overflow: auto !important;
 		height: auto !important;
 		display: block !important;
 		min-height: auto !important;
 		clear: both !important;
+
+    &,.navigation-opera-mini {
+      height: 100% !important;
+    }
 	}
 
     .vendorForm .grunion-radio-label,
@@ -252,19 +256,34 @@ body.opera-mini {
       display: none;
   }
 
+  .viewWindow {
+    &.navigation-opera-mini {
+      min-height: 100% !important;
+    }
+  }
   .navigation-opera-mini {
-    padding-top: 120px;
+    //padding-top: 120px;
     background: #f1efe7;
 
     .mainMenu-panel-primary {
+      padding-top: 24px;
+      height: calc(100% - 220px);
       #menu-main-menu{
-        margin-bottom: 25px;
+        padding-bottom: 25px;
         li{
           .topicLink-link{
-            font-size: 23px;
+            font-size: 1.5rem;
           }
         }
       }
+    }
+    .mainMenu-panel-secondary {
+      background:#f1efe7;
+    }
+    .down-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
     }
   }
 
