@@ -136,6 +136,11 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																				? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'panel-image' )
 																				: '' );
 
+																			$slug = basename( untrailingslashit( $cta['link'] ) );
+																			$temp = get_page_by_path( $slug, OBJECT, 'io_story' );
+																			$img = esc_url( internetorg_get_post_thumbnail( $temp->ID, 'panel-image' ) );
+																			$type = 'panel';
+
 																			$mobile_image = esc_url( ( ! empty( $cf_content_section['call-to-action'][0] )
 																				? internetorg_get_media_image_url( $cf_content_section['call-to-action'][0]['image'], 'inline-image' )
 																				: '' ) );
@@ -148,7 +153,8 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																		<a href="<?php echo esc_url( apply_filters( 'iorg_url', $cta['link'] ) ); ?>"
 																		   class="tertiaryCta <?php echo esc_attr( $js_class ); ?>"
 																			<?php if ( ! internetorg_is_video_url( $cta['link'] ) ) : ?>
-																				data-type="titled"
+																				data-type="<?php echo ( $type ) ? $type : 'titled'; ?>"
+																				data-route="<?php echo $url; ?>"
 																				data-date="<?php echo esc_attr( get_the_date() ); ?>"
 																				data-social="<?php echo esc_attr( $social_attr ); ?>"
 																				data-theme="<?php echo esc_attr( strtolower( $theme ) ); ?>"
