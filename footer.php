@@ -18,16 +18,8 @@
 
 		function applyOperaFallbacks () {
 			var root = document.getElementsByTagName('body')[0];
-			if (isOperaMini) {
-				root.className += ' opera-mini';
-				exit( 'Opera Mini Detected' );
-			}
-
-			if (isOpera10) {
-				//root.className += ' opera-10';
-				root.className += ' opera-mini';
-				exit( 'Opera 10 Detected' );
-			}
+			root.className += ' opera-mini';
+			exit( 'Opera Mini Detected' );
 		}
 
 		function IE(v) {
