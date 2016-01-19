@@ -39,7 +39,16 @@ if ( empty( $next_page_id ) ) {
 			</div>
 		</div>
 		<div class="introBlock-ft">
-			<span class="arrowCta"></span>
+			<?php
+				$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : '';
+				if ( stristr( $user_agent, 'Opera Mini' ) ) { ?>
+					<span class="link"></span>
+				<?php
+				} else { ?>
+					<span class="arrowCta"></span>
+				<?php
+				}
+			?>
 		</div>
 	</a>
 </div>

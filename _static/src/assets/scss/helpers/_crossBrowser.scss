@@ -290,6 +290,16 @@ body.opera-mini {
       background:#f1efe7;
     }
   }
+  .introBlock-ft{
+    .link:after {
+        border-bottom: 1px solid $CLR_IMPACT;
+        border-right: 1px solid $CLR_IMPACT;
+    }
+
+    .link:before {
+        background-color: $CLR_IMPACT;
+    }
+  }
 
 }
 
