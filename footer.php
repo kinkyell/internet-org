@@ -25,32 +25,26 @@
 			exit( 'Opera Mini Detected' );
 		}
 
-		// function IE(v) {
-		//   return RegExp('msie' + (!isNaN(v)?('\\s'+v):''), 'i').test(navigator.userAgent);
-		// }
+		function IE(v) {
+		  return RegExp('msie' + (!isNaN(v)?('\\s'+v):''), 'i').test(navigator.userAgent);
+		}
 
-		// if(IE(10)){
-		// 	var root = document.getElementsByTagName('body')[0];
-		// 	root.className += ' ie10';
-		// 	console.log('Internet Explorer 10');
-		// }
+		if(IE(10)){
+			var root = document.getElementsByTagName('body')[0];
+			root.className += ' ie10';
+			console.log('Internet Explorer 10');
+		}
 
-		// If Opera Mini or Opera 10 add class to body
-		// if ( isOperaMini === true || isOpera10 === true) {
-		// 	applyOperaFallbacks();
-		// }
-
-		applyOperaFallbacks();
+		If Opera Mini or Opera 10 add class to body
+		if ( isOperaMini === true || isOpera10 === true) {
+			applyOperaFallbacks();
+		}
 
 		var loader = document.createElement('div');
 		loader.className = 'loadingIcon loadingIcon_opaque loadingIcon_topLayer js-assetShade';
 		document.body.appendChild(loader);
 
 	</script>
-
-	<!--
-	<?php phpinfo(); ?>
-	-->
 
 	<div id="fb-root"></div>
   <script>(function(d, s, id) {
