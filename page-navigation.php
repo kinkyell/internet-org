@@ -40,7 +40,9 @@ get_header();
         </div>
         <div class="mainMenu-panel-lang">
           <div class="langSelect js-select">
-              <div class="langSelect-label">English</div>
+              <div class="langSelect-label">
+                <a href="/languages">English</a>
+              </div>
           </div>
         </div>
       </div>
