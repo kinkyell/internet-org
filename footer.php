@@ -35,7 +35,7 @@
 			console.log('Internet Explorer 10');
 		}
 
-		If Opera Mini or Opera 10 add class to body
+		// If Opera Mini or Opera 10 add class to body
 		if ( isOperaMini === true || isOpera10 === true) {
 			applyOperaFallbacks();
 		}
