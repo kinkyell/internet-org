@@ -10,9 +10,6 @@
 ?>
 	<!-- Add asset shade BEFORE scripts are loaded -->
 	<script type="text/javascript">
-		if (document.referrer && document.referrer != ""){
-      console.log(document.referrer);
-  	}
 		// Detect Opera Mini and Opera 10
 		var isOperaMini = Object.prototype.toString.call(window.operamini) === '[object OperaMini]';
 		var isOpera10 = window.opera && (window.opera.version() > 10 && window.opera.version() < 11);
