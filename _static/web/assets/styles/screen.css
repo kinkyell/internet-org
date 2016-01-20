@@ -6839,18 +6839,18 @@ body.opera-mini .navigation-opera-mini {
 
 body.opera-mini .introBlock-ft {
   text-align: center; }
-  body.opera-mini .introBlock-ft .link {
+  body.opera-mini .introBlock-ft .opera-link {
     text-align: center;
     height: 17px;
     width: 32px;
     padding: initial !important;
-    margin: 0 auto !important;
+    margin: 10px auto !important;
     display: inline-block; }
-    body.opera-mini .introBlock-ft .link.approach {
+    body.opera-mini .introBlock-ft .opera-link.approach {
       background: url("../media/images/bg-arrow-right-pink.png") no-repeat; }
-    body.opera-mini .introBlock-ft .link.impact {
+    body.opera-mini .introBlock-ft .opera-link.impact {
       background: url("../media/images/bg-arrow-right-orange.png") no-repeat; }
-    body.opera-mini .introBlock-ft .link.mission {
+    body.opera-mini .introBlock-ft .opera-link.mission {
       background: url("../media/images/bg-arrow-right-purple.png") no-repeat; }
 
 .pwdByVip-txt_front {

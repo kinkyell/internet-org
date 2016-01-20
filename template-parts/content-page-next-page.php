@@ -43,13 +43,13 @@ if ( empty( $next_page_id ) ) {
 				$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : '';
 				if ( stristr( $user_agent, 'Opera Mini' ) ) { 
 					if( esc_html( get_the_title( $next_page_id ) ) == 'Our Impact') {
-						?> <span class="link impact"></span> <?php
+						?> <span class="opera-link impact"></span> <?php
 					} else {
 						if( esc_html( get_the_title( $next_page_id ) ) == 'Our Approach'){
-							?> <span class="link approach"></span> <?php
+							?> <span class="opera-link approach"></span> <?php
 						} else {
 							if( esc_html( get_the_title( $next_page_id ) ) == 'Our Mission') {
-								?> <span class="link mission"></span> <?php
+								?> <span class="opera-link mission"></span> <?php
 							}
 						}
 					}
