@@ -291,13 +291,20 @@ body.opera-mini {
     }
   }
   .introBlock-ft{
-    .link:after {
-        border-bottom: 1px solid $CLR_IMPACT;
-        border-right: 1px solid $CLR_IMPACT;
-    }
-
-    .link:before {
-        background-color: $CLR_IMPACT;
+    .link {
+        height: 17px;
+        width: 32px;
+        padding: initial !important;
+        margin: auto !important;
+        &.approach {
+            background: url("../media/images/bg-arrow-right-pink.png") no-repeat;
+        }
+        &.impact {
+            background: url("../media/images/bg-arrow-right-orange.png") no-repeat;
+        }
+        &.mission {
+            background: url("../media/images/bg-arrow-right-purple.png") no-repeat;
+        }
     }
   }
 

@@ -41,11 +41,23 @@ if ( empty( $next_page_id ) ) {
 		<div class="introBlock-ft">
 			<?php
 				$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : '';
-				if ( stristr( $user_agent, 'Opera Mini' ) ) { ?>
-					<span class="link"></span>
+				if ( stristr( $user_agent, 'Opera Mini' ) ) { 
+					if( esc_html( get_the_title( $next_page_id ) ) == 'Our Impact') {
+						?> <span class="link impact"></span> <?php
+					} else {
+						if( esc_html( get_the_title( $next_page_id ) ) == 'Our Approach'){
+							?> <span class="link approach"></span> <?php
+						} else {
+							if( esc_html( get_the_title( $next_page_id ) ) == 'Our Mission') {
+								?> <span class="link mission"></span> <?php
+							}
+						}
+					}
+					?>
+					<span class="link "></span>
 				<?php
 				} else { ?>
-					<span class="arrowCta"></span>
+					<span class="arrowCta <?php echo esc_html( get_the_title( $next_page_id ) ); ?>"></span>
 				<?php
 				}
 			?>
