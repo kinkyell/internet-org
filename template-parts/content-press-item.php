@@ -10,10 +10,12 @@
 <div class="resultsList-list-item">
 
 	<?php if ( has_post_thumbnail() ) : ?>
-	<div class="media media_inline">
-		<div class="media-figure">
-			<img src="<?php echo esc_url( internetorg_get_post_thumbnail( get_the_ID(), 'listing-image' ) ); ?>" alt="" />
-		</div>
+	<div class="media media_inline"><?php 
+		if ( internetorg_get_post_thumbnail( get_the_ID(), 'listing-image' ) ){ ?>
+			<div class="media-figure">
+				<img src="<?php echo esc_url( internetorg_get_post_thumbnail( get_the_ID(), 'listing-image' ) ); ?>" alt="" />
+			</div><?php 
+		}?>
 		<div class="media-bd">
 			<?php endif; ?>
 
