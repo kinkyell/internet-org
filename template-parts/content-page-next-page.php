@@ -54,7 +54,6 @@ if ( empty( $next_page_id ) ) {
 						}
 					}
 					?>
-					<span class="link "></span>
 				<?php
 				} else { ?>
 					<span class="arrowCta <?php echo esc_html( get_the_title( $next_page_id ) ); ?>"></span>

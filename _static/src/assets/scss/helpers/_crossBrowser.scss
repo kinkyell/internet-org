@@ -291,11 +291,14 @@ body.opera-mini {
     }
   }
   .introBlock-ft{
+    text-align: center;
     .link {
+        text-align: center;
         height: 17px;
         width: 32px;
         padding: initial !important;
-        margin: auto !important;
+        margin: 0 auto !important;
+        display: inline-block;
         &.approach {
             background: url("../media/images/bg-arrow-right-pink.png") no-repeat;
         }
