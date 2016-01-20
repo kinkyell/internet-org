@@ -7,8 +7,6 @@
 
 body.opera-mini {
 
-    max-width: 100%;
-
     .loadingIcon,
     .show-more,
     .header-backBtn,
@@ -65,7 +63,6 @@ body.opera-mini {
 		display: block !important;
 		min-height: auto !important;
 		clear: both !important;
-        max-width: 100% !important;
 	}
 
     .vendorForm .grunion-field-label,
@@ -88,9 +85,7 @@ body.opera-mini {
             display: none !important;
         }
     }
-    .form-error{ 
-        max-width: 80%;
-    }
+
     .arrowCta.arrowCta_light.js-narrativeAdvance {
         transform: none;
         background: url(../media/images/bg-arrow-down.png);
