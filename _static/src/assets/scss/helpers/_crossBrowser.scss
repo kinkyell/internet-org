@@ -41,7 +41,10 @@ body.opera-fallback {
         right: 20px !important;
     }
     .container{
-        margin: 0 40px;
+        form{
+            position: relative;
+            left: -33px;
+        }
     }
 
     &.opera-mini {
