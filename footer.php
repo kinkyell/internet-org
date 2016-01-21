@@ -18,11 +18,12 @@
 
 		function applyOperaFallbacks () {
 			var root = document.getElementsByTagName('body')[0];
-
+      alert('hello');
       if(isOpera10){
         root.className += ' opera-fallback opera-10';
         exit( 'Opera 10 Detected' );
       } else {
+        alert('opera mini');
         root.className += ' opera-fallback opera-mini';
         exit( 'Opera Mini Detected' );
       }
