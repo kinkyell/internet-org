@@ -79,7 +79,6 @@ body.opera-fallback {
 
     &.opera-10 {
         &,
-        .viewWindow,
         .viewWindow-panel,
         .viewWindow-panel-content,
         .viewWindow-panel-content-inner,
@@ -96,6 +95,7 @@ body.opera-fallback {
         .feature .grunion-field-label {
             position: relative !important;
             overflow: auto !important;
+            height: auto !important;
             display: block !important;
             min-height: auto !important;
             clear: both !important;
@@ -108,6 +108,17 @@ body.opera-fallback {
             clip: none !important;
             color: black !important;
             font-size: 13px !important;
+        }
+
+        .viewWindow{
+            width: 100% !important;
+            .viewWindow-panel {
+                width: 100% !important;
+            }
+            .viewWindow-panel-content{
+                width: 100% !important;
+                padding-right: 0px !important;
+            }
         }
     }
     .vendorForm .grunion-radio-label,

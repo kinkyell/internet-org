@@ -6661,7 +6661,6 @@ body.opera-fallback.opera-mini .feature .grunion-field-label {
   font-size: 13px !important; }
 
 body.opera-fallback.opera-10,
-body.opera-fallback.opera-10 .viewWindow,
 body.opera-fallback.opera-10 .viewWindow-panel,
 body.opera-fallback.opera-10 .viewWindow-panel-content,
 body.opera-fallback.opera-10 .viewWindow-panel-content-inner,
@@ -6678,6 +6677,7 @@ body.opera-fallback.opera-10 .vendorForm .grunion-field-label,
 body.opera-fallback.opera-10 .feature .grunion-field-label {
   position: relative !important;
   overflow: auto !important;
+  height: auto !important;
   display: block !important;
   min-height: auto !important;
   clear: both !important; }
@@ -6689,6 +6689,14 @@ body.opera-fallback.opera-10 .feature .grunion-field-label {
   clip: none !important;
   color: black !important;
   font-size: 13px !important; }
+
+body.opera-fallback.opera-10 .viewWindow {
+  width: 100% !important; }
+  body.opera-fallback.opera-10 .viewWindow .viewWindow-panel {
+    width: 100% !important; }
+  body.opera-fallback.opera-10 .viewWindow .viewWindow-panel-content {
+    width: 100% !important;
+    padding-right: 0px !important; }
 
 body.opera-fallback .vendorForm .grunion-radio-label .radio,
 body.opera-fallback .feature .grunion-radio-label .radio {
