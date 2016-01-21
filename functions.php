@@ -1847,7 +1847,7 @@ add_filter( 'grunion_contact_form_success_message', 'internetorg_change_contact_
 /**
  * Check if specified url is a video URL.
  *
- * Note: currently only checks for vimeo.com in the URL,
+ * Note: currently only checks for vimeo.com or youtube.com in the URL,
  * if more video hosts are added this function will need to be updated.
  *
  * @param string $url The URL to check.
@@ -1855,7 +1855,22 @@ add_filter( 'grunion_contact_form_success_message', 'internetorg_change_contact_
  * @return boolean True if URL is a video url.
  */
 function internetorg_is_video_url( $url ) {
-	$check_val = 'vimeo.com';
+	$check_vimeo_val = 'vimeo.com';
+	$isVimeo = internetorg_video_type($url, $check_vimeo_val);
+	$check_youtube_val = 'youtube.com';
+	$isYoutube = internetorg_video_type($url, $check_youtube_val);
+	return ($isVimeo || $isYoutube); 
+}
+
+/**
+ * Check if specified url is a video for $check_val.
+ *
+ * @param string $url The URL to check.
+ * @param string $check_val The type to check. Ex: youtube or vimeo.
+ *
+ * @return boolean True if URL is a video url.
+ */
+function internetorg_video_type( $url , $check_val) {
 
 	// URL too short, go away.
 	if ( strlen( $url ) <= strlen( $check_val ) ) {
@@ -1870,7 +1885,6 @@ function internetorg_is_video_url( $url ) {
 
 	return true;
 }
-
 /**
  * Wrap oEmbed videos with a responsive video wrapper div.
  *
