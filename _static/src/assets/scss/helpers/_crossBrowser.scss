@@ -40,6 +40,9 @@ body.opera-fallback {
         top: 20px !important;
         right: 20px !important;
     }
+    .container{
+        margin: 0 40px;
+    }
 
     &.opera-mini {
         &,
@@ -204,9 +207,6 @@ body.opera-fallback {
         }
     }
 
-    .viewWindow-panel {
-        width: 80%;
-    }
 
 	.narrative,
 	.narrative-section:nth-of-type(1),
@@ -302,11 +302,6 @@ body.opera-fallback {
 		height: 17px;
 		transform: none;
 	}
-    .form-error{
-        overflow: hidden;
-        max-width: 60%;
-        display: table;
-    }
 
 	// hide arrows on main page for opera mini
 	.narrative-section-bd-ft {
