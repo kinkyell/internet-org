@@ -6604,47 +6604,47 @@ html[data-useragent*='MSIE 10.0'] div.introBlock {
 .opera-mini-only {
   display: none !important; }
 
-body.opera-mini .loadingIcon,
-body.opera-mini .show-more,
-body.opera-mini .header-backBtn,
-body.opera-mini .header-menuBtn {
+body.opera-fallback .loadingIcon,
+body.opera-fallback .show-more,
+body.opera-fallback .header-backBtn,
+body.opera-fallback .header-menuBtn {
   display: none !important; }
 
-body.opera-mini.page-template-page-navigation .menu-main-menu {
+body.opera-fallback.page-template-page-navigation .menu-main-menu {
   display: block !important;
   opacity: 1 !important; }
 
-body.opera-mini .resultsList-ft {
+body.opera-fallback .resultsList-ft {
   border: none !important;
   padding: 20px 0 0 !important; }
 
-body.opera-mini .opera-mini-only,
-body.opera-mini .opera-mini-only .resultsList-ft {
+body.opera-fallback .opera-mini-only,
+body.opera-fallback .opera-mini-only .resultsList-ft {
   display: block !important; }
 
-body.opera-mini .header-backBtn,
-body.opera-mini .header-menuBtn {
+body.opera-fallback .header-backBtn,
+body.opera-fallback .header-menuBtn {
   z-index: 99999 !important;
   position: absolute !important;
   top: 20px !important;
   right: 20px !important; }
 
-body.opera-mini,
-body.opera-mini .viewWindow,
-body.opera-mini .viewWindow-panel,
-body.opera-mini .viewWindow-panel-content,
-body.opera-mini .viewWindow-panel-content-inner,
-body.opera-mini .narrative,
-body.opera-mini .narrativeView,
-body.opera-mini .narrative-section,
-body.opera-mini .narrative-section-slides_short,
-body.opera-mini .narrative-section-bd,
-body.opera-mini .narrative-section-bd_low,
-body.opera-mini .vendorForm .grunion-radio-label > .radio,
-body.opera-mini .feature .grunion-radio-label > .radio,
-body.opera-mini .menu-main-menu .topicLink,
-body.opera-mini .vendorForm .grunion-field-label,
-body.opera-mini .feature .grunion-field-label {
+body.opera-fallback.opera-mini,
+body.opera-fallback.opera-mini .viewWindow,
+body.opera-fallback.opera-mini .viewWindow-panel,
+body.opera-fallback.opera-mini .viewWindow-panel-content,
+body.opera-fallback.opera-mini .viewWindow-panel-content-inner,
+body.opera-fallback.opera-mini .narrative,
+body.opera-fallback.opera-mini .narrativeView,
+body.opera-fallback.opera-mini .narrative-section,
+body.opera-fallback.opera-mini .narrative-section-slides_short,
+body.opera-fallback.opera-mini .narrative-section-bd,
+body.opera-fallback.opera-mini .narrative-section-bd_low,
+body.opera-fallback.opera-mini .vendorForm .grunion-radio-label > .radio,
+body.opera-fallback.opera-mini .feature .grunion-radio-label > .radio,
+body.opera-fallback.opera-mini .menu-main-menu .topicLink,
+body.opera-fallback.opera-mini .vendorForm .grunion-field-label,
+body.opera-fallback.opera-mini .feature .grunion-field-label {
   position: relative !important;
   overflow: auto !important;
   height: auto !important;
@@ -6652,25 +6652,55 @@ body.opera-mini .feature .grunion-field-label {
   min-height: auto !important;
   clear: both !important; }
 
-body.opera-mini .vendorForm .grunion-field-label,
-body.opera-mini .feature .grunion-field-label {
+body.opera-fallback.opera-mini .vendorForm .grunion-field-label,
+body.opera-fallback.opera-mini .feature .grunion-field-label {
   height: auto !important;
   width: auto !important;
   clip: none !important;
   color: black !important;
   font-size: 13px !important; }
 
-body.opera-mini .vendorForm .grunion-radio-label .radio,
-body.opera-mini .feature .grunion-radio-label .radio {
+body.opera-fallback.opera-10,
+body.opera-fallback.opera-10 .viewWindow,
+body.opera-fallback.opera-10 .viewWindow-panel,
+body.opera-fallback.opera-10 .viewWindow-panel-content,
+body.opera-fallback.opera-10 .viewWindow-panel-content-inner,
+body.opera-fallback.opera-10 .narrative,
+body.opera-fallback.opera-10 .narrativeView,
+body.opera-fallback.opera-10 .narrative-section,
+body.opera-fallback.opera-10 .narrative-section-slides_short,
+body.opera-fallback.opera-10 .narrative-section-bd,
+body.opera-fallback.opera-10 .narrative-section-bd_low,
+body.opera-fallback.opera-10 .vendorForm .grunion-radio-label > .radio,
+body.opera-fallback.opera-10 .feature .grunion-radio-label > .radio,
+body.opera-fallback.opera-10 .menu-main-menu .topicLink,
+body.opera-fallback.opera-10 .vendorForm .grunion-field-label,
+body.opera-fallback.opera-10 .feature .grunion-field-label {
+  position: relative !important;
+  overflow: auto !important;
+  display: block !important;
+  min-height: auto !important;
+  clear: both !important; }
+
+body.opera-fallback.opera-10 .vendorForm .grunion-field-label,
+body.opera-fallback.opera-10 .feature .grunion-field-label {
+  height: auto !important;
+  width: auto !important;
+  clip: none !important;
+  color: black !important;
+  font-size: 13px !important; }
+
+body.opera-fallback .vendorForm .grunion-radio-label .radio,
+body.opera-fallback .feature .grunion-radio-label .radio {
   width: auto !important;
   margin: 0 10px 0 0 !important;
   clip: none !important; }
 
-body.opera-mini .vendorForm .grunion-radio-label span,
-body.opera-mini .feature .grunion-radio-label span {
+body.opera-fallback .vendorForm .grunion-radio-label span,
+body.opera-fallback .feature .grunion-radio-label span {
   display: none !important; }
 
-body.opera-mini .arrowCta.arrowCta_light.js-narrativeAdvance {
+body.opera-fallback .arrowCta.arrowCta_light.js-narrativeAdvance {
   -webkit-transform: none;
       -ms-transform: none;
           transform: none;
@@ -6679,10 +6709,10 @@ body.opera-mini .arrowCta.arrowCta_light.js-narrativeAdvance {
   background-position: center center;
   background-size: auto 100%;
   height: 17px; }
-  body.opera-mini .arrowCta.arrowCta_light.js-narrativeAdvance:before, body.opera-mini .arrowCta.arrowCta_light.js-narrativeAdvance:after {
+  body.opera-fallback .arrowCta.arrowCta_light.js-narrativeAdvance:before, body.opera-fallback .arrowCta.arrowCta_light.js-narrativeAdvance:after {
     display: none; }
 
-body.opera-mini .circleBtn_themeMission {
+body.opera-fallback .circleBtn_themeMission {
   background: none;
   border: none !important;
   border-radius: none !important;
@@ -6695,7 +6725,7 @@ body.opera-mini .circleBtn_themeMission {
   background-position: center center;
   background-size: auto 100%; }
 
-body.opera-mini .circleBtn_themeImpact {
+body.opera-fallback .circleBtn_themeImpact {
   background: none;
   border: none !important;
   border-radius: none !important;
@@ -6708,7 +6738,7 @@ body.opera-mini .circleBtn_themeImpact {
   background-position: center center;
   background-size: auto 100%; }
 
-body.opera-mini .circleBtn_themeApproach {
+body.opera-fallback .circleBtn_themeApproach {
   background: none;
   border: none !important;
   border-radius: none !important;
@@ -6721,136 +6751,136 @@ body.opera-mini .circleBtn_themeApproach {
   background-position: center center;
   background-size: 100% auto; }
 
-body.opera-mini .narrative-section-bd {
+body.opera-fallback .narrative-section-bd {
   height: auto;
   overflow: hidden; }
 
-body.opera-mini .narrative-section-bd-link {
+body.opera-fallback .narrative-section-bd-link {
   position: relative;
   right: 0;
   bottom: 0; }
 
-body.opera-mini .viewWindow {
+body.opera-fallback.opera-mini .viewWindow {
   width: 100%; }
-  body.opera-mini .viewWindow .viewWindow-panel {
+  body.opera-fallback.opera-mini .viewWindow .viewWindow-panel {
     width: 100%; }
 
-body.opera-mini .narrative,
-body.opera-mini .narrative-section:nth-of-type(1),
-body.opera-mini .narrative-section-slides-item {
+body.opera-fallback .narrative,
+body.opera-fallback .narrative-section:nth-of-type(1),
+body.opera-fallback .narrative-section-slides-item {
   height: 100% !important; }
 
-body.opera-mini .narrative-section-slides-item {
+body.opera-fallback .narrative-section-slides-item {
   background-position: 50% 35%; }
 
-body.opera-mini .narrative-section:nth-of-type(1) {
+body.opera-fallback .narrative-section:nth-of-type(1) {
   height: 640px !important;
   position: relative; }
-  body.opera-mini .narrative-section:nth-of-type(1) .narrative-section-slides,
-  body.opera-mini .narrative-section:nth-of-type(1) .narrative-section-slides-item {
+  body.opera-fallback .narrative-section:nth-of-type(1) .narrative-section-slides,
+  body.opera-fallback .narrative-section:nth-of-type(1) .narrative-section-slides-item {
     height: 100% !important;
     width: 100% !important;
     position: absolute !important; }
-  body.opera-mini .narrative-section:nth-of-type(1) .narrative-section-bd,
-  body.opera-mini .narrative-section:nth-of-type(1) .narrative-section-bd_low {
+  body.opera-fallback .narrative-section:nth-of-type(1) .narrative-section-bd,
+  body.opera-fallback .narrative-section:nth-of-type(1) .narrative-section-bd_low {
     position: absolute !important;
     bottom: 0; }
 
-body.opera-mini .narrative-section-slides-item {
+body.opera-fallback .narrative-section-slides-item {
   min-height: 300px !important; }
 
-body.opera-mini .narrativeView-progress {
+body.opera-fallback .narrativeView-progress {
   display: none !important; }
 
-body.opera-mini .loadingIcon {
+body.opera-fallback .loadingIcon {
   display: none !important; }
 
-body.opera-mini .statementBlock-bd:last-of-type {
+body.opera-fallback .statementBlock-bd:last-of-type {
   position: relative; }
 
-body.opera-mini .viewWindow.isShifted > .viewWindow-panel:last-child {
+body.opera-fallback .viewWindow.isShifted > .viewWindow-panel:last-child {
   left: 0; }
 
-body.opera-mini .introBlock.u-isHiddenMedium {
+body.opera-fallback .introBlock.u-isHiddenMedium {
   display: none; }
 
-body.opera-mini .viewWindow-panel_story .viewWindow-panel-content-inner {
+body.opera-fallback .viewWindow-panel_story .viewWindow-panel-content-inner {
   border-top: 0; }
 
-body.opera-mini .viewWindow-panel_story .viewWindow-panel-content-inner > :first-child > .introBlock {
+body.opera-fallback .viewWindow-panel_story .viewWindow-panel-content-inner > :first-child > .introBlock {
   margin-top: 0; }
 
-body.opera-mini .circleBtn::after, body.opera-mini .circleBtn::before {
+body.opera-fallback .circleBtn::after, body.opera-fallback .circleBtn::before {
   display: none; }
 
-body.opera-mini .circleBtn_play {
+body.opera-fallback .circleBtn_play {
   background: url(../media/images/bg-circle-play.png) no-repeat scroll center center/auto 100%; }
 
-body.opera-mini .circleBtn {
+body.opera-fallback .circleBtn {
   margin: 20px; }
 
-body.opera-mini .theme-approach .link::before, body.opera-mini .theme-approach .link::after {
+body.opera-fallback .theme-approach .link::before, body.opera-fallback .theme-approach .link::after {
   display: none; }
 
-body.opera-mini .link_preArrows::before, body.opera-mini .link_preArrows::after {
+body.opera-fallback .link_preArrows::before, body.opera-fallback .link_preArrows::after {
   display: none; }
 
-body.opera-mini .contentOnMedia-link_ct {
+body.opera-fallback .contentOnMedia-link_ct {
   margin-left: -60px;
   margin-top: -60px; }
 
-body.opera-mini .link_twoArrows::before, body.opera-mini .link_twoArrows::after {
+body.opera-fallback .link_twoArrows::before, body.opera-fallback .link_twoArrows::after {
   display: none; }
 
-body.opera-mini .arrowCta::before, body.opera-mini .arrowCta::after {
+body.opera-fallback .arrowCta::before, body.opera-fallback .arrowCta::after {
   display: none; }
 
-body.opera-mini .arrowCta {
+body.opera-fallback .arrowCta {
   background: url("../media/images/bg-arrow-down-black.png") no-repeat scroll center center/auto 100%;
   height: 17px;
   -webkit-transform: none;
       -ms-transform: none;
           transform: none; }
 
-body.opera-mini .narrative-section-bd-ft {
+body.opera-fallback .narrative-section-bd-ft {
   display: none; }
 
-body.opera-mini .link::before, body.opera-mini .link::after {
+body.opera-fallback .link::before, body.opera-fallback .link::after {
   display: none; }
 
-body.opera-mini .btn.js-ShowMoreView {
+body.opera-fallback .btn.js-ShowMoreView {
   display: none; }
 
-body.opera-mini .viewWindow.navigation-opera-mini {
+body.opera-fallback .viewWindow.navigation-opera-mini {
   min-height: 100% !important; }
 
-body.opera-mini .navigation-opera-mini {
+body.opera-fallback .navigation-opera-mini {
   background: #f1efe7; }
-  body.opera-mini .navigation-opera-mini .mainMenu-panel-primary {
+  body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary {
     height: calc(100% - 244px); }
-    body.opera-mini .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu {
+    body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu {
       margin-top: 45px; }
-      body.opera-mini .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
+      body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
         font-size: 25px; }
-  body.opera-mini .navigation-opera-mini .mainMenu-panel-primary > * {
+  body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary > * {
     min-height: 299px; }
-  body.opera-mini .navigation-opera-mini .mainMenu-panel-secondary {
+  body.opera-fallback .navigation-opera-mini .mainMenu-panel-secondary {
     background: #f1efe7; }
 
-body.opera-mini .introBlock-ft {
+body.opera-fallback .introBlock-ft {
   text-align: center; }
-  body.opera-mini .introBlock-ft .opera-link {
+  body.opera-fallback .introBlock-ft .opera-link {
     text-align: center;
     height: 17px;
     width: 32px;
     padding: initial !important;
     margin: 10px auto !important;
     display: inline-block; }
-    body.opera-mini .introBlock-ft .opera-link.approach {
+    body.opera-fallback .introBlock-ft .opera-link.approach {
       background: url("../media/images/bg-arrow-right-pink.png") no-repeat; }
-    body.opera-mini .introBlock-ft .opera-link.impact {
+    body.opera-fallback .introBlock-ft .opera-link.impact {
       background: url("../media/images/bg-arrow-right-orange.png") no-repeat; }
-    body.opera-mini .introBlock-ft .opera-link.mission {
+    body.opera-fallback .introBlock-ft .opera-link.mission {
       background: url("../media/images/bg-arrow-right-purple.png") no-repeat; }
 
 .pwdByVip-txt_front {
