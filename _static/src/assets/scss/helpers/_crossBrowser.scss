@@ -299,7 +299,14 @@ body.opera-fallback {
 		height: 17px;
 		transform: none;
 	}
-
+    .vendorForm{
+        overflow: hidden;
+    }    
+    .form-error{
+        overflow: hidden;
+        max-width: 60%;
+        display: table;
+    }
 	// hide arrows on main page for opera mini
 	.narrative-section-bd-ft {
 		display: none;
