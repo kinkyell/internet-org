@@ -6604,13 +6604,10 @@ html[data-useragent*='MSIE 10.0'] div.introBlock {
 .opera-mini-only {
   display: none !important; }
 
-body.opera-fallback .container {
-  margin: 0 auto;
-  width: 100%; }
-  body.opera-fallback .container form {
-    margin: 0 0;
-    width: 82.5%;
-    padding: 0 8.75%; }
+body.opera-fallback .container form {
+  margin: 0 0;
+  width: 82.5%;
+  padding: 0 8.75%; }
 
 body.opera-fallback .loadingIcon,
 body.opera-fallback .show-more,
