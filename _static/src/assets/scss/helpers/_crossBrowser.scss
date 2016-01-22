@@ -203,6 +203,21 @@ body.opera-fallback {
                 font-size: 30px;
                 line-height: 1.411764706;
             }
+            .statementBlock-bd{
+                .bdcpy{
+                    color:$CLR_GRAY;
+                }
+            }
+            .splashFooter{
+                margin-bottom: 0px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 0px;
+                width: 82.5%;
+            }
+            .splashFooter-section {
+                opacity: 1;
+            }
             .narrativeDT {
                 display: none !important;
             }
