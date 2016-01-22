@@ -7,15 +7,17 @@
 
 body.opera-fallback {
 
+    .header-logo {
+        z-index: 9999 !important;
+    }
+
     .container {
         div[id^='contact-form-'] {
-            border: 1px solid blue !important;
             margin-left: -10.6% !important;
             width: 100% !important;
             padding: 0 10.6% !important;
         }
         .form-error {
-            border: 1px solid red !important;
             position: relative !important;
             display: block !important;
         }
