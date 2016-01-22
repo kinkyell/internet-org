@@ -8,7 +8,18 @@
 body.opera-fallback {
 
     .header-logo {
-        z-index: 9999 !important;
+        z-index: 999999 !important;
+        background-image: url(../media/images/logo-fallback.png) !important;
+        background-position: 0 0 !important;
+        background-size: auto 100% !important;
+        background-repeat: no-repeat !important;
+        width: 120px !important;
+        height: 36px !important;
+        display: block !important;
+        overflow: hidden !important;
+        svg {
+            display: none !important;
+        }
     }
 
     .container {
