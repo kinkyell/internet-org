@@ -429,6 +429,23 @@ body.opera-fallback {
             }
         }  
         @include breakpoint(MD) {
+            //NAVIGATION
+            .mainMenu-panel-secondary { 
+                bottom: 59px;
+                position: relative;
+            }
+            .mainMenu-panel-primary {
+              #menu-main-menu {
+                margin-top: 150px;
+                li {
+                    margin-bottom: 60px;
+                    .topicLink-link{
+                        font-size: 25px;
+                    }
+                }
+              }
+            }
+            //END NAVIGATION
             .u-isHiddenMedium {
                 display: block !important;
             }

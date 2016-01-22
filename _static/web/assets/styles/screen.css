@@ -399,6 +399,15 @@ body.opera-fallback.opera-10 .viewWindow {
     padding-right: 0px !important; }
 
 @media (min-width: 769px) {
+  body.opera-fallback.opera-10 .mainMenu-panel-secondary {
+    bottom: 59px;
+    position: relative; }
+  body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu {
+    margin-top: 150px; }
+    body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li {
+      margin-bottom: 60px; }
+      body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
+        font-size: 25px; }
   body.opera-fallback.opera-10 .u-isHiddenMedium {
     display: block !important; }
   body.opera-fallback.opera-10 .circleBtn {
@@ -7387,6 +7396,15 @@ body.opera-fallback.opera-10 .viewWindow {
     padding-right: 0px !important; }
 
 @media (min-width: 769px) {
+  body.opera-fallback.opera-10 .mainMenu-panel-secondary {
+    bottom: 59px;
+    position: relative; }
+  body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu {
+    margin-top: 150px; }
+    body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li {
+      margin-bottom: 60px; }
+      body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
+        font-size: 25px; }
   body.opera-fallback.opera-10 .u-isHiddenMedium {
     display: block !important; }
   body.opera-fallback.opera-10 .circleBtn {
