@@ -104,6 +104,9 @@ body.opera-fallback .container .form-error {
   position: relative !important;
   display: block !important; }
 
+body.opera-fallback .container .contact-form div {
+  padding-bottom: 5px; }
+
 body.opera-fallback .loadingIcon,
 body.opera-fallback .show-more,
 body.opera-fallback .header-backBtn,
@@ -7196,6 +7199,9 @@ body.opera-fallback .container div[id^='contact-form-'] {
 body.opera-fallback .container .form-error {
   position: relative !important;
   display: block !important; }
+
+body.opera-fallback .container .contact-form div {
+  padding-bottom: 5px; }
 
 body.opera-fallback .loadingIcon,
 body.opera-fallback .show-more,
