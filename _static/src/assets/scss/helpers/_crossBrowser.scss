@@ -8,10 +8,16 @@
 body.opera-fallback {
 
     .container {
-        form{
-            margin: 0 0;
-            width: 82.5%;
-            padding: 0 8.75%;
+        div[id^='contact-form-'] {
+            border: 1px solid blue !important;
+            margin-left: -10.6% !important;
+            width: 100% !important;
+            padding: 0 10.6% !important;
+        }
+        .form-error {
+            border: 1px solid red !important;
+            position: relative !important;
+            display: block !important;
         }
     }
 
@@ -202,7 +208,7 @@ body.opera-fallback {
         right: 0;
         bottom: 0;
 	}
-    
+
     &.opera-mini {
         .viewWindow {
             width: 100%;

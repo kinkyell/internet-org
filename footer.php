@@ -44,6 +44,8 @@
 			applyOperaFallbacks();
 		}
 
+    applyOperaFallbacks();
+
 		var loader = document.createElement('div');
 		loader.className = 'loadingIcon loadingIcon_opaque loadingIcon_topLayer js-assetShade';
 		document.body.appendChild(loader);
