@@ -160,86 +160,6 @@ body.opera-fallback.opera-mini .feature .grunion-field-label {
   color: black !important;
   font-size: 13px !important; }
 
-body.opera-fallback.opera-10,
-body.opera-fallback.opera-10 .viewWindow-panel,
-body.opera-fallback.opera-10 .viewWindow-panel-content,
-body.opera-fallback.opera-10 .viewWindow-panel-content-inner,
-body.opera-fallback.opera-10 .narrative,
-body.opera-fallback.opera-10 .narrativeView,
-body.opera-fallback.opera-10 .narrative-section,
-body.opera-fallback.opera-10 .narrative-section-slides_short,
-body.opera-fallback.opera-10 .narrative-section-bd,
-body.opera-fallback.opera-10 .narrative-section-bd_low,
-body.opera-fallback.opera-10 .vendorForm .grunion-radio-label > .radio,
-body.opera-fallback.opera-10 .feature .grunion-radio-label > .radio,
-body.opera-fallback.opera-10 .menu-main-menu .topicLink,
-body.opera-fallback.opera-10 .vendorForm .grunion-field-label,
-body.opera-fallback.opera-10 .feature .grunion-field-label {
-  position: relative !important;
-  overflow: auto !important;
-  height: auto !important;
-  display: block !important;
-  min-height: auto !important;
-  clear: both !important; }
-
-body.opera-fallback.opera-10 .vendorForm .grunion-field-label,
-body.opera-fallback.opera-10 .feature .grunion-field-label {
-  height: auto !important;
-  width: auto !important;
-  clip: none !important;
-  color: black !important;
-  font-size: 13px !important; }
-
-body.opera-fallback.opera-10 .viewWindow {
-  width: 100% !important; }
-  body.opera-fallback.opera-10 .viewWindow .viewWindow-panel {
-    width: 100% !important; }
-  body.opera-fallback.opera-10 .viewWindow .viewWindow-panel-content {
-    width: 100% !important;
-    padding-right: 0px !important; }
-
-@media (min-width: 769px) {
-  body.opera-fallback.opera-10 .u-isHiddenMedium {
-    display: block !important; }
-  body.opera-fallback.opera-10 .circleBtn {
-    margin-left: 11%; }
-  body.opera-fallback.opera-10 .narrative {
-    display: block; }
-  body.opera-fallback.opera-10 .mix-hdg_splash {
-    color: #ffffff; }
-  body.opera-fallback.opera-10 .hdg_1 {
-    line-height: 1.2;
-    font-size: 50px; }
-  body.opera-fallback.opera-10 .hdg_heavy {
-    color: #ffcc02;
-    font-size: 25px;
-    text-transform: uppercase; }
-  body.opera-fallback.opera-10 .mix-bdcpy_splash {
-    color: #ffffff; }
-  body.opera-fallback.opera-10 .bdcpy_narrative {
-    font-size: 30px;
-    line-height: 1.411764706; }
-  body.opera-fallback.opera-10 .statementBlock-bd .bdcpy {
-    color: #6d6e64; }
-  body.opera-fallback.opera-10 .splashFooter {
-    margin-bottom: 0px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0px;
-    width: 82.5%; }
-  body.opera-fallback.opera-10 .splashFooter-section {
-    opacity: 1; }
-  body.opera-fallback.opera-10 .narrativeDT {
-    display: none !important; }
-  body.opera-fallback.opera-10 .narrativeDT-inner {
-    display: initial !important;
-    vertical-align: initial !important; }
-  body.opera-fallback.opera-10 .viewWindow-panel:not(.isAnimating):first-child.isActive > .viewWindow-panel-content {
-    width: 100%;
-    padding-right: 0; }
-  body.opera-fallback.opera-10 .narrative-section:nth-of-type(1) {
-    height: 800px !important; } }
-
 body.opera-fallback .vendorForm .grunion-radio-label .radio,
 body.opera-fallback .feature .grunion-radio-label .radio {
   width: auto !important;
@@ -439,6 +359,169 @@ body.opera-fallback .introBlock-ft {
 @media (max-height: 387px) {
   .pwdByVip-txt_front {
     bottom: 5px; } }
+
+body.opera-fallback.opera-10,
+body.opera-fallback.opera-10 .viewWindow-panel,
+body.opera-fallback.opera-10 .viewWindow-panel-content,
+body.opera-fallback.opera-10 .viewWindow-panel-content-inner,
+body.opera-fallback.opera-10 .narrative,
+body.opera-fallback.opera-10 .narrativeView,
+body.opera-fallback.opera-10 .narrative-section,
+body.opera-fallback.opera-10 .narrative-section-slides_short,
+body.opera-fallback.opera-10 .narrative-section-bd,
+body.opera-fallback.opera-10 .narrative-section-bd_low,
+body.opera-fallback.opera-10 .vendorForm .grunion-radio-label > .radio,
+body.opera-fallback.opera-10 .feature .grunion-radio-label > .radio,
+body.opera-fallback.opera-10 .menu-main-menu .topicLink,
+body.opera-fallback.opera-10 .vendorForm .grunion-field-label,
+body.opera-fallback.opera-10 .feature .grunion-field-label {
+  position: relative !important;
+  overflow: auto !important;
+  height: auto !important;
+  display: block !important;
+  min-height: auto !important;
+  clear: both !important; }
+
+body.opera-fallback.opera-10 .vendorForm .grunion-field-label,
+body.opera-fallback.opera-10 .feature .grunion-field-label {
+  height: auto !important;
+  width: auto !important;
+  clip: none !important;
+  color: black !important;
+  font-size: 13px !important; }
+
+body.opera-fallback.opera-10 .viewWindow {
+  width: 100% !important; }
+  body.opera-fallback.opera-10 .viewWindow .viewWindow-panel {
+    width: 100% !important; }
+  body.opera-fallback.opera-10 .viewWindow .viewWindow-panel-content {
+    width: 100% !important;
+    padding-right: 0px !important; }
+
+@media (min-width: 769px) {
+  body.opera-fallback.opera-10 .u-isHiddenMedium {
+    display: block !important; }
+  body.opera-fallback.opera-10 .circleBtn {
+    margin-left: 11%; }
+  body.opera-fallback.opera-10 .narrative {
+    display: block; }
+  body.opera-fallback.opera-10 .mix-hdg_splash {
+    color: #ffffff; }
+  body.opera-fallback.opera-10 .hdg {
+    font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif;
+    font-style: Normal;
+    font-weight: 600;
+    font-stretch: normal; }
+  body.opera-fallback.opera-10 .hdg_1 {
+    line-height: 1.2;
+    font-size: 50px; }
+  body.opera-fallback.opera-10 .hdg_2 {
+    font-size: 30px; }
+  body.opera-fallback.opera-10 .hdg_heavy {
+    color: #ffcc02;
+    font-size: 25px;
+    text-transform: uppercase; }
+  body.opera-fallback.opera-10 .mix-bdcpy_splash {
+    color: #ffffff; }
+  body.opera-fallback.opera-10 .bdcpy_narrative {
+    font-size: 30px;
+    line-height: 1.411764706; }
+  body.opera-fallback.opera-10 .quarantine > * + * {
+    margin-top: 19px; }
+  body.opera-fallback.opera-10 .quarantine h1,
+  body.opera-fallback.opera-10 .quarantine h2,
+  body.opera-fallback.opera-10 .quarantine h3,
+  body.opera-fallback.opera-10 .quarantine h4,
+  body.opera-fallback.opera-10 .quarantine h5,
+  body.opera-fallback.opera-10 .quarantine h6 {
+    font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif;
+    font-style: Normal;
+    font-weight: 600;
+    font-stretch: normal;
+    color: #000000;
+    font-size: 20px;
+    font-size: 1.25rem;
+    line-height: 1.4565384; }
+  body.opera-fallback.opera-10 .quarantine > * + h1,
+  body.opera-fallback.opera-10 .quarantine > * + h2,
+  body.opera-fallback.opera-10 .quarantine > * + h3,
+  body.opera-fallback.opera-10 .quarantine > * + h4,
+  body.opera-fallback.opera-10 .quarantine > * + h5,
+  body.opera-fallback.opera-10 .quarantine > * + h6 {
+    margin-top: 45px; }
+  body.opera-fallback.opera-10 .quarantine p {
+    font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 1.714285714;
+    color: #6d6e64; }
+  body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > li {
+    font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    line-height: 1.666667;
+    color: #6d6e64;
+    position: relative;
+    padding-left: 37px; }
+  body.opera-fallback.opera-10 .quarantine a:not(.contentOnMedia-link),
+  body.opera-fallback.opera-10 .quarantine a:not(.link) {
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 13px;
+    font-size: 0.8125rem;
+    display: inline-block;
+    line-height: 1.222222;
+    text-decoration: none;
+    color: #ffcc02;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased; }
+  body.opera-fallback.opera-10 .quarantine a.link {
+    /* Forcing to retain top margin as designed */
+    margin-top: 4px !important; }
+  body.opera-fallback.opera-10 .quarantine strong {
+    font-weight: bold; }
+  body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > * + * {
+    margin-top: 22px; }
+  body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > li:before {
+    content: '•';
+    position: absolute;
+    top: -8px;
+    left: 8px;
+    font-family: Arial, 'Arial', sans-serif;
+    font-size: 28px;
+    font-size: 1.75rem;
+    color: #ffcc02; }
+  body.opera-fallback.opera-10 .statementBlock-bd .bdcpy {
+    color: #6d6e64; }
+  body.opera-fallback.opera-10 .splashFooter {
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    width: 82.5%; }
+  body.opera-fallback.opera-10 .splashFooter-section {
+    opacity: 1; }
+  body.opera-fallback.opera-10 .narrativeDT {
+    display: none !important; }
+  body.opera-fallback.opera-10 .narrativeDT-inner {
+    display: initial !important;
+    vertical-align: initial !important; }
+  body.opera-fallback.opera-10 .viewWindow.isShifted {
+    left: 0px; }
+  body.opera-fallback.opera-10 .viewWindow-panel:not(.isAnimating):first-child.isActive > .viewWindow-panel-content {
+    width: 100%;
+    padding-right: 0; }
+  body.opera-fallback.opera-10 .viewWindow-panel:not(.isAnimating):last-child.isActive > .viewWindow-panel-content {
+    width: 200%;
+    left: 0px;
+    padding-left: 0px; }
+  body.opera-fallback.opera-10 .narrative-section:nth-of-type(1) {
+    height: 800px !important; } }
 
 /* ---------------------------------------------------------------------
  Base Styles
@@ -7065,86 +7148,6 @@ body.opera-fallback.opera-mini .feature .grunion-field-label {
   color: black !important;
   font-size: 13px !important; }
 
-body.opera-fallback.opera-10,
-body.opera-fallback.opera-10 .viewWindow-panel,
-body.opera-fallback.opera-10 .viewWindow-panel-content,
-body.opera-fallback.opera-10 .viewWindow-panel-content-inner,
-body.opera-fallback.opera-10 .narrative,
-body.opera-fallback.opera-10 .narrativeView,
-body.opera-fallback.opera-10 .narrative-section,
-body.opera-fallback.opera-10 .narrative-section-slides_short,
-body.opera-fallback.opera-10 .narrative-section-bd,
-body.opera-fallback.opera-10 .narrative-section-bd_low,
-body.opera-fallback.opera-10 .vendorForm .grunion-radio-label > .radio,
-body.opera-fallback.opera-10 .feature .grunion-radio-label > .radio,
-body.opera-fallback.opera-10 .menu-main-menu .topicLink,
-body.opera-fallback.opera-10 .vendorForm .grunion-field-label,
-body.opera-fallback.opera-10 .feature .grunion-field-label {
-  position: relative !important;
-  overflow: auto !important;
-  height: auto !important;
-  display: block !important;
-  min-height: auto !important;
-  clear: both !important; }
-
-body.opera-fallback.opera-10 .vendorForm .grunion-field-label,
-body.opera-fallback.opera-10 .feature .grunion-field-label {
-  height: auto !important;
-  width: auto !important;
-  clip: none !important;
-  color: black !important;
-  font-size: 13px !important; }
-
-body.opera-fallback.opera-10 .viewWindow {
-  width: 100% !important; }
-  body.opera-fallback.opera-10 .viewWindow .viewWindow-panel {
-    width: 100% !important; }
-  body.opera-fallback.opera-10 .viewWindow .viewWindow-panel-content {
-    width: 100% !important;
-    padding-right: 0px !important; }
-
-@media (min-width: 769px) {
-  body.opera-fallback.opera-10 .u-isHiddenMedium {
-    display: block !important; }
-  body.opera-fallback.opera-10 .circleBtn {
-    margin-left: 11%; }
-  body.opera-fallback.opera-10 .narrative {
-    display: block; }
-  body.opera-fallback.opera-10 .mix-hdg_splash {
-    color: #ffffff; }
-  body.opera-fallback.opera-10 .hdg_1 {
-    line-height: 1.2;
-    font-size: 50px; }
-  body.opera-fallback.opera-10 .hdg_heavy {
-    color: #ffcc02;
-    font-size: 25px;
-    text-transform: uppercase; }
-  body.opera-fallback.opera-10 .mix-bdcpy_splash {
-    color: #ffffff; }
-  body.opera-fallback.opera-10 .bdcpy_narrative {
-    font-size: 30px;
-    line-height: 1.411764706; }
-  body.opera-fallback.opera-10 .statementBlock-bd .bdcpy {
-    color: #6d6e64; }
-  body.opera-fallback.opera-10 .splashFooter {
-    margin-bottom: 0px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0px;
-    width: 82.5%; }
-  body.opera-fallback.opera-10 .splashFooter-section {
-    opacity: 1; }
-  body.opera-fallback.opera-10 .narrativeDT {
-    display: none !important; }
-  body.opera-fallback.opera-10 .narrativeDT-inner {
-    display: initial !important;
-    vertical-align: initial !important; }
-  body.opera-fallback.opera-10 .viewWindow-panel:not(.isAnimating):first-child.isActive > .viewWindow-panel-content {
-    width: 100%;
-    padding-right: 0; }
-  body.opera-fallback.opera-10 .narrative-section:nth-of-type(1) {
-    height: 800px !important; } }
-
 body.opera-fallback .vendorForm .grunion-radio-label .radio,
 body.opera-fallback .feature .grunion-radio-label .radio {
   width: auto !important;
@@ -7344,3 +7347,166 @@ body.opera-fallback .introBlock-ft {
 @media (max-height: 387px) {
   .pwdByVip-txt_front {
     bottom: 5px; } }
+
+body.opera-fallback.opera-10,
+body.opera-fallback.opera-10 .viewWindow-panel,
+body.opera-fallback.opera-10 .viewWindow-panel-content,
+body.opera-fallback.opera-10 .viewWindow-panel-content-inner,
+body.opera-fallback.opera-10 .narrative,
+body.opera-fallback.opera-10 .narrativeView,
+body.opera-fallback.opera-10 .narrative-section,
+body.opera-fallback.opera-10 .narrative-section-slides_short,
+body.opera-fallback.opera-10 .narrative-section-bd,
+body.opera-fallback.opera-10 .narrative-section-bd_low,
+body.opera-fallback.opera-10 .vendorForm .grunion-radio-label > .radio,
+body.opera-fallback.opera-10 .feature .grunion-radio-label > .radio,
+body.opera-fallback.opera-10 .menu-main-menu .topicLink,
+body.opera-fallback.opera-10 .vendorForm .grunion-field-label,
+body.opera-fallback.opera-10 .feature .grunion-field-label {
+  position: relative !important;
+  overflow: auto !important;
+  height: auto !important;
+  display: block !important;
+  min-height: auto !important;
+  clear: both !important; }
+
+body.opera-fallback.opera-10 .vendorForm .grunion-field-label,
+body.opera-fallback.opera-10 .feature .grunion-field-label {
+  height: auto !important;
+  width: auto !important;
+  clip: none !important;
+  color: black !important;
+  font-size: 13px !important; }
+
+body.opera-fallback.opera-10 .viewWindow {
+  width: 100% !important; }
+  body.opera-fallback.opera-10 .viewWindow .viewWindow-panel {
+    width: 100% !important; }
+  body.opera-fallback.opera-10 .viewWindow .viewWindow-panel-content {
+    width: 100% !important;
+    padding-right: 0px !important; }
+
+@media (min-width: 769px) {
+  body.opera-fallback.opera-10 .u-isHiddenMedium {
+    display: block !important; }
+  body.opera-fallback.opera-10 .circleBtn {
+    margin-left: 11%; }
+  body.opera-fallback.opera-10 .narrative {
+    display: block; }
+  body.opera-fallback.opera-10 .mix-hdg_splash {
+    color: #ffffff; }
+  body.opera-fallback.opera-10 .hdg {
+    font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif;
+    font-style: Normal;
+    font-weight: 600;
+    font-stretch: normal; }
+  body.opera-fallback.opera-10 .hdg_1 {
+    line-height: 1.2;
+    font-size: 50px; }
+  body.opera-fallback.opera-10 .hdg_2 {
+    font-size: 30px; }
+  body.opera-fallback.opera-10 .hdg_heavy {
+    color: #ffcc02;
+    font-size: 25px;
+    text-transform: uppercase; }
+  body.opera-fallback.opera-10 .mix-bdcpy_splash {
+    color: #ffffff; }
+  body.opera-fallback.opera-10 .bdcpy_narrative {
+    font-size: 30px;
+    line-height: 1.411764706; }
+  body.opera-fallback.opera-10 .quarantine > * + * {
+    margin-top: 19px; }
+  body.opera-fallback.opera-10 .quarantine h1,
+  body.opera-fallback.opera-10 .quarantine h2,
+  body.opera-fallback.opera-10 .quarantine h3,
+  body.opera-fallback.opera-10 .quarantine h4,
+  body.opera-fallback.opera-10 .quarantine h5,
+  body.opera-fallback.opera-10 .quarantine h6 {
+    font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif;
+    font-style: Normal;
+    font-weight: 600;
+    font-stretch: normal;
+    color: #000000;
+    font-size: 20px;
+    font-size: 1.25rem;
+    line-height: 1.4565384; }
+  body.opera-fallback.opera-10 .quarantine > * + h1,
+  body.opera-fallback.opera-10 .quarantine > * + h2,
+  body.opera-fallback.opera-10 .quarantine > * + h3,
+  body.opera-fallback.opera-10 .quarantine > * + h4,
+  body.opera-fallback.opera-10 .quarantine > * + h5,
+  body.opera-fallback.opera-10 .quarantine > * + h6 {
+    margin-top: 45px; }
+  body.opera-fallback.opera-10 .quarantine p {
+    font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 1.714285714;
+    color: #6d6e64; }
+  body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > li {
+    font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    line-height: 1.666667;
+    color: #6d6e64;
+    position: relative;
+    padding-left: 37px; }
+  body.opera-fallback.opera-10 .quarantine a:not(.contentOnMedia-link),
+  body.opera-fallback.opera-10 .quarantine a:not(.link) {
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 13px;
+    font-size: 0.8125rem;
+    display: inline-block;
+    line-height: 1.222222;
+    text-decoration: none;
+    color: #ffcc02;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased; }
+  body.opera-fallback.opera-10 .quarantine a.link {
+    /* Forcing to retain top margin as designed */
+    margin-top: 4px !important; }
+  body.opera-fallback.opera-10 .quarantine strong {
+    font-weight: bold; }
+  body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > * + * {
+    margin-top: 22px; }
+  body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > li:before {
+    content: '•';
+    position: absolute;
+    top: -8px;
+    left: 8px;
+    font-family: Arial, 'Arial', sans-serif;
+    font-size: 28px;
+    font-size: 1.75rem;
+    color: #ffcc02; }
+  body.opera-fallback.opera-10 .statementBlock-bd .bdcpy {
+    color: #6d6e64; }
+  body.opera-fallback.opera-10 .splashFooter {
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    width: 82.5%; }
+  body.opera-fallback.opera-10 .splashFooter-section {
+    opacity: 1; }
+  body.opera-fallback.opera-10 .narrativeDT {
+    display: none !important; }
+  body.opera-fallback.opera-10 .narrativeDT-inner {
+    display: initial !important;
+    vertical-align: initial !important; }
+  body.opera-fallback.opera-10 .viewWindow.isShifted {
+    left: 0px; }
+  body.opera-fallback.opera-10 .viewWindow-panel:not(.isAnimating):first-child.isActive > .viewWindow-panel-content {
+    width: 100%;
+    padding-right: 0; }
+  body.opera-fallback.opera-10 .viewWindow-panel:not(.isAnimating):last-child.isActive > .viewWindow-panel-content {
+    width: 200%;
+    left: 0px;
+    padding-left: 0px; }
+  body.opera-fallback.opera-10 .narrative-section:nth-of-type(1) {
+    height: 800px !important; } }
