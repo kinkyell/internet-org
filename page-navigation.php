@@ -38,12 +38,12 @@ get_header();
             <li><a class="auxLink js-stateLink" href="/contact-us/"><span>Contact</span></a></li>
           </ul>
         </div>
-        <div class="mainMenu-panel-lang">
+<!--         <div class="mainMenu-panel-lang">
           <div class="langSelect js-select">
               <div class="langSelect-label">
                 <a href="/languages">English</a>
               </div>
-          </div>
+          </div> -->
         </div>
       </div>
   </div>
