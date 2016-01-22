@@ -399,138 +399,234 @@ body.opera-fallback.opera-10 .viewWindow {
     padding-right: 0px !important; }
 
 @media (min-width: 769px) {
-  body.opera-fallback.opera-10 .mainMenu-panel-secondary {
-    bottom: 59px;
-    position: relative; }
-  body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu {
-    margin-top: 150px; }
-    body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li {
-      margin-bottom: 60px; }
-      body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
-        font-size: 25px; }
-  body.opera-fallback.opera-10 .u-isHiddenMedium {
-    display: block !important; }
-  body.opera-fallback.opera-10 .circleBtn {
-    margin-left: 11%; }
-  body.opera-fallback.opera-10 .narrative {
-    display: block; }
-  body.opera-fallback.opera-10 .mix-hdg_splash {
-    color: #ffffff; }
-  body.opera-fallback.opera-10 .hdg {
-    font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif;
-    font-style: Normal;
-    font-weight: 600;
-    font-stretch: normal; }
-  body.opera-fallback.opera-10 .hdg_1 {
-    line-height: 1.2;
-    font-size: 50px; }
-  body.opera-fallback.opera-10 .hdg_2 {
-    font-size: 30px; }
-  body.opera-fallback.opera-10 .hdg_heavy {
-    color: #ffcc02;
-    font-size: 25px;
-    text-transform: uppercase; }
-  body.opera-fallback.opera-10 .mix-bdcpy_splash {
-    color: #ffffff; }
-  body.opera-fallback.opera-10 .bdcpy_narrative {
-    font-size: 30px;
-    line-height: 1.411764706; }
-  body.opera-fallback.opera-10 .quarantine > * + * {
-    margin-top: 19px; }
-  body.opera-fallback.opera-10 .quarantine h1,
-  body.opera-fallback.opera-10 .quarantine h2,
-  body.opera-fallback.opera-10 .quarantine h3,
-  body.opera-fallback.opera-10 .quarantine h4,
-  body.opera-fallback.opera-10 .quarantine h5,
-  body.opera-fallback.opera-10 .quarantine h6 {
-    font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif;
-    font-style: Normal;
-    font-weight: 600;
-    font-stretch: normal;
-    color: #000000;
-    font-size: 20px;
-    font-size: 1.25rem;
-    line-height: 1.4565384; }
-  body.opera-fallback.opera-10 .quarantine > * + h1,
-  body.opera-fallback.opera-10 .quarantine > * + h2,
-  body.opera-fallback.opera-10 .quarantine > * + h3,
-  body.opera-fallback.opera-10 .quarantine > * + h4,
-  body.opera-fallback.opera-10 .quarantine > * + h5,
-  body.opera-fallback.opera-10 .quarantine > * + h6 {
-    margin-top: 45px; }
-  body.opera-fallback.opera-10 .quarantine p {
-    font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
-    font-weight: 200;
-    font-style: normal;
-    font-size: 14px;
-    font-size: 0.875rem;
-    line-height: 1.714285714;
-    color: #6d6e64; }
-  body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > li {
-    font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
-    font-weight: 200;
-    font-style: normal;
-    line-height: 1.666667;
-    color: #6d6e64;
-    position: relative;
-    padding-left: 37px; }
-  body.opera-fallback.opera-10 .quarantine a:not(.contentOnMedia-link),
-  body.opera-fallback.opera-10 .quarantine a:not(.link) {
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 13px;
-    font-size: 0.8125rem;
-    display: inline-block;
-    line-height: 1.222222;
-    text-decoration: none;
-    color: #ffcc02;
-    -webkit-font-smoothing: antialiased;
-    font-smoothing: antialiased; }
-  body.opera-fallback.opera-10 .quarantine a.link {
-    /* Forcing to retain top margin as designed */
-    margin-top: 4px !important; }
-  body.opera-fallback.opera-10 .quarantine strong {
-    font-weight: bold; }
-  body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > * + * {
-    margin-top: 22px; }
-  body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > li:before {
-    content: '•';
-    position: absolute;
-    top: -8px;
-    left: 8px;
-    font-family: Arial, 'Arial', sans-serif;
-    font-size: 28px;
-    font-size: 1.75rem;
-    color: #ffcc02; }
-  body.opera-fallback.opera-10 .statementBlock-bd .bdcpy {
-    color: #6d6e64; }
-  body.opera-fallback.opera-10 .splashFooter {
-    margin-bottom: 0px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0px;
-    width: 82.5%; }
-  body.opera-fallback.opera-10 .splashFooter-section {
-    opacity: 1; }
-  body.opera-fallback.opera-10 .narrativeDT {
-    display: none !important; }
-  body.opera-fallback.opera-10 .narrativeDT-inner {
-    display: initial !important;
-    vertical-align: initial !important; }
-  body.opera-fallback.opera-10 .viewWindow.isShifted {
-    left: 0px; }
-  body.opera-fallback.opera-10 .viewWindow-panel:not(.isAnimating):first-child.isActive > .viewWindow-panel-content {
-    width: 100%;
-    padding-right: 0; }
-  body.opera-fallback.opera-10 .viewWindow-panel:not(.isAnimating):last-child.isActive > .viewWindow-panel-content {
-    width: 200%;
-    left: 0px;
-    padding-left: 0px; }
-  body.opera-fallback.opera-10 .narrative-section:nth-of-type(1) {
-    height: 800px !important; } }
+  body.opera-fallback.opera-10 {
+    /* Heading Mixins */
+    /* Theme Mixins */ }
+    body.opera-fallback.opera-10 .mainMenu-panel-secondary {
+      bottom: 59px;
+      position: relative; }
+    body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu {
+      margin-top: 150px; }
+      body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li {
+        margin-bottom: 60px; }
+        body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
+          font-size: 25px; }
+    body.opera-fallback.opera-10 .hdg.u-isHiddenMedium,
+    body.opera-fallback.opera-10 .narrative-section-bd-link.u-isHiddenMedium {
+      display: block !important; }
+    body.opera-fallback.opera-10 .mix-hdg_italic {
+      font-style: italic; }
+    body.opera-fallback.opera-10 .circleBtn {
+      margin-left: 11%; }
+    body.opera-fallback.opera-10 .narrative {
+      display: block; }
+    body.opera-fallback.opera-10 .mix-hdg_splash {
+      color: #ffffff; }
+    body.opera-fallback.opera-10 .hdg {
+      font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif;
+      font-style: Normal;
+      font-weight: 600;
+      font-stretch: normal;
+      color: #000000;
+      -webkit-font-smoothing: antialiased;
+      font-smoothing: antialiased; }
+    body.opera-fallback.opera-10 .hdg_1 {
+      font-size: 29px;
+      font-size: 1.8125rem;
+      line-height: 1.2; }
+    body.opera-fallback.opera-10 .hdg_2 {
+      font-size: 30px;
+      font-size: 1.875rem;
+      line-height: 1.28; }
+    body.opera-fallback.opera-10 .hdg_3 {
+      font-size: 20px;
+      font-size: 1.25rem;
+      line-height: 1.2625; }
+    body.opera-fallback.opera-10 .hdg_4 {
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 1.4565384; }
+    body.opera-fallback.opera-10 .hdg_5 {
+      font-size: 13px;
+      font-size: 0.8125rem;
+      line-height: 1.3636363; }
+    body.opera-fallback.opera-10 .hdg_6 {
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 1.5; }
+    body.opera-fallback.opera-10 .hdg_7 {
+      font-size: 13px;
+      font-size: 0.8125rem;
+      line-height: 1.2; }
+    body.opera-fallback.opera-10 .hdg_8 {
+      font-size: 29px;
+      font-size: 1.8125rem;
+      line-height: 1.25; }
+    body.opera-fallback.opera-10 .hdg_subHdg {
+      font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+      font-weight: 200;
+      font-style: normal;
+      font-size: 17px;
+      font-size: 1.0625rem;
+      line-height: 1.4285714; }
+    body.opera-fallback.opera-10 .hdg_heavy {
+      font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+      font-weight: 500;
+      font-style: normal;
+      font-size: 13px;
+      font-size: 0.8125rem;
+      color: #ffcc02;
+      line-height: 1.222222;
+      text-transform: uppercase; }
+    body.opera-fallback.opera-10 .mix-hdg_white {
+      color: white; }
+    body.opera-fallback.opera-10 .mix-hdg_blackThenWhite {
+      color: #000000; }
+    body.opera-fallback.opera-10 .mix-hdg_gray {
+      color: #6d6e64; }
+    body.opera-fallback.opera-10 .mix-hdg_italic {
+      font-style: italic; }
+    body.opera-fallback.opera-10 .mix-hdg_bold {
+      font-weight: 700; }
+    body.opera-fallback.opera-10 .mix-hdg_splash {
+      color: #ffffff; }
+    body.opera-fallback.opera-10 .mix-hdg_centerInMobile {
+      text-align: center; }
+    body.opera-fallback.opera-10 .mix-hdg_light {
+      font-weight: 400; }
+    body.opera-fallback.opera-10 .mix-hdg_themeImpact {
+      color: #ff6b00; }
+    body.opera-fallback.opera-10 .mix-hdg_themeApproach {
+      color: #fa5cb6; }
+    body.opera-fallback.opera-10 .mix-hdg_themeMission {
+      color: #9d25a0; }
+    body.opera-fallback.opera-10 .mix-hdg_mobileOnly {
+      color: #ffffff; }
+    body.opera-fallback.opera-10 .bdcpy {
+      font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+      font-weight: 200;
+      font-style: normal;
+      font-size: 14px;
+      font-size: 0.875rem;
+      line-height: 1.714285714;
+      color: #6d6e64; }
+    body.opera-fallback.opera-10 .bdcpy_lg {
+      font-size: 21px;
+      font-size: 1.3125rem;
+      line-height: 1.714285714; }
+    body.opera-fallback.opera-10 .bdcpy_sm {
+      font-size: 12px;
+      font-size: 0.75rem;
+      line-height: 1.666667; }
+    body.opera-fallback.opera-10 .bdcpy_narrative {
+      font-size: 17px;
+      line-height: 1.411764706; }
+    body.opera-fallback.opera-10 .mix-bdcpy_splash {
+      color: #ffffff; }
+    body.opera-fallback.opera-10 .mix-bdcpy_light {
+      color: #d5d4ca; }
+    body.opera-fallback.opera-10 .mix-bdcpy_white {
+      color: #ffffff; }
+    body.opera-fallback.opera-10 .mix-bdcpy_mobileOnly {
+      color: #ffffff; }
+    body.opera-fallback.opera-10 .mix-bdcpy_blackThenWhite {
+      color: #000000; }
+    body.opera-fallback.opera-10 .quarantine > * + * {
+      margin-top: 19px; }
+    body.opera-fallback.opera-10 .quarantine h1,
+    body.opera-fallback.opera-10 .quarantine h2,
+    body.opera-fallback.opera-10 .quarantine h3,
+    body.opera-fallback.opera-10 .quarantine h4,
+    body.opera-fallback.opera-10 .quarantine h5,
+    body.opera-fallback.opera-10 .quarantine h6 {
+      font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif;
+      font-style: Normal;
+      font-weight: 600;
+      font-stretch: normal;
+      color: #000000;
+      font-size: 20px;
+      font-size: 1.25rem;
+      line-height: 1.4565384; }
+    body.opera-fallback.opera-10 .quarantine > * + h1,
+    body.opera-fallback.opera-10 .quarantine > * + h2,
+    body.opera-fallback.opera-10 .quarantine > * + h3,
+    body.opera-fallback.opera-10 .quarantine > * + h4,
+    body.opera-fallback.opera-10 .quarantine > * + h5,
+    body.opera-fallback.opera-10 .quarantine > * + h6 {
+      margin-top: 45px; }
+    body.opera-fallback.opera-10 .quarantine p {
+      font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+      font-weight: 200;
+      font-style: normal;
+      font-size: 14px;
+      font-size: 0.875rem;
+      line-height: 1.714285714;
+      color: #6d6e64; }
+    body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > li {
+      font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+      font-weight: 200;
+      font-style: normal;
+      line-height: 1.666667;
+      color: #6d6e64;
+      position: relative;
+      padding-left: 37px; }
+    body.opera-fallback.opera-10 .quarantine a:not(.contentOnMedia-link),
+    body.opera-fallback.opera-10 .quarantine a:not(.link) {
+      -webkit-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+      font-weight: 500;
+      font-style: normal;
+      font-size: 13px;
+      font-size: 0.8125rem;
+      display: inline-block;
+      line-height: 1.222222;
+      text-decoration: none;
+      color: #ffcc02;
+      -webkit-font-smoothing: antialiased;
+      font-smoothing: antialiased; }
+    body.opera-fallback.opera-10 .quarantine a.link {
+      /* Forcing to retain top margin as designed */
+      margin-top: 4px !important; }
+    body.opera-fallback.opera-10 .quarantine strong {
+      font-weight: bold; }
+    body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > * + * {
+      margin-top: 22px; }
+    body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > li:before {
+      content: '•';
+      position: absolute;
+      top: -8px;
+      left: 8px;
+      font-family: Arial, 'Arial', sans-serif;
+      font-size: 28px;
+      font-size: 1.75rem;
+      color: #ffcc02; }
+    body.opera-fallback.opera-10 .statementBlock-bd .bdcpy {
+      color: #6d6e64; }
+    body.opera-fallback.opera-10 .splashFooter {
+      margin-bottom: 0px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 0px;
+      width: 82.5%; }
+    body.opera-fallback.opera-10 .splashFooter-section {
+      opacity: 1; }
+    body.opera-fallback.opera-10 .narrativeDT {
+      display: none !important; }
+    body.opera-fallback.opera-10 .narrativeDT-inner {
+      display: initial !important;
+      vertical-align: initial !important; }
+    body.opera-fallback.opera-10 .viewWindow.isShifted {
+      left: 0px; }
+    body.opera-fallback.opera-10 .viewWindow-panel:not(.isAnimating):first-child.isActive > .viewWindow-panel-content {
+      width: 100%;
+      padding-right: 0; }
+    body.opera-fallback.opera-10 .viewWindow-panel:not(.isAnimating):last-child.isActive > .viewWindow-panel-content {
+      width: 200%;
+      left: 0px;
+      padding-left: 0px; }
+    body.opera-fallback.opera-10 .narrative-section:nth-of-type(1) {
+      height: 800px !important; } }
 
 /* ---------------------------------------------------------------------
  Base Styles
@@ -7396,135 +7492,231 @@ body.opera-fallback.opera-10 .viewWindow {
     padding-right: 0px !important; }
 
 @media (min-width: 769px) {
-  body.opera-fallback.opera-10 .mainMenu-panel-secondary {
-    bottom: 59px;
-    position: relative; }
-  body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu {
-    margin-top: 150px; }
-    body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li {
-      margin-bottom: 60px; }
-      body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
-        font-size: 25px; }
-  body.opera-fallback.opera-10 .u-isHiddenMedium {
-    display: block !important; }
-  body.opera-fallback.opera-10 .circleBtn {
-    margin-left: 11%; }
-  body.opera-fallback.opera-10 .narrative {
-    display: block; }
-  body.opera-fallback.opera-10 .mix-hdg_splash {
-    color: #ffffff; }
-  body.opera-fallback.opera-10 .hdg {
-    font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif;
-    font-style: Normal;
-    font-weight: 600;
-    font-stretch: normal; }
-  body.opera-fallback.opera-10 .hdg_1 {
-    line-height: 1.2;
-    font-size: 50px; }
-  body.opera-fallback.opera-10 .hdg_2 {
-    font-size: 30px; }
-  body.opera-fallback.opera-10 .hdg_heavy {
-    color: #ffcc02;
-    font-size: 25px;
-    text-transform: uppercase; }
-  body.opera-fallback.opera-10 .mix-bdcpy_splash {
-    color: #ffffff; }
-  body.opera-fallback.opera-10 .bdcpy_narrative {
-    font-size: 30px;
-    line-height: 1.411764706; }
-  body.opera-fallback.opera-10 .quarantine > * + * {
-    margin-top: 19px; }
-  body.opera-fallback.opera-10 .quarantine h1,
-  body.opera-fallback.opera-10 .quarantine h2,
-  body.opera-fallback.opera-10 .quarantine h3,
-  body.opera-fallback.opera-10 .quarantine h4,
-  body.opera-fallback.opera-10 .quarantine h5,
-  body.opera-fallback.opera-10 .quarantine h6 {
-    font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif;
-    font-style: Normal;
-    font-weight: 600;
-    font-stretch: normal;
-    color: #000000;
-    font-size: 20px;
-    font-size: 1.25rem;
-    line-height: 1.4565384; }
-  body.opera-fallback.opera-10 .quarantine > * + h1,
-  body.opera-fallback.opera-10 .quarantine > * + h2,
-  body.opera-fallback.opera-10 .quarantine > * + h3,
-  body.opera-fallback.opera-10 .quarantine > * + h4,
-  body.opera-fallback.opera-10 .quarantine > * + h5,
-  body.opera-fallback.opera-10 .quarantine > * + h6 {
-    margin-top: 45px; }
-  body.opera-fallback.opera-10 .quarantine p {
-    font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
-    font-weight: 200;
-    font-style: normal;
-    font-size: 14px;
-    font-size: 0.875rem;
-    line-height: 1.714285714;
-    color: #6d6e64; }
-  body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > li {
-    font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
-    font-weight: 200;
-    font-style: normal;
-    line-height: 1.666667;
-    color: #6d6e64;
-    position: relative;
-    padding-left: 37px; }
-  body.opera-fallback.opera-10 .quarantine a:not(.contentOnMedia-link),
-  body.opera-fallback.opera-10 .quarantine a:not(.link) {
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 13px;
-    font-size: 0.8125rem;
-    display: inline-block;
-    line-height: 1.222222;
-    text-decoration: none;
-    color: #ffcc02;
-    -webkit-font-smoothing: antialiased;
-    font-smoothing: antialiased; }
-  body.opera-fallback.opera-10 .quarantine a.link {
-    /* Forcing to retain top margin as designed */
-    margin-top: 4px !important; }
-  body.opera-fallback.opera-10 .quarantine strong {
-    font-weight: bold; }
-  body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > * + * {
-    margin-top: 22px; }
-  body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > li:before {
-    content: '•';
-    position: absolute;
-    top: -8px;
-    left: 8px;
-    font-family: Arial, 'Arial', sans-serif;
-    font-size: 28px;
-    font-size: 1.75rem;
-    color: #ffcc02; }
-  body.opera-fallback.opera-10 .statementBlock-bd .bdcpy {
-    color: #6d6e64; }
-  body.opera-fallback.opera-10 .splashFooter {
-    margin-bottom: 0px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0px;
-    width: 82.5%; }
-  body.opera-fallback.opera-10 .splashFooter-section {
-    opacity: 1; }
-  body.opera-fallback.opera-10 .narrativeDT {
-    display: none !important; }
-  body.opera-fallback.opera-10 .narrativeDT-inner {
-    display: initial !important;
-    vertical-align: initial !important; }
-  body.opera-fallback.opera-10 .viewWindow.isShifted {
-    left: 0px; }
-  body.opera-fallback.opera-10 .viewWindow-panel:not(.isAnimating):first-child.isActive > .viewWindow-panel-content {
-    width: 100%;
-    padding-right: 0; }
-  body.opera-fallback.opera-10 .viewWindow-panel:not(.isAnimating):last-child.isActive > .viewWindow-panel-content {
-    width: 200%;
-    left: 0px;
-    padding-left: 0px; }
-  body.opera-fallback.opera-10 .narrative-section:nth-of-type(1) {
-    height: 800px !important; } }
+  body.opera-fallback.opera-10 {
+    /* Heading Mixins */
+    /* Theme Mixins */ }
+    body.opera-fallback.opera-10 .mainMenu-panel-secondary {
+      bottom: 59px;
+      position: relative; }
+    body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu {
+      margin-top: 150px; }
+      body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li {
+        margin-bottom: 60px; }
+        body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
+          font-size: 25px; }
+    body.opera-fallback.opera-10 .hdg.u-isHiddenMedium,
+    body.opera-fallback.opera-10 .narrative-section-bd-link.u-isHiddenMedium {
+      display: block !important; }
+    body.opera-fallback.opera-10 .mix-hdg_italic {
+      font-style: italic; }
+    body.opera-fallback.opera-10 .circleBtn {
+      margin-left: 11%; }
+    body.opera-fallback.opera-10 .narrative {
+      display: block; }
+    body.opera-fallback.opera-10 .mix-hdg_splash {
+      color: #ffffff; }
+    body.opera-fallback.opera-10 .hdg {
+      font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif;
+      font-style: Normal;
+      font-weight: 600;
+      font-stretch: normal;
+      color: #000000;
+      -webkit-font-smoothing: antialiased;
+      font-smoothing: antialiased; }
+    body.opera-fallback.opera-10 .hdg_1 {
+      font-size: 29px;
+      font-size: 1.8125rem;
+      line-height: 1.2; }
+    body.opera-fallback.opera-10 .hdg_2 {
+      font-size: 30px;
+      font-size: 1.875rem;
+      line-height: 1.28; }
+    body.opera-fallback.opera-10 .hdg_3 {
+      font-size: 20px;
+      font-size: 1.25rem;
+      line-height: 1.2625; }
+    body.opera-fallback.opera-10 .hdg_4 {
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 1.4565384; }
+    body.opera-fallback.opera-10 .hdg_5 {
+      font-size: 13px;
+      font-size: 0.8125rem;
+      line-height: 1.3636363; }
+    body.opera-fallback.opera-10 .hdg_6 {
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 1.5; }
+    body.opera-fallback.opera-10 .hdg_7 {
+      font-size: 13px;
+      font-size: 0.8125rem;
+      line-height: 1.2; }
+    body.opera-fallback.opera-10 .hdg_8 {
+      font-size: 29px;
+      font-size: 1.8125rem;
+      line-height: 1.25; }
+    body.opera-fallback.opera-10 .hdg_subHdg {
+      font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+      font-weight: 200;
+      font-style: normal;
+      font-size: 17px;
+      font-size: 1.0625rem;
+      line-height: 1.4285714; }
+    body.opera-fallback.opera-10 .hdg_heavy {
+      font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+      font-weight: 500;
+      font-style: normal;
+      font-size: 13px;
+      font-size: 0.8125rem;
+      color: #ffcc02;
+      line-height: 1.222222;
+      text-transform: uppercase; }
+    body.opera-fallback.opera-10 .mix-hdg_white {
+      color: white; }
+    body.opera-fallback.opera-10 .mix-hdg_blackThenWhite {
+      color: #000000; }
+    body.opera-fallback.opera-10 .mix-hdg_gray {
+      color: #6d6e64; }
+    body.opera-fallback.opera-10 .mix-hdg_italic {
+      font-style: italic; }
+    body.opera-fallback.opera-10 .mix-hdg_bold {
+      font-weight: 700; }
+    body.opera-fallback.opera-10 .mix-hdg_splash {
+      color: #ffffff; }
+    body.opera-fallback.opera-10 .mix-hdg_centerInMobile {
+      text-align: center; }
+    body.opera-fallback.opera-10 .mix-hdg_light {
+      font-weight: 400; }
+    body.opera-fallback.opera-10 .mix-hdg_themeImpact {
+      color: #ff6b00; }
+    body.opera-fallback.opera-10 .mix-hdg_themeApproach {
+      color: #fa5cb6; }
+    body.opera-fallback.opera-10 .mix-hdg_themeMission {
+      color: #9d25a0; }
+    body.opera-fallback.opera-10 .mix-hdg_mobileOnly {
+      color: #ffffff; }
+    body.opera-fallback.opera-10 .bdcpy {
+      font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+      font-weight: 200;
+      font-style: normal;
+      font-size: 14px;
+      font-size: 0.875rem;
+      line-height: 1.714285714;
+      color: #6d6e64; }
+    body.opera-fallback.opera-10 .bdcpy_lg {
+      font-size: 21px;
+      font-size: 1.3125rem;
+      line-height: 1.714285714; }
+    body.opera-fallback.opera-10 .bdcpy_sm {
+      font-size: 12px;
+      font-size: 0.75rem;
+      line-height: 1.666667; }
+    body.opera-fallback.opera-10 .bdcpy_narrative {
+      font-size: 17px;
+      line-height: 1.411764706; }
+    body.opera-fallback.opera-10 .mix-bdcpy_splash {
+      color: #ffffff; }
+    body.opera-fallback.opera-10 .mix-bdcpy_light {
+      color: #d5d4ca; }
+    body.opera-fallback.opera-10 .mix-bdcpy_white {
+      color: #ffffff; }
+    body.opera-fallback.opera-10 .mix-bdcpy_mobileOnly {
+      color: #ffffff; }
+    body.opera-fallback.opera-10 .mix-bdcpy_blackThenWhite {
+      color: #000000; }
+    body.opera-fallback.opera-10 .quarantine > * + * {
+      margin-top: 19px; }
+    body.opera-fallback.opera-10 .quarantine h1,
+    body.opera-fallback.opera-10 .quarantine h2,
+    body.opera-fallback.opera-10 .quarantine h3,
+    body.opera-fallback.opera-10 .quarantine h4,
+    body.opera-fallback.opera-10 .quarantine h5,
+    body.opera-fallback.opera-10 .quarantine h6 {
+      font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif;
+      font-style: Normal;
+      font-weight: 600;
+      font-stretch: normal;
+      color: #000000;
+      font-size: 20px;
+      font-size: 1.25rem;
+      line-height: 1.4565384; }
+    body.opera-fallback.opera-10 .quarantine > * + h1,
+    body.opera-fallback.opera-10 .quarantine > * + h2,
+    body.opera-fallback.opera-10 .quarantine > * + h3,
+    body.opera-fallback.opera-10 .quarantine > * + h4,
+    body.opera-fallback.opera-10 .quarantine > * + h5,
+    body.opera-fallback.opera-10 .quarantine > * + h6 {
+      margin-top: 45px; }
+    body.opera-fallback.opera-10 .quarantine p {
+      font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+      font-weight: 200;
+      font-style: normal;
+      font-size: 14px;
+      font-size: 0.875rem;
+      line-height: 1.714285714;
+      color: #6d6e64; }
+    body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > li {
+      font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+      font-weight: 200;
+      font-style: normal;
+      line-height: 1.666667;
+      color: #6d6e64;
+      position: relative;
+      padding-left: 37px; }
+    body.opera-fallback.opera-10 .quarantine a:not(.contentOnMedia-link),
+    body.opera-fallback.opera-10 .quarantine a:not(.link) {
+      -webkit-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+      font-weight: 500;
+      font-style: normal;
+      font-size: 13px;
+      font-size: 0.8125rem;
+      display: inline-block;
+      line-height: 1.222222;
+      text-decoration: none;
+      color: #ffcc02;
+      -webkit-font-smoothing: antialiased;
+      font-smoothing: antialiased; }
+    body.opera-fallback.opera-10 .quarantine a.link {
+      /* Forcing to retain top margin as designed */
+      margin-top: 4px !important; }
+    body.opera-fallback.opera-10 .quarantine strong {
+      font-weight: bold; }
+    body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > * + * {
+      margin-top: 22px; }
+    body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > li:before {
+      content: '•';
+      position: absolute;
+      top: -8px;
+      left: 8px;
+      font-family: Arial, 'Arial', sans-serif;
+      font-size: 28px;
+      font-size: 1.75rem;
+      color: #ffcc02; }
+    body.opera-fallback.opera-10 .statementBlock-bd .bdcpy {
+      color: #6d6e64; }
+    body.opera-fallback.opera-10 .splashFooter {
+      margin-bottom: 0px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 0px;
+      width: 82.5%; }
+    body.opera-fallback.opera-10 .splashFooter-section {
+      opacity: 1; }
+    body.opera-fallback.opera-10 .narrativeDT {
+      display: none !important; }
+    body.opera-fallback.opera-10 .narrativeDT-inner {
+      display: initial !important;
+      vertical-align: initial !important; }
+    body.opera-fallback.opera-10 .viewWindow.isShifted {
+      left: 0px; }
+    body.opera-fallback.opera-10 .viewWindow-panel:not(.isAnimating):first-child.isActive > .viewWindow-panel-content {
+      width: 100%;
+      padding-right: 0; }
+    body.opera-fallback.opera-10 .viewWindow-panel:not(.isAnimating):last-child.isActive > .viewWindow-panel-content {
+      width: 200%;
+      left: 0px;
+      padding-left: 0px; }
+    body.opera-fallback.opera-10 .narrative-section:nth-of-type(1) {
+      height: 800px !important; } }

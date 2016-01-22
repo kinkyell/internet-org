@@ -446,9 +446,14 @@ body.opera-fallback {
               }
             }
             //END NAVIGATION
-            .u-isHiddenMedium {
-                display: block !important;
+            .hdg,
+            .narrative-section-bd-link{
+                &.u-isHiddenMedium {
+                    display: block !important;
+                }
             }
+            .mix-hdg_italic { font-style: italic; }
+
             .circleBtn {
                 margin-left: 11%;
             }
@@ -460,29 +465,132 @@ body.opera-fallback {
             .mix-hdg_splash {
                 color: $CLR_WHITE;
             }
-            .hdg{
+            .hdg {
                 @include font(SERIF);
+                color: $CLR_BLACK;
+                -webkit-font-smoothing: antialiased;
+                font-smoothing: antialiased;
             }
+
             .hdg_1 {
+                @include remify(font-size, 29px);
                 line-height: 1.2;
-                font-size: 50px;
             }
+
             .hdg_2 {
-                font-size: 30px;
+                @include remify(font-size, 30px);
+                line-height: 1.28;
             }
+
+            .hdg_3 {
+                @include remify(font-size, 20px);
+                line-height: 1.2625;
+            }
+
+            .hdg_4 {
+                @include remify(font-size, 16px);
+                line-height: 1.4565384;
+            }
+
+            .hdg_5 {
+                @include remify(font-size, 13px);
+                line-height: 1.3636363;
+            }
+
+            .hdg_6 {
+                @include remify(font-size, 16px);
+                line-height: 1.5;
+            }
+
+            .hdg_7 {
+                @include remify(font-size, 13px);
+                line-height: 1.2;
+            }
+
+            .hdg_8 {
+                @include remify(font-size, 29px);
+                line-height: 1.25;
+            }
+
+            .hdg_subHdg {
+                // font-family: $FONT_SANS;
+                @include font(SANS);
+                @include remify(font-size, 17px);
+                line-height: 1.4285714;
+            }
+
             .hdg_heavy {
+                @include font(SANS_BLACK);
+                @include remify(font-size, 13px);
                 color: $CLR_ACCENT;
-                font-size: 25px;
+                line-height: 1.222222;
                 text-transform: uppercase;
             }
+
+            /* Heading Mixins */
+            .mix-hdg_white  { color: white; }
+            .mix-hdg_blackThenWhite { color: $CLR_BLACK; }
+            .mix-hdg_gray   { color: $CLR_GRAY; }
+            .mix-hdg_italic { font-style: italic; }
+            .mix-hdg_bold   { font-weight: 700; }
+            .mix-hdg_splash { color: $CLR_WHITE; }
+            .mix-hdg_centerInMobile { text-align: center; }
+            .mix-hdg_light { font-weight: 400; }
+
+            /* Theme Mixins */
+            .mix-hdg_themeImpact { color: $CLR_IMPACT; }
+            .mix-hdg_themeApproach { color: $CLR_APPROACH; }
+            .mix-hdg_themeMission { color: $CLR_MISSION; }
+
+            // One-off mixin used in heading narrative-section
+            .mix-hdg_mobileOnly {
+                color: $CLR_WHITE;
+            }
             //SUBTITLES
+            .bdcpy {
+                @include font(SANS);
+                @include remify(font-size, 14px);
+                line-height: 1.714285714;
+                color: $CLR_GRAY;
+                // -webkit-font-smoothing: antialiased;
+                // font-smoothing: antialiased;
+            }
+
+            .bdcpy_lg {
+                @include remify(font-size, 21px);
+                line-height: 1.714285714;
+            }
+
+            .bdcpy_sm {
+                @include remify(font-size, 12px);
+                line-height: 1.666667;
+            }
+
+            .bdcpy_narrative {
+                font-size: 17px;
+                line-height: 1.411764706;
+            }
+
             .mix-bdcpy_splash {
                 color: $CLR_WHITE;
             }
-            .bdcpy_narrative {
-                font-size: 30px;
-                line-height: 1.411764706;
+
+            .mix-bdcpy_light {
+                color: $CLR_GRAY_LIGHT;
             }
+
+            .mix-bdcpy_white {
+                color: $CLR_WHITE;
+            }
+
+            // One-off mixin used in heading narrative-section
+            .mix-bdcpy_mobileOnly {
+                color: $CLR_WHITE;
+            }
+            .mix-bdcpy_blackThenWhite {
+                color: $CLR_BLACK;
+            }
+
             //FONTS
 
             .quarantine {
