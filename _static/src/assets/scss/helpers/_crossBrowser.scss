@@ -713,7 +713,6 @@ body.opera-fallback {
                 a:not(.link) {
                     @include transition(all 0.3s ease-in-out); 
                     display: inline-block;
-                    line-height: 1.222222;
                     text-decoration: none;
                     color: $CLR_ACCENT;
                     -webkit-font-smoothing: antialiased;
@@ -728,6 +727,8 @@ body.opera-fallback {
                 a.link {
                     /* Forcing to retain top margin as designed */
                     margin-top: 4px !important;
+                    @include remify(font-size, 13px);
+                    line-height: 1.222222;
                 }
 
                 strong {

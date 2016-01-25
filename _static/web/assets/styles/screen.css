@@ -634,7 +634,6 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
       -webkit-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
       display: inline-block;
-      line-height: 1.222222;
       text-decoration: none;
       color: #ffcc02;
       -webkit-font-smoothing: antialiased;
@@ -646,7 +645,10 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
       font-family: serif; }
     body.opera-fallback.opera-10 .quarantine a.link {
       /* Forcing to retain top margin as designed */
-      margin-top: 4px !important; }
+      margin-top: 4px !important;
+      font-size: 13px;
+      font-size: 0.8125rem;
+      line-height: 1.222222; }
     body.opera-fallback.opera-10 .quarantine strong {
       font-weight: bold; }
     body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > * + * {
@@ -7788,7 +7790,6 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
       -webkit-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
       display: inline-block;
-      line-height: 1.222222;
       text-decoration: none;
       color: #ffcc02;
       -webkit-font-smoothing: antialiased;
@@ -7800,7 +7801,10 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
       font-family: serif; }
     body.opera-fallback.opera-10 .quarantine a.link {
       /* Forcing to retain top margin as designed */
-      margin-top: 4px !important; }
+      margin-top: 4px !important;
+      font-size: 13px;
+      font-size: 0.8125rem;
+      line-height: 1.222222; }
     body.opera-fallback.opera-10 .quarantine strong {
       font-weight: bold; }
     body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > * + * {
