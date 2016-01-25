@@ -712,8 +712,6 @@ body.opera-fallback {
                 a:not(.contentOnMedia-link),
                 a:not(.link) {
                     @include transition(all 0.3s ease-in-out); 
-                    @include font(SANS_BLACK);
-                    @include remify(font-size, 13px);
                     display: inline-block;
                     line-height: 1.222222;
                     text-decoration: none;
@@ -721,12 +719,10 @@ body.opera-fallback {
                     -webkit-font-smoothing: antialiased;
                     font-smoothing: antialiased;
                     width: 100%;
-                    &.link_title{
-                        font-size: 32px;
-                        line-height: 39px;
-                        color: #000000;
-                        font-family: serif;
-                    }
+                    font-size: 32px;
+                    line-height: 39px;
+                    color: #000000;
+                    font-family: serif;
                 }    
 
                 a.link {
