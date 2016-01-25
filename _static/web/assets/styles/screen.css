@@ -154,6 +154,24 @@ body.opera-fallback.opera-mini .feature .grunion-field-label {
   display: block !important;
   min-height: auto !important;
   clear: both !important; }
+  body.opera-fallback.opera-mini.navigation-opera-mini,
+  body.opera-fallback.opera-mini .viewWindow.navigation-opera-mini,
+  body.opera-fallback.opera-mini .viewWindow-panel.navigation-opera-mini,
+  body.opera-fallback.opera-mini .viewWindow-panel-content.navigation-opera-mini,
+  body.opera-fallback.opera-mini .viewWindow-panel-content-inner.navigation-opera-mini,
+  body.opera-fallback.opera-mini .narrative.navigation-opera-mini,
+  body.opera-fallback.opera-mini .narrativeView.navigation-opera-mini,
+  body.opera-fallback.opera-mini .narrative-section.navigation-opera-mini,
+  body.opera-fallback.opera-mini .narrative-section-slides_short.navigation-opera-mini,
+  body.opera-fallback.opera-mini .narrative-section-bd.navigation-opera-mini,
+  body.opera-fallback.opera-mini .narrative-section-bd_low.navigation-opera-mini,
+  body.opera-fallback.opera-mini .vendorForm .grunion-radio-label > .radio.navigation-opera-mini,
+  body.opera-fallback.opera-mini .feature .grunion-radio-label > .radio.navigation-opera-mini,
+  body.opera-fallback.opera-mini .menu-main-menu .topicLink.navigation-opera-mini,
+  body.opera-fallback.opera-mini .vendorForm .grunion-field-label.navigation-opera-mini,
+  body.opera-fallback.opera-mini .feature .grunion-field-label.navigation-opera-mini {
+    height: 100% !important;
+    min-height: 100% !important; }
 
 body.opera-fallback.opera-mini .vendorForm .grunion-field-label,
 body.opera-fallback.opera-mini .feature .grunion-field-label {
@@ -162,6 +180,10 @@ body.opera-fallback.opera-mini .feature .grunion-field-label {
   clip: none !important;
   color: black !important;
   font-size: 13px !important; }
+
+body.opera-fallback.opera-mini.navigation-page {
+  height: 100% !important;
+  min-height: 100% !important; }
 
 body.opera-fallback .vendorForm .grunion-radio-label .radio,
 body.opera-fallback .feature .grunion-radio-label .radio {
@@ -324,21 +346,30 @@ body.opera-fallback .link::before, body.opera-fallback .link::after {
 body.opera-fallback .btn.js-ShowMoreView {
   display: none; }
 
-body.opera-fallback .viewWindow.navigation-opera-mini {
-  min-height: 100% !important; }
-
 body.opera-fallback .navigation-opera-mini {
   background: #f1efe7; }
   body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary {
-    height: calc(100% - 244px); }
+    height: 335px;
+    margin-top: 40px; }
     body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu {
-      margin-top: 45px; }
+      margin-top: 50px; }
       body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
         font-size: 25px; }
+      @media (max-height: 480px) {
+        body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu {
+          margin-top: 20px; }
+          body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
+            font-size: 18px; } }
   body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary > * {
-    min-height: 299px; }
+    min-height: 350px; }
+  @media (max-height: 480px) {
+    body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary > * {
+      min-height: initial; } }
   body.opera-fallback .navigation-opera-mini .mainMenu-panel-secondary {
     background: #f1efe7; }
+  body.opera-fallback .navigation-opera-mini .down-container {
+    position: fixed;
+    bottom: 0; }
 
 body.opera-fallback .introBlock-ft {
   text-align: center; }
@@ -7250,6 +7281,24 @@ body.opera-fallback.opera-mini .feature .grunion-field-label {
   display: block !important;
   min-height: auto !important;
   clear: both !important; }
+  body.opera-fallback.opera-mini.navigation-opera-mini,
+  body.opera-fallback.opera-mini .viewWindow.navigation-opera-mini,
+  body.opera-fallback.opera-mini .viewWindow-panel.navigation-opera-mini,
+  body.opera-fallback.opera-mini .viewWindow-panel-content.navigation-opera-mini,
+  body.opera-fallback.opera-mini .viewWindow-panel-content-inner.navigation-opera-mini,
+  body.opera-fallback.opera-mini .narrative.navigation-opera-mini,
+  body.opera-fallback.opera-mini .narrativeView.navigation-opera-mini,
+  body.opera-fallback.opera-mini .narrative-section.navigation-opera-mini,
+  body.opera-fallback.opera-mini .narrative-section-slides_short.navigation-opera-mini,
+  body.opera-fallback.opera-mini .narrative-section-bd.navigation-opera-mini,
+  body.opera-fallback.opera-mini .narrative-section-bd_low.navigation-opera-mini,
+  body.opera-fallback.opera-mini .vendorForm .grunion-radio-label > .radio.navigation-opera-mini,
+  body.opera-fallback.opera-mini .feature .grunion-radio-label > .radio.navigation-opera-mini,
+  body.opera-fallback.opera-mini .menu-main-menu .topicLink.navigation-opera-mini,
+  body.opera-fallback.opera-mini .vendorForm .grunion-field-label.navigation-opera-mini,
+  body.opera-fallback.opera-mini .feature .grunion-field-label.navigation-opera-mini {
+    height: 100% !important;
+    min-height: 100% !important; }
 
 body.opera-fallback.opera-mini .vendorForm .grunion-field-label,
 body.opera-fallback.opera-mini .feature .grunion-field-label {
@@ -7258,6 +7307,10 @@ body.opera-fallback.opera-mini .feature .grunion-field-label {
   clip: none !important;
   color: black !important;
   font-size: 13px !important; }
+
+body.opera-fallback.opera-mini.navigation-page {
+  height: 100% !important;
+  min-height: 100% !important; }
 
 body.opera-fallback .vendorForm .grunion-radio-label .radio,
 body.opera-fallback .feature .grunion-radio-label .radio {
@@ -7420,21 +7473,30 @@ body.opera-fallback .link::before, body.opera-fallback .link::after {
 body.opera-fallback .btn.js-ShowMoreView {
   display: none; }
 
-body.opera-fallback .viewWindow.navigation-opera-mini {
-  min-height: 100% !important; }
-
 body.opera-fallback .navigation-opera-mini {
   background: #f1efe7; }
   body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary {
-    height: calc(100% - 244px); }
+    height: 335px;
+    margin-top: 40px; }
     body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu {
-      margin-top: 45px; }
+      margin-top: 50px; }
       body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
         font-size: 25px; }
+      @media (max-height: 480px) {
+        body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu {
+          margin-top: 20px; }
+          body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
+            font-size: 18px; } }
   body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary > * {
-    min-height: 299px; }
+    min-height: 350px; }
+  @media (max-height: 480px) {
+    body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary > * {
+      min-height: initial; } }
   body.opera-fallback .navigation-opera-mini .mainMenu-panel-secondary {
     background: #f1efe7; }
+  body.opera-fallback .navigation-opera-mini .down-container {
+    position: fixed;
+    bottom: 0; }
 
 body.opera-fallback .introBlock-ft {
   text-align: center; }

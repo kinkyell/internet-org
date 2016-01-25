@@ -98,6 +98,7 @@ body.opera-fallback {
     }
 
     &.opera-mini {
+               
         &,
         .viewWindow,
         .viewWindow-panel,
@@ -120,6 +121,10 @@ body.opera-fallback {
             display: block !important;
             min-height: auto !important;
             clear: both !important;
+            &.navigation-opera-mini {
+                height: 100% !important;
+                min-height: 100% !important;
+            }
         }
 
         .vendorForm .grunion-field-label,
@@ -130,6 +135,12 @@ body.opera-fallback {
             color: black !important;
             font-size: 13px !important;
         }
+        
+        &.navigation-page{
+            height: 100% !important;
+            min-height: 100% !important;
+        }
+        
     }
 
     .vendorForm .grunion-radio-label,
@@ -324,31 +335,44 @@ body.opera-fallback {
       display: none;
   }
 
-  .viewWindow {
-    &.navigation-opera-mini {
-      min-height: 100% !important;
-    }
-  }
   .navigation-opera-mini {
     //padding-top: 120px;
     background: #f1efe7;
 
     .mainMenu-panel-primary {
-      height: calc(100% - 244px);
+      height: 335px;
+      margin-top: 40px;
       #menu-main-menu {
-        margin-top: 45px;
+        margin-top: 50px;
         li {
           .topicLink-link{
             font-size: 25px;
           }
         }
+        @media (max-height: 480px) {
+            margin-top: 20px;
+            li {
+              .topicLink-link{
+                font-size: 18px;
+              }
+            }
+        }
       }
     }
     .mainMenu-panel-primary > * {
-      min-height: 299px;
+      min-height: 350px;
+    }
+    @media (max-height: 480px) {
+        .mainMenu-panel-primary > * {
+            min-height: initial;
+        }
     }
     .mainMenu-panel-secondary {
       background:#f1efe7;
+    }
+    .down-container{
+        position: fixed;
+        bottom: 0;
     }
   }
   .introBlock-ft{

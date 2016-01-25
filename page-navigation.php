@@ -12,7 +12,6 @@ get_header();
 ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
-
   <div class="viewWindow isShifted js-viewWindow js-stateDefault navigation-opera-mini" id="main-content" role="main" data-route="<?php the_permalink(); ?>" data-type="panel" data-title="<?php the_title(); ?>" data-image="<?php echo esc_url( internetorg_get_post_thumbnail( get_the_ID(), 'panel-image' ) ); ?>" data-mobile-image="<?php echo esc_url( internetorg_get_post_thumbnail( get_the_ID(), 'inline-image' ) ); ?>">
       <div class="mainMenu-panel-primary">
         <ul id="menu-main-menu" class="">
@@ -49,5 +48,8 @@ get_header();
   </div>
 
 <?php endwhile; // End of the loop. ?>
-
+<script type="text/javascript">
+    var root = document.getElementsByTagName('body')[0];
+    root.className += ' navigation-page';
+</script>
 <?php get_footer();
