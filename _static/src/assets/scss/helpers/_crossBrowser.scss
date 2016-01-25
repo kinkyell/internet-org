@@ -695,6 +695,12 @@ body.opera-fallback {
                     font-size: 32px;
                     line-height: 39px;
                 }
+                .link_title{
+                    font-size: 32px;
+                    line-height: 39px;
+                    color: #000000;
+                    font-family: serif;
+                }
                 p {
                     font-family: serif;
                     @include remify(font-size, 14px);
