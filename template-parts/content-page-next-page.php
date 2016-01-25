@@ -41,7 +41,13 @@ if ( empty( $next_page_id ) ) {
 		<div class="introBlock-ft">
 			<?php
 				$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : '';
-				if ( stristr( $user_agent, 'Opera Mini' ) ) { 
+				$agentOpera10 = false;
+				if(stristr( $user_agent, 'Opera' )){
+					if(stristr( $user_agent, 'Version/10')){
+						$agentOpera10 = true;
+					}
+				}
+				if ( stristr( $user_agent, 'Opera Mini' ) || $agentOpera10) {
 					if( esc_html( get_the_title( $next_page_id ) ) == 'Our Impact') {
 						?> <span class="opera-link impact"></span> <?php
 					} else {
