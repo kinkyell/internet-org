@@ -638,7 +638,7 @@ body.opera-fallback {
                 h4,
                 h5,
                 h6 {
-                    @include font(SERIF);
+                    font-family: serif;
                     color: $CLR_BLACK;
                     @include remify(font-size, 20px);
                     line-height: 1.4565384;
@@ -652,7 +652,7 @@ body.opera-fallback {
                     margin-top: 45px;
                 }
                 p {
-                    @include font(SANS);
+                    font-family: serif;
                     @include remify(font-size, 14px);
                     line-height: 1.714285714;
                     color: $CLR_GRAY;

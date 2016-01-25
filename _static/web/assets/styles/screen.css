@@ -572,10 +572,7 @@ body.opera-fallback.opera-10 .viewWindow {
     body.opera-fallback.opera-10 .quarantine h4,
     body.opera-fallback.opera-10 .quarantine h5,
     body.opera-fallback.opera-10 .quarantine h6 {
-      font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif;
-      font-style: Normal;
-      font-weight: 600;
-      font-stretch: normal;
+      font-family: serif;
       color: #000000;
       font-size: 20px;
       font-size: 1.25rem;
@@ -588,9 +585,7 @@ body.opera-fallback.opera-10 .viewWindow {
     body.opera-fallback.opera-10 .quarantine > * + h6 {
       margin-top: 45px; }
     body.opera-fallback.opera-10 .quarantine p {
-      font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
-      font-weight: 200;
-      font-style: normal;
+      font-family: serif;
       font-size: 14px;
       font-size: 0.875rem;
       line-height: 1.714285714;
@@ -7698,10 +7693,7 @@ body.opera-fallback.opera-10 .viewWindow {
     body.opera-fallback.opera-10 .quarantine h4,
     body.opera-fallback.opera-10 .quarantine h5,
     body.opera-fallback.opera-10 .quarantine h6 {
-      font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif;
-      font-style: Normal;
-      font-weight: 600;
-      font-stretch: normal;
+      font-family: serif;
       color: #000000;
       font-size: 20px;
       font-size: 1.25rem;
@@ -7714,9 +7706,7 @@ body.opera-fallback.opera-10 .viewWindow {
     body.opera-fallback.opera-10 .quarantine > * + h6 {
       margin-top: 45px; }
     body.opera-fallback.opera-10 .quarantine p {
-      font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
-      font-weight: 200;
-      font-style: normal;
+      font-family: serif;
       font-size: 14px;
       font-size: 0.875rem;
       line-height: 1.714285714;
