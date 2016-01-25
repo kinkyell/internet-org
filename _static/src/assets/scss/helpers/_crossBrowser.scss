@@ -7,6 +7,10 @@
 
 body.opera-fallback {
 
+    .auxLink {
+        font-size: 10px !important;
+    }
+
     .header {
         z-index: 999999 !important;
         position: absolute !important;
@@ -98,7 +102,7 @@ body.opera-fallback {
     }
 
     &.opera-mini {
-               
+
         &,
         .viewWindow,
         .viewWindow-panel,
@@ -135,12 +139,12 @@ body.opera-fallback {
             color: black !important;
             font-size: 13px !important;
         }
-        
+
         &.navigation-page{
             height: 100% !important;
             min-height: 100% !important;
         }
-        
+
     }
 
     .vendorForm .grunion-radio-label,
@@ -475,9 +479,9 @@ body.opera-fallback {
                 width: 100% !important;
                 padding-right: 0px !important;
             }
-        }  
+        }
         .down-container{
-            .mainMenu-panel-secondary { 
+            .mainMenu-panel-secondary {
                 bottom: 0px;
             }
         }
@@ -485,10 +489,10 @@ body.opera-fallback {
             -o-background-size: 100% auto;
         }
 
-        .fbFollowBlock {   
+        .fbFollowBlock {
             .fbFollowBlock-inner {
                 width: 100%;
-                .fbFollowBlock-hd, .fbFollowBlock-bd { 
+                .fbFollowBlock-hd, .fbFollowBlock-bd {
                     text-align: center;
                 }
             }
@@ -500,7 +504,7 @@ body.opera-fallback {
         }
         @include breakpoint(MD) {
             //NAVIGATION
-            .mainMenu-panel-secondary { 
+            .mainMenu-panel-secondary {
                 position: relative;
             }
             .mainMenu-panel-primary {
@@ -708,10 +712,10 @@ body.opera-fallback {
                     color: $CLR_GRAY;
                     position: relative;
                     padding-left: $SPACE_x3;
-                } 
+                }
                 a:not(.contentOnMedia-link),
                 a:not(.link) {
-                    @include transition(all 0.3s ease-in-out); 
+                    @include transition(all 0.3s ease-in-out);
                     display: inline-block;
                     text-decoration: none;
                     color: $CLR_ACCENT;
@@ -722,7 +726,7 @@ body.opera-fallback {
                     line-height: 39px;
                     color: #000000;
                     font-family: serif;
-                }    
+                }
 
                 a.link {
                     /* Forcing to retain top margin as designed */
@@ -772,12 +776,12 @@ body.opera-fallback {
             .narrativeDT-inner {
                 display: initial !important;
                 vertical-align: initial !important;
-            }  
+            }
             .narrative-section-slides-item{
                 -o-background-size: 100% auto;
             }
             .viewWindow{
-                &.isShifted { 
+                &.isShifted {
                     left: 0px;
                 }
             }
