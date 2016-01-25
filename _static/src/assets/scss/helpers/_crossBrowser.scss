@@ -449,7 +449,11 @@ body.opera-fallback {
             clip: none !important;
             color: black !important;
         }
-
+        .vendorForm{
+            textarea{
+                max-height: 200px;
+            }
+        }
         .viewWindow {
             width: 100% !important;
             .viewWindow-panel {

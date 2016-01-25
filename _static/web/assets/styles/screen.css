@@ -424,6 +424,9 @@ body.opera-fallback.opera-10 .feature .grunion-field-label {
   clip: none !important;
   color: black !important; }
 
+body.opera-fallback.opera-10 .vendorForm textarea {
+  max-height: 200px; }
+
 body.opera-fallback.opera-10 .viewWindow {
   width: 100% !important; }
   body.opera-fallback.opera-10 .viewWindow .viewWindow-panel {
@@ -7543,6 +7546,9 @@ body.opera-fallback.opera-10 .feature .grunion-field-label {
   width: auto !important;
   clip: none !important;
   color: black !important; }
+
+body.opera-fallback.opera-10 .vendorForm textarea {
+  max-height: 200px; }
 
 body.opera-fallback.opera-10 .viewWindow {
   width: 100% !important; }
