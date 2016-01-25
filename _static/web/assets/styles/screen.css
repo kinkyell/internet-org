@@ -478,7 +478,10 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
     body.opera-fallback.opera-10 .mix-hdg_italic {
       font-style: italic; }
     body.opera-fallback.opera-10 .circleBtn {
-      margin-left: 11%; }
+      margin-left: 11%;
+      background: url(../media/images/bg-circle-play.png);
+      -o-background-size: 75px auto;
+      background-repeat: no-repeat; }
     body.opera-fallback.opera-10 .narrative {
       display: block; }
     body.opera-fallback.opera-10 .mix-hdg_splash {
@@ -7626,7 +7629,10 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
     body.opera-fallback.opera-10 .mix-hdg_italic {
       font-style: italic; }
     body.opera-fallback.opera-10 .circleBtn {
-      margin-left: 11%; }
+      margin-left: 11%;
+      background: url(../media/images/bg-circle-play.png);
+      -o-background-size: 75px auto;
+      background-repeat: no-repeat; }
     body.opera-fallback.opera-10 .narrative {
       display: block; }
     body.opera-fallback.opera-10 .mix-hdg_splash {
