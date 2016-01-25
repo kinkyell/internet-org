@@ -669,6 +669,8 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
     body.opera-fallback.opera-10 .narrativeDT-inner {
       display: initial !important;
       vertical-align: initial !important; }
+    body.opera-fallback.opera-10 .narrative-section-slides-item {
+      -o-background-size: 100% auto; }
     body.opera-fallback.opera-10 .viewWindow.isShifted {
       left: 0px; }
     body.opera-fallback.opera-10 .viewWindow-panel:not(.isAnimating):first-child.isActive > .viewWindow-panel-content {
@@ -7815,6 +7817,8 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
     body.opera-fallback.opera-10 .narrativeDT-inner {
       display: initial !important;
       vertical-align: initial !important; }
+    body.opera-fallback.opera-10 .narrative-section-slides-item {
+      -o-background-size: 100% auto; }
     body.opera-fallback.opera-10 .viewWindow.isShifted {
       left: 0px; }
     body.opera-fallback.opera-10 .viewWindow-panel:not(.isAnimating):first-child.isActive > .viewWindow-panel-content {

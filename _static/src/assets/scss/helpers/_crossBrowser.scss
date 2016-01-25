@@ -484,7 +484,7 @@ body.opera-fallback {
         .socialBlock{
             -o-background-size: 100% auto;
         }
-        
+
         .fbFollowBlock {   
             .fbFollowBlock-inner {
                 width: 100%;
@@ -760,6 +760,9 @@ body.opera-fallback {
                 display: initial !important;
                 vertical-align: initial !important;
             }  
+            .narrative-section-slides-item{
+                -o-background-size: 100% auto;
+            }
             .viewWindow{
                 &.isShifted { 
                     left: 0px;
