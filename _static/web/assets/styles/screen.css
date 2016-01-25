@@ -368,9 +368,15 @@ body.opera-fallback .navigation-opera-mini {
   body.opera-fallback .navigation-opera-mini .mainMenu-panel-secondary {
     background: #f1efe7; }
 
-body.opera-fallback.opera-mini .navigation-opera-mini .down-container {
-  position: fixed;
-  bottom: 0; }
+body.opera-fallback .navigation-opera-mini .down-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+
+@media (max-height: 650px) {
+  body.opera-fallback .navigation-opera-mini .down-container {
+    position: relative; } }
 
 body.opera-fallback .introBlock-ft {
   text-align: center; }
@@ -417,6 +423,10 @@ body.opera-fallback.opera-10 .feature .grunion-field-label {
   min-height: auto !important;
   clear: both !important; }
 
+body.opera-fallback.opera-10.navigation-page {
+  height: 100% !important;
+  min-height: 100% !important; }
+
 body.opera-fallback.opera-10 .vendorForm .grunion-field-label,
 body.opera-fallback.opera-10 .feature .grunion-field-label {
   height: auto !important;
@@ -435,12 +445,14 @@ body.opera-fallback.opera-10 .viewWindow {
     width: 100% !important;
     padding-right: 0px !important; }
 
+body.opera-fallback.opera-10 .down-container .mainMenu-panel-secondary {
+  bottom: 0px; }
+
 @media (min-width: 769px) {
   body.opera-fallback.opera-10 {
     /* Heading Mixins */
     /* Theme Mixins */ }
     body.opera-fallback.opera-10 .mainMenu-panel-secondary {
-      bottom: 59px;
       position: relative; }
     body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu {
       margin-top: 150px; }
@@ -7491,9 +7503,15 @@ body.opera-fallback .navigation-opera-mini {
   body.opera-fallback .navigation-opera-mini .mainMenu-panel-secondary {
     background: #f1efe7; }
 
-body.opera-fallback.opera-mini .navigation-opera-mini .down-container {
-  position: fixed;
-  bottom: 0; }
+body.opera-fallback .navigation-opera-mini .down-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+
+@media (max-height: 650px) {
+  body.opera-fallback .navigation-opera-mini .down-container {
+    position: relative; } }
 
 body.opera-fallback .introBlock-ft {
   text-align: center; }
@@ -7540,6 +7558,10 @@ body.opera-fallback.opera-10 .feature .grunion-field-label {
   min-height: auto !important;
   clear: both !important; }
 
+body.opera-fallback.opera-10.navigation-page {
+  height: 100% !important;
+  min-height: 100% !important; }
+
 body.opera-fallback.opera-10 .vendorForm .grunion-field-label,
 body.opera-fallback.opera-10 .feature .grunion-field-label {
   height: auto !important;
@@ -7558,12 +7580,14 @@ body.opera-fallback.opera-10 .viewWindow {
     width: 100% !important;
     padding-right: 0px !important; }
 
+body.opera-fallback.opera-10 .down-container .mainMenu-panel-secondary {
+  bottom: 0px; }
+
 @media (min-width: 769px) {
   body.opera-fallback.opera-10 {
     /* Heading Mixins */
     /* Theme Mixins */ }
     body.opera-fallback.opera-10 .mainMenu-panel-secondary {
-      bottom: 59px;
       position: relative; }
     body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu {
       margin-top: 150px; }

@@ -371,14 +371,21 @@ body.opera-fallback {
           background:#f1efe7;
         }
     }
-    &.opera-mini {
-        .navigation-opera-mini {
+
+    .navigation-opera-mini {
+        .down-container{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        @media (max-height: 650px) {
             .down-container{
-                position: fixed;
-                bottom: 0;
+                position: relative;
             }
         }
     }
+
   .introBlock-ft{
     text-align: center;
     .opera-link {
@@ -442,6 +449,11 @@ body.opera-fallback {
             clear: both !important;
         }
 
+        &.navigation-page{
+            height: 100% !important;
+            min-height: 100% !important;
+        }
+
         .vendorForm .grunion-field-label,
         .feature .grunion-field-label  {
             height: auto !important;
@@ -464,10 +476,14 @@ body.opera-fallback {
                 padding-right: 0px !important;
             }
         }  
+        .down-container{
+            .mainMenu-panel-secondary { 
+                bottom: 0px;
+            }
+        }
         @include breakpoint(MD) {
             //NAVIGATION
             .mainMenu-panel-secondary { 
-                bottom: 59px;
                 position: relative;
             }
             .mainMenu-panel-primary {
