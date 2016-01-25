@@ -367,9 +367,10 @@ body.opera-fallback .navigation-opera-mini {
       min-height: initial; } }
   body.opera-fallback .navigation-opera-mini .mainMenu-panel-secondary {
     background: #f1efe7; }
-  body.opera-fallback .navigation-opera-mini .down-container {
-    position: fixed;
-    bottom: 0; }
+
+body.opera-fallback.opera-mini .navigation-opera-mini .down-container {
+  position: fixed;
+  bottom: 0; }
 
 body.opera-fallback .introBlock-ft {
   text-align: center; }
@@ -444,7 +445,8 @@ body.opera-fallback.opera-10 .viewWindow {
       body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li {
         margin-bottom: 60px; }
         body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
-          font-size: 25px; }
+          font-size: 25px;
+          font-family: serif; }
     body.opera-fallback.opera-10 .hdg.u-isHiddenMedium,
     body.opera-fallback.opera-10 .narrative-section-bd-link.u-isHiddenMedium {
       display: block !important; }
@@ -457,10 +459,7 @@ body.opera-fallback.opera-10 .viewWindow {
     body.opera-fallback.opera-10 .mix-hdg_splash {
       color: #ffffff; }
     body.opera-fallback.opera-10 .hdg {
-      font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif;
-      font-style: Normal;
-      font-weight: 600;
-      font-stretch: normal;
+      font-family: serif;
       color: #000000;
       -webkit-font-smoothing: antialiased;
       font-smoothing: antialiased; }
@@ -7494,9 +7493,10 @@ body.opera-fallback .navigation-opera-mini {
       min-height: initial; } }
   body.opera-fallback .navigation-opera-mini .mainMenu-panel-secondary {
     background: #f1efe7; }
-  body.opera-fallback .navigation-opera-mini .down-container {
-    position: fixed;
-    bottom: 0; }
+
+body.opera-fallback.opera-mini .navigation-opera-mini .down-container {
+  position: fixed;
+  bottom: 0; }
 
 body.opera-fallback .introBlock-ft {
   text-align: center; }
@@ -7571,7 +7571,8 @@ body.opera-fallback.opera-10 .viewWindow {
       body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li {
         margin-bottom: 60px; }
         body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
-          font-size: 25px; }
+          font-size: 25px;
+          font-family: serif; }
     body.opera-fallback.opera-10 .hdg.u-isHiddenMedium,
     body.opera-fallback.opera-10 .narrative-section-bd-link.u-isHiddenMedium {
       display: block !important; }
@@ -7584,10 +7585,7 @@ body.opera-fallback.opera-10 .viewWindow {
     body.opera-fallback.opera-10 .mix-hdg_splash {
       color: #ffffff; }
     body.opera-fallback.opera-10 .hdg {
-      font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif;
-      font-style: Normal;
-      font-weight: 600;
-      font-stretch: normal;
+      font-family: serif;
       color: #000000;
       -webkit-font-smoothing: antialiased;
       font-smoothing: antialiased; }

@@ -336,45 +336,49 @@ body.opera-fallback {
   }
 
   .navigation-opera-mini {
-    //padding-top: 120px;
-    background: #f1efe7;
+        //padding-top: 120px;
+        background: #f1efe7;
 
-    .mainMenu-panel-primary {
-      height: 335px;
-      margin-top: 40px;
-      #menu-main-menu {
-        margin-top: 50px;
-        li {
-          .topicLink-link{
-            font-size: 25px;
-          }
-        }
-        @media (max-height: 480px) {
-            margin-top: 20px;
+        .mainMenu-panel-primary {
+          height: 335px;
+          margin-top: 40px;
+          #menu-main-menu {
+            margin-top: 50px;
             li {
               .topicLink-link{
-                font-size: 18px;
+                font-size: 25px;
               }
             }
+            @media (max-height: 480px) {
+                margin-top: 20px;
+                li {
+                  .topicLink-link{
+                    font-size: 18px;
+                  }
+                }
+            }
+          }
         }
-      }
-    }
-    .mainMenu-panel-primary > * {
-      min-height: 350px;
-    }
-    @media (max-height: 480px) {
         .mainMenu-panel-primary > * {
-            min-height: initial;
+          min-height: 350px;
+        }
+        @media (max-height: 480px) {
+            .mainMenu-panel-primary > * {
+                min-height: initial;
+            }
+        }
+        .mainMenu-panel-secondary {
+          background:#f1efe7;
         }
     }
-    .mainMenu-panel-secondary {
-      background:#f1efe7;
+    &.opera-mini {
+        .navigation-opera-mini {
+            .down-container{
+                position: fixed;
+                bottom: 0;
+            }
+        }
     }
-    .down-container{
-        position: fixed;
-        bottom: 0;
-    }
-  }
   .introBlock-ft{
     text-align: center;
     .opera-link {
@@ -470,6 +474,7 @@ body.opera-fallback {
                     margin-bottom: 60px;
                     .topicLink-link{
                         font-size: 25px;
+                        font-family: serif;
                     }
                 }
               }
@@ -495,7 +500,7 @@ body.opera-fallback {
                 color: $CLR_WHITE;
             }
             .hdg {
-                @include font(SERIF);
+                font-family: serif;
                 color: $CLR_BLACK;
                 -webkit-font-smoothing: antialiased;
                 font-smoothing: antialiased;
