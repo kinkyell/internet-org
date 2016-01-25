@@ -57,7 +57,13 @@ $archives_years = internetorg_get_archives_years();
 
 										<?php
 											$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : '';
-											if ( stristr( $user_agent, 'Opera Mini' ) ) {
+											$agentOpera10 = false;
+											if(stristr( $user_agent, 'Opera' )){
+												if(stristr( $user_agent, 'Version/10')){
+													$agentOpera10 = true;
+												}
+											}
+											if ( stristr( $user_agent, 'Opera Mini' ) || $agentOpera10) {
 												global $post;
 												$args = array( 'numberposts' => -1);
 												$myposts = query_posts( array ( 'posts_per_page' => 100 ) );
