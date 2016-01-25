@@ -633,21 +633,22 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
     body.opera-fallback.opera-10 .quarantine a:not(.link) {
       -webkit-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
-      font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
-      font-weight: 500;
-      font-style: normal;
-      font-size: 13px;
-      font-size: 0.8125rem;
       display: inline-block;
-      line-height: 1.222222;
       text-decoration: none;
       color: #ffcc02;
       -webkit-font-smoothing: antialiased;
       font-smoothing: antialiased;
-      width: 100%; }
+      width: 100%;
+      font-size: 32px;
+      line-height: 39px;
+      color: #000000;
+      font-family: serif; }
     body.opera-fallback.opera-10 .quarantine a.link {
       /* Forcing to retain top margin as designed */
-      margin-top: 4px !important; }
+      margin-top: 4px !important;
+      font-size: 13px;
+      font-size: 0.8125rem;
+      line-height: 1.222222; }
     body.opera-fallback.opera-10 .quarantine strong {
       font-weight: bold; }
     body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > * + * {
@@ -7788,21 +7789,22 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
     body.opera-fallback.opera-10 .quarantine a:not(.link) {
       -webkit-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
-      font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
-      font-weight: 500;
-      font-style: normal;
-      font-size: 13px;
-      font-size: 0.8125rem;
       display: inline-block;
-      line-height: 1.222222;
       text-decoration: none;
       color: #ffcc02;
       -webkit-font-smoothing: antialiased;
       font-smoothing: antialiased;
-      width: 100%; }
+      width: 100%;
+      font-size: 32px;
+      line-height: 39px;
+      color: #000000;
+      font-family: serif; }
     body.opera-fallback.opera-10 .quarantine a.link {
       /* Forcing to retain top margin as designed */
-      margin-top: 4px !important; }
+      margin-top: 4px !important;
+      font-size: 13px;
+      font-size: 0.8125rem;
+      line-height: 1.222222; }
     body.opera-fallback.opera-10 .quarantine strong {
       font-weight: bold; }
     body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > * + * {
