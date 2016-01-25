@@ -612,6 +612,9 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
     body.opera-fallback.opera-10 .quarantine > * + h5,
     body.opera-fallback.opera-10 .quarantine > * + h6 {
       margin-top: 45px; }
+    body.opera-fallback.opera-10 .quarantine h3 {
+      font-size: 32px;
+      line-height: 39px; }
     body.opera-fallback.opera-10 .quarantine p {
       font-family: serif;
       font-size: 14px;
@@ -7763,6 +7766,9 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
     body.opera-fallback.opera-10 .quarantine > * + h5,
     body.opera-fallback.opera-10 .quarantine > * + h6 {
       margin-top: 45px; }
+    body.opera-fallback.opera-10 .quarantine h3 {
+      font-size: 32px;
+      line-height: 39px; }
     body.opera-fallback.opera-10 .quarantine p {
       font-family: serif;
       font-size: 14px;

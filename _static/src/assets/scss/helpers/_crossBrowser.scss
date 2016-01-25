@@ -690,6 +690,11 @@ body.opera-fallback {
                 > * + h6 {
                     margin-top: 45px;
                 }
+
+                h3{
+                    font-size: 32px;
+                    line-height: 39px;
+                }
                 p {
                     font-family: serif;
                     @include remify(font-size, 14px);
