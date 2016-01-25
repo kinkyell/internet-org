@@ -481,6 +481,19 @@ body.opera-fallback {
                 bottom: 0px;
             }
         }
+        .fbFollowBlock {   
+            .fbFollowBlock-inner {
+                width: 100%;
+                .fbFollowBlock-hd, .fbFollowBlock-bd { 
+                    text-align: center;
+                }
+            }
+            .fbFollowBlock-cta{
+                .btn-icon{
+                    display: none;
+                }
+            }
+        }
         @include breakpoint(MD) {
             //NAVIGATION
             .mainMenu-panel-secondary { 

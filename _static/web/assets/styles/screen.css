@@ -448,6 +448,14 @@ body.opera-fallback.opera-10 .viewWindow {
 body.opera-fallback.opera-10 .down-container .mainMenu-panel-secondary {
   bottom: 0px; }
 
+body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-inner {
+  width: 100%; }
+  body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-inner .fbFollowBlock-hd, body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-inner .fbFollowBlock-bd {
+    text-align: center; }
+
+body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
+  display: none; }
+
 @media (min-width: 769px) {
   body.opera-fallback.opera-10 {
     /* Heading Mixins */
@@ -7582,6 +7590,14 @@ body.opera-fallback.opera-10 .viewWindow {
 
 body.opera-fallback.opera-10 .down-container .mainMenu-panel-secondary {
   bottom: 0px; }
+
+body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-inner {
+  width: 100%; }
+  body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-inner .fbFollowBlock-hd, body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-inner .fbFollowBlock-bd {
+    text-align: center; }
+
+body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
+  display: none; }
 
 @media (min-width: 769px) {
   body.opera-fallback.opera-10 {
