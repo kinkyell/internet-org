@@ -495,12 +495,14 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
     /* Theme Mixins */ }
     body.opera-fallback.opera-10 .mainMenu-panel-secondary {
       position: relative; }
+      body.opera-fallback.opera-10 .mainMenu-panel-secondary #menu-secondary-menu li .auxLink {
+        font-size: 13px !important; }
     body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu {
       margin-top: 150px; }
       body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li {
-        margin-bottom: 60px; }
+        margin-bottom: 80px !important; }
         body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
-          font-size: 25px;
+          font-size: 34px;
           font-family: serif; }
     body.opera-fallback.opera-10 .hdg.u-isHiddenMedium,
     body.opera-fallback.opera-10 .narrative-section-bd-link.u-isHiddenMedium {
@@ -7686,12 +7688,14 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
     /* Theme Mixins */ }
     body.opera-fallback.opera-10 .mainMenu-panel-secondary {
       position: relative; }
+      body.opera-fallback.opera-10 .mainMenu-panel-secondary #menu-secondary-menu li .auxLink {
+        font-size: 13px !important; }
     body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu {
       margin-top: 150px; }
       body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li {
-        margin-bottom: 60px; }
+        margin-bottom: 80px !important; }
         body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
-          font-size: 25px;
+          font-size: 34px;
           font-family: serif; }
     body.opera-fallback.opera-10 .hdg.u-isHiddenMedium,
     body.opera-fallback.opera-10 .narrative-section-bd-link.u-isHiddenMedium {

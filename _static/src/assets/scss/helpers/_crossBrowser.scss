@@ -535,14 +535,21 @@ body.opera-fallback {
             //NAVIGATION
             .mainMenu-panel-secondary {
                 position: relative;
+                #menu-secondary-menu{
+                    li{
+                        .auxLink{
+                            font-size: 13px !important;
+                        }
+                    }
+                }
             }
             .mainMenu-panel-primary {
               #menu-main-menu {
                 margin-top: 150px;
                 li {
-                    margin-bottom: 60px;
+                    margin-bottom: 80px !important;
                     .topicLink-link{
-                        font-size: 25px;
+                        font-size: 34px;
                         font-family: serif;
                     }
                 }
