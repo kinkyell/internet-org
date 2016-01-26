@@ -1859,7 +1859,7 @@ function internetorg_is_video_url( $url ) {
 	$isVimeo = internetorg_video_type($url, $check_vimeo_val);
 	$check_youtube_val = 'youtube.com';
 	$isYoutube = internetorg_video_type($url, $check_youtube_val);
-	return ($isVimeo || $isYoutube); 
+	return ($isVimeo || $isYoutube);
 }
 
 /**
@@ -2408,7 +2408,6 @@ function vip_fb_legacy_redirects() {
 	if ( is_preview() ) {
 		internetorg_preview_post_setup();
 		add_action( 'template_redirect', 'internetorg_force_page_template' );
-		exit;
 	}
 
 	// To reduce overhead, only run if the requested page is 404.
