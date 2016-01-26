@@ -709,6 +709,8 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
       vertical-align: initial !important; }
     body.opera-fallback.opera-10 .narrative-section-slides-item {
       -o-background-size: 100% auto; }
+    body.opera-fallback.opera-10 .narrative-section-slides-item {
+      min-height: 600px !important; }
     body.opera-fallback.opera-10 .viewWindow.isShifted {
       left: 0px; }
     body.opera-fallback.opera-10 .viewWindow-panel:not(.isAnimating):first-child.isActive > .viewWindow-panel-content {
@@ -719,7 +721,9 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
       left: 0px;
       padding-left: 0px; }
     body.opera-fallback.opera-10 .narrative-section:nth-of-type(1) {
-      height: 800px !important; } }
+      height: 800px !important; }
+    body.opera-fallback.opera-10 .statementBlock_end {
+      padding-top: 285px; } }
 
 /* ---------------------------------------------------------------------
  Base Styles
@@ -7895,6 +7899,8 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
       vertical-align: initial !important; }
     body.opera-fallback.opera-10 .narrative-section-slides-item {
       -o-background-size: 100% auto; }
+    body.opera-fallback.opera-10 .narrative-section-slides-item {
+      min-height: 600px !important; }
     body.opera-fallback.opera-10 .viewWindow.isShifted {
       left: 0px; }
     body.opera-fallback.opera-10 .viewWindow-panel:not(.isAnimating):first-child.isActive > .viewWindow-panel-content {
@@ -7905,4 +7911,6 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
       left: 0px;
       padding-left: 0px; }
     body.opera-fallback.opera-10 .narrative-section:nth-of-type(1) {
-      height: 800px !important; } }
+      height: 800px !important; }
+    body.opera-fallback.opera-10 .statementBlock_end {
+      padding-top: 285px; } }

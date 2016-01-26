@@ -439,6 +439,7 @@ body.opera-fallback {
 body.opera-fallback {
     &.opera-10 {
 
+
         &,
         .viewWindow-panel,
         .viewWindow-panel-content,
@@ -814,6 +815,9 @@ body.opera-fallback {
             .narrative-section-slides-item{
                 -o-background-size: 100% auto;
             }
+            .narrative-section-slides-item {
+                min-height: 600px !important;
+            }
             .viewWindow{
                 &.isShifted {
                     left: 0px;
@@ -830,6 +834,9 @@ body.opera-fallback {
             }
             .narrative-section:nth-of-type(1) {
                 height: 800px !important;
+            }
+            .statementBlock_end {
+                padding-top: 285px;
             }
         }
     }
