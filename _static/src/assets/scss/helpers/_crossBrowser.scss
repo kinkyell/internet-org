@@ -716,13 +716,14 @@ body.opera-fallback {
                 }
 
                 p {
-                    font-family: serif;
+                    font-family: sans-serif;
                     @include remify(font-size, 14px);
                     line-height: 1.714285714;
                     color: $CLR_GRAY;
                 }
                 ul:not(.carousel-handle) > li {
-                    @include font(SANS);
+                    font-family: sans-serif;
+                    @include remify(font-size, 14px);
                     line-height: 1.666667;
                     color: $CLR_GRAY;
                     position: relative;
@@ -737,12 +738,14 @@ body.opera-fallback {
                     -webkit-font-smoothing: antialiased;
                     font-smoothing: antialiased;
                     width: 100%;
+                    font-family: serif;
+                }  
+                a.link_title{
                     font-size: 32px;
                     line-height: 39px;
                     color: #000000;
-                    font-family: serif;
-                }  
-                  
+                }
+
                 a.swipebox-video{
                     width: auto;
                 }
