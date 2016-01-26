@@ -521,6 +521,13 @@ body.opera-fallback {
                 bottom: 0px;
             }
         }
+        .circleBtn_play {
+            margin-left: 11%;
+            background: url(../media/images/bg-circle-play.png) ;
+            background-size: 75px auto;
+            -o-background-size: 75px auto;
+            background-repeat: no-repeat;
+        }
         .socialBlock{
             -o-background-size: 100% auto;
         }
@@ -542,14 +549,21 @@ body.opera-fallback {
             //NAVIGATION
             .mainMenu-panel-secondary {
                 position: relative;
+                #menu-secondary-menu{
+                    li{
+                        .auxLink{
+                            font-size: 13px !important;
+                        }
+                    }
+                }
             }
             .mainMenu-panel-primary {
               #menu-main-menu {
                 margin-top: 150px;
                 li {
-                    margin-bottom: 60px;
+                    margin-bottom: 80px !important;
                     .topicLink-link{
-                        font-size: 25px;
+                        font-size: 34px;
                         font-family: serif;
                     }
                 }
@@ -563,14 +577,6 @@ body.opera-fallback {
                 }
             }
             .mix-hdg_italic { font-style: italic; }
-
-            .circleBtn_play {
-                margin-left: 11%;
-                background: url(../media/images/bg-circle-play.png) ;
-                -o-background-size: 75px auto;
-                background-size: 75px auto;
-                background-repeat: no-repeat;
-            }
 
             .narrative {
                 display: block;
