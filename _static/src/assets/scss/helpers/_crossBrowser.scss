@@ -516,7 +516,9 @@ body.opera-fallback {
                 padding-right: 0px !important;
             }
         }
+
         .down-container{
+            position: fixed;
             .mainMenu-panel-secondary {
                 bottom: 0px;
             }
@@ -559,9 +561,11 @@ body.opera-fallback {
             }
             .mainMenu-panel-primary {
               #menu-main-menu {
-                margin-top: 150px;
+                margin-top: 35px !important;
                 li {
-                    margin-bottom: 80px !important;
+                    margin-top: 80px !important;
+                    margin-bottom: 0px !important;
+
                     .topicLink-link{
                         font-size: 34px;
                         font-family: serif;
@@ -608,8 +612,8 @@ body.opera-fallback {
             }
 
             .hdg_4 {
-                @include remify(font-size, 16px);
-                line-height: 1.4565384;
+                @include remify(font-size, 28px);
+                line-height: 2.4565384;
             }
 
             .hdg_5 {
@@ -780,8 +784,8 @@ body.opera-fallback {
                 a.link {
                     /* Forcing to retain top margin as designed */
                     margin-top: 4px !important;
-                    @include remify(font-size, 13px);
-                    line-height: 1.222222;
+                    @include remify(font-size, 18px);
+                    line-height: 1.8;
                 }
 
                 strong {
