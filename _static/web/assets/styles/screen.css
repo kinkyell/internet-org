@@ -485,8 +485,10 @@ body.opera-fallback.opera-10 .viewWindow {
     width: 100% !important;
     padding-right: 0px !important; }
 
-body.opera-fallback.opera-10 .down-container .mainMenu-panel-secondary {
-  bottom: 0px; }
+body.opera-fallback.opera-10 .down-container {
+  position: fixed; }
+  body.opera-fallback.opera-10 .down-container .mainMenu-panel-secondary {
+    bottom: 0px; }
 
 body.opera-fallback.opera-10 .circleBtn_play {
   margin-left: 11%;
@@ -515,9 +517,10 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
       body.opera-fallback.opera-10 .mainMenu-panel-secondary #menu-secondary-menu li .auxLink {
         font-size: 13px !important; }
     body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu {
-      margin-top: 150px; }
+      margin-top: 35px !important; }
       body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li {
-        margin-bottom: 80px !important; }
+        margin-top: 80px !important;
+        margin-bottom: 0px !important; }
         body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
           font-size: 34px;
           font-family: serif; }
@@ -7690,8 +7693,10 @@ body.opera-fallback.opera-10 .viewWindow {
     width: 100% !important;
     padding-right: 0px !important; }
 
-body.opera-fallback.opera-10 .down-container .mainMenu-panel-secondary {
-  bottom: 0px; }
+body.opera-fallback.opera-10 .down-container {
+  position: fixed; }
+  body.opera-fallback.opera-10 .down-container .mainMenu-panel-secondary {
+    bottom: 0px; }
 
 body.opera-fallback.opera-10 .circleBtn_play {
   margin-left: 11%;
@@ -7720,9 +7725,10 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
       body.opera-fallback.opera-10 .mainMenu-panel-secondary #menu-secondary-menu li .auxLink {
         font-size: 13px !important; }
     body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu {
-      margin-top: 150px; }
+      margin-top: 35px !important; }
       body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li {
-        margin-bottom: 80px !important; }
+        margin-top: 80px !important;
+        margin-bottom: 0px !important; }
         body.opera-fallback.opera-10 .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
           font-size: 34px;
           font-family: serif; }
