@@ -478,6 +478,13 @@ body.opera-fallback.opera-10 .viewWindow {
 body.opera-fallback.opera-10 .down-container .mainMenu-panel-secondary {
   bottom: 0px; }
 
+body.opera-fallback.opera-10 .circleBtn_play {
+  margin-left: 11%;
+  background: url(../media/images/bg-circle-play.png);
+  background-size: 75px auto;
+  -o-background-size: 75px auto;
+  background-repeat: no-repeat; }
+
 body.opera-fallback.opera-10 .socialBlock {
   -o-background-size: 100% auto; }
 
@@ -509,11 +516,6 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
       display: block !important; }
     body.opera-fallback.opera-10 .mix-hdg_italic {
       font-style: italic; }
-    body.opera-fallback.opera-10 .circleBtn_play {
-      margin-left: 11%;
-      background: url(../media/images/bg-circle-play.png);
-      background-size: 75px auto;
-      background-repeat: no-repeat; }
     body.opera-fallback.opera-10 .narrative {
       display: block; }
     body.opera-fallback.opera-10 .mix-hdg_splash {
@@ -7671,6 +7673,13 @@ body.opera-fallback.opera-10 .viewWindow {
 body.opera-fallback.opera-10 .down-container .mainMenu-panel-secondary {
   bottom: 0px; }
 
+body.opera-fallback.opera-10 .circleBtn_play {
+  margin-left: 11%;
+  background: url(../media/images/bg-circle-play.png);
+  background-size: 75px auto;
+  -o-background-size: 75px auto;
+  background-repeat: no-repeat; }
+
 body.opera-fallback.opera-10 .socialBlock {
   -o-background-size: 100% auto; }
 
@@ -7702,11 +7711,6 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
       display: block !important; }
     body.opera-fallback.opera-10 .mix-hdg_italic {
       font-style: italic; }
-    body.opera-fallback.opera-10 .circleBtn_play {
-      margin-left: 11%;
-      background: url(../media/images/bg-circle-play.png);
-      background-size: 75px auto;
-      background-repeat: no-repeat; }
     body.opera-fallback.opera-10 .narrative {
       display: block; }
     body.opera-fallback.opera-10 .mix-hdg_splash {

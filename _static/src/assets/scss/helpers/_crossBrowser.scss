@@ -514,6 +514,13 @@ body.opera-fallback {
                 bottom: 0px;
             }
         }
+        .circleBtn_play {
+            margin-left: 11%;
+            background: url(../media/images/bg-circle-play.png) ;
+            background-size: 75px auto;
+            -o-background-size: 75px auto;
+            background-repeat: no-repeat;
+        }
         .socialBlock{
             -o-background-size: 100% auto;
         }
@@ -563,14 +570,6 @@ body.opera-fallback {
                 }
             }
             .mix-hdg_italic { font-style: italic; }
-
-            .circleBtn_play {
-                margin-left: 11%;
-                background: url(../media/images/bg-circle-play.png) ;
-                -o-background-size: 75px auto;
-                background-size: 75px auto;
-                background-repeat: no-repeat;
-            }
 
             .narrative {
                 display: block;
