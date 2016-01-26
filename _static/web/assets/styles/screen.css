@@ -443,7 +443,22 @@ body.opera-fallback.opera-10 .feature .grunion-field-label {
   height: auto !important;
   width: auto !important;
   clip: none !important;
-  color: black !important; }
+  font-family: sans-serif;
+  color: #6d6e64;
+  font-size: 14px;
+  font-size: 0.875rem; }
+  body.opera-fallback.opera-10 .vendorForm .grunion-field-label span,
+  body.opera-fallback.opera-10 .feature .grunion-field-label span {
+    padding-left: 5px; }
+
+body.opera-fallback.opera-10 .vendorForm .grunion-radio-label {
+  height: auto !important;
+  width: auto !important;
+  clip: none !important;
+  font-family: sans-serif;
+  color: #6d6e64;
+  font-size: 12px;
+  font-size: 0.75rem; }
 
 body.opera-fallback.opera-10 .vendorForm textarea {
   max-height: 200px; }
@@ -578,9 +593,7 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
     body.opera-fallback.opera-10 .mix-hdg_mobileOnly {
       color: #ffffff; }
     body.opera-fallback.opera-10 .bdcpy {
-      font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
-      font-weight: 200;
-      font-style: normal;
+      font-family: sans-serif;
       font-size: 14px;
       font-size: 0.875rem;
       line-height: 1.714285714;
@@ -7616,7 +7629,22 @@ body.opera-fallback.opera-10 .feature .grunion-field-label {
   height: auto !important;
   width: auto !important;
   clip: none !important;
-  color: black !important; }
+  font-family: sans-serif;
+  color: #6d6e64;
+  font-size: 14px;
+  font-size: 0.875rem; }
+  body.opera-fallback.opera-10 .vendorForm .grunion-field-label span,
+  body.opera-fallback.opera-10 .feature .grunion-field-label span {
+    padding-left: 5px; }
+
+body.opera-fallback.opera-10 .vendorForm .grunion-radio-label {
+  height: auto !important;
+  width: auto !important;
+  clip: none !important;
+  font-family: sans-serif;
+  color: #6d6e64;
+  font-size: 12px;
+  font-size: 0.75rem; }
 
 body.opera-fallback.opera-10 .vendorForm textarea {
   max-height: 200px; }
@@ -7751,9 +7779,7 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
     body.opera-fallback.opera-10 .mix-hdg_mobileOnly {
       color: #ffffff; }
     body.opera-fallback.opera-10 .bdcpy {
-      font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
-      font-weight: 200;
-      font-style: normal;
+      font-family: sans-serif;
       font-size: 14px;
       font-size: 0.875rem;
       line-height: 1.714285714;

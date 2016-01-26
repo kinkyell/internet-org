@@ -472,7 +472,20 @@ body.opera-fallback {
             height: auto !important;
             width: auto !important;
             clip: none !important;
-            color: black !important;
+            font-family: sans-serif;
+            color: $CLR_GRAY;
+            @include remify(font-size, 14px);
+            span{
+                padding-left: 5px;
+            }
+        }
+        .vendorForm .grunion-radio-label  {
+            height: auto !important;
+            width: auto !important;
+            clip: none !important;
+            font-family: sans-serif;
+            color: $CLR_GRAY;
+            @include remify(font-size, 12px);
         }
         .vendorForm{
             textarea{
@@ -640,7 +653,7 @@ body.opera-fallback {
             }
             //SUBTITLES
             .bdcpy {
-                @include font(SANS);
+                font-family: sans-serif;
                 @include remify(font-size, 14px);
                 line-height: 1.714285714;
                 color: $CLR_GRAY;
