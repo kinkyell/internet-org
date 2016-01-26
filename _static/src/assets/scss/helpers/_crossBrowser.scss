@@ -856,5 +856,40 @@ body.opera-fallback {
     }
 }
 
+// Android Browser Specific Styles
+body.android-browser {
 
+    .header-logo {
+        width: 142px !important;
+        height: 42px !important;
+        display: block !important;
 
+        svg {
+            display: none !important;
+        }
+
+        img {
+            max-height: 100% !important;
+            max-width: 100% !important;
+        }
+
+        .white {
+            display: none !important;
+        }
+
+        .black {
+            display: block !important;
+        }
+    }
+
+    &.home {
+        .header-logo {
+            .white {
+                display: block !important;
+            }
+            .black {
+                display: none !important;
+            }
+        }
+    }
+}

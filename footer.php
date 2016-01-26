@@ -10,15 +10,35 @@
 ?>
 	<!-- Add asset shade BEFORE scripts are loaded -->
 	<script type="text/javascript">
+
+    // Detect Android Browser
+    var navU = navigator.userAgent;
+
+    // Android Mobile
+    var isAndroidMobile = navU.indexOf('Android') > -1 && navU.indexOf('Mozilla/5.0') > -1 && navU.indexOf('AppleWebKit') > -1;
+
+    // Apple webkit
+    var regExAppleWebKit = new RegExp(/AppleWebKit\/([\d.]+)/);
+    var resultAppleWebKitRegEx = regExAppleWebKit.exec(navU);
+    var appleWebKitVersion = (resultAppleWebKitRegEx === null ? null : parseFloat(regExAppleWebKit.exec(navU)[1]));
+
+    // Chrome
+    var regExChrome = new RegExp(/Chrome\/([\d.]+)/);
+    var resultChromeRegEx = regExChrome.exec(navU);
+    var chromeVersion = (resultChromeRegEx === null ? null : parseFloat(regExChrome.exec(navU)[1]));
+
+    // Native Android Browser
+    var isAndroidBrowser = isAndroidMobile && (appleWebKitVersion !== null && appleWebKitVersion < 537) || (chromeVersion !== null && chromeVersion < 37);
+
 		// Detect Opera Mini and Opera 10
 		var isOperaMini = Object.prototype.toString.call(window.operamini) === '[object OperaMini]';
 		var isOpera10 = window.opera && (window.opera.version() >= 10 && window.opera.version() < 11);
 		// Ext Execution of JavaScript
 		function exit(e){function o(e){e.stopPropagation()}var t;window.addEventListener("error",function(e){e.preventDefault(),e.stopPropagation()},!1);var n=["copy","cut","paste","beforeunload","blur","change","click","contextmenu","dblclick","focus","keydown","keypress","keyup","mousedown","mousemove","mouseout","mouseover","mouseup","resize","scroll","DOMNodeInserted","DOMNodeRemoved","DOMNodeRemovedFromDocument","DOMNodeInsertedIntoDocument","DOMAttrModified","DOMCharacterDataModified","DOMElementNameChanged","DOMAttributeNameChanged","DOMActivate","DOMFocusIn","DOMFocusOut","online","offline","textInput","abort","close","dragdrop","load","paint","reset","select","submit","unload"];for(t=0;t<n.length;t++)window.addEventListener(n[t],function(e){o(e)},!0);throw window.stop&&window.stop(),""};
 
-    function applyOperaFallbacks () {
-			var root = document.getElementsByTagName('body')[0];
+    var root = document.getElementsByTagName('body')[0];
 
+    function applyOperaFallbacks () {
       if(isOpera10){
         root.className += ' opera-fallback opera-10';
         exit( 'Opera 10 Detected' );
@@ -28,6 +48,10 @@
       }
 
 		}
+
+    if(isAndroidBrowser){
+      root.className += ' android-browser';
+    }
 
 		function IE(v) {
 		  return RegExp('msie' + (!isNaN(v)?('\\s'+v):''), 'i').test(navigator.userAgent);
@@ -40,7 +64,7 @@
 		}
 
 		// If Opera Mini or Opera 10 add class to body
-		if ( isOperaMini === true || isOpera10 === true) {
+		if ( isOperaMini === true || isOpera10 === true ) {
 			applyOperaFallbacks();
 		}
 
