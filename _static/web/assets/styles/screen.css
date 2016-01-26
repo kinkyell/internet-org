@@ -358,20 +358,30 @@ body.opera-fallback .btn.js-ShowMoreView {
   display: none; }
 
 body.opera-fallback .navigation-opera-mini {
+  padding-top: 60px;
   background: #f1efe7; }
-  body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary {
-    height: 335px;
+  body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary,
+  body.opera-fallback .navigation-opera-mini #menu-main-menu {
+    height: auto !important;
+    min-height: auto !important;
     margin-top: 0 !important;
-    padding-top: 40px !important; }
-    body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu {
-      margin-top: 50px; }
-      body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
-        font-size: 25px; }
+    padding-top: 0 !important; }
+    body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu,
+    body.opera-fallback .navigation-opera-mini #menu-main-menu #menu-main-menu {
+      margin-top: 0 !important; }
+      body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu li .topicLink-link,
+      body.opera-fallback .navigation-opera-mini #menu-main-menu #menu-main-menu li .topicLink-link {
+        display: block;
+        font-size: 25px;
+        padding: 10px 0;
+        margin: 10px 0; }
       @media (max-height: 480px) {
-        body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu {
+        body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu,
+        body.opera-fallback .navigation-opera-mini #menu-main-menu #menu-main-menu {
           margin-top: 20px; }
-          body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
-            font-size: 18px; } }
+          body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu li .topicLink-link,
+          body.opera-fallback .navigation-opera-mini #menu-main-menu #menu-main-menu li .topicLink-link {
+            font-size: 25px; } }
   body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary > * {
     min-height: 350px; }
   @media (max-height: 480px) {
@@ -7553,20 +7563,30 @@ body.opera-fallback .btn.js-ShowMoreView {
   display: none; }
 
 body.opera-fallback .navigation-opera-mini {
+  padding-top: 60px;
   background: #f1efe7; }
-  body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary {
-    height: 335px;
+  body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary,
+  body.opera-fallback .navigation-opera-mini #menu-main-menu {
+    height: auto !important;
+    min-height: auto !important;
     margin-top: 0 !important;
-    padding-top: 40px !important; }
-    body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu {
-      margin-top: 50px; }
-      body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
-        font-size: 25px; }
+    padding-top: 0 !important; }
+    body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu,
+    body.opera-fallback .navigation-opera-mini #menu-main-menu #menu-main-menu {
+      margin-top: 0 !important; }
+      body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu li .topicLink-link,
+      body.opera-fallback .navigation-opera-mini #menu-main-menu #menu-main-menu li .topicLink-link {
+        display: block;
+        font-size: 25px;
+        padding: 10px 0;
+        margin: 10px 0; }
       @media (max-height: 480px) {
-        body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu {
+        body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu,
+        body.opera-fallback .navigation-opera-mini #menu-main-menu #menu-main-menu {
           margin-top: 20px; }
-          body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu li .topicLink-link {
-            font-size: 18px; } }
+          body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu li .topicLink-link,
+          body.opera-fallback .navigation-opera-mini #menu-main-menu #menu-main-menu li .topicLink-link {
+            font-size: 25px; } }
   body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary > * {
     min-height: 350px; }
   @media (max-height: 480px) {

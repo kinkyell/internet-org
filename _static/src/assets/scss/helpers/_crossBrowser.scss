@@ -349,25 +349,32 @@ body.opera-fallback {
   }
 
   .navigation-opera-mini {
-        //padding-top: 120px;
+        padding-top: 60px;
         background: #f1efe7;
 
-        .mainMenu-panel-primary {
-          height: 335px;
+        .mainMenu-panel-primary,
+        #menu-main-menu {
+          height: auto !important;
+          min-height: auto !important;
           margin-top: 0 !important;
-          padding-top: 40px !important;
+          padding-top: 0 !important;
+
           #menu-main-menu {
-            margin-top: 50px;
+            margin-top: 0 !important;
+
             li {
               .topicLink-link{
+                display: block;
                 font-size: 25px;
+                padding: 10px 0;
+                margin: 10px 0;
               }
             }
             @media (max-height: 480px) {
                 margin-top: 20px;
                 li {
                   .topicLink-link{
-                    font-size: 18px;
+                    font-size: 25px;
                   }
                 }
             }
@@ -760,7 +767,7 @@ body.opera-fallback {
                     font-smoothing: antialiased;
                     width: 100%;
                     font-family: serif;
-                }  
+                }
                 a.link_title{
                     font-size: 32px;
                     line-height: 39px;
