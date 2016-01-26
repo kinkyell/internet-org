@@ -199,7 +199,8 @@ body.opera-fallback .vendorForm .grunion-radio-label .radio,
 body.opera-fallback .feature .grunion-radio-label .radio {
   width: auto !important;
   margin: 0 10px 0 0 !important;
-  clip: none !important; }
+  clip: none !important;
+  float: left; }
 
 body.opera-fallback .vendorForm .grunion-radio-label span,
 body.opera-fallback .feature .grunion-radio-label span {
@@ -7389,7 +7390,8 @@ body.opera-fallback .vendorForm .grunion-radio-label .radio,
 body.opera-fallback .feature .grunion-radio-label .radio {
   width: auto !important;
   margin: 0 10px 0 0 !important;
-  clip: none !important; }
+  clip: none !important;
+  float: left; }
 
 body.opera-fallback .vendorForm .grunion-radio-label span,
 body.opera-fallback .feature .grunion-radio-label span {
