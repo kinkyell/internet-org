@@ -466,6 +466,11 @@ body.opera-fallback {
                 max-height: 200px;
             }
         }
+        .narrative-section-bd-link{
+            .circleBtn{
+                margin-left: 11%;
+            }
+        }
         .viewWindow {
             width: 100% !important;
             .viewWindow-panel {
@@ -524,10 +529,11 @@ body.opera-fallback {
             }
             .mix-hdg_italic { font-style: italic; }
 
-            .circleBtn {
+            .circleBtn_play {
                 margin-left: 11%;
                 background: url(../media/images/bg-circle-play.png) ;
                 -o-background-size: 75px auto;
+                background-size: 75px auto;
                 background-repeat: no-repeat;
             }
 
@@ -723,7 +729,9 @@ body.opera-fallback {
                     color: #000000;
                     font-family: serif;
                 }    
-
+                a.swipebox-video{
+                    width: auto;
+                }
                 a.link {
                     /* Forcing to retain top margin as designed */
                     margin-top: 4px !important;

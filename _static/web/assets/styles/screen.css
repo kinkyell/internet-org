@@ -437,6 +437,9 @@ body.opera-fallback.opera-10 .feature .grunion-field-label {
 body.opera-fallback.opera-10 .vendorForm textarea {
   max-height: 200px; }
 
+body.opera-fallback.opera-10 .narrative-section-bd-link .circleBtn {
+  margin-left: 11%; }
+
 body.opera-fallback.opera-10 .viewWindow {
   width: 100% !important; }
   body.opera-fallback.opera-10 .viewWindow .viewWindow-panel {
@@ -477,10 +480,10 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
       display: block !important; }
     body.opera-fallback.opera-10 .mix-hdg_italic {
       font-style: italic; }
-    body.opera-fallback.opera-10 .circleBtn {
+    body.opera-fallback.opera-10 .circleBtn_play {
       margin-left: 11%;
       background: url(../media/images/bg-circle-play.png);
-      -o-background-size: 75px auto;
+      background-size: 75px auto;
       background-repeat: no-repeat; }
     body.opera-fallback.opera-10 .narrative {
       display: block; }
@@ -643,6 +646,8 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
       line-height: 39px;
       color: #000000;
       font-family: serif; }
+    body.opera-fallback.opera-10 .quarantine a.swipebox-video {
+      width: auto; }
     body.opera-fallback.opera-10 .quarantine a.link {
       /* Forcing to retain top margin as designed */
       margin-top: 4px !important;
@@ -7593,6 +7598,9 @@ body.opera-fallback.opera-10 .feature .grunion-field-label {
 body.opera-fallback.opera-10 .vendorForm textarea {
   max-height: 200px; }
 
+body.opera-fallback.opera-10 .narrative-section-bd-link .circleBtn {
+  margin-left: 11%; }
+
 body.opera-fallback.opera-10 .viewWindow {
   width: 100% !important; }
   body.opera-fallback.opera-10 .viewWindow .viewWindow-panel {
@@ -7633,10 +7641,10 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
       display: block !important; }
     body.opera-fallback.opera-10 .mix-hdg_italic {
       font-style: italic; }
-    body.opera-fallback.opera-10 .circleBtn {
+    body.opera-fallback.opera-10 .circleBtn_play {
       margin-left: 11%;
       background: url(../media/images/bg-circle-play.png);
-      -o-background-size: 75px auto;
+      background-size: 75px auto;
       background-repeat: no-repeat; }
     body.opera-fallback.opera-10 .narrative {
       display: block; }
@@ -7799,6 +7807,8 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
       line-height: 39px;
       color: #000000;
       font-family: serif; }
+    body.opera-fallback.opera-10 .quarantine a.swipebox-video {
+      width: auto; }
     body.opera-fallback.opera-10 .quarantine a.link {
       /* Forcing to retain top margin as designed */
       margin-top: 4px !important;
