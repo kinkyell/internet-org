@@ -73,7 +73,7 @@ class Internetorg_Main_Nav_Walker extends Walker_Nav_Menu {
 			$attributes .= ' data-image="'
 			               . esc_url(
 				               internetorg_get_post_thumbnail(
-					               $item->object_id,
+					               $item->ID,
 					               'panel-image'
 				               )
 			               )
