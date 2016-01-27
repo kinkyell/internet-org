@@ -896,4 +896,10 @@ body.android-browser {
             }
         }
     }
+    .link_preArrows:before{
+        top: 0px;
+    }
+    .link:after {
+        top: 18px;
+    }
 }
