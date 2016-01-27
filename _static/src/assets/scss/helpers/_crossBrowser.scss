@@ -896,4 +896,73 @@ body.android-browser {
             }
         }
     }
+
+    .header-logo.mix-header-logo_center {
+        overflow: hidden !important;
+        width: 35px !important;
+
+        .white {
+            display: none !important;
+        }
+
+        .black {
+            display: block !important;
+        }
+
+        img {
+            width: 140px !important;
+            height: auto !important;
+            max-width: 140px !important;
+        }
+    }
+    &:not(.u-isHidden) {
+        .mainMenu-panel-lang {
+            display: none !important;
+        }
+    }
+
+    .mainMenu-panel-secondary {
+        position: relative;
+        #menu-secondary-menu{
+            li{
+                .auxLink{
+                    font-size: 13px !important;
+                }
+            }
+        }
+    }
+    .mainMenu-panel-primary {
+      #menu-main-menu {
+        margin-top: 30px !important;
+        li {
+            margin-top: 30px !important;
+            margin-bottom: 0px !important;
+
+            .topicLink-link{
+                font-size: 30px;
+            }
+        }
+      }
+    }
+    .mainMenu-panel-secondary {
+        padding: 0 !important;
+    }
+    #menu-secondary-menu {
+        width: 100% !important;
+        display: block !important;
+        margin-top: 60px !important;
+
+        li {
+            width: 50% !important;
+            display: block !important;
+            float: left !important;
+        }
+    }
+    .auxLink {
+        line-height: 14px !important;
+        font-size: 10px !important;
+        height: 14px !important;
+        overflow: hidden !important;
+        display: block !important;
+    }
 }
