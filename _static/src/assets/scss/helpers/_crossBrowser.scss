@@ -993,4 +993,9 @@ body.android-browser {
     .link:after {
         top: 18px;
     }
+
+    .link:not(.link_preArrows):not(.link_inline):not(.link_twoArrows) {
+        margin: 0 !important;
+    }
+
 }
