@@ -500,6 +500,14 @@ body.opera-fallback.opera-10 .circleBtn_play {
 body.opera-fallback.opera-10 .socialBlock {
   -o-background-size: 100% auto; }
 
+body.opera-fallback.opera-10 .theme-approach .link, body.opera-fallback.opera-10 .link_themeApproach {
+  /* Forcing to retain top margin as designed */
+  margin-top: 4px !important;
+  font-size: 14px !important;
+  line-height: 1.71;
+  text-transform: none !important;
+  font-family: serif; }
+
 body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-inner {
   width: 100%; }
   body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-inner .fbFollowBlock-hd, body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-inner .fbFollowBlock-bd {
@@ -7733,6 +7741,14 @@ body.opera-fallback.opera-10 .circleBtn_play {
 
 body.opera-fallback.opera-10 .socialBlock {
   -o-background-size: 100% auto; }
+
+body.opera-fallback.opera-10 .theme-approach .link, body.opera-fallback.opera-10 .link_themeApproach {
+  /* Forcing to retain top margin as designed */
+  margin-top: 4px !important;
+  font-size: 14px !important;
+  line-height: 1.71;
+  text-transform: none !important;
+  font-family: serif; }
 
 body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-inner {
   width: 100%; }

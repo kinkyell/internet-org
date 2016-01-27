@@ -533,7 +533,14 @@ body.opera-fallback {
         .socialBlock{
             -o-background-size: 100% auto;
         }
-
+        .theme-approach .link, .link_themeApproach { 
+           /* Forcing to retain top margin as designed */
+            margin-top: 4px !important;
+            font-size: 14px !important;
+            line-height: 1.71;
+            text-transform: none !important;
+            font-family: serif;
+        }
         .fbFollowBlock {
             .fbFollowBlock-inner {
                 width: 100%;
