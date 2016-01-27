@@ -794,8 +794,14 @@ body.opera-fallback {
                     margin-top: 4px !important;
                     @include remify(font-size, 18px);
                     line-height: 1.8;
+                    width: 100%;
                 }
-
+                a.link_image {
+                    width: 100%;
+                }
+                a.link_title {
+                    width: 100%;
+                }
                 strong {
                     font-weight: bold;
                 }

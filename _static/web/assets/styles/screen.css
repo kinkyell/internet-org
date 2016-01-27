@@ -705,7 +705,12 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
       margin-top: 4px !important;
       font-size: 18px;
       font-size: 1.125rem;
-      line-height: 1.8; }
+      line-height: 1.8;
+      width: 100%; }
+    body.opera-fallback.opera-10 .quarantine a.link_image {
+      width: 100%; }
+    body.opera-fallback.opera-10 .quarantine a.link_title {
+      width: 100%; }
     body.opera-fallback.opera-10 .quarantine strong {
       font-weight: bold; }
     body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > * + * {
@@ -8014,7 +8019,12 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
       margin-top: 4px !important;
       font-size: 18px;
       font-size: 1.125rem;
-      line-height: 1.8; }
+      line-height: 1.8;
+      width: 100%; }
+    body.opera-fallback.opera-10 .quarantine a.link_image {
+      width: 100%; }
+    body.opera-fallback.opera-10 .quarantine a.link_title {
+      width: 100%; }
     body.opera-fallback.opera-10 .quarantine strong {
       font-weight: bold; }
     body.opera-fallback.opera-10 .quarantine ul:not(.carousel-handle) > * + * {
