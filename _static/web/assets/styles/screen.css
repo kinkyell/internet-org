@@ -830,7 +830,16 @@ body.android-browser .narrativeView-progress {
   display: none !important; }
 
 body.android-browser .link_preArrows:before {
-  top: 0px; }
+  top: 0px !important; }
+
+body.android-browser .link_preArrows:after {
+  top: 0px !important; }
+
+body.android-browser .link_twoArrows:before {
+  top: 0px !important; }
+
+body.android-browser .link_twoArrows:after {
+  top: 0px !important; }
 
 body.android-browser .link:after {
   top: 18px; }
@@ -8130,7 +8139,16 @@ body.android-browser .narrativeView-progress {
   display: none !important; }
 
 body.android-browser .link_preArrows:before {
-  top: 0px; }
+  top: 0px !important; }
+
+body.android-browser .link_preArrows:after {
+  top: 0px !important; }
+
+body.android-browser .link_twoArrows:before {
+  top: 0px !important; }
+
+body.android-browser .link_twoArrows:after {
+  top: 0px !important; }
 
 body.android-browser .link:after {
   top: 18px; }

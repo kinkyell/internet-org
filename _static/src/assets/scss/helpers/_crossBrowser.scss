@@ -988,9 +988,17 @@ body.android-browser {
     }
 
     .link_preArrows:before {
-        top: 0px;
+        top: 0px !important;
     }
-
+    .link_preArrows:after {
+        top: 0px !important;
+    }
+    .link_twoArrows:before{
+        top: 0px !important;
+    }
+    .link_twoArrows:after {
+        top: 0px !important;
+    }
     .link:after {
         top: 18px;
     }
