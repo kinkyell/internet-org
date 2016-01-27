@@ -776,8 +776,9 @@ body.opera-fallback {
                     color: $CLR_ACCENT;
                     -webkit-font-smoothing: antialiased;
                     font-smoothing: antialiased;
-                    width: 100%;
-                    font-family: serif;
+                    //width: 100%;
+                    @include remify(font-size, 14px);
+                    font-family: sans-serif;
                 }
                 a.link_title{
                     font-size: 32px;
