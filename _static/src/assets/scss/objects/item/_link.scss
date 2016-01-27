@@ -17,9 +17,6 @@
     display: -webkit-inline-flex;
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased;
-    /* Resovling Chrome Animation inconsistancies */
-    backface-visibility: hidden;
-
 }
 
 /* Additional padding to increase hit state */

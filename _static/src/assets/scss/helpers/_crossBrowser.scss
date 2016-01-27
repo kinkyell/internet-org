@@ -973,6 +973,19 @@ body.android-browser {
         display: block !important;
     }
 
+    .loadingIcon {
+        display: none !important;
+    }
+
+    .link {
+        -webkit-transition: initial !important;
+        transition: initial !important;
+    }
+
+    .narrativeView-progress {
+        display: none !important;
+    }
+
     .link_preArrows:before {
         top: 0px;
     }
