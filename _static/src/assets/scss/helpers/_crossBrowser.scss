@@ -879,8 +879,17 @@ body.opera-fallback {
 // Android Browser Specific Styles
 body.android-browser {
 
-    .js-headerView-backBtn {
-        z-index: 9999 !important;
+    .header-backBtn.isActive {
+        height: 36px !important;
+        width: 36px !important;
+        position: absolute !important;
+        top: 20px !important;
+        left: 10px !important;
+        right: auto !important;
+        color: black !important;
+        z-index: 99999 !important;
+        right: auto !important;
+        transform: none !important;
     }
 
     .header-logo {
