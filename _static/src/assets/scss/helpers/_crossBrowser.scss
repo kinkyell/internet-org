@@ -360,7 +360,7 @@ body.opera-fallback {
           padding-top: 0 !important;
 
           #menu-main-menu {
-            margin-top: 0 !important;
+            margin-top: 50px !important;
 
             li {
               .topicLink-link{
@@ -371,10 +371,10 @@ body.opera-fallback {
               }
             }
             @media (max-height: 480px) {
-                margin-top: 20px;
+                margin-top: 20px !important;
                 li {
                   .topicLink-link{
-                    font-size: 25px;
+                    font-size: 25px !important;
                   }
                 }
             }
@@ -395,12 +395,14 @@ body.opera-fallback {
 
     .navigation-opera-mini {
         .down-container{
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            position: fixed;
+            bottom: 100px;
+
         }
         @media (max-height: 650px) {
+            .down-container{
+                bottom: 0;
+            }
             .down-container{
                 position: relative;
             }

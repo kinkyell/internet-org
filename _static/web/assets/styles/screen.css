@@ -368,7 +368,7 @@ body.opera-fallback .navigation-opera-mini {
     padding-top: 0 !important; }
     body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu,
     body.opera-fallback .navigation-opera-mini #menu-main-menu #menu-main-menu {
-      margin-top: 0 !important; }
+      margin-top: 50px !important; }
       body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu li .topicLink-link,
       body.opera-fallback .navigation-opera-mini #menu-main-menu #menu-main-menu li .topicLink-link {
         display: block;
@@ -378,10 +378,10 @@ body.opera-fallback .navigation-opera-mini {
       @media (max-height: 480px) {
         body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu,
         body.opera-fallback .navigation-opera-mini #menu-main-menu #menu-main-menu {
-          margin-top: 20px; }
+          margin-top: 20px !important; }
           body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu li .topicLink-link,
           body.opera-fallback .navigation-opera-mini #menu-main-menu #menu-main-menu li .topicLink-link {
-            font-size: 25px; } }
+            font-size: 25px !important; } }
   body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary > * {
     min-height: 350px; }
   @media (max-height: 480px) {
@@ -391,12 +391,17 @@ body.opera-fallback .navigation-opera-mini {
     background: #f1efe7; }
 
 body.opera-fallback .navigation-opera-mini .down-container {
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  bottom: 100px;
   left: 0;
   right: 0; }
 
 @media (max-height: 650px) {
+  body.opera-fallback .navigation-opera-mini .down-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0; }
   body.opera-fallback .navigation-opera-mini .down-container {
     position: relative; } }
 
@@ -7684,7 +7689,7 @@ body.opera-fallback .navigation-opera-mini {
     padding-top: 0 !important; }
     body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu,
     body.opera-fallback .navigation-opera-mini #menu-main-menu #menu-main-menu {
-      margin-top: 0 !important; }
+      margin-top: 50px !important; }
       body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu li .topicLink-link,
       body.opera-fallback .navigation-opera-mini #menu-main-menu #menu-main-menu li .topicLink-link {
         display: block;
@@ -7694,10 +7699,10 @@ body.opera-fallback .navigation-opera-mini {
       @media (max-height: 480px) {
         body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu,
         body.opera-fallback .navigation-opera-mini #menu-main-menu #menu-main-menu {
-          margin-top: 20px; }
+          margin-top: 20px !important; }
           body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary #menu-main-menu li .topicLink-link,
           body.opera-fallback .navigation-opera-mini #menu-main-menu #menu-main-menu li .topicLink-link {
-            font-size: 25px; } }
+            font-size: 25px !important; } }
   body.opera-fallback .navigation-opera-mini .mainMenu-panel-primary > * {
     min-height: 350px; }
   @media (max-height: 480px) {
@@ -7707,12 +7712,17 @@ body.opera-fallback .navigation-opera-mini {
     background: #f1efe7; }
 
 body.opera-fallback .navigation-opera-mini .down-container {
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  bottom: 100px;
   left: 0;
   right: 0; }
 
 @media (max-height: 650px) {
+  body.opera-fallback .navigation-opera-mini .down-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0; }
   body.opera-fallback .navigation-opera-mini .down-container {
     position: relative; } }
 
