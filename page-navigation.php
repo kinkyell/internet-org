@@ -16,13 +16,13 @@ get_header();
       <div class="mainMenu-panel-primary">
         <ul id="menu-main-menu" class="">
           <li>
-            <div class="topicLink topicLink_theme js-menuView-slider"><a href="/mission" class="topicLink-link js-stateLink">Our Mission</a></div>
+            <div class="topicLink topicLink_theme js-menuView-slider topicLink_themeMission"><a href="/mission" class="topicLink-link js-stateLink">Our Mission</a></div>
           </li>
           <li>
-            <div class="topicLink topicLink_theme js-menuView-slider"><a href="/approach" class="topicLink-link js-stateLink">Our Approach</a></div>
+            <div class="topicLink topicLink_theme js-menuView-slider topicLink_themeApproach"><a href="/approach" class="topicLink-link js-stateLink">Our Approach</a></div>
           </li>
           <li>
-            <div class="topicLink topicLink_theme js-menuView-slider"><a href="/impact" class="topicLink-link js-stateLink">Our Impact</a></div>
+            <div class="topicLink topicLink_theme js-menuView-slider topicLink_themeImpact"><a href="/impact" class="topicLink-link js-stateLink">Our Impact</a></div>
           </li>
         </ul>
       </div>

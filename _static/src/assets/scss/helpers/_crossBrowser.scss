@@ -521,11 +521,39 @@ body.opera-fallback {
                 padding-right: 0px !important;
             }
         }
-
-        .down-container{
-            position: fixed;
+        .navigation-opera-mini {
+            .down-container{
+                left: 0px;
+                position: absolute;
+                right: 0px;
+                .mainMenu-panel-secondary {
+                    bottom: 0px;
+                }
+            }
+        
             .mainMenu-panel-secondary {
-                bottom: 0px;
+                position: relative;
+                #menu-secondary-menu{
+                    li{
+                        .auxLink{
+                            font-size: 13px !important;
+                        }
+                    }
+                }
+            }
+            .mainMenu-panel-primary {
+              #menu-main-menu {
+                margin-top: 35px !important;
+                li {
+                    margin-top: 80px !important;
+                    margin-bottom: 0px !important;
+
+                    .topicLink-link{
+                        font-size: 34px;
+                        font-family: serif;
+                    }
+                }
+              }
             }
         }
         .circleBtn_play {
@@ -560,32 +588,6 @@ body.opera-fallback {
             }
         }
         @include breakpoint(MD) {
-            //NAVIGATION
-            .mainMenu-panel-secondary {
-                position: relative;
-                #menu-secondary-menu{
-                    li{
-                        .auxLink{
-                            font-size: 13px !important;
-                        }
-                    }
-                }
-            }
-            .mainMenu-panel-primary {
-              #menu-main-menu {
-                margin-top: 35px !important;
-                li {
-                    margin-top: 80px !important;
-                    margin-bottom: 0px !important;
-
-                    .topicLink-link{
-                        font-size: 34px;
-                        font-family: serif;
-                    }
-                }
-              }
-            }
-            //END NAVIGATION
             .hdg,
             .narrative-section-bd-link{
                 &.u-isHiddenMedium {
