@@ -21,9 +21,8 @@
 	    </span>
 	</button>
 	<?php
-		$URL  = $_SERVER['REQUEST_URI']; 
+		$URL  = $_SERVER['REQUEST_URI'];
 		$splitURL = explode("/", $URL);
-		$prevURL  =  $_SERVER['HTTP_REFERER'] ; 
 		if($splitURL[2] == 'navigation'){ ?>
 			<a href='' class="opera-mini-only header-menuBtn js-headerView-menuBtn u-disableTransitions go-back" aria-controls="mainNav" aria-label="Toggle Main Navigation">
 			    <span class="menuTrigger">
