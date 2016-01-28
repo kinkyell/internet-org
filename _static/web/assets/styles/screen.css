@@ -392,16 +392,11 @@ body.opera-fallback .navigation-opera-mini {
 
 body.opera-fallback .navigation-opera-mini .down-container {
   position: fixed;
-  bottom: 100px;
-  left: 0;
-  right: 0; }
+  bottom: 100px; }
 
 @media (max-height: 650px) {
   body.opera-fallback .navigation-opera-mini .down-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0; }
+    bottom: 0; }
   body.opera-fallback .navigation-opera-mini .down-container {
     position: relative; } }
 
@@ -7713,16 +7708,11 @@ body.opera-fallback .navigation-opera-mini {
 
 body.opera-fallback .navigation-opera-mini .down-container {
   position: fixed;
-  bottom: 100px;
-  left: 0;
-  right: 0; }
+  bottom: 100px; }
 
 @media (max-height: 650px) {
   body.opera-fallback .navigation-opera-mini .down-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0; }
+    bottom: 0; }
   body.opera-fallback .navigation-opera-mini .down-container {
     position: relative; } }
 
