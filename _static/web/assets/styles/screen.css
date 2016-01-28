@@ -415,6 +415,8 @@ body.opera-fallback .introBlock-ft {
       background: url("../media/images/bg-arrow-right-orange.png") no-repeat; }
     body.opera-fallback .introBlock-ft .opera-link.mission {
       background: url("../media/images/bg-arrow-right-purple.png") no-repeat; }
+  body.opera-fallback .introBlock-ft .arrowCta {
+    display: none; }
 
 .pwdByVip-txt_front {
   bottom: 20px; }
@@ -3712,6 +3714,8 @@ Sections of content that introduce landing and story pages
   background: url("../media/images/icons/io-mark-bg.svg") no-repeat #efede4;
   background-position: -225px top;
   background-size: 575px 795px; }
+  .introBlock .opera-link {
+    display: none; }
 
 .introBlock_flushMobi {
   padding: 45px 0; }
@@ -7760,6 +7764,8 @@ body.opera-fallback .introBlock-ft {
       background: url("../media/images/bg-arrow-right-orange.png") no-repeat; }
     body.opera-fallback .introBlock-ft .opera-link.mission {
       background: url("../media/images/bg-arrow-right-purple.png") no-repeat; }
+  body.opera-fallback .introBlock-ft .arrowCta {
+    display: none; }
 
 .pwdByVip-txt_front {
   bottom: 20px; }

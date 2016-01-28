@@ -40,32 +40,19 @@ if ( empty( $next_page_id ) ) {
 		</div>
 		<div class="introBlock-ft">
 			<?php
-				$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : '';
-				$agentOpera10 = false;
-				if(stristr( $user_agent, 'Opera' )){
-					if(stristr( $user_agent, 'Version/10')){
-						$agentOpera10 = true;
-					}
-				}
-				if ( stristr( $user_agent, 'Opera Mini' ) || $agentOpera10) {
-					if( esc_html( get_the_title( $next_page_id ) ) == 'Our Impact') {
-						?> <span class="opera-link impact"></span> <?php
+				if( esc_html( get_the_title( $next_page_id ) ) == 'Our Impact') {
+					?> <span class="opera-link impact"></span> <?php
+				} else {
+					if( esc_html( get_the_title( $next_page_id ) ) == 'Our Approach'){
+						?> <span class="opera-link approach"></span> <?php
 					} else {
-						if( esc_html( get_the_title( $next_page_id ) ) == 'Our Approach'){
-							?> <span class="opera-link approach"></span> <?php
-						} else {
-							if( esc_html( get_the_title( $next_page_id ) ) == 'Our Mission') {
-								?> <span class="opera-link mission"></span> <?php
-							}
+						if( esc_html( get_the_title( $next_page_id ) ) == 'Our Mission') {
+							?> <span class="opera-link mission"></span> <?php
 						}
 					}
-					?>
-				<?php
-				} else { ?>
-					<span class="arrowCta <?php echo esc_html( get_the_title( $next_page_id ) ); ?>"></span>
-				<?php
 				}
 			?>
+			<span class="arrowCta <?php echo esc_html( get_the_title( $next_page_id ) ); ?>"></span>
 		</div>
 	</a>
 </div>
