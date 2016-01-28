@@ -870,6 +870,10 @@ body.opera-fallback {
 // Android Browser Specific Styles
 body.android-browser {
 
+    .js-headerView-backBtn {
+        z-index: 9999 !important;
+    }
+
     .header-logo {
         width: 142px !important;
         height: 42px !important;
@@ -998,4 +1002,18 @@ body.android-browser {
         margin: 0 !important;
     }
 
+    .link_preArrows:after {
+        display: none !important;
+    }
+
+    .link_preArrows:before {
+        content: '';
+        display: block;
+        border: none;
+        width: 16px;
+        height: 16px;
+        transform: none;
+        background-image: url(../media/images/arrows-yellow.png);
+        background-size: contain;
+    }
 }
