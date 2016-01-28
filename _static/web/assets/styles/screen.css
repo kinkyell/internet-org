@@ -759,6 +759,20 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
     body.opera-fallback.opera-10 .statementBlock_end {
       padding-top: 285px; } }
 
+body.android-browser .header-backBtn {
+  height: 36px !important;
+  width: 36px !important;
+  position: absolute !important;
+  top: 20px !important;
+  left: 10px !important;
+  right: auto !important;
+  color: black !important;
+  z-index: 99999 !important;
+  right: auto !important;
+  -webkit-transform: none !important;
+      -ms-transform: none !important;
+          transform: none !important; }
+
 body.android-browser .header-logo {
   width: 142px !important;
   height: 42px !important;
@@ -853,6 +867,21 @@ body.android-browser .link:after {
 
 body.android-browser .link:not(.link_preArrows):not(.link_inline):not(.link_twoArrows) {
   margin: 0 !important; }
+
+body.android-browser .link_preArrows:after {
+  display: none !important; }
+
+body.android-browser .link_preArrows:before {
+  content: '';
+  display: block;
+  border: none;
+  width: 16px;
+  height: 16px;
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none;
+  background-image: url(../media/images/arrows-yellow.png);
+  background-size: contain; }
 
 /* ---------------------------------------------------------------------
  Base Styles
@@ -8075,6 +8104,20 @@ body.opera-fallback.opera-10 .fbFollowBlock .fbFollowBlock-cta .btn-icon {
     body.opera-fallback.opera-10 .statementBlock_end {
       padding-top: 285px; } }
 
+body.android-browser .header-backBtn {
+  height: 36px !important;
+  width: 36px !important;
+  position: absolute !important;
+  top: 20px !important;
+  left: 10px !important;
+  right: auto !important;
+  color: black !important;
+  z-index: 99999 !important;
+  right: auto !important;
+  -webkit-transform: none !important;
+      -ms-transform: none !important;
+          transform: none !important; }
+
 body.android-browser .header-logo {
   width: 142px !important;
   height: 42px !important;
@@ -8169,3 +8212,18 @@ body.android-browser .link:after {
 
 body.android-browser .link:not(.link_preArrows):not(.link_inline):not(.link_twoArrows) {
   margin: 0 !important; }
+
+body.android-browser .link_preArrows:after {
+  display: none !important; }
+
+body.android-browser .link_preArrows:before {
+  content: '';
+  display: block;
+  border: none;
+  width: 16px;
+  height: 16px;
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none;
+  background-image: url(../media/images/arrows-yellow.png);
+  background-size: contain; }

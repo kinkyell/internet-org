@@ -881,6 +881,19 @@ body.opera-fallback {
 // Android Browser Specific Styles
 body.android-browser {
 
+    .header-backBtn {
+        height: 36px !important;
+        width: 36px !important;
+        position: absolute !important;
+        top: 20px !important;
+        left: 10px !important;
+        right: auto !important;
+        color: black !important;
+        z-index: 99999 !important;
+        right: auto !important;
+        transform: none !important;
+    }
+
     .header-logo {
         width: 142px !important;
         height: 42px !important;
@@ -1017,4 +1030,18 @@ body.android-browser {
         margin: 0 !important;
     }
 
+    .link_preArrows:after {
+        display: none !important;
+    }
+
+    .link_preArrows:before {
+        content: '';
+        display: block;
+        border: none;
+        width: 16px;
+        height: 16px;
+        transform: none;
+        background-image: url(../media/images/arrows-yellow.png);
+        background-size: contain;
+    }
 }
