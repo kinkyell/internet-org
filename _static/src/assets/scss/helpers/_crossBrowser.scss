@@ -776,8 +776,9 @@ body.opera-fallback {
                     color: $CLR_ACCENT;
                     -webkit-font-smoothing: antialiased;
                     font-smoothing: antialiased;
-                    width: 100%;
-                    font-family: serif;
+                    //width: 100%;
+                    @include remify(font-size, 14px);
+                    font-family: sans-serif;
                 }
                 a.link_title{
                     font-size: 32px;
@@ -793,8 +794,16 @@ body.opera-fallback {
                     margin-top: 4px !important;
                     @include remify(font-size, 18px);
                     line-height: 1.8;
+                    width: 100%;
                 }
-
+                a.link_image {
+                    width: 100%;
+                }
+                a.link_title {
+                    width: 100%;
+                    font-family: serif;
+                    font-weight: inherit;
+                }
                 strong {
                     font-weight: bold;
                 }
@@ -991,9 +1000,17 @@ body.android-browser {
     }
 
     .link_preArrows:before {
-        top: 0px;
+        top: 0px !important;
     }
-
+    .link_preArrows:after {
+        top: 0px !important;
+    }
+    .link_twoArrows:before{
+        top: 0px !important;
+    }
+    .link_twoArrows:after {
+        top: 0px !important;
+    }
     .link:after {
         top: 18px;
     }
