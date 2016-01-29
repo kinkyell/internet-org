@@ -3345,7 +3345,6 @@ Quote Styles outside of WYSIWYG areas
   border-width: 0 1px 1px 1px; }
 
 .select:after {
-  content: "";
   display: block;
   border-bottom: 1px solid #c7c7bf;
   position: absolute;
