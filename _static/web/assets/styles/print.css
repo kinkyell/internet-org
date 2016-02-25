@@ -1,0 +1,91 @@
+/* ---------------------------------------------------------------------
+ Helpers Styles
+------------------------------------------------------------------------ */
+.u-isHidden {
+  display: none !important; }
+
+.u-isVisuallyHidden {
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  border: 0 !important;
+  position: absolute !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important; }
+
+/* Disables transitions for initial load or changing state without animations */
+.u-disableTransitions,
+.u-disableTransitions * {
+  -webkit-transition: none !important;
+          transition: none !important; }
+
+/*
+    IMPORTANT: uses max-width to avoid errors caused by setting and unsetting rules
+    for each breakpoint. Use mobile-first min-width breakpoints when possible.
+*/
+@media (max-width: 768px) {
+  .u-isHiddenSmall {
+    display: none !important; }
+  .u-isVisuallyHiddenSmall {
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    border: 0 !important;
+    position: absolute !important;
+    clip: rect(0 0 0 0) !important;
+    overflow: hidden !important; } }
+
+@media (min-width: 769px) {
+  .u-isHiddenMedium {
+    display: none !important; }
+  .u-isVisuallyHiddenMedium {
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    border: 0 !important;
+    position: absolute !important;
+    clip: rect(0 0 0 0) !important;
+    overflow: hidden !important; } }
+
+/* Converts font size to rem equivalent and includes pixel fallback */
+body:after {
+  display: none !important;
+  content: "BASE"; }
+
+@media (min-width: 500px) {
+  body:after {
+    content: "SM"; } }
+
+@media (min-width: 769px) {
+  body:after {
+    content: "MD"; } }
+
+@media (min-width: 1280px) {
+  body:after {
+    content: "LG"; } }
+
+.header-backBtn,
+.header-menuBtn,
+.mainMenu,
+.narrativeDT-sections,
+.narrativeView-progress,
+.viewWindow.isShifted > .viewWindow-panel:first-child,
+.viewWindow:not(.isShifted) > .viewWindow-panel_story,
+.interactionPrompt,
+.js-ShowMoreView,
+.select > :not(select),
+.introBlock_foot,
+.narrativeDT,
+.arrowCta {
+  display: none !important; }
+
+* {
+  background-image: none !important; }
+
+.header-logo {
+  display: block;
+  margin: 15px auto 30px;
+  text-align: center; }
