@@ -176,7 +176,7 @@ function internetorg_video_metaboxes() {
 	);
 }
 
-add_action( 'init', 'internetorg_video_metaboxes' );
+// add_action( 'init', 'internetorg_video_metaboxes' );
 
 /**
  * Add Babble/Fieldmanager metaboxes to page post_type.
