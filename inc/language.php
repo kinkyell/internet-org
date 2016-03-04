@@ -269,7 +269,7 @@ function internetorg_page_metaboxes() {
 			'children'       => array(
 				'title'          => new Fieldmanager_TextField( __( 'Section Title', 'internetorg' ) ),
 				'name'           => new Fieldmanager_TextField( __( 'Section Name', 'internetorg' ) ),
-				'content'        => new Babble_Fieldmanager_RichTextarea( __( 'Description', 'internetorg' ) ),
+				'content'        => new Fieldmanager_RichTextarea( __( 'Description', 'internetorg' ) ),
 				'src'            => new Fieldmanager_Select(
 					__( 'Source', 'internetorg' ),
 					array(
@@ -341,7 +341,7 @@ function internetorg_page_metaboxes() {
 							'title'    => new Fieldmanager_TextField(
 								__( 'CTA Title', 'internetorg' )
 							),
-							'text'     => new Babble_Fieldmanager_RichTextarea(
+							'text'     => new Fieldmanager_RichTextarea(
 								__( 'Content', 'internetorg' )
 							),
 							'cta_src'  => new Fieldmanager_Select(
