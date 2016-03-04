@@ -433,7 +433,7 @@ function internetorg_page_metaboxes() {
 
 }
 
-add_action( 'init', 'internetorg_page_metaboxes' );
+// add_action( 'init', 'internetorg_page_metaboxes' );
 
 /**
  * Add Babble/Fieldmanager metaboxes to io_ctntwdgt post_type.
@@ -471,7 +471,7 @@ function internetorg_content_widget_metaboxes() {
 	);
 }
 
-add_action( 'init', 'internetorg_content_widget_metaboxes' );
+// add_action( 'init', 'internetorg_content_widget_metaboxes' );
 
 /**
  * Add Babble/Fieldmanager metaboxes to io_story post_type.
@@ -505,7 +505,7 @@ function internetorg_story_metaboxes() {
 
 }
 
-add_action( 'init', 'internetorg_story_metaboxes' );
+// add_action( 'init', 'internetorg_story_metaboxes' );
 
 /**
  * Adds fields directly below the title of the post title on the edit screen.
