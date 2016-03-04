@@ -42,7 +42,7 @@ class LinkTransformer {
 		}
 
 		$langCode  = 'en';
-		$urlPrefix = $langCode->url_prefix;
+		$urlPrefix = '';
 
 		$parsedUrl = parse_url( $url );
 		$pathParts = explode( '/', $parsedUrl['path'] );
