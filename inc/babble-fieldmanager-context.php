@@ -658,9 +658,9 @@ class Babble_Translatable_Fieldmanager {
 			);
 		}
 
-		add_filter( 'bbl_translated_meta_fields', array( $this, 'translated_meta_fields' ), 10, 2 );
-		add_filter( 'bbl_sync_meta_key', array( $this, 'do_not_sync' ), 10, 2 );
-		add_filter( 'bbl_meta_before_save', array( $this, 'before_meta_save' ), 10, 5 );
+		// add_filter( 'bbl_translated_meta_fields', array( $this, 'translated_meta_fields' ), 10, 2 );
+		// add_filter( 'bbl_sync_meta_key', array( $this, 'do_not_sync' ), 10, 2 );
+		// add_filter( 'bbl_meta_before_save', array( $this, 'before_meta_save' ), 10, 5 );
 	}
 
 	/**
