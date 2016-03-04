@@ -2416,7 +2416,7 @@ function vip_fb_legacy_redirects() {
 	}
 
 	// Get language prefixes
-	$langCode = bbl_get_current_lang();
+	$langCode = 'en';
 	$urlPrefix = $langCode->url_prefix;
 	$url = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
 
