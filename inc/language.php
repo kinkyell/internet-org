@@ -147,7 +147,7 @@ function internetorg_video_metaboxes() {
 		return;
 	}
 
-	new Babble_Translatable_Fieldmanager(
+	new Fieldmanager_Context_Storable(
 		'Fieldmanager_TextField',
 		array(
 			'name'  => 'video-duration',
@@ -161,7 +161,7 @@ function internetorg_video_metaboxes() {
 		)
 	);
 
-	new Babble_Translatable_Fieldmanager(
+	new Fieldmanager_Context_Storable(
 		'Fieldmanager_Link',
 		array(
 			'name'  => 'video-url',
@@ -176,7 +176,7 @@ function internetorg_video_metaboxes() {
 	);
 }
 
-// add_action( 'init', 'internetorg_video_metaboxes' );
+add_action( 'init', 'internetorg_video_metaboxes' );
 
 /**
  * Add Babble/Fieldmanager metaboxes to page post_type.
@@ -204,7 +204,7 @@ function internetorg_page_metaboxes() {
 		$language = 'en_US';
 	}
 
-	new Babble_Translatable_Fieldmanager(
+	new Fieldmanager_Context_Storable(
 		'Fieldmanager_Group',
 		array(
 			'name'     => 'page_intro_block',
@@ -235,7 +235,7 @@ function internetorg_page_metaboxes() {
 		)
 	);
 
-	new Babble_Translatable_Fieldmanager(
+	new Fieldmanager_Context_Storable(
 		'Fieldmanager_TextArea',
 		array(
 			'name'       => 'page_subtitle',
@@ -255,7 +255,7 @@ function internetorg_page_metaboxes() {
 		)
 	);
 
-	new Babble_Translatable_Fieldmanager(
+	new Fieldmanager_Context_Storable(
 		'Fieldmanager_Group',
 		array(
 			'name'           => 'home-content-section',
@@ -407,7 +407,7 @@ function internetorg_page_metaboxes() {
 		)
 	);
 
-	new Babble_Translatable_Fieldmanager(
+	new Fieldmanager_Context_Storable(
 		'Fieldmanager_Autocomplete',
 		array(
 			'name'           => 'next_page',
@@ -433,7 +433,7 @@ function internetorg_page_metaboxes() {
 
 }
 
-// add_action( 'init', 'internetorg_page_metaboxes' );
+add_action( 'init', 'internetorg_page_metaboxes' );
 
 /**
  * Add Babble/Fieldmanager metaboxes to io_ctntwdgt post_type.
@@ -445,7 +445,7 @@ function internetorg_content_widget_metaboxes() {
 		return;
 	}
 
-	new Babble_Translatable_Fieldmanager(
+	new Fieldmanager_Context_Storable(
 		'Fieldmanager_Group',
 		array(
 			'name'        => 'widget-data',
@@ -471,7 +471,7 @@ function internetorg_content_widget_metaboxes() {
 	);
 }
 
-// add_action( 'init', 'internetorg_content_widget_metaboxes' );
+add_action( 'init', 'internetorg_content_widget_metaboxes' );
 
 /**
  * Add Babble/Fieldmanager metaboxes to io_story post_type.
@@ -481,7 +481,7 @@ function internetorg_story_metaboxes() {
 		return;
 	}
 
-	new Babble_Translatable_Fieldmanager(
+	new Fieldmanager_Context_Storable(
 		'Fieldmanager_TextArea',
 		array(
 			'name'       => 'page_subtitle',
@@ -505,7 +505,7 @@ function internetorg_story_metaboxes() {
 
 }
 
-// add_action( 'init', 'internetorg_story_metaboxes' );
+add_action( 'init', 'internetorg_story_metaboxes' );
 
 /**
  * Adds fields directly below the title of the post title on the edit screen.
