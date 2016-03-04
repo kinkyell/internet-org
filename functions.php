@@ -5,6 +5,8 @@
  * @package Internet.org
  */
 
+error_reporting( 0 );
+
 // WP VIP Helper Plugin -- gives us access to the VIP only functions.
 define( 'IO_DIR', __DIR__ );
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
@@ -12,7 +14,9 @@ require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 vip_allow_title_orphans();
 
 // Load the Shortcake UI VIP Plugin.
-wpcom_vip_load_plugin( 'shortcode-ui' );
+// wpcom_vip_load_plugin( 'shortcode-ui' );
+
+wpcom_vip_load_plugin( 'shortcode-ui', 'plugins', true );
 
 // Load the Multiple Post Thumbnails VIP Plugin.
 wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
@@ -34,6 +38,9 @@ wpcom_vip_load_plugin( 'cache-nav-menu' );
 
 // Load the Opengraph VIP plugin.
 wpcom_vip_enable_opengraph();
+
+/** Filtering functions. */
+require IO_DIR . '/inc/internetorg-filters.php';
 
 /** Custom Post Types. */
 require IO_DIR . '/plugins/internetorg-custom-posttypes/internetorg-custom-posttypes.php';
@@ -144,6 +151,10 @@ if ( ! function_exists( 'internetorg_setup' ) ) :
 endif;
 
 add_action( 'after_setup_theme', 'internetorg_setup' );
+
+
+
+
 
 /**
  * Register additional image sizes.
@@ -310,7 +321,7 @@ if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 				 * @var string $image_url
 				 */
 				$image_url = get_stylesheet_directory_uri()
-				             . '/_static/web/assets/media/images/icons/png/icon-services-dictionary.png';
+										 . '/_static/web/assets/media/images/icons/png/icon-services-dictionary.png';
 			} else {
 				$image_url = internetorg_get_post_thumbnail( $svcqry->post->ID, 'listing-image' );
 			}
@@ -334,12 +345,6 @@ if ( ! function_exists( 'internetorg_get_free_services' ) ) :
 		return $services;
 	}
 endif;
-
-/**
- * Link specific functions (ex. fix_link() etc.)
- */
-
-require get_template_directory() . '/inc/links.php';
 
 /**
  * Enqueue Scripts and Styles.
@@ -753,7 +758,7 @@ function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button 
 					}
 
 					$out .=
-						'<div class="topicBlock-cta"><a href="' . esc_url( internetorg_fix_link( ! empty( $link ) ? apply_filters( 'iorg_url', $link ) : '' ) )
+						'<div class="topicBlock-cta"><a href="' . esc_url( ! empty( $link ) ? apply_filters( 'iorg_url', $link ) : '' )
 						. '" class="' . ( $cta_as_button ? 'btn' : 'link link_twoArrows' )
 						. '" ' . $target . '>' . esc_html( $label ) . '</a></div>';
 				}
@@ -1072,6 +1077,7 @@ function internetorg_do_ajax_search() {
 			'panel_image'    => $panel_image,
 			'post_type'      => $post_type,
 			'post_date'      => get_the_date( '' ),
+			'media_embed'    => internetorg_media_embed( true ),
 		);
 	}
 
@@ -1193,6 +1199,7 @@ function internetorg_do_ajax_more_posts() {
 			'post_excerpt'   => get_the_excerpt(),
 			'permalink'      => get_the_permalink(),
 			'post_thumbnail' => $post_thumbnail,
+			'media_embed' 	 => internetorg_media_embed( true ),
 		);
 	}
 
@@ -1831,8 +1838,8 @@ add_action( 'init', 'internetorg_register_custom_link_shortcode_ui' );
  */
 function internetorg_change_contact_form_response( $msg ) {
 	return '<div class="vr vr_x1"><div class="hdg hdg_3 mix-hdg_centerInMobile">'
-	       . esc_html__( 'Thank you!', 'internetorg' )
-	       . '</div></div>';
+				 . esc_html__( 'Thank you!', 'internetorg' )
+				 . '</div></div>';
 }
 
 add_filter( 'grunion_contact_form_success_message', 'internetorg_change_contact_form_response' );
@@ -1840,7 +1847,7 @@ add_filter( 'grunion_contact_form_success_message', 'internetorg_change_contact_
 /**
  * Check if specified url is a video URL.
  *
- * Note: currently only checks for vimeo.com in the URL,
+ * Note: currently only checks for vimeo.com or youtube.com in the URL,
  * if more video hosts are added this function will need to be updated.
  *
  * @param string $url The URL to check.
@@ -1848,7 +1855,22 @@ add_filter( 'grunion_contact_form_success_message', 'internetorg_change_contact_
  * @return boolean True if URL is a video url.
  */
 function internetorg_is_video_url( $url ) {
-	$check_val = 'vimeo.com';
+	$check_vimeo_val = 'vimeo.com';
+	$isVimeo = internetorg_video_type($url, $check_vimeo_val);
+	$check_youtube_val = 'youtube.com';
+	$isYoutube = internetorg_video_type($url, $check_youtube_val);
+	return ($isVimeo || $isYoutube);
+}
+
+/**
+ * Check if specified url is a video for $check_val.
+ *
+ * @param string $url The URL to check.
+ * @param string $check_val The type to check. Ex: youtube or vimeo.
+ *
+ * @return boolean True if URL is a video url.
+ */
+function internetorg_video_type( $url , $check_val) {
 
 	// URL too short, go away.
 	if ( strlen( $url ) <= strlen( $check_val ) ) {
@@ -1863,7 +1885,6 @@ function internetorg_is_video_url( $url ) {
 
 	return true;
 }
-
 /**
  * Wrap oEmbed videos with a responsive video wrapper div.
  *
@@ -2250,12 +2271,12 @@ function internetorg_contact_call_to_action( $fieldset = array(), $theme = 'appr
 		?>
 
 		<div class="feature-cta">
-			<a href="<?php echo esc_url( internetorg_fix_link( apply_filters( 'iorg_url', $url ) ) ); ?>"
-			   class="link js-stateDefault"
-			   data-type="<?php esc_attr( $type ); ?>"
-			   data-social="<?php echo esc_attr( $social_attr ); ?>"
-			   data-theme="<?php echo esc_attr( strtolower( $theme ) ); ?>"
-			   data-title="<?php echo esc_attr( $title ); ?>"
+			<a href="<?php echo esc_url( apply_filters( 'iorg_url', $url ) ); ?>"
+				 class="link js-stateDefault"
+				 data-type="<?php esc_attr( $type ); ?>"
+				 data-social="<?php echo esc_attr( $social_attr ); ?>"
+				 data-theme="<?php echo esc_attr( strtolower( $theme ) ); ?>"
+				 data-title="<?php echo esc_attr( $title ); ?>"
 				<?php if ( ! empty( $mobile_image ) ) : ?>
 					data-mobile-image="<?php echo esc_url( $mobile_image ); ?>"
 				<?php endif; ?>
@@ -2283,7 +2304,7 @@ function internetorg_external_cta_link( $link = '' ) {
 
 	?>
 	<div class="feature-cta">
-		<a href="<?php echo esc_url( internetorg_fix_link( $link ) ); ?>" class="link" target="_blank">
+		<a href="<?php echo esc_url( $link ); ?>" class="link" target="_blank">
 			<?php echo esc_html__( 'Learn More', 'internetorg' ); ?>
 		</a>
 	</div>
@@ -2323,55 +2344,264 @@ function internetorg_recursive_unset( &$array, $unwanted_key ) {
 }
 
 /**
+ * Force usage of a pages proper template
+ */
+
+function internetorg_force_page_template() {
+	global $posts;
+	internetorg_preview_post_setup();
+	$template = get_page_template_slug( $posts[ 0 ]->ID );
+	if ( $template && validate_file( TEMPLATEPATH . '/' . $template ) ) {
+		include TEMPLATEPATH . '/' . $template;
+		die();
+	}
+}
+
+/**
+ * Resetup post information based on query params
+ */
+
+function internetorg_preview_post_setup() {
+	global $posts;
+	parse_str( $_SERVER[ 'QUERY_STRING' ] );
+	$posts = array( get_post( $p ) );
+}
+
+/**
+ * Find and route in url
+ */
+
+function internetorg_search_url( $url, $find ) {
+	$parts = explode( '/', $url );
+	foreach( $parts as $key => $val ) {
+		if ( $val === $find ) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ * Find and replace from url
+ */
+
+function internetorg_search_replace_url( $url, $find, $replace, $exact = false ) {
+	$parts = explode( '/', $url );
+	foreach( $parts as $key => $val ) {
+		if ( $exact ) {
+			$parts[ $key ] = ( $val === $find ) ? $replace : $val;
+		} else {
+			$parts[ $key ] = ( strpos( $val, $find ) !== false ) ? $replace : $val;
+		}
+	}
+	$url = implode( '/', $parts );
+	return $url;
+}
+
+/**
  * Redirect scripts
  */
 
 function vip_fb_legacy_redirects() {
-    // To reduce overhead, only run if the requested page is 404.
-    if ( ! is_404() ) {
-        return;
-    }
 
-    $url = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
+	// Set post information if it's a preview
+	if ( is_preview() ) {
+		internetorg_preview_post_setup();
+		add_action( 'template_redirect', 'internetorg_force_page_template' );
+	}
 
-    $routes = array(
-    	'/contact' => '/contact-us',
-    	'/innovationchallenge' => '/story/innovation-challenge/'
-    );
+	// To reduce overhead, only run if the requested page is 404.
+	if ( !is_404() ) {
+		return;
+	}
 
-    // Check for any 404 URL that doesn't start with a potential lang code
-    if ( ! preg_match( '/^\/[a-z]{2}(?:(?:-|_)[A-Z]{2})?\/[a-z0-9\-\/]+(?:[a-z0-9\-\/]+)*$/', $url ) ) {
+	// Get language prefixes
+	$langCode = bbl_get_current_lang();
+	$urlPrefix = $langCode->url_prefix;
+	$url = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
 
-    		// Check for any custom routes to map directly
-    		if ( array_key_exists( $url, $routes ) ) {
-    			wp_safe_redirect( $routes[ $url ], 301 );
-    		} else {
-	        $langCode  = bbl_get_default_lang_code();
-	        $urlPrefix = bbl_get_prefix_from_lang_code( $langCode );
-	        wp_safe_redirect( "/$urlPrefix" . "$url/", 301 );
-	      }
-        exit;
-    }
-    return;
+	// Define static mapping of old routes
+	$routes = array(
+		'contact' => 'contact-us',
+		'innovationchallenge' => 'story/innovation-challenge'
+	);
+
+	// Check for custom routes to map directly
+	foreach( $routes as $key => $val ){
+		if ( internetorg_search_url( $url, $key ) ) {
+			$url = internetorg_search_replace_url( $url, $key, $val, true );
+			wp_safe_redirect( $url, 301 );
+			exit;
+		}
+	}
+
+	// Check specifically for old story routes and map accordingly
+	if ( strpos( $url, '/story_' ) !== false ) {
+		$url = internetorg_search_replace_url( $url, 'story_', 'story' );
+		wp_safe_redirect( $url, 301 );
+		exit;
+	}
+
+	// Check for any 404 URL that doesn't start with a potential lang code
+	if ( !preg_match( '/^\/[a-z]{2}(?:(?:-|_)[A-Z]{2})?\/[a-z0-9\-\/]+(?:[a-z0-9\-\/]+)*$/', $url ) ) {
+		wp_safe_redirect( "/$urlPrefix" . "$url/", 301 );
+		exit;
+	}
+
+	return;
 }
-add_filter( 'template_redirect', 'vip_fb_legacy_redirects', 0 , 2 );
+
+
+add_filter( 'template_redirect', 'vip_fb_legacy_redirects',0 , 2 );
 
 /**
  * Fixes an issue with a 404 error from Widget json
  */
 
 function vip_fb_internetorg_en_locale( $locale ) {
-    if ( 'en_US' === $locale && wp_in( 'Jetpack_Likes->likes_master', wp_debug_backtrace_summary() ) ) {
-        return 'en';
-    }
-    return $locale;
+		if ( 'en_US' === $locale && wp_in( 'Jetpack_Likes->likes_master', wp_debug_backtrace_summary() ) ) {
+				return 'en';
+		}
+		return $locale;
 }
 add_filter( 'locale', 'vip_fb_internetorg_en_locale', 1000, 1 );
 
 /**
- * Fixes some routing issues with previewing posts/pages
+ * Customize JetPack Open Graph Meta Tags implementation
  */
 
-add_action( 'preview_post_link', 'internetorg_fix_link' );
+add_filter( 'jetpack_open_graph_base_tags', function( $og_tags ) {
 
-add_action( 'preview_page_link', 'internetorg_fix_link' );
+	global $post;
+
+	$fields = get_post_meta( $post->ID, 'internetorg_custom_og', true );
+
+	if ( $fields ) {
+		$title = $fields['iorg_title'];
+		$description = $fields['iorg_description'];
+		$image = $fields['iorg_image'];
+
+		if ( $title ) {
+			$og_tags['og:title'] = $title;
+		}
+
+		if ( $description ) {
+			$og_tags['og:description'] = $description;
+		}
+
+		if ( $image ) {
+			$og_tags['og:image'] = $image;
+		}
+
+	}
+
+	return $og_tags;
+
+}, 11 );
+
+/**
+	* Get the Proper Media Embed for the current article
+	*/
+
+function internetorg_media_embed ( $ret ) {
+
+	global $post;
+
+	$fields = get_post_meta( $post->ID, 'internetorg_media_embed', true );
+	$output = '';
+
+	if ( $fields ) {
+
+		$url = $fields['iorg_media_embed_url'];
+		$visibility = $fields['iorg_media_embed_visibility'];
+
+		// Return early if the visibility doesn't match
+		if ( is_archive() && $visibility === 'single' || is_single() && $visibility === 'listing' ) {
+			return '';
+		}
+
+		if ( strpos( $url, 'youtube.com' ) !== false ) {
+			parse_str( parse_url( $url, PHP_URL_QUERY ), $parsed );
+			$output = '<div class="feature-video"><iframe src="https://www.youtube.com/embed/' . esc_attr( $parsed[ 'v' ] ) . '" frameborder="0" allowfullscreen></iframe></div>';
+		}
+
+		if ( strpos( $url, 'vimeo.com' ) !== false ) {
+			$parsed = substr( parse_url( $url, PHP_URL_PATH ), 1 );
+			$output = '<div class="feature-video"><iframe src="https://player.vimeo.com/video/' . esc_attr( $parsed ) . '" frameborder="0" allowfullscreen></iframe></div>';
+		}
+
+		if ( strpos( $url, 'facebook.com' ) !== false ) {
+			$output = '<div class="fb-post" data-href="' . esc_url( $url ) . '"></div>';
+		}
+
+	}
+
+	if ( $ret ) {
+		return $output;
+	} else {
+		echo $output;
+	}
+}
+
+/**
+	* Add custom fields for Customizing Open Graph Tags & Media Embed
+	*/
+
+add_action( 'fm_post_post', 'internetorg_open_graph_fields' );
+add_action( 'fm_post_io_story', 'internetorg_open_graph_fields' );
+
+function internetorg_open_graph_fields () {
+ $fm = new Fieldmanager_Group( array(
+			'name' => 'internetorg_custom_og',
+			'children' => array(
+				'iorg_title' => new Fieldmanager_Textfield( __( 'og:title' ) ),
+				'iorg_description' => new Fieldmanager_TextArea( __( 'og:description' ) ),
+				'iorg_image' => new Fieldmanager_Media( __( 'og:image - Image Size Specs: HD ( 1200 x 630px ) Small ( 600 x 315px ) Minimum ( 200 x 200px )' ) ),
+			),
+	) );
+
+	$fm->add_meta_box( __( 'Customize Meta Data' ), 'io_story' );
+	$fm->add_meta_box( __( 'Customize Meta Data' ), 'post' );
+
+	$fm = new Fieldmanager_Group( array(
+			'name' => 'internetorg_media_embed',
+			'children' => array(
+				'iorg_media_embed_url' => new Fieldmanager_Textfield( __( 'Link to Media (ex. YouTube video url, Vimeo video url or Facebook Post)' ) ),
+				'iorg_media_embed_visibility' => new Fieldmanager_Select( array(
+						'name' => 'iorg_media_embed_visibility',
+						'label' => __( 'Where should Media be visible?' ),
+						'options' => array(
+							'both' => 'Both on the Listing & Single Pages',
+							'listing' =>'Only on the Listing Page',
+							'single' => 'Only on Single Page'
+						)
+					)
+				)
+			),
+	) );
+
+	$fm->add_meta_box( __( 'Media Embed Options' ), 'post' );
+
+}
+
+/**
+	* Add meta data character count functionality
+	*/
+add_action('admin_enqueue_scripts', 'internetorg_open_graph_limiter');
+function internetorg_open_graph_limiter() {
+	wp_enqueue_script( 'jquery' );
+	wp_enqueue_script( 'request-scripts', get_bloginfo( 'template_directory' ) . '/js/limit.js' );
+}
+
+function internetorg_update_preview_link( $link ) {
+	$id = get_the_ID();
+	$link = str_replace( '?post_type=io_story&', 'story/?', $link );
+	$type = get_post_type( $id );
+	if ( $type === 'post' || $type === 'page' ) {
+		$link = str_replace( '?preview=true', '?post_type=' . $type . '&p=' . $id . '&preview=true', $link );
+	}
+	return $link;
+}
+
+add_filter( 'preview_page_link', 'internetorg_update_preview_link');
+add_filter( 'preview_post_link', 'internetorg_update_preview_link');

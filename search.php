@@ -9,9 +9,22 @@
 
 global $wp_query;
 
+/**
+ * Determine if we're looking for all posts
+ */
+$search = get_search_query();
+if ( $search == 'all' ) {
+	$args = array(
+		'post_type' => 'post',
+		'post_per_page' => '100',
+		'order' => 'desc'
+	);
+	$wp_query = new WP_Query( $args );
+}
+
 get_header(); ?>
 
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php echo esc_url( internetorg_fix_link( get_search_link() ) ); ?>" data-type="search" data-title="Search" data-search-text="<?php echo esc_attr( get_search_query() ); ?>">
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php echo esc_url( get_search_link() ); ?>" data-type="search" data-title="Search" data-search-text="<?php echo esc_attr( get_search_query() ); ?>">
 
 
 		<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
@@ -73,7 +86,7 @@ get_header(); ?>
 							$next_posts_link = get_next_posts_link();
 							if ( ! empty( $next_posts_link ) ) {
 								?>
-								<div class="resultsList-ft js-searchState-ft">
+								<div class="show-more resultsList-ft js-searchState-ft">
 									<div class="resultsList-list resultsList-list_spread">
 										<div class="resultsList-list-item">
 											<button type="button" class="btn js-ShowMoreView" data-src="search" data-target="search-results" data-args="<?php the_search_query(); ?>">
@@ -83,6 +96,16 @@ get_header(); ?>
 									</div>
 								</div>
 							<?php } ?>
+
+							<div class="resultsList-ft opera-mini-only">
+								<div class="resultsList-list resultsList-list_spread">
+									<div class="resultsList-list-item">
+										<a href="/search/all" type="button" class="btn" data-src="press" data-target="addl-results">
+											<?php esc_html_e( 'Show More', 'internetorg' ); ?>
+										</a>
+									</div>
+								</div>
+							</div>
 
 						</div>
 

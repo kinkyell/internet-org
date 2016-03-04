@@ -153,7 +153,7 @@ define(function(require, exports, module) { // jshint ignore:line
         isToHome = this.stateStack.getTop().isHomeState();
         if (isFromHome || isToHome) {
             viewWindow.shift(silent);
-        }  
+        }
 
         this._preloadImages();
 
@@ -173,12 +173,11 @@ define(function(require, exports, module) { // jshint ignore:line
         // assetLoader filters out already loaded images, don't worry
         assetLoader.loadImages(stateLinkImgs);
     };
-
     return App;
 
 });
 
-// if browser is IE10
+// if browser is IE10 attempt 2
 var doc = document.documentElement;
 doc.setAttribute('data-useragent', navigator.userAgent);
 

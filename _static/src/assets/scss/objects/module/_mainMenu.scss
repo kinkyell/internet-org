@@ -1,6 +1,10 @@
 /* ---------------------------------------------------------------------
  Main Menu
 ------------------------------------------------------------------------ */
+.mainMenu-center-container{
+    margin-top: 70px;
+}
+
 .mainMenu {
     width: 100%;
     height: 100%;
@@ -10,6 +14,10 @@
     z-index: $Z-mainMenu;
     background: rgba(0, 0, 0, 0.7);
     overflow: auto;
+
+    .ie10 &{
+        position: relative;
+    }
 }
 
 .mainMenu-panel {

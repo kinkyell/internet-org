@@ -27,11 +27,11 @@ if ( ! empty( $custom_fields ) ) : ?>
 								<?php foreach ( $fieldset['call-to-action'] as $cta ) : ?>
 									<div class="cta">
 										<?php if ( ! empty( $cta['link'] ) ) : ?>
-											<a href="<?php echo esc_url( internetorg_fix_link( apply_filters( 'iorg_url', $cta['link'] ) ) ); ?>">
+											<a href="<?php echo esc_url( apply_filters( 'iorg_url', $cta['link'] ) ); ?>">
 												<?php if ( ! empty( $cta['image'] ) ) : ?>
 													<?php echo wp_get_attachment_image( $cta['image'], 'full' ); ?>
 												<?php else : ?>
-													<?php echo esc_url( internetorg_fix_link( $cta['link'] ) ); ?>
+													<?php echo esc_url( $cta['link'] ); ?>
 												<?php endif; ?>
 											</a>
 										<?php endif; ?>

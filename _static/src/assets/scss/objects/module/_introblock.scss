@@ -14,6 +14,10 @@ Sections of content that introduce landing and story pages
     background: url("../media/images/icons/io-mark-bg.svg") no-repeat $CLR_GRAY_LIGHTER;
     background-position: -225px top;
     background-size: 575px 795px;
+    
+    .opera-link {
+        display: none;
+    } 
 }
 
 .introBlock_flushMobi {
@@ -119,4 +123,10 @@ _:-ms-fullscreen, :root .introBlock_fill {
 
 .introBlock_fill > .introBlock-inner {
     padding-bottom: 80px;
+}
+
+.introBlock {
+    .fb-like {
+        overflow: hidden;
+    }
 }

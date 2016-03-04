@@ -9,7 +9,7 @@ get_header();
 
 ?>
 
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-type="titled" data-route="<?php echo esc_url( internetorg_fix_link( get_the_permalink() ) ); ?>" data-title="<?php the_title(); ?>" data-social="true" data-date="<?php internetorg_posted_on_date(); ?>">
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-type="titled" data-route="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-social="true" data-date="<?php internetorg_posted_on_date(); ?>">
 		<?php while ( have_posts() ) : the_post(); ?>
 
 			<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
@@ -33,8 +33,6 @@ get_header();
 							</div>
 						</div>
 
-						<?php get_template_part( 'template-parts/content', 'social-links' ); ?>
-
 					</div>
 				</div>
 			</div>
@@ -50,7 +48,17 @@ get_header();
 							<div class="container">
 								<div class="feature">
 									<div class="feature-bd wysiwyg quarantine">
+
+										<?php internetorg_media_embed(); ?>
+
 										<?php the_content(); ?>
+
+									  <div class="fb-like"
+									      data-layout="standard"
+									      data-action="like"
+									      data-share="true">
+									  </div>
+
 									</div>
 								</div>
 							</div>

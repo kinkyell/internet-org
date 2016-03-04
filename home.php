@@ -13,8 +13,7 @@ $next_posts_link = get_next_posts_link();
 $archives_years = internetorg_get_archives_years();
 
 ?>
-
-<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php echo esc_url( internetorg_fix_link( internetorg_get_the_permalink_in_lang( get_option( 'page_for_posts' ), internetorg_get_current_content_lang_code() ) ) ); ?>" data-type="titled" data-title="<?php echo esc_html( internetorg_get_the_title_in_lang( get_option( 'page_for_posts' ), internetorg_get_current_content_lang_code() ) ); ?>">
+<div class="viewWindow isShifted js-viewWindow js-stateDefault" id="main-content" role="main" data-route="<?php echo esc_url( internetorg_get_the_permalink_in_lang( get_option( 'page_for_posts' ), internetorg_get_current_content_lang_code() ) ); ?>" data-type="titled" data-title="<?php echo esc_html( internetorg_get_the_title_in_lang( get_option( 'page_for_posts' ), internetorg_get_current_content_lang_code() ) ); ?>">
 
 		<?php get_template_part( 'template-parts/content', 'page-temp-panel' ); ?>
 
@@ -56,20 +55,37 @@ $archives_years = internetorg_get_archives_years();
 								<div class="resultsList">
 									<div id="addl-results" class="resultsList-list">
 
-										<?php if ( have_posts() ) : ?>
-											<?php while ( have_posts() ) : ?>
-												<?php the_post(); ?>
-												<?php get_template_part( 'template-parts/content', 'press-item' ); ?>
-											<?php endwhile; ?>
-										<?php endif; ?>
+										<?php
+											$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : '';
+											$agentOpera10 = false;
+											if(stristr( $user_agent, 'Opera' )){
+												if(stristr( $user_agent, 'Version/10')){
+													$agentOpera10 = true;
+												}
+											}
+											if ( stristr( $user_agent, 'Opera Mini' ) || $agentOpera10) {
+												global $post;
+												$args = array( 'numberposts' => -1);
+												$myposts = query_posts( array ( 'posts_per_page' => 100 ) );
+												foreach( $myposts as $post ) :  setup_postdata($post);
+												    the_post();
+														get_template_part( 'template-parts/content', 'press-item' );
+												endforeach; wp_reset_postdata();
+											} else {
+												if ( have_posts() ) :
+													while ( have_posts() ) :
+														the_post();
+														get_template_part( 'template-parts/content', 'press-item' );
+													endwhile;
+												endif;
+											}
+										?>
 
 									</div>
-
-
 									<div class="resultsList-ft">
 										<div class="resultsList-list resultsList-list_spread">
 
-											<div class="resultsList-list-item">
+											<div class="show-more resultsList-list-item">
 											<?php if ( ! empty( $next_posts_link ) ) : ?>
 												<div class="vr vr_x2">
 													<button type="button" class="btn js-ShowMoreView" data-src="press" data-target="addl-results" data-filter="press-filter">
@@ -82,7 +98,6 @@ $archives_years = internetorg_get_archives_years();
 													<?php internetorg_the_press_filter( $archives_years ); ?>
 											<?php endif; ?>
 											</div>
-
 										</div>
 									</div>
 

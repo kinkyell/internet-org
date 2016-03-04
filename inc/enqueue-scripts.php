@@ -17,8 +17,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function internetorg_enqueue_scripts() {
 
-	wp_enqueue_style( 'internetorg-style', get_stylesheet_uri() );
-
 	wp_enqueue_style(
 		'internetorg-screen',
 		get_stylesheet_directory_uri() . '/_static/web/assets/styles/screen.css',

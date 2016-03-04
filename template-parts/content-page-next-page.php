@@ -22,7 +22,7 @@ if ( empty( $next_page_id ) ) {
 ?>
 
 <div class="js-scrollImage" data-image="<?php echo esc_url( internetorg_get_post_thumbnail( $next_page_id, 'panel-image' ) ); ?>">
-	<a href="<?php echo esc_url( internetorg_fix_link( get_permalink( $next_page_id ) ) ); ?>"
+	<a href="<?php echo esc_url( get_permalink( $next_page_id ) ); ?>"
 		class="introBlock introBlock_foot js-stateSwap"
 		data-title="<?php echo esc_attr( get_the_title( $next_page_id ) ); ?>"
 		data-image="<?php echo esc_url( internetorg_get_post_thumbnail( $next_page_id, 'panel-image' ) ); ?>"
@@ -39,7 +39,20 @@ if ( empty( $next_page_id ) ) {
 			</div>
 		</div>
 		<div class="introBlock-ft">
-			<span class="arrowCta"></span>
+			<?php
+				if( esc_html( get_the_title( $next_page_id ) ) == 'Our Impact') {
+					?> <span class="opera-link impact"></span> <?php
+				} else {
+					if( esc_html( get_the_title( $next_page_id ) ) == 'Our Approach'){
+						?> <span class="opera-link approach"></span> <?php
+					} else {
+						if( esc_html( get_the_title( $next_page_id ) ) == 'Our Mission') {
+							?> <span class="opera-link mission"></span> <?php
+						}
+					}
+				}
+			?>
+			<span class="arrowCta <?php echo esc_html( get_the_title( $next_page_id ) ); ?>"></span>
 		</div>
 	</a>
 </div>
