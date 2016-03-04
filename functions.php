@@ -22,13 +22,13 @@ wpcom_vip_load_plugin( 'shortcode-ui', 'plugins', true );
 wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
 
 // Load the Babble VIP release candidate Plugin.
-wpcom_vip_load_plugin( 'babble', 'plugins', true );
+// wpcom_vip_load_plugin( 'babble', 'plugins', true );
 
 // Load the Babble Globals VIP release candidate Plugin.
-wpcom_vip_load_plugin( 'babble-globals', 'plugins', true );
+// wpcom_vip_load_plugin( 'babble-globals', 'plugins', true );
 
 // Load the Babble Translation Group Tool VIP release candidate Plugin.
-wpcom_vip_load_plugin( 'babble-translation-group-tool', 'plugins', true );
+// wpcom_vip_load_plugin( 'babble-translation-group-tool', 'plugins', true );
 
 // Load the Google Analytics VIP plugin.
 wpcom_vip_load_plugin( 'wp-google-analytics' );
@@ -53,7 +53,7 @@ require IO_DIR . '/plugins/internetorg-custom-fields/internetorg-custom-fields.p
 require_once( __DIR__ . '/plugins/internetorg-link-filter/internetorg-link-filter.php' );
 
 /** Babble */
-require IO_DIR . '/inc/babble-fieldmanager-context.php';
+// require IO_DIR . '/inc/babble-fieldmanager-context.php';
 
 /** Disable emoji from loading */
 function disable_wp_emojicons() {
@@ -527,7 +527,7 @@ function internetorg_bbl_fm_fields( array $fields, WP_Post $post ) {
 	return $fields;
 }
 
-add_filter( 'bbl_translated_meta_fields', 'internetorg_bbl_fm_fields', 10, 2 );
+// add_filter( 'bbl_translated_meta_fields', 'internetorg_bbl_fm_fields', 10, 2 );
 
 /**
  * Hooks the bbl_sync_meta_key Babble filter to specify when a meta_key
@@ -556,7 +556,7 @@ function internetorg_bbl_sync_meta_key( $sync, $meta_key ) {
 	return $sync;
 }
 
-add_filter( 'bbl_sync_meta_key', 'internetorg_bbl_sync_meta_key', 10, 2 );
+// add_filter( 'bbl_sync_meta_key', 'internetorg_bbl_sync_meta_key', 10, 2 );
 
 /**
  * Filter the WP Native Gallery to modify markup to match what our FEDs expect.

@@ -184,12 +184,3 @@ doc.setAttribute('data-useragent', navigator.userAgent);
 
 
 
-
-
-
-
-
-
-
-
-
