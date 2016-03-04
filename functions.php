@@ -53,7 +53,7 @@ require IO_DIR . '/plugins/internetorg-custom-fields/internetorg-custom-fields.p
 require_once( __DIR__ . '/plugins/internetorg-link-filter/internetorg-link-filter.php' );
 
 /** Babble */
-// require IO_DIR . '/inc/babble-fieldmanager-context.php';
+require IO_DIR . '/inc/babble-fieldmanager-context.php';
 
 /** Disable emoji from loading */
 function disable_wp_emojicons() {
