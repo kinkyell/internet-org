@@ -147,7 +147,7 @@ function internetorg_video_metaboxes() {
 		return;
 	}
 
-	new Fieldmanager_Context(
+	new Fieldmanager_Context_Post(
 		'Fieldmanager_TextField',
 		array(
 			'name'  => 'video-duration',
@@ -161,7 +161,7 @@ function internetorg_video_metaboxes() {
 		)
 	);
 
-	new Fieldmanager_Context(
+	new Fieldmanager_Context_Post(
 		'Fieldmanager_Link',
 		array(
 			'name'  => 'video-url',
@@ -204,7 +204,7 @@ function internetorg_page_metaboxes() {
 		$language = 'en_US';
 	}
 
-	new Fieldmanager_Context(
+	new Fieldmanager_Context_Post(
 		'Fieldmanager_Group',
 		array(
 			'name'     => 'page_intro_block',
@@ -235,7 +235,7 @@ function internetorg_page_metaboxes() {
 		)
 	);
 
-	new Fieldmanager_Context(
+	new Fieldmanager_Context_Post(
 		'Fieldmanager_TextArea',
 		array(
 			'name'       => 'page_subtitle',
@@ -255,7 +255,7 @@ function internetorg_page_metaboxes() {
 		)
 	);
 
-	new Fieldmanager_Context(
+	new Fieldmanager_Context_Post(
 		'Fieldmanager_Group',
 		array(
 			'name'           => 'home-content-section',
@@ -407,7 +407,7 @@ function internetorg_page_metaboxes() {
 		)
 	);
 
-	new Fieldmanager_Context(
+	new Fieldmanager_Context_Post(
 		'Fieldmanager_Autocomplete',
 		array(
 			'name'           => 'next_page',
@@ -445,7 +445,7 @@ function internetorg_content_widget_metaboxes() {
 		return;
 	}
 
-	new Fieldmanager_Context(
+	new Fieldmanager_Context_Post(
 		'Fieldmanager_Group',
 		array(
 			'name'        => 'widget-data',
@@ -481,7 +481,7 @@ function internetorg_story_metaboxes() {
 		return;
 	}
 
-	new Fieldmanager_Context(
+	new Fieldmanager_Context_Post_Post(
 		'Fieldmanager_TextArea',
 		array(
 			'name'       => 'page_subtitle',
