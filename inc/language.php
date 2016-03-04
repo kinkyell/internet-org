@@ -481,7 +481,7 @@ function internetorg_story_metaboxes() {
 		return;
 	}
 
-	new Fieldmanager_Context_Post_Post(
+	new Fieldmanager_Context_Post(
 		'Fieldmanager_TextArea',
 		array(
 			'name'       => 'page_subtitle',
