@@ -246,11 +246,16 @@ https://github.com/Bluefieldscom/intl-tel-input.git
         _appendListItems: function(countries, className) {
             // we create so many DOM elements, it is faster to build a temp string
             // and then add everything to the DOM in one go at the end
+<<<<<<< HEAD
             var tmp = "";
+=======
+            var $tmp = '';
+>>>>>>> a229884e555c13780fd56ae09e3942e4a3da9732
             // for each country
             for (var i = 0; i < countries.length; i++) {
                 var c = countries[i];
                 if (this.isMobile) {
+<<<<<<< HEAD
                     tmp += "<option data-dial-code='" + c.dialCode + "' value='" + c.iso2 + "'>";
                     tmp += c.name + " +" + c.dialCode;
                     tmp += "</option>";
@@ -267,6 +272,26 @@ https://github.com/Bluefieldscom/intl-tel-input.git
                 }
             }
             this.countryList.append(tmp);
+=======
+                    $tmp = $('<option></option>');
+                    $tmp.data('dial-code', c.dialCode);
+                    $tmp.val(c.iso2);
+                    $tmp.text(c.name + ' +' + c.dialCode);
+                    this.countryList.append($tmp);
+                } else {
+                    $tmp = $('<li></li>');
+                    $tmp.addClass('country ' + className);
+                    $tmp.data('dial-code', c.dialCode);
+                    $tmp.data('country-code', c.iso2);
+                    this.countryList.append($tmp);
+                    $tmp = $('<div class="flag"></div>');
+                    $tmp.append($('<div></div>').addClass('iti-flag ' + c.iso2));
+                    $tmp.append('<span class="country-name"></span>').text(c.name);
+                    $tmp.append('<span class="dial-code"></span>').text(c.dialCode);
+                    this.countryList.append($tmp);
+                }
+            }
+>>>>>>> a229884e555c13780fd56ae09e3942e4a3da9732
         },
         // set the initial state of the input value and the selected flag
         _setInitialState: function() {

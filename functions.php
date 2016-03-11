@@ -5,8 +5,11 @@
  * @package Internet.org
  */
 
+<<<<<<< HEAD
 error_reporting( 0 );
 
+=======
+>>>>>>> a229884e555c13780fd56ae09e3942e4a3da9732
 // WP VIP Helper Plugin -- gives us access to the VIP only functions.
 define( 'IO_DIR', __DIR__ );
 require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
@@ -22,6 +25,7 @@ wpcom_vip_load_plugin( 'shortcode-ui', 'plugins', true );
 wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
 
 // Load the Babble VIP release candidate Plugin.
+<<<<<<< HEAD
 // wpcom_vip_load_plugin( 'babble', 'plugins', true );
 
 // Load the Babble Globals VIP release candidate Plugin.
@@ -29,6 +33,15 @@ wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
 
 // Load the Babble Translation Group Tool VIP release candidate Plugin.
 // wpcom_vip_load_plugin( 'babble-translation-group-tool', 'plugins', true );
+=======
+wpcom_vip_load_plugin( 'babble', 'plugins', true );
+
+// Load the Babble Globals VIP release candidate Plugin.
+wpcom_vip_load_plugin( 'babble-globals', 'plugins', true );
+
+// Load the Babble Translation Group Tool VIP release candidate Plugin.
+wpcom_vip_load_plugin( 'babble-translation-group-tool', 'plugins', true );
+>>>>>>> a229884e555c13780fd56ae09e3942e4a3da9732
 
 // Load the Google Analytics VIP plugin.
 wpcom_vip_load_plugin( 'wp-google-analytics' );
@@ -53,7 +66,11 @@ require IO_DIR . '/plugins/internetorg-custom-fields/internetorg-custom-fields.p
 require_once( __DIR__ . '/plugins/internetorg-link-filter/internetorg-link-filter.php' );
 
 /** Babble */
+<<<<<<< HEAD
 // require IO_DIR . '/inc/babble-fieldmanager-context.php';
+=======
+require IO_DIR . '/inc/babble-fieldmanager-context.php';
+>>>>>>> a229884e555c13780fd56ae09e3942e4a3da9732
 
 /** Disable emoji from loading */
 function disable_wp_emojicons() {
@@ -527,7 +544,11 @@ function internetorg_bbl_fm_fields( array $fields, WP_Post $post ) {
 	return $fields;
 }
 
+<<<<<<< HEAD
 // add_filter( 'bbl_translated_meta_fields', 'internetorg_bbl_fm_fields', 10, 2 );
+=======
+add_filter( 'bbl_translated_meta_fields', 'internetorg_bbl_fm_fields', 10, 2 );
+>>>>>>> a229884e555c13780fd56ae09e3942e4a3da9732
 
 /**
  * Hooks the bbl_sync_meta_key Babble filter to specify when a meta_key
@@ -556,7 +577,11 @@ function internetorg_bbl_sync_meta_key( $sync, $meta_key ) {
 	return $sync;
 }
 
+<<<<<<< HEAD
 // add_filter( 'bbl_sync_meta_key', 'internetorg_bbl_sync_meta_key', 10, 2 );
+=======
+add_filter( 'bbl_sync_meta_key', 'internetorg_bbl_sync_meta_key', 10, 2 );
+>>>>>>> a229884e555c13780fd56ae09e3942e4a3da9732
 
 /**
  * Filter the WP Native Gallery to modify markup to match what our FEDs expect.
@@ -2416,7 +2441,11 @@ function vip_fb_legacy_redirects() {
 	}
 
 	// Get language prefixes
+<<<<<<< HEAD
 	$langCode = 'en';
+=======
+	$langCode = bbl_get_current_lang();
+>>>>>>> a229884e555c13780fd56ae09e3942e4a3da9732
 	$urlPrefix = $langCode->url_prefix;
 	$url = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
 

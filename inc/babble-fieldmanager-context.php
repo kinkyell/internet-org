@@ -329,6 +329,7 @@ class Babble_Fieldmanager_Link extends Fieldmanager_Link {
  * Babble_Fieldmanager_Context) which removes all actions and filters which else would be registered by Post context of
  * Fieldmanager (and we really don't need those).
  */
+<<<<<<< HEAD
 // class Babble_Fieldmanager_Meta_Field extends Babble_Meta_Field {
 
 // 	/**
@@ -570,6 +571,249 @@ class Babble_Fieldmanager_Link extends Fieldmanager_Link {
 // 		return $value;
 // 	}
 // }
+=======
+class Babble_Fieldmanager_Meta_Field extends Babble_Meta_Field {
+
+	/**
+	 * Base field.
+	 *
+	 * @var Fieldmanager_Field $fm
+	 */
+	public $fm;
+
+	/**
+	 * Name.
+	 *
+	 * @var string
+	 */
+	public $name;
+
+	/**
+	 * Args.
+	 *
+	 * @var array
+	 */
+	public $args;
+
+	/**
+	 * Translation meta key.
+	 *
+	 * @var string
+	 */
+	public $translation_meta_key = 'bbl_translation[meta]';
+
+	/**
+	 * Constructor.
+	 *
+	 * @param WP_Post $post       Post.
+	 * @param string  $meta_key   Meta Key.
+	 * @param string  $meta_title Meta Title.
+	 * @param array   $args       Args.
+	 */
+	public function __construct( WP_Post $post, $meta_key, $meta_title, array $args = array() ) {
+
+		$this->post       = $post;
+		$this->meta_key   = $meta_key;
+		$this->meta_title = $meta_title;
+		$this->meta_value = maybe_unserialize( get_post_meta( $this->post->ID, $this->meta_key, true ) );
+		$this->args       = $args;
+
+		$type    = $this->args['fm']['type'];
+		$fm_args = $this->args['fm']['args'];
+
+		$type = "Babble_{$type}";
+
+		// Rename.
+		$this->name      = "{$this->translation_meta_key}[{$meta_key}]";
+		$fm_args['name'] = $this->name;
+
+		$this->fm = new $type( $fm_args );
+
+	}
+
+	/**
+	 * Get input.
+	 *
+	 * @param string $name  Name.
+	 * @param mixed  $value Value.
+	 */
+	public function get_input( $name, $value ) {
+		add_filter( 'wp_editor_settings', array( $this, 'wp_editor_css_styles' ) );
+		ob_start();
+		$this->fm->render_field( $name, $value, $this->meta_title, $this->post );
+		$field = ob_get_clean();
+		remove_filter( 'wp_editor_settings', array( $this, 'wp_editor_css_styles' ) );
+
+		// Escape related-element for use in jQuery.
+		$data_related_element_old = sprintf( 'data-related-element="%s"', esc_attr( $this->name ) );
+		$escaped_name             = str_replace( '[', '\\[', $this->name );
+		$escaped_name             = str_replace( ']', '\\]', $escaped_name );
+		$data_related_element_new = sprintf( 'data-related-element="%s"', $escaped_name );
+		$field                    = str_replace( $data_related_element_old, $data_related_element_new, $field );
+
+		// Adjust array position for bbl_translation[meta][home-content-section] format.
+		$field = preg_replace_callback( '/data\-fm\-array\-position\=\"(\d+)\"/', function ( $matches ) {
+			$pos = intval( $matches[1] );
+			if ( 0 !== $pos ) {
+				$pos += 2;
+			}
+
+			return sprintf( 'data-fm-array-position="%d"', $pos );
+		}, $field );
+
+		// @todo might want to echo.
+		echo $field;
+	}
+
+	/**
+	 * Gets output.
+	 */
+	public function get_output() {
+		$this->set_readonly_attribute();
+		$this->maybe_update_ids();
+
+		add_filter( 'tiny_mce_before_init', array( $this, 'readonly_for_tinymce' ) );
+		add_filter( 'the_editor', array( $this, 'readonly_for_editor_textarea' ) );
+		add_filter( 'wp_editor_settings', array( $this, 'wp_editor_css_styles' ) );
+
+		ob_start();
+		echo $this->fm->render_field( $this->name, $this->get_value(), $this->meta_title, $this->post );
+		$field = ob_get_clean();
+
+		remove_filter( 'tiny_mce_before_init', array( $this, 'readonly_for_tinymce' ) );
+		remove_filter( 'the_editor', array( $this, 'readonly_for_editor_textarea' ) );
+		remove_filter( 'wp_editor_settings', array( $this, 'wp_editor_css_styles' ) );
+
+		$original_meta = 'bbl_translation_original[meta]';
+		$field         = str_replace(
+			sprintf( 'name="%s', $this->translation_meta_key ),
+			sprintf( 'name="%s', $original_meta ),
+			$field
+		);
+
+		// Echoing the field instead of properly returing it will preserve HTML.
+		echo $field;
+	}
+
+	/**
+	 * Set readonly attribute on TinyMCE.
+	 *
+	 * @param array $args Args.
+	 *
+	 * @return mixed
+	 */
+	public function readonly_for_tinymce( $args ) {
+		$args['readonly'] = 1;
+
+		return $args;
+	}
+
+	/**
+	 * Set readonly attribute on textarea.
+	 *
+	 * @param string $the_editor The Editor.
+	 *
+	 * @return mixed
+	 */
+	public function readonly_for_editor_textarea( $the_editor ) {
+		$the_editor = str_replace( '>%s</textarea></div>', ' readonly="readonly">%s</textarea></div>', $the_editor );
+
+		return $the_editor;
+	}
+
+	/**
+	 * Add styles to WP_Editor.
+	 *
+	 * @param array $settings Settings.
+	 *
+	 * @return mixed
+	 */
+	public function wp_editor_css_styles( $settings ) {
+		// In case it does not exists.
+		if ( false === array_key_exists( 'editor_css', $settings ) ) {
+			$settings['editor_css'] = '';
+		}
+		$settings['editor_css'] .= '<style type="text/css">.fm-richtext textarea {color: #333 !important}</style>';
+
+		return $settings;
+	}
+
+	/**
+	 * Maybe update IDs.
+	 *
+	 * @param null $el Element.
+	 */
+	public function maybe_update_ids( $el = null ) {
+		if ( null === $el ) {
+			$el = $this->fm;
+		}
+		if ( $el instanceof Babble_Fieldmanager_RichTextarea ) {
+			$el->babble_element_id = $el->get_element_id( $el ) . '-original';
+		}
+		if ( false === empty( $el->children ) ) {
+			foreach ( $el->children as $child ) {
+				$this->maybe_update_ids( $child );
+			}
+		}
+	}
+
+	/**
+	 * Set readonly attribute.
+	 *
+	 * @param null $el Element.
+	 */
+	public function set_readonly_attribute( $el = null ) {
+		if ( null === $el ) {
+			$el = $this->fm;
+		}
+		$el->attributes = array_merge( $el->attributes, array( 'readonly' => 'readonly' ) );
+		if ( false === empty( $el->children ) ) {
+			foreach ( $el->children as $child ) {
+				$this->set_readonly_attribute( $child );
+			}
+		}
+	}
+
+	/**
+	 * Get title.
+	 *
+	 * @return mixed
+	 */
+	public function get_title() {
+		return $this->meta_title;
+	}
+
+	/**
+	 * Get value.
+	 *
+	 * @return mixed
+	 */
+	public function get_value() {
+		return $this->meta_value;
+	}
+
+	/**
+	 * Get key.
+	 *
+	 * @return mixed
+	 */
+	public function get_key() {
+		return $this->meta_key;
+	}
+
+	/**
+	 * Update.
+	 *
+	 * @param mixed   $value Value.
+	 * @param WP_Post $job   Job.
+	 *
+	 * @return mixed
+	 */
+	public function update( $value, WP_Post $job ) {
+		return $value;
+	}
+}
+>>>>>>> a229884e555c13780fd56ae09e3942e4a3da9732
 
 /**
  * Class Babble_Translatable_Fieldmanager
@@ -658,9 +902,15 @@ class Babble_Translatable_Fieldmanager {
 			);
 		}
 
+<<<<<<< HEAD
 		// add_filter( 'bbl_translated_meta_fields', array( $this, 'translated_meta_fields' ), 10, 2 );
 		// add_filter( 'bbl_sync_meta_key', array( $this, 'do_not_sync' ), 10, 2 );
 		// add_filter( 'bbl_meta_before_save', array( $this, 'before_meta_save' ), 10, 5 );
+=======
+		add_filter( 'bbl_translated_meta_fields', array( $this, 'translated_meta_fields' ), 10, 2 );
+		add_filter( 'bbl_sync_meta_key', array( $this, 'do_not_sync' ), 10, 2 );
+		add_filter( 'bbl_meta_before_save', array( $this, 'before_meta_save' ), 10, 5 );
+>>>>>>> a229884e555c13780fd56ae09e3942e4a3da9732
 	}
 
 	/**

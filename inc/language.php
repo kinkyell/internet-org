@@ -147,7 +147,11 @@ function internetorg_video_metaboxes() {
 		return;
 	}
 
+<<<<<<< HEAD
 	new Fieldmanager_Context_Post(
+=======
+	new Babble_Translatable_Fieldmanager(
+>>>>>>> a229884e555c13780fd56ae09e3942e4a3da9732
 		'Fieldmanager_TextField',
 		array(
 			'name'  => 'video-duration',
@@ -161,7 +165,11 @@ function internetorg_video_metaboxes() {
 		)
 	);
 
+<<<<<<< HEAD
 	new Fieldmanager_Context_Post(
+=======
+	new Babble_Translatable_Fieldmanager(
+>>>>>>> a229884e555c13780fd56ae09e3942e4a3da9732
 		'Fieldmanager_Link',
 		array(
 			'name'  => 'video-url',
@@ -204,7 +212,11 @@ function internetorg_page_metaboxes() {
 		$language = 'en_US';
 	}
 
+<<<<<<< HEAD
 	new Fieldmanager_Context_Post(
+=======
+	new Babble_Translatable_Fieldmanager(
+>>>>>>> a229884e555c13780fd56ae09e3942e4a3da9732
 		'Fieldmanager_Group',
 		array(
 			'name'     => 'page_intro_block',
@@ -235,7 +247,11 @@ function internetorg_page_metaboxes() {
 		)
 	);
 
+<<<<<<< HEAD
 	new Fieldmanager_Context_Post(
+=======
+	new Babble_Translatable_Fieldmanager(
+>>>>>>> a229884e555c13780fd56ae09e3942e4a3da9732
 		'Fieldmanager_TextArea',
 		array(
 			'name'       => 'page_subtitle',
@@ -255,7 +271,11 @@ function internetorg_page_metaboxes() {
 		)
 	);
 
+<<<<<<< HEAD
 	new Fieldmanager_Context_Post(
+=======
+	new Babble_Translatable_Fieldmanager(
+>>>>>>> a229884e555c13780fd56ae09e3942e4a3da9732
 		'Fieldmanager_Group',
 		array(
 			'name'           => 'home-content-section',
@@ -269,7 +289,11 @@ function internetorg_page_metaboxes() {
 			'children'       => array(
 				'title'          => new Fieldmanager_TextField( __( 'Section Title', 'internetorg' ) ),
 				'name'           => new Fieldmanager_TextField( __( 'Section Name', 'internetorg' ) ),
+<<<<<<< HEAD
 				'content'        => new Fieldmanager_RichTextarea( __( 'Description', 'internetorg' ) ),
+=======
+				'content'        => new Babble_Fieldmanager_RichTextarea( __( 'Description', 'internetorg' ) ),
+>>>>>>> a229884e555c13780fd56ae09e3942e4a3da9732
 				'src'            => new Fieldmanager_Select(
 					__( 'Source', 'internetorg' ),
 					array(
@@ -341,7 +365,11 @@ function internetorg_page_metaboxes() {
 							'title'    => new Fieldmanager_TextField(
 								__( 'CTA Title', 'internetorg' )
 							),
+<<<<<<< HEAD
 							'text'     => new Fieldmanager_RichTextarea(
+=======
+							'text'     => new Babble_Fieldmanager_RichTextarea(
+>>>>>>> a229884e555c13780fd56ae09e3942e4a3da9732
 								__( 'Content', 'internetorg' )
 							),
 							'cta_src'  => new Fieldmanager_Select(
@@ -407,7 +435,11 @@ function internetorg_page_metaboxes() {
 		)
 	);
 
+<<<<<<< HEAD
 	new Fieldmanager_Context_Post(
+=======
+	new Babble_Translatable_Fieldmanager(
+>>>>>>> a229884e555c13780fd56ae09e3942e4a3da9732
 		'Fieldmanager_Autocomplete',
 		array(
 			'name'           => 'next_page',
@@ -445,7 +477,11 @@ function internetorg_content_widget_metaboxes() {
 		return;
 	}
 
+<<<<<<< HEAD
 	new Fieldmanager_Context_Post(
+=======
+	new Babble_Translatable_Fieldmanager(
+>>>>>>> a229884e555c13780fd56ae09e3942e4a3da9732
 		'Fieldmanager_Group',
 		array(
 			'name'        => 'widget-data',
@@ -481,7 +517,11 @@ function internetorg_story_metaboxes() {
 		return;
 	}
 
+<<<<<<< HEAD
 	new Fieldmanager_Context_Post(
+=======
+	new Babble_Translatable_Fieldmanager(
+>>>>>>> a229884e555c13780fd56ae09e3942e4a3da9732
 		'Fieldmanager_TextArea',
 		array(
 			'name'       => 'page_subtitle',

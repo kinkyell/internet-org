@@ -79,7 +79,11 @@
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
+<<<<<<< HEAD
     js.src = <?php echo wp_json_encode( "//connect.facebook.net/" . 'en' . "/all.js#xfbml=1&amp;version=v2.3" ); ?>;
+=======
+    js.src = <?php echo wp_json_encode( "//connect.facebook.net/" . bbl_get_current_lang()->code . "/all.js#xfbml=1&amp;version=v2.3" ); ?>;
+>>>>>>> a229884e555c13780fd56ae09e3942e4a3da9732
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
 
