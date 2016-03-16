@@ -5,7 +5,13 @@
  * @package Internet.org
  */
 
-//error_reporting( 0 );
+/**
+ * error_reporting should not be used. This was put in by Jam3
+ * it hides any errors in theme, most noticaly the admin dashboard
+ * has a lot of errors. I'm leaving it in at the minute for purposes
+ * of allowing Paul to get a copy running.
+ */
+error_reporting( 0 );
 
 // WP VIP Helper Plugin -- gives us access to the VIP only functions.
 define( 'IO_DIR', __DIR__ );
