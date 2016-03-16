@@ -9,9 +9,12 @@
 
 // WP VIP Helper Plugin -- gives us access to the VIP only functions.
 define( 'IO_DIR', __DIR__ );
+
+// Unnecessary on VIP Go
 //require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
 
-vip_allow_title_orphans();
+// Unnecessary on VIP Go
+//vip_allow_title_orphans();
 
 // Load the Shortcake UI VIP Plugin.
 // wpcom_vip_load_plugin( 'shortcode-ui' );
@@ -37,7 +40,7 @@ wpcom_vip_load_plugin( 'wp-google-analytics' );
 wpcom_vip_load_plugin( 'cache-nav-menu' );
 
 // Load the Opengraph VIP plugin.
-wpcom_vip_enable_opengraph();
+//wpcom_vip_enable_opengraph();
 
 /** Filtering functions. */
 require IO_DIR . '/inc/internetorg-filters.php';
