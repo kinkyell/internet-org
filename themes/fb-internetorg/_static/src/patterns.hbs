@@ -1,0 +1,896 @@
+{{#extend "layout"}}
+
+    {{#content "body" mode="append"}}
+
+    <style type="text/css">
+        .PATTERN-hdg {
+            padding: 5px 0;
+            margin-bottom: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            color: #555;
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #ddd;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Typography - Headings and Body Copy Styles</div>
+    <div style="max-width: 640px; margin: 0 auto;">
+        <div class="container">
+            <div class="vList">
+                <div class="hdg hdg_1">Heading 1</div>
+                <div class="hdg hdg_2">Heading 2</div>
+                <div class="hdg hdg_3">Heading 3</div>
+                <div class="hdg hdg_4">Heading 4</div>
+                <div class="hdg hdg_5">Heading 5</div>
+                <div class="hdg hdg_6">Heading 6</div>
+                <div class="hdg hdg_7">Heading 7</div>
+                <div class="hdg hdg_8">Heading 8</div>
+                <div class="hdg hdg_subHdg mix-hdg_gray">Sub-heading 1</div>
+                <div>
+                    <div class="hdg hdg_5">Body Copy</div>
+                    <p class="bdcpy">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div>
+                    <div class="hdg hdg_5">Body Copy Small</div>
+                    <p class="bdcpy bdcpy_sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div>
+                    <div class="hdg hdg_5">Body Copy Large</div>
+                    <p class="bdcpy bdcpy_lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Powered by Wordpress VIP legal line</div>
+    <div style="max-width: 640px; margin: 20px auto;"> <!-- Powered by Wordpress VIP legal line -->
+        <legal class="pwdByVip">
+            <div class="pwdByVip-txt">Facebook &copy; 2015 Powered by <a href="">WordPress.com VIP</a></div>
+        </legal>
+    </div>
+
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Loading Icon</div>
+    <div style="max-width: 640px; margin: 0 auto; padding: 20px 0; position: relative;"> <!-- Loading Icon -->
+        <div class="loadingIcon"></div>
+        <div class="container">
+            <div class="content-col">
+
+                <div class="feature"> <!-- TEXT IMAGE -->
+                    <div class="feature-hd">
+                        <div class="hdg hdg_3">Text Block with Image</div>
+                    </div>
+                    <div class="feature-bd">
+                        <p class="bdcpy">
+                            Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Sus pendisse est nulla, suscipit eu ante vel, vehicula finibus nisi.
+                        </p>
+                    </div>
+                    <div class="feature-media">
+                        <img src="//www.placehold.it/480x280" alt="FPO">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Contact Form</div>
+    <div style="max-width: 640px; margin: 20px auto;"> <!-- Contact Form -->
+        <div class="container">
+            <div class="content-col">
+                    <div class="vr vr_x4">
+                        <div class="hdg hdg_3">Get in Touch</div>
+                    </div>
+                    <form novalidate>
+                        <div class="vr vr_x4">                    
+                            <fieldset>
+                                <ul class="vList vList_spread">
+                                    <li>
+                                        <div class="hdg hdg_6">I’m completing this form for:</div>
+                                    </li>
+                                    <li>
+                                        <div class="inputRadio">
+                                            <input class="inputRadio-radio" id="radio01" type="radio" name="radio-set-one" />
+                                            <label class="inputRadio-label" for="radio01"><span class="inputRadio-label-inner"></span>Reason for submission</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="inputRadio">
+                                            <input class="inputRadio-radio" id="radio02" type="radio" name="radio-set-one" />
+                                            <label class="inputRadio-label" for="radio02"><span class="inputRadio-label-inner"></span>Reason for submission</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="inputRadio">
+                                            <input class="inputRadio-radio" id="radio03" type="radio" name="radio-set-one" />
+                                            <label class="inputRadio-label" for="radio03"><span class="inputRadio-label-inner"></span>Reason for submission</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </div>
+                        <div class="vr vr_x5">
+                            <fieldset>
+                                <ul class="vList vList_spread">
+                                    <li>
+                                        <label class="u-isVisuallyHidden" for="inputName">First Name</label>
+                                        <input class="inputText" id="inputName" type="text" placeholder="Your Name"/>
+                                    </li>
+                                    <li>
+                                        <label class="u-isVisuallyHidden" for="inputEmail">First Name</label>
+                                        <input class="inputText" id="inputEmail" type="email" placeholder="Your Email" />
+                                    </li>
+                                    <li>
+                                        <label class="u-isVisuallyHidden" for="inputComment">First Name</label>
+                                        <input class="inputText" id="inputComment" type="text" placeholder="Your Comments"/>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </div>
+                        <div class="vr vr_x5">
+                            <fieldset>
+                                <ul class="vList vList_spread">
+                                    <li>
+                                        <div class="hdg hdg_6">I’m interested in:</div>
+                                    </li>
+                                    <li>
+                                        <div class="inputRadio">
+                                            <input class="inputRadio-radio" id="radio2-01" type="radio" name="radio-set-two" />
+                                            <label class="inputRadio-label" for="radio2-01"><span class="inputRadio-label-inner"></span>Reason for submission</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="inputRadio">
+                                            <input class="inputRadio-radio" id="radio2-02" type="radio" name="radio-set-two" />
+                                            <label class="inputRadio-label" for="radio2-02"><span class="inputRadio-label-inner"></span>Reason for submission</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="inputRadio">
+                                            <input class="inputRadio-radio" id="radio2-03" type="radio" name="radio-set-two" />
+                                            <label class="inputRadio-label" for="radio2-03"><span class="inputRadio-label-inner"></span>Reason for submission</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="inputRadio">
+                                            <input class="inputRadio-radio" id="radio2-04" type="radio" name="radio-set-two" />
+                                            <label class="inputRadio-label" for="radio2-04"><span class="inputRadio-label-inner"></span>Reason for submission</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="inputRadio">
+                                            <input class="inputRadio-radio" id="radio2-05" type="radio" name="radio-set-two" />
+                                            <label class="inputRadio-label" for="radio2-05"><span class="inputRadio-label-inner"></span>Reason for submission</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="inputRadio">
+                                            <input class="inputRadio-radio" id="radio2-06" type="radio" name="radio-set-two" />
+                                            <label class="inputRadio-label" for="radio2-06"><span class="inputRadio-label-inner"></span>Reason for submission</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </div>
+                        <fieldset>
+                            <input  class="inputSubmit" type="submit" value="Submit" />
+                        </fieldset>
+                    </form>
+                    <div class="vr vr_x5"></div>
+                    <button class="inputSubmit">Submit (button)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Responsive Video</div>
+    <div style="max-width: 800px; margin: 20px auto 20px;">
+        <div class="video">
+            <iframe src="https://player.vimeo.com/video/20949784?color=ff6b00&portrait=0&byline=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+    </div>
+    
+    <div class="PATTERN-hdg">Carousel Gallery</div>
+    <div style="max-width: 640px; margin: 20px auto 20px; overflow: hidden;"> <!-- Carousel Gallery -->
+        <div class="container">
+            <div class="contentCol contentCol_flush">
+                <div id="js-carouselView2" class="carousel js-carouselView">
+                    <div class="handle carousel-handle">
+                        <div class="carousel-handle-slide">
+                            <div class="carousel-handle-slide-media">
+                                <img src="../assets/media/images/mainstory-img-1.jpg" alt="placeholder">
+                            </div>
+                            <div class="carousel-handle-slide-caption">
+                                Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Suspen disse est nulla, suscipit eu ante vel dolor sit amet, consec tetur adipiscing elit. Suspendisse est nulla, suscipit eu ante vel, vehicula finibus nisi.
+                            </div>
+                        </div>
+                        <div class="carousel-handle-slide">
+                            <div class="carousel-handle-slide-media">
+                                <!-- <img src="../assets/media/images/mainstory-img-2.jpg" alt="placeholder"> -->
+                                <img src="//www.placehold.it/150x300" alt="placeholder">
+                            </div>
+                            <div class="carousel-handle-slide-caption">
+                                Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Suspen disse est nulla, suscipit eu ante vel dolor sit amet, consec tetur adipiscing elit. Suspendisse est nulla, suscipit eu ante vel, vehicula finibus nisi.
+                            </div>
+                        </div>
+                        <div class="carousel-handle-slide">
+                            <div class="carousel-handle-slide-media">
+                                <img src="../assets/media/images/mainstory-img-3.jpg" alt="placeholder">
+                            </div>
+                            <div class="carousel-handle-slide-caption">
+                                Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Suspen disse est nulla, suscipit eu ante vel dolor sit amet, consec tetur adipiscing elit. Suspendisse est nulla, suscipit eu ante vel, vehicula finibus nisi.
+                            </div>
+                        </div>
+                        <div class="carousel-handle-slide">
+                            <div class="carousel-handle-slide-media">
+                                <img src="../assets/media/images/mainstory-img-4.jpg" alt="placeholder">
+                            </div>
+                            <div class="carousel-handle-slide-caption">
+                                Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Suspen disse est nulla, suscipit eu ante vel dolor sit amet, consec tetur adipiscing elit. Suspendisse est nulla, suscipit eu ante vel, vehicula finibus nisi.
+                            </div>
+                        </div>
+                        <div class="carousel-handle-slide">
+                            <div class="carousel-handle-slide-media">
+                                <img src="../assets/media/images/mainstory-img-5.jpg" alt="placeholder">
+                            </div>
+                            <div class="carousel-handle-slide-caption">
+                                Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Suspen disse est nulla, suscipit eu ante vel dolor sit amet, consec tetur adipiscing elit. Suspendisse est nulla, suscipit eu ante vel, vehicula finibus nisi.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-captionBox"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="PATTERN-hdg">Language Selection Module</div>
+    <div style="max-width: 480px; margin: 20px auto 20px;"> <!-- Language Selection Module -->
+        <div class="langSelect js-select isOpen">
+            <div class="langSelect-label">English</div>
+            <div class="langSelect-menu">
+                <div class="langSelect-menu-item isSelected" tabindex="0"><span>English</span></div>
+                <div class="langSelect-menu-item" tabindex="0"><span>Bahasa</span></div>
+                <div class="langSelect-menu-item" tabindex="0"><span>Spanish</span></div>
+                <div class="langSelect-menu-item" tabindex="0"><span>French</span></div>
+                <div class="langSelect-menu-item" tabindex="0"><span>Portuguese</span></div>
+                <div class="langSelect-menu-item" tabindex="0"><span>Arabic</span></div>
+                <div class="langSelect-menu-item" tabindex="0"><span>Hindi</span></div>
+                <div class="langSelect-menu-item" tabindex="0"><span>Urdu</span></div>
+                <div class="langSelect-menu-item" tabindex="0"><span>Bengali</span></div>
+                <div class="langSelect-menu-item" tabindex="0"><span>Russian</span></div>
+                <div class="langSelect-menu-item" tabindex="0"><span>Japanese</span></div>
+                <div class="langSelect-menu-item" tabindex="0"><span>Punjabi</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Introduction Block to Next Story</div>
+    <div style="max-width: 640px; margin: 0 auto;">
+        <div class="introBlock">
+            <div class="introBlock-inner">
+                <div class="container">
+                    <div class="topicBlock">
+                        <div class="topicBlock-preHd">
+                            <div class="hdg hdg_5 mix-hdg_italic mix-hdg_gray">Learn About</div>
+                        </div>
+                        <div class="topicBlock-hd topicBlock-hd_themeImpact">
+                            <h2 class="hdg hdg_2">Next Chapter</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="introBlock-ft">
+                <a href="" class="arrowCta"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Facebook Follow Block</div>
+        <div style="max-width: 640px; margin: 0 auto;">
+        <div class="socialBlock">
+            <div class="socialBlock-inner">
+                <div class="container">
+                    <div class="fbFollowBlock">
+                        <div class="fbFollowBlock-bd">
+                            <h2 class="hdg hdg_2 mix-hdg_white">Follow <br />the Project</h2>
+                            <p class="bdcpy mix-bdcpy_light">Stay updated about Internet.org and lorem ipsum dolor sit amet.</p>
+                        </div>
+                        <div class="fbFollowBlock-cta">
+                            <a href="" class="btn btn_facebook">Like us on Facebook</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Introduction Block</div>
+    <div style="max-width: 640px; margin: 0 auto;">
+        <div class="introBlock">
+            <div class="introBlock-inner">
+                <div class="container">
+                    <div class="topicBlock">
+                        <div class="topicBlock-hd topicBlock-hd_themeImpact">
+                            <h2 class="hdg hdg_2">Campagin Page <br />Title on two Lines</h2>
+                        </div>
+                        <div class="topicBlock-bd">
+                            <p class="bdcpy">Paola lives with her husband and young son on an organic farm several hours from Bogota. They live sustainably off the land with very little income and are largely cut off from the outside world.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Introduction Block w/ Social Parade</div>
+    <div style="max-width: 640px; margin: 0 auto;">
+        <div class="introBlock introBlock_social">
+            <div class="introBlock-inner">
+                <div class="container">
+                    <div class="topicBlock">
+                        <div class="topicBlock-hd">
+                            <h2 class="hdg hdg_2">Article Title on Max Three Lines on Mobile Ipsum</h2>
+                        </div>
+                        <div class="topicBlock-subHd">
+                            <time class="hdg hdg_5 mix-hdg_italic mix-hdg_gray" datetime="2015-05-25">May 25, 2015</time>
+                        </div>
+                        <div class="topicBlock-bd">
+                            <p class="bdcpy">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse es
+                                suscipit euante lorepehicula nulla, suscipit dela  eu ante vel vehicula
+                                dolor sit amet, consectetur adipiscing elit.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="introBlock-ft introBlock-ft_rule">
+                <ul class="socialParade">
+                    <li><a class="socialParade-icon socialParade-icon_fb" href="">Facebook</a></li>
+                    <li><a class="socialParade-icon socialParade-icon_tw" href="">Twitter</a></li>
+                    <li><a class="socialParade-icon socialParade-icon_li" href="">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Introduction Block Narrow</div>
+    <div style="max-width: 640px; margin: 0 auto;">
+        <div class="introBlock">
+            <div class="introBlock-inner">
+                <div class="container">
+                    <div class="topicBlock">
+                        <div class="topicBlock-hd">
+                            <h2 class="hdg hdg_2">Contact</h2>
+                        </div>
+                        <div class="topicBlock-bd">
+                            <p class="bdcpy">If you’re working on a project related to connectivity or just want to keep up with Internet.org, let us know.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Results List - Press Blurbs w/ Media</div>
+    <div style="max-width: 640px; margin: 0 auto;">
+        <div class="container">
+            <div class="resultsList">
+                <div class="resultsList-list">
+                    <div class="resultsList-list-item">
+                        <div class="media media_inline">
+                            <div class="media-figure">
+                                <img src="//www.placehold.it/210x260" alt="" />
+                            </div>
+                            <div class="media-bd">
+                                <div class="feature feature_tight">
+                                    <div class="feature-hd">
+                                        <h2 class="hdg hdg_4">Internet.org: Myths and Facts</h2>
+                                    </div>
+                                    <div class="feature-date">
+                                        <div class="hdg hdg_7 mix-hdg_italic mix-hdg_gray">May 25, 2015</div>
+                                    </div>
+                                    <div class="feature-bd">
+                                        <p class="bdcpy">Fast facts about Internet.org and free basic services...</p>
+                                    </div>
+                                    <div class="feature-cta">
+                                        <a href="" class="link mix-link_small">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="resultsList-list-item">
+                        <div class="feature feature_tight">
+                            <div class="feature-hd">
+                                <h2 class="hdg hdg_4">Announcing the Internet.org Now Available in Columbia</h2>
+                            </div>
+                            <div class="feature-date">
+                                <div class="hdg hdg_7 mix-hdg_italic mix-hdg_gray">May 25, 2015</div>
+                            </div>
+                            <div class="feature-bd">
+                                <p class="bdcpy">Today, we’re introducing the Internet.org Platform, an open program for developers to easily create services that integrate with...</p>
+                            </div>
+                            <div class="feature-cta">
+                                <a href="" class="link mix-link_small">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="resultsList-list-item">
+                        <div class="media media_inline">
+                            <div class="media-figure">
+                                <img src="//www.placehold.it/210x260" alt="" />
+                            </div>
+                            <div class="media-bd">
+                                <div class="feature feature_tight">
+                                    <div class="feature-hd">
+                                        <h2 class="hdg hdg_4">Internet.org: Myths and Facts</h2>
+                                    </div>
+                                    <div class="feature-date">
+                                        <div class="hdg hdg_7 mix-hdg_italic mix-hdg_gray">May 25, 2015</div>
+                                    </div>
+                                    <div class="feature-bd">
+                                        <p class="bdcpy">Fast facts about Internet.org and free basic services...</p>
+                                    </div>
+                                    <div class="feature-cta">
+                                        <a href="" class="link mix-link_small">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Results List - Search Results</div>
+    <div style="max-width: 640px; margin: 0 auto;">
+        <div class="container">
+            <div class="resultsList">
+                <div class="resultsList-hd">
+                    <div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray">16 Results Found</div>
+                </div>
+                <div class="resultsList-list">
+                    <div class="resultsList-list-item">
+                        <div class="feature feature_tight">
+                            <div class="feature-hd">
+                                <h2 class="hdg hdg_4">Project Aquila This Title is Pretty Long and Goes on Two Lines</h2>
+                            </div>
+                            <div class="feature-bd">
+                                <p class="bdcpy">Today, we’re also giving people more choice over the services they use drone lorem ipsum dolor sit amet. Today, we’re introducing the Internet.org...</p>
+                            </div>
+                            <div class="feature-cta">
+                                <a href="" class="link mix-link_small">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="resultsList-list-item">
+                        <div class="feature feature_tight">
+                            <div class="feature-hd">
+                                <h2 class="hdg hdg_4">Project Acuila</h2>
+                            </div>
+                            <div class="feature-bd">
+                                <p class="bdcpy">Today, we’re also giving people more choice over the services they use drone lorem ipsum dolor sit amet. Today, we’re introducing the Internet.org...</p>
+                            </div>
+                            <div class="feature-cta">
+                                <a href="" class="link mix-link_small">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="resultsList-list-item">
+                        <div class="feature feature_tight">
+                            <div class="feature-hd">
+                                <h2 class="hdg hdg_4">Project Acuila</h2>
+                            </div>
+                            <div class="feature-bd">
+                                <p class="bdcpy">Today, we’re also giving people more choice over the services they use drone lorem ipsum dolor sit amet. Today, we’re introducing the Internet.org...</p>
+                            </div>
+                            <div class="feature-cta">
+                                <a href="" class="link mix-link_small">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Foot Box w/ Two Arrow Links</div>
+    <div style="max-width: 640px; margin: 0 auto;">
+        <div class="footBox">
+            <div class="container">
+                <div class="topicBlock">
+                    <div class="topicBlock-hd">
+                        <h2 class="hdg hdg_2">Get Involved</h2>
+                    </div>
+                    <div class="topicBlock-bd">
+                        <ul class="vList">
+                            <li><a href="" class="link link_twoArrows">Develop for Internet.org Platform</a></li>
+                            <li><a href="" class="link link_twoArrows">Visit the facebook page</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footBox-ft">
+                <legal class="pwdByVip">
+                    <div class="pwdByVip-txt">Facebook &copy; 2015 Powered by <a href="">WordPress.com VIP</a></div>
+                </legal>
+            </div>
+        </div>
+    </div>
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Foot Box w/ Topic Blocks</div>
+    <div style="max-width: 640px; margin: 0 auto;">
+        <div class="footBox">
+            <div class="container">
+                <div class="footBox-hd">More Posts</div>
+                <div class="vList vList_footBox">
+                    <div>
+                        <div class="topicBlock">
+                            <div class="topicBlock-hd">
+                                <h2 class="hdg hdg_3">Max Three Lines Article Title on Mobile Ipsum</h2>
+                            </div>
+                            <div class="topicBlock-bd">
+                                <p class="bdcpy">
+                                    Fast facts about Internet.org and free basic services lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                            <div class="topicBlock-cta"><a href="" class="btn">Read</a></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="topicBlock">
+                            <div class="topicBlock-hd">
+                                <h2 class="hdg hdg_3">Max Three Lines Article Title on Mobile Ipsum</h2>
+                            </div>
+                            <div class="topicBlock-bd">
+                                <p class="bdcpy">
+                                    Fast facts about Internet.org and free basic services lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                            <div class="topicBlock-cta"><a href="" class="btn">Read</a></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="topicBlock">
+                            <div class="topicBlock-hd">
+                                <h2 class="hdg hdg_3">Article Title</h2>
+                            </div>
+                            <div class="topicBlock-bd"><p class="bdcpy">Example of very short copy.</p></div>
+                            <div class="topicBlock-cta"><a href="" class="btn">Read</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footBox-ft">
+                    <legal class="pwdByVip">
+                        <div class="pwdByVip-txt">Facebook &copy; 2015 Powered by <a href="">WordPress.com VIP</a></div>
+                    </legal>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Feature w/ Services List</div>
+    <div style="max-width: 640px; margin: 0 auto;">
+        <div class="container">
+            <div class="feature">
+                <div class="feature-hd">
+                    <h2 class="hdg hdg_3">Full List of Free Services</h2>
+                </div>
+                <div class="feature-bd">
+                    <ul class="servicesList">
+                        <li>
+                            <a href="">
+                                <div class="servicesList-item">
+                                    <div class="servicesList-item-icon">
+                                        <img src="assets/media/images/icons/png/icon-services-dictionary.png" alt="dictionary.com" />
+                                    </div>
+                                    <div class="servicesList-item-bd">
+                                        <div class="hdg hdg_5">Dictionary.com</div>
+                                        <div class="bdcpy bdcpy_sm">Search for meaning of words</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="servicesList-item">
+                                    <div class="servicesList-item-icon">
+                                        <img src="assets/media/images/icons/png/icon-services-espn.png" alt="espn" />
+                                    </div>
+                                    <div class="servicesList-item-bd">
+                                        <div class="hdg hdg_5">ESPN</div>
+                                        <div class="bdcpy bdcpy_sm">Get sports updates</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="servicesList-item">
+                                    <div class="servicesList-item-icon">
+                                        <img src="assets/media/images/icons/png/icon-services-bing.png" alt="bing" />
+                                    </div>
+                                    <div class="servicesList-item-bd">
+                                        <div class="hdg hdg_5">Bing Search</div>
+                                        <div class="bdcpy bdcpy_sm">Find Information</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="servicesList-item">
+                                    <div class="servicesList-item-icon">
+                                        <img src="assets/media/images/icons/png/icon-services-babycentermama.png" alt="BayCenter and MAMA" />
+                                    </div>
+                                    <div class="servicesList-item-bd">
+                                        <div class="hdg hdg_5">BabyCenter &amp; MAMA</div>
+                                        <div class="bdcpy bdcpy_sm">Learn about pregnancy amd childcare</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="servicesList-item">
+                                    <div class="servicesList-item-icon">
+                                        <img src="assets/media/images/icons/png/icon-services-accuweather.png" alt="Accueweather" />
+                                    </div>
+                                    <div class="servicesList-item-bd">
+                                        <div class="hdg hdg_5">AccuWeather</div>
+                                        <div class="bdcpy bdcpy_sm">Get updated information about the weather</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="servicesList-item">
+                                    <div class="servicesList-item-icon">
+                                        <img src="assets/media/images/icons/png/icon-services-ask.png" alt="Ask.com" />
+                                    </div>
+                                    <div class="servicesList-item-bd">
+                                        <div class="hdg hdg_5">Ask.com</div>
+                                        <div class="bdcpy bdcpy_sm">Find Information</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Topic Block</div>
+    <div style="max-width: 640px; margin: 0 auto;">
+        <div class="container">
+            <div class="topicBlock">
+                <div class="topicBlock-hd topicBlock-hd_plus">
+                    <h2 class="hdg hdg_3">Article Title on Max Three Lines on Mobile Ipsum</h2>
+                </div>
+                <div class="topicBlock-subHd">
+                    <div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray">May 25, 2015</div>
+                </div>
+                <div class="topicBlock-bd">
+                    <p class="bdcpy">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse es suscipit euante lorepehicula nulla, suscipit dela  eu ante vel vehicula dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                </div>
+                <div class="topicBlock-cta"><a href="" class="btn">Read</a></div>
+                <div class="topicBlock-ft">
+                    <ul class="socialParade">
+                        <li><a class="socialParade-icon socialParade-icon_fb" href="">Facebook</a></li>
+                        <li><a class="socialParade-icon socialParade-icon_tw" href="">Twitter</a></li>
+                        <li><a class="socialParade-icon socialParade-icon_li" href="">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Content On Media - Bottom Right</div>
+    <div style="max-width: 640px; margin: 0 auto;">
+        <div class="container">
+            <div class="contentOnMedia">
+                <img class="contentOnMedia-media" src="//www.placehold.it/480x280" alt="" />
+                <a href="" class="contentOnMedia-link contentOnMedia-link_br">
+                    <span class="contentOnMedia-link-cta">Link on Image</span>
+                    <span class="circleBtn"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Content on Media - Centered</div>
+    <div style="max-width: 640px; margin: 0 auto;">
+        <div class="container">
+            <div class="contentOnMedia">
+                <img class="contentOnMedia-media" src="//www.placehold.it/480x280" alt="" />
+                <a href="https://vimeo.com/20949784" class="contentOnMedia-link contentOnMedia-link_ct js-videoModal">
+                    <span class="circleBtn circleBtn_play"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Animated Arrow Call-To-Action</div>
+    <div style="max-width: 640px; margin: 0 auto; text-align: center;">
+        <div style="margin: 0 auto;" class="arrowCta"></div>
+    </div>
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Circle Button - Default and Play</div>
+    <div style="max-width: 640px; margin: 0 auto; text-align: center;">
+        <a href="" class="circleBtn circleBtn_themeImpact"></a>
+        <a href="" class="circleBtn circleBtn_themeApproach"></a>
+        <a href="" class="circleBtn circleBtn_themeMission"></a>
+        <a href="" class="circleBtn circleBtn_play"></a>
+    </div>
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Button - Base, Themed and Facebook</div>
+    <div style="max-width: 640px; margin: 0 auto; text-align: center;">
+        <div class="vList">
+            <div><a href="" class="btn">Default Button</a></div>
+            <div><a href="" class="btn btn_themeImpact">Impact Button</a></div>
+            <div><a href="" class="btn btn_themeApproach">Approach Button</a></div>
+            <div><a href="" class="btn btn_themeMission">Mission Button</a></div>
+            <div><a href="" class="btn btn_facebook">Facebook Button</a></div>
+        </div>
+    </div>
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Link - Base and Themed</div>
+    <div style="max-width: 640px; margin: 0 auto; text-align: center;">
+        <div class="vList">
+            <div><a href="" class="link">Default Link</a></div>
+            <div><a href="" class="link link_themeImpact">Impact Link</a></div>
+            <div><a href="" class="link link_themeApproach">Approach Link</a></div>
+            <div><a href="" class="link link_themeMission">Mission Link</a></div>
+        </div>
+    </div>
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Typography - Headings and Body Copy Styles</div>
+    <div style="max-width: 640px; margin: 0 auto;">
+        <div class="container">
+            <div class="vList">
+                <div class="hdg hdg_1">Heading 1</div>
+                <div class="hdg hdg_2">Heading 2</div>
+                <div class="hdg hdg_3">Heading 3</div>
+                <div class="hdg hdg_4">Heading 4</div>
+                <div class="hdg hdg_5">Heading 5</div>
+                <div class="hdg hdg_6">Heading 6</div>
+                <div class="hdg hdg_7">Heading 7</div>
+                <div class="hdg hdg_subHdg mix-hdg_gray">Sub-heading 1</div>
+                <div>
+                    <div class="hdg hdg_5">Body Copy</div>
+                    <p class="bdcpy">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div>
+                    <div class="hdg hdg_5">Body Copy Small</div>
+                    <p class="bdcpy bdcpy_sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="PATTERN-hdg" style="margin-top: 80px;">Stacked Feature modules w/ theme: Approach</div>
+    <div style="max-width: 640px; margin: 0 auto;">
+        <div class="container">
+            <div class="theme-approach">
+                <div class="feature"> <!-- TEXT -->
+                    <div class="feature-hd">
+                        <div class="hdg hdg_3">Text Block</div>
+                    </div>
+                    <div class="feature-bd">
+                        <p class="bdcpy">
+                            Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Sus pendisse est nulla, suscipit eu ante vel, vehicula finibus nisi. Integer ut felis purus. Etiam vehicula, ipsum non venenatis feugiat, lorem tellus euismod mi, eu bibendum ligula.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature"> <!-- TEXT IMAGE -->
+                    <div class="feature-hd">
+                        <div class="hdg hdg_3">Text Block with Image</div>
+                    </div>
+                    <div class="feature-bd">
+                        <p class="bdcpy">
+                            Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Sus pendisse est nulla, suscipit eu ante vel, vehicula finibus nisi.
+                        </p>
+                    </div>
+                    <div class="feature-media">
+                        <img src="//www.placehold.it/480x280" alt="FPO">
+                    </div>
+                </div>
+
+                <div class="feature"> <!-- IMAGE TEXT QUOTE -->
+                    <div class="feature-hd">
+                        <div class="hdg hdg_3">Image, Text and Quote</div>
+                    </div>
+                    <div class="feature-media">
+                        <img src="//www.placehold.it/480x280" alt="FPO">
+                    </div>
+                    <div class="feature-bd">
+                        <p class="bdcpy">
+                            Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Sus pendisse est nulla, suscipit eu ante vel, vehicula finibus nisi.
+                        </p>
+                    </div>
+                    <blockquote class="quote">
+                        <div class="quote-statement">
+                            <p>This is a quote adipiscing elitasie sus pendisse est nulla, suscipit eante finibus nisipiscing lorem ipsum.</p>
+                        </div>
+                        <div class="quote-author">Jenny Johannesson</div>
+                    </blockquote>
+                </div>
+
+                <div class="feature"> <!-- VIDEO TEXT LINK -->
+                    <div class="feature-hd">
+                        <div class="hdg hdg_3">Video, Text and Link</div>
+                    </div>
+                    <div class="feature-media">
+                        <img src="//www.placehold.it/480x280" alt="FPO">
+                    </div>
+                    <div class="feature-bd">
+                        <p class="bdcpy">
+                            Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Sus pendisse est nulla, suscipit eu ante vel, vehicula finibus nisi.
+                        </p>
+                    </div>
+                    <div class="feature-cta">
+                        <a class="link" href="">Link</a>
+                    </div>
+                </div>
+
+                <div class="feature"> <!-- IMAGE w/CAPTION -->
+                    <div class="feature-hd">
+                        <div class="hdg hdg_3">Image with Caption</div>
+                    </div>
+                    <div class="feature-media">
+                        <img src="//www.placehold.it/480x280" alt="FPO">
+                        <div class="feature-media-caption">
+                           <p>Caption lorem ipsum dolor sit amet, consectetur adipiscing elit suspendisse. </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature"> <!-- VIDEO TEXT LIST -->
+                    <div class="feature-hd">
+                        <div class="hdg hdg_3">Video, Text and List</div>
+                    </div>
+                    <div class="feature-media">
+                        <div class="contentOnMedia">
+                            <img class="contentOnMedia-media" src="//www.placehold.it/480x280" alt="" />
+                            <div class="contentOnMedia-details">
+                                <div class="contentOnMedia-details-title">Video Title</div>
+                                <div class="contentOnMedia-details-duration">00:00</div>
+                            </div>
+                            <a href="https://vimeo.com/20949784" class="contentOnMedia-link contentOnMedia-link_ct js-videoModal">
+                                <span class="circleBtn circleBtn_play"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="feature-bd">
+                        <div class="hdg hdg_5">Sub or List Title:</div>
+                    </div>
+                    <div class="feature-bd">
+                        <div class="vList vList_bullets">
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit suspen pendisse est nulla.</li>
+                            <li>Lorem ipsum dolor sit amet.</li>
+                            <li>Lorem ipsum dolor sit amet.</li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{/content}}
+
+{{/extend}}

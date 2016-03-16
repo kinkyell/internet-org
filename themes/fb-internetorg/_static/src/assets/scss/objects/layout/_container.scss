@@ -1,0 +1,16 @@
+/* ---------------------------------------------------------------------
+Container
+
+wrapper for constraining content to a max width
+------------------------------------------------------------------------ */
+.container {
+    @include contain();
+}
+
+.container_wide {
+    @include contain(wide);
+}
+
+.container_xl {
+    @include contain(xl);
+}

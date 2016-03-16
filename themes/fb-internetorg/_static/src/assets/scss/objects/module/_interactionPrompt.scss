@@ -1,0 +1,19 @@
+/* ---------------------------------------------------------------------
+interactionPrompt
+
+positioning construct for interaction prompt animation
+------------------------------------------------------------------------ */
+.interactionPrompt {
+    display: none;
+}
+
+@include breakpoint(MD) {
+    .interactionPrompt {
+        display: block;
+        margin-left: -6px;
+        position: absolute;
+        bottom: 30px;
+        left: 25%;
+        z-index: 2;
+    }
+}

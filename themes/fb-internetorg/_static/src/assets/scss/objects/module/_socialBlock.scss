@@ -1,0 +1,32 @@
+/* ---------------------------------------------------------------------
+Social Block
+
+Unique area/layout for social media footer content
+------------------------------------------------------------------------ */
+.socialBlock {
+    position: relative;
+    display: table;
+    width: 100%;
+    background-color: $CLR_GRAY_LIGHTER;
+}
+
+.socialBlock-inner {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 45px 0 80px;
+}
+
+
+@include breakpoint(MD) {
+    .socialBlock {
+        min-height: 450px;
+        background: url(../media/images/fb-follow-bg.jpg) no-repeat;
+        background-position: 91% 100%;
+        background-size: cover;
+    }
+
+  	.socialBlock-inner {
+  		padding: 45px 0;
+	}
+}
+

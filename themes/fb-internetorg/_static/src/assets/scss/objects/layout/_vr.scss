@@ -1,0 +1,29 @@
+/* ---------------------------------------------------------------------
+ Vertical Rhythm
+
+ An abstract inter-modular object used to add space between elements
+------------------------------------------------------------------------ */
+
+.vr { 
+	margin-bottom: $SPACE_DEFAULT;
+}
+
+.vr_x1 {
+    margin-bottom: $SPACE_x1;
+}
+
+.vr_x2 {
+    margin-bottom: $SPACE_x2;
+}
+
+.vr_x3 {
+    margin-bottom: $SPACE_x3;
+}
+
+.vr_x4 {
+    margin-bottom: $SPACE_x4;
+}
+
+.vr_x5 {
+    margin-bottom: $SPACE_x5;
+}

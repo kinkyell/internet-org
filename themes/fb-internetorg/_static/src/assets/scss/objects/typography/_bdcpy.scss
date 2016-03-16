@@ -1,0 +1,96 @@
+/* ---------------------------------------------------------------------
+ Bdcpy
+
+ Body Copy styles
+------------------------------------------------------------------------ */
+.bdcpy {
+    @include font(SANS);
+    @include remify(font-size, 14px);
+    line-height: 1.714285714;
+    color: $CLR_GRAY;
+    // -webkit-font-smoothing: antialiased;
+    // font-smoothing: antialiased;
+}
+
+.bdcpy_lg {
+    @include remify(font-size, 21px);
+    line-height: 1.714285714;
+}
+
+.bdcpy_sm {
+    @include remify(font-size, 12px);
+    line-height: 1.666667;
+}
+
+.bdcpy_narrative {
+    font-size: 17px;
+    line-height: 1.411764706;
+}
+
+.mix-bdcpy_splash {
+    color: $CLR_WHITE;
+}
+
+.mix-bdcpy_light {
+    color: $CLR_GRAY_LIGHT;
+}
+
+.mix-bdcpy_white {
+    color: $CLR_WHITE;
+}
+
+// One-off mixin used in heading narrative-section
+.mix-bdcpy_mobileOnly {
+    color: $CLR_WHITE;
+}
+.mix-bdcpy_blackThenWhite {
+    color: $CLR_BLACK;
+}
+
+@include breakpoint(MD) {
+    .bdcpy {
+        @include remify(font-size, 18px);
+        line-height: 1.666666667;
+    }
+
+    .bdcpy_lg {
+        @include remify(font-size, 28px);
+    }
+
+    .bdcpy_sm {
+        @include remify(font-size, 16px);
+    }
+
+    .bdcpy_narrative {
+        font-size: 28px;
+        line-height: 1.5;
+    }
+
+    .mix-bdcpy_splash {
+        color: $CLR_GRAY;
+    }
+    .mix-bdcpy_blackThenWhite {
+        color: $CLR_WHITE;
+    }
+}
+
+
+
+@include breakpoint(LG) {
+    // .bdcpy {
+    //     font-size: 1.45vw;
+    // }
+
+    // .bdcpy_lg {
+    //     font-size: 2.1vw;
+    // }
+
+    // .bdcpy_sm {
+    //     font-size: 1.25vw;
+    // }
+
+    .bdcpy_narrative {
+        font-size: 2.2vw;
+    }
+
+}

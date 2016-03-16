@@ -1,0 +1,67 @@
+/* ---------------------------------------------------------------------
+Media
+
+Common media layout construct
+------------------------------------------------------------------------ */
+.media {
+    overflow: hidden; /* clear floated children */
+    display: block;
+}
+
+.media-bd {
+    overflow: hidden; /* trigger block formatting context */
+    padding: 2px; /* Adjust to prevent type being cut off at overflow */
+}
+
+// Using display: inline-block to leverage vertical-align: middle
+.media_inline {
+	font-size: 0;
+}
+
+.media_inline > * {
+	display: block;
+}
+
+.media-figure {
+	margin-top: 25px;
+}
+
+
+@include breakpoint(LG) {
+	.media-figure {
+		margin-top: 0;
+	}
+}
+
+@include breakpoint(LG) {
+	.media-figure {
+	    //float: left;
+	    margin: 15px 45px 25px 0
+	}
+
+	.media-bd {
+		padding-bottom: 15px;
+	}
+
+	.media-bd > .feature_tight{
+		padding: 0;
+	}
+
+	// .media_inline > * {
+	// 	display: inline-block;
+	// 	vertical-align: middle;
+	// 	float: none;
+	// 	padding: 0;
+	// 	margin: 0;
+	// }
+
+	// .media_inline > .media-figure {
+	// 	width: 52%;
+	// }
+
+	// .media_inline > .media-bd {
+	// 	width: 46%;
+	// 	padding-left: 2%;
+	// }
+
+}

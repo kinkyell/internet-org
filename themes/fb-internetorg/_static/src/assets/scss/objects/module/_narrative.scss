@@ -1,0 +1,171 @@
+/* ---------------------------------------------------------------------
+ Narrative
+------------------------------------------------------------------------ */
+.narrative {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.narrative-section {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.narrative-section-slides {
+    height: 100%;
+    overflow: hidden;
+}
+
+.narrative-section-slides_short {
+    height: 53%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.narrative-section-slides_short .narrative-section-slides-item:not(:nth-child(1)) {
+    background-position: 50% 0%;
+}
+
+.narrative-section-slides-item {
+    position: relative;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.narrative-section-slides-item-inner {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.narrative-section-bd {
+    width: 100%;
+    min-height: 48%;
+    padding: 70px 0 24px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #efede4;
+}
+
+.narrative-section-bd_low {
+    top: auto;
+    bottom: 0;
+    min-height: 38%;
+    padding: 0 0 50px; // added space for absolute footer
+    background-color: transparent;
+}
+
+.narrative-section-bd-link {
+    position: absolute;
+    bottom: -40px;
+    right: 0;
+}
+
+.narrative-section-bd-ft {
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+}
+
+@include breakpoint(MD) {
+    .narrative {
+        display: none;
+    }
+}
+
+@media (min-width: 600px) and (min-height: 376px) {
+
+    //NOTE: Contextual selection used to clean up extension, styles apply only for
+    //      large mobile viewports.
+    .narrative {
+        .hdg_1 {
+            @include remify(font-size, 43px);
+        }
+
+        .hdg_4 {
+            @include remify(font-size, 24px);
+        }
+
+        .hdg_heavy {
+            @include remify(font-size, 19px);
+        }
+
+        .bdcpy_narrative {
+            @include remify(font-size, 25px);
+        }
+
+        .link {
+            @include remify(font-size, 15px);
+        }
+    }
+}
+
+@media (max-height: 480px) {
+    .narrative .statementBlock_end .statementBlock-bd {
+        height: 56%;
+    }
+}
+
+@media (max-height: 387px) {
+
+
+    .narrative {
+        .statementBlock_end .statementBlock-bd {
+            padding: 20px 0;
+        }
+        .hdg_4 {
+            @include remify(font-size, 18px);
+        }
+
+        .link {
+            @include remify(font-size, 12px);
+        }
+    }
+}
+
+@media (max-height: 375px) {
+    .narrative .hdg_1 {
+        @include remify(font-size, 24px);
+    }
+
+	.narrative .hdg_heavy {
+        @include remify(font-size, 13px);
+    }
+
+	.narrative .bdcpy_narrative {
+        @include remify(font-size, 14px);
+    }
+
+    .narrative-section-bd {
+        min-height: 45%;
+        padding: 60px 0 0;
+    }
+
+    .narrative-section-bd_low {
+        min-height: 65%;
+    }
+
+    .narrative-section-slides-item-inner {
+        bottom: auto;
+        top: 160px;
+    }
+
+    .narrative .statementBlock_end .statementBlock-bd {
+        height: 65%;
+        padding: 18px 0 28px;
+    }
+}

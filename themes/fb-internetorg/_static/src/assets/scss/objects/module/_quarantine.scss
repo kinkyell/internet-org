@@ -1,0 +1,256 @@
+/* ---------------------------------------------------------------------
+ Quarantine
+
+ Container for wrapping user-entered-content (WYSIWYG)
+------------------------------------------------------------------------ */
+.quarantine {
+
+    > * + * {
+        margin-top: 19px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @include font(SERIF);
+        color: $CLR_BLACK;
+        @include remify(font-size, 20px);
+        line-height: 1.4565384;
+    }
+
+    > * + h1,
+    > * + h2,
+    > * + h3,
+    > * + h4,
+    > * + h5,
+    > * + h6 {
+        margin-top: 45px;
+    }
+
+    p {
+        @include font(SANS);
+        @include remify(font-size, 14px);
+        line-height: 1.714285714;
+        color: $CLR_GRAY;
+    }
+
+    a:not(.contentOnMedia-link),
+    a:not(.link) {
+        @include transition(all 0.3s ease-in-out); 
+        @include font(SANS_BLACK);
+        @include remify(font-size, 13px);
+        display: inline-block;
+        line-height: 1.222222;
+        text-decoration: none;
+        color: $CLR_ACCENT;
+        -webkit-font-smoothing: antialiased;
+        font-smoothing: antialiased;
+    }    
+
+    a.link {
+        /* Forcing to retain top margin as designed */
+        margin-top: 4px !important;
+    }
+
+    strong {
+        font-weight: bold;
+    }
+
+    ul:not(.carousel-handle) > * + * {
+        margin-top: 22px;
+    }
+
+    // THEME CLASSES by contectual selection
+    .theme-impact ul:not(.carousel-handle) li:before { color: $CLR_IMPACT; }
+    .theme-approach ul:not(.carousel-handle) li:before { color: $CLR_APPROACH; }
+    .theme-mission ul:not(.carousel-handle) li:before { color: $CLR_MISSION; }
+
+    ul:not(.carousel-handle) > li {
+        @include font(SANS);
+        line-height: 1.666667;
+        color: $CLR_GRAY;
+        position: relative;
+        padding-left: $SPACE_x3;
+    }
+
+    ul:not(.carousel-handle) > li:before {
+        content: '•';
+        position: absolute;
+        top: -8px;
+        left: 8px;
+        font-family: Arial, 'Arial', sans-serif;
+        @include remify(font-size, 28px);
+        color: $CLR_ACCENT;
+    }
+
+    blockquote {
+        border-left: 4px solid $CLR_ACCENT;
+        padding: $SPACE_x1 $SPACE_x2;
+    }
+
+    blockquote > *:first-child {
+        @include font(SERIF_ITALIC);
+        @include remify(font-size, 22px);
+        line-height: 1.363636;
+        color: $CLR_BLACK;
+        margin-bottom: $SPACE_x1;
+    }
+
+    blockquote > cite:before {
+        content: ' – ';
+    }
+
+    blockquote > cite {
+        @include font(SANS);
+        @include remify(font-size, 18px);
+        line-height: 1;
+        color: $CLR_GRAY;
+    }
+
+    img {
+        margin-top: 30px;
+    }
+
+    img,
+    figure > img {
+        width: 100%;
+        height: auto;
+    }
+
+    // caption { }
+
+    figcaption {
+        @include font(SERIF_ITALIC);
+        @include remify(font-size, 14px);
+        line-height: 1.3636363;
+        color: $CLR_GRAY;
+        background-color: $CLR_GRAY_LIGHT;
+        padding: $SPACE_x1;
+        margin-top: 0;
+    }
+}
+
+/* THEME CLASSES for li bullets by contectual selection */
+.theme-impact .quarantine ul:not(.carousel-handle) li:before { color: $CLR_IMPACT; }
+.theme-approach .quarantine ul:not(.carousel-handle) li:before { color: $CLR_APPROACH; }
+.theme-mission .quarantine ul:not(.carousel-handle) li:before { color: $CLR_MISSION; }
+
+/* THEME CLASSES for blockquote bullets by contectual selection */
+.theme-impact blockquote { border-left: 4px solid $CLR_IMPACT; }
+.theme-approach blockquote { border-left: 4px solid $CLR_APPROACH; }
+.theme-mission blockquote { border-left: 4px solid $CLR_MISSION; }
+
+/* THEME CLASSES for a bullets by contectual selection */
+/* IMPACT */
+.theme-impact a { color: $CLR_IMPACT; }
+.theme-impact a:after { border-color: $CLR_IMPACT; }
+.theme-impact a:before { background-color: $CLR_IMPACT; }
+.theme-impact a:hover { color: $CLR_IMPACT_ACTIVE; }
+.theme-impact a:hover:after { border-color: $CLR_IMPACT_ACTIVE; }
+.theme-impact a:hover:before { background-color: $CLR_IMPACT_ACTIVE; }
+/* APPROACH */
+.theme-approach a { color: $CLR_APPROACH; }
+.theme-approach a:after { border-color: $CLR_APPROACH; }
+.theme-approach a:before { background-color: $CLR_APPROACH; }
+.theme-approach a:hover { color: $CLR_APPROACH_ACTIVE; }
+.theme-approach a:hover:after { border-color: $CLR_APPROACH_ACTIVE; }
+.theme-approach a:hover:before { background-color: $CLR_APPROACH_ACTIVE; }
+/* MISSION */
+.theme-mission a { color: $CLR_MISSION; }
+.theme-mission a:after { border-color: $CLR_MISSION; }
+.theme-mission a:before { background-color: $CLR_MISSION; }
+.theme-mission a:hover { color: $CLR_MISSION_ACTIVE; }
+.theme-mission a:hover:after { border-color: $CLR_MISSION_ACTIVE; }
+.theme-mission a:hover:before { background-color: $CLR_MISSION_ACTIVE; }
+
+@include breakpoint(MD) {
+
+    .quarantine {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            @include remify(font-size, 32px);
+        }
+
+        > * + h1,
+        > * + h2,
+        > * + h3,
+        > * + h4,
+        > * + h5,
+        > * + h6 {
+            margin-top: 58px;
+        }
+
+        a:not(.contentOnMedia-link),
+        a:not(.link) {
+            @include remify(font-size, 18px);
+        }
+
+        p {
+            @include remify(font-size, 18px);
+            line-height: 1.666666667;
+        }
+
+        figcaption {
+            @include remify(font-size, 22px);
+            padding: $SPACE_x2;
+        }
+    }
+}
+
+/* Right to Left Language support */
+[dir="rtl"] {
+
+    .quarantine {
+
+        ul:not(.carousel-handle) > li  {
+            padding-left: 0;
+            padding-right: $SPACE_x3;
+        }
+
+        ul:not(.carousel-handle) > li:before {
+            left: auto;
+            right: 8px;
+        }
+
+        blockquote {
+            border-left: none;
+            border-right: 4px solid $CLR_ACCENT;
+        }
+
+    }
+
+    /* THEME CLASSES for blockquote bullets by contectual selection */
+    .theme-impact blockquote { border-right: 4px solid $CLR_IMPACT; }
+    .theme-approach blockquote { border-right: 4px solid $CLR_APPROACH; }
+    .theme-mission blockquote { border-right: 4px solid $CLR_MISSION; }
+
+}
+
+
+[lang="ar"], 
+[lang="ur"] {
+    .quarantine {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            @include font(SERIF_MED);
+        }
+    }
+}
+
+
+
+
+
+

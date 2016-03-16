@@ -1,0 +1,66 @@
+/* ---------------------------------------------------------------------
+ Powered by Wordpress VIP language
+
+ Stlyes for the Powered by Wordpress VIP legal line
+------------------------------------------------------------------------ */
+.pwdByVip {
+    width: 100%;
+    display: inline-block;
+  	text-align: center;
+}
+
+.pwdByVip_inline {
+    padding: $SPACE_x2 0;
+}
+
+.pwdByVip-txt {
+    @include remify(font-size, 13px);
+    @include font(SANS);
+    line-height: 1.25;
+    text-align: center;
+    color: #9f9e9b;
+}
+
+.pwdByVip-txt > a,
+.pwdByVip-txt > a:hover {
+    color: #9f9e9b;
+}
+
+.pwdByVip-txt_left {
+    text-align: left;
+}
+
+.pwdByVip-txt_contact {
+	position: absolute;
+	bottom: 28px;
+	display: block;
+	width: 82.5%;
+  	left: 9%;
+}
+
+.pwdByVip-txt_impact {
+	padding-top: 25px;
+}
+
+.pwdByVip-txt_front {
+  	position: absolute;
+  	bottom: 28px;
+  	width: 100%;
+  	font-size: 0.65rem;
+}
+
+@include breakpoint(MD) {
+	.pwdByVip-txt_content {
+		bottom: 45px;
+	}
+
+  	.pwdByVip-txt_front {
+		bottom: 45px;
+	  	font-size: 13px;
+  	}
+
+	.pwdByVip-txt_contact {
+	  	width: 100%;
+	  	left: 0;
+	}
+}
