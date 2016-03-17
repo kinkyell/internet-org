@@ -59,7 +59,7 @@ wpcom_vip_load_plugin( 'fieldmanager', 'plugins' );
 wpcom_vip_load_plugin( 'internetorg-custom-fields', 'plugins' );
 
 /** Link filter, which corrects anchors for the current language. */
-wpcom_vip_load_plugin( 'internetorg-link-filter', 'plugins' );
+//wpcom_vip_load_plugin( 'internetorg-link-filter', 'plugins' );
 
 /** Babble */
 // require IO_DIR . '/inc/babble-fieldmanager-context.php';
