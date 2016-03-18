@@ -11,7 +11,7 @@
  * has a lot of errors. I'm leaving it in at the minute for purposes
  * of allowing Paul to get a copy running.
  */
-error_reporting( 0 );
+//error_reporting( 0 );
 
 // WP VIP Helper Plugin -- gives us access to the VIP only functions.
 define( 'IO_DIR', __DIR__ );
@@ -62,7 +62,7 @@ wpcom_vip_load_plugin( 'internetorg-custom-fields', 'plugins' );
 //wpcom_vip_load_plugin( 'internetorg-link-filter', 'plugins' );
 
 /** Babble */
-// require IO_DIR . '/inc/babble-fieldmanager-context.php';
+require IO_DIR . '/inc/babble-fieldmanager-context.php';
 
 /** Disable emoji from loading */
 function disable_wp_emojicons() {
@@ -77,6 +77,14 @@ function disable_wp_emojicons() {
 	add_filter( 'tiny_mce_plugins', 'disable_emojicons_tinymce' );
 }
 add_action( 'init', 'disable_wp_emojicons' );
+
+function disable_emojicons_tinymce( $plugins ) {
+	if ( is_array( $plugins ) ) {
+		return array_diff( $plugins, array( 'wpemoji' ) );
+	} else {
+		return array();
+	}
+}
 
 if ( ! function_exists( 'internetorg_setup' ) ) :
 	/**
@@ -1655,7 +1663,8 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 		)
 	);
 
-	$source = absint( $attr['source'] );
+	$source 	   = absint( $attr['source'] );
+	$link_image_id = '';
 
 	if ( ! empty( $attr['link_src'] ) ) {
 		$link_type = $attr['link_src'];
@@ -2424,9 +2433,6 @@ function vip_fb_legacy_redirects() {
 		return;
 	}
 
-	// Get language prefixes
-	$langCode = 'en';
-	$urlPrefix = $langCode->url_prefix;
 	$url = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
 
 	// Define static mapping of old routes
@@ -2452,11 +2458,10 @@ function vip_fb_legacy_redirects() {
 	}
 
 	// Check for any 404 URL that doesn't start with a potential lang code
-	if ( !preg_match( '/^\/[a-z]{2}(?:(?:-|_)[A-Z]{2})?\/[a-z0-9\-\/]+(?:[a-z0-9\-\/]+)*$/', $url ) ) {
-		wp_safe_redirect( "/$urlPrefix" . "$url/", 301 );
-		exit;
-	}
-
+	// if ( !preg_match( '/^\/[a-z]{2}(?:(?:-|_)[A-Z]{2})?\/[a-z0-9\-\/]+(?:[a-z0-9\-\/]+)*$/', $url ) ) {
+	// 	wp_safe_redirect( "$url/", 301 );
+	// 	exit;
+	// }
 	return;
 }
 
@@ -2483,23 +2488,24 @@ add_filter( 'jetpack_open_graph_base_tags', function( $og_tags ) {
 
 	global $post;
 
-	$fields = get_post_meta( $post->ID, 'internetorg_custom_og', true );
+	$fields = false;
+
+	if ( isset( $post->ID ) ) {
+		$fields = get_post_meta( $post->ID, 'internetorg_custom_og', true );
+	}
 
 	if ( $fields ) {
-		$title = $fields['iorg_title'];
-		$description = $fields['iorg_description'];
-		$image = $fields['iorg_image'];
 
-		if ( $title ) {
-			$og_tags['og:title'] = $title;
+		if ( isset( $fields['iorg_title'] ) ) {
+			$og_tags['og:title'] = $fields['iorg_title'];
 		}
 
-		if ( $description ) {
-			$og_tags['og:description'] = $description;
+		if ( isset( $fields['iorg_description'] ) ) {
+			$og_tags['og:description'] = $fields['iorg_description'];
 		}
 
-		if ( $image ) {
-			$og_tags['og:image'] = $image;
+		if ( isset( $fields['iorg_image'] ) ) {
+			$og_tags['og:image'] = $fields['iorg_image'];
 		}
 
 	}

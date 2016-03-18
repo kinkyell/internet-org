@@ -105,7 +105,7 @@ if ( class_exists( 'Babble' ) ) {
 	 * @type String
 	 * @final
 	 */
-	SETTINGS.SEARCH_PATH = '<?php echo esc_html( $url_prefix . '/io-ajax-search/' ); ?>';
+	SETTINGS.SEARCH_PATH = '<?php echo esc_html( 'io-ajax-search/' ); ?>';
 
 	/**
 	 * URL prefix for current language
@@ -141,7 +141,7 @@ if ( class_exists( 'Babble' ) ) {
 	 * @final
 	 */
 	SETTINGS.ROUTES = {
-		'pressResults': '<?php echo esc_html( $url_prefix . '/io-ajax-posts/press/' ); ?>',
+		'pressResults': '<?php echo esc_html( 'io-ajax-posts/press/' ); ?>',
 		'searchResults': window.SETTINGS.SEARCH_PATH,
 		'404': 'not-found/index.html'
 	};

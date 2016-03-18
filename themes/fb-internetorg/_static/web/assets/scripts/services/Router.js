@@ -225,7 +225,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     Router.prototype._onSearch = function(event) {
         var prevStates = this._currentStates.slice(0);
-        var prefix = '/' + appConfig.langPath + '/search/';
+        var prefix = '/search/';
 
         this._currentStates.push({
             type: 'search',

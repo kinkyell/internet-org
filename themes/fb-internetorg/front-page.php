@@ -138,7 +138,11 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 
 																			$slug = basename( untrailingslashit( $cta['link'] ) );
 																			$temp = wpcom_vip_get_page_by_path( $slug, OBJECT, 'io_story' );
-																			$img = esc_url( internetorg_get_post_thumbnail( $temp->ID, 'panel-image' ) );
+
+																			if ( isset( $temp->ID ) ) {
+																				$img = esc_url( internetorg_get_post_thumbnail( $temp->ID, 'panel-image' ) );
+																			}
+
 																			$type = 'panel';
 
 																			$mobile_image = esc_url( ( ! empty( $cf_content_section['call-to-action'][0] )
