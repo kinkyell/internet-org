@@ -2518,7 +2518,7 @@ add_filter( 'jetpack_open_graph_base_tags', function( $og_tags ) {
 	* Get the Proper Media Embed for the current article
 	*/
 
-function internetorg_media_embed ( $ret ) {
+function internetorg_media_embed ( $ret = false ) {
 
 	global $post;
 
