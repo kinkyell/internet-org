@@ -66,14 +66,14 @@ class Internetorg_Main_Nav_Walker extends Walker_Nav_Menu {
 		 *
 		 * @var array $page_post_types
 		 */
-		$page_post_types = internetorg_get_shadow_post_types_for_ajax( 'page' );
+		$page_post_types = array( 'page', 'custom' );
 
 		if ( in_array( $item->object, $page_post_types ) ) {
 
 			$attributes .= ' data-image="'
 			               . esc_url(
 				               internetorg_get_post_thumbnail(
-					               $item->ID,
+					               $item->object_id,
 					               'panel-image'
 				               )
 			               )
