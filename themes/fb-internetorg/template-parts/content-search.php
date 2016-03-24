@@ -22,13 +22,6 @@ $io_story_shadow = internetorg_get_shadow_post_types_for_ajax( 'io_story' );
 $post_shadow = internetorg_get_shadow_post_types_for_ajax( 'post' );
 
 /**
- * Whether this is paneled or titled content to link to.
- *
- * @var string $type
- */
-$type = ( in_array( get_post_type( get_the_ID() ), $io_story_shadow ) ) ? 'panel' : 'titled';
-
-/**
  * Featured image URL for link data-image attribute.
  *
  * @var string $img
@@ -36,6 +29,22 @@ $type = ( in_array( get_post_type( get_the_ID() ), $io_story_shadow ) ) ? 'panel
 $img = ( internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'panel-image' ) )
 	?  internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'panel-image' )
 	: '';
+
+/**
+ * If the post story is io_story but does not have an image, the current single will show
+ * standard home image so we will have to do the same here.
+ */
+if ( empty( $img ) && get_post_type( get_the_ID() ) == 'io_story' ) {
+	$img = get_stylesheet_directory_uri() . '/_static/web/assets/media/uploads/home.jpg';
+}
+
+/**
+ * If a fearured image is found then we need to override type to panel
+ */
+$type = 'titled';
+if ( $img ) {
+	$type = 'panel';
+}
 
 /**
  * Mobile featured image URL for link data-mobile-image attribute.
@@ -50,10 +59,11 @@ $mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type( g
  * @var string $theme
  */
 $theme = ( in_array( get_post_type( get_the_ID() ), $io_story_shadow ) ) ? 'approach' : '';
-
+//$type = 'panel';
 ?>
 
 <div class="resultsList-list-item">
+<!-- <?php print_r( $io_story_shadow ); ?> -->
 	<div class="feature feature_tight">
 		<div class="feature-hd">
 			<h2 class="hdg hdg_4">

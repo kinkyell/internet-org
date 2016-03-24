@@ -1066,6 +1066,14 @@ function internetorg_do_ajax_search() {
 			: '';
 
 		/**
+		 * If the post story is io_story but does not have an image, the current single will show
+		 * standard home image so we will have to do the same here.
+		 */
+		if ( empty( $panel_image ) && get_post_type( get_the_ID() ) == 'io_story' ) {
+			$panel_image = get_stylesheet_directory_uri() . '/_static/web/assets/media/uploads/home.jpg';
+		}
+
+		/**
 		 * URL of the inline image sized version of the "mobile featured image".
 		 *
 		 * @var string $post_thumbnail
@@ -1080,9 +1088,6 @@ function internetorg_do_ajax_search() {
 		);
 
 		$post_type = get_post_type();
-		if ( function_exists( 'bbl_get_base_post_type' ) ) {
-			$post_type = bbl_get_base_post_type( $post_type );
-		}
 
 		$data['posts'][] = array(
 			'ID'             => get_the_ID(),

@@ -6,7 +6,10 @@
                {{#if isStory}}
                    data-type="panel"
                    data-theme="approach"
-               {{else}}
+               {{else if image}}
+                    data-type="panel"
+                    data-theme="approach"
+               {{ else }}
                     data-type="titled"
                {{/if}}
                data-title="{{title}}"
@@ -27,7 +30,10 @@
                {{#if isStory}}
                    data-type="panel"
                    data-theme="approach"
-               {{else}}
+                {{else if image}}
+                    data-type="panel"
+                    data-theme="approach"
+               {{ else }}
                     data-type="titled"
                {{/if}}
                data-title="{{title}}"

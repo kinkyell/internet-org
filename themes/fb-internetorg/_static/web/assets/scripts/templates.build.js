@@ -112,13 +112,19 @@ this["JST"]["search-input-panel"] = Handlebars.template({"compiler":[6,">= 2.0.0
 this["JST"]["search-result"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
     return "                   data-type=\"panel\"\n                   data-theme=\"approach\"\n";
 },"3":function(depth0,helpers,partials,data) {
-    return "                    data-type=\"titled\"\n";
-},"5":function(depth0,helpers,partials,data) {
+    var stack1;
+
+  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.image : depth0),{"name":"if","hash":{},"fn":this.program(4, data, 0),"inverse":this.program(6, data, 0),"data":data})) != null ? stack1 : "");
+},"4":function(depth0,helpers,partials,data) {
+    return "                    data-type=\"panel\"\n                    data-theme=\"approach\"\n";
+},"6":function(depth0,helpers,partials,data) {
+    return "                    data-type=\"titled\"\n               ";
+},"8":function(depth0,helpers,partials,data) {
     return "                    data-social=\"true\"\n                ";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 
-  return "<div class=\"resultsList-list-item\">\n    <div class=\"feature feature_tight\">\n        <div class=\"feature-hd\">\n            <a href=\""
+  return "<div class=\"resultsList-list-item\">\n    <div class=\"feature feature_tight\">\n        <div class=\"feature-hd yoo\">\n            <a href=\""
     + alias3(((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"url","hash":{},"data":data}) : helper)))
     + "\"\n               class=\"mix-link_small js-stateLink\"\n"
     + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.isStory : depth0),{"name":"if","hash":{},"fn":this.program(1, data, 0),"inverse":this.program(3, data, 0),"data":data})) != null ? stack1 : "")
@@ -131,7 +137,7 @@ this["JST"]["search-result"] = Handlebars.template({"1":function(depth0,helpers,
     + "\"\n               data-mobile-image=\""
     + alias3(((helper = (helper = helpers.mobileImage || (depth0 != null ? depth0.mobileImage : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"mobileImage","hash":{},"data":data}) : helper)))
     + "\"\n"
-    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.isPost : depth0),{"name":"if","hash":{},"fn":this.program(5, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.isPost : depth0),{"name":"if","hash":{},"fn":this.program(8, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
     + "><h2 class=\"hdg hdg_4\">"
     + ((stack1 = ((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"title","hash":{},"data":data}) : helper))) != null ? stack1 : "")
     + "</h2></a>\n        </div>\n        "
@@ -151,7 +157,7 @@ this["JST"]["search-result"] = Handlebars.template({"1":function(depth0,helpers,
     + "\"\n               data-mobile-image=\""
     + alias3(((helper = (helper = helpers.mobileImage || (depth0 != null ? depth0.mobileImage : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"mobileImage","hash":{},"data":data}) : helper)))
     + "\"\n"
-    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.isPost : depth0),{"name":"if","hash":{},"fn":this.program(5, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.isPost : depth0),{"name":"if","hash":{},"fn":this.program(8, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
     + ">"
     + alias3(((helper = (helper = helpers.readMoreText || (depth0 != null ? depth0.readMoreText : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"readMoreText","hash":{},"data":data}) : helper)))
     + "</a>\n        </div>\n    </div>\n</div>\n";
