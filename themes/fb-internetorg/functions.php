@@ -2625,3 +2625,44 @@ function internetorg_update_preview_link( $link ) {
 
 add_filter( 'preview_page_link', 'internetorg_update_preview_link');
 add_filter( 'preview_post_link', 'internetorg_update_preview_link');
+
+
+/**
+ * Return current lanuage in the form of `en` or `fr` using
+ * the path of the multisite. If facebook_sdk is set to true
+ * we provide the correct locale tag for facebook sdk.
+ */
+function internetorg_get_current_language( $facebook_sdk = false ) {
+	$language     	  = 'en';
+	$current_blog 	  = get_blog_details();
+	$facebook_locales = array(
+		'en' => 'en_US',
+		'ar' => 'ar_AR',
+		'bn' => 'bn_IN',
+		'es' => 'es_LA',
+		'fr' => 'fr_FR',
+		'hi' => 'hi_IN',
+		'id' => 'id_ID',
+		'ja' => 'ja_JP',
+		'pa' => 'pa_IN',
+		'pt' => 'pt_PT',
+		'ru' => 'ru_RU',
+		'ur' => 'ur_PK'
+	);
+
+	if ( isset( $current_blog->path ) ) {
+		$language = trim( $current_blog->path, '/' );
+	}
+
+	if ( $facebook_sdk ) {
+		if ( isset( $facebook_locales[$language] ) ) {
+			return $facebook_locales[$language];
+		}
+		return 'en_US';
+	}
+
+	return $language;
+}
+
+
+

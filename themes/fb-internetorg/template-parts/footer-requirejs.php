@@ -20,12 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @var string $url_prefix
  */
-$url_prefix   = 'en';
-$current_blog = get_blog_details();
-
-if ( isset( $current_blog->path ) ) {
-	$url_prefix = trim( $current_blog->path, '/' );
-}
+$url_prefix = internetorg_get_current_language();
 ?>
 
 <script>
