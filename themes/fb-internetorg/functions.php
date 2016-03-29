@@ -101,7 +101,7 @@ if ( ! function_exists( 'internetorg_setup' ) ) :
 		 * If you're building a theme based on Internet.org, use a find and replace
 		 * to change 'internetorg' to the name of your theme in all the template files.
 		 */
-		load_theme_textdomain( 'internetorg', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'internetorg', WP_CONTENT_DIR . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
