@@ -2387,6 +2387,11 @@ function internetorg_force_page_template() {
 function internetorg_preview_post_setup() {
 	global $posts;
 	parse_str( $_SERVER[ 'QUERY_STRING' ] );
+
+	if ( !isset( $p ) ) {
+		$p = null;
+	}
+
 	$posts = array( get_post( $p ) );
 }
 
