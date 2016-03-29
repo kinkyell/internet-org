@@ -1705,7 +1705,7 @@ function internetorg_custom_link_shortcode( $attr = array() ) {
 		$data_theme = 'Approach';
 	}
 
-	$url = str_replace( home_url(), '', get_permalink( $source ) );
+	$url = get_permalink( $source );
 
 	/**
 	 * The return markup if it's an internal Link.
