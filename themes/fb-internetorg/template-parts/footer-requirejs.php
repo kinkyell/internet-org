@@ -18,16 +18,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * The Current Language URL Prefix.
  *
- * If Babble is not present, will be an empty string.
- *
  * @var string $url_prefix
  */
-$url_prefix = 'en';
+$url_prefix   = 'en';
+$current_blog = get_blog_details();
 
-if ( class_exists( 'Babble' ) ) {
-	$url_prefix = bbl_get_prefix_from_lang_code( bbl_get_current_content_lang_code() );
+if ( isset( $current_blog->path ) ) {
+	$url_prefix = trim( $current_blog->path, '/' );
 }
-
 ?>
 
 <script>
@@ -105,7 +103,7 @@ if ( class_exists( 'Babble' ) ) {
 	 * @type String
 	 * @final
 	 */
-	SETTINGS.SEARCH_PATH = '<?php echo esc_html( 'io-ajax-search/' ); ?>';
+	SETTINGS.SEARCH_PATH = '<?php echo esc_html( $url_prefix . '/io-ajax-search/' ); ?>';
 
 	/**
 	 * URL prefix for current language

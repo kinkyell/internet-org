@@ -124,7 +124,7 @@ this["JST"]["search-result"] = Handlebars.template({"1":function(depth0,helpers,
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 
-  return "<div class=\"resultsList-list-item\">\n    <div class=\"feature feature_tight\">\n        <div class=\"feature-hd yoo\">\n            <a href=\""
+  return "<div class=\"resultsList-list-item\">\n    <div class=\"feature feature_tight\">\n        <div class=\"feature-hd\">\n            <a href=\""
     + alias3(((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"url","hash":{},"data":data}) : helper)))
     + "\"\n               class=\"mix-link_small js-stateLink\"\n"
     + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.isStory : depth0),{"name":"if","hash":{},"fn":this.program(1, data, 0),"inverse":this.program(3, data, 0),"data":data})) != null ? stack1 : "")
