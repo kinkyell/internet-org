@@ -134,7 +134,7 @@ $url_prefix = internetorg_get_current_language();
 	 * @final
 	 */
 	SETTINGS.ROUTES = {
-		'pressResults': '<?php echo esc_html( 'io-ajax-posts/press/' ); ?>',
+		'pressResults': '<?php echo esc_html( $url_prefix . '/io-ajax-posts/press/' ); ?>',
 		'searchResults': window.SETTINGS.SEARCH_PATH,
 		'404': 'not-found/index.html'
 	};
