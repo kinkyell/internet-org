@@ -13,14 +13,14 @@
     <div class="container">
         <div class="resultsList">
             <div class="resultsList-hd">
-                <div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray"><span class="js-searchState-num"></span> Results Found</div>
+                <div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray"><span class="js-searchState-num">{{resultsFoundText}}</span></div>
             </div>
             <div class="resultsList-list js-searchState-results" id="search-results">
             </div>
             <div class="resultsList-ft js-searchState-ft" style="display: none;">
                 <div class="resultsList-list resultsList-list_spread">
                     <div class="resultsList-list-item">
-                        <button type="button" class="btn js-ShowMoreView" data-src="search" data-target="search-results" data-args="{{searchText}}">Show More</button>
+                        <button type="button" class="btn js-ShowMoreView" data-src="search" data-target="search-results" data-args="{{searchText}}">{{showMoreText}}</button>
                     </div>
                 </div>
             </div>

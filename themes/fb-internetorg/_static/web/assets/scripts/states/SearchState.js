@@ -59,7 +59,9 @@ define(function(require, exports, module) { // jshint ignore:line
         var transitions = this.getAnimationDirections(event);
         var tmplArgs = {
             searchText: this._options.searchText || this._options['search-text'],
-            copyright: window.SETTINGS.COPYRIGHT_STRING
+            copyright: window.SETTINGS.COPYRIGHT_STRING,
+            resultsFoundText: window.SETTINGS.RESULTS_FOUND_TEXT,
+            showMoreText: window.SETTINGS.SHOW_MORE_TEXT
         };
 
         if (event.silent) {
@@ -97,7 +99,8 @@ define(function(require, exports, module) { // jshint ignore:line
             return;
         }
         $panel.find('.js-searchState-results').prepend(res.results);
-        $panel.find('.js-searchState-num').html(res.totalResults);
+        var $num = $panel.find('.js-searchState-num').html().replace("%d", res.totalResults);
+        $panel.find('.js-searchState-num').html($num);
         $panel.find('.js-searchState-ft').toggle(res.hasNextPage);
         this.refreshComponents($panel);
 

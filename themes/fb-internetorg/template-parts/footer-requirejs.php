@@ -127,6 +127,24 @@ $url_prefix = internetorg_get_current_language();
 	SETTINGS.READ_MORE_TEXT = '<?php esc_html_e( 'Read More', 'internetorg' ); ?>';
 
 	/**
+	 * Show more text translation
+	 *
+	 * @property SHOW_MORE_TEXT
+	 * @type String
+	 * @final
+	 */
+	SETTINGS.SHOW_MORE_TEXT = '<?php esc_html_e( 'Show More', 'internetorg' ); ?>';
+
+	/**
+	 * Results Found text translation
+	 *
+	 * @property RESULTS_FOUND_TEXT
+	 * @type String
+	 * @final
+	 */
+	SETTINGS.RESULTS_FOUND_TEXT = '<?php esc_html_e( '%d Results Found', 'internetorg' ); ?>';
+
+	/**
 	 * routes for static and WP endpoints
 	 *
 	 * @property ROUTES
