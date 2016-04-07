@@ -46,6 +46,26 @@ if ( ! function_exists( 'internetorg_posted_on_date' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'internetorg_link_class' ) ) :
+	/**
+	 * Append special classes to a link depending on the post.
+	 *
+	 * @return void
+	 */
+	function internetorg_link_class() {
+		$extra_classes = '';
+
+		$show_english_content_dialog = get_post_meta( get_the_ID(), 'show-english-content-dialog', true );
+
+		if ($show_english_content_dialog) {
+			$extra_classes .= ' js-englishContentDialog';
+		}
+
+		return trim($extra_classes);
+	}
+
+endif;
+
 if ( ! function_exists( 'internetorg_entry_footer' ) ) :
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
