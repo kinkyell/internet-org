@@ -39,9 +39,7 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 		 * page upon page creation, we can, however, limit on display with a custom page template for those pages
 		 * on which we wish to display the content.
 		 */
-		//add_action( 'fm_post_page', 'internetorg_create_fields_internetorg_page_home' );
 		add_action( 'edit_form_after_title', 'internetorg_page_home_after_title_fields' );
-		//add_action( 'fm_post_page', 'internetorg_create_after_title_fields_internetorg_page_home' );
 
 		return;
 	}
