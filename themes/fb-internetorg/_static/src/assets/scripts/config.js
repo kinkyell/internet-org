@@ -57,7 +57,10 @@ require.config({
         'nerdery-function-bind': '../vendor/nerdery-function-bind/index',
         'skidding--dragdealer': '../vendor/skidding--dragdealer/src/dragdealer',
         swipebox: '../vendor/swipebox/src/js/jquery.swipebox',
-        utils: '../vendor/intl-tel-input/lib/libphonenumber/build/utils'
+        utils: '../vendor/intl-tel-input/lib/libphonenumber/build/utils',
+        vex: '../vendor/vex/js/vex',
+        'vex-dialog': '../vendor/vex/js/vex.dialog',
+        cookies: '../vendor/js-cookie/src/js.cookie'
     },
     map: {
         '*': {

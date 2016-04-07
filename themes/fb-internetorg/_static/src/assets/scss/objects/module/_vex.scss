@@ -1,0 +1,72 @@
+@import "../../../vendor/vex/sass/vex";
+@import "vex-theme-plain";
+
+.vex.dialog-confirm-english {
+    left: 0%;
+
+    .vex-content {
+        width: 82.5%;
+        padding: 28px;
+        max-width: 450px;
+    }
+
+    @media (min-width: 769px) {
+        left: 50%;
+
+        .vex-content {
+            width: 75%;
+        }
+    }
+
+    .vex-dialog-message {
+        margin: 4px 0 28px 0;
+    }
+
+    .btn-confirm {
+        border: solid 2px $CLR_ACCENT;
+        @include transition(
+                    background-color 0.2s ease-in-out,
+                    border-color 0.2s ease-in-out
+                 );
+
+        &:hover,
+        &:active {
+            border-color: $CLR_ACCENT_ACTIVE;
+        }
+    }
+    .btn-cancel {
+        background: $CLR_WHITE;
+        border: solid 2px $CLR_ACCENT;
+        color: $CLR_ACCENT;
+
+        @include transition(
+                    border-color 0.2s ease-in-out,
+                    color 0.2s ease-in-out
+                 );
+
+        &:hover,
+        &:active {
+            border-color: $CLR_ACCENT_ACTIVE;
+            color: $CLR_ACCENT_ACTIVE;
+        }
+    }
+
+
+    .vex-dialog-button {
+        padding: 14px;
+    }
+
+    .vex-dialog-buttons {
+        .vex-dialog-button.btn-cancel {
+            width: 49%;
+            float: left;
+            margin: 0;
+        }
+        .vex-dialog-button.btn-confirm {
+            width: 49%;
+            float: right;
+            margin: 0;
+        }
+    }
+}
+

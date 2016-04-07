@@ -10,6 +10,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var templates = require('templates');
 
     var CarouselView = require('views/CarouselView');
+    var EnglishContentDialogView = require('views/EnglishContentDialogView');
     var SelectView = require('views/SelectView');
     var ShowMoreView = require('views/ShowMoreView');
     var ImagePlaceholderView = require('views/ImagePlaceholderView');
@@ -49,6 +50,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     TitledState.prototype.COMPONENTS = {
         '.js-carouselView': CarouselView,
+        '.js-englishContentDialog': EnglishContentDialogView,
         '.js-select': SelectView,
         '.js-ShowMoreView': ShowMoreView,
         '.js-videoModal': VideoModalView,

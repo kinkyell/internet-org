@@ -137,6 +137,40 @@ function internetorg_language_attributes( $language_attributes = '' ) {
 
 add_filter( 'language_attributes', 'internetorg_language_attributes' );
 
+
+/**
+ * Add a checkbox allowing editors to specify a post is in English and to display
+ * a notice to the user.
+ */
+function internetorg_english_content_dialog_metabox() {
+
+	// Bail early as this should go to admin only.
+	if ( ! is_admin() ) {
+		return;
+	}
+
+	new Babble_Translatable_Fieldmanager(
+		'Fieldmanager_Checkbox',
+		array(
+			'name'  => 'show-english-content-dialog',
+			'label' => __( "Show 'content is in English' dialog", 'internetorg' ),
+		),
+		array(
+			'add_meta_box' => array(
+				'Content in English Dialog',
+				array(
+					'post',
+					'page'
+				),
+				'side',
+				'default'
+			),
+		)
+	);
+}
+
+add_action( 'init', 'internetorg_english_content_dialog_metabox' );
+
 /**
  * Add Babble/Fieldmanager metaboxes to io_video post_type.
  */

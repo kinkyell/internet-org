@@ -21,7 +21,7 @@
 
 			<div class="feature feature_tight">
 				<div class="feature-hd">
-					<a href="<?php the_permalink(); ?>">
+					<a href="<?php the_permalink(); ?>" class="<?php echo esc_attr( internetorg_link_class() ); ?>"> <!--  class="js-englishContentDialog" -->
 					<h3 class="hdg hdg_4">
 						<?php the_title(); ?>
 					</h3>
@@ -40,8 +40,8 @@
 						<?php echo wp_kses_post( get_the_excerpt() ); ?>
 					</p>
 				</div>
-				<div class="feature-cta">
-					<a class="link js-stateLink" href="<?php echo esc_url( get_the_permalink() ); ?>" data-title="<?php echo esc_attr( get_the_title() ); ?>" data-social="true" data-date="<?php echo esc_attr( get_the_date() ); ?>" data-type="titled">
+				<div class="feature-cta"> <!-- REMOVED: js-stateLink  -->
+					<a class="link <?php echo esc_attr( internetorg_link_class() ); ?>" href="<?php echo esc_url( get_the_permalink() ); ?>" data-title="<?php echo esc_attr( get_the_title() ); ?>" data-social="true" data-date="<?php echo esc_attr( get_the_date() ); ?>" data-type="titled">
 						<?php esc_html_e( 'Read More', 'internetorg' ); ?>
 					</a>
 				</div>
