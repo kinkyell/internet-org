@@ -25,7 +25,7 @@ define( 'IO_DIR', __DIR__ );
 // Load the Shortcake UI VIP Plugin.
 // wpcom_vip_load_plugin( 'shortcode-ui' );
 
-wpcom_vip_load_plugin( 'shortcode-ui', 'plugins', true );
+wpcom_vip_load_plugin( 'shortcode-ui' );
 
 // Load the Multiple Post Thumbnails VIP Plugin.
 wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
@@ -52,11 +52,11 @@ wpcom_vip_load_plugin( 'cache-nav-menu' );
 require IO_DIR . '/inc/internetorg-filters.php';
 
 /** Custom Post Types. */
-wpcom_vip_load_plugin( 'internetorg-custom-posttypes', 'plugins' );
+wpcom_vip_load_plugin( 'internetorg-custom-posttypes' );
 
 /** Fieldmanager and Fields. */
-wpcom_vip_load_plugin( 'fieldmanager', 'plugins' );
-wpcom_vip_load_plugin( 'internetorg-custom-fields', 'plugins' );
+wpcom_vip_load_plugin( 'fieldmanager' );
+wpcom_vip_load_plugin( 'internetorg-custom-fields' );
 
 /** Link filter, which corrects anchors for the current language. */
 //wpcom_vip_load_plugin( 'internetorg-link-filter', 'plugins' );
