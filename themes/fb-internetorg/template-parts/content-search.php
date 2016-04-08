@@ -59,11 +59,9 @@ $mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type( g
  * @var string $theme
  */
 $theme = ( in_array( get_post_type( get_the_ID() ), $io_story_shadow ) ) ? 'approach' : '';
-//$type = 'panel';
 ?>
 
 <div class="resultsList-list-item">
-<!-- <?php print_r( $io_story_shadow ); ?> -->
 	<div class="feature feature_tight">
 		<div class="feature-hd">
 			<h2 class="hdg hdg_4">

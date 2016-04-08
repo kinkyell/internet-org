@@ -5,48 +5,20 @@
  * @package Internet.org
  */
 
-/**
- * error_reporting should not be used. This was put in by Jam3
- * it hides any errors in theme, most noticaly the admin dashboard
- * has a lot of errors. I'm leaving it in at the minute for purposes
- * of allowing Paul to get a copy running.
- */
-//error_reporting( 0 );
-
 // WP VIP Helper Plugin -- gives us access to the VIP only functions.
 define( 'IO_DIR', __DIR__ );
 
-// Unnecessary on VIP Go
-//require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
-
-// Unnecessary on VIP Go
-//vip_allow_title_orphans();
-
 // Load the Shortcake UI VIP Plugin.
-// wpcom_vip_load_plugin( 'shortcode-ui' );
-
 wpcom_vip_load_plugin( 'shortcode-ui' );
 
 // Load the Multiple Post Thumbnails VIP Plugin.
 wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
-
-// Load the Babble VIP release candidate Plugin.
-// wpcom_vip_load_plugin( 'babble', 'plugins', true );
-
-// Load the Babble Globals VIP release candidate Plugin.
-// wpcom_vip_load_plugin( 'babble-globals', 'plugins', true );
-
-// Load the Babble Translation Group Tool VIP release candidate Plugin.
-// wpcom_vip_load_plugin( 'babble-translation-group-tool', 'plugins', true );
 
 // Load the Google Analytics VIP plugin.
 wpcom_vip_load_plugin( 'wp-google-analytics' );
 
 // Load the Cache Nave Menu VIP plugin.
 wpcom_vip_load_plugin( 'cache-nav-menu' );
-
-// Load the Opengraph VIP plugin.
-//wpcom_vip_enable_opengraph();
 
 /** Filtering functions. */
 require IO_DIR . '/inc/internetorg-filters.php';
@@ -57,9 +29,6 @@ wpcom_vip_load_plugin( 'internetorg-custom-posttypes' );
 /** Fieldmanager and Fields. */
 wpcom_vip_load_plugin( 'fieldmanager' );
 wpcom_vip_load_plugin( 'internetorg-custom-fields' );
-
-/** Link filter, which corrects anchors for the current language. */
-//wpcom_vip_load_plugin( 'internetorg-link-filter', 'plugins' );
 
 /** Babble */
 require IO_DIR . '/inc/babble-fieldmanager-context.php';
@@ -544,8 +513,6 @@ function internetorg_bbl_fm_fields( array $fields, WP_Post $post ) {
 	return $fields;
 }
 
-// add_filter( 'bbl_translated_meta_fields', 'internetorg_bbl_fm_fields', 10, 2 );
-
 /**
  * Hooks the bbl_sync_meta_key Babble filter to specify when a meta_key
  * should not be translated. If a key is NOT to be translated, normally
@@ -572,8 +539,6 @@ function internetorg_bbl_sync_meta_key( $sync, $meta_key ) {
 
 	return $sync;
 }
-
-// add_filter( 'bbl_sync_meta_key', 'internetorg_bbl_sync_meta_key', 10, 2 );
 
 /**
  * Filter the WP Native Gallery to modify markup to match what our FEDs expect.
@@ -2462,11 +2427,6 @@ function vip_fb_legacy_redirects() {
 		exit;
 	}
 
-	// Check for any 404 URL that doesn't start with a potential lang code
-	// if ( !preg_match( '/^\/[a-z]{2}(?:(?:-|_)[A-Z]{2})?\/[a-z0-9\-\/]+(?:[a-z0-9\-\/]+)*$/', $url ) ) {
-	// 	wp_safe_redirect( "$url/", 301 );
-	// 	exit;
-	// }
 	return;
 }
 
