@@ -3,7 +3,6 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var AbstractView = require('./AbstractView');
     var Cookies = require('cookies');
-    var $ = require('jquery');
     var vex = require('vex');
     var dialog = require('vex-dialog');
 
