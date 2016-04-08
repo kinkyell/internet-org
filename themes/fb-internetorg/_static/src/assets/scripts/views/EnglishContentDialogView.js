@@ -112,7 +112,7 @@ define(function(require, exports, module) { // jshint ignore:line
             },
             callback: this._handleClose
         });
-    }
+    };
 
     /**
      * Tears down any event binding to handlers.
@@ -154,7 +154,10 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._onClose = function(value) {
         if (value) {
             Cookies.set(EnglishContentDialogView.CONFIRMED_COOKIE.name,
-                EnglishContentDialogView.CONFIRMED_COOKIE.value, { expires: EnglishContentDialogView.CONFIRMED_COOKIE.expires });
+                EnglishContentDialogView.CONFIRMED_COOKIE.value, {
+                    expires: EnglishContentDialogView.CONFIRMED_COOKIE.expires
+                }
+            );
 
             // TODO: How to call Router to change state manually?
             window.location = this.destinationUrl;
