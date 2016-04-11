@@ -449,7 +449,7 @@ msgstr "المزيد من المنشورات"
 
 #: template-parts/content-single-more.php:43 template-parts/content-single-more.php:71
 msgid "Read"
-msgstr "Gelees"
+msgstr "اقرأ"
 
 #: template-parts/content-social-links.php:12
 msgid "Facebook"

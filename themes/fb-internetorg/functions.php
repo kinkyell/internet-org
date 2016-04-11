@@ -2670,4 +2670,9 @@ function internetorg_get_current_language( $facebook_sdk = false ) {
 }
 
 
+function internetorg_translate_required_text( $required_text ) {
+	return esc_attr__( '(required)', 'internetorg' );
+}
+
+add_filter( 'jetpack_required_field_text', 'internetorg_translate_required_text' );
 
