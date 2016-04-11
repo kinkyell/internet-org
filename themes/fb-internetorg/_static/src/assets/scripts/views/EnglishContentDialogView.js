@@ -35,6 +35,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     var proto = AbstractView.createChild(EnglishContentDialogView);
 
+
     /**
      * Binds the scope of any handler functions.
      * Should only be run on initialization of the view.
