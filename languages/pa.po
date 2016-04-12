@@ -2,18 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Internet.org\n"
 "POT-Creation-Date: 2015-10-05 11:57-0500\n"
-"PO-Revision-Date: 2015-12-22 10:07-0500\n"
+"PO-Revision-Date: 2016-04-12 10:50-0700\n"
 "Last-Translator: Darcy Clarke <darcy@darcyclarke.me>\n"
 "Language-Team: Richard Aber <raber@nerdery.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: style.css\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;"
-"esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: pa\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -124,8 +123,7 @@ msgstr "ਬਾਹਰੀ ਲਿੰਕ"
 msgid "External URL"
 msgstr "ਬਾਹਰੀ URL"
 
-#: functions.php:1683 plugins/internetorg-custom-posttypes/content-widget.php:71
-#: plugins/internetorg-custom-posttypes/content-widget.php:90
+#: functions.php:1683 plugins/internetorg-custom-posttypes/content-widget.php:71 plugins/internetorg-custom-posttypes/content-widget.php:90
 msgid "URL"
 msgstr "URL"
 
@@ -181,8 +179,7 @@ msgstr "1 ਟਿੱਪਣੀ"
 msgid "% Comments"
 msgstr "% ਟਿੱਪਣੀਆਂ"
 
-#: inc/template-tags.php:85 inc/template-tags.php:107 template-parts/content-page-entry-end.php:11
-#: template-parts/content-page.php:26
+#: inc/template-tags.php:85 inc/template-tags.php:107 template-parts/content-page-entry-end.php:11 template-parts/content-page.php:26
 msgid "Edit"
 msgstr "ਸੋਧੋ"
 
@@ -224,13 +221,11 @@ msgstr "ਵਰਣਨ"
 msgid "Source"
 msgstr "ਸਰੋਤ"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:98
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:145
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:98 plugins/internetorg-custom-fields/internetorg-custom-fields.php:145
 msgid "Page, Post, or Story"
 msgstr "ਪੰਨਾ, ਪੋਸਟ ਜਾਂ ਕਹਾਣੀ"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:99
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:146
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:99 plugins/internetorg-custom-fields/internetorg-custom-fields.php:146
 msgid "Custom Link"
 msgstr "ਕਸਟਮ ਲਿੰਕ"
 
@@ -238,8 +233,7 @@ msgstr "ਕਸਟਮ ਲਿੰਕ"
 msgid "Section Slug"
 msgstr "ਸੈਕਸ਼ਨ ਕਿਰਮ"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:111
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:158
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:111 plugins/internetorg-custom-fields/internetorg-custom-fields.php:158
 msgid "URL Source"
 msgstr "URL ਸਰੋਤ"
 
@@ -255,8 +249,7 @@ msgstr "ਮਿਸ਼ਨ"
 msgid "Impact"
 msgstr "ਪ੍ਰਭਾਵ"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:128
-#: plugins/internetorg-custom-posttypes/campaign.php:91
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:128 plugins/internetorg-custom-posttypes/campaign.php:91
 msgid "Background Image"
 msgstr "ਬੈਕਗ੍ਰਾਉਂਡ ਤਸਵੀਰ"
 
@@ -293,14 +286,11 @@ msgstr "ਤਸਵੀਰ"
 msgid "Content Areas"
 msgstr "ਸਮੱਗਰੀ ਖੇਤਰ"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:212
-#: plugins/internetorg-custom-posttypes/campaign.php:83 plugins/internetorg-custom-posttypes/campaign.php:92
-#: plugins/internetorg-custom-posttypes/story.php:69
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:212 plugins/internetorg-custom-posttypes/campaign.php:83 plugins/internetorg-custom-posttypes/campaign.php:92 plugins/internetorg-custom-posttypes/story.php:69
 msgid "Subtitle"
 msgstr "ਉਪਸਿਰਲੇਖ"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:221
-#: plugins/internetorg-custom-posttypes/story.php:78
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:221 plugins/internetorg-custom-posttypes/story.php:78
 msgid "Additional page configuration"
 msgstr "ਅਤਿਰਿਕਤ ਪੰਨਾ ਕਨਫ਼ੀਗ੍ਰੇਸ਼ਨ"
 
@@ -344,26 +334,20 @@ msgstr "ਸਮੱਗਰੀ ਵਿਜੇਟਸ"
 msgid "Content Widget"
 msgstr "ਸਮੱਗਰੀ ਵਿਜੇਟਸ"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:63
-#: plugins/internetorg-custom-posttypes/content-widget.php:76
-#: plugins/internetorg-custom-posttypes/content-widget.php:82
-#: plugins/internetorg-custom-posttypes/content-widget.php:95
+#: plugins/internetorg-custom-posttypes/content-widget.php:63 plugins/internetorg-custom-posttypes/content-widget.php:76 plugins/internetorg-custom-posttypes/content-widget.php:82 plugins/internetorg-custom-posttypes/content-widget.php:95
 msgid "Call to Action"
 msgstr "ਕਾਲ ਟੂ ਐਕਸ਼ਨ"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:64
-#: plugins/internetorg-custom-posttypes/content-widget.php:83
+#: plugins/internetorg-custom-posttypes/content-widget.php:64 plugins/internetorg-custom-posttypes/content-widget.php:83
 #, php-format
 msgid "Call to Action: %s"
 msgstr "ਕਾਲ ਟੂ ਐਕਸ਼ਨ: %s"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:70
-#: plugins/internetorg-custom-posttypes/content-widget.php:89
+#: plugins/internetorg-custom-posttypes/content-widget.php:70 plugins/internetorg-custom-posttypes/content-widget.php:89
 msgid "Button Label"
 msgstr "ਬਟਨ ਲੇਬਲ"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:72
-#: plugins/internetorg-custom-posttypes/content-widget.php:91
+#: plugins/internetorg-custom-posttypes/content-widget.php:72 plugins/internetorg-custom-posttypes/content-widget.php:91
 msgid "File"
 msgstr "ਫਾਈਲ"
 
@@ -429,8 +413,7 @@ msgstr "https://fb.me/Internetdotorg"
 msgid "Like us on Facebook"
 msgstr "Facebook ‘ਤੇ ਸਾਨੂੰ ਪਸੰਦ ਕਰੋ"
 
-#: template-parts/content-page-entry-content.php:14 template-parts/content-page.php:19
-#: template-parts/content-single.php:23 template-parts/content.php:32
+#: template-parts/content-page-entry-content.php:14 template-parts/content-page.php:19 template-parts/content-single.php:23 template-parts/content.php:32
 msgid "Pages:"
 msgstr "ਪੰਨੇ:"
 
@@ -497,8 +480,15 @@ msgstr "http://www.nerdery.com"
 msgid "%d Results Found"
 msgstr "%d ਨਤੀਜੇ ਲੱਭਿਆ"
 
-# Standard WordPress PO File
+# Content in English dialog (front end)
+msgid "You are now entering a section of the site that is in English only."
+msgstr "ਤੁਹਾਨੂੰ ਹੁਣ ਸਾਈਟ ਸਿਰਫ ਅੰਗਰੇਜ਼ੀ ਵਿਚ ਹੀ ਹੈ, ਜੋ ਕਿ ਦੇ ਇਕ ਹਿੱਸੇ ਵਿਚ ਦਾਖਲ ਹਨ."
 
+# Content in English dialog (wp-admin)
+msgid "Content in English dialog"
+msgstr "ਅੰਗਰੇਜ਼ੀ ਵਿਚ ਵਾਰਤਾਲਾਪ ਵਿੱਚ ਸਮੱਗਰੀ"
+
+# Standard WordPress PO File
 #: wp-includes/user.php:1948
 msgid "Password reset is not allowed for this user"
 msgstr ""
@@ -507,9 +497,7 @@ msgstr ""
 msgid "Could not save password reset key to database."
 msgstr ""
 
-#: wp-includes/user.php:2003 wp-includes/user.php:2006
-#: wp-includes/user.php:2010 wp-includes/user.php:2040
-#: wp-includes/user.php:2044 wp-includes/user.php:2061
+#: wp-includes/user.php:2003 wp-includes/user.php:2006 wp-includes/user.php:2010 wp-includes/user.php:2040 wp-includes/user.php:2044 wp-includes/user.php:2061
 msgid "Invalid key"
 msgstr "ਅਯੋਗ ਕੁੰਜੀ"
 
@@ -557,17 +545,8 @@ msgstr ""
 msgid "No menus have been created yet. <a href=\"%s\">Create some</a>."
 msgstr ""
 
-#: wp-includes/widgets/class-wp-nav-menu-widget.php:132
-#: wp-includes/widgets/class-wp-widget-archives.php:153
-#: wp-includes/widgets/class-wp-widget-calendar.php:100
-#: wp-includes/widgets/class-wp-widget-categories.php:156
-#: wp-includes/widgets/class-wp-widget-meta.php:107
-#: wp-includes/widgets/class-wp-widget-pages.php:127
-#: wp-includes/widgets/class-wp-widget-recent-comments.php:154
-#: wp-includes/widgets/class-wp-widget-recent-posts.php:128
-#: wp-includes/widgets/class-wp-widget-search.php:67
-#: wp-includes/widgets/class-wp-widget-tag-cloud.php:119
-#: wp-includes/widgets/class-wp-widget-text.php:104
+#: wp-includes/widgets/class-wp-nav-menu-widget.php:132 wp-includes/widgets/class-wp-widget-archives.php:153 wp-includes/widgets/class-wp-widget-calendar.php:100 wp-includes/widgets/class-wp-widget-categories.php:156 wp-includes/widgets/class-wp-widget-meta.php:107 wp-includes/widgets/class-wp-widget-pages.php:127 wp-includes/widgets/class-wp-widget-recent-comments.php:154
+#: wp-includes/widgets/class-wp-widget-recent-posts.php:128 wp-includes/widgets/class-wp-widget-search.php:67 wp-includes/widgets/class-wp-widget-tag-cloud.php:119 wp-includes/widgets/class-wp-widget-text.php:104
 msgid "Title:"
 msgstr "ਸਿਰਲੇਖ:"
 
@@ -593,19 +572,17 @@ msgstr "ਦਿਨ ਚੁਣੋ"
 
 #: wp-includes/widgets/class-wp-widget-archives.php:84
 msgid "Select Week"
-msgstr "ਹਫ਼ਤਾ ਚੁਣੋ"
+msgstr "ਹਫ਼ਤਾ ਚੁਣੋ"
 
 #: wp-includes/widgets/class-wp-widget-archives.php:87
 msgid "Select Post"
 msgstr "ਸੰਪਾਦਨਾ ਚੁਣੋ"
 
-#: wp-includes/widgets/class-wp-widget-archives.php:155
-#: wp-includes/widgets/class-wp-widget-categories.php:160
+#: wp-includes/widgets/class-wp-widget-archives.php:155 wp-includes/widgets/class-wp-widget-categories.php:160
 msgid "Display as dropdown"
 msgstr "ਡ੍ਰੋਪਡਾਉਨ ਵਾੰਗ ਦਿਖਾਓ"
 
-#: wp-includes/widgets/class-wp-widget-archives.php:157
-#: wp-includes/widgets/class-wp-widget-categories.php:163
+#: wp-includes/widgets/class-wp-widget-archives.php:157 wp-includes/widgets/class-wp-widget-categories.php:163
 msgid "Show post counts"
 msgstr ""
 
@@ -623,7 +600,7 @@ msgstr ""
 
 #: wp-includes/widgets/class-wp-widget-categories.php:67
 msgid "Select Category"
-msgstr "ਸ਼੍ਰੇਣੀ ਚੁਣੋ"
+msgstr "ਸ਼੍ਰੇਣੀ ਚੁਣੋ"
 
 #: wp-includes/widgets/class-wp-widget-categories.php:166
 msgid "Show hierarchy"
@@ -639,15 +616,14 @@ msgstr "ਕੜੀਆਂ"
 
 #: wp-includes/widgets/class-wp-widget-links.php:128
 msgid "Select Link Category:"
-msgstr "ਕੜੀ ਦੀ ਸ਼੍ਰੇਣੀ ਚੁਣੋ:"
+msgstr "ਕੜੀ ਦੀ ਸ਼੍ਰੇਣੀ ਚੁਣੋ:"
 
 #: wp-includes/widgets/class-wp-widget-links.php:130
 msgctxt "links widget"
 msgid "All Links"
 msgstr "ਸਾਰੀਆਂ ਕੜੀਆਂ"
 
-#: wp-includes/widgets/class-wp-widget-links.php:139
-#: wp-includes/widgets/class-wp-widget-pages.php:131
+#: wp-includes/widgets/class-wp-widget-links.php:139 wp-includes/widgets/class-wp-widget-pages.php:131
 msgid "Sort by:"
 msgstr "...ਨਾਲ ਟਿਕਾਓ:"
 
@@ -661,7 +637,7 @@ msgstr "ਕੜੀ ਦੀ ਦਰਜਾਬੰਦੀ"
 
 #: wp-includes/widgets/class-wp-widget-links.php:143
 msgid "Link ID"
-msgstr "ਕੜੀ ਦੀ ਸ਼ਨਾਖਤ"
+msgstr "ਕੜੀ ਦੀ ਸ਼ਨਾਖਤ"
 
 #: wp-includes/widgets/class-wp-widget-links.php:144
 msgctxt "Links widget"
@@ -733,8 +709,7 @@ msgstr "ਪੰਨੇ ਦੀ ਆਈ.ਡੀ ਕੋਮਿਆਂ ਨਾਲ ਵੱਖ
 msgid "Your site&#8217;s most recent comments."
 msgstr "ਤੁਹਾਡੀ ਸਾਈਟ 'ਤੇ ਹੋਈਆਂ ਹਾਲੀਆ ਟਿੱਪਣੀਆਂ।"
 
-#: wp-includes/widgets/class-wp-widget-recent-comments.php:27
-#: wp-includes/widgets/class-wp-widget-recent-comments.php:73
+#: wp-includes/widgets/class-wp-widget-recent-comments.php:27 wp-includes/widgets/class-wp-widget-recent-comments.php:73
 msgid "Recent Comments"
 msgstr "ਹਾਲੀਆ ਟਿੱਪਣੀਆਂ"
 
@@ -752,8 +727,7 @@ msgstr "ਦਿਖਾਉਣ ਲਈ ਟਿੱਪਣੀਆਂ ਦੀ ਗਿਣਤ�
 msgid "Your site&#8217;s most recent Posts."
 msgstr "ਤੁਹਾਡੀ ਸਾਈਟ ਦੀਆਂ ਹਾਲੀਆ ਸੰਪਾਦਨਾਂ।"
 
-#: wp-includes/widgets/class-wp-widget-recent-posts.php:27
-#: wp-includes/widgets/class-wp-widget-recent-posts.php:46
+#: wp-includes/widgets/class-wp-widget-recent-posts.php:27 wp-includes/widgets/class-wp-widget-recent-posts.php:46
 msgid "Recent Posts"
 msgstr "ਹਾਲੀਆ ਸੰਪਾਦਨਾਂ"
 
@@ -1089,11 +1063,11 @@ msgstr "ਗੁਣਵੱਤਾ ਸੂਚਕ"
 
 #: wp-login.php:635
 msgid "Confirm new password"
-msgstr "ਨਵਾਂ ਪਾਸਵਰਡ ਨਿਸ਼ਚਿਤ ਕਰੋ"
+msgstr "ਨਵਾਂ ਪਾਸਵਰਡ ਨਿਸ਼ਚਿਤ ਕਰੋ"
 
 #: wp-login.php:712
 msgid "Registration Form"
-msgstr "ਰਜਿਸਟਰੇਸ਼ਨ ਫਾਰਮ"
+msgstr "ਰਜਿਸਟਰੇਸ਼ਨ ਫਾਰਮ"
 
 #: wp-login.php:712
 msgid "Register For This Site"
@@ -1145,7 +1119,7 @@ msgstr "ਨਵੇਂ ਪਾਸਵਰਡ ਲਈ ਆਪਣਾ ਈਮੇਲ ਜਾ�
 
 #: wp-login.php:848
 msgid "Registration complete. Please check your email."
-msgstr "ਰਜਿਸਟਰੇਸ਼ਨ ਪੂਰੀ ਹੋਈ। ਕਿਰਪਾ ਕਰਕੇ ਆਪਣਾ ਈਮੇਲ ਦੇਖੋ।"
+msgstr "ਰਜਿਸਟਰੇਸ਼ਨ ਪੂਰੀ ਹੋਈ। ਕਿਰਪਾ ਕਰਕੇ ਆਪਣਾ ਈਮੇਲ ਦੇਖੋ।"
 
 #: wp-login.php:850
 msgid "<strong>You have successfully updated WordPress!</strong> Please log back in to see what&#8217;s new."
@@ -1215,7 +1189,7 @@ msgstr "ਸਾਈਟ ਦਾ ਸਿਰਲੇਖ:"
 
 #: wp-signup.php:139
 msgid "Site Language:"
-msgstr "ਸਾਈਟ ਦੀ ਭਾਸ਼ਾ"
+msgstr "ਸਾਈਟ ਦੀ ਭਾਸ਼ਾ"
 
 #: wp-signup.php:166
 msgid "Privacy:"
@@ -1309,11 +1283,11 @@ msgstr ""
 
 #: wp-signup.php:589
 msgid "If you do not activate your username within two days, you will have to sign up again."
-msgstr "ਜੇਕਰ ਤੁਸੀਂ ਦੋ ਦਿਨਾਂ ਅੰਦਰ ਆਪਣਾ ਵਰਤੋਂਕਾਰ-ਨਾਮ (ਖਾਤਾ) ਕਿਰਿਆਸ਼ੀਲ ਨਾ ਕੀਤਾ ਤਾਂ ਤੁਹਾਨੂੰ ਦੁਬਾਰਾ ਦਰਜ ਹੋਣਾ ਪਵੇਗਾ।"
+msgstr "ਜੇਕਰ ਤੁਸੀਂ ਦੋ ਦਿਨਾਂ ਅੰਦਰ ਆਪਣਾ ਵਰਤੋਂਕਾਰ-ਨਾਮ (ਖਾਤਾ) ਕਿਰਿਆਸ਼ੀਲ ਨਾ ਕੀਤਾ ਤਾਂ ਤੁਹਾਨੂੰ ਦੁਬਾਰਾ ਦਰਜ ਹੋਣਾ ਪਵੇਗਾ।"
 
 #: wp-signup.php:653
 msgid "Signup"
-msgstr "ਦਰਜ਼ ਹੋਵੋ"
+msgstr "ਦਰਜ਼ ਹੋਵੋ"
 
 #. translators: %s: site address
 #: wp-signup.php:730
@@ -1390,7 +1364,7 @@ msgstr "ਸਾਈਟ 'ਤੇ ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਨੂੰ ਬੰ�
 
 #: wp-signup.php:844
 msgid "Sorry, new registrations are not allowed at this time."
-msgstr "ਮੁਆਫ਼ ਕਰਨਾ, ਇਸ ਸਮੇਂ ਨਵੀਂਆਂ ਰਜਿਸਟ੍ਰੇਸ਼ਨਾਂ ਕਰਨ ਦੀ ਆਗਿਆ ਨਹੀਂ ਹੈ।"
+msgstr "ਮੁਆਫ਼ ਕਰਨਾ, ਇਸ ਸਮੇਂ ਨਵੀਂਆਂ ਰਜਿਸਟ੍ਰੇਸ਼ਨਾਂ ਕਰਨ ਦੀ ਆਗਿਆ ਨਹੀਂ ਹੈ।"
 
 #: wp-signup.php:846
 msgid "You are logged in already. No need to register again!"
@@ -1549,12 +1523,12 @@ msgstr "ਸੁਰਖੀਆਂ/ਉੱਪ-ਸਿਰਲੇਖ"
 #: wp-includes/script-loader.php:378
 msgctxt "password strength"
 msgid "Very weak"
-msgstr "ਬਹੁਤ ਕਮਜ਼ੋਰ"
+msgstr "ਬਹੁਤ ਕਮਜ਼ੋਰ"
 
 #: wp-includes/script-loader.php:379
 msgctxt "password strength"
 msgid "Weak"
-msgstr "ਕਮਜ਼ੋਰ"
+msgstr "ਕਮਜ਼ੋਰ"
 
 #: wp-includes/script-loader.php:380
 msgctxt "password strength"
@@ -1564,7 +1538,7 @@ msgstr "ਮੱਧਮ"
 #: wp-includes/script-loader.php:381
 msgctxt "password strength"
 msgid "Strong"
-msgstr "ਮਜ਼ਬੂਤ"
+msgstr "ਮਜ਼ਬੂਤ"
 
 #: wp-includes/script-loader.php:382
 msgctxt "password mismatch"
@@ -1629,8 +1603,7 @@ msgid ""
 "The changes you made will be lost."
 msgstr ""
 
-#: wp-includes/script-loader.php:490
-#: wp-includes/theme-compat/comments-popup.php:40
+#: wp-includes/script-loader.php:490 wp-includes/theme-compat/comments-popup.php:40
 msgid "Comments"
 msgstr "ਟਿੱਪਣੀਆਂ"
 
@@ -1928,7 +1901,7 @@ msgstr ""
 
 #: wp-includes/taxonomy.php:526
 msgid "Search Categories"
-msgstr "ਸ਼੍ਰੇਣੀਆਂ ਖੋਜੋ"
+msgstr "ਸ਼੍ਰੇਣੀਆਂ ਖੋਜੋ"
 
 #: wp-includes/taxonomy.php:527
 msgid "Popular Tags"
@@ -1940,7 +1913,7 @@ msgstr ""
 
 #: wp-includes/taxonomy.php:528
 msgid "All Categories"
-msgstr "ਸਾਰੀਆਂ ਸ਼੍ਰੇਣੀਆਂ"
+msgstr "ਸਾਰੀਆਂ ਸ਼੍ਰੇਣੀਆਂ"
 
 #: wp-includes/taxonomy.php:529
 msgid "Parent Category"
@@ -1956,7 +1929,7 @@ msgstr "ਟੈਗ ਸੋਧੋ"
 
 #: wp-includes/taxonomy.php:531
 msgid "Edit Category"
-msgstr "ਸ਼੍ਰੇਣੀ ਸੋਧੋ"
+msgstr "ਸ਼੍ਰੇਣੀ ਸੋਧੋ"
 
 #: wp-includes/taxonomy.php:532
 msgid "View Tag"
@@ -2008,7 +1981,7 @@ msgstr "ਕੋਈ ਟੈਗ ਨਹੀਂ ਲੱਭਿਆ"
 
 #: wp-includes/taxonomy.php:539
 msgid "No categories found."
-msgstr "ਕੋਈ ਸ਼੍ਰੇਣੀ ਨਹੀਂ ਲੱਭੀ।"
+msgstr "ਕੋਈ ਸ਼੍ਰੇਣੀ ਨਹੀਂ ਲੱਭੀ।"
 
 #: wp-includes/taxonomy.php:540
 msgid "No tags"
@@ -2028,12 +2001,11 @@ msgstr "ਟੈਗ ਸੂਚੀ"
 
 #: wp-includes/taxonomy.php:542
 msgid "Categories list"
-msgstr "ਸ਼੍ਰੇਣੀ ਸੂਚੀ"
+msgstr "ਸ਼੍ਰੇਣੀ ਸੂਚੀ"
 
-#: wp-includes/taxonomy.php:753 wp-includes/taxonomy.php:3140
-#: wp-includes/taxonomy.php:4325
+#: wp-includes/taxonomy.php:753 wp-includes/taxonomy.php:3140 wp-includes/taxonomy.php:4325
 msgid "Empty Term"
-msgstr "ਖਾਲੀ ਲਫ਼ਜ਼"
+msgstr "ਖਾਲੀ ਲਫ਼ਜ਼"
 
 #: wp-includes/taxonomy.php:1584 wp-includes/taxonomy.php:1666
 msgid "Term meta cannot be added to terms that are shared between taxonomies."
@@ -2041,7 +2013,7 @@ msgstr ""
 
 #: wp-includes/taxonomy.php:2569 wp-includes/taxonomy.php:3164
 msgid "A name is required for this term"
-msgstr "ਇਸ ਲਫ਼ਜ਼ ਲਈ ਨਾਮ ਲੋੜੀਂਦਾ ਹੈ"
+msgstr "ਇਸ ਲਫ਼ਜ਼ ਲਈ ਨਾਮ ਲੋੜੀਂਦਾ ਹੈ"
 
 #: wp-includes/taxonomy.php:2649
 msgid "A term with the name provided already exists with this parent."
@@ -2082,20 +2054,12 @@ msgid "Invalid object ID"
 msgstr ""
 
 #. translators: %s: template name
-#: wp-includes/theme-compat/comments-popup.php:12
-#: wp-includes/theme-compat/comments.php:12
-#: wp-includes/theme-compat/footer.php:12
-#: wp-includes/theme-compat/header.php:12
-#: wp-includes/theme-compat/sidebar.php:12
+#: wp-includes/theme-compat/comments-popup.php:12 wp-includes/theme-compat/comments.php:12 wp-includes/theme-compat/footer.php:12 wp-includes/theme-compat/header.php:12 wp-includes/theme-compat/sidebar.php:12
 msgid "Theme without %s"
 msgstr ""
 
 #. translators: %s: template name
-#: wp-includes/theme-compat/comments-popup.php:16
-#: wp-includes/theme-compat/comments.php:16
-#: wp-includes/theme-compat/footer.php:16
-#: wp-includes/theme-compat/header.php:16
-#: wp-includes/theme-compat/sidebar.php:16
+#: wp-includes/theme-compat/comments-popup.php:16 wp-includes/theme-compat/comments.php:16 wp-includes/theme-compat/footer.php:16 wp-includes/theme-compat/header.php:16 wp-includes/theme-compat/sidebar.php:16
 msgid "Please include a %s template in your theme."
 msgstr ""
 
@@ -2141,7 +2105,7 @@ msgstr "ਇਹ ਖਿੜਕੀ ਬੰਦ ਕਰੋ"
 
 #: wp-includes/theme-compat/comments-popup.php:118
 msgid "Sorry, no posts matched your criteria."
-msgstr "ਮੁਆਫ਼ ਕਰਨਾ, ਤੁਹਾਡੇ ਮਾਪਦੰਡਾਂ ਨਾਲ ਮੇਲ ਖਾਂਦੀ ਕੋਈ ਸੰਪਾਦਨਾ ਨਹੀਂ ਲੱਭੀ।"
+msgstr "ਮੁਆਫ਼ ਕਰਨਾ, ਤੁਹਾਡੇ ਮਾਪਦੰਡਾਂ ਨਾਲ ਮੇਲ ਖਾਂਦੀ ਕੋਈ ਸੰਪਾਦਨਾ ਨਹੀਂ ਲੱਭੀ।"
 
 #: wp-includes/theme-compat/comments-popup.php:122
 msgid "Powered by <a href=\"%s\" title=\"Powered by WordPress, state-of-the-art semantic personal publishing platform\"><strong>WordPress</strong></a>"
@@ -2176,8 +2140,7 @@ msgstr ""
 msgid "Log out &raquo;"
 msgstr "ਬਾਹਰ ਹੋਵੋ &raquo;"
 
-#: wp-includes/theme-compat/comments.php:96
-#: wp-includes/theme-compat/comments.php:99
+#: wp-includes/theme-compat/comments.php:96 wp-includes/theme-compat/comments.php:99
 msgid "(required)"
 msgstr "(ਲੋੜੀਂਦਾ)"
 
@@ -2247,9 +2210,7 @@ msgstr ""
 msgid "You are currently browsing the %s blog archives."
 msgstr ""
 
-#: wp-includes/theme-compat/sidebar.php:104
-#: wp-includes/widgets/class-wp-widget-meta.php:29
-#: wp-includes/widgets/class-wp-widget-meta.php:44
+#: wp-includes/theme-compat/sidebar.php:104 wp-includes/widgets/class-wp-widget-meta.php:29 wp-includes/widgets/class-wp-widget-meta.php:44
 msgid "Meta"
 msgstr "ਮੈਟਾ"
 
@@ -2269,8 +2230,7 @@ msgstr ""
 msgid "XFN"
 msgstr "XFN"
 
-#: wp-includes/theme-compat/sidebar.php:110
-#: wp-includes/widgets/class-wp-widget-meta.php:66
+#: wp-includes/theme-compat/sidebar.php:110 wp-includes/widgets/class-wp-widget-meta.php:66
 msgid "Powered by WordPress, state-of-the-art semantic personal publishing platform."
 msgstr ""
 
@@ -2287,13 +2247,11 @@ msgstr ""
 msgid "Customizer"
 msgstr ""
 
-#: wp-includes/update.php:123 wp-includes/update.php:303
-#: wp-includes/update.php:467
+#: wp-includes/update.php:123 wp-includes/update.php:303 wp-includes/update.php:467
 msgid "An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href=\"https://wordpress.org/support/\">support forums</a>."
 msgstr ""
 
-#: wp-includes/update.php:123 wp-includes/update.php:303
-#: wp-includes/update.php:467
+#: wp-includes/update.php:123 wp-includes/update.php:303 wp-includes/update.php:467
 msgid "(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)"
 msgstr ""
 
@@ -2329,8 +2287,7 @@ msgstr ""
 msgid "<strong>ERROR</strong>: Invalid username."
 msgstr "<strong>ਗਲਤੀ</strong>: ਅਯੋਗ ਵਰਤੋਂਕਾਰ ਨਾਮ"
 
-#: wp-includes/user.php:142 wp-includes/user.php:168 wp-login.php:739
-#: wp-login.php:922
+#: wp-includes/user.php:142 wp-includes/user.php:168 wp-login.php:739 wp-login.php:922
 msgid "Lost your password?"
 msgstr ""
 
@@ -2417,8 +2374,7 @@ msgstr "ਜੈਬਰ/ਗੂਗਲ ਟਾਲਕ"
 msgid "Hint: The password should be at least twelve characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! \" ? $ % ^ &amp; )."
 msgstr ""
 
-#: wp-includes/pluggable.php:1496 wp-includes/pluggable.php:1644
-#: wp-includes/pluggable.php:1765
+#: wp-includes/pluggable.php:1496 wp-includes/pluggable.php:1644 wp-includes/pluggable.php:1765
 msgid "Email: %s"
 msgstr "ਈ-ਮੇਲ: %s"
 
@@ -2493,8 +2449,7 @@ msgstr ""
 msgid "New user registration on your site %s:"
 msgstr ""
 
-#: wp-includes/pluggable.php:1764 wp-includes/pluggable.php:1788
-#: wp-login.php:324
+#: wp-includes/pluggable.php:1764 wp-includes/pluggable.php:1788 wp-login.php:324
 msgid "Username: %s"
 msgstr "ਵਰਤੋਂਕਾਰ ਨਾਮ: %s"
 
@@ -2556,7 +2511,7 @@ msgstr "ਸਟੇਟਸ"
 #: wp-includes/post-formats.php:99
 msgctxt "Post format"
 msgid "Audio"
-msgstr "ਆਵਾਜ਼"
+msgstr "ਆਵਾਜ਼"
 
 #: wp-includes/post-template.php:130
 msgid "Protected: %s"
@@ -2582,9 +2537,7 @@ msgstr "ਅਗਲਾ ਪੰਨਾ"
 msgid "Previous page"
 msgstr "ਪਿਛਲਾ ਪੰਨਾ"
 
-#: wp-includes/post-template.php:1122 wp-includes/theme-compat/sidebar.php:90
-#: wp-includes/widgets/class-wp-widget-pages.php:27
-#: wp-includes/widgets/class-wp-widget-pages.php:51
+#: wp-includes/post-template.php:1122 wp-includes/theme-compat/sidebar.php:90 wp-includes/widgets/class-wp-widget-pages.php:27 wp-includes/widgets/class-wp-widget-pages.php:51
 msgid "Pages"
 msgstr "ਪੰਨੇ"
 
@@ -2760,13 +2713,11 @@ msgstr "ਖਾਕਾ"
 msgid "Pending Review"
 msgstr "ਬਕਾਇਆ ਸਮੀਖਿਆ"
 
-#: wp-includes/post.php:600 wp-includes/post.php:620
-#: wp-includes/script-loader.php:520
+#: wp-includes/post.php:600 wp-includes/post.php:620 wp-includes/script-loader.php:520
 msgid "Private"
 msgstr "ਨਿੱਜੀ"
 
-#: wp-includes/post.php:601 wp-includes/post.php:621
-#: wp-includes/script-loader.php:525
+#: wp-includes/post.php:601 wp-includes/post.php:621 wp-includes/script-loader.php:525
 msgid "Published"
 msgstr "ਸੰਪਾਦਿਤ"
 
@@ -2995,26 +2946,13 @@ msgstr ""
 msgid "The page template is invalid."
 msgstr ""
 
-#: wp-includes/post.php:3756 wp-includes/script-loader.php:501
-#: wp-includes/script-loader.php:565
+#: wp-includes/post.php:3756 wp-includes/script-loader.php:501 wp-includes/script-loader.php:565
 msgctxt "tag delimiter"
 msgid ","
 msgstr ""
 
-#: wp-includes/query.php:149 wp-includes/query.php:170
-#: wp-includes/query.php:191 wp-includes/query.php:215
-#: wp-includes/query.php:239 wp-includes/query.php:263
-#: wp-includes/query.php:292 wp-includes/query.php:312
-#: wp-includes/query.php:332 wp-includes/query.php:352
-#: wp-includes/query.php:373 wp-includes/query.php:393
-#: wp-includes/query.php:422 wp-includes/query.php:451
-#: wp-includes/query.php:471 wp-includes/query.php:498
-#: wp-includes/query.php:518 wp-includes/query.php:538
-#: wp-includes/query.php:558 wp-includes/query.php:578
-#: wp-includes/query.php:607 wp-includes/query.php:634
-#: wp-includes/query.php:654 wp-includes/query.php:674
-#: wp-includes/query.php:694 wp-includes/query.php:714
-#: wp-includes/query.php:734
+#: wp-includes/query.php:149 wp-includes/query.php:170 wp-includes/query.php:191 wp-includes/query.php:215 wp-includes/query.php:239 wp-includes/query.php:263 wp-includes/query.php:292 wp-includes/query.php:312 wp-includes/query.php:332 wp-includes/query.php:352 wp-includes/query.php:373 wp-includes/query.php:393 wp-includes/query.php:422 wp-includes/query.php:451 wp-includes/query.php:471
+#: wp-includes/query.php:498 wp-includes/query.php:518 wp-includes/query.php:538 wp-includes/query.php:558 wp-includes/query.php:578 wp-includes/query.php:607 wp-includes/query.php:634 wp-includes/query.php:654 wp-includes/query.php:674 wp-includes/query.php:694 wp-includes/query.php:714 wp-includes/query.php:734
 msgid "Conditional query tags do not work before the query is run. Before then, they always return false."
 msgstr ""
 
@@ -3327,7 +3265,7 @@ msgstr ""
 
 #: wp-includes/media-template.php:1241
 msgid "As a browser icon"
-msgstr "ਬ੍ਰਾਊਜ਼ਰ ਦੇ ਲਈ ਆਈਕਨ ਦੇ ਤੌਰ  'ਤੇ"
+msgstr "ਬ੍ਰਾਊਜ਼ਰ ਦੇ ਲਈ ਆਈਕਨ ਦੇ ਤੌਰ  'ਤੇ"
 
 #: wp-includes/media-template.php:1246
 msgid "Preview as a browser icon"
@@ -3372,8 +3310,7 @@ msgstr ""
 msgid "No editor could be selected."
 msgstr ""
 
-#: wp-includes/media.php:3056 wp-includes/script-loader.php:406
-#: wp-includes/script-loader.php:564
+#: wp-includes/media.php:3056 wp-includes/script-loader.php:406 wp-includes/script-loader.php:564
 msgid "(no title)"
 msgstr "(ਕੋਈ ਸਿਰਲੇਖ ਨਹੀਂ)"
 
@@ -3385,8 +3322,7 @@ msgstr "ਮੀਡੀਆ ਜੋੜੋ"
 msgid "Select"
 msgstr "ਚੁਣੋ"
 
-#: wp-includes/media.php:3334 wp-includes/script-loader.php:404
-#: wp-includes/script-loader.php:517
+#: wp-includes/media.php:3334 wp-includes/script-loader.php:404 wp-includes/script-loader.php:517
 msgid "Update"
 msgstr ""
 
@@ -3549,8 +3485,7 @@ msgstr ""
 msgid "Replace Image"
 msgstr ""
 
-#: wp-includes/media.php:3401 wp-includes/media.php:3418
-#: wp-includes/media.php:3424
+#: wp-includes/media.php:3401 wp-includes/media.php:3418 wp-includes/media.php:3424
 msgid "Cancel Edit"
 msgstr ""
 
@@ -3706,8 +3641,7 @@ msgstr ""
 msgid "Please enter a username."
 msgstr ""
 
-#: wp-includes/ms-functions.php:431 wp-includes/ms-functions.php:438
-#: wp-includes/user.php:1334
+#: wp-includes/ms-functions.php:431 wp-includes/ms-functions.php:438 wp-includes/user.php:1334
 msgid "Sorry, that username is not allowed."
 msgstr ""
 
@@ -4014,19 +3948,15 @@ msgid "New trackback on your post \"%s\""
 msgstr ""
 
 #. translators: 1: website name, 2: website IP, 3: website hostname
-#: wp-includes/pluggable.php:1475 wp-includes/pluggable.php:1485
-#: wp-includes/pluggable.php:1628 wp-includes/pluggable.php:1636
+#: wp-includes/pluggable.php:1475 wp-includes/pluggable.php:1485 wp-includes/pluggable.php:1628 wp-includes/pluggable.php:1636
 msgid "Website: %1$s (IP: %2$s, %3$s)"
 msgstr ""
 
-#: wp-includes/pluggable.php:1476 wp-includes/pluggable.php:1486
-#: wp-includes/pluggable.php:1497 wp-includes/pluggable.php:1629
-#: wp-includes/pluggable.php:1637 wp-includes/pluggable.php:1645
+#: wp-includes/pluggable.php:1476 wp-includes/pluggable.php:1486 wp-includes/pluggable.php:1497 wp-includes/pluggable.php:1629 wp-includes/pluggable.php:1637 wp-includes/pluggable.php:1645
 msgid "URL: %s"
 msgstr "ਯੂ.ਆਰ.ਐਲ.: %s"
 
-#: wp-includes/pluggable.php:1477 wp-includes/pluggable.php:1487
-#: wp-includes/pluggable.php:1498 wp-includes/pluggable.php:1646
+#: wp-includes/pluggable.php:1477 wp-includes/pluggable.php:1487 wp-includes/pluggable.php:1498 wp-includes/pluggable.php:1646
 msgid "Comment: %s"
 msgstr "ਟਿੱਪਣੀ: %s"
 
@@ -4077,8 +4007,7 @@ msgstr ""
 msgid "Database Error"
 msgstr ""
 
-#: wp-includes/functions.php:3513 wp-includes/ms-load.php:286
-#: wp-includes/wp-db.php:1533
+#: wp-includes/functions.php:3513 wp-includes/ms-load.php:286 wp-includes/wp-db.php:1533
 msgid "Error establishing a database connection"
 msgstr ""
 
@@ -4121,7 +4050,7 @@ msgstr ""
 
 #: wp-includes/functions.php:4299
 msgid "Select a city"
-msgstr "ਸ਼ਹਿਰ ਚੁਣੋ"
+msgstr "ਸ਼ਹਿਰ ਚੁਣੋ"
 
 #: wp-includes/functions.php:4344 wp-includes/functions.php:4348
 msgid "UTC"
@@ -4155,8 +4084,7 @@ msgstr ""
 msgid "Do not pass style tags to wp_add_inline_style()."
 msgstr ""
 
-#: wp-includes/general-template.php:228 wp-includes/general-template.php:229
-#: wp-includes/general-template.php:236
+#: wp-includes/general-template.php:228 wp-includes/general-template.php:229 wp-includes/general-template.php:236
 msgctxt "label"
 msgid "Search for:"
 msgstr "ਖੋਜੋ (ਇਸ ਲਈ):"
@@ -4171,8 +4099,7 @@ msgctxt "submit button"
 msgid "Search"
 msgstr "ਖੋਜੋ"
 
-#: wp-includes/general-template.php:276 wp-login.php:544 wp-login.php:607
-#: wp-login.php:657 wp-login.php:738
+#: wp-includes/general-template.php:276 wp-login.php:544 wp-login.php:607 wp-login.php:657 wp-login.php:738
 msgid "Log in"
 msgstr "ਦਾਖਲ ਹੋਵੋ"
 
@@ -4196,8 +4123,7 @@ msgstr ""
 msgid "Log In"
 msgstr "ਦਾਖਲ ਹੋਵੋ"
 
-#: wp-includes/general-template.php:542 wp-login.php:547 wp-login.php:660
-#: wp-login.php:734 wp-login.php:916
+#: wp-includes/general-template.php:542 wp-login.php:547 wp-login.php:660 wp-login.php:734 wp-login.php:916
 msgid "Register"
 msgstr ""
 
@@ -4247,7 +4173,7 @@ msgstr ""
 
 #: wp-includes/general-template.php:1347
 msgid "Category: %s"
-msgstr "ਸ਼੍ਰੇਣੀ: %s"
+msgstr "ਸ਼੍ਰੇਣੀ: %s"
 
 #: wp-includes/general-template.php:1349
 msgid "Tag: %s"
@@ -4328,10 +4254,7 @@ msgstr "ਪੁਰਾਲੇਖ: %s"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
 
-#: wp-includes/general-template.php:1385
-#: wp-includes/theme-compat/sidebar.php:92
-#: wp-includes/widgets/class-wp-widget-archives.php:27
-#: wp-includes/widgets/class-wp-widget-archives.php:45
+#: wp-includes/general-template.php:1385 wp-includes/theme-compat/sidebar.php:92 wp-includes/widgets/class-wp-widget-archives.php:27 wp-includes/widgets/class-wp-widget-archives.php:45
 msgid "Archives"
 msgstr "ਪੁਰਾਲੇਖ"
 
@@ -4458,8 +4381,7 @@ msgstr "ਉਪਲੱਬਧ"
 msgid "Comments Feed"
 msgstr ""
 
-#: wp-includes/link-template.php:983 wp-includes/link-template.php:1302
-#: wp-includes/link-template.php:1404 wp-includes/link-template.php:1465
+#: wp-includes/link-template.php:983 wp-includes/link-template.php:1302 wp-includes/link-template.php:1404 wp-includes/link-template.php:1465
 msgid "Edit This"
 msgstr ""
 
@@ -4495,10 +4417,9 @@ msgstr "ਪੁਰਾਣੀਆਂ ਸੰਪਾਦਨਾਂ"
 msgid "Newer posts"
 msgstr "ਨਵੀਆਂ ਸੰਪਾਦਨਾਂ"
 
-#: wp-includes/link-template.php:2434 wp-includes/link-template.php:2489
-#: wp-includes/link-template.php:2534
+#: wp-includes/link-template.php:2434 wp-includes/link-template.php:2489 wp-includes/link-template.php:2534
 msgid "Posts navigation"
-msgstr "ਸੰਪਾਦਨਾਂ ਨੇਵੀਗੇਸ਼ਨ"
+msgstr "ਸੰਪਾਦਨਾਂ ਨੇਵੀਗੇਸ਼ਨ"
 
 #: wp-includes/link-template.php:2487
 msgctxt "previous post"
@@ -4560,46 +4481,39 @@ msgid "The site you have requested is not installed properly. Please contact the
 msgstr ""
 
 #. translators: weekday
-#: wp-includes/locale.php:112 wp-includes/locale.php:121
-#: wp-includes/locale.php:130
+#: wp-includes/locale.php:112 wp-includes/locale.php:121 wp-includes/locale.php:130
 msgid "Sunday"
 msgstr "ਐਤਵਾਰ"
 
 #. translators: weekday
-#: wp-includes/locale.php:113 wp-includes/locale.php:122
-#: wp-includes/locale.php:131
+#: wp-includes/locale.php:113 wp-includes/locale.php:122 wp-includes/locale.php:131
 msgid "Monday"
 msgstr "ਸੋਮਵਾਰ"
 
 #. translators: weekday
-#: wp-includes/locale.php:114 wp-includes/locale.php:123
-#: wp-includes/locale.php:132
+#: wp-includes/locale.php:114 wp-includes/locale.php:123 wp-includes/locale.php:132
 msgid "Tuesday"
 msgstr "ਮੰਗਲਵਾਰ"
 
 #. translators: weekday
-#: wp-includes/locale.php:115 wp-includes/locale.php:124
-#: wp-includes/locale.php:133
+#: wp-includes/locale.php:115 wp-includes/locale.php:124 wp-includes/locale.php:133
 msgid "Wednesday"
 msgstr "ਬੁੱਧਵਾਰ"
 
 #. translators: weekday
-#: wp-includes/locale.php:116 wp-includes/locale.php:125
-#: wp-includes/locale.php:134
+#: wp-includes/locale.php:116 wp-includes/locale.php:125 wp-includes/locale.php:134
 msgid "Thursday"
 msgstr "ਵੀਰਵਾਰ"
 
 #. translators: weekday
-#: wp-includes/locale.php:117 wp-includes/locale.php:126
-#: wp-includes/locale.php:135
+#: wp-includes/locale.php:117 wp-includes/locale.php:126 wp-includes/locale.php:135
 msgid "Friday"
-msgstr "ਸ਼ੁੱਕਰਵਾਰ"
+msgstr "ਸ਼ੁੱਕਰਵਾਰ"
 
 #. translators: weekday
-#: wp-includes/locale.php:118 wp-includes/locale.php:127
-#: wp-includes/locale.php:136
+#: wp-includes/locale.php:118 wp-includes/locale.php:127 wp-includes/locale.php:136
 msgid "Saturday"
-msgstr "ਸ਼ਨੀਵਾਰ"
+msgstr "ਸ਼ਨੀਵਾਰ"
 
 #. translators: one-letter abbreviation of the weekday
 #: wp-includes/locale.php:121
@@ -4635,13 +4549,13 @@ msgstr "ਵੀਰਃ"
 #: wp-includes/locale.php:126
 msgctxt "Friday initial"
 msgid "F"
-msgstr "ਸ਼ੁੱਕਰਃ"
+msgstr "ਸ਼ੁੱਕਰਃ"
 
 #. translators: one-letter abbreviation of the weekday
 #: wp-includes/locale.php:127
 msgctxt "Saturday initial"
 msgid "S"
-msgstr "ਸ਼ਨੀਃ"
+msgstr "ਸ਼ਨੀਃ"
 
 #. translators: three-letter abbreviation of the weekday
 #: wp-includes/locale.php:130
@@ -4671,12 +4585,12 @@ msgstr "ਵੀਰਃ"
 #. translators: three-letter abbreviation of the weekday
 #: wp-includes/locale.php:135
 msgid "Fri"
-msgstr "ਸ਼ੁੱਕਰਃ"
+msgstr "ਸ਼ੁੱਕਰਃ"
 
 #. translators: three-letter abbreviation of the weekday
 #: wp-includes/locale.php:136
 msgid "Sat"
-msgstr "ਸ਼ਨੀਃ"
+msgstr "ਸ਼ਨੀਃ"
 
 #. translators: month name
 #: wp-includes/locale.php:139 wp-includes/locale.php:167
@@ -5001,8 +4915,7 @@ msgstr ""
 msgid "Edit next media item"
 msgstr ""
 
-#: wp-includes/media-template.php:327 wp-includes/media-template.php:521
-#: wp-includes/media.php:3402
+#: wp-includes/media-template.php:327 wp-includes/media-template.php:521 wp-includes/media.php:3402
 msgid "Edit Image"
 msgstr "ਤਸਵੀਰ ਸੋਧੋ"
 
@@ -5038,18 +4951,15 @@ msgstr "ਲੰਬਾਈ"
 msgid "Bitrate:"
 msgstr ""
 
-#: wp-includes/media-template.php:383 wp-includes/media-template.php:562
-#: wp-includes/media.php:2123
+#: wp-includes/media-template.php:383 wp-includes/media-template.php:562 wp-includes/media.php:2123
 msgid "Artist"
 msgstr "ਕਲਾਕਾਰ"
 
-#: wp-includes/media-template.php:384 wp-includes/media-template.php:563
-#: wp-includes/media.php:2124
+#: wp-includes/media-template.php:384 wp-includes/media-template.php:563 wp-includes/media.php:2124
 msgid "Album"
 msgstr "ਐਲਬਮ"
 
-#: wp-includes/media-template.php:398 wp-includes/media-template.php:577
-#: wp-includes/media-template.php:836
+#: wp-includes/media-template.php:398 wp-includes/media-template.php:577 wp-includes/media-template.php:836
 msgid "Alt Text"
 msgstr ""
 
@@ -5078,8 +4988,7 @@ msgctxt "verb"
 msgid "Trash"
 msgstr "ਰੱਦੀ ਵਿਚ ਪਾਓ"
 
-#: wp-includes/media-template.php:436 wp-includes/media-template.php:537
-#: wp-includes/media.php:3371
+#: wp-includes/media-template.php:436 wp-includes/media-template.php:537 wp-includes/media.php:3371
 msgid "Delete Permanently"
 msgstr ""
 
@@ -5123,8 +5032,7 @@ msgstr ""
 msgid "Embed or Link"
 msgstr ""
 
-#: wp-includes/media-template.php:633 wp-includes/media-template.php:711
-#: wp-includes/media-template.php:859 wp-includes/media-template.php:963
+#: wp-includes/media-template.php:633 wp-includes/media-template.php:711 wp-includes/media-template.php:859 wp-includes/media-template.php:963
 msgid "Link To"
 msgstr ""
 
@@ -5136,8 +5044,7 @@ msgstr ""
 msgid "Link to Media File"
 msgstr ""
 
-#: wp-includes/media-template.php:656 wp-includes/media-template.php:724
-#: wp-includes/media-template.php:967
+#: wp-includes/media-template.php:656 wp-includes/media-template.php:724 wp-includes/media-template.php:967
 msgid "Media File"
 msgstr ""
 
@@ -5145,38 +5052,31 @@ msgstr ""
 msgid "Link to Attachment Page"
 msgstr ""
 
-#: wp-includes/media-template.php:663 wp-includes/media-template.php:721
-#: wp-includes/media-template.php:970
+#: wp-includes/media-template.php:663 wp-includes/media-template.php:721 wp-includes/media-template.php:970
 msgid "Attachment Page"
 msgstr ""
 
-#: wp-includes/media-template.php:668 wp-includes/media-template.php:865
-#: wp-includes/media-template.php:978
+#: wp-includes/media-template.php:668 wp-includes/media-template.php:865 wp-includes/media-template.php:978
 msgid "Custom URL"
 msgstr ""
 
-#: wp-includes/media-template.php:678 wp-includes/media-template.php:752
-#: wp-includes/media-template.php:927
+#: wp-includes/media-template.php:678 wp-includes/media-template.php:752 wp-includes/media-template.php:927
 msgid "Size"
 msgstr "ਆਕਾਰ"
 
-#: wp-includes/media-template.php:687 wp-includes/media-template.php:762
-#: wp-includes/media-template.php:936 wp-includes/media.php:3088
+#: wp-includes/media-template.php:687 wp-includes/media-template.php:762 wp-includes/media-template.php:936 wp-includes/media.php:3088
 msgid "Thumbnail"
 msgstr ""
 
-#: wp-includes/media-template.php:688 wp-includes/media-template.php:763
-#: wp-includes/media-template.php:937 wp-includes/media.php:3089
+#: wp-includes/media-template.php:688 wp-includes/media-template.php:763 wp-includes/media-template.php:937 wp-includes/media.php:3089
 msgid "Medium"
 msgstr "ਮੱਧਮ"
 
-#: wp-includes/media-template.php:689 wp-includes/media-template.php:764
-#: wp-includes/media-template.php:938 wp-includes/media.php:3090
+#: wp-includes/media-template.php:689 wp-includes/media-template.php:764 wp-includes/media-template.php:938 wp-includes/media.php:3090
 msgid "Large"
 msgstr ""
 
-#: wp-includes/media-template.php:690 wp-includes/media-template.php:765
-#: wp-includes/media-template.php:939 wp-includes/media.php:3091
+#: wp-includes/media-template.php:690 wp-includes/media-template.php:765 wp-includes/media-template.php:939 wp-includes/media.php:3091
 msgid "Full Size"
 msgstr "ਪੂਰਾ ਆਕਾਰ"
 
@@ -5216,9 +5116,7 @@ msgstr ""
 msgid "Sorry, deleting the term failed."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:2110
-#: wp-includes/class-wp-xmlrpc-server.php:2168
-#: wp-includes/class-wp-xmlrpc-server.php:2263
+#: wp-includes/class-wp-xmlrpc-server.php:2110 wp-includes/class-wp-xmlrpc-server.php:2168 wp-includes/class-wp-xmlrpc-server.php:2263
 msgid "You are not allowed to assign terms in this taxonomy."
 msgstr ""
 
@@ -5226,8 +5124,7 @@ msgstr ""
 msgid "Sorry, you cannot edit users."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:2398 wp-includes/user.php:1286
-#: wp-includes/user.php:1605 wp-includes/user.php:1611
+#: wp-includes/class-wp-xmlrpc-server.php:2398 wp-includes/user.php:1286 wp-includes/user.php:1605 wp-includes/user.php:1611
 msgid "Invalid user ID."
 msgstr ""
 
@@ -5239,8 +5136,7 @@ msgstr ""
 msgid "The role specified is not valid"
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:2524
-#: wp-includes/class-wp-xmlrpc-server.php:2570
+#: wp-includes/class-wp-xmlrpc-server.php:2524 wp-includes/class-wp-xmlrpc-server.php:2570
 msgid "Sorry, you cannot edit your profile."
 msgstr ""
 
@@ -5252,14 +5148,11 @@ msgstr ""
 msgid "Sorry, you cannot edit this page."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:2651
-#: wp-includes/class-wp-xmlrpc-server.php:2771
-#: wp-includes/class-wp-xmlrpc-server.php:2833
+#: wp-includes/class-wp-xmlrpc-server.php:2651 wp-includes/class-wp-xmlrpc-server.php:2771 wp-includes/class-wp-xmlrpc-server.php:2833
 msgid "Sorry, no such page."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:2681
-#: wp-includes/class-wp-xmlrpc-server.php:2883
+#: wp-includes/class-wp-xmlrpc-server.php:2681 wp-includes/class-wp-xmlrpc-server.php:2883
 msgid "Sorry, you cannot edit pages."
 msgstr ""
 
@@ -5275,9 +5168,7 @@ msgstr ""
 msgid "Sorry, you do not have the right to edit this page."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:2939
-#: wp-includes/class-wp-xmlrpc-server.php:4483
-#: wp-includes/class-wp-xmlrpc-server.php:5574
+#: wp-includes/class-wp-xmlrpc-server.php:2939 wp-includes/class-wp-xmlrpc-server.php:4483 wp-includes/class-wp-xmlrpc-server.php:5574
 msgid "Sorry, you cannot edit posts on this site."
 msgstr ""
 
@@ -5289,8 +5180,7 @@ msgstr ""
 msgid "Sorry, you do not have the right to add a category."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:3062
-#: wp-includes/class-wp-xmlrpc-server.php:3064
+#: wp-includes/class-wp-xmlrpc-server.php:3062 wp-includes/class-wp-xmlrpc-server.php:3064
 msgid "Sorry, the new category failed."
 msgstr ""
 
@@ -5298,26 +5188,19 @@ msgstr ""
 msgid "Sorry, you do not have the right to delete a category."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:3156
-#: wp-includes/class-wp-xmlrpc-server.php:5687
-#: wp-includes/class-wp-xmlrpc-server.php:5908
+#: wp-includes/class-wp-xmlrpc-server.php:3156 wp-includes/class-wp-xmlrpc-server.php:5687 wp-includes/class-wp-xmlrpc-server.php:5908
 msgid "Sorry, you must be able to edit posts on this site in order to view categories."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:3203
-#: wp-includes/class-wp-xmlrpc-server.php:3336
-#: wp-includes/class-wp-xmlrpc-server.php:3403
+#: wp-includes/class-wp-xmlrpc-server.php:3203 wp-includes/class-wp-xmlrpc-server.php:3336 wp-includes/class-wp-xmlrpc-server.php:3403
 msgid "Invalid comment ID."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:3207
-#: wp-includes/class-wp-xmlrpc-server.php:3340
-#: wp-includes/class-wp-xmlrpc-server.php:3407
+#: wp-includes/class-wp-xmlrpc-server.php:3207 wp-includes/class-wp-xmlrpc-server.php:3340 wp-includes/class-wp-xmlrpc-server.php:3407
 msgid "You are not allowed to moderate or edit this comment."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:3260
-#: wp-includes/class-wp-xmlrpc-server.php:3418
+#: wp-includes/class-wp-xmlrpc-server.php:3260 wp-includes/class-wp-xmlrpc-server.php:3418
 msgid "Invalid comment status."
 msgstr ""
 
@@ -5345,11 +5228,7 @@ msgstr ""
 msgid "A valid email address is required"
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:3611
-#: wp-includes/class-wp-xmlrpc-server.php:3692
-#: wp-includes/class-wp-xmlrpc-server.php:3724
-#: wp-includes/class-wp-xmlrpc-server.php:3756
-#: wp-includes/class-wp-xmlrpc-server.php:3994
+#: wp-includes/class-wp-xmlrpc-server.php:3611 wp-includes/class-wp-xmlrpc-server.php:3692 wp-includes/class-wp-xmlrpc-server.php:3724 wp-includes/class-wp-xmlrpc-server.php:3756 wp-includes/class-wp-xmlrpc-server.php:3994
 msgid "You are not allowed access to details about this site."
 msgstr ""
 
@@ -5361,9 +5240,7 @@ msgstr ""
 msgid "You are not allowed to update options."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:3902
-#: wp-includes/class-wp-xmlrpc-server.php:3950
-#: wp-includes/class-wp-xmlrpc-server.php:5751
+#: wp-includes/class-wp-xmlrpc-server.php:3902 wp-includes/class-wp-xmlrpc-server.php:3950 wp-includes/class-wp-xmlrpc-server.php:5751
 msgid "You do not have permission to upload files."
 msgstr ""
 
@@ -5375,8 +5252,7 @@ msgstr ""
 msgid "Sorry, you are not allowed to edit posts."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:4202
-#: wp-includes/class-wp-xmlrpc-server.php:4272
+#: wp-includes/class-wp-xmlrpc-server.php:4202 wp-includes/class-wp-xmlrpc-server.php:4272
 msgid "Sorry, revisions are disabled."
 msgstr ""
 
@@ -5384,30 +5260,23 @@ msgstr ""
 msgid "Sorry, you do not have access to user data on this site."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:4491
-#: wp-includes/class-wp-xmlrpc-server.php:5858
+#: wp-includes/class-wp-xmlrpc-server.php:4491 wp-includes/class-wp-xmlrpc-server.php:5858
 msgid "Either there are no posts, or something went wrong."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:4526
-#: wp-includes/class-wp-xmlrpc-server.php:4537
+#: wp-includes/class-wp-xmlrpc-server.php:4526 wp-includes/class-wp-xmlrpc-server.php:4537
 msgid "Sorry, that file cannot be edited."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:4647
-#: wp-includes/class-wp-xmlrpc-server.php:4719
-#: wp-includes/class-wp-xmlrpc-server.php:5541
-#: wp-includes/class-wp-xmlrpc-server.php:6074
+#: wp-includes/class-wp-xmlrpc-server.php:4647 wp-includes/class-wp-xmlrpc-server.php:4719 wp-includes/class-wp-xmlrpc-server.php:5541 wp-includes/class-wp-xmlrpc-server.php:6074
 msgid "Sorry, no such post."
-msgstr "ਮੁਆਫ਼ ਕਰਨਾ, ਕੋਈ ਅਜਿਹੀ ਸੰਪਾਦਨਾ ਨਹੀਂ।"
+msgstr "ਮੁਆਫ਼ ਕਰਨਾ, ਕੋਈ ਅਜਿਹੀ ਸੰਪਾਦਨਾ ਨਹੀਂ।"
 
-#: wp-includes/class-wp-xmlrpc-server.php:4653
-#: wp-includes/class-wp-xmlrpc-server.php:5153
+#: wp-includes/class-wp-xmlrpc-server.php:4653 wp-includes/class-wp-xmlrpc-server.php:5153
 msgid "Sorry, you do not have the right to edit this post."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:4656
-#: wp-includes/class-wp-xmlrpc-server.php:5326
+#: wp-includes/class-wp-xmlrpc-server.php:4656 wp-includes/class-wp-xmlrpc-server.php:5326
 msgid "Sorry, you do not have the right to publish this post."
 msgstr ""
 
@@ -5419,14 +5288,11 @@ msgstr ""
 msgid "Sorry, you are not allowed to publish pages on this site."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:4821
-#: wp-includes/class-wp-xmlrpc-server.php:4834
-#: wp-includes/class-wp-xmlrpc-server.php:4839
+#: wp-includes/class-wp-xmlrpc-server.php:4821 wp-includes/class-wp-xmlrpc-server.php:4834 wp-includes/class-wp-xmlrpc-server.php:4839
 msgid "Sorry, you are not allowed to publish posts on this site."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:4847
-#: wp-includes/class-wp-xmlrpc-server.php:5167
+#: wp-includes/class-wp-xmlrpc-server.php:4847 wp-includes/class-wp-xmlrpc-server.php:5167
 msgid "Invalid post format"
 msgstr ""
 
@@ -5470,10 +5336,7 @@ msgstr ""
 msgid "Is there no link to us?"
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:6224
-#: wp-includes/class-wp-xmlrpc-server.php:6231
-#: wp-includes/class-wp-xmlrpc-server.php:6238
-#: wp-includes/class-wp-xmlrpc-server.php:6377
+#: wp-includes/class-wp-xmlrpc-server.php:6224 wp-includes/class-wp-xmlrpc-server.php:6231 wp-includes/class-wp-xmlrpc-server.php:6238 wp-includes/class-wp-xmlrpc-server.php:6377
 msgid "The specified target URL cannot be used as a target. It either doesn&#8217;t exist, or it is not a pingback-enabled resource."
 msgstr ""
 
@@ -5575,29 +5438,23 @@ msgstr "ਟਿੱਪਣੀ ਕਰਨ ਲਈ ਦਾਖਲ ਹੋਵੋ"
 msgid "Click here to cancel reply."
 msgstr "ਜਵਾਬ ਰੱਦ ਕਰਨ ਲਈ ਇੱਥੇ ਨੱਪੋ।"
 
-#: wp-includes/comment-template.php:1850 wp-includes/comment-template.php:2179
-#: wp-includes/theme-compat/comments.php:75
+#: wp-includes/comment-template.php:1850 wp-includes/comment-template.php:2179 wp-includes/theme-compat/comments.php:75
 msgid "Leave a Reply"
 msgstr "ਜਵਾਬ ਦੇਵੋ"
 
-#: wp-includes/comment-template.php:1851 wp-includes/comment-template.php:2180
-#: wp-includes/theme-compat/comments.php:75
+#: wp-includes/comment-template.php:1851 wp-includes/comment-template.php:2180 wp-includes/theme-compat/comments.php:75
 msgid "Leave a Reply to %s"
 msgstr "%s ਨੂੰ ਜਵਾਬ ਦੇਵੋ"
 
-#: wp-includes/comment-template.php:2147
-#: wp-includes/theme-compat/comments-popup.php:76
-#: wp-includes/theme-compat/comments.php:96
+#: wp-includes/comment-template.php:2147 wp-includes/theme-compat/comments-popup.php:76 wp-includes/theme-compat/comments.php:96
 msgid "Name"
 msgstr "ਨਾਮ"
 
-#: wp-includes/comment-template.php:2149
-#: wp-includes/theme-compat/comments-popup.php:81 wp-login.php:720
+#: wp-includes/comment-template.php:2149 wp-includes/theme-compat/comments-popup.php:81 wp-login.php:720
 msgid "Email"
 msgstr "ਈ-ਮੇਲ"
 
-#: wp-includes/comment-template.php:2151
-#: wp-includes/theme-compat/comments.php:102
+#: wp-includes/comment-template.php:2151 wp-includes/theme-compat/comments.php:102
 msgid "Website"
 msgstr "ਜਾਲਸਥਾਨ"
 
@@ -5605,8 +5462,7 @@ msgstr "ਜਾਲਸਥਾਨ"
 msgid "Required fields are marked %s"
 msgstr ""
 
-#: wp-includes/comment-template.php:2169
-#: wp-includes/theme-compat/comments.php:82
+#: wp-includes/comment-template.php:2169 wp-includes/theme-compat/comments.php:82
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
 msgstr ""
 
@@ -5640,7 +5496,7 @@ msgstr ""
 #: wp-includes/comment.php:238
 msgctxt "adjective"
 msgid "Spam"
-msgstr "ਫਰਜ਼ੀ"
+msgstr "ਫਰਜ਼ੀ"
 
 #. translators: comment status
 #: wp-includes/comment.php:240
@@ -5690,16 +5546,13 @@ msgstr "ਘੰਟੇ 'ਚ ਇੱਕ ਵਾਰ"
 
 #: wp-includes/cron.php:391
 msgid "Twice Daily"
-msgstr "ਰੋਜ਼ਾਨਾ ਦੋ ਵਾਰੀ"
+msgstr "ਰੋਜ਼ਾਨਾ ਦੋ ਵਾਰੀ"
 
 #: wp-includes/cron.php:392
 msgid "Once Daily"
-msgstr "ਰੋਜ਼ਾਨਾ ਇੱਕ ਵਾਰ"
+msgstr "ਰੋਜ਼ਾਨਾ ਇੱਕ ਵਾਰ"
 
-#: wp-includes/customize/class-wp-customize-color-control.php:41
-#: wp-includes/customize/class-wp-customize-image-control.php:38
-#: wp-includes/customize/class-wp-customize-media-control.php:61
-#: wp-includes/script-loader.php:611
+#: wp-includes/customize/class-wp-customize-color-control.php:41 wp-includes/customize/class-wp-customize-image-control.php:38 wp-includes/customize/class-wp-customize-media-control.php:61 wp-includes/script-loader.php:611
 msgid "Default"
 msgstr "ਮੂਲ"
 
@@ -5777,8 +5630,7 @@ msgctxt "custom headers"
 msgid "Suggested"
 msgstr ""
 
-#: wp-includes/customize/class-wp-customize-image-control.php:35
-#: wp-includes/customize/class-wp-customize-image-control.php:40
+#: wp-includes/customize/class-wp-customize-image-control.php:35 wp-includes/customize/class-wp-customize-image-control.php:40
 msgid "Select Image"
 msgstr "ਤਸਵੀਰ ਚੁਣੋ"
 
@@ -5790,13 +5642,11 @@ msgstr ""
 msgid "No image selected"
 msgstr "ਕੋਈ ਤਸਵੀਰ ਨਹੀਂ ਚੁਣੀ"
 
-#: wp-includes/customize/class-wp-customize-image-control.php:41
-#: wp-includes/media.php:3405
+#: wp-includes/customize/class-wp-customize-image-control.php:41 wp-includes/media.php:3405
 msgid "Choose Image"
 msgstr ""
 
-#: wp-includes/customize/class-wp-customize-media-control.php:59
-#: wp-includes/customize/class-wp-customize-media-control.php:64
+#: wp-includes/customize/class-wp-customize-media-control.php:59 wp-includes/customize/class-wp-customize-media-control.php:64
 msgid "Select File"
 msgstr ""
 
@@ -5870,18 +5720,15 @@ msgstr ""
 msgid "Navigation Label"
 msgstr ""
 
-#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:110
-#: wp-includes/customize/class-wp-customize-nav-menus-panel.php:60
+#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:110 wp-includes/customize/class-wp-customize-nav-menus-panel.php:60
 msgid "Title Attribute"
 msgstr ""
 
-#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:116
-#: wp-includes/customize/class-wp-customize-nav-menus-panel.php:61
+#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:116 wp-includes/customize/class-wp-customize-nav-menus-panel.php:61
 msgid "CSS Classes"
 msgstr ""
 
-#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:122
-#: wp-includes/customize/class-wp-customize-nav-menus-panel.php:62
+#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:122 wp-includes/customize/class-wp-customize-nav-menus-panel.php:62
 msgid "Link Relationship (XFN)"
 msgstr ""
 
@@ -5925,20 +5772,17 @@ msgstr "%s ਦੁਆਰਾ"
 #. translators: %s: theme name
 #: wp-includes/customize/class-wp-customize-theme-control.php:96
 msgid "<span>Active:</span> %s"
-msgstr "<span>ਕਿਰਿਆਸ਼ੀਲ:</span> %s"
+msgstr "<span>ਕਿਰਿਆਸ਼ੀਲ:</span> %s"
 
-#: wp-includes/customize/class-wp-customize-theme-control.php:102
-#: wp-includes/customize/class-wp-customize-themes-section.php:70
+#: wp-includes/customize/class-wp-customize-theme-control.php:102 wp-includes/customize/class-wp-customize-themes-section.php:70
 msgid "Theme Details"
 msgstr ""
 
-#: wp-includes/customize/class-wp-customize-themes-section.php:43
-#: wp-includes/customize/class-wp-customize-themes-section.php:62
+#: wp-includes/customize/class-wp-customize-themes-section.php:43 wp-includes/customize/class-wp-customize-themes-section.php:62
 msgid "Active theme"
-msgstr "ਥੀਮ ਕਿਰਿਆਸ਼ੀਲ ਕਰੋ"
+msgstr "ਥੀਮ ਕਿਰਿਆਸ਼ੀਲ ਕਰੋ"
 
-#: wp-includes/customize/class-wp-customize-themes-section.php:45
-#: wp-includes/customize/class-wp-customize-themes-section.php:64
+#: wp-includes/customize/class-wp-customize-themes-section.php:45 wp-includes/customize/class-wp-customize-themes-section.php:64
 msgid "Previewing theme"
 msgstr ""
 
@@ -5947,8 +5791,7 @@ msgctxt "theme"
 msgid "Change"
 msgstr "ਬਦਲੋ"
 
-#: wp-includes/customize/class-wp-customize-themes-section.php:75
-#: wp-includes/customize/class-wp-customize-themes-section.php:76
+#: wp-includes/customize/class-wp-customize-themes-section.php:75 wp-includes/customize/class-wp-customize-themes-section.php:76
 msgid "Search installed themes&hellip;"
 msgstr ""
 
@@ -5986,12 +5829,7 @@ msgstr ""
 msgid "new WordPress Loop"
 msgstr ""
 
-#: wp-includes/deprecated.php:688 wp-includes/media-template.php:622
-#: wp-includes/media-template.php:649 wp-includes/media-template.php:727
-#: wp-includes/media-template.php:853 wp-includes/media-template.php:868
-#: wp-includes/media-template.php:919 wp-includes/media-template.php:981
-#: wp-includes/media-template.php:1079 wp-includes/media-template.php:1168
-#: wp-includes/script-loader.php:343
+#: wp-includes/deprecated.php:688 wp-includes/media-template.php:622 wp-includes/media-template.php:649 wp-includes/media-template.php:727 wp-includes/media-template.php:853 wp-includes/media-template.php:868 wp-includes/media-template.php:919 wp-includes/media-template.php:981 wp-includes/media-template.php:1079 wp-includes/media-template.php:1168 wp-includes/script-loader.php:343
 msgid "None"
 msgstr "ਕੋਈ ਨਹੀਂ"
 
@@ -6228,7 +6066,7 @@ msgstr ""
 #: wp-includes/formatting.php:2964 wp-includes/script-loader.php:419
 msgctxt "Word count type. Do not translate!"
 msgid "words"
-msgstr "ਸ਼ਬਦ"
+msgstr "ਸ਼ਬਦ"
 
 #: wp-includes/formatting.php:3661
 msgid "The email address entered did not appear to be a valid email address. Please enter a valid email address."
@@ -6342,9 +6180,7 @@ msgstr ""
 msgid "Robots"
 msgstr ""
 
-#: wp-includes/class-wp-editor.php:885 wp-includes/media-template.php:377
-#: wp-includes/media-template.php:556 wp-includes/revision.php:31
-#: wp-includes/script-loader.php:533
+#: wp-includes/class-wp-editor.php:885 wp-includes/media-template.php:377 wp-includes/media-template.php:556 wp-includes/revision.php:31 wp-includes/script-loader.php:533
 msgid "Title"
 msgstr "ਸਿਰਲੇਖ"
 
@@ -6486,8 +6322,7 @@ msgstr ""
 msgid "Restore last draft"
 msgstr ""
 
-#: wp-includes/class-wp-editor.php:926 wp-includes/class-wp-editor.php:1401
-#: wp-includes/script-loader.php:403
+#: wp-includes/class-wp-editor.php:926 wp-includes/class-wp-editor.php:1401 wp-includes/script-loader.php:403
 msgid "Insert/edit link"
 msgstr ""
 
@@ -6581,7 +6416,7 @@ msgstr ""
 
 #: wp-includes/class-wp-editor.php:950
 msgid "Add to Dictionary"
-msgstr "ਸ਼ਬਦਕੋਸ਼ ਵਿੱਚ ਜੋੜੋ"
+msgstr "ਸ਼ਬਦਕੋਸ਼ ਵਿੱਚ ਜੋੜੋ"
 
 #: wp-includes/class-wp-editor.php:953
 msgid "Insert table"
@@ -6705,9 +6540,7 @@ msgstr "ਉੱਚਾਈ"
 msgid "Width"
 msgstr "ਚੌੜਾਈ"
 
-#: wp-includes/class-wp-editor.php:985 wp-includes/media-template.php:393
-#: wp-includes/media-template.php:572 wp-includes/media-template.php:830
-#: wp-includes/media-template.php:895
+#: wp-includes/class-wp-editor.php:985 wp-includes/media-template.php:393 wp-includes/media-template.php:572 wp-includes/media-template.php:830 wp-includes/media-template.php:895
 msgid "Caption"
 msgstr "ਸੁਰਖੀ"
 
@@ -6815,9 +6648,7 @@ msgstr ""
 msgid "Rich Text Area. Press Alt-Shift-H for help"
 msgstr ""
 
-#: wp-includes/class-wp-editor.php:1017 wp-includes/script-loader.php:436
-#: wp-includes/script-loader.php:526 wp-includes/script-loader.php:535
-#: wp-includes/script-loader.php:644 wp-includes/theme.php:2029
+#: wp-includes/class-wp-editor.php:1017 wp-includes/script-loader.php:436 wp-includes/script-loader.php:526 wp-includes/script-loader.php:535 wp-includes/script-loader.php:644 wp-includes/theme.php:2029
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr ""
 
@@ -6955,9 +6786,7 @@ msgstr "Y/m/d"
 msgid "Enter the destination URL"
 msgstr ""
 
-#: wp-includes/class-wp-editor.php:1414
-#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:105
-#: wp-includes/media-template.php:1001
+#: wp-includes/class-wp-editor.php:1414 wp-includes/customize/class-wp-customize-nav-menu-item-control.php:105 wp-includes/media-template.php:1001
 msgid "Open link in a new tab"
 msgstr ""
 
@@ -6977,43 +6806,35 @@ msgstr ""
 msgid "Add Link"
 msgstr "ਕੜੀ ਜੋੜੋ"
 
-#: wp-includes/class-wp-http-curl.php:189
-#: wp-includes/class-wp-http-streams.php:228
+#: wp-includes/class-wp-http-curl.php:189 wp-includes/class-wp-http-streams.php:228
 msgid "Could not open handle for fopen() to %s"
 msgstr ""
 
-#: wp-includes/class-wp-http-curl.php:257
-#: wp-includes/class-wp-http-streams.php:256
+#: wp-includes/class-wp-http-curl.php:257 wp-includes/class-wp-http-streams.php:256
 msgid "Failed to write request to temporary file."
 msgstr ""
 
-#: wp-includes/class-wp-http-streams.php:156
-#: wp-includes/class-wp-http-streams.php:164
+#: wp-includes/class-wp-http-streams.php:156 wp-includes/class-wp-http-streams.php:164
 msgid "The SSL certificate for the host could not be verified."
 msgstr ""
 
-#: wp-includes/class-wp-image-editor-gd.php:97
-#: wp-includes/class-wp-image-editor-imagick.php:130
+#: wp-includes/class-wp-image-editor-gd.php:97 wp-includes/class-wp-image-editor-imagick.php:130
 msgid "File doesn&#8217;t exist?"
 msgstr ""
 
-#: wp-includes/class-wp-image-editor-gd.php:113
-#: wp-includes/class-wp-image-editor-imagick.php:140
+#: wp-includes/class-wp-image-editor-gd.php:113 wp-includes/class-wp-image-editor-imagick.php:140
 msgid "File is not an image."
 msgstr ""
 
-#: wp-includes/class-wp-image-editor-gd.php:117
-#: wp-includes/class-wp-image-editor-imagick.php:211
+#: wp-includes/class-wp-image-editor-gd.php:117 wp-includes/class-wp-image-editor-imagick.php:211
 msgid "Could not read image size."
 msgstr ""
 
-#: wp-includes/class-wp-image-editor-gd.php:180
-#: wp-includes/class-wp-image-editor-gd.php:205
+#: wp-includes/class-wp-image-editor-gd.php:180 wp-includes/class-wp-image-editor-gd.php:205
 msgid "Image resize failed."
 msgstr ""
 
-#: wp-includes/class-wp-image-editor-gd.php:193
-#: wp-includes/class-wp-image-editor-imagick.php:245
+#: wp-includes/class-wp-image-editor-gd.php:193 wp-includes/class-wp-image-editor-imagick.php:245
 msgid "Could not calculate resized image dimensions"
 msgstr ""
 
@@ -7029,10 +6850,7 @@ msgstr ""
 msgid "Image flip failed."
 msgstr ""
 
-#: wp-includes/class-wp-image-editor-gd.php:408
-#: wp-includes/class-wp-image-editor-gd.php:416
-#: wp-includes/class-wp-image-editor-gd.php:420
-#: wp-includes/class-wp-image-editor-gd.php:423
+#: wp-includes/class-wp-image-editor-gd.php:408 wp-includes/class-wp-image-editor-gd.php:416 wp-includes/class-wp-image-editor-gd.php:420 wp-includes/class-wp-image-editor-gd.php:423
 msgid "Image Editor Save Failed"
 msgstr ""
 
@@ -7044,17 +6862,8 @@ msgstr ""
 msgid "Term ID is shared between multiple taxonomies"
 msgstr ""
 
-#: wp-includes/class-wp-term.php:179
-#: wp-includes/class-wp-xmlrpc-server.php:1851
-#: wp-includes/class-wp-xmlrpc-server.php:1938
-#: wp-includes/class-wp-xmlrpc-server.php:2034
-#: wp-includes/class-wp-xmlrpc-server.php:2105
-#: wp-includes/class-wp-xmlrpc-server.php:2163
-#: wp-includes/class-wp-xmlrpc-server.php:2258 wp-includes/taxonomy.php:668
-#: wp-includes/taxonomy.php:757 wp-includes/taxonomy.php:908
-#: wp-includes/taxonomy.php:1081 wp-includes/taxonomy.php:2300
-#: wp-includes/taxonomy.php:2551 wp-includes/taxonomy.php:2794
-#: wp-includes/taxonomy.php:3127
+#: wp-includes/class-wp-term.php:179 wp-includes/class-wp-xmlrpc-server.php:1851 wp-includes/class-wp-xmlrpc-server.php:1938 wp-includes/class-wp-xmlrpc-server.php:2034 wp-includes/class-wp-xmlrpc-server.php:2105 wp-includes/class-wp-xmlrpc-server.php:2163 wp-includes/class-wp-xmlrpc-server.php:2258 wp-includes/taxonomy.php:668 wp-includes/taxonomy.php:757 wp-includes/taxonomy.php:908
+#: wp-includes/taxonomy.php:1081 wp-includes/taxonomy.php:2300 wp-includes/taxonomy.php:2551 wp-includes/taxonomy.php:2794 wp-includes/taxonomy.php:3127
 msgid "Invalid taxonomy"
 msgstr "ਅਯੋਗ ਟੈਕਸੋਨੌਮੀ"
 
@@ -7091,8 +6900,7 @@ msgid "Anonymous"
 msgstr ""
 
 #. translators: %s: WP_User->ID
-#: wp-includes/class-wp-user.php:275 wp-includes/class-wp-user.php:305
-#: wp-includes/class-wp-user.php:344 wp-includes/class-wp-user.php:368
+#: wp-includes/class-wp-user.php:275 wp-includes/class-wp-user.php:305 wp-includes/class-wp-user.php:344 wp-includes/class-wp-user.php:368
 msgid "Use %s instead."
 msgstr "ਇਸਦੀ  ਜਗ੍ਹਾ ਉੱਤੇ %s ਵਰਤੋਂ"
 
@@ -7236,34 +7044,13 @@ msgstr ""
 msgid "Sorry, you are not allowed to stick this post."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:1286
-#: wp-includes/class-wp-xmlrpc-server.php:4077
-#: wp-includes/class-wp-xmlrpc-server.php:4825
-#: wp-includes/class-wp-xmlrpc-server.php:4883
-#: wp-includes/class-wp-xmlrpc-server.php:5157
-#: wp-includes/class-wp-xmlrpc-server.php:5221
+#: wp-includes/class-wp-xmlrpc-server.php:1286 wp-includes/class-wp-xmlrpc-server.php:4077 wp-includes/class-wp-xmlrpc-server.php:4825 wp-includes/class-wp-xmlrpc-server.php:4883 wp-includes/class-wp-xmlrpc-server.php:5157 wp-includes/class-wp-xmlrpc-server.php:5221
 msgid "Invalid post type"
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:1292
-#: wp-includes/class-wp-xmlrpc-server.php:1545
-#: wp-includes/class-wp-xmlrpc-server.php:1611
-#: wp-includes/class-wp-xmlrpc-server.php:1709
-#: wp-includes/class-wp-xmlrpc-server.php:2637
-#: wp-includes/class-wp-xmlrpc-server.php:3518
-#: wp-includes/class-wp-xmlrpc-server.php:3522
-#: wp-includes/class-wp-xmlrpc-server.php:3648
-#: wp-includes/class-wp-xmlrpc-server.php:4195
-#: wp-includes/class-wp-xmlrpc-server.php:4259
-#: wp-includes/class-wp-xmlrpc-server.php:4262
-#: wp-includes/class-wp-xmlrpc-server.php:4265
-#: wp-includes/class-wp-xmlrpc-server.php:4427
-#: wp-includes/class-wp-xmlrpc-server.php:5150
-#: wp-includes/class-wp-xmlrpc-server.php:5441
-#: wp-includes/class-wp-xmlrpc-server.php:5953
-#: wp-includes/class-wp-xmlrpc-server.php:6007
-#: wp-includes/class-wp-xmlrpc-server.php:6126 wp-includes/post.php:2938
-#: wp-includes/post.php:3426 wp-includes/revision.php:265
+#: wp-includes/class-wp-xmlrpc-server.php:1292 wp-includes/class-wp-xmlrpc-server.php:1545 wp-includes/class-wp-xmlrpc-server.php:1611 wp-includes/class-wp-xmlrpc-server.php:1709 wp-includes/class-wp-xmlrpc-server.php:2637 wp-includes/class-wp-xmlrpc-server.php:3518 wp-includes/class-wp-xmlrpc-server.php:3522 wp-includes/class-wp-xmlrpc-server.php:3648
+#: wp-includes/class-wp-xmlrpc-server.php:4195 wp-includes/class-wp-xmlrpc-server.php:4259 wp-includes/class-wp-xmlrpc-server.php:4262 wp-includes/class-wp-xmlrpc-server.php:4265 wp-includes/class-wp-xmlrpc-server.php:4427 wp-includes/class-wp-xmlrpc-server.php:5150 wp-includes/class-wp-xmlrpc-server.php:5441 wp-includes/class-wp-xmlrpc-server.php:5953
+#: wp-includes/class-wp-xmlrpc-server.php:6007 wp-includes/class-wp-xmlrpc-server.php:6126 wp-includes/post.php:2938 wp-includes/post.php:3426 wp-includes/revision.php:265
 msgid "Invalid post ID."
 msgstr ""
 
@@ -7271,13 +7058,11 @@ msgstr ""
 msgid "Sorry, you are not allowed to edit this post."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:1296
-#: wp-includes/class-wp-xmlrpc-server.php:5161
+#: wp-includes/class-wp-xmlrpc-server.php:1296 wp-includes/class-wp-xmlrpc-server.php:5161
 msgid "The post type may not be changed."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:1299
-#: wp-includes/class-wp-xmlrpc-server.php:4573
+#: wp-includes/class-wp-xmlrpc-server.php:1299 wp-includes/class-wp-xmlrpc-server.php:4573
 msgid "Sorry, you are not allowed to post on this site."
 msgstr ""
 
@@ -7293,37 +7078,27 @@ msgstr ""
 msgid "Sorry, you are not allowed to create password protected posts in this post type"
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:1327
-#: wp-includes/class-wp-xmlrpc-server.php:4876
+#: wp-includes/class-wp-xmlrpc-server.php:1327 wp-includes/class-wp-xmlrpc-server.php:4876
 msgid "You are not allowed to create posts as this user."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:1332
-#: wp-includes/class-wp-xmlrpc-server.php:4887
+#: wp-includes/class-wp-xmlrpc-server.php:1332 wp-includes/class-wp-xmlrpc-server.php:4887
 msgid "Invalid author ID."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:1372
-#: wp-includes/class-wp-xmlrpc-server.php:3908
-#: wp-includes/class-wp-xmlrpc-server.php:5031
-#: wp-includes/class-wp-xmlrpc-server.php:5386
+#: wp-includes/class-wp-xmlrpc-server.php:1372 wp-includes/class-wp-xmlrpc-server.php:3908 wp-includes/class-wp-xmlrpc-server.php:5031 wp-includes/class-wp-xmlrpc-server.php:5386
 msgid "Invalid attachment ID."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:1393
-#: wp-includes/class-wp-xmlrpc-server.php:1417
+#: wp-includes/class-wp-xmlrpc-server.php:1393 wp-includes/class-wp-xmlrpc-server.php:1417
 msgid "Sorry, one of the given taxonomies is not supported by the post type."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:1396
-#: wp-includes/class-wp-xmlrpc-server.php:1420
+#: wp-includes/class-wp-xmlrpc-server.php:1396 wp-includes/class-wp-xmlrpc-server.php:1420
 msgid "Sorry, you are not allowed to assign a term to one of the given taxonomies."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:1404
-#: wp-includes/class-wp-xmlrpc-server.php:1956
-#: wp-includes/class-wp-xmlrpc-server.php:2047
-#: wp-includes/class-wp-xmlrpc-server.php:2118 wp-includes/taxonomy.php:2566
+#: wp-includes/class-wp-xmlrpc-server.php:1404 wp-includes/class-wp-xmlrpc-server.php:1956 wp-includes/class-wp-xmlrpc-server.php:2047 wp-includes/class-wp-xmlrpc-server.php:2118 wp-includes/taxonomy.php:2566
 msgid "Invalid term ID"
 msgstr ""
 
@@ -7335,9 +7110,7 @@ msgstr ""
 msgid "Sorry, you are not allowed to add a term to one of the given taxonomies."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:1501
-#: wp-includes/class-wp-xmlrpc-server.php:4593
-#: wp-includes/class-wp-xmlrpc-server.php:5052
+#: wp-includes/class-wp-xmlrpc-server.php:1501 wp-includes/class-wp-xmlrpc-server.php:4593 wp-includes/class-wp-xmlrpc-server.php:5052
 msgid "Sorry, your entry could not be posted. Something wrong happened."
 msgstr ""
 
@@ -7345,22 +7118,15 @@ msgstr ""
 msgid "There is a revision of this post that is more recent."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:1615
-#: wp-includes/class-wp-xmlrpc-server.php:4723
+#: wp-includes/class-wp-xmlrpc-server.php:1615 wp-includes/class-wp-xmlrpc-server.php:4723
 msgid "Sorry, you do not have the right to delete this post."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:1621
-#: wp-includes/class-wp-xmlrpc-server.php:4729
+#: wp-includes/class-wp-xmlrpc-server.php:1621 wp-includes/class-wp-xmlrpc-server.php:4729
 msgid "The post cannot be deleted."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:1712
-#: wp-includes/class-wp-xmlrpc-server.php:4268
-#: wp-includes/class-wp-xmlrpc-server.php:4430
-#: wp-includes/class-wp-xmlrpc-server.php:5444
-#: wp-includes/class-wp-xmlrpc-server.php:5785
-#: wp-includes/class-wp-xmlrpc-server.php:6010
+#: wp-includes/class-wp-xmlrpc-server.php:1712 wp-includes/class-wp-xmlrpc-server.php:4268 wp-includes/class-wp-xmlrpc-server.php:4430 wp-includes/class-wp-xmlrpc-server.php:5444 wp-includes/class-wp-xmlrpc-server.php:5785 wp-includes/class-wp-xmlrpc-server.php:6010
 msgid "Sorry, you cannot edit this post."
 msgstr ""
 
@@ -7376,8 +7142,7 @@ msgstr ""
 msgid "You are not allowed to create terms in this taxonomy."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:1865
-#: wp-includes/class-wp-xmlrpc-server.php:1962
+#: wp-includes/class-wp-xmlrpc-server.php:1865 wp-includes/class-wp-xmlrpc-server.php:1962
 msgid "The term name cannot be empty."
 msgstr ""
 
@@ -7385,9 +7150,7 @@ msgstr ""
 msgid "This taxonomy is not hierarchical."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:1878
-#: wp-includes/class-wp-xmlrpc-server.php:1976 wp-includes/taxonomy.php:2575
-#: wp-includes/taxonomy.php:3167
+#: wp-includes/class-wp-xmlrpc-server.php:1878 wp-includes/class-wp-xmlrpc-server.php:1976 wp-includes/taxonomy.php:2575 wp-includes/taxonomy.php:3167
 msgid "Parent term does not exist."
 msgstr ""
 
@@ -7411,8 +7174,7 @@ msgstr ""
 msgid "You are not allowed to delete terms in this taxonomy."
 msgstr ""
 
-#: wp-includes/class-wp-customize-section.php:236
-#: wp-includes/customize/class-wp-customize-themes-section.php:55
+#: wp-includes/class-wp-customize-section.php:236 wp-includes/customize/class-wp-customize-themes-section.php:55
 msgid "Customizing"
 msgstr ""
 
@@ -7445,12 +7207,7 @@ msgstr "ਲਾਗੂ ਕਰੋ"
 msgid "Save and preview changes before publishing them."
 msgstr ""
 
-#: wp-includes/class-wp-customize-widgets.php:671
-#: wp-includes/class-wp-editor.php:1036
-#: wp-includes/customize/class-wp-customize-image-control.php:37
-#: wp-includes/customize/class-wp-customize-media-control.php:62
-#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:141
-#: wp-includes/media-template.php:467 wp-includes/media.php:3336
+#: wp-includes/class-wp-customize-widgets.php:671 wp-includes/class-wp-editor.php:1036 wp-includes/customize/class-wp-customize-image-control.php:37 wp-includes/customize/class-wp-customize-media-control.php:62 wp-includes/customize/class-wp-customize-nav-menu-item-control.php:141 wp-includes/media-template.php:467 wp-includes/media.php:3336
 msgid "Remove"
 msgstr "ਹਟਾਓ"
 
@@ -7458,8 +7215,7 @@ msgstr "ਹਟਾਓ"
 msgid "Trash widget by moving it to the inactive widgets sidebar."
 msgstr ""
 
-#: wp-includes/class-wp-customize-widgets.php:673
-#: wp-includes/script-loader.php:623
+#: wp-includes/class-wp-customize-widgets.php:673 wp-includes/script-loader.php:623
 msgid "An error has occurred. Please reload the page and try again."
 msgstr ""
 
@@ -7475,13 +7231,11 @@ msgstr "ਵਿਜੇਟ ਥੱਲੇ ਕੀਤਾ "
 msgid "There are no widget areas currently rendered in the preview. Navigate in the preview to a template that makes use of a widget area in order to access its widgets here."
 msgstr ""
 
-#: wp-includes/class-wp-customize-widgets.php:679
-#: wp-includes/customize/class-wp-widget-area-customize-control.php:63
+#: wp-includes/class-wp-customize-widgets.php:679 wp-includes/customize/class-wp-widget-area-customize-control.php:63
 msgid "Reorder widgets"
 msgstr ""
 
-#: wp-includes/class-wp-customize-widgets.php:718
-#: wp-includes/customize/class-wp-widget-area-customize-control.php:61
+#: wp-includes/class-wp-customize-widgets.php:718 wp-includes/customize/class-wp-widget-area-customize-control.php:61
 msgid "Add a Widget"
 msgstr ""
 
@@ -7508,7 +7262,7 @@ msgstr ""
 
 #: wp-includes/class-wp-editor.php:813
 msgid "New document"
-msgstr "ਨਵਾਂ ਦਸਤਾਵੇਜ਼"
+msgstr "ਨਵਾਂ ਦਸਤਾਵੇਜ਼"
 
 #: wp-includes/class-wp-editor.php:814
 msgctxt "TinyMCE"
@@ -7680,15 +7434,11 @@ msgstr "ਮੁੜ ਕਰੋ"
 msgid "OK"
 msgstr "ਠੀਕ"
 
-#: wp-includes/class-wp-editor.php:861 wp-includes/class-wp-editor.php:1446
-#: wp-includes/media.php:3333 wp-includes/script-loader.php:390
-#: wp-includes/script-loader.php:438 wp-includes/script-loader.php:507
+#: wp-includes/class-wp-editor.php:861 wp-includes/class-wp-editor.php:1446 wp-includes/media.php:3333 wp-includes/script-loader.php:390 wp-includes/script-loader.php:438 wp-includes/script-loader.php:507
 msgid "Cancel"
 msgstr "ਰੱਦ ਕਰੋ"
 
-#: wp-includes/class-wp-editor.php:862 wp-includes/class-wp-editor.php:1402
-#: wp-includes/functions.php:4937 wp-includes/script-loader.php:256
-#: wp-includes/script-loader.php:337 wp-includes/script-loader.php:439
+#: wp-includes/class-wp-editor.php:862 wp-includes/class-wp-editor.php:1402 wp-includes/functions.php:4937 wp-includes/script-loader.php:256 wp-includes/script-loader.php:337 wp-includes/script-loader.php:439
 msgid "Close"
 msgstr "ਬੰਦ ਕਰੋ"
 
@@ -7752,8 +7502,7 @@ msgstr "ਸਜਿੰਦ ਝਲਕ: %s"
 msgid "Site Identity"
 msgstr "ਜਾਲਸਥਾਨ ਦੀ ਪਹਿਚਾਣ"
 
-#: wp-includes/class-wp-customize-manager.php:1808
-#: wp-includes/class-wp-xmlrpc-server.php:467
+#: wp-includes/class-wp-customize-manager.php:1808 wp-includes/class-wp-xmlrpc-server.php:467
 msgid "Site Title"
 msgstr "ਜਾਲਸਥਾਨ ਦਾ ਸਿਰਲੇਖ"
 
@@ -7785,8 +7534,7 @@ msgstr ""
 msgid "Background Color"
 msgstr "ਪਿਛੋਕੜ ਰੰਗ"
 
-#: wp-includes/class-wp-customize-manager.php:1887
-#: wp-includes/customize/class-wp-customize-header-image-control.php:31
+#: wp-includes/class-wp-customize-manager.php:1887 wp-includes/customize/class-wp-customize-header-image-control.php:31
 msgid "Header Image"
 msgstr ""
 
@@ -7814,21 +7562,15 @@ msgstr ""
 msgid "Background Position"
 msgstr ""
 
-#: wp-includes/class-wp-customize-manager.php:1950
-#: wp-includes/class-wp-editor.php:988 wp-includes/media-template.php:613
-#: wp-includes/media-template.php:844 wp-includes/media-template.php:910
+#: wp-includes/class-wp-customize-manager.php:1950 wp-includes/class-wp-editor.php:988 wp-includes/media-template.php:613 wp-includes/media-template.php:844 wp-includes/media-template.php:910
 msgid "Left"
 msgstr "ਖੱਬੇ"
 
-#: wp-includes/class-wp-customize-manager.php:1951
-#: wp-includes/class-wp-editor.php:989 wp-includes/media-template.php:616
-#: wp-includes/media-template.php:847 wp-includes/media-template.php:913
+#: wp-includes/class-wp-customize-manager.php:1951 wp-includes/class-wp-editor.php:989 wp-includes/media-template.php:616 wp-includes/media-template.php:847 wp-includes/media-template.php:913
 msgid "Center"
 msgstr "ਕੇਂਦਰੀ"
 
-#: wp-includes/class-wp-customize-manager.php:1952
-#: wp-includes/class-wp-editor.php:990 wp-includes/media-template.php:619
-#: wp-includes/media-template.php:850 wp-includes/media-template.php:916
+#: wp-includes/class-wp-customize-manager.php:1952 wp-includes/class-wp-editor.php:990 wp-includes/media-template.php:619 wp-includes/media-template.php:850 wp-includes/media-template.php:916
 msgid "Right"
 msgstr "ਸੱਜੇ"
 
@@ -7877,24 +7619,20 @@ msgctxt "nav menu home label"
 msgid "Home"
 msgstr "ਮੁੱਖ ਪੰਨਾ"
 
-#: wp-includes/class-wp-customize-nav-menus.php:131
-#: wp-includes/nav-menu.php:757
+#: wp-includes/class-wp-customize-nav-menus.php:131 wp-includes/nav-menu.php:757
 msgid "Post Type Archive"
 msgstr ""
 
-#: wp-includes/class-wp-customize-nav-menus.php:231
-#: wp-includes/script-loader.php:407 wp-includes/script-loader.php:642
+#: wp-includes/class-wp-customize-nav-menus.php:231 wp-includes/script-loader.php:407 wp-includes/script-loader.php:642
 msgid "No results found."
 msgstr ""
 
-#: wp-includes/class-wp-customize-nav-menus.php:336
-#: wp-includes/script-loader.php:645
+#: wp-includes/class-wp-customize-nav-menus.php:336 wp-includes/script-loader.php:645
 msgctxt "missing menu item navigation label"
 msgid "(no label)"
 msgstr ""
 
-#: wp-includes/class-wp-customize-nav-menus.php:337
-#: wp-includes/customize/class-wp-customize-nav-menu-setting.php:440
+#: wp-includes/class-wp-customize-nav-menus.php:337 wp-includes/customize/class-wp-customize-nav-menu-setting.php:440
 msgctxt "Missing menu name."
 msgid "(unnamed)"
 msgstr "(ਬੇ-ਨਾਮ)"
@@ -7943,10 +7681,7 @@ msgstr ""
 
 #. translators: &#9656; is the unicode right-pointing triangle, and %s is the
 #. section title in the Customizer
-#: wp-includes/class-wp-customize-nav-menus.php:351
-#: wp-includes/class-wp-customize-nav-menus.php:722
-#: wp-includes/class-wp-customize-section.php:234
-#: wp-includes/class-wp-customize-widgets.php:716
+#: wp-includes/class-wp-customize-nav-menus.php:351 wp-includes/class-wp-customize-nav-menus.php:722 wp-includes/class-wp-customize-section.php:234 wp-includes/class-wp-customize-widgets.php:716
 msgid "Customizing &#9656; %s"
 msgstr ""
 
@@ -7970,25 +7705,21 @@ msgstr ""
 
 #: wp-includes/class-wp-customize-nav-menus.php:358
 msgid "Loading more results... please wait."
-msgstr "ਹੋਰ ਨਤੀਜੇ ਆ ਰਹੇ ਹਨ...ਇੰਤਜ਼ਾਰ ਕਰੋ।"
+msgstr "ਹੋਰ ਨਤੀਜੇ ਆ ਰਹੇ ਹਨ...ਇੰਤਜ਼ਾਰ ਕਰੋ।"
 
-#: wp-includes/class-wp-customize-nav-menus.php:359
-#: wp-includes/class-wp-customize-widgets.php:677
+#: wp-includes/class-wp-customize-nav-menus.php:359 wp-includes/class-wp-customize-widgets.php:677
 msgid "Reorder mode enabled"
 msgstr ""
 
-#: wp-includes/class-wp-customize-nav-menus.php:360
-#: wp-includes/class-wp-customize-widgets.php:678
+#: wp-includes/class-wp-customize-nav-menus.php:360 wp-includes/class-wp-customize-widgets.php:678
 msgid "Reorder mode closed"
 msgstr ""
 
-#: wp-includes/class-wp-customize-nav-menus.php:361
-#: wp-includes/customize/class-wp-customize-nav-menu-control.php:54
+#: wp-includes/class-wp-customize-nav-menus.php:361 wp-includes/customize/class-wp-customize-nav-menu-control.php:54
 msgid "Reorder menu items"
 msgstr ""
 
-#: wp-includes/class-wp-customize-nav-menus.php:362
-#: wp-includes/class-wp-customize-widgets.php:680
+#: wp-includes/class-wp-customize-nav-menus.php:362 wp-includes/class-wp-customize-widgets.php:680
 msgid "Close reorder mode"
 msgstr ""
 
@@ -8077,13 +7808,11 @@ msgstr "ਨਵੀਂ ਸੂਚੀ ਦਾ ਨਾਮ"
 msgid "Add to menu: %1$s (%2$s)"
 msgstr "ਸੂਚੀ 'ਚ ਜੋੜੋ: %1$s (%2$s)"
 
-#: wp-includes/class-wp-customize-nav-menus.php:694
-#: wp-includes/class-wp-customize-widgets.php:641
+#: wp-includes/class-wp-customize-nav-menus.php:694 wp-includes/class-wp-customize-widgets.php:641
 msgid "Move up"
 msgstr ""
 
-#: wp-includes/class-wp-customize-nav-menus.php:695
-#: wp-includes/class-wp-customize-widgets.php:640
+#: wp-includes/class-wp-customize-nav-menus.php:695 wp-includes/class-wp-customize-widgets.php:640
 msgid "Move down"
 msgstr ""
 
@@ -8095,12 +7824,7 @@ msgstr ""
 msgid "Move one level down"
 msgstr ""
 
-#: wp-includes/class-wp-customize-nav-menus.php:716
-#: wp-includes/class-wp-customize-panel.php:369
-#: wp-includes/class-wp-customize-section.php:356
-#: wp-includes/class-wp-customize-widgets.php:711
-#: wp-includes/customize/class-wp-customize-nav-menus-panel.php:82
-#: wp-includes/media.php:3337
+#: wp-includes/class-wp-customize-nav-menus.php:716 wp-includes/class-wp-customize-panel.php:369 wp-includes/class-wp-customize-section.php:356 wp-includes/class-wp-customize-widgets.php:711 wp-includes/customize/class-wp-customize-nav-menus-panel.php:82 wp-includes/media.php:3337
 msgid "Back"
 msgstr ""
 
@@ -8122,7 +7846,7 @@ msgstr ""
 
 #: wp-includes/class-wp-customize-nav-menus.php:734
 msgid "Clear Results"
-msgstr "ਨਤੀਜੇ ਸਾਫ਼ ਕਰੋ"
+msgstr "ਨਤੀਜੇ ਸਾਫ਼ ਕਰੋ"
 
 #: wp-includes/class-wp-customize-nav-menus.php:740
 msgid "Custom Links"
@@ -8151,13 +7875,11 @@ msgstr ""
 
 #. translators: %s is the site/panel title in the Customizer
 #. Translators: %s is the site/panel title in the Customizer.
-#: wp-includes/class-wp-customize-panel.php:373
-#: wp-includes/customize/class-wp-customize-nav-menus-panel.php:88
+#: wp-includes/class-wp-customize-panel.php:373 wp-includes/customize/class-wp-customize-nav-menus-panel.php:88
 msgid "You are customizing %s"
 msgstr ""
 
-#: wp-includes/class-wp-customize-panel.php:375
-#: wp-includes/customize/class-wp-customize-nav-menus-panel.php:92
+#: wp-includes/class-wp-customize-panel.php:375 wp-includes/customize/class-wp-customize-nav-menus-panel.php:92
 msgid "Help"
 msgstr "ਮਦਦ"
 
@@ -8171,11 +7893,11 @@ msgstr ""
 
 #: wp-activate.php:81
 msgid "Activate"
-msgstr "ਕਿਰਿਆਸ਼ੀਲ ਕਰੋ"
+msgstr "ਕਿਰਿਆਸ਼ੀਲ ਕਰੋ"
 
 #: wp-activate.php:93 wp-activate.php:112
 msgid "Your account is now active!"
-msgstr "ਤੁਹਾਡਾ ਖਾਤਾ ਹੁਣ ਕਿਰਿਆਸ਼ੀਲ ਹੈ!"
+msgstr "ਤੁਹਾਡਾ ਖਾਤਾ ਹੁਣ ਕਿਰਿਆਸ਼ੀਲ ਹੈ!"
 
 #: wp-activate.php:97
 msgid "Your account has been activated. You may now <a href=\"%1$s\">log in</a> to the site using your chosen username of &#8220;%2$s&#8221;. Please check your email inbox at %3$s for your password and login instructions. If you do not receive an email, please check your junk or spam folder. If you still do not receive an email within an hour, you can <a href=\"%4$s\">reset your password</a>."
@@ -8187,7 +7909,7 @@ msgstr ""
 
 #: wp-activate.php:104
 msgid "An error occurred during the activation"
-msgstr "ਕਿਰਿਆਸ਼ੀਲ ਕਰਨ ਦੌਰਾਨ ਗਲਤੀ ਹੋਈ"
+msgstr "ਕਿਰਿਆਸ਼ੀਲ ਕਰਨ ਦੌਰਾਨ ਗਲਤੀ ਹੋਈ"
 
 #: wp-activate.php:115 wp-signup.php:217
 msgid "Username:"
@@ -8213,14 +7935,13 @@ msgstr "ਵਰਡਪਰੈਸ ਬਾਰੇ"
 msgid "WordPress.org"
 msgstr ""
 
-#: wp-includes/admin-bar.php:129
-#: wp-includes/widgets/class-wp-widget-meta.php:65 wp-login.php:101
+#: wp-includes/admin-bar.php:129 wp-includes/widgets/class-wp-widget-meta.php:65 wp-login.php:101
 msgid "https://wordpress.org/"
 msgstr "https://wordpress.org/"
 
 #: wp-includes/admin-bar.php:136
 msgid "Documentation"
-msgstr "ਕਾਗਜ਼ਾਤ"
+msgstr "ਕਾਗਜ਼ਾਤ"
 
 #: wp-includes/admin-bar.php:137
 msgid "https://codex.wordpress.org/"
@@ -8230,8 +7951,7 @@ msgstr "https://codex.wordpress.org/"
 msgid "Support Forums"
 msgstr ""
 
-#: wp-includes/admin-bar.php:145 wp-includes/wp-db.php:1085
-#: wp-includes/wp-db.php:1551 wp-includes/wp-db.php:1655 wp-login.php:780
+#: wp-includes/admin-bar.php:145 wp-includes/wp-db.php:1085 wp-includes/wp-db.php:1551 wp-includes/wp-db.php:1655 wp-login.php:780
 msgid "https://wordpress.org/support/"
 msgstr ""
 
@@ -8261,26 +7981,21 @@ msgstr ""
 
 #: wp-includes/admin-bar.php:296
 msgid "User Dashboard: %s"
-msgstr "ਵਰਤੋਂਕਾਰ ਡੈਸ਼ਬੋਰਡ: %s"
+msgstr "ਵਰਤੋਂਕਾਰ ਡੈਸ਼ਬੋਰਡ: %s"
 
-#: wp-includes/admin-bar.php:314 wp-includes/admin-bar.php:504
-#: wp-includes/deprecated.php:2759
+#: wp-includes/admin-bar.php:314 wp-includes/admin-bar.php:504 wp-includes/deprecated.php:2759
 msgid "Visit Site"
 msgstr "ਜਾਲਸਥਾਨ 'ਤੇ ਪਹੁੰਚੋ"
 
 #: wp-includes/admin-bar.php:322
 msgid "Edit Site"
-msgstr "ਜ਼ਾਲਸਥਾਨ ਸੰਪਾਦਿਤ ਕਰੋ"
+msgstr "ਜ਼ਾਲਸਥਾਨ ਸੰਪਾਦਿਤ ਕਰੋ"
 
-#: wp-includes/admin-bar.php:332 wp-includes/admin-bar.php:412
-#: wp-includes/admin-bar.php:479 wp-includes/deprecated.php:2761
-#: wp-includes/deprecated.php:2763
+#: wp-includes/admin-bar.php:332 wp-includes/admin-bar.php:412 wp-includes/admin-bar.php:479 wp-includes/deprecated.php:2761 wp-includes/deprecated.php:2763
 msgid "Dashboard"
-msgstr "ਡੈਸ਼ਬੋਰਡ"
+msgstr "ਡੈਸ਼ਬੋਰਡ"
 
-#: wp-includes/admin-bar.php:359
-#: wp-includes/customize/class-wp-customize-theme-control.php:85
-#: wp-includes/customize/class-wp-customize-themes-section.php:67
+#: wp-includes/admin-bar.php:359 wp-includes/customize/class-wp-customize-theme-control.php:85 wp-includes/customize/class-wp-customize-themes-section.php:67
 msgid "Customize"
 msgstr ""
 
@@ -8294,14 +8009,13 @@ msgstr ""
 
 #: wp-includes/admin-bar.php:418
 msgid "Sites"
-msgstr "ਜ਼ਾਲਸਥਾਨ"
+msgstr "ਜ਼ਾਲਸਥਾਨ"
 
 #: wp-includes/admin-bar.php:424
 msgid "Users"
 msgstr "ਵਰਤੋਂਕਾਰ"
 
-#: wp-includes/admin-bar.php:430 wp-includes/admin-bar.php:722
-#: wp-includes/customize/class-wp-customize-themes-section.php:56
+#: wp-includes/admin-bar.php:430 wp-includes/admin-bar.php:722 wp-includes/customize/class-wp-customize-themes-section.php:56
 msgid "Themes"
 msgstr "ਥੀਮਾਂ"
 
@@ -8346,13 +8060,11 @@ msgid_plural "%s comments awaiting moderation"
 msgstr[0] ""
 msgstr[1] ""
 
-#: wp-includes/admin-bar.php:735 wp-includes/class-wp-customize-widgets.php:359
-#: wp-includes/functions.php:3450
+#: wp-includes/admin-bar.php:735 wp-includes/class-wp-customize-widgets.php:359 wp-includes/functions.php:3450
 msgid "Widgets"
 msgstr ""
 
-#: wp-includes/admin-bar.php:741
-#: wp-includes/class-wp-customize-nav-menus.php:469
+#: wp-includes/admin-bar.php:741 wp-includes/class-wp-customize-nav-menus.php:469
 msgid "Menus"
 msgstr ""
 
@@ -8364,8 +8076,7 @@ msgstr ""
 msgid "Header"
 msgstr ""
 
-#: wp-includes/admin-bar.php:809 wp-includes/admin-bar.php:810
-#: wp-includes/class-wp-editor.php:1421 wp-includes/media.php:3331
+#: wp-includes/admin-bar.php:809 wp-includes/admin-bar.php:810 wp-includes/class-wp-editor.php:1421 wp-includes/media.php:3331
 msgid "Search"
 msgstr "ਖੋਜੋ"
 
@@ -8397,14 +8108,13 @@ msgid "Bookmarks"
 msgstr ""
 
 #. translators: 1: post type, 2: capability name
-#: wp-includes/capabilities.php:71 wp-includes/capabilities.php:132
-#: wp-includes/capabilities.php:191 wp-includes/capabilities.php:228
+#: wp-includes/capabilities.php:71 wp-includes/capabilities.php:132 wp-includes/capabilities.php:191 wp-includes/capabilities.php:228
 msgid "The post type %1$s is not registered, so it may not be reliable to check the capability \"%2$s\" against a post of that type."
 msgstr ""
 
 #: wp-includes/category-template.php:191
 msgid "Uncategorized"
-msgstr "ਸ਼੍ਰੇਣੀ-ਰਹਿਤ"
+msgstr "ਸ਼੍ਰੇਣੀ-ਰਹਿਤ"
 
 #. translators: 1: "type => link", 2: "taxonomy => link_category" alternative
 #: wp-includes/category-template.php:378 wp-includes/category.php:43
@@ -8413,20 +8123,17 @@ msgstr ""
 
 #: wp-includes/category-template.php:528 wp-includes/taxonomy.php:540
 msgid "No categories"
-msgstr "ਕੋਈ ਸ਼੍ਰੇਣੀ ਨਹੀਂ"
+msgstr "ਕੋਈ ਸ਼੍ਰੇਣੀ ਨਹੀਂ"
 
-#: wp-includes/category-template.php:536
-#: wp-includes/theme-compat/sidebar.php:98
-#: wp-includes/widgets/class-wp-widget-categories.php:27
-#: wp-includes/widgets/class-wp-widget-categories.php:44
+#: wp-includes/category-template.php:536 wp-includes/theme-compat/sidebar.php:98 wp-includes/widgets/class-wp-widget-categories.php:27 wp-includes/widgets/class-wp-widget-categories.php:44
 msgid "Categories"
-msgstr "ਸ਼੍ਰੇਣੀਆਂ"
+msgstr "ਸ਼੍ਰੇਣੀਆਂ"
 
 #: wp-includes/category-template.php:804 wp-includes/category-template.php:813
 msgid "%s topic"
 msgid_plural "%s topics"
-msgstr[0] "%s ਵਿਸ਼ਾ"
-msgstr[1] "%s ਵਿਸ਼ੇ"
+msgstr[0] "%s ਵਿਸ਼ਾ"
+msgstr[1] "%s ਵਿਸ਼ੇ"
 
 #: wp-includes/category-template.php:1097
 msgid "Tags: "
@@ -8448,10 +8155,9 @@ msgstr ""
 msgid "There are no HTTP transports available which can complete the requested request."
 msgstr ""
 
-#: wp-includes/class-http.php:802 wp-includes/class-wp-http-curl.php:232
-#: wp-includes/class-wp-http-curl.php:271
+#: wp-includes/class-http.php:802 wp-includes/class-wp-http-curl.php:232 wp-includes/class-wp-http-curl.php:271
 msgid "Too many redirects."
-msgstr "ਬਹੁਤ ਜ਼ਿਆਦੇ ਮੋੜ।"
+msgstr "ਬਹੁਤ ਜ਼ਿਆਦੇ ਮੋੜ।"
 
 #: wp-includes/class-walker-category.php:129
 msgid "Feed for all posts filed under %s"
@@ -8465,14 +8171,12 @@ msgstr "ਪਿੰਗਬੈਕ:"
 msgid "<cite class=\"fn\">%s</cite> <span class=\"says\">says:</span>"
 msgstr ""
 
-#: wp-includes/class-walker-comment.php:270
-#: wp-includes/class-walker-comment.php:335
+#: wp-includes/class-walker-comment.php:270 wp-includes/class-walker-comment.php:335
 msgid "Your comment is awaiting moderation."
 msgstr "ਤੁਹਾਡੀ ਟਿੱਪਣੀ ਤਬਦੀਲੀ ਉਡੀਕਦੀ ਹੈ।"
 
 #. translators: 1: comment date, 2: comment time
-#: wp-includes/class-walker-comment.php:277
-#: wp-includes/class-walker-comment.php:327
+#: wp-includes/class-walker-comment.php:277 wp-includes/class-walker-comment.php:327
 msgid "%1$s at %2$s"
 msgstr "%2$s 'ਤੇ %1$s "
 
@@ -8485,11 +8189,7 @@ msgid "%s <span class=\"says\">says:</span>"
 msgstr ""
 
 #. translators: %d: ID of a post
-#: wp-includes/class-walker-page-dropdown.php:59
-#: wp-includes/class-walker-page.php:114
-#: wp-includes/class-wp-customize-nav-menus.php:148
-#: wp-includes/class-wp-customize-nav-menus.php:277
-#: wp-includes/nav-menu.php:744 wp-includes/nav-menu.php:819
+#: wp-includes/class-walker-page-dropdown.php:59 wp-includes/class-walker-page.php:114 wp-includes/class-wp-customize-nav-menus.php:148 wp-includes/class-wp-customize-nav-menus.php:277 wp-includes/nav-menu.php:744 wp-includes/nav-menu.php:819
 msgid "#%d (no title)"
 msgstr ""
 
@@ -8505,14 +8205,11 @@ msgstr ""
 msgid "Toolbar"
 msgstr ""
 
-#: wp-includes/class-wp-customize-control.php:490
-#: wp-includes/class-wp-customize-nav-menus.php:493
-#: wp-includes/widgets/class-wp-nav-menu-widget.php:138
+#: wp-includes/class-wp-customize-control.php:490 wp-includes/class-wp-customize-nav-menus.php:493 wp-includes/widgets/class-wp-nav-menu-widget.php:138
 msgid "&mdash; Select &mdash;"
 msgstr "&mdash; ਚੁਣੋ &mdash;"
 
-#: wp-includes/class-wp-customize-manager.php:327
-#: wp-includes/script-loader.php:440
+#: wp-includes/class-wp-customize-manager.php:327 wp-includes/script-loader.php:440
 msgid "Cheatin&#8217; uh?"
 msgstr "ਧੋਖਾ ਕਰ ਰਹੇ ਹੋ...?"
 
@@ -8520,8 +8217,7 @@ msgstr "ਧੋਖਾ ਕਰ ਰਹੇ ਹੋ...?"
 msgid "You must be logged in to complete this action."
 msgstr ""
 
-#: wp-includes/class-wp-customize-manager.php:368
-#: wp-includes/script-loader.php:441
+#: wp-includes/class-wp-customize-manager.php:368 wp-includes/script-loader.php:441
 msgid "You are not allowed to customize the appearance of this site."
 msgstr ""
 

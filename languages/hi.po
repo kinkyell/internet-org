@@ -2,18 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Internet.org\n"
 "POT-Creation-Date: 2015-10-05 11:57-0500\n"
-"PO-Revision-Date: 2015-12-22 10:07-0500\n"
+"PO-Revision-Date: 2016-04-12 10:50-0700\n"
 "Last-Translator: Darcy Clarke <darcy@darcyclarke.me>\n"
 "Language-Team: Richard Aber <raber@nerdery.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: style.css\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;"
-"esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: hi\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -124,8 +123,7 @@ msgstr "बाहरी लिंक"
 msgid "External URL"
 msgstr "बाहरी URL"
 
-#: functions.php:1683 plugins/internetorg-custom-posttypes/content-widget.php:71
-#: plugins/internetorg-custom-posttypes/content-widget.php:90
+#: functions.php:1683 plugins/internetorg-custom-posttypes/content-widget.php:71 plugins/internetorg-custom-posttypes/content-widget.php:90
 msgid "URL"
 msgstr "URL"
 
@@ -181,8 +179,7 @@ msgstr "1 टिप्पणी"
 msgid "% Comments"
 msgstr "% टिप्पणियाँ"
 
-#: inc/template-tags.php:85 inc/template-tags.php:107 template-parts/content-page-entry-end.php:11
-#: template-parts/content-page.php:26
+#: inc/template-tags.php:85 inc/template-tags.php:107 template-parts/content-page-entry-end.php:11 template-parts/content-page.php:26
 msgid "Edit"
 msgstr "संपादित करें"
 
@@ -224,13 +221,11 @@ msgstr "विवरण"
 msgid "Source"
 msgstr "स्रोत"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:98
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:145
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:98 plugins/internetorg-custom-fields/internetorg-custom-fields.php:145
 msgid "Page, Post, or Story"
 msgstr "पेज, पोस्ट या कहानी"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:99
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:146
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:99 plugins/internetorg-custom-fields/internetorg-custom-fields.php:146
 msgid "Custom Link"
 msgstr "कस्टम लिंक"
 
@@ -238,8 +233,7 @@ msgstr "कस्टम लिंक"
 msgid "Section Slug"
 msgstr "अनुभाग स्लग"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:111
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:158
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:111 plugins/internetorg-custom-fields/internetorg-custom-fields.php:158
 msgid "URL Source"
 msgstr "URL स्रोत"
 
@@ -255,8 +249,7 @@ msgstr "मिशन"
 msgid "Impact"
 msgstr "प्रभाव"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:128
-#: plugins/internetorg-custom-posttypes/campaign.php:91
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:128 plugins/internetorg-custom-posttypes/campaign.php:91
 msgid "Background Image"
 msgstr "पृष्ठभूमि चित्र"
 
@@ -293,14 +286,11 @@ msgstr "चित्र"
 msgid "Content Areas"
 msgstr "सामग्री क्षेत्र"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:212
-#: plugins/internetorg-custom-posttypes/campaign.php:83
-#: plugins/internetorg-custom-posttypes/campaign.php:92 plugins/internetorg-custom-posttypes/story.php:69
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:212 plugins/internetorg-custom-posttypes/campaign.php:83 plugins/internetorg-custom-posttypes/campaign.php:92 plugins/internetorg-custom-posttypes/story.php:69
 msgid "Subtitle"
 msgstr "सबटाइटल"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:221
-#: plugins/internetorg-custom-posttypes/story.php:78
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:221 plugins/internetorg-custom-posttypes/story.php:78
 msgid "Additional page configuration"
 msgstr "अतिरिक्त पेज कॉन्फ़िगरेशन"
 
@@ -344,26 +334,20 @@ msgstr "सामग्री विजेट"
 msgid "Content Widget"
 msgstr "सामग्री विजेट"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:63
-#: plugins/internetorg-custom-posttypes/content-widget.php:76
-#: plugins/internetorg-custom-posttypes/content-widget.php:82
-#: plugins/internetorg-custom-posttypes/content-widget.php:95
+#: plugins/internetorg-custom-posttypes/content-widget.php:63 plugins/internetorg-custom-posttypes/content-widget.php:76 plugins/internetorg-custom-posttypes/content-widget.php:82 plugins/internetorg-custom-posttypes/content-widget.php:95
 msgid "Call to Action"
 msgstr "कार्रवाई"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:64
-#: plugins/internetorg-custom-posttypes/content-widget.php:83
+#: plugins/internetorg-custom-posttypes/content-widget.php:64 plugins/internetorg-custom-posttypes/content-widget.php:83
 #, php-format
 msgid "Call to Action: %s"
 msgstr "कार्रवाई: %s"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:70
-#: plugins/internetorg-custom-posttypes/content-widget.php:89
+#: plugins/internetorg-custom-posttypes/content-widget.php:70 plugins/internetorg-custom-posttypes/content-widget.php:89
 msgid "Button Label"
 msgstr "बटन लेबल"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:72
-#: plugins/internetorg-custom-posttypes/content-widget.php:91
+#: plugins/internetorg-custom-posttypes/content-widget.php:72 plugins/internetorg-custom-posttypes/content-widget.php:91
 msgid "File"
 msgstr "फ़ाइल"
 
@@ -429,8 +413,7 @@ msgstr "https://fb.me/Internetdotorg"
 msgid "Like us on Facebook"
 msgstr "हमें Facebook पर पसंद करें"
 
-#: template-parts/content-page-entry-content.php:14 template-parts/content-page.php:19
-#: template-parts/content-single.php:23 template-parts/content.php:32
+#: template-parts/content-page-entry-content.php:14 template-parts/content-page.php:19 template-parts/content-single.php:23 template-parts/content.php:32
 msgid "Pages:"
 msgstr "पेज:"
 
@@ -497,8 +480,15 @@ msgstr "http://www.nerdery.com"
 msgid "%d Results Found"
 msgstr "%d परिणाम नहीं मिला"
 
-# Standard WordPress PO File
+# Content in English dialog (front end)
+msgid "You are now entering a section of the site that is in English only."
+msgstr "अब आप साइट केवल अंग्रेजी में है कि के एक वर्ग में प्रवेश कर रहे हैं।"
 
+# Content in English dialog (wp-admin)
+msgid "Content in English dialog"
+msgstr "अंग्रेजी संवाद में सामग्री"
+
+# Standard WordPress PO File
 #: wp-includes/user.php:1948
 msgid "Password reset is not allowed for this user"
 msgstr "इस उपयोगकर्ता को कुशब्द रीसेट की अनुमति नहीं है"
@@ -507,9 +497,7 @@ msgstr "इस उपयोगकर्ता को कुशब्द री�
 msgid "Could not save password reset key to database."
 msgstr "डेटाबेस में पासवर्ड रीसेट कुंजी को संचित नहीं कर सके।"
 
-#: wp-includes/user.php:2003 wp-includes/user.php:2006
-#: wp-includes/user.php:2010 wp-includes/user.php:2040
-#: wp-includes/user.php:2044 wp-includes/user.php:2061
+#: wp-includes/user.php:2003 wp-includes/user.php:2006 wp-includes/user.php:2010 wp-includes/user.php:2040 wp-includes/user.php:2044 wp-includes/user.php:2061
 msgid "Invalid key"
 msgstr "अमान्य कुंजी"
 
@@ -557,17 +545,8 @@ msgstr "अनुकूलित मेनू "
 msgid "No menus have been created yet. <a href=\"%s\">Create some</a>."
 msgstr "अभी तक कोई भी मेनू बनाया नहीं गया है। <a href=\"%s\">कुछ बनाएँ</a>।"
 
-#: wp-includes/widgets/class-wp-nav-menu-widget.php:132
-#: wp-includes/widgets/class-wp-widget-archives.php:153
-#: wp-includes/widgets/class-wp-widget-calendar.php:100
-#: wp-includes/widgets/class-wp-widget-categories.php:156
-#: wp-includes/widgets/class-wp-widget-meta.php:107
-#: wp-includes/widgets/class-wp-widget-pages.php:127
-#: wp-includes/widgets/class-wp-widget-recent-comments.php:154
-#: wp-includes/widgets/class-wp-widget-recent-posts.php:128
-#: wp-includes/widgets/class-wp-widget-search.php:67
-#: wp-includes/widgets/class-wp-widget-tag-cloud.php:119
-#: wp-includes/widgets/class-wp-widget-text.php:104
+#: wp-includes/widgets/class-wp-nav-menu-widget.php:132 wp-includes/widgets/class-wp-widget-archives.php:153 wp-includes/widgets/class-wp-widget-calendar.php:100 wp-includes/widgets/class-wp-widget-categories.php:156 wp-includes/widgets/class-wp-widget-meta.php:107 wp-includes/widgets/class-wp-widget-pages.php:127 wp-includes/widgets/class-wp-widget-recent-comments.php:154 wp-includes/widgets/class-wp-widget-recent-posts.php:128
+#: wp-includes/widgets/class-wp-widget-search.php:67 wp-includes/widgets/class-wp-widget-tag-cloud.php:119 wp-includes/widgets/class-wp-widget-text.php:104
 msgid "Title:"
 msgstr "शीर्षक:"
 
@@ -599,13 +578,11 @@ msgstr "सप्ताह चुनें"
 msgid "Select Post"
 msgstr "लेख चुनें"
 
-#: wp-includes/widgets/class-wp-widget-archives.php:155
-#: wp-includes/widgets/class-wp-widget-categories.php:160
+#: wp-includes/widgets/class-wp-widget-archives.php:155 wp-includes/widgets/class-wp-widget-categories.php:160
 msgid "Display as dropdown"
 msgstr "ड्रापडाउन रूप में प्रदर्शित"
 
-#: wp-includes/widgets/class-wp-widget-archives.php:157
-#: wp-includes/widgets/class-wp-widget-categories.php:163
+#: wp-includes/widgets/class-wp-widget-archives.php:157 wp-includes/widgets/class-wp-widget-categories.php:163
 msgid "Show post counts"
 msgstr "पोस्ट संख्या दिखाये "
 
@@ -639,15 +616,14 @@ msgstr "कड़ियाँ"
 
 #: wp-includes/widgets/class-wp-widget-links.php:128
 msgid "Select Link Category:"
-msgstr "कड़ी श्रेणी चुनें:"
+msgstr "कड़ी श्रेणी चुनें:"
 
 #: wp-includes/widgets/class-wp-widget-links.php:130
 msgctxt "links widget"
 msgid "All Links"
 msgstr "सभी कड़ीया"
 
-#: wp-includes/widgets/class-wp-widget-links.php:139
-#: wp-includes/widgets/class-wp-widget-pages.php:131
+#: wp-includes/widgets/class-wp-widget-links.php:139 wp-includes/widgets/class-wp-widget-pages.php:131
 msgid "Sort by:"
 msgstr "क्रमबद्ध करें:"
 
@@ -657,11 +633,11 @@ msgstr "कड़ी शीर्षक"
 
 #: wp-includes/widgets/class-wp-widget-links.php:142
 msgid "Link rating"
-msgstr "कड़ी रेटिंग"
+msgstr "कड़ी रेटिंग"
 
 #: wp-includes/widgets/class-wp-widget-links.php:143
 msgid "Link ID"
-msgstr "कड़ी आईडी"
+msgstr "कड़ी आईडी"
 
 #: wp-includes/widgets/class-wp-widget-links.php:144
 msgctxt "Links widget"
@@ -670,27 +646,27 @@ msgstr "क्रमरहित  "
 
 #: wp-includes/widgets/class-wp-widget-links.php:149
 msgid "Show Link Image"
-msgstr "कड़ी छवि दिखायें"
+msgstr "कड़ी छवि दिखायें"
 
 #: wp-includes/widgets/class-wp-widget-links.php:151
 msgid "Show Link Name"
-msgstr "कड़ी नाम दिखायें"
+msgstr "कड़ी नाम दिखायें"
 
 #: wp-includes/widgets/class-wp-widget-links.php:153
 msgid "Show Link Description"
-msgstr "कड़ी विवरण दिखायें"
+msgstr "कड़ी विवरण दिखायें"
 
 #: wp-includes/widgets/class-wp-widget-links.php:155
 msgid "Show Link Rating"
-msgstr "कड़ी रेटिंग दिखायें"
+msgstr "कड़ी रेटिंग दिखायें"
 
 #: wp-includes/widgets/class-wp-widget-links.php:158
 msgid "Number of links to show:"
-msgstr "दिखाने के लिए कड़ी की संख्या"
+msgstr "दिखाने के लिए कड़ी की संख्या"
 
 #: wp-includes/widgets/class-wp-widget-meta.php:28
 msgid "Login, RSS, &amp; WordPress.org links."
-msgstr "लॉग इन, आरएसएस , &amp; वर्डप्रेस डॉट ऑर्ग कड़िया."
+msgstr "लॉग इन, आरएसएस , &amp; वर्डप्रेस डॉट ऑर्ग कड़िया."
 
 #: wp-includes/widgets/class-wp-widget-meta.php:54
 msgid "Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>"
@@ -733,8 +709,7 @@ msgstr "पृष्ठ आईडी, अल्पविराम के द्�
 msgid "Your site&#8217;s most recent comments."
 msgstr "आपकी साइट के सबसे हाल की टिप्पणियाँ।"
 
-#: wp-includes/widgets/class-wp-widget-recent-comments.php:27
-#: wp-includes/widgets/class-wp-widget-recent-comments.php:73
+#: wp-includes/widgets/class-wp-widget-recent-comments.php:27 wp-includes/widgets/class-wp-widget-recent-comments.php:73
 msgid "Recent Comments"
 msgstr "हाल ही की टिप्पणियाँ"
 
@@ -752,8 +727,7 @@ msgstr "दिखाने के लिए टिप्पणियों क�
 msgid "Your site&#8217;s most recent Posts."
 msgstr "आपकी साइट के सबसे हाल के पोस्ट।"
 
-#: wp-includes/widgets/class-wp-widget-recent-posts.php:27
-#: wp-includes/widgets/class-wp-widget-recent-posts.php:46
+#: wp-includes/widgets/class-wp-widget-recent-posts.php:27 wp-includes/widgets/class-wp-widget-recent-posts.php:46
 msgid "Recent Posts"
 msgstr "हाल के पोस्ट"
 
@@ -820,7 +794,7 @@ msgstr "सामग्री:"
 
 #: wp-includes/widgets/class-wp-widget-text.php:110
 msgid "Automatically add paragraphs"
-msgstr "स्वतः पैराग्राफ जोड़े"
+msgstr "स्वतः पैराग्राफ जोड़े"
 
 #: wp-includes/widgets.php:173 wp-includes/widgets.php:244
 msgid "Sidebar %d"
@@ -903,7 +877,7 @@ msgstr "यदि आपको नहीं पता कि एक डेटा
 #. extending wpdb
 #: wp-includes/wp-db.php:1136
 msgid "%s must set a database connection for use with escaping."
-msgstr "इस्केप का उपयोग करने हेतु %s डाटाबेस संचार जोड़ना होगा."
+msgstr "इस्केप का उपयोग करने हेतु %s डाटाबेस संचार जोड़ना होगा."
 
 #: wp-includes/wp-db.php:1252
 msgid "The query argument of %s must have a placeholder."
@@ -962,7 +936,7 @@ msgstr "<strong>त्रुटि</strong>: वर्डप्रेस %1$s �
 
 #: wp-links-opml.php:29
 msgid "Links for %s"
-msgstr "%s के लिए कड़ी"
+msgstr "%s के लिए कड़ी"
 
 #. translators: %s: wp-config.php
 #: wp-load.php:77
@@ -1041,7 +1015,7 @@ msgstr "लगता है, आपका पासवर्ड रीसेट 
 
 #: wp-login.php:500
 msgid "Your password reset link has expired. Please request a new link below."
-msgstr "आपका पासवर्ड रीसेट कड़ी  की समयावधि समाप्त हो गयी  है। नीचे एक नए कड़ी का अनुरोध करें ।"
+msgstr "आपका पासवर्ड रीसेट कड़ी  की समयावधि समाप्त हो गयी  है। नीचे एक नए कड़ी का अनुरोध करें ।"
 
 #: wp-login.php:521
 msgid "Lost Password"
@@ -1428,7 +1402,7 @@ msgstr "इस सुविधा के लिए इनलाइन फ्र�
 
 #: wp-includes/script-loader.php:267
 msgid "You have attempted to queue too many files."
-msgstr "आपने बहुत ज़्यादा फाइलों को पंक्तिबध करने का प्रयास किया है।"
+msgstr "आपने बहुत ज़्यादा फाइलों को पंक्तिबध करने का प्रयास किया है।"
 
 #: wp-includes/script-loader.php:268
 msgid "%s exceeds the maximum upload size for this site."
@@ -1631,8 +1605,7 @@ msgstr ""
 "क्या आप सुनिश्चित हैं कि आप इस टिप्पणी को संपादित करना चाहते हैं?\n"
 "आपके द्वारा किए गए परिवर्तन लुप्त हो जाएंगे।"
 
-#: wp-includes/script-loader.php:490
-#: wp-includes/theme-compat/comments-popup.php:40
+#: wp-includes/script-loader.php:490 wp-includes/theme-compat/comments-popup.php:40
 msgid "Comments"
 msgstr "टिप्पणियाँ"
 
@@ -1708,7 +1681,7 @@ msgstr "परमालिंक संचित किया गया"
 
 #: wp-includes/script-loader.php:534
 msgid "Connection lost or the server is busy. Please try again later."
-msgstr "संचार टूट गया अथवा सर्वर व्यस्त है. कृपया थोड़ी देर बाद प्रयास करें."
+msgstr "संचार टूट गया अथवा सर्वर व्यस्त है. कृपया थोड़ी देर बाद प्रयास करें."
 
 #. translators: %d: nth embed found in a post
 #: wp-includes/script-loader.php:537
@@ -1875,7 +1848,7 @@ msgstr "कड़ी श्रेणी"
 
 #: wp-includes/taxonomy.php:95
 msgid "Search Link Categories"
-msgstr "कड़ी श्रेणिया खोजे"
+msgstr "कड़ी श्रेणिया खोजे"
 
 #: wp-includes/taxonomy.php:97
 msgid "All Link Categories"
@@ -1887,7 +1860,7 @@ msgstr "कड़ी श्रेणी को संपादित करे"
 
 #: wp-includes/taxonomy.php:99
 msgid "Update Link Category"
-msgstr "कड़ी श्रेणी अपडेट करे"
+msgstr "कड़ी श्रेणी अपडेट करे"
 
 #: wp-includes/taxonomy.php:100
 msgid "Add New Link Category"
@@ -1895,7 +1868,7 @@ msgstr "नया कड़ी श्रेणी जोड़ें"
 
 #: wp-includes/taxonomy.php:101
 msgid "New Link Category Name"
-msgstr "नया कड़ी श्रेणी का नाम "
+msgstr "नया कड़ी श्रेणी का नाम "
 
 #: wp-includes/taxonomy.php:123 wp-includes/taxonomy.php:124
 msgctxt "post format"
@@ -2034,8 +2007,7 @@ msgstr "टैग्स सूची"
 msgid "Categories list"
 msgstr "श्रेणी सूची"
 
-#: wp-includes/taxonomy.php:753 wp-includes/taxonomy.php:3140
-#: wp-includes/taxonomy.php:4325
+#: wp-includes/taxonomy.php:753 wp-includes/taxonomy.php:3140 wp-includes/taxonomy.php:4325
 msgid "Empty Term"
 msgstr "खाली टर्म"
 
@@ -2086,20 +2058,12 @@ msgid "Invalid object ID"
 msgstr "अमान्य ऑब्जेक्ट आईडी"
 
 #. translators: %s: template name
-#: wp-includes/theme-compat/comments-popup.php:12
-#: wp-includes/theme-compat/comments.php:12
-#: wp-includes/theme-compat/footer.php:12
-#: wp-includes/theme-compat/header.php:12
-#: wp-includes/theme-compat/sidebar.php:12
+#: wp-includes/theme-compat/comments-popup.php:12 wp-includes/theme-compat/comments.php:12 wp-includes/theme-compat/footer.php:12 wp-includes/theme-compat/header.php:12 wp-includes/theme-compat/sidebar.php:12
 msgid "Theme without %s"
 msgstr "%s के बिना थीम"
 
 #. translators: %s: template name
-#: wp-includes/theme-compat/comments-popup.php:16
-#: wp-includes/theme-compat/comments.php:16
-#: wp-includes/theme-compat/footer.php:16
-#: wp-includes/theme-compat/header.php:16
-#: wp-includes/theme-compat/sidebar.php:16
+#: wp-includes/theme-compat/comments-popup.php:16 wp-includes/theme-compat/comments.php:16 wp-includes/theme-compat/footer.php:16 wp-includes/theme-compat/header.php:16 wp-includes/theme-compat/sidebar.php:16
 msgid "Please include a %s template in your theme."
 msgstr "कृपया अपने विषय(थीम) में एक %s टेम्पलेट शामिल करें।"
 
@@ -2180,8 +2144,7 @@ msgstr "इस खाते से लॉग आउट करें"
 msgid "Log out &raquo;"
 msgstr "लॉग आउट"
 
-#: wp-includes/theme-compat/comments.php:96
-#: wp-includes/theme-compat/comments.php:99
+#: wp-includes/theme-compat/comments.php:96 wp-includes/theme-compat/comments.php:99
 msgid "(required)"
 msgstr "(आवश्यक)"
 
@@ -2251,9 +2214,7 @@ msgstr "आपने %1$s ब्लॉग संग्रह में <strong>&
 msgid "You are currently browsing the %s blog archives."
 msgstr "आप वर्तमान में %s ब्लॉग अभिलेखागार(आरकाइव्स) ब्राउज़ कर रहे हैं।"
 
-#: wp-includes/theme-compat/sidebar.php:104
-#: wp-includes/widgets/class-wp-widget-meta.php:29
-#: wp-includes/widgets/class-wp-widget-meta.php:44
+#: wp-includes/theme-compat/sidebar.php:104 wp-includes/widgets/class-wp-widget-meta.php:29 wp-includes/widgets/class-wp-widget-meta.php:44
 msgid "Meta"
 msgstr "मेटा"
 
@@ -2273,8 +2234,7 @@ msgstr "एक्सएचटीएमएल फ्रेंड्स नेट�
 msgid "XFN"
 msgstr "XFN"
 
-#: wp-includes/theme-compat/sidebar.php:110
-#: wp-includes/widgets/class-wp-widget-meta.php:66
+#: wp-includes/theme-compat/sidebar.php:110 wp-includes/widgets/class-wp-widget-meta.php:66
 msgid "Powered by WordPress, state-of-the-art semantic personal publishing platform."
 msgstr "वर्डप्रस द्वारा संचालित, अर्थात अत्याधुनिक निजी प्रकाशन मंच।"
 
@@ -2291,13 +2251,11 @@ msgstr "%1$s के लिए थीम सपोर्ट %2$s से पहल
 msgid "Customizer"
 msgstr "कस्टमाइज़र"
 
-#: wp-includes/update.php:123 wp-includes/update.php:303
-#: wp-includes/update.php:467
+#: wp-includes/update.php:123 wp-includes/update.php:303 wp-includes/update.php:467
 msgid "An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href=\"https://wordpress.org/support/\">support forums</a>."
 msgstr "एक अप्रत्याशित त्रुटि हुई। वर्डप्रेस.org या इस सर्वर के कॉन्फ़िगरेशन के साथ कुछ गड़बड़ हो सकती है। यदि आपकी समस्या जारी रहती है, तो कृपया <a href=\"https://wordpress.org/support/\">सहायता मंचों</a> में प्रयास करें।"
 
-#: wp-includes/update.php:123 wp-includes/update.php:303
-#: wp-includes/update.php:467
+#: wp-includes/update.php:123 wp-includes/update.php:303 wp-includes/update.php:467
 msgid "(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)"
 msgstr "(वर्डप्रेस WordPress.org से एक सुरक्षित कनेक्शन स्थापित नहीं कर सका। अपने सर्वर व्यवस्थापक से संपर्क करें।)"
 
@@ -2333,8 +2291,7 @@ msgstr "<strong>त्रुटी</strong>: कूटशब्द फ़ील�
 msgid "<strong>ERROR</strong>: Invalid username."
 msgstr "<strong>त्रुटि</strong>: अमान्य यूज़रनेम।"
 
-#: wp-includes/user.php:142 wp-includes/user.php:168 wp-login.php:739
-#: wp-login.php:922
+#: wp-includes/user.php:142 wp-includes/user.php:168 wp-login.php:739 wp-login.php:922
 msgid "Lost your password?"
 msgstr "क्या आपका कूटशब्द खो गया?"
 
@@ -2443,8 +2400,7 @@ msgstr "जैबर / गूगल टॉक"
 msgid "Hint: The password should be at least twelve characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! \" ? $ % ^ &amp; )."
 msgstr "सुझाव: पासवर्ड कम से कम बारह वर्ण लंबा होना चाहिए। इसे मजबूत बनाने के लिए, अपर व लोअर केस के अक्षर, संख्या, और ! \" ? $ % ^ &amp; ) जैसे प्रतीकों का उपयोग करें।"
 
-#: wp-includes/pluggable.php:1496 wp-includes/pluggable.php:1644
-#: wp-includes/pluggable.php:1765
+#: wp-includes/pluggable.php:1496 wp-includes/pluggable.php:1644 wp-includes/pluggable.php:1765
 msgid "Email: %s"
 msgstr "ईमेल: %s"
 
@@ -2519,8 +2475,7 @@ msgstr "[%s] कूटशब्द खो गया/परिवर्तित 
 msgid "New user registration on your site %s:"
 msgstr "आपकी साइट %s पर नया उपयोगकर्ता पंजीकरण:"
 
-#: wp-includes/pluggable.php:1764 wp-includes/pluggable.php:1788
-#: wp-login.php:324
+#: wp-includes/pluggable.php:1764 wp-includes/pluggable.php:1788 wp-login.php:324
 msgid "Username: %s"
 msgstr "उपयोगकर्ता नाम: %s"
 
@@ -2608,9 +2563,7 @@ msgstr "अगला पृष्ठ"
 msgid "Previous page"
 msgstr "पिछला पृष्ठ"
 
-#: wp-includes/post-template.php:1122 wp-includes/theme-compat/sidebar.php:90
-#: wp-includes/widgets/class-wp-widget-pages.php:27
-#: wp-includes/widgets/class-wp-widget-pages.php:51
+#: wp-includes/post-template.php:1122 wp-includes/theme-compat/sidebar.php:90 wp-includes/widgets/class-wp-widget-pages.php:27 wp-includes/widgets/class-wp-widget-pages.php:51
 msgid "Pages"
 msgstr "पृष्ठ"
 
@@ -2686,7 +2639,7 @@ msgstr "मीडिया"
 #: wp-includes/post.php:58
 msgctxt "add new media"
 msgid "Add New"
-msgstr "नया जोड़े"
+msgstr "नया जोड़े"
 
 #: wp-includes/post.php:59
 msgid "Edit Media"
@@ -2786,13 +2739,11 @@ msgstr "प्रारूप"
 msgid "Pending Review"
 msgstr "पुनरावलोकन बाकी"
 
-#: wp-includes/post.php:600 wp-includes/post.php:620
-#: wp-includes/script-loader.php:520
+#: wp-includes/post.php:600 wp-includes/post.php:620 wp-includes/script-loader.php:520
 msgid "Private"
 msgstr "निजी"
 
-#: wp-includes/post.php:601 wp-includes/post.php:621
-#: wp-includes/script-loader.php:525
+#: wp-includes/post.php:601 wp-includes/post.php:621 wp-includes/script-loader.php:525
 msgid "Published"
 msgstr "प्रकाशित"
 
@@ -3021,26 +2972,13 @@ msgstr "अमान्य वर्गीकरण: %s।"
 msgid "The page template is invalid."
 msgstr "पृष्ठ टेम्पलेट अमान्य है."
 
-#: wp-includes/post.php:3756 wp-includes/script-loader.php:501
-#: wp-includes/script-loader.php:565
+#: wp-includes/post.php:3756 wp-includes/script-loader.php:501 wp-includes/script-loader.php:565
 msgctxt "tag delimiter"
 msgid ","
 msgstr ","
 
-#: wp-includes/query.php:149 wp-includes/query.php:170
-#: wp-includes/query.php:191 wp-includes/query.php:215
-#: wp-includes/query.php:239 wp-includes/query.php:263
-#: wp-includes/query.php:292 wp-includes/query.php:312
-#: wp-includes/query.php:332 wp-includes/query.php:352
-#: wp-includes/query.php:373 wp-includes/query.php:393
-#: wp-includes/query.php:422 wp-includes/query.php:451
-#: wp-includes/query.php:471 wp-includes/query.php:498
-#: wp-includes/query.php:518 wp-includes/query.php:538
-#: wp-includes/query.php:558 wp-includes/query.php:578
-#: wp-includes/query.php:607 wp-includes/query.php:634
-#: wp-includes/query.php:654 wp-includes/query.php:674
-#: wp-includes/query.php:694 wp-includes/query.php:714
-#: wp-includes/query.php:734
+#: wp-includes/query.php:149 wp-includes/query.php:170 wp-includes/query.php:191 wp-includes/query.php:215 wp-includes/query.php:239 wp-includes/query.php:263 wp-includes/query.php:292 wp-includes/query.php:312 wp-includes/query.php:332 wp-includes/query.php:352 wp-includes/query.php:373 wp-includes/query.php:393 wp-includes/query.php:422 wp-includes/query.php:451 wp-includes/query.php:471 wp-includes/query.php:498
+#: wp-includes/query.php:518 wp-includes/query.php:538 wp-includes/query.php:558 wp-includes/query.php:578 wp-includes/query.php:607 wp-includes/query.php:634 wp-includes/query.php:654 wp-includes/query.php:674 wp-includes/query.php:694 wp-includes/query.php:714 wp-includes/query.php:734
 msgid "Conditional query tags do not work before the query is run. Before then, they always return false."
 msgstr "सशर्त क्वेरी टैग क्वेरी चलाने से पहले काम नहीं करते। उससे पहले, वे हमेशा गलत(फाल्स) वापस करेंगे।"
 
@@ -3398,8 +3336,7 @@ msgstr "बिटरेट मोड"
 msgid "No editor could be selected."
 msgstr "किसी भी संपादक का चयन नहीं किया जा सकता है।"
 
-#: wp-includes/media.php:3056 wp-includes/script-loader.php:406
-#: wp-includes/script-loader.php:564
+#: wp-includes/media.php:3056 wp-includes/script-loader.php:406 wp-includes/script-loader.php:564
 msgid "(no title)"
 msgstr "(कोई शीर्षक नही)"
 
@@ -3411,8 +3348,7 @@ msgstr "मीडिया जोडें"
 msgid "Select"
 msgstr "चुनें"
 
-#: wp-includes/media.php:3334 wp-includes/script-loader.php:404
-#: wp-includes/script-loader.php:517
+#: wp-includes/media.php:3334 wp-includes/script-loader.php:404 wp-includes/script-loader.php:517
 msgid "Update"
 msgstr "अद्यतन"
 
@@ -3426,7 +3362,7 @@ msgstr "%d चयन किया गया"
 
 #: wp-includes/media.php:3343
 msgid "Drag and drop to reorder media files."
-msgstr "मीडिया फ़ाइल को इधर उधर करने के लिए पकड़ें और छोड़ दें।"
+msgstr "मीडिया फ़ाइल को इधर उधर करने के लिए पकड़ें और छोड़ दें।"
 
 #: wp-includes/media.php:3346
 msgid "Upload Files"
@@ -3581,8 +3517,7 @@ msgstr "छवि का विवरण"
 msgid "Replace Image"
 msgstr "छवि बदलें"
 
-#: wp-includes/media.php:3401 wp-includes/media.php:3418
-#: wp-includes/media.php:3424
+#: wp-includes/media.php:3401 wp-includes/media.php:3418 wp-includes/media.php:3424
 msgid "Cancel Edit"
 msgstr "संपादन रद्द करें"
 
@@ -3676,7 +3611,7 @@ msgstr "ऑडियो प्लेलिस्ट में जोड़ें
 
 #: wp-includes/media.php:3439
 msgid "Drag and drop to reorder videos."
-msgstr "वीडियो को पुन: व्यवस्थित करने के लिए पकड़ें और छोड़ें।"
+msgstr "वीडियो को पुन: व्यवस्थित करने के लिए पकड़ें और छोड़ें।"
 
 #: wp-includes/media.php:3440
 msgid "Create Video Playlist"
@@ -3738,8 +3673,7 @@ msgstr "यूज़रनेम में केवल छोटे वर्�
 msgid "Please enter a username."
 msgstr "कृपया एक उपयोगकर्ता नाम प्रविष्ट करें."
 
-#: wp-includes/ms-functions.php:431 wp-includes/ms-functions.php:438
-#: wp-includes/user.php:1334
+#: wp-includes/ms-functions.php:431 wp-includes/ms-functions.php:438 wp-includes/user.php:1334
 msgid "Sorry, that username is not allowed."
 msgstr "क्षमा करें, इस यूज़रनेम की अनुमति नहीं है।"
 
@@ -3927,7 +3861,7 @@ msgstr "पहले से इनस्टॉल है"
 
 #: wp-includes/ms-functions.php:1332
 msgid "You appear to have already installed WordPress. To reinstall please clear your old database tables first."
-msgstr "ऐसा प्रतीत होता है आपने पहले से ही वर्डप्रेस स्थापित किया है। पुन: स्थापित करने के लिए कृपया पहले अपने पुराने डेटाबेस तालिकाएँ ख़ाली करें।"
+msgstr "ऐसा प्रतीत होता है आपने पहले से ही वर्डप्रेस स्थापित किया है। पुन: स्थापित करने के लिए कृपया पहले अपने पुराने डेटाबेस तालिकाएँ ख़ाली करें।"
 
 #. translators: Do not translate USERNAME, SITE_NAME, BLOG_URL, PASSWORD: those
 #. are placeholders.
@@ -4055,7 +3989,7 @@ msgstr "अब मैं क्या करूं?"
 #. translators: %s: Codex URL
 #: wp-includes/ms-load.php:309
 msgid "Read the <a href=\"%s\" target=\"_blank\">bug report</a> page. Some of the guidelines there may help you figure out what went wrong."
-msgstr "<a href=\"%s\" target=\"_blank\">बग रिपोर्ट</a> पृष्ठ पढ़ें। वहाँ मिले दिशा निर्देशों से आपको पता लगाने में मदद मिल सकती है, कि क्या गलत हो गया।"
+msgstr "<a href=\"%s\" target=\"_blank\">बग रिपोर्ट</a> पृष्ठ पढ़ें। वहाँ मिले दिशा निर्देशों से आपको पता लगाने में मदद मिल सकती है, कि क्या गलत हो गया।"
 
 #: wp-includes/ms-load.php:310
 msgid "https://codex.wordpress.org/Debugging_a_WordPress_Network"
@@ -4095,19 +4029,15 @@ msgid "New trackback on your post \"%s\""
 msgstr "आपकी \"%s\" पोस्ट पर नया ट्रैकबैक"
 
 #. translators: 1: website name, 2: website IP, 3: website hostname
-#: wp-includes/pluggable.php:1475 wp-includes/pluggable.php:1485
-#: wp-includes/pluggable.php:1628 wp-includes/pluggable.php:1636
+#: wp-includes/pluggable.php:1475 wp-includes/pluggable.php:1485 wp-includes/pluggable.php:1628 wp-includes/pluggable.php:1636
 msgid "Website: %1$s (IP: %2$s, %3$s)"
 msgstr "वेबसाइट: %1$s (IP: %2$s, %3$s)"
 
-#: wp-includes/pluggable.php:1476 wp-includes/pluggable.php:1486
-#: wp-includes/pluggable.php:1497 wp-includes/pluggable.php:1629
-#: wp-includes/pluggable.php:1637 wp-includes/pluggable.php:1645
+#: wp-includes/pluggable.php:1476 wp-includes/pluggable.php:1486 wp-includes/pluggable.php:1497 wp-includes/pluggable.php:1629 wp-includes/pluggable.php:1637 wp-includes/pluggable.php:1645
 msgid "URL: %s"
 msgstr "यू आर एल: %s"
 
-#: wp-includes/pluggable.php:1477 wp-includes/pluggable.php:1487
-#: wp-includes/pluggable.php:1498 wp-includes/pluggable.php:1646
+#: wp-includes/pluggable.php:1477 wp-includes/pluggable.php:1487 wp-includes/pluggable.php:1498 wp-includes/pluggable.php:1646
 msgid "Comment: %s"
 msgstr "टिप्पणी: %s"
 
@@ -4158,8 +4088,7 @@ msgstr "वर्डप्रेस &rsaquo; त्रुटि"
 msgid "Database Error"
 msgstr "डैशबोर्ड त्रुटी"
 
-#: wp-includes/functions.php:3513 wp-includes/ms-load.php:286
-#: wp-includes/wp-db.php:1533
+#: wp-includes/functions.php:3513 wp-includes/ms-load.php:286 wp-includes/wp-db.php:1533
 msgid "Error establishing a database connection"
 msgstr "डेटाबेस से कनेक्शन स्थापित करने में त्रुटि"
 
@@ -4236,8 +4165,7 @@ msgstr "प्रशासन क्षेत्र में %1$s स्क्�
 msgid "Do not pass style tags to wp_add_inline_style()."
 msgstr "wp_add_inline_style() को स्टाइल टैग पास नहीं करें।"
 
-#: wp-includes/general-template.php:228 wp-includes/general-template.php:229
-#: wp-includes/general-template.php:236
+#: wp-includes/general-template.php:228 wp-includes/general-template.php:229 wp-includes/general-template.php:236
 msgctxt "label"
 msgid "Search for:"
 msgstr "निम्न को खोजें:"
@@ -4252,8 +4180,7 @@ msgctxt "submit button"
 msgid "Search"
 msgstr "खोजे"
 
-#: wp-includes/general-template.php:276 wp-login.php:544 wp-login.php:607
-#: wp-login.php:657 wp-login.php:738
+#: wp-includes/general-template.php:276 wp-login.php:544 wp-login.php:607 wp-login.php:657 wp-login.php:738
 msgid "Log in"
 msgstr "लॉग इन"
 
@@ -4277,8 +4204,7 @@ msgstr "मुझे याद रखें"
 msgid "Log In"
 msgstr "लॉग इन"
 
-#: wp-includes/general-template.php:542 wp-login.php:547 wp-login.php:660
-#: wp-login.php:734 wp-login.php:916
+#: wp-includes/general-template.php:542 wp-login.php:547 wp-login.php:660 wp-login.php:734 wp-login.php:916
 msgid "Register"
 msgstr "पंजीकृत करे"
 
@@ -4363,7 +4289,7 @@ msgstr "एसाइड"
 #: wp-includes/general-template.php:1362
 msgctxt "post format archive title"
 msgid "Galleries"
-msgstr "गैलरीज़"
+msgstr "गैलरीज़"
 
 #: wp-includes/general-template.php:1364
 msgctxt "post format archive title"
@@ -4409,10 +4335,7 @@ msgstr "पुरालेख: %s"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
 
-#: wp-includes/general-template.php:1385
-#: wp-includes/theme-compat/sidebar.php:92
-#: wp-includes/widgets/class-wp-widget-archives.php:27
-#: wp-includes/widgets/class-wp-widget-archives.php:45
+#: wp-includes/general-template.php:1385 wp-includes/theme-compat/sidebar.php:92 wp-includes/widgets/class-wp-widget-archives.php:27 wp-includes/widgets/class-wp-widget-archives.php:45
 msgid "Archives"
 msgstr "पुरालेख"
 
@@ -4510,7 +4433,7 @@ msgstr "काला रंग"
 #: wp-includes/general-template.php:3142
 msgctxt "admin color scheme"
 msgid "Sunrise"
-msgstr "सनराइज़"
+msgstr "सनराइज़"
 
 #: wp-includes/general-template.php:3148
 msgctxt "admin color scheme"
@@ -4541,8 +4464,7 @@ msgstr "उपलब्ध"
 msgid "Comments Feed"
 msgstr "टिप्पणी फीड"
 
-#: wp-includes/link-template.php:983 wp-includes/link-template.php:1302
-#: wp-includes/link-template.php:1404 wp-includes/link-template.php:1465
+#: wp-includes/link-template.php:983 wp-includes/link-template.php:1302 wp-includes/link-template.php:1404 wp-includes/link-template.php:1465
 msgid "Edit This"
 msgstr "इसे संपादित करे"
 
@@ -4578,8 +4500,7 @@ msgstr "पुराने लेख"
 msgid "Newer posts"
 msgstr "नए पोस्ट"
 
-#: wp-includes/link-template.php:2434 wp-includes/link-template.php:2489
-#: wp-includes/link-template.php:2534
+#: wp-includes/link-template.php:2434 wp-includes/link-template.php:2489 wp-includes/link-template.php:2534
 msgid "Posts navigation"
 msgstr "पोस्ट्स नेविगेशन"
 
@@ -4643,44 +4564,37 @@ msgid "The site you have requested is not installed properly. Please contact the
 msgstr "आप का साइट ठीक से स्थापित नहीं किया गया है । कृपया सिस्टम व्यवस्थापक से संपर्क करें।"
 
 #. translators: weekday
-#: wp-includes/locale.php:112 wp-includes/locale.php:121
-#: wp-includes/locale.php:130
+#: wp-includes/locale.php:112 wp-includes/locale.php:121 wp-includes/locale.php:130
 msgid "Sunday"
 msgstr "रविवार"
 
 #. translators: weekday
-#: wp-includes/locale.php:113 wp-includes/locale.php:122
-#: wp-includes/locale.php:131
+#: wp-includes/locale.php:113 wp-includes/locale.php:122 wp-includes/locale.php:131
 msgid "Monday"
 msgstr "सोमवार"
 
 #. translators: weekday
-#: wp-includes/locale.php:114 wp-includes/locale.php:123
-#: wp-includes/locale.php:132
+#: wp-includes/locale.php:114 wp-includes/locale.php:123 wp-includes/locale.php:132
 msgid "Tuesday"
 msgstr "मंगलवार"
 
 #. translators: weekday
-#: wp-includes/locale.php:115 wp-includes/locale.php:124
-#: wp-includes/locale.php:133
+#: wp-includes/locale.php:115 wp-includes/locale.php:124 wp-includes/locale.php:133
 msgid "Wednesday"
 msgstr "बुधवार"
 
 #. translators: weekday
-#: wp-includes/locale.php:116 wp-includes/locale.php:125
-#: wp-includes/locale.php:134
+#: wp-includes/locale.php:116 wp-includes/locale.php:125 wp-includes/locale.php:134
 msgid "Thursday"
 msgstr "गुरूवार"
 
 #. translators: weekday
-#: wp-includes/locale.php:117 wp-includes/locale.php:126
-#: wp-includes/locale.php:135
+#: wp-includes/locale.php:117 wp-includes/locale.php:126 wp-includes/locale.php:135
 msgid "Friday"
 msgstr "शुक्रवार"
 
 #. translators: weekday
-#: wp-includes/locale.php:118 wp-includes/locale.php:127
-#: wp-includes/locale.php:136
+#: wp-includes/locale.php:118 wp-includes/locale.php:127 wp-includes/locale.php:136
 msgid "Saturday"
 msgstr "शनिवार"
 
@@ -4769,7 +4683,7 @@ msgstr "जनवरी"
 #. translators: month name
 #: wp-includes/locale.php:140 wp-includes/locale.php:168
 msgid "February"
-msgstr "फ़रवरी"
+msgstr "फ़रवरी"
 
 #. translators: month name
 #: wp-includes/locale.php:141 wp-includes/locale.php:169
@@ -5054,7 +4968,7 @@ msgstr "फाइलो को चुनें"
 
 #: wp-includes/media-template.php:233
 msgid "Maximum upload file size: %s."
-msgstr "अधिकतम फ़ाइल अपलोड सीमा: %s"
+msgstr "अधिकतम फ़ाइल अपलोड सीमा: %s"
 
 #: wp-includes/media-template.php:238 wp-includes/media.php:3411
 msgid "Suggested image dimensions:"
@@ -5084,8 +4998,7 @@ msgstr "पिछले मीडिया आइटम संपादित �
 msgid "Edit next media item"
 msgstr "अगली मीडिया आइटम संपादित करें "
 
-#: wp-includes/media-template.php:327 wp-includes/media-template.php:521
-#: wp-includes/media.php:3402
+#: wp-includes/media-template.php:327 wp-includes/media-template.php:521 wp-includes/media.php:3402
 msgid "Edit Image"
 msgstr "चित्र संपादित करे"
 
@@ -5121,18 +5034,15 @@ msgstr "लम्बाई:"
 msgid "Bitrate:"
 msgstr "बिटरेट:"
 
-#: wp-includes/media-template.php:383 wp-includes/media-template.php:562
-#: wp-includes/media.php:2123
+#: wp-includes/media-template.php:383 wp-includes/media-template.php:562 wp-includes/media.php:2123
 msgid "Artist"
 msgstr "कलाकार"
 
-#: wp-includes/media-template.php:384 wp-includes/media-template.php:563
-#: wp-includes/media.php:2124
+#: wp-includes/media-template.php:384 wp-includes/media-template.php:563 wp-includes/media.php:2124
 msgid "Album"
 msgstr "एल्बम"
 
-#: wp-includes/media-template.php:398 wp-includes/media-template.php:577
-#: wp-includes/media-template.php:836
+#: wp-includes/media-template.php:398 wp-includes/media-template.php:577 wp-includes/media-template.php:836
 msgid "Alt Text"
 msgstr "वैकल्पिक मूलशब्द"
 
@@ -5161,8 +5071,7 @@ msgctxt "verb"
 msgid "Trash"
 msgstr "कचरा पेटी में डाले"
 
-#: wp-includes/media-template.php:436 wp-includes/media-template.php:537
-#: wp-includes/media.php:3371
+#: wp-includes/media-template.php:436 wp-includes/media-template.php:537 wp-includes/media.php:3371
 msgid "Delete Permanently"
 msgstr "स्थायी रूप से हटाये"
 
@@ -5206,8 +5115,7 @@ msgstr "अनुलग्नक प्रदर्शन सेटिंग्�
 msgid "Embed or Link"
 msgstr "एम्बेड या लिंक करे"
 
-#: wp-includes/media-template.php:633 wp-includes/media-template.php:711
-#: wp-includes/media-template.php:859 wp-includes/media-template.php:963
+#: wp-includes/media-template.php:633 wp-includes/media-template.php:711 wp-includes/media-template.php:859 wp-includes/media-template.php:963
 msgid "Link To"
 msgstr "जुड़ा हुआ"
 
@@ -5217,49 +5125,41 @@ msgstr "मीडिया प्लेयर एम्बेड करें"
 
 #: wp-includes/media-template.php:654
 msgid "Link to Media File"
-msgstr "मीडिया फाइल से जुड़ा हुआ"
+msgstr "मीडिया फाइल से जुड़ा हुआ"
 
-#: wp-includes/media-template.php:656 wp-includes/media-template.php:724
-#: wp-includes/media-template.php:967
+#: wp-includes/media-template.php:656 wp-includes/media-template.php:724 wp-includes/media-template.php:967
 msgid "Media File"
 msgstr "मीडिया फ़ाइल"
 
 #: wp-includes/media-template.php:661
 msgid "Link to Attachment Page"
-msgstr "संलग्न पृष्ठ से जुड़ा हुआ"
+msgstr "संलग्न पृष्ठ से जुड़ा हुआ"
 
-#: wp-includes/media-template.php:663 wp-includes/media-template.php:721
-#: wp-includes/media-template.php:970
+#: wp-includes/media-template.php:663 wp-includes/media-template.php:721 wp-includes/media-template.php:970
 msgid "Attachment Page"
 msgstr "संलग्न पृष्ठ"
 
-#: wp-includes/media-template.php:668 wp-includes/media-template.php:865
-#: wp-includes/media-template.php:978
+#: wp-includes/media-template.php:668 wp-includes/media-template.php:865 wp-includes/media-template.php:978
 msgid "Custom URL"
 msgstr "अनुकूलित यूआरएल"
 
-#: wp-includes/media-template.php:678 wp-includes/media-template.php:752
-#: wp-includes/media-template.php:927
+#: wp-includes/media-template.php:678 wp-includes/media-template.php:752 wp-includes/media-template.php:927
 msgid "Size"
 msgstr "आकार"
 
-#: wp-includes/media-template.php:687 wp-includes/media-template.php:762
-#: wp-includes/media-template.php:936 wp-includes/media.php:3088
+#: wp-includes/media-template.php:687 wp-includes/media-template.php:762 wp-includes/media-template.php:936 wp-includes/media.php:3088
 msgid "Thumbnail"
 msgstr "लघुछवि"
 
-#: wp-includes/media-template.php:688 wp-includes/media-template.php:763
-#: wp-includes/media-template.php:937 wp-includes/media.php:3089
+#: wp-includes/media-template.php:688 wp-includes/media-template.php:763 wp-includes/media-template.php:937 wp-includes/media.php:3089
 msgid "Medium"
 msgstr "मध्यम"
 
-#: wp-includes/media-template.php:689 wp-includes/media-template.php:764
-#: wp-includes/media-template.php:938 wp-includes/media.php:3090
+#: wp-includes/media-template.php:689 wp-includes/media-template.php:764 wp-includes/media-template.php:938 wp-includes/media.php:3090
 msgid "Large"
 msgstr "बड़ा"
 
-#: wp-includes/media-template.php:690 wp-includes/media-template.php:765
-#: wp-includes/media-template.php:939 wp-includes/media.php:3091
+#: wp-includes/media-template.php:690 wp-includes/media-template.php:765 wp-includes/media-template.php:939 wp-includes/media.php:3091
 msgid "Full Size"
 msgstr "पूरा आकार"
 
@@ -5299,9 +5199,7 @@ msgstr "छवियां दिखाएं"
 msgid "Sorry, deleting the term failed."
 msgstr "क्षमा करें, टर्म को हटाया नहीं जा सका। "
 
-#: wp-includes/class-wp-xmlrpc-server.php:2110
-#: wp-includes/class-wp-xmlrpc-server.php:2168
-#: wp-includes/class-wp-xmlrpc-server.php:2263
+#: wp-includes/class-wp-xmlrpc-server.php:2110 wp-includes/class-wp-xmlrpc-server.php:2168 wp-includes/class-wp-xmlrpc-server.php:2263
 msgid "You are not allowed to assign terms in this taxonomy."
 msgstr "आपको इस वर्गीकरण में शर्तें(टर्म्स) आवंटित करने की अनुमति नहीं है।"
 
@@ -5309,8 +5207,7 @@ msgstr "आपको इस वर्गीकरण में शर्ते�
 msgid "Sorry, you cannot edit users."
 msgstr "क्षमा करें, आप उपयोगकर्ताओं को संपादित नहीं कर सकते."
 
-#: wp-includes/class-wp-xmlrpc-server.php:2398 wp-includes/user.php:1286
-#: wp-includes/user.php:1605 wp-includes/user.php:1611
+#: wp-includes/class-wp-xmlrpc-server.php:2398 wp-includes/user.php:1286 wp-includes/user.php:1605 wp-includes/user.php:1611
 msgid "Invalid user ID."
 msgstr "अमान्य उपयोगकर्ता ID."
 
@@ -5322,8 +5219,7 @@ msgstr "आपको उपयोगकर्ताओं को ब्राउ
 msgid "The role specified is not valid"
 msgstr "निर्दिष्ट भूमिका मान्य नहीं है"
 
-#: wp-includes/class-wp-xmlrpc-server.php:2524
-#: wp-includes/class-wp-xmlrpc-server.php:2570
+#: wp-includes/class-wp-xmlrpc-server.php:2524 wp-includes/class-wp-xmlrpc-server.php:2570
 msgid "Sorry, you cannot edit your profile."
 msgstr "क्षमा करें, आप अपने प्रोफ़ाइल को संपादित नहीं कर सकते."
 
@@ -5335,14 +5231,11 @@ msgstr "क्षमा करें, उपयोगकर्ता अपड�
 msgid "Sorry, you cannot edit this page."
 msgstr "क्षमा करें, आप इस पृष्ठ को संपादित नहीं कर सकते."
 
-#: wp-includes/class-wp-xmlrpc-server.php:2651
-#: wp-includes/class-wp-xmlrpc-server.php:2771
-#: wp-includes/class-wp-xmlrpc-server.php:2833
+#: wp-includes/class-wp-xmlrpc-server.php:2651 wp-includes/class-wp-xmlrpc-server.php:2771 wp-includes/class-wp-xmlrpc-server.php:2833
 msgid "Sorry, no such page."
 msgstr "क्षमा करें, ऐसा कोई पृष्ठ नहीं."
 
-#: wp-includes/class-wp-xmlrpc-server.php:2681
-#: wp-includes/class-wp-xmlrpc-server.php:2883
+#: wp-includes/class-wp-xmlrpc-server.php:2681 wp-includes/class-wp-xmlrpc-server.php:2883
 msgid "Sorry, you cannot edit pages."
 msgstr "क्षमा करें, आप पृष्ठों को संपादित नहीं कर सकते."
 
@@ -5358,9 +5251,7 @@ msgstr "पृष्ठ हटाने में असफल"
 msgid "Sorry, you do not have the right to edit this page."
 msgstr "क्षमा करें, आप को इस पृष्ठ को संपादित करने का अधिकार नहीं है."
 
-#: wp-includes/class-wp-xmlrpc-server.php:2939
-#: wp-includes/class-wp-xmlrpc-server.php:4483
-#: wp-includes/class-wp-xmlrpc-server.php:5574
+#: wp-includes/class-wp-xmlrpc-server.php:2939 wp-includes/class-wp-xmlrpc-server.php:4483 wp-includes/class-wp-xmlrpc-server.php:5574
 msgid "Sorry, you cannot edit posts on this site."
 msgstr "क्षमा करें, आप इस साइट पर पोस्ट को संपादित नहीं कर सकते."
 
@@ -5372,8 +5263,7 @@ msgstr "क्षमा करें, टैग देखने के क्र
 msgid "Sorry, you do not have the right to add a category."
 msgstr "क्षमा करें, आप को श्रेणी जोड़ने का अधिकार नहीं है."
 
-#: wp-includes/class-wp-xmlrpc-server.php:3062
-#: wp-includes/class-wp-xmlrpc-server.php:3064
+#: wp-includes/class-wp-xmlrpc-server.php:3062 wp-includes/class-wp-xmlrpc-server.php:3064
 msgid "Sorry, the new category failed."
 msgstr "क्षमा करें, नई श्रेणी विफल रहा."
 
@@ -5381,26 +5271,19 @@ msgstr "क्षमा करें, नई श्रेणी विफल र
 msgid "Sorry, you do not have the right to delete a category."
 msgstr "क्षमा करें, आप को श्रेणी हटाने का अधिकार नहीं है."
 
-#: wp-includes/class-wp-xmlrpc-server.php:3156
-#: wp-includes/class-wp-xmlrpc-server.php:5687
-#: wp-includes/class-wp-xmlrpc-server.php:5908
+#: wp-includes/class-wp-xmlrpc-server.php:3156 wp-includes/class-wp-xmlrpc-server.php:5687 wp-includes/class-wp-xmlrpc-server.php:5908
 msgid "Sorry, you must be able to edit posts on this site in order to view categories."
 msgstr "क्षमा करें, आप श्रेणियों को देखने के क्रम में इस साइट पर पोस्ट को संपादित करने में सक्षम होना चाहिए।"
 
-#: wp-includes/class-wp-xmlrpc-server.php:3203
-#: wp-includes/class-wp-xmlrpc-server.php:3336
-#: wp-includes/class-wp-xmlrpc-server.php:3403
+#: wp-includes/class-wp-xmlrpc-server.php:3203 wp-includes/class-wp-xmlrpc-server.php:3336 wp-includes/class-wp-xmlrpc-server.php:3403
 msgid "Invalid comment ID."
 msgstr "अमान्य टिप्पणी आईडी."
 
-#: wp-includes/class-wp-xmlrpc-server.php:3207
-#: wp-includes/class-wp-xmlrpc-server.php:3340
-#: wp-includes/class-wp-xmlrpc-server.php:3407
+#: wp-includes/class-wp-xmlrpc-server.php:3207 wp-includes/class-wp-xmlrpc-server.php:3340 wp-includes/class-wp-xmlrpc-server.php:3407
 msgid "You are not allowed to moderate or edit this comment."
 msgstr "आपको इस टिप्पणी को नियंत्रित या संपादित करने की अनुमति नहीं है।"
 
-#: wp-includes/class-wp-xmlrpc-server.php:3260
-#: wp-includes/class-wp-xmlrpc-server.php:3418
+#: wp-includes/class-wp-xmlrpc-server.php:3260 wp-includes/class-wp-xmlrpc-server.php:3418
 msgid "Invalid comment status."
 msgstr "अमान्य टिप्पणी स्थिति."
 
@@ -5428,11 +5311,7 @@ msgstr "टिप्पणी लेखक का नाम और ईमेल 
 msgid "A valid email address is required"
 msgstr "एक मान्य ई-मेल पता आवश्यक है"
 
-#: wp-includes/class-wp-xmlrpc-server.php:3611
-#: wp-includes/class-wp-xmlrpc-server.php:3692
-#: wp-includes/class-wp-xmlrpc-server.php:3724
-#: wp-includes/class-wp-xmlrpc-server.php:3756
-#: wp-includes/class-wp-xmlrpc-server.php:3994
+#: wp-includes/class-wp-xmlrpc-server.php:3611 wp-includes/class-wp-xmlrpc-server.php:3692 wp-includes/class-wp-xmlrpc-server.php:3724 wp-includes/class-wp-xmlrpc-server.php:3756 wp-includes/class-wp-xmlrpc-server.php:3994
 msgid "You are not allowed access to details about this site."
 msgstr "आपको इस साइट के बारे में जानकारी लेने के लिए अनुमति नहीं है ।"
 
@@ -5444,9 +5323,7 @@ msgstr "आपको इस पोस्ट के विवरण तक की
 msgid "You are not allowed to update options."
 msgstr "आप विकल्पों को अपडेट करने की अनुमति नहीं है."
 
-#: wp-includes/class-wp-xmlrpc-server.php:3902
-#: wp-includes/class-wp-xmlrpc-server.php:3950
-#: wp-includes/class-wp-xmlrpc-server.php:5751
+#: wp-includes/class-wp-xmlrpc-server.php:3902 wp-includes/class-wp-xmlrpc-server.php:3950 wp-includes/class-wp-xmlrpc-server.php:5751
 msgid "You do not have permission to upload files."
 msgstr "आपके पास फाइल्स को अपलोड करने की आज्ञा नही है।"
 
@@ -5458,8 +5335,7 @@ msgstr "क्षमा करें, आपको इस पोस्ट का
 msgid "Sorry, you are not allowed to edit posts."
 msgstr "क्षमा करें, आप को पोस्ट को संपादित करने के लिए अनुमति नहीं है."
 
-#: wp-includes/class-wp-xmlrpc-server.php:4202
-#: wp-includes/class-wp-xmlrpc-server.php:4272
+#: wp-includes/class-wp-xmlrpc-server.php:4202 wp-includes/class-wp-xmlrpc-server.php:4272
 msgid "Sorry, revisions are disabled."
 msgstr "क्षमा करें, संशोधन अक्षम हैं."
 
@@ -5467,30 +5343,23 @@ msgstr "क्षमा करें, संशोधन अक्षम है�
 msgid "Sorry, you do not have access to user data on this site."
 msgstr "क्षमा करें, आप इस साइट पर उपयोगकर्ता डेटा को नहीं देख सकते."
 
-#: wp-includes/class-wp-xmlrpc-server.php:4491
-#: wp-includes/class-wp-xmlrpc-server.php:5858
+#: wp-includes/class-wp-xmlrpc-server.php:4491 wp-includes/class-wp-xmlrpc-server.php:5858
 msgid "Either there are no posts, or something went wrong."
 msgstr "या तो वहाँ कोई पोस्ट नहीं हैं, या कुछ गलत हो गया."
 
-#: wp-includes/class-wp-xmlrpc-server.php:4526
-#: wp-includes/class-wp-xmlrpc-server.php:4537
+#: wp-includes/class-wp-xmlrpc-server.php:4526 wp-includes/class-wp-xmlrpc-server.php:4537
 msgid "Sorry, that file cannot be edited."
 msgstr "क्षमा करें, उस फ़ाइल को संपादित नहीं किया जा सकता है।"
 
-#: wp-includes/class-wp-xmlrpc-server.php:4647
-#: wp-includes/class-wp-xmlrpc-server.php:4719
-#: wp-includes/class-wp-xmlrpc-server.php:5541
-#: wp-includes/class-wp-xmlrpc-server.php:6074
+#: wp-includes/class-wp-xmlrpc-server.php:4647 wp-includes/class-wp-xmlrpc-server.php:4719 wp-includes/class-wp-xmlrpc-server.php:5541 wp-includes/class-wp-xmlrpc-server.php:6074
 msgid "Sorry, no such post."
 msgstr "क्षमा करें, ऐसा कोई पोस्ट नहीं. "
 
-#: wp-includes/class-wp-xmlrpc-server.php:4653
-#: wp-includes/class-wp-xmlrpc-server.php:5153
+#: wp-includes/class-wp-xmlrpc-server.php:4653 wp-includes/class-wp-xmlrpc-server.php:5153
 msgid "Sorry, you do not have the right to edit this post."
 msgstr "क्षमा करें, आप को इस पोस्ट को संपादित करने का अधिकार नहीं है."
 
-#: wp-includes/class-wp-xmlrpc-server.php:4656
-#: wp-includes/class-wp-xmlrpc-server.php:5326
+#: wp-includes/class-wp-xmlrpc-server.php:4656 wp-includes/class-wp-xmlrpc-server.php:5326
 msgid "Sorry, you do not have the right to publish this post."
 msgstr "क्षमा करें, आप को इस पोस्ट को प्रकाशित करने का अधिकार नहीं है."
 
@@ -5502,14 +5371,11 @@ msgstr "कुछ अजीब मगर बहुत कष्टप्रद �
 msgid "Sorry, you are not allowed to publish pages on this site."
 msgstr "क्षमा करें, आप इस साइट पर पृष्ठों को प्रकाशित करने की अनुमति नहीं है ।"
 
-#: wp-includes/class-wp-xmlrpc-server.php:4821
-#: wp-includes/class-wp-xmlrpc-server.php:4834
-#: wp-includes/class-wp-xmlrpc-server.php:4839
+#: wp-includes/class-wp-xmlrpc-server.php:4821 wp-includes/class-wp-xmlrpc-server.php:4834 wp-includes/class-wp-xmlrpc-server.php:4839
 msgid "Sorry, you are not allowed to publish posts on this site."
 msgstr "क्षमा करें, आप को इस साइट पर पोस्ट प्रकाशित करने की अनुमति नहीं है."
 
-#: wp-includes/class-wp-xmlrpc-server.php:4847
-#: wp-includes/class-wp-xmlrpc-server.php:5167
+#: wp-includes/class-wp-xmlrpc-server.php:4847 wp-includes/class-wp-xmlrpc-server.php:5167
 msgid "Invalid post format"
 msgstr "अमान्य पोस्ट प्रारूप"
 
@@ -5553,10 +5419,7 @@ msgstr "क्षमा करें, आप इस पोस्ट को प�
 msgid "Is there no link to us?"
 msgstr "हमारे लिए कोई लिंक नहीं है?"
 
-#: wp-includes/class-wp-xmlrpc-server.php:6224
-#: wp-includes/class-wp-xmlrpc-server.php:6231
-#: wp-includes/class-wp-xmlrpc-server.php:6238
-#: wp-includes/class-wp-xmlrpc-server.php:6377
+#: wp-includes/class-wp-xmlrpc-server.php:6224 wp-includes/class-wp-xmlrpc-server.php:6231 wp-includes/class-wp-xmlrpc-server.php:6238 wp-includes/class-wp-xmlrpc-server.php:6377
 msgid "The specified target URL cannot be used as a target. It either doesn&#8217;t exist, or it is not a pingback-enabled resource."
 msgstr "निर्दिष्ट लक्ष्य यूआरएल एक लक्ष्य के रूप में इस्तेमाल नहीं किया जा सकता। या तो यह मौजूद नहीं है, या फिर यह एक पिंगबैक-सक्षम संसाधन नहीं है।"
 
@@ -5658,29 +5521,23 @@ msgstr "टिप्पणी करने के लिए लॉग इन क
 msgid "Click here to cancel reply."
 msgstr "जवाब को निरस्त करने के लिए यहां क्लिक करें."
 
-#: wp-includes/comment-template.php:1850 wp-includes/comment-template.php:2179
-#: wp-includes/theme-compat/comments.php:75
+#: wp-includes/comment-template.php:1850 wp-includes/comment-template.php:2179 wp-includes/theme-compat/comments.php:75
 msgid "Leave a Reply"
 msgstr "एक उत्तर दें"
 
-#: wp-includes/comment-template.php:1851 wp-includes/comment-template.php:2180
-#: wp-includes/theme-compat/comments.php:75
+#: wp-includes/comment-template.php:1851 wp-includes/comment-template.php:2180 wp-includes/theme-compat/comments.php:75
 msgid "Leave a Reply to %s"
 msgstr "%s को एक उत्तर दें"
 
-#: wp-includes/comment-template.php:2147
-#: wp-includes/theme-compat/comments-popup.php:76
-#: wp-includes/theme-compat/comments.php:96
+#: wp-includes/comment-template.php:2147 wp-includes/theme-compat/comments-popup.php:76 wp-includes/theme-compat/comments.php:96
 msgid "Name"
 msgstr "नाम"
 
-#: wp-includes/comment-template.php:2149
-#: wp-includes/theme-compat/comments-popup.php:81 wp-login.php:720
+#: wp-includes/comment-template.php:2149 wp-includes/theme-compat/comments-popup.php:81 wp-login.php:720
 msgid "Email"
 msgstr "ईमेल"
 
-#: wp-includes/comment-template.php:2151
-#: wp-includes/theme-compat/comments.php:102
+#: wp-includes/comment-template.php:2151 wp-includes/theme-compat/comments.php:102
 msgid "Website"
 msgstr "वेबसाईट"
 
@@ -5688,8 +5545,7 @@ msgstr "वेबसाईट"
 msgid "Required fields are marked %s"
 msgstr "आवश्यक फ़ील्ड चिह्नित हैं %s"
 
-#: wp-includes/comment-template.php:2169
-#: wp-includes/theme-compat/comments.php:82
+#: wp-includes/comment-template.php:2169 wp-includes/theme-compat/comments.php:82
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
 msgstr "आप होना चाहिए <a href=\"%s\">में लॉग </a>एक टिप्पणी पोस्ट करने के लिए."
 
@@ -5737,7 +5593,7 @@ msgstr "डुप्लीकेट टिप्पणी का पता च�
 
 #: wp-includes/comment.php:753 wp-includes/comment.php:755
 msgid "You are posting comments too quickly. Slow down."
-msgstr "आप ज़्यादा जल्दी टिप्पणी पोस्ट कर रहे हैं। गति कम करें।"
+msgstr "आप ज़्यादा जल्दी टिप्पणी पोस्ट कर रहे हैं। गति कम करें।"
 
 #: wp-includes/comment.php:1857
 msgid "Could not update comment status"
@@ -5773,16 +5629,13 @@ msgstr "घंटे में एक बार"
 
 #: wp-includes/cron.php:391
 msgid "Twice Daily"
-msgstr "रोज़ाना दो बार"
+msgstr "रोज़ाना दो बार"
 
 #: wp-includes/cron.php:392
 msgid "Once Daily"
-msgstr "रोज़ाना एक बार"
+msgstr "रोज़ाना एक बार"
 
-#: wp-includes/customize/class-wp-customize-color-control.php:41
-#: wp-includes/customize/class-wp-customize-image-control.php:38
-#: wp-includes/customize/class-wp-customize-media-control.php:61
-#: wp-includes/script-loader.php:611
+#: wp-includes/customize/class-wp-customize-color-control.php:41 wp-includes/customize/class-wp-customize-image-control.php:38 wp-includes/customize/class-wp-customize-media-control.php:61 wp-includes/script-loader.php:611
 msgid "Default"
 msgstr "मूलभूत"
 
@@ -5820,15 +5673,15 @@ msgstr "कोई छवि नहीं चुनी गई"
 
 #: wp-includes/customize/class-wp-customize-header-image-control.php:179
 msgid "While you can crop images to your liking after clicking <strong>Add new image</strong>, your theme recommends a header size of <strong>%s &times; %s</strong> pixels."
-msgstr "<strong>नई छवि जोड़ें</strong> पर क्लिक करने के बाद जहाँ आप छवि की अपने हिसाब से काट-छाँट कर सकते हैं, वहीं आपकी थीम <strong>%s  &times; %s</strong> पिक्सेल्स के हैडर आकार का समर्थन करती है।"
+msgstr "<strong>नई छवि जोड़ें</strong> पर क्लिक करने के बाद जहाँ आप छवि की अपने हिसाब से काट-छाँट कर सकते हैं, वहीं आपकी थीम <strong>%s  &times; %s</strong> पिक्सेल्स के हैडर आकार का समर्थन करती है।"
 
 #: wp-includes/customize/class-wp-customize-header-image-control.php:181
 msgid "While you can crop images to your liking after clicking <strong>Add new image</strong>, your theme recommends a header width of <strong>%s</strong> pixels."
-msgstr "<strong>नई छवि जोड़ें</strong> पर क्लिक करने के बाद जहाँ आप छवि की अपने हिसाब से काट-छाँट कर सकते हैं, वहीं आपकी थीम <strong>%s</strong> पिक्सेल्स के हैडर चौड़ाई का समर्थन करती है।"
+msgstr "<strong>नई छवि जोड़ें</strong> पर क्लिक करने के बाद जहाँ आप छवि की अपने हिसाब से काट-छाँट कर सकते हैं, वहीं आपकी थीम <strong>%s</strong> पिक्सेल्स के हैडर चौड़ाई का समर्थन करती है।"
 
 #: wp-includes/customize/class-wp-customize-header-image-control.php:183
 msgid "While you can crop images to your liking after clicking <strong>Add new image</strong>, your theme recommends a header height of <strong>%s</strong> pixels."
-msgstr "<strong>नई छवि जोड़ें</strong> पर क्लिक करने के बाद जहाँ आप छवि की अपने हिसाब से काट-छाँट कर सकते हैं, वहीं आपकी थीम <strong>%s</strong> पिक्सेल्स के हैडर उंचाई का समर्थन करती है।"
+msgstr "<strong>नई छवि जोड़ें</strong> पर क्लिक करने के बाद जहाँ आप छवि की अपने हिसाब से काट-छाँट कर सकते हैं, वहीं आपकी थीम <strong>%s</strong> पिक्सेल्स के हैडर उंचाई का समर्थन करती है।"
 
 #: wp-includes/customize/class-wp-customize-header-image-control.php:190
 msgid "Current header"
@@ -5860,8 +5713,7 @@ msgctxt "custom headers"
 msgid "Suggested"
 msgstr "सुझाव दिया गया"
 
-#: wp-includes/customize/class-wp-customize-image-control.php:35
-#: wp-includes/customize/class-wp-customize-image-control.php:40
+#: wp-includes/customize/class-wp-customize-image-control.php:35 wp-includes/customize/class-wp-customize-image-control.php:40
 msgid "Select Image"
 msgstr "छवि चुने"
 
@@ -5873,13 +5725,11 @@ msgstr "छवि बदलें"
 msgid "No image selected"
 msgstr "कोई छवि नहीं चुनी गई"
 
-#: wp-includes/customize/class-wp-customize-image-control.php:41
-#: wp-includes/media.php:3405
+#: wp-includes/customize/class-wp-customize-image-control.php:41 wp-includes/media.php:3405
 msgid "Choose Image"
 msgstr "छवि चुनें"
 
-#: wp-includes/customize/class-wp-customize-media-control.php:59
-#: wp-includes/customize/class-wp-customize-media-control.php:64
+#: wp-includes/customize/class-wp-customize-media-control.php:59 wp-includes/customize/class-wp-customize-media-control.php:64
 msgid "Select File"
 msgstr "फाइल चुनें"
 
@@ -5889,7 +5739,7 @@ msgstr "फ़ाइल बदलें "
 
 #: wp-includes/customize/class-wp-customize-media-control.php:63
 msgid "No file selected"
-msgstr "कोई फ़ाइल नहीं चुना गया"
+msgstr "कोई फ़ाइल नहीं चुना गया"
 
 #: wp-includes/customize/class-wp-customize-media-control.php:65
 msgid "Choose File"
@@ -5953,18 +5803,15 @@ msgstr "मेनू आइटम को हटाएं: %1$s (%2$s)"
 msgid "Navigation Label"
 msgstr "नेविगेशन लेबल"
 
-#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:110
-#: wp-includes/customize/class-wp-customize-nav-menus-panel.php:60
+#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:110 wp-includes/customize/class-wp-customize-nav-menus-panel.php:60
 msgid "Title Attribute"
 msgstr "शीर्षक की विशेषता"
 
-#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:116
-#: wp-includes/customize/class-wp-customize-nav-menus-panel.php:61
+#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:116 wp-includes/customize/class-wp-customize-nav-menus-panel.php:61
 msgid "CSS Classes"
 msgstr "सीएसएस क्लासेज"
 
-#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:122
-#: wp-includes/customize/class-wp-customize-nav-menus-panel.php:62
+#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:122 wp-includes/customize/class-wp-customize-nav-menus-panel.php:62
 msgid "Link Relationship (XFN)"
 msgstr "कड़ी सम्बन्ध (XFN)"
 
@@ -5987,7 +5834,7 @@ msgstr "उन्नत मेनू संपत्तियों को द�
 
 #: wp-includes/customize/class-wp-customize-nav-menus-panel.php:59
 msgid "Link Target"
-msgstr "कड़ी टारगेट"
+msgstr "कड़ी टारगेट"
 
 #: wp-includes/customize/class-wp-customize-nav-menus-panel.php:95
 msgid "Menu Options"
@@ -6010,18 +5857,15 @@ msgstr "%s द्वारा"
 msgid "<span>Active:</span> %s"
 msgstr "<span>सक्रिय:</span> %s "
 
-#: wp-includes/customize/class-wp-customize-theme-control.php:102
-#: wp-includes/customize/class-wp-customize-themes-section.php:70
+#: wp-includes/customize/class-wp-customize-theme-control.php:102 wp-includes/customize/class-wp-customize-themes-section.php:70
 msgid "Theme Details"
 msgstr "विषय विवरण"
 
-#: wp-includes/customize/class-wp-customize-themes-section.php:43
-#: wp-includes/customize/class-wp-customize-themes-section.php:62
+#: wp-includes/customize/class-wp-customize-themes-section.php:43 wp-includes/customize/class-wp-customize-themes-section.php:62
 msgid "Active theme"
 msgstr "सक्रिय थीम"
 
-#: wp-includes/customize/class-wp-customize-themes-section.php:45
-#: wp-includes/customize/class-wp-customize-themes-section.php:64
+#: wp-includes/customize/class-wp-customize-themes-section.php:45 wp-includes/customize/class-wp-customize-themes-section.php:64
 msgid "Previewing theme"
 msgstr "थीम पूर्वावलोकन"
 
@@ -6030,8 +5874,7 @@ msgctxt "theme"
 msgid "Change"
 msgstr "बदलें"
 
-#: wp-includes/customize/class-wp-customize-themes-section.php:75
-#: wp-includes/customize/class-wp-customize-themes-section.php:76
+#: wp-includes/customize/class-wp-customize-themes-section.php:75 wp-includes/customize/class-wp-customize-themes-section.php:76
 msgid "Search installed themes&hellip;"
 msgstr "स्थापित थीम्स खोजें&hellip;"
 
@@ -6069,12 +5912,7 @@ msgstr "नीचे दी गई जानकारी सही दिना�
 msgid "new WordPress Loop"
 msgstr "नया वर्डप्रेस लूप"
 
-#: wp-includes/deprecated.php:688 wp-includes/media-template.php:622
-#: wp-includes/media-template.php:649 wp-includes/media-template.php:727
-#: wp-includes/media-template.php:853 wp-includes/media-template.php:868
-#: wp-includes/media-template.php:919 wp-includes/media-template.php:981
-#: wp-includes/media-template.php:1079 wp-includes/media-template.php:1168
-#: wp-includes/script-loader.php:343
+#: wp-includes/deprecated.php:688 wp-includes/media-template.php:622 wp-includes/media-template.php:649 wp-includes/media-template.php:727 wp-includes/media-template.php:853 wp-includes/media-template.php:868 wp-includes/media-template.php:919 wp-includes/media-template.php:981 wp-includes/media-template.php:1079 wp-includes/media-template.php:1168 wp-includes/script-loader.php:343
 msgid "None"
 msgstr "कोई नही"
 
@@ -6410,12 +6248,12 @@ msgstr "नाम"
 #: wp-includes/class-wp-editor.php:879
 msgctxt "Link anchor (TinyMCE)"
 msgid "Anchor"
-msgstr "कड़ी"
+msgstr "कड़ी"
 
 #: wp-includes/class-wp-editor.php:880
 msgctxt "Link anchors (TinyMCE)"
 msgid "Anchors"
-msgstr "कड़ी"
+msgstr "कड़ी"
 
 #: wp-includes/class-wp-editor.php:883
 msgid "Document properties"
@@ -6425,9 +6263,7 @@ msgstr "दस्तावेज गुण"
 msgid "Robots"
 msgstr "रोबोट"
 
-#: wp-includes/class-wp-editor.php:885 wp-includes/media-template.php:377
-#: wp-includes/media-template.php:556 wp-includes/revision.php:31
-#: wp-includes/script-loader.php:533
+#: wp-includes/class-wp-editor.php:885 wp-includes/media-template.php:377 wp-includes/media-template.php:556 wp-includes/revision.php:31 wp-includes/script-loader.php:533
 msgid "Title"
 msgstr "शीर्षक"
 
@@ -6569,8 +6405,7 @@ msgstr "क्षैतिज स्थान"
 msgid "Restore last draft"
 msgstr "पिछला प्रारूप पुनर्स्थापित करें"
 
-#: wp-includes/class-wp-editor.php:926 wp-includes/class-wp-editor.php:1401
-#: wp-includes/script-loader.php:403
+#: wp-includes/class-wp-editor.php:926 wp-includes/class-wp-editor.php:1401 wp-includes/script-loader.php:403
 msgid "Insert/edit link"
 msgstr "कड़ी डालें/सम्पादन करें"
 
@@ -6788,9 +6623,7 @@ msgstr "ऊंचाई"
 msgid "Width"
 msgstr "चौडाई"
 
-#: wp-includes/class-wp-editor.php:985 wp-includes/media-template.php:393
-#: wp-includes/media-template.php:572 wp-includes/media-template.php:830
-#: wp-includes/media-template.php:895
+#: wp-includes/class-wp-editor.php:985 wp-includes/media-template.php:393 wp-includes/media-template.php:572 wp-includes/media-template.php:830 wp-includes/media-template.php:895
 msgid "Caption"
 msgstr "अनुशीर्षक"
 
@@ -6892,21 +6725,19 @@ msgstr "पेस्ट सादे टेक्स्ट मोड में �
 
 #: wp-includes/class-wp-editor.php:1015
 msgid "If you&#8217;re looking to paste rich content from Microsoft Word, try turning this option off. The editor will clean up text pasted from Word automatically."
-msgstr "यदि आप उन्नत सामग्री माइक्रोसॉफ़्ट वर्ड से सीधे डाल रहें हैं, तो आप इस विकल्प को बंद कर दें। इससे संपादक स्वतः ही पाठ्य को साफ कर देगा।"
+msgstr "यदि आप उन्नत सामग्री माइक्रोसॉफ़्ट वर्ड से सीधे डाल रहें हैं, तो आप इस विकल्प को बंद कर दें। इससे संपादक स्वतः ही पाठ्य को साफ कर देगा।"
 
 #: wp-includes/class-wp-editor.php:1016
 msgid "Rich Text Area. Press Alt-Shift-H for help"
 msgstr "उन्नत पाठ्य क्षेत्र। सहायता के लिए Alt-Shift-H दबाएँ।"
 
-#: wp-includes/class-wp-editor.php:1017 wp-includes/script-loader.php:436
-#: wp-includes/script-loader.php:526 wp-includes/script-loader.php:535
-#: wp-includes/script-loader.php:644 wp-includes/theme.php:2029
+#: wp-includes/class-wp-editor.php:1017 wp-includes/script-loader.php:436 wp-includes/script-loader.php:526 wp-includes/script-loader.php:535 wp-includes/script-loader.php:644 wp-includes/theme.php:2029
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr "अगर आप इस पृष्ठ से दूर जायेंगे तो आपके द्वारा किए बदलाव नष्ट हो जायेंगे."
 
 #: wp-includes/class-wp-editor.php:1018
 msgid "Your browser does not support direct access to the clipboard. Please use keyboard shortcuts or your browser&#8217;s edit menu instead."
-msgstr "आपका ब्राउज़र सीधे क्लिपबोर्ड का उपयोग समर्थ नहीं कर रहा है। कृपया कुंजी पटल के बटन अथवा &#8217;s सम्पादन मेनू को चुने।"
+msgstr "आपका ब्राउज़र सीधे क्लिपबोर्ड का उपयोग समर्थ नहीं कर रहा है। कृपया कुंजी पटल के बटन अथवा &#8217;s सम्पादन मेनू को चुने।"
 
 #: wp-includes/class-wp-editor.php:1021
 msgctxt "TinyMCE menu"
@@ -7038,9 +6869,7 @@ msgstr "व/म/दि"
 msgid "Enter the destination URL"
 msgstr "गंतव्य URL दर्ज करें"
 
-#: wp-includes/class-wp-editor.php:1414
-#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:105
-#: wp-includes/media-template.php:1001
+#: wp-includes/class-wp-editor.php:1414 wp-includes/customize/class-wp-customize-nav-menu-item-control.php:105 wp-includes/media-template.php:1001
 msgid "Open link in a new tab"
 msgstr "लिंक एक नए टैब में खोलें"
 
@@ -7060,43 +6889,35 @@ msgstr "खोज या ऊपर नीचे कर सामग्री च
 msgid "Add Link"
 msgstr "कड़ी जोडें"
 
-#: wp-includes/class-wp-http-curl.php:189
-#: wp-includes/class-wp-http-streams.php:228
+#: wp-includes/class-wp-http-curl.php:189 wp-includes/class-wp-http-streams.php:228
 msgid "Could not open handle for fopen() to %s"
 msgstr "fopen() से %s के लिए हैंडल नहीं खोल सका"
 
-#: wp-includes/class-wp-http-curl.php:257
-#: wp-includes/class-wp-http-streams.php:256
+#: wp-includes/class-wp-http-curl.php:257 wp-includes/class-wp-http-streams.php:256
 msgid "Failed to write request to temporary file."
 msgstr "अस्थायी फ़ाइल में अनुरोध लिखने में असफल।"
 
-#: wp-includes/class-wp-http-streams.php:156
-#: wp-includes/class-wp-http-streams.php:164
+#: wp-includes/class-wp-http-streams.php:156 wp-includes/class-wp-http-streams.php:164
 msgid "The SSL certificate for the host could not be verified."
 msgstr "होस्ट के लिए एसएसएल प्रमाणपत्र सत्यापित नहीं किया जा सका।"
 
-#: wp-includes/class-wp-image-editor-gd.php:97
-#: wp-includes/class-wp-image-editor-imagick.php:130
+#: wp-includes/class-wp-image-editor-gd.php:97 wp-includes/class-wp-image-editor-imagick.php:130
 msgid "File doesn&#8217;t exist?"
 msgstr "फ़ाइल मौजूद नहीं है ?"
 
-#: wp-includes/class-wp-image-editor-gd.php:113
-#: wp-includes/class-wp-image-editor-imagick.php:140
+#: wp-includes/class-wp-image-editor-gd.php:113 wp-includes/class-wp-image-editor-imagick.php:140
 msgid "File is not an image."
-msgstr "फ़ाइल छवि नहीं है।"
+msgstr "फ़ाइल छवि नहीं है।"
 
-#: wp-includes/class-wp-image-editor-gd.php:117
-#: wp-includes/class-wp-image-editor-imagick.php:211
+#: wp-includes/class-wp-image-editor-gd.php:117 wp-includes/class-wp-image-editor-imagick.php:211
 msgid "Could not read image size."
 msgstr "छवि का आकार नहीं पढ़ा जा सका."
 
-#: wp-includes/class-wp-image-editor-gd.php:180
-#: wp-includes/class-wp-image-editor-gd.php:205
+#: wp-includes/class-wp-image-editor-gd.php:180 wp-includes/class-wp-image-editor-gd.php:205
 msgid "Image resize failed."
 msgstr "छवि का आकार परिवर्तन विफल रहा."
 
-#: wp-includes/class-wp-image-editor-gd.php:193
-#: wp-includes/class-wp-image-editor-imagick.php:245
+#: wp-includes/class-wp-image-editor-gd.php:193 wp-includes/class-wp-image-editor-imagick.php:245
 msgid "Could not calculate resized image dimensions"
 msgstr "छवि आयाम(डायमेंशन) के बदले आकार की गणना नहीं कर सका"
 
@@ -7112,10 +6933,7 @@ msgstr "छवि का घुमाना विफल रहा."
 msgid "Image flip failed."
 msgstr "छवि फ्लिप विफल रहा।"
 
-#: wp-includes/class-wp-image-editor-gd.php:408
-#: wp-includes/class-wp-image-editor-gd.php:416
-#: wp-includes/class-wp-image-editor-gd.php:420
-#: wp-includes/class-wp-image-editor-gd.php:423
+#: wp-includes/class-wp-image-editor-gd.php:408 wp-includes/class-wp-image-editor-gd.php:416 wp-includes/class-wp-image-editor-gd.php:420 wp-includes/class-wp-image-editor-gd.php:423
 msgid "Image Editor Save Failed"
 msgstr "छवि संपादक सेव विफल रहा"
 
@@ -7127,17 +6945,8 @@ msgstr "रेंज [1,100] के बाहर छवि गुणवत्त
 msgid "Term ID is shared between multiple taxonomies"
 msgstr "टर्म आईडी कई वर्गीकरणों के मध्य साझा की जाती है"
 
-#: wp-includes/class-wp-term.php:179
-#: wp-includes/class-wp-xmlrpc-server.php:1851
-#: wp-includes/class-wp-xmlrpc-server.php:1938
-#: wp-includes/class-wp-xmlrpc-server.php:2034
-#: wp-includes/class-wp-xmlrpc-server.php:2105
-#: wp-includes/class-wp-xmlrpc-server.php:2163
-#: wp-includes/class-wp-xmlrpc-server.php:2258 wp-includes/taxonomy.php:668
-#: wp-includes/taxonomy.php:757 wp-includes/taxonomy.php:908
-#: wp-includes/taxonomy.php:1081 wp-includes/taxonomy.php:2300
-#: wp-includes/taxonomy.php:2551 wp-includes/taxonomy.php:2794
-#: wp-includes/taxonomy.php:3127
+#: wp-includes/class-wp-term.php:179 wp-includes/class-wp-xmlrpc-server.php:1851 wp-includes/class-wp-xmlrpc-server.php:1938 wp-includes/class-wp-xmlrpc-server.php:2034 wp-includes/class-wp-xmlrpc-server.php:2105 wp-includes/class-wp-xmlrpc-server.php:2163 wp-includes/class-wp-xmlrpc-server.php:2258 wp-includes/taxonomy.php:668 wp-includes/taxonomy.php:757 wp-includes/taxonomy.php:908 wp-includes/taxonomy.php:1081
+#: wp-includes/taxonomy.php:2300 wp-includes/taxonomy.php:2551 wp-includes/taxonomy.php:2794 wp-includes/taxonomy.php:3127
 msgid "Invalid taxonomy"
 msgstr "अमान्य वर्गीकरण"
 
@@ -7174,8 +6983,7 @@ msgid "Anonymous"
 msgstr "अनाम"
 
 #. translators: %s: WP_User->ID
-#: wp-includes/class-wp-user.php:275 wp-includes/class-wp-user.php:305
-#: wp-includes/class-wp-user.php:344 wp-includes/class-wp-user.php:368
+#: wp-includes/class-wp-user.php:275 wp-includes/class-wp-user.php:305 wp-includes/class-wp-user.php:344 wp-includes/class-wp-user.php:368
 msgid "Use %s instead."
 msgstr "अन्य की बजाय %s का प्रयोग करें। "
 
@@ -7221,7 +7029,7 @@ msgstr "व्यवस्थापक क्षेत्र के लिए �
 
 #: wp-includes/class-wp-xmlrpc-server.php:430
 msgid "Image default link type"
-msgstr "छवि का मूलभूत कड़ी प्रकार"
+msgstr "छवि का मूलभूत कड़ी प्रकार"
 
 #: wp-includes/class-wp-xmlrpc-server.php:435
 msgid "Image default size"
@@ -7277,7 +7085,7 @@ msgstr "लघुछवि को काट-छाँट कर सटीक आ
 
 #: wp-includes/class-wp-xmlrpc-server.php:507
 msgid "Medium size image width"
-msgstr "मध्यम आकार के छवि की चौड़ाई"
+msgstr "मध्यम आकार के छवि की चौड़ाई"
 
 #: wp-includes/class-wp-xmlrpc-server.php:512
 msgid "Medium size image height"
@@ -7293,7 +7101,7 @@ msgstr "मध्यम-बड़े आकार की छवि ऊंचा�
 
 #: wp-includes/class-wp-xmlrpc-server.php:527
 msgid "Large size image width"
-msgstr "बड़े आकार के छवि की चौड़ाई"
+msgstr "बड़े आकार के छवि की चौड़ाई"
 
 #: wp-includes/class-wp-xmlrpc-server.php:532
 msgid "Large size image height"
@@ -7319,34 +7127,12 @@ msgstr "क्षमा करें, आप एक निजी पोस्ट
 msgid "Sorry, you are not allowed to stick this post."
 msgstr "क्षमा करें, आप इस पोस्ट को स्टिक करने की अनुमति नहीं है."
 
-#: wp-includes/class-wp-xmlrpc-server.php:1286
-#: wp-includes/class-wp-xmlrpc-server.php:4077
-#: wp-includes/class-wp-xmlrpc-server.php:4825
-#: wp-includes/class-wp-xmlrpc-server.php:4883
-#: wp-includes/class-wp-xmlrpc-server.php:5157
-#: wp-includes/class-wp-xmlrpc-server.php:5221
+#: wp-includes/class-wp-xmlrpc-server.php:1286 wp-includes/class-wp-xmlrpc-server.php:4077 wp-includes/class-wp-xmlrpc-server.php:4825 wp-includes/class-wp-xmlrpc-server.php:4883 wp-includes/class-wp-xmlrpc-server.php:5157 wp-includes/class-wp-xmlrpc-server.php:5221
 msgid "Invalid post type"
 msgstr "अमान्य पोस्ट प्रकार"
 
-#: wp-includes/class-wp-xmlrpc-server.php:1292
-#: wp-includes/class-wp-xmlrpc-server.php:1545
-#: wp-includes/class-wp-xmlrpc-server.php:1611
-#: wp-includes/class-wp-xmlrpc-server.php:1709
-#: wp-includes/class-wp-xmlrpc-server.php:2637
-#: wp-includes/class-wp-xmlrpc-server.php:3518
-#: wp-includes/class-wp-xmlrpc-server.php:3522
-#: wp-includes/class-wp-xmlrpc-server.php:3648
-#: wp-includes/class-wp-xmlrpc-server.php:4195
-#: wp-includes/class-wp-xmlrpc-server.php:4259
-#: wp-includes/class-wp-xmlrpc-server.php:4262
-#: wp-includes/class-wp-xmlrpc-server.php:4265
-#: wp-includes/class-wp-xmlrpc-server.php:4427
-#: wp-includes/class-wp-xmlrpc-server.php:5150
-#: wp-includes/class-wp-xmlrpc-server.php:5441
-#: wp-includes/class-wp-xmlrpc-server.php:5953
-#: wp-includes/class-wp-xmlrpc-server.php:6007
-#: wp-includes/class-wp-xmlrpc-server.php:6126 wp-includes/post.php:2938
-#: wp-includes/post.php:3426 wp-includes/revision.php:265
+#: wp-includes/class-wp-xmlrpc-server.php:1292 wp-includes/class-wp-xmlrpc-server.php:1545 wp-includes/class-wp-xmlrpc-server.php:1611 wp-includes/class-wp-xmlrpc-server.php:1709 wp-includes/class-wp-xmlrpc-server.php:2637 wp-includes/class-wp-xmlrpc-server.php:3518 wp-includes/class-wp-xmlrpc-server.php:3522 wp-includes/class-wp-xmlrpc-server.php:3648 wp-includes/class-wp-xmlrpc-server.php:4195 wp-includes/class-wp-xmlrpc-server.php:4259
+#: wp-includes/class-wp-xmlrpc-server.php:4262 wp-includes/class-wp-xmlrpc-server.php:4265 wp-includes/class-wp-xmlrpc-server.php:4427 wp-includes/class-wp-xmlrpc-server.php:5150 wp-includes/class-wp-xmlrpc-server.php:5441 wp-includes/class-wp-xmlrpc-server.php:5953 wp-includes/class-wp-xmlrpc-server.php:6007 wp-includes/class-wp-xmlrpc-server.php:6126 wp-includes/post.php:2938 wp-includes/post.php:3426 wp-includes/revision.php:265
 msgid "Invalid post ID."
 msgstr "अमान्य पोस्ट आईडी."
 
@@ -7354,13 +7140,11 @@ msgstr "अमान्य पोस्ट आईडी."
 msgid "Sorry, you are not allowed to edit this post."
 msgstr "क्षमा करें, आप को इस पोस्ट को संपादित करने की अनुमति नहीं है."
 
-#: wp-includes/class-wp-xmlrpc-server.php:1296
-#: wp-includes/class-wp-xmlrpc-server.php:5161
+#: wp-includes/class-wp-xmlrpc-server.php:1296 wp-includes/class-wp-xmlrpc-server.php:5161
 msgid "The post type may not be changed."
 msgstr "पद प्रकार बदला नहीं जा सकता है।"
 
-#: wp-includes/class-wp-xmlrpc-server.php:1299
-#: wp-includes/class-wp-xmlrpc-server.php:4573
+#: wp-includes/class-wp-xmlrpc-server.php:1299 wp-includes/class-wp-xmlrpc-server.php:4573
 msgid "Sorry, you are not allowed to post on this site."
 msgstr "क्षमा करें, आप को इस साइट पर पोस्ट करने के लिए अनुमति नहीं है."
 
@@ -7376,37 +7160,27 @@ msgstr "क्षमा करें, आपको इस पद(पोस्ट
 msgid "Sorry, you are not allowed to create password protected posts in this post type"
 msgstr "क्षमा करें, आपको इस पद(पोस्ट) प्रकार में पासवर्ड से सुरक्षित पदों(पोस्टों) का सृजन करने की अनुमति नहीं है"
 
-#: wp-includes/class-wp-xmlrpc-server.php:1327
-#: wp-includes/class-wp-xmlrpc-server.php:4876
+#: wp-includes/class-wp-xmlrpc-server.php:1327 wp-includes/class-wp-xmlrpc-server.php:4876
 msgid "You are not allowed to create posts as this user."
 msgstr "आप को इस उपयोगकर्ता के रूप में पोस्ट बनाने के लिए अनुमति नहीं है."
 
-#: wp-includes/class-wp-xmlrpc-server.php:1332
-#: wp-includes/class-wp-xmlrpc-server.php:4887
+#: wp-includes/class-wp-xmlrpc-server.php:1332 wp-includes/class-wp-xmlrpc-server.php:4887
 msgid "Invalid author ID."
 msgstr "अमान्य लेखक आईडी."
 
-#: wp-includes/class-wp-xmlrpc-server.php:1372
-#: wp-includes/class-wp-xmlrpc-server.php:3908
-#: wp-includes/class-wp-xmlrpc-server.php:5031
-#: wp-includes/class-wp-xmlrpc-server.php:5386
+#: wp-includes/class-wp-xmlrpc-server.php:1372 wp-includes/class-wp-xmlrpc-server.php:3908 wp-includes/class-wp-xmlrpc-server.php:5031 wp-includes/class-wp-xmlrpc-server.php:5386
 msgid "Invalid attachment ID."
 msgstr "अमान्य  अनुलग्नक आईडी."
 
-#: wp-includes/class-wp-xmlrpc-server.php:1393
-#: wp-includes/class-wp-xmlrpc-server.php:1417
+#: wp-includes/class-wp-xmlrpc-server.php:1393 wp-includes/class-wp-xmlrpc-server.php:1417
 msgid "Sorry, one of the given taxonomies is not supported by the post type."
 msgstr "क्षमा करें, दिए गए वर्गीकरणों में से एक, पद(पोस्ट)प्रकार द्वारा समर्थित नहीं है।"
 
-#: wp-includes/class-wp-xmlrpc-server.php:1396
-#: wp-includes/class-wp-xmlrpc-server.php:1420
+#: wp-includes/class-wp-xmlrpc-server.php:1396 wp-includes/class-wp-xmlrpc-server.php:1420
 msgid "Sorry, you are not allowed to assign a term to one of the given taxonomies."
 msgstr "क्षमा करें, आपको दिए गए वर्गीकरणों में से किसी एक में शब्द आवंटित करने की अनुमति नहीं है।"
 
-#: wp-includes/class-wp-xmlrpc-server.php:1404
-#: wp-includes/class-wp-xmlrpc-server.php:1956
-#: wp-includes/class-wp-xmlrpc-server.php:2047
-#: wp-includes/class-wp-xmlrpc-server.php:2118 wp-includes/taxonomy.php:2566
+#: wp-includes/class-wp-xmlrpc-server.php:1404 wp-includes/class-wp-xmlrpc-server.php:1956 wp-includes/class-wp-xmlrpc-server.php:2047 wp-includes/class-wp-xmlrpc-server.php:2118 wp-includes/taxonomy.php:2566
 msgid "Invalid term ID"
 msgstr "अमान्य टर्म ID"
 
@@ -7418,9 +7192,7 @@ msgstr "श्रेणीबद्ध वर्गीकरण में अस
 msgid "Sorry, you are not allowed to add a term to one of the given taxonomies."
 msgstr "क्षमा करें, आपको दिए गए वर्गीकरणों में से किसी एक में शब्द जोड़ने की अनुमति नहीं है।"
 
-#: wp-includes/class-wp-xmlrpc-server.php:1501
-#: wp-includes/class-wp-xmlrpc-server.php:4593
-#: wp-includes/class-wp-xmlrpc-server.php:5052
+#: wp-includes/class-wp-xmlrpc-server.php:1501 wp-includes/class-wp-xmlrpc-server.php:4593 wp-includes/class-wp-xmlrpc-server.php:5052
 msgid "Sorry, your entry could not be posted. Something wrong happened."
 msgstr "क्षमा करें, आपकी प्रविष्टि पोस्ट नहीं की जा सकी। कुछ गड़बड़ हुई है।"
 
@@ -7428,22 +7200,15 @@ msgstr "क्षमा करें, आपकी प्रविष्टि �
 msgid "There is a revision of this post that is more recent."
 msgstr "इस पोस्ट का एक संशोधन है जो अधिक नवीन है।"
 
-#: wp-includes/class-wp-xmlrpc-server.php:1615
-#: wp-includes/class-wp-xmlrpc-server.php:4723
+#: wp-includes/class-wp-xmlrpc-server.php:1615 wp-includes/class-wp-xmlrpc-server.php:4723
 msgid "Sorry, you do not have the right to delete this post."
 msgstr "क्षमा करें, आप को इस पोस्ट को हटाने का अधिकार नहीं है."
 
-#: wp-includes/class-wp-xmlrpc-server.php:1621
-#: wp-includes/class-wp-xmlrpc-server.php:4729
+#: wp-includes/class-wp-xmlrpc-server.php:1621 wp-includes/class-wp-xmlrpc-server.php:4729
 msgid "The post cannot be deleted."
 msgstr "पोस्ट को हटाया नहीं जा सकता."
 
-#: wp-includes/class-wp-xmlrpc-server.php:1712
-#: wp-includes/class-wp-xmlrpc-server.php:4268
-#: wp-includes/class-wp-xmlrpc-server.php:4430
-#: wp-includes/class-wp-xmlrpc-server.php:5444
-#: wp-includes/class-wp-xmlrpc-server.php:5785
-#: wp-includes/class-wp-xmlrpc-server.php:6010
+#: wp-includes/class-wp-xmlrpc-server.php:1712 wp-includes/class-wp-xmlrpc-server.php:4268 wp-includes/class-wp-xmlrpc-server.php:4430 wp-includes/class-wp-xmlrpc-server.php:5444 wp-includes/class-wp-xmlrpc-server.php:5785 wp-includes/class-wp-xmlrpc-server.php:6010
 msgid "Sorry, you cannot edit this post."
 msgstr "क्षमा करें, आप इस पोस्ट को संपादित नहीं कर सकते."
 
@@ -7459,8 +7224,7 @@ msgstr "आपको इस पद(पोस्ट) प्रकार के �
 msgid "You are not allowed to create terms in this taxonomy."
 msgstr "आपको इस वर्गीकरण में टर्मस बनाने के लिए अनुमति नहीं है."
 
-#: wp-includes/class-wp-xmlrpc-server.php:1865
-#: wp-includes/class-wp-xmlrpc-server.php:1962
+#: wp-includes/class-wp-xmlrpc-server.php:1865 wp-includes/class-wp-xmlrpc-server.php:1962
 msgid "The term name cannot be empty."
 msgstr "पारिभाषित नाम रिक्त नहीं हो सकता."
 
@@ -7468,9 +7232,7 @@ msgstr "पारिभाषित नाम रिक्त नहीं ह�
 msgid "This taxonomy is not hierarchical."
 msgstr "यह श्रेणीबद्ध वर्गीकरण नहीं है."
 
-#: wp-includes/class-wp-xmlrpc-server.php:1878
-#: wp-includes/class-wp-xmlrpc-server.php:1976 wp-includes/taxonomy.php:2575
-#: wp-includes/taxonomy.php:3167
+#: wp-includes/class-wp-xmlrpc-server.php:1878 wp-includes/class-wp-xmlrpc-server.php:1976 wp-includes/taxonomy.php:2575 wp-includes/taxonomy.php:3167
 msgid "Parent term does not exist."
 msgstr "मूल संदर्भ मौजूद नहीं है."
 
@@ -7494,8 +7256,7 @@ msgstr "क्षमा करें, शब्द का संपादन व
 msgid "You are not allowed to delete terms in this taxonomy."
 msgstr "आपको इस वर्गीकरण में टर्मस हटाने के लिए अनुमति नहीं है."
 
-#: wp-includes/class-wp-customize-section.php:236
-#: wp-includes/customize/class-wp-customize-themes-section.php:55
+#: wp-includes/class-wp-customize-section.php:236 wp-includes/customize/class-wp-customize-themes-section.php:55
 msgid "Customizing"
 msgstr "अनुकूलित बनाया जा रहा"
 
@@ -7505,7 +7266,7 @@ msgstr "इस भाग को खोलने के लिए रिर्ट
 
 #: wp-includes/class-wp-customize-widgets.php:360
 msgid "Widgets are independent sections of content that can be placed into widgetized areas provided by your theme (commonly called sidebars)."
-msgstr "विजेट एक स्वतंत्र भाग है जो सामग्री में कहीं भी किसी भी विजेट क्षेत्र में जोड़ा जा सकता है। यह विषय द्वारा दिया जाता है। जिसे सामन्य रूप में साइडबार कहते हैं।"
+msgstr "विजेट एक स्वतंत्र भाग है जो सामग्री में कहीं भी किसी भी विजेट क्षेत्र में जोड़ा जा सकता है। यह विषय द्वारा दिया जाता है। जिसे सामन्य रूप में साइडबार कहते हैं।"
 
 #: wp-includes/class-wp-customize-widgets.php:639
 msgid "Move to another area&hellip;"
@@ -7528,12 +7289,7 @@ msgstr "लागू करें"
 msgid "Save and preview changes before publishing them."
 msgstr "उन्हें प्रकाशित करने से पहले सहेजें और परिवर्तन का पूर्वावलोकन करे।"
 
-#: wp-includes/class-wp-customize-widgets.php:671
-#: wp-includes/class-wp-editor.php:1036
-#: wp-includes/customize/class-wp-customize-image-control.php:37
-#: wp-includes/customize/class-wp-customize-media-control.php:62
-#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:141
-#: wp-includes/media-template.php:467 wp-includes/media.php:3336
+#: wp-includes/class-wp-customize-widgets.php:671 wp-includes/class-wp-editor.php:1036 wp-includes/customize/class-wp-customize-image-control.php:37 wp-includes/customize/class-wp-customize-media-control.php:62 wp-includes/customize/class-wp-customize-nav-menu-item-control.php:141 wp-includes/media-template.php:467 wp-includes/media.php:3336
 msgid "Remove"
 msgstr "हटाएँ"
 
@@ -7541,8 +7297,7 @@ msgstr "हटाएँ"
 msgid "Trash widget by moving it to the inactive widgets sidebar."
 msgstr "विजेट समाप्त करने के लिए इसे ले जाकर निष्क्रिय विजेट्स साइडबार में डाल दें।"
 
-#: wp-includes/class-wp-customize-widgets.php:673
-#: wp-includes/script-loader.php:623
+#: wp-includes/class-wp-customize-widgets.php:673 wp-includes/script-loader.php:623
 msgid "An error has occurred. Please reload the page and try again."
 msgstr "एक त्रुटि हो गई है. कृपया पेज पुन: लोड करें और पुन: प्रयास करें।"
 
@@ -7558,13 +7313,11 @@ msgstr "विजेट ऊपर किया"
 msgid "There are no widget areas currently rendered in the preview. Navigate in the preview to a template that makes use of a widget area in order to access its widgets here."
 msgstr "वर्तमान में पूर्वावलोकन(प्रीव्यू) में कोई विजेट क्षेत्र प्रदर्शित नहीं है। पूर्वावलोकन में उस टेम्पलेट पर नेविगेट करें जो विजेट क्षेत्र का उपयोग करता है ताकि उसके विजेट्स को यहाँ प्राप्त(एक्सेस) कर सकें।"
 
-#: wp-includes/class-wp-customize-widgets.php:679
-#: wp-includes/customize/class-wp-widget-area-customize-control.php:63
+#: wp-includes/class-wp-customize-widgets.php:679 wp-includes/customize/class-wp-widget-area-customize-control.php:63
 msgid "Reorder widgets"
 msgstr "विजेट्स पुन: व्यवस्थित करें"
 
-#: wp-includes/class-wp-customize-widgets.php:718
-#: wp-includes/customize/class-wp-widget-area-customize-control.php:61
+#: wp-includes/class-wp-customize-widgets.php:718 wp-includes/customize/class-wp-widget-area-customize-control.php:61
 msgid "Add a Widget"
 msgstr "एक विजेट जोड़ें"
 
@@ -7763,15 +7516,11 @@ msgstr "फिर करें"
 msgid "OK"
 msgstr "ठीक है"
 
-#: wp-includes/class-wp-editor.php:861 wp-includes/class-wp-editor.php:1446
-#: wp-includes/media.php:3333 wp-includes/script-loader.php:390
-#: wp-includes/script-loader.php:438 wp-includes/script-loader.php:507
+#: wp-includes/class-wp-editor.php:861 wp-includes/class-wp-editor.php:1446 wp-includes/media.php:3333 wp-includes/script-loader.php:390 wp-includes/script-loader.php:438 wp-includes/script-loader.php:507
 msgid "Cancel"
 msgstr "रद्द करें"
 
-#: wp-includes/class-wp-editor.php:862 wp-includes/class-wp-editor.php:1402
-#: wp-includes/functions.php:4937 wp-includes/script-loader.php:256
-#: wp-includes/script-loader.php:337 wp-includes/script-loader.php:439
+#: wp-includes/class-wp-editor.php:862 wp-includes/class-wp-editor.php:1402 wp-includes/functions.php:4937 wp-includes/script-loader.php:256 wp-includes/script-loader.php:337 wp-includes/script-loader.php:439
 msgid "Close"
 msgstr "बंद करें"
 
@@ -7835,8 +7584,7 @@ msgstr "सजीव पूर्वावलोकन: %s"
 msgid "Site Identity"
 msgstr "साइट की पहचान"
 
-#: wp-includes/class-wp-customize-manager.php:1808
-#: wp-includes/class-wp-xmlrpc-server.php:467
+#: wp-includes/class-wp-customize-manager.php:1808 wp-includes/class-wp-xmlrpc-server.php:467
 msgid "Site Title"
 msgstr "साइट शीर्षक"
 
@@ -7868,8 +7616,7 @@ msgstr "शीर्ष वाक्य का रंग"
 msgid "Background Color"
 msgstr "पृष्ठभूमि का रंग"
 
-#: wp-includes/class-wp-customize-manager.php:1887
-#: wp-includes/customize/class-wp-customize-header-image-control.php:31
+#: wp-includes/class-wp-customize-manager.php:1887 wp-includes/customize/class-wp-customize-header-image-control.php:31
 msgid "Header Image"
 msgstr "शीर्ष चित्र"
 
@@ -7897,21 +7644,15 @@ msgstr "अनुलंब रूप में टाइल"
 msgid "Background Position"
 msgstr "पृष्ठभूमि की अवस्था"
 
-#: wp-includes/class-wp-customize-manager.php:1950
-#: wp-includes/class-wp-editor.php:988 wp-includes/media-template.php:613
-#: wp-includes/media-template.php:844 wp-includes/media-template.php:910
+#: wp-includes/class-wp-customize-manager.php:1950 wp-includes/class-wp-editor.php:988 wp-includes/media-template.php:613 wp-includes/media-template.php:844 wp-includes/media-template.php:910
 msgid "Left"
 msgstr "बांया"
 
-#: wp-includes/class-wp-customize-manager.php:1951
-#: wp-includes/class-wp-editor.php:989 wp-includes/media-template.php:616
-#: wp-includes/media-template.php:847 wp-includes/media-template.php:913
+#: wp-includes/class-wp-customize-manager.php:1951 wp-includes/class-wp-editor.php:989 wp-includes/media-template.php:616 wp-includes/media-template.php:847 wp-includes/media-template.php:913
 msgid "Center"
 msgstr "मध्य"
 
-#: wp-includes/class-wp-customize-manager.php:1952
-#: wp-includes/class-wp-editor.php:990 wp-includes/media-template.php:619
-#: wp-includes/media-template.php:850 wp-includes/media-template.php:916
+#: wp-includes/class-wp-customize-manager.php:1952 wp-includes/class-wp-editor.php:990 wp-includes/media-template.php:619 wp-includes/media-template.php:850 wp-includes/media-template.php:916
 msgid "Right"
 msgstr "दांया"
 
@@ -7960,24 +7701,20 @@ msgctxt "nav menu home label"
 msgid "Home"
 msgstr "मुख्य पृष्ठ"
 
-#: wp-includes/class-wp-customize-nav-menus.php:131
-#: wp-includes/nav-menu.php:757
+#: wp-includes/class-wp-customize-nav-menus.php:131 wp-includes/nav-menu.php:757
 msgid "Post Type Archive"
 msgstr "पोस्ट प्रकार आर्काइव"
 
-#: wp-includes/class-wp-customize-nav-menus.php:231
-#: wp-includes/script-loader.php:407 wp-includes/script-loader.php:642
+#: wp-includes/class-wp-customize-nav-menus.php:231 wp-includes/script-loader.php:407 wp-includes/script-loader.php:642
 msgid "No results found."
 msgstr "कोई परिणाम नही मिला."
 
-#: wp-includes/class-wp-customize-nav-menus.php:336
-#: wp-includes/script-loader.php:645
+#: wp-includes/class-wp-customize-nav-menus.php:336 wp-includes/script-loader.php:645
 msgctxt "missing menu item navigation label"
 msgid "(no label)"
 msgstr "(कोई लेबल नहीं)"
 
-#: wp-includes/class-wp-customize-nav-menus.php:337
-#: wp-includes/customize/class-wp-customize-nav-menu-setting.php:440
+#: wp-includes/class-wp-customize-nav-menus.php:337 wp-includes/customize/class-wp-customize-nav-menu-setting.php:440
 msgctxt "Missing menu name."
 msgid "(unnamed)"
 msgstr "(बेनाम)"
@@ -7994,7 +7731,7 @@ msgstr "मेनू का नाम"
 
 #: wp-includes/class-wp-customize-nav-menus.php:342
 msgid "Menu item added"
-msgstr "मेनू  आइटम जोड़ा गया"
+msgstr "मेनू  आइटम जोड़ा गया"
 
 #: wp-includes/class-wp-customize-nav-menus.php:343
 msgid "Menu item deleted"
@@ -8026,10 +7763,7 @@ msgstr "मेनू आइटम अब एक उप आइटम है"
 
 #. translators: &#9656; is the unicode right-pointing triangle, and %s is the
 #. section title in the Customizer
-#: wp-includes/class-wp-customize-nav-menus.php:351
-#: wp-includes/class-wp-customize-nav-menus.php:722
-#: wp-includes/class-wp-customize-section.php:234
-#: wp-includes/class-wp-customize-widgets.php:716
+#: wp-includes/class-wp-customize-nav-menus.php:351 wp-includes/class-wp-customize-nav-menus.php:722 wp-includes/class-wp-customize-section.php:234 wp-includes/class-wp-customize-widgets.php:716
 msgid "Customizing &#9656; %s"
 msgstr "अनुकूलित बनाया जा रहा &#9656; %s"
 
@@ -8055,23 +7789,19 @@ msgstr "अतिरिक्त आइटम मिला: %d"
 msgid "Loading more results... please wait."
 msgstr "और परिणाम लोड हो रहे है ... कृपया प्रतीक्षा करें"
 
-#: wp-includes/class-wp-customize-nav-menus.php:359
-#: wp-includes/class-wp-customize-widgets.php:677
+#: wp-includes/class-wp-customize-nav-menus.php:359 wp-includes/class-wp-customize-widgets.php:677
 msgid "Reorder mode enabled"
 msgstr "मेनू आइटमों का क्रम बदलने की प्रणालि चालू है"
 
-#: wp-includes/class-wp-customize-nav-menus.php:360
-#: wp-includes/class-wp-customize-widgets.php:678
+#: wp-includes/class-wp-customize-nav-menus.php:360 wp-includes/class-wp-customize-widgets.php:678
 msgid "Reorder mode closed"
 msgstr "मेनू आइटमों का क्रम बदलने की प्रणालि बंद है"
 
-#: wp-includes/class-wp-customize-nav-menus.php:361
-#: wp-includes/customize/class-wp-customize-nav-menu-control.php:54
+#: wp-includes/class-wp-customize-nav-menus.php:361 wp-includes/customize/class-wp-customize-nav-menu-control.php:54
 msgid "Reorder menu items"
 msgstr "मेनू आइटमों का क्रम बदलें"
 
-#: wp-includes/class-wp-customize-nav-menus.php:362
-#: wp-includes/class-wp-customize-widgets.php:680
+#: wp-includes/class-wp-customize-nav-menus.php:362 wp-includes/class-wp-customize-widgets.php:680
 msgid "Close reorder mode"
 msgstr "मेन्यू आइटमों का क्रम बदलने की प्रणालि बंद करें"
 
@@ -8158,15 +7888,13 @@ msgstr "नया मेनू नाम"
 #. translators: 1: Title of a menu item, 2: Type of a menu item
 #: wp-includes/class-wp-customize-nav-menus.php:681
 msgid "Add to menu: %1$s (%2$s)"
-msgstr "मेनू में जोड़ें: %1$s (%2$s)"
+msgstr "मेनू में जोड़ें: %1$s (%2$s)"
 
-#: wp-includes/class-wp-customize-nav-menus.php:694
-#: wp-includes/class-wp-customize-widgets.php:641
+#: wp-includes/class-wp-customize-nav-menus.php:694 wp-includes/class-wp-customize-widgets.php:641
 msgid "Move up"
 msgstr "ऊपर ले जाए"
 
-#: wp-includes/class-wp-customize-nav-menus.php:695
-#: wp-includes/class-wp-customize-widgets.php:640
+#: wp-includes/class-wp-customize-nav-menus.php:695 wp-includes/class-wp-customize-widgets.php:640
 msgid "Move down"
 msgstr "नीचे की ओर"
 
@@ -8178,12 +7906,7 @@ msgstr "एक स्तर ऊपर ले जाएं"
 msgid "Move one level down"
 msgstr "एक स्तर नीचे ले जाएं"
 
-#: wp-includes/class-wp-customize-nav-menus.php:716
-#: wp-includes/class-wp-customize-panel.php:369
-#: wp-includes/class-wp-customize-section.php:356
-#: wp-includes/class-wp-customize-widgets.php:711
-#: wp-includes/customize/class-wp-customize-nav-menus-panel.php:82
-#: wp-includes/media.php:3337
+#: wp-includes/class-wp-customize-nav-menus.php:716 wp-includes/class-wp-customize-panel.php:369 wp-includes/class-wp-customize-section.php:356 wp-includes/class-wp-customize-widgets.php:711 wp-includes/customize/class-wp-customize-nav-menus-panel.php:82 wp-includes/media.php:3337
 msgid "Back"
 msgstr "वापस"
 
@@ -8209,7 +7932,7 @@ msgstr "परिणाम हटाये"
 
 #: wp-includes/class-wp-customize-nav-menus.php:740
 msgid "Custom Links"
-msgstr "स्वनुकूलित कड़िया"
+msgstr "स्वनुकूलित कड़िया"
 
 #: wp-includes/class-wp-customize-nav-menus.php:742
 msgid "Toggle section: Custom Links"
@@ -8234,13 +7957,11 @@ msgstr "कृपया इस पैनल को खोलने के लि
 
 #. translators: %s is the site/panel title in the Customizer
 #. Translators: %s is the site/panel title in the Customizer.
-#: wp-includes/class-wp-customize-panel.php:373
-#: wp-includes/customize/class-wp-customize-nav-menus-panel.php:88
+#: wp-includes/class-wp-customize-panel.php:373 wp-includes/customize/class-wp-customize-nav-menus-panel.php:88
 msgid "You are customizing %s"
 msgstr "आप %s को बदल रहे हैं"
 
-#: wp-includes/class-wp-customize-panel.php:375
-#: wp-includes/customize/class-wp-customize-nav-menus-panel.php:92
+#: wp-includes/class-wp-customize-panel.php:375 wp-includes/customize/class-wp-customize-nav-menus-panel.php:92
 msgid "Help"
 msgstr "मदद"
 
@@ -8296,8 +8017,7 @@ msgstr "वर्डप्रेस के बारे में"
 msgid "WordPress.org"
 msgstr "WordPress.org"
 
-#: wp-includes/admin-bar.php:129
-#: wp-includes/widgets/class-wp-widget-meta.php:65 wp-login.php:101
+#: wp-includes/admin-bar.php:129 wp-includes/widgets/class-wp-widget-meta.php:65 wp-login.php:101
 msgid "https://wordpress.org/"
 msgstr "https://wordpress.org/"
 
@@ -8313,8 +8033,7 @@ msgstr "https://codex.wordpress.org/"
 msgid "Support Forums"
 msgstr "सहायता फ़ोरम"
 
-#: wp-includes/admin-bar.php:145 wp-includes/wp-db.php:1085
-#: wp-includes/wp-db.php:1551 wp-includes/wp-db.php:1655 wp-login.php:780
+#: wp-includes/admin-bar.php:145 wp-includes/wp-db.php:1085 wp-includes/wp-db.php:1551 wp-includes/wp-db.php:1655 wp-login.php:780
 msgid "https://wordpress.org/support/"
 msgstr "https://wordpress.org/support/"
 
@@ -8346,8 +8065,7 @@ msgstr "नेटवर्क व्यवस्थापक: %s"
 msgid "User Dashboard: %s"
 msgstr "उपयोगकर्ता डैशबोर्ड: %s"
 
-#: wp-includes/admin-bar.php:314 wp-includes/admin-bar.php:504
-#: wp-includes/deprecated.php:2759
+#: wp-includes/admin-bar.php:314 wp-includes/admin-bar.php:504 wp-includes/deprecated.php:2759
 msgid "Visit Site"
 msgstr "साईट देखें"
 
@@ -8355,15 +8073,11 @@ msgstr "साईट देखें"
 msgid "Edit Site"
 msgstr "साइट संपादित करें"
 
-#: wp-includes/admin-bar.php:332 wp-includes/admin-bar.php:412
-#: wp-includes/admin-bar.php:479 wp-includes/deprecated.php:2761
-#: wp-includes/deprecated.php:2763
+#: wp-includes/admin-bar.php:332 wp-includes/admin-bar.php:412 wp-includes/admin-bar.php:479 wp-includes/deprecated.php:2761 wp-includes/deprecated.php:2763
 msgid "Dashboard"
 msgstr "डैशबोर्ड"
 
-#: wp-includes/admin-bar.php:359
-#: wp-includes/customize/class-wp-customize-theme-control.php:85
-#: wp-includes/customize/class-wp-customize-themes-section.php:67
+#: wp-includes/admin-bar.php:359 wp-includes/customize/class-wp-customize-theme-control.php:85 wp-includes/customize/class-wp-customize-themes-section.php:67
 msgid "Customize"
 msgstr "अनुकूल बनाये "
 
@@ -8383,8 +8097,7 @@ msgstr "साइट"
 msgid "Users"
 msgstr "उपयोगकर्ता"
 
-#: wp-includes/admin-bar.php:430 wp-includes/admin-bar.php:722
-#: wp-includes/customize/class-wp-customize-themes-section.php:56
+#: wp-includes/admin-bar.php:430 wp-includes/admin-bar.php:722 wp-includes/customize/class-wp-customize-themes-section.php:56
 msgid "Themes"
 msgstr "थीम"
 
@@ -8429,15 +8142,13 @@ msgid_plural "%s comments awaiting moderation"
 msgstr[0] "%s टिप्पणी जाँच की प्रतीक्षा में "
 msgstr[1] "%s टिप्पणीयाँ  जाँच की प्रतीक्षा में "
 
-#: wp-includes/admin-bar.php:735 wp-includes/class-wp-customize-widgets.php:359
-#: wp-includes/functions.php:3450
+#: wp-includes/admin-bar.php:735 wp-includes/class-wp-customize-widgets.php:359 wp-includes/functions.php:3450
 msgid "Widgets"
 msgstr "विजेट्स"
 
-#: wp-includes/admin-bar.php:741
-#: wp-includes/class-wp-customize-nav-menus.php:469
+#: wp-includes/admin-bar.php:741 wp-includes/class-wp-customize-nav-menus.php:469
 msgid "Menus"
-msgstr "मेनूज़"
+msgstr "मेनूज़"
 
 #: wp-includes/admin-bar.php:747
 msgid "Background"
@@ -8447,8 +8158,7 @@ msgstr "पृष्ठभूमि"
 msgid "Header"
 msgstr "शीर्ष"
 
-#: wp-includes/admin-bar.php:809 wp-includes/admin-bar.php:810
-#: wp-includes/class-wp-editor.php:1421 wp-includes/media.php:3331
+#: wp-includes/admin-bar.php:809 wp-includes/admin-bar.php:810 wp-includes/class-wp-editor.php:1421 wp-includes/media.php:3331
 msgid "Search"
 msgstr "खोजें"
 
@@ -8480,8 +8190,7 @@ msgid "Bookmarks"
 msgstr "बुकमार्क"
 
 #. translators: 1: post type, 2: capability name
-#: wp-includes/capabilities.php:71 wp-includes/capabilities.php:132
-#: wp-includes/capabilities.php:191 wp-includes/capabilities.php:228
+#: wp-includes/capabilities.php:71 wp-includes/capabilities.php:132 wp-includes/capabilities.php:191 wp-includes/capabilities.php:228
 msgid "The post type %1$s is not registered, so it may not be reliable to check the capability \"%2$s\" against a post of that type."
 msgstr "पोस्ट प्रकार %1$s पंजीकृत नहीं है, इसलिए यह उस प्रकार के पोस्ट की क्षमता \"%2$s\" जाँचने हेतु विश्वसनीय नहीं हो सकता है।"
 
@@ -8498,10 +8207,7 @@ msgstr "%1$s को पदावनत किया गया है। इस�
 msgid "No categories"
 msgstr "कोई श्रेणी नहीं"
 
-#: wp-includes/category-template.php:536
-#: wp-includes/theme-compat/sidebar.php:98
-#: wp-includes/widgets/class-wp-widget-categories.php:27
-#: wp-includes/widgets/class-wp-widget-categories.php:44
+#: wp-includes/category-template.php:536 wp-includes/theme-compat/sidebar.php:98 wp-includes/widgets/class-wp-widget-categories.php:27 wp-includes/widgets/class-wp-widget-categories.php:44
 msgid "Categories"
 msgstr "श्रेणी"
 
@@ -8531,8 +8237,7 @@ msgstr "फ़ाइल स्ट्रीमिंग के लिए गं�
 msgid "There are no HTTP transports available which can complete the requested request."
 msgstr "कोई भी एचटीटीपी परिवहन(ट्रांसपोर्टस्) उपलब्ध नही हैं जो कि प्रार्थित अनुरोध को पूरा कर सके।"
 
-#: wp-includes/class-http.php:802 wp-includes/class-wp-http-curl.php:232
-#: wp-includes/class-wp-http-curl.php:271
+#: wp-includes/class-http.php:802 wp-includes/class-wp-http-curl.php:232 wp-includes/class-wp-http-curl.php:271
 msgid "Too many redirects."
 msgstr "बहुत सारे रीडायरेक्ट."
 
@@ -8548,14 +8253,12 @@ msgstr "पिंगबैक:"
 msgid "<cite class=\"fn\">%s</cite> <span class=\"says\">says:</span>"
 msgstr "<cite class=\"fn\">%s</cite> <span class=\"says\">कहते हैं:</span>"
 
-#: wp-includes/class-walker-comment.php:270
-#: wp-includes/class-walker-comment.php:335
+#: wp-includes/class-walker-comment.php:270 wp-includes/class-walker-comment.php:335
 msgid "Your comment is awaiting moderation."
 msgstr "आपकी टिप्पणी स्वीकृति के इंतजार में है."
 
 #. translators: 1: comment date, 2: comment time
-#: wp-includes/class-walker-comment.php:277
-#: wp-includes/class-walker-comment.php:327
+#: wp-includes/class-walker-comment.php:277 wp-includes/class-walker-comment.php:327
 msgid "%1$s at %2$s"
 msgstr "%1$s को %2$s"
 
@@ -8568,11 +8271,7 @@ msgid "%s <span class=\"says\">says:</span>"
 msgstr "%s <span class=\"says\">says:</span>"
 
 #. translators: %d: ID of a post
-#: wp-includes/class-walker-page-dropdown.php:59
-#: wp-includes/class-walker-page.php:114
-#: wp-includes/class-wp-customize-nav-menus.php:148
-#: wp-includes/class-wp-customize-nav-menus.php:277
-#: wp-includes/nav-menu.php:744 wp-includes/nav-menu.php:819
+#: wp-includes/class-walker-page-dropdown.php:59 wp-includes/class-walker-page.php:114 wp-includes/class-wp-customize-nav-menus.php:148 wp-includes/class-wp-customize-nav-menus.php:277 wp-includes/nav-menu.php:744 wp-includes/nav-menu.php:819
 msgid "#%d (no title)"
 msgstr "#%d (कोई शीर्षक नहीं)"
 
@@ -8588,14 +8287,11 @@ msgstr "टूलबार पर जाएं"
 msgid "Toolbar"
 msgstr "टूलबार"
 
-#: wp-includes/class-wp-customize-control.php:490
-#: wp-includes/class-wp-customize-nav-menus.php:493
-#: wp-includes/widgets/class-wp-nav-menu-widget.php:138
+#: wp-includes/class-wp-customize-control.php:490 wp-includes/class-wp-customize-nav-menus.php:493 wp-includes/widgets/class-wp-nav-menu-widget.php:138
 msgid "&mdash; Select &mdash;"
 msgstr "&mdash; चयन करें &mdash;"
 
-#: wp-includes/class-wp-customize-manager.php:327
-#: wp-includes/script-loader.php:440
+#: wp-includes/class-wp-customize-manager.php:327 wp-includes/script-loader.php:440
 msgid "Cheatin&#8217; uh?"
 msgstr "छल कर रहे हैं..?"
 
@@ -8603,12 +8299,10 @@ msgstr "छल कर रहे हैं..?"
 msgid "You must be logged in to complete this action."
 msgstr "इस प्रक्रिया को पूरा करने हेतु आपको लॉग इन करना होगा।"
 
-#: wp-includes/class-wp-customize-manager.php:368
-#: wp-includes/script-loader.php:441
+#: wp-includes/class-wp-customize-manager.php:368 wp-includes/script-loader.php:441
 msgid "You are not allowed to customize the appearance of this site."
 msgstr "आपको इस साइट की दिखावट(अपीयरेंस) को अनुकूलित करने की अनुमति नहीं है।"
 
 #: wp-includes/class-wp-customize-manager.php:382
 msgid "You are not allowed to edit theme options on this site."
 msgstr "आपको इस साइट पर थीम विकल्पों को संपादित करने की अनुमति नहीं है।"
-
