@@ -21,7 +21,10 @@
 
 			<div class="feature feature_tight">
 				<div class="feature-hd">
-					<a href="<?php the_permalink(); ?>" class="<?php echo esc_attr( internetorg_link_class() ); ?>"> <!--  class="js-englishContentDialog" -->
+					<a
+						href="<?php the_permalink(); ?>"
+						class="<?php echo esc_attr( internetorg_english_lang_notification_class() ); ?>"
+					>
 					<h3 class="hdg hdg_4">
 						<?php the_title(); ?>
 					</h3>
@@ -41,7 +44,14 @@
 					</p>
 				</div>
 				<div class="feature-cta"> <!-- REMOVED: js-stateLink  -->
-					<a class="link <?php echo esc_attr( internetorg_link_class() ); ?>" href="<?php echo esc_url( get_the_permalink() ); ?>" data-title="<?php echo esc_attr( get_the_title() ); ?>" data-social="true" data-date="<?php echo esc_attr( get_the_date() ); ?>" data-type="titled">
+					<a
+						class="link <?php echo esc_attr( internetorg_english_lang_notification_class( ['or' => 'js-stateLink'] ) ); ?>"
+						href="<?php echo esc_url( get_the_permalink() ); ?>"
+						data-title="<?php echo esc_attr( get_the_title() ); ?>"
+						data-social="true"
+						data-date="<?php echo esc_attr( get_the_date() ); ?>"
+						data-type="titled"
+					>
 						<?php esc_html_e( 'Read More', 'internetorg' ); ?>
 					</a>
 				</div>

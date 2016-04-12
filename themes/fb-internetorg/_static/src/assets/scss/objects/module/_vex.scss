@@ -1,8 +1,10 @@
 @import "../../../vendor/vex/sass/vex";
 @import "vex-theme-plain";
 
+
 .vex.dialog-confirm-english {
-    left: 0%;
+    left: 0;
+    width: 50%;
 
     .vex-content {
         width: 82.5%;
@@ -12,6 +14,14 @@
 
     @media (min-width: 769px) {
         left: 50%;
+
+        [dir="rtl"] & {
+            left: auto;
+            right: 50%;
+            margin-right: -2px;
+            padding-right: 2px;
+            box-sizing: content-box;
+        }
 
         .vex-content {
             width: 75%;
@@ -61,12 +71,30 @@
             width: 49%;
             float: left;
             margin: 0;
+
+            [dir="rtl"] & {
+                float: right;
+            }
         }
         .vex-dialog-button.btn-confirm {
             width: 49%;
             float: right;
             margin: 0;
+
+            [dir="rtl"] & {
+                float: left;
+            }
         }
+    }
+}
+
+[dir="rtl"] .vex .vex-close {
+    right: auto;
+    left: 0;
+    
+    &:before {
+        left: 3px;
+        right: auto;
     }
 }
 

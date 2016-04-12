@@ -19,6 +19,16 @@ define(function(require, exports, module) { // jshint ignore:line
         this.$vexContent = null;
         this._previousFocus = null;
 
+        /**
+         * Modal text.
+         * @enum {string}
+         */
+        this._TEXT = {
+            prompt: window.SETTINGS.ENGLISH_LANGUAGE_NOTIFICATION.PROMPT_TEXT,
+            cancel: window.SETTINGS.ENGLISH_LANGUAGE_NOTIFICATION.CANCEL_TEXT,
+            okay: window.SETTINGS.ENGLISH_LANGUAGE_NOTIFICATION.OKAY_TEXT
+        };
+
         AbstractView.call(this, $element);
     };
 
@@ -90,17 +100,17 @@ define(function(require, exports, module) { // jshint ignore:line
             afterOpen: this._handleOpen,
             escapeButtonCloses: true,
             focusFirstInput: false,
-            message: 'You are now entering a section of the site that is in English only.',
+            message: this._TEXT.prompt,
             className: 'vex-theme-plain dialog-confirm-english',
             showCloseButton: true,
             buttons: {
                 YES: {
-                    text: 'Okay',
+                    text: this._TEXT.okay,
                     type: 'submit',
                     className: 'btn btn-confirm' //vex-dialog-button-primary
                 },
                 NO: {
-                    text: 'Cancel',
+                    text: this._TEXT.cancel,
                     type: 'button',
                     className: 'btn btn-cancel', //vex-dialog-button-secondary
                     click: function($vexContent, event) {
