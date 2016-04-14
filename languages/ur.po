@@ -2,18 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Internet.org\n"
 "POT-Creation-Date: 2015-10-05 11:57-0500\n"
-"PO-Revision-Date: 2015-12-22 10:07-0500\n"
+"PO-Revision-Date: 2016-04-12 10:49-0700\n"
 "Last-Translator: Darcy Clarke <darcy@darcyclarke.me>\n"
 "Language-Team: Richard Aber <raber@nerdery.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: style.css\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;"
-"esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: ur\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -124,8 +123,7 @@ msgstr "بیرونی لنک"
 msgid "External URL"
 msgstr "بیرونی URL"
 
-#: functions.php:1683 plugins/internetorg-custom-posttypes/content-widget.php:71
-#: plugins/internetorg-custom-posttypes/content-widget.php:90
+#: functions.php:1683 plugins/internetorg-custom-posttypes/content-widget.php:71 plugins/internetorg-custom-posttypes/content-widget.php:90
 msgid "URL"
 msgstr "URL"
 
@@ -181,8 +179,7 @@ msgstr "1 تبصرہ"
 msgid "% Comments"
 msgstr "% تبصرے"
 
-#: inc/template-tags.php:85 inc/template-tags.php:107 template-parts/content-page-entry-end.php:11
-#: template-parts/content-page.php:26
+#: inc/template-tags.php:85 inc/template-tags.php:107 template-parts/content-page-entry-end.php:11 template-parts/content-page.php:26
 msgid "Edit"
 msgstr "ترمیم کریں"
 
@@ -224,13 +221,11 @@ msgstr "تفصیل"
 msgid "Source"
 msgstr "ماخذ"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:98
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:145
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:98 plugins/internetorg-custom-fields/internetorg-custom-fields.php:145
 msgid "Page, Post, or Story"
 msgstr "صفحہ، مراسلہ یا کہانی"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:99
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:146
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:99 plugins/internetorg-custom-fields/internetorg-custom-fields.php:146
 msgid "Custom Link"
 msgstr "حسب ضرورت لنک"
 
@@ -238,8 +233,7 @@ msgstr "حسب ضرورت لنک"
 msgid "Section Slug"
 msgstr "سیکشن سلگ"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:111
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:158
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:111 plugins/internetorg-custom-fields/internetorg-custom-fields.php:158
 msgid "URL Source"
 msgstr "URL ماخذ"
 
@@ -255,8 +249,7 @@ msgstr "مقصد"
 msgid "Impact"
 msgstr "اثر"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:128
-#: plugins/internetorg-custom-posttypes/campaign.php:91
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:128 plugins/internetorg-custom-posttypes/campaign.php:91
 msgid "Background Image"
 msgstr "پس منظر کی تصویر"
 
@@ -293,14 +286,11 @@ msgstr "تصویر"
 msgid "Content Areas"
 msgstr "مواد کے حصے"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:212
-#: plugins/internetorg-custom-posttypes/campaign.php:83 plugins/internetorg-custom-posttypes/campaign.php:92
-#: plugins/internetorg-custom-posttypes/story.php:69
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:212 plugins/internetorg-custom-posttypes/campaign.php:83 plugins/internetorg-custom-posttypes/campaign.php:92 plugins/internetorg-custom-posttypes/story.php:69
 msgid "Subtitle"
 msgstr "سب ٹائٹل"
 
-#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:221
-#: plugins/internetorg-custom-posttypes/story.php:78
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:221 plugins/internetorg-custom-posttypes/story.php:78
 msgid "Additional page configuration"
 msgstr "اضافی صفحی کی تشکیل"
 
@@ -344,26 +334,20 @@ msgstr "مواد کے وجیٹس"
 msgid "Content Widget"
 msgstr "مواد کا وجیٹ"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:63
-#: plugins/internetorg-custom-posttypes/content-widget.php:76
-#: plugins/internetorg-custom-posttypes/content-widget.php:82
-#: plugins/internetorg-custom-posttypes/content-widget.php:95
+#: plugins/internetorg-custom-posttypes/content-widget.php:63 plugins/internetorg-custom-posttypes/content-widget.php:76 plugins/internetorg-custom-posttypes/content-widget.php:82 plugins/internetorg-custom-posttypes/content-widget.php:95
 msgid "Call to Action"
 msgstr "کال ٹو ایکشن"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:64
-#: plugins/internetorg-custom-posttypes/content-widget.php:83
+#: plugins/internetorg-custom-posttypes/content-widget.php:64 plugins/internetorg-custom-posttypes/content-widget.php:83
 #, php-format
 msgid "Call to Action: %s"
 msgstr "کال ٹو ایکشن: %s"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:70
-#: plugins/internetorg-custom-posttypes/content-widget.php:89
+#: plugins/internetorg-custom-posttypes/content-widget.php:70 plugins/internetorg-custom-posttypes/content-widget.php:89
 msgid "Button Label"
 msgstr "بٹن لیبل"
 
-#: plugins/internetorg-custom-posttypes/content-widget.php:72
-#: plugins/internetorg-custom-posttypes/content-widget.php:91
+#: plugins/internetorg-custom-posttypes/content-widget.php:72 plugins/internetorg-custom-posttypes/content-widget.php:91
 msgid "File"
 msgstr "فائل"
 
@@ -407,8 +391,7 @@ msgstr "اپنا پہلا مراسلہ شائع کرنے کے لئے تیار ہ
 
 #: template-parts/content-none.php:24 template-parts/content-search-none.php:14
 msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
-msgstr ""
-"معذرت، لیکن آپ کی تلاش کی اصطلاحات سے مشابہ کچھ نہیں ہے۔ براہ کرم کچھ مختلف کلیدی الفاظ کے ساتھ دوبارہ کوشش کریں۔"
+msgstr "معذرت، لیکن آپ کی تلاش کی اصطلاحات سے مشابہ کچھ نہیں ہے۔ براہ کرم کچھ مختلف کلیدی الفاظ کے ساتھ دوبارہ کوشش کریں۔"
 
 #: template-parts/content-none.php:29
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
@@ -430,8 +413,7 @@ msgstr "https://fb.me/Internetdotorg"
 msgid "Like us on Facebook"
 msgstr "Facebook پر ہمیں پسند کریں"
 
-#: template-parts/content-page-entry-content.php:14 template-parts/content-page.php:19
-#: template-parts/content-single.php:23 template-parts/content.php:32
+#: template-parts/content-page-entry-content.php:14 template-parts/content-page.php:19 template-parts/content-single.php:23 template-parts/content.php:32
 msgid "Pages:"
 msgstr "صفحات:"
 
@@ -498,8 +480,15 @@ msgstr "http://www.nerdery.com"
 msgid "%d Results Found"
 msgstr "ملا %d نتائج"
 
-# Standard WordPress PO File
+# Content in English dialog (front end)
+msgid "You are now entering a section of the site that is in English only."
+msgstr "اب تم ہی انگریزی میں ہے کہ اس ویب سائٹ کے ایک حصے میں داخل ہو رہے."
 
+# Content in English dialog (wp-admin)
+msgid "Content in English dialog"
+msgstr "انگریزی ڈائیلاگ میں مواد"
+
+# Standard WordPress PO File
 #: wp-includes/user.php:1948
 msgid "Password reset is not allowed for this user"
 msgstr "اس صارف کے لیے پاس ورڈ ری سیٹ کی اجازت نہیں ہے."
@@ -508,9 +497,7 @@ msgstr "اس صارف کے لیے پاس ورڈ ری سیٹ کی اجازت نہ
 msgid "Could not save password reset key to database."
 msgstr ""
 
-#: wp-includes/user.php:2003 wp-includes/user.php:2006
-#: wp-includes/user.php:2010 wp-includes/user.php:2040
-#: wp-includes/user.php:2044 wp-includes/user.php:2061
+#: wp-includes/user.php:2003 wp-includes/user.php:2006 wp-includes/user.php:2010 wp-includes/user.php:2040 wp-includes/user.php:2044 wp-includes/user.php:2061
 msgid "Invalid key"
 msgstr "ناموزوں کلید"
 
@@ -558,17 +545,8 @@ msgstr "اپنی مرضی کے مینو"
 msgid "No menus have been created yet. <a href=\"%s\">Create some</a>."
 msgstr "ابھی تک کوئی مینو نہیں بنائے گئے. <a href=\"%s\">بنائِیے</a>."
 
-#: wp-includes/widgets/class-wp-nav-menu-widget.php:132
-#: wp-includes/widgets/class-wp-widget-archives.php:153
-#: wp-includes/widgets/class-wp-widget-calendar.php:100
-#: wp-includes/widgets/class-wp-widget-categories.php:156
-#: wp-includes/widgets/class-wp-widget-meta.php:107
-#: wp-includes/widgets/class-wp-widget-pages.php:127
-#: wp-includes/widgets/class-wp-widget-recent-comments.php:154
-#: wp-includes/widgets/class-wp-widget-recent-posts.php:128
-#: wp-includes/widgets/class-wp-widget-search.php:67
-#: wp-includes/widgets/class-wp-widget-tag-cloud.php:119
-#: wp-includes/widgets/class-wp-widget-text.php:104
+#: wp-includes/widgets/class-wp-nav-menu-widget.php:132 wp-includes/widgets/class-wp-widget-archives.php:153 wp-includes/widgets/class-wp-widget-calendar.php:100 wp-includes/widgets/class-wp-widget-categories.php:156 wp-includes/widgets/class-wp-widget-meta.php:107 wp-includes/widgets/class-wp-widget-pages.php:127 wp-includes/widgets/class-wp-widget-recent-comments.php:154 wp-includes/widgets/class-wp-widget-recent-posts.php:128 wp-includes/widgets/class-wp-widget-search.php:67
+#: wp-includes/widgets/class-wp-widget-tag-cloud.php:119 wp-includes/widgets/class-wp-widget-text.php:104
 msgid "Title:"
 msgstr "عنوان:"
 
@@ -600,13 +578,11 @@ msgstr "ہفتہ منتخب کریں۔"
 msgid "Select Post"
 msgstr "مراسلہ منتخب کریں۔"
 
-#: wp-includes/widgets/class-wp-widget-archives.php:155
-#: wp-includes/widgets/class-wp-widget-categories.php:160
+#: wp-includes/widgets/class-wp-widget-archives.php:155 wp-includes/widgets/class-wp-widget-categories.php:160
 msgid "Display as dropdown"
 msgstr "ڈراپ ڈاؤن دکھائیں بطور"
 
-#: wp-includes/widgets/class-wp-widget-archives.php:157
-#: wp-includes/widgets/class-wp-widget-categories.php:163
+#: wp-includes/widgets/class-wp-widget-archives.php:157 wp-includes/widgets/class-wp-widget-categories.php:163
 msgid "Show post counts"
 msgstr "پوسٹ شمار دکھائیں"
 
@@ -647,8 +623,7 @@ msgctxt "links widget"
 msgid "All Links"
 msgstr "تمام روابط"
 
-#: wp-includes/widgets/class-wp-widget-links.php:139
-#: wp-includes/widgets/class-wp-widget-pages.php:131
+#: wp-includes/widgets/class-wp-widget-links.php:139 wp-includes/widgets/class-wp-widget-pages.php:131
 msgid "Sort by:"
 msgstr "کے عتبار سے"
 
@@ -734,8 +709,7 @@ msgstr "صفحہ شناخت، کوما کے ذریعے الگ."
 msgid "Your site&#8217;s most recent comments."
 msgstr "آپ کی ویب سائٹ کے سب سے زیادہ موجودہ تبصرے"
 
-#: wp-includes/widgets/class-wp-widget-recent-comments.php:27
-#: wp-includes/widgets/class-wp-widget-recent-comments.php:73
+#: wp-includes/widgets/class-wp-widget-recent-comments.php:27 wp-includes/widgets/class-wp-widget-recent-comments.php:73
 msgid "Recent Comments"
 msgstr "حالیہ تبصرے"
 
@@ -753,8 +727,7 @@ msgstr "دکھانے کے تبصرے کی تعداد: "
 msgid "Your site&#8217;s most recent Posts."
 msgstr "آپکی سائٹ کی تازہ ترین تحریرں"
 
-#: wp-includes/widgets/class-wp-widget-recent-posts.php:27
-#: wp-includes/widgets/class-wp-widget-recent-posts.php:46
+#: wp-includes/widgets/class-wp-widget-recent-posts.php:27 wp-includes/widgets/class-wp-widget-recent-posts.php:46
 msgid "Recent Posts"
 msgstr "حالیہ پوسٹس"
 
@@ -1118,7 +1091,7 @@ msgstr "https://codex.wordpress.org/Cookies"
 
 #: wp-login.php:783
 msgid "<strong>ERROR</strong>: Cookies are blocked or not supported by your browser. You must <a href=\"%s\">enable cookies</a> to use WordPress."
-msgstr "<strong>رکئیے</strong>: آپ کے براؤزر میں کوکیزبند ہیں یا وہ اسکا سہولت کار نہیں ہے۔ آپ کو ورڈ پریس استعمال کرنے کے  لئے  <a href=\"%s\">کوکیز </a> کی سہولت کوفعال کرنا ہو گا۔"
+msgstr "<strong>رکئیے</strong>: آپ کے براؤزر میں کوکیزبند ہیں یا وہ اسکا سہولت کار نہیں ہے۔ آپ کو ورڈ پریس استعمال کرنے کے  لئے  <a href=\"%s\">کوکیز </a> کی سہولت کوفعال کرنا ہو گا۔"
 
 #: wp-login.php:802
 msgid "You have logged in successfully."
@@ -1371,7 +1344,7 @@ msgstr "صارف"
 
 #: wp-signup.php:802
 msgid "Greetings Site Administrator! You are currently allowing &#8220;%s&#8221; registrations. To change or disable registration go to your <a href=\"%s\">Options page</a>."
-msgstr "خوش آمدید سائٹ کے منتظم، آپ نے &#8220;%s&#8221; اکاؤنٹس بنانے کی اجازت دے رکھی ہے۔  اس کو تبدیل یا معذول کرنے کے لئے <a href=\"%s\">یہاں</a> جائیے"
+msgstr "خوش آمدید سائٹ کے منتظم، آپ نے &#8220;%s&#8221; اکاؤنٹس بنانے کی اجازت دے رکھی ہے۔  اس کو تبدیل یا معذول کرنے کے لئے <a href=\"%s\">یہاں</a> جائیے"
 
 #: wp-signup.php:808
 msgid "Registration has been disabled."
@@ -1632,8 +1605,7 @@ msgstr ""
 "کیا آپ حقیقی معنوں میں اس تبصرے کی ترمیم چاہتے ہیں۔ \n"
 "جو تبدیلیاں آپ نے کی ہیں وہ نہیں ہو سکیں گی۔"
 
-#: wp-includes/script-loader.php:490
-#: wp-includes/theme-compat/comments-popup.php:40
+#: wp-includes/script-loader.php:490 wp-includes/theme-compat/comments-popup.php:40
 msgid "Comments"
 msgstr "تبصرے"
 
@@ -1834,7 +1806,7 @@ msgstr ""
 #: wp-includes/script-loader.php:691
 msgctxt "Open Sans font: on or off"
 msgid "on"
-msgstr "آن"
+msgstr "آن"
 
 #. translators: To add an additional Open Sans character subset specific to
 #. your language, translate this to 'greek', 'cyrillic' or 'vietnamese'. Do not
@@ -2035,8 +2007,7 @@ msgstr ""
 msgid "Categories list"
 msgstr ""
 
-#: wp-includes/taxonomy.php:753 wp-includes/taxonomy.php:3140
-#: wp-includes/taxonomy.php:4325
+#: wp-includes/taxonomy.php:753 wp-includes/taxonomy.php:3140 wp-includes/taxonomy.php:4325
 msgid "Empty Term"
 msgstr "خالی ٹرم"
 
@@ -2087,20 +2058,12 @@ msgid "Invalid object ID"
 msgstr "غلط چیز ID"
 
 #. translators: %s: template name
-#: wp-includes/theme-compat/comments-popup.php:12
-#: wp-includes/theme-compat/comments.php:12
-#: wp-includes/theme-compat/footer.php:12
-#: wp-includes/theme-compat/header.php:12
-#: wp-includes/theme-compat/sidebar.php:12
+#: wp-includes/theme-compat/comments-popup.php:12 wp-includes/theme-compat/comments.php:12 wp-includes/theme-compat/footer.php:12 wp-includes/theme-compat/header.php:12 wp-includes/theme-compat/sidebar.php:12
 msgid "Theme without %s"
 msgstr "٪ 1 $ S بغیر موضوع"
 
 #. translators: %s: template name
-#: wp-includes/theme-compat/comments-popup.php:16
-#: wp-includes/theme-compat/comments.php:16
-#: wp-includes/theme-compat/footer.php:16
-#: wp-includes/theme-compat/header.php:16
-#: wp-includes/theme-compat/sidebar.php:16
+#: wp-includes/theme-compat/comments-popup.php:16 wp-includes/theme-compat/comments.php:16 wp-includes/theme-compat/footer.php:16 wp-includes/theme-compat/header.php:16 wp-includes/theme-compat/sidebar.php:16
 msgid "Please include a %s template in your theme."
 msgstr "براہ مہربانی اپنے تھیم میں٪ 1 $ S ٹیمپلیٹ شامل ہے."
 
@@ -2122,7 +2085,7 @@ msgstr "ابھی تک کوئی تبصرہ نہیں."
 
 #: wp-includes/theme-compat/comments-popup.php:72
 msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out &raquo;</a>"
-msgstr "آپ بطور <a href=\"%1$s\">%2$s</a> لاگ ان ہیں۔ <a href=\"%3$s\" title=\"اس اکاؤنٹ سے لاگ آؤٹ کریں\">لاگ آؤٹ&raquo;</a>"
+msgstr "آپ بطور <a href=\"%1$s\">%2$s</a> لاگ ان ہیں۔ <a href=\"%3$s\" title=\"اس اکاؤنٹ سے لاگ آؤٹ کریں\">لاگ آؤٹ&raquo;</a>"
 
 #: wp-includes/theme-compat/comments-popup.php:86
 msgid "<abbr title=\"Universal Resource Locator\">URL</abbr>"
@@ -2175,14 +2138,13 @@ msgstr ""
 
 #: wp-includes/theme-compat/comments.php:91
 msgid "Log out of this account"
-msgstr "اس اکاؤنٹ سے لاگ آؤٹ کریں"
+msgstr "اس اکاؤنٹ سے لاگ آؤٹ کریں"
 
 #: wp-includes/theme-compat/comments.php:91
 msgid "Log out &raquo;"
-msgstr "لاگ آؤٹ"
+msgstr "لاگ آؤٹ"
 
-#: wp-includes/theme-compat/comments.php:96
-#: wp-includes/theme-compat/comments.php:99
+#: wp-includes/theme-compat/comments.php:96 wp-includes/theme-compat/comments.php:99
 msgid "(required)"
 msgstr "(درکار)"
 
@@ -2252,9 +2214,7 @@ msgstr ""
 msgid "You are currently browsing the %s blog archives."
 msgstr ""
 
-#: wp-includes/theme-compat/sidebar.php:104
-#: wp-includes/widgets/class-wp-widget-meta.php:29
-#: wp-includes/widgets/class-wp-widget-meta.php:44
+#: wp-includes/theme-compat/sidebar.php:104 wp-includes/widgets/class-wp-widget-meta.php:29 wp-includes/widgets/class-wp-widget-meta.php:44
 msgid "Meta"
 msgstr "میٹا"
 
@@ -2274,14 +2234,13 @@ msgstr "XHTML دوست نیٹ ورک"
 msgid "XFN"
 msgstr "XFN"
 
-#: wp-includes/theme-compat/sidebar.php:110
-#: wp-includes/widgets/class-wp-widget-meta.php:66
+#: wp-includes/theme-compat/sidebar.php:110 wp-includes/widgets/class-wp-widget-meta.php:66
 msgid "Powered by WordPress, state-of-the-art semantic personal publishing platform."
 msgstr "تقویت‌شدہ بذریعہ ورڈپریس، اپنے فن میں‌ یکتا ذاتی اشاعتی پلیٹ فارم."
 
 #: wp-includes/theme.php:1550
 msgid "You need to pass an array of types."
-msgstr "آپ کو قسموں کی ایرے دینی ہے"
+msgstr "آپ کو قسموں کی ایرے دینی ہے"
 
 #. translators: 1: Theme support 2: hook name
 #: wp-includes/theme.php:1681
@@ -2292,13 +2251,11 @@ msgstr "Theme support for %1$s should be registered before the %2$s hook."
 msgid "Customizer"
 msgstr "مرضی کے مطابق بنائیں"
 
-#: wp-includes/update.php:123 wp-includes/update.php:303
-#: wp-includes/update.php:467
+#: wp-includes/update.php:123 wp-includes/update.php:303 wp-includes/update.php:467
 msgid "An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href=\"https://wordpress.org/support/\">support forums</a>."
 msgstr ""
 
-#: wp-includes/update.php:123 wp-includes/update.php:303
-#: wp-includes/update.php:467
+#: wp-includes/update.php:123 wp-includes/update.php:303 wp-includes/update.php:467
 msgid "(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)"
 msgstr "(تک ایک محفوظ کنکشن قائم نہیں کر سکتا. آپ سرور ایڈمنسٹریٹر سے رابطہ کریں۔ WordPress.org ورڈپریس )"
 
@@ -2334,8 +2291,7 @@ msgstr "<strong>ERROR:</strong> پاس ورڈ کا خانہ خالی ہے."
 msgid "<strong>ERROR</strong>: Invalid username."
 msgstr ""
 
-#: wp-includes/user.php:142 wp-includes/user.php:168 wp-login.php:739
-#: wp-login.php:922
+#: wp-includes/user.php:142 wp-includes/user.php:168 wp-login.php:739 wp-login.php:922
 msgid "Lost your password?"
 msgstr "کیا آپ کا کلمہ‌شناخت کھو گیا ہے؟"
 
@@ -2446,8 +2402,7 @@ msgstr "جیبر / گوگل ٹاک"
 msgid "Hint: The password should be at least twelve characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! \" ? $ % ^ &amp; )."
 msgstr "اشارہ: پاس ورڈ کم از کم بارہ حروف طویل اورمضبوط ہونا چاہئے، اوپری اور لوئر کیس حروف، اعداد اور علامات کو استعمال کریں"
 
-#: wp-includes/pluggable.php:1496 wp-includes/pluggable.php:1644
-#: wp-includes/pluggable.php:1765
+#: wp-includes/pluggable.php:1496 wp-includes/pluggable.php:1644 wp-includes/pluggable.php:1765
 msgid "Email: %s"
 msgstr "ایمیل : %s"
 
@@ -2522,8 +2477,7 @@ msgstr "[%s] پاسورڈ] / تبدیل کر دیا گیا"
 msgid "New user registration on your site %s:"
 msgstr "آپ کی ویب سائٹ ک%s s ہے پر نئے صارف کی رجسٹریشن:"
 
-#: wp-includes/pluggable.php:1764 wp-includes/pluggable.php:1788
-#: wp-login.php:324
+#: wp-includes/pluggable.php:1764 wp-includes/pluggable.php:1788 wp-login.php:324
 msgid "Username: %s"
 msgstr "اسم صارف: %s"
 
@@ -2611,9 +2565,7 @@ msgstr "اگلا صفحہ"
 msgid "Previous page"
 msgstr "پچھلا صفحہ"
 
-#: wp-includes/post-template.php:1122 wp-includes/theme-compat/sidebar.php:90
-#: wp-includes/widgets/class-wp-widget-pages.php:27
-#: wp-includes/widgets/class-wp-widget-pages.php:51
+#: wp-includes/post-template.php:1122 wp-includes/theme-compat/sidebar.php:90 wp-includes/widgets/class-wp-widget-pages.php:27 wp-includes/widgets/class-wp-widget-pages.php:51
 msgid "Pages"
 msgstr "صفحات"
 
@@ -2789,13 +2741,11 @@ msgstr "مسودہ"
 msgid "Pending Review"
 msgstr "زیرغور"
 
-#: wp-includes/post.php:600 wp-includes/post.php:620
-#: wp-includes/script-loader.php:520
+#: wp-includes/post.php:600 wp-includes/post.php:620 wp-includes/script-loader.php:520
 msgid "Private"
 msgstr "نجی"
 
-#: wp-includes/post.php:601 wp-includes/post.php:621
-#: wp-includes/script-loader.php:525
+#: wp-includes/post.php:601 wp-includes/post.php:621 wp-includes/script-loader.php:525
 msgid "Published"
 msgstr "شائع کر دی گئی"
 
@@ -2977,13 +2927,13 @@ msgstr "صوتی"
 
 #: wp-includes/post.php:2222
 msgid "Manage Audio"
-msgstr "آڈیو کو منظم کریں"
+msgstr "آڈیو کو منظم کریں"
 
 #: wp-includes/post.php:2222
 msgid "Audio <span class=\"count\">(%s)</span>"
 msgid_plural "Audio <span class=\"count\">(%s)</span>"
-msgstr[0] "آڈیو <span class=\"count\">(%s)</span>"
-msgstr[1] "آڈیو فائلیں <span class=\"count\">(%s)</span>"
+msgstr[0] "آڈیو <span class=\"count\">(%s)</span>"
+msgstr[1] "آڈیو فائلیں <span class=\"count\">(%s)</span>"
 
 #: wp-includes/post.php:2223
 msgid "Manage Video"
@@ -3024,26 +2974,13 @@ msgstr ""
 msgid "The page template is invalid."
 msgstr "صفحہ سانچے درست نہیں ہے."
 
-#: wp-includes/post.php:3756 wp-includes/script-loader.php:501
-#: wp-includes/script-loader.php:565
+#: wp-includes/post.php:3756 wp-includes/script-loader.php:501 wp-includes/script-loader.php:565
 msgctxt "tag delimiter"
 msgid ","
 msgstr "،"
 
-#: wp-includes/query.php:149 wp-includes/query.php:170
-#: wp-includes/query.php:191 wp-includes/query.php:215
-#: wp-includes/query.php:239 wp-includes/query.php:263
-#: wp-includes/query.php:292 wp-includes/query.php:312
-#: wp-includes/query.php:332 wp-includes/query.php:352
-#: wp-includes/query.php:373 wp-includes/query.php:393
-#: wp-includes/query.php:422 wp-includes/query.php:451
-#: wp-includes/query.php:471 wp-includes/query.php:498
-#: wp-includes/query.php:518 wp-includes/query.php:538
-#: wp-includes/query.php:558 wp-includes/query.php:578
-#: wp-includes/query.php:607 wp-includes/query.php:634
-#: wp-includes/query.php:654 wp-includes/query.php:674
-#: wp-includes/query.php:694 wp-includes/query.php:714
-#: wp-includes/query.php:734
+#: wp-includes/query.php:149 wp-includes/query.php:170 wp-includes/query.php:191 wp-includes/query.php:215 wp-includes/query.php:239 wp-includes/query.php:263 wp-includes/query.php:292 wp-includes/query.php:312 wp-includes/query.php:332 wp-includes/query.php:352 wp-includes/query.php:373 wp-includes/query.php:393 wp-includes/query.php:422 wp-includes/query.php:451 wp-includes/query.php:471 wp-includes/query.php:498 wp-includes/query.php:518 wp-includes/query.php:538 wp-includes/query.php:558
+#: wp-includes/query.php:578 wp-includes/query.php:607 wp-includes/query.php:634 wp-includes/query.php:654 wp-includes/query.php:674 wp-includes/query.php:694 wp-includes/query.php:714 wp-includes/query.php:734
 msgid "Conditional query tags do not work before the query is run. Before then, they always return false."
 msgstr "مشروط سوال ٹیگ کو کام سے پہلے سوال چلایا جاتا ہے تو نہیں. اس وقت سے پہلے، وہ ہمیشہ غلط واپس."
 
@@ -3135,7 +3072,6 @@ msgstr ""
 #: wp-includes/rest-api.php:574
 msgid "Cookie nonce is invalid"
 msgstr ""
-
 
 #: wp-includes/revision.php:33
 msgid "Excerpt"
@@ -3357,7 +3293,7 @@ msgstr "کوئی چیز نہیں ملی"
 
 #: wp-includes/media-template.php:1241
 msgid "As a browser icon"
-msgstr "بطور براؤزر آئکن"
+msgstr "بطور براؤزر آئکن"
 
 #: wp-includes/media-template.php:1246
 msgid "Preview as a browser icon"
@@ -3402,8 +3338,7 @@ msgstr "بٹ ریٹ موڈ"
 msgid "No editor could be selected."
 msgstr "کوئی مرتب کنندہ منتخب نہیں کیا جا سکتا"
 
-#: wp-includes/media.php:3056 wp-includes/script-loader.php:406
-#: wp-includes/script-loader.php:564
+#: wp-includes/media.php:3056 wp-includes/script-loader.php:406 wp-includes/script-loader.php:564
 msgid "(no title)"
 msgstr "(بلاعنوان)"
 
@@ -3415,8 +3350,7 @@ msgstr "میڈیا کا اضافہ کریں"
 msgid "Select"
 msgstr "منتخب کریں"
 
-#: wp-includes/media.php:3334 wp-includes/script-loader.php:404
-#: wp-includes/script-loader.php:517
+#: wp-includes/media.php:3334 wp-includes/script-loader.php:404 wp-includes/script-loader.php:517
 msgid "Update"
 msgstr "اپ دیٹ"
 
@@ -3583,8 +3517,7 @@ msgstr "تصویر کی تفصیل"
 msgid "Replace Image"
 msgstr "تصویر بدل"
 
-#: wp-includes/media.php:3401 wp-includes/media.php:3418
-#: wp-includes/media.php:3424
+#: wp-includes/media.php:3401 wp-includes/media.php:3418 wp-includes/media.php:3424
 msgid "Cancel Edit"
 msgstr "تبدیلی کو منسوخ"
 
@@ -3658,7 +3591,7 @@ msgstr " آڈیو پلے لسٹ میں ترمیم کریں"
 
 #: wp-includes/media.php:3432
 msgid "&#8592; Cancel Audio Playlist"
-msgstr "&#8592; آڈیو پلے لسٹ منسوخ کریں "
+msgstr "&#8592; آڈیو پلے لسٹ منسوخ کریں "
 
 #: wp-includes/media.php:3433
 msgid "Insert audio playlist"
@@ -3740,8 +3673,7 @@ msgstr ""
 msgid "Please enter a username."
 msgstr "براہ کرم کلمہء شناخت درج کریں"
 
-#: wp-includes/ms-functions.php:431 wp-includes/ms-functions.php:438
-#: wp-includes/user.php:1334
+#: wp-includes/ms-functions.php:431 wp-includes/ms-functions.php:438 wp-includes/user.php:1334
 msgid "Sorry, that username is not allowed."
 msgstr ""
 
@@ -3837,13 +3769,13 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
-"اپنی بلاگ کو مؤثر بنانے کے لئے مندرجہ ذیل لنک پر کلک کریں:\n"
+"اپنی بلاگ کو مؤثر بنانے کے لئے مندرجہ ذیل لنک پر کلک کریں:\n"
 "\n"
 "%s\n"
 "\n"
-"مؤثر بنانے کے بعد آپ کواپنے لاگ ان کے ساتھ ایک اور ای میل ملے گی\n"
+"مؤثر بنانے کے بعد آپ کواپنے لاگ ان کے ساتھ ایک اور ای میل ملے گی\n"
 "\n"
-"مؤثر بنانے کے بعد ، آپ اپنی سائٹ یہاں دیکھ سکتے ہیں۔ \n"
+"مؤثر بنانے کے بعد ، آپ اپنی سائٹ یہاں دیکھ سکتے ہیں۔ \n"
 "\n"
 "%s"
 
@@ -3863,7 +3795,7 @@ msgstr ""
 "\n"
 "%s\n"
 "\n"
-"فعال کرنے کے بعد آپ کو لاگ اِن بذریعہ ای میل بھیج دیا جائے گا۔"
+"فعال کرنے کے بعد آپ کو لاگ اِن بذریعہ ای میل بھیج دیا جائے گا۔"
 
 #: wp-includes/ms-functions.php:958
 msgid "Invalid activation key."
@@ -3917,7 +3849,7 @@ msgstr ""
 "نیا استعمال کنندہ : %1$s\n"
 "ریموٹ آئی پی :  %2$s\n"
 "\n"
-"اس طرع کی اطلاعات کو غیرمؤثر کریں: %3$s"
+"اس طرع کی اطلاعات کو غیرمؤثر کریں: %3$s"
 
 #: wp-includes/ms-functions.php:1237
 msgid "New User Registration: %s"
@@ -3929,7 +3861,7 @@ msgstr "پہلے سے انسٹال"
 
 #: wp-includes/ms-functions.php:1332
 msgid "You appear to have already installed WordPress. To reinstall please clear your old database tables first."
-msgstr "آپ کے پاس پہلے ہی ورڈپریس موجود ہے۔ دوبارہ انسٹال کرنے کے لیے پہلے ڈیٹا بیس کو ختم کریں۔"
+msgstr "آپ کے پاس پہلے ہی ورڈپریس موجود ہے۔ دوبارہ انسٹال کرنے کے لیے پہلے ڈیٹا بیس کو ختم کریں۔"
 
 #. translators: Do not translate USERNAME, SITE_NAME, BLOG_URL, PASSWORD: those
 #. are placeholders.
@@ -3954,7 +3886,7 @@ msgstr ""
 "\n"
 "آپکی نئی سائٹ SITE_NAMEکامیابی سے بن چکی ہے۔\n"
 "\n"
-"آپ اپنے منتظم اکاؤنٹ میں مندرجہ ذیل معلومات کے ذریعے لاگ ان کر سکتے ہیں۔\n"
+"آپ اپنے منتظم اکاؤنٹ میں مندرجہ ذیل معلومات کے ذریعے لاگ ان کر سکتے ہیں۔\n"
 "\n"
 "شناخت:  USERNAME\n"
 " خفیہ کلمہ شناخت: PASSWORD\n"
@@ -4007,7 +3939,7 @@ msgid ""
 msgstr ""
 "کیسے ہو USERNAME\n"
 "\n"
-"آپکا نیا اکاؤنٹ بن چکا ہے۔\n"
+"آپکا نیا اکاؤنٹ بن چکا ہے۔\n"
 "\n"
 "آپ مندرجہ ذیل معلومات کے ذریعے لاگ ان کر سکتے ہیں۔\n"
 "\n"
@@ -4097,19 +4029,15 @@ msgid "New trackback on your post \"%s\""
 msgstr "آپکی پوسٹ پر نیا ٹریک بیک  \"%s\""
 
 #. translators: 1: website name, 2: website IP, 3: website hostname
-#: wp-includes/pluggable.php:1475 wp-includes/pluggable.php:1485
-#: wp-includes/pluggable.php:1628 wp-includes/pluggable.php:1636
+#: wp-includes/pluggable.php:1475 wp-includes/pluggable.php:1485 wp-includes/pluggable.php:1628 wp-includes/pluggable.php:1636
 msgid "Website: %1$s (IP: %2$s, %3$s)"
 msgstr "Website: %1$s (IP: %2$s, %3$s)"
 
-#: wp-includes/pluggable.php:1476 wp-includes/pluggable.php:1486
-#: wp-includes/pluggable.php:1497 wp-includes/pluggable.php:1629
-#: wp-includes/pluggable.php:1637 wp-includes/pluggable.php:1645
+#: wp-includes/pluggable.php:1476 wp-includes/pluggable.php:1486 wp-includes/pluggable.php:1497 wp-includes/pluggable.php:1629 wp-includes/pluggable.php:1637 wp-includes/pluggable.php:1645
 msgid "URL: %s"
 msgstr "URL: %s"
 
-#: wp-includes/pluggable.php:1477 wp-includes/pluggable.php:1487
-#: wp-includes/pluggable.php:1498 wp-includes/pluggable.php:1646
+#: wp-includes/pluggable.php:1477 wp-includes/pluggable.php:1487 wp-includes/pluggable.php:1498 wp-includes/pluggable.php:1646
 msgid "Comment: %s"
 msgstr "Comment: %s"
 
@@ -4160,8 +4088,7 @@ msgstr "ورڈپریس تنصیب&raquo;غلطی"
 msgid "Database Error"
 msgstr "ذخیرہ میں نقص"
 
-#: wp-includes/functions.php:3513 wp-includes/ms-load.php:286
-#: wp-includes/wp-db.php:1533
+#: wp-includes/functions.php:3513 wp-includes/ms-load.php:286 wp-includes/wp-db.php:1533
 msgid "Error establishing a database connection"
 msgstr "ذخیرہ سے رابطہ میں نقص"
 
@@ -4238,8 +4165,7 @@ msgstr "ختمِ شمولیت نہ کریں  %1$ انتظامی جگہ سے اس
 msgid "Do not pass style tags to wp_add_inline_style()."
 msgstr "Do not pass style tags to wp_add_inline_style()."
 
-#: wp-includes/general-template.php:228 wp-includes/general-template.php:229
-#: wp-includes/general-template.php:236
+#: wp-includes/general-template.php:228 wp-includes/general-template.php:229 wp-includes/general-template.php:236
 msgctxt "label"
 msgid "Search for:"
 msgstr "تلاش کریں:"
@@ -4254,8 +4180,7 @@ msgctxt "submit button"
 msgid "Search"
 msgstr "تلاش"
 
-#: wp-includes/general-template.php:276 wp-login.php:544 wp-login.php:607
-#: wp-login.php:657 wp-login.php:738
+#: wp-includes/general-template.php:276 wp-login.php:544 wp-login.php:607 wp-login.php:657 wp-login.php:738
 msgid "Log in"
 msgstr "لاگ ان ہوجائیے"
 
@@ -4279,8 +4204,7 @@ msgstr "مجھے یاد رکھیں"
 msgid "Log In"
 msgstr "داخل"
 
-#: wp-includes/general-template.php:542 wp-login.php:547 wp-login.php:660
-#: wp-login.php:734 wp-login.php:916
+#: wp-includes/general-template.php:542 wp-login.php:547 wp-login.php:660 wp-login.php:734 wp-login.php:916
 msgid "Register"
 msgstr "اندراج کروائیں"
 
@@ -4411,10 +4335,7 @@ msgstr "محفوظات : %s"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
 
-#: wp-includes/general-template.php:1385
-#: wp-includes/theme-compat/sidebar.php:92
-#: wp-includes/widgets/class-wp-widget-archives.php:27
-#: wp-includes/widgets/class-wp-widget-archives.php:45
+#: wp-includes/general-template.php:1385 wp-includes/theme-compat/sidebar.php:92 wp-includes/widgets/class-wp-widget-archives.php:27 wp-includes/widgets/class-wp-widget-archives.php:45
 msgid "Archives"
 msgstr "محفوظات:"
 
@@ -4541,8 +4462,7 @@ msgstr "دستیاب"
 msgid "Comments Feed"
 msgstr "تبصرہ فیڈ"
 
-#: wp-includes/link-template.php:983 wp-includes/link-template.php:1302
-#: wp-includes/link-template.php:1404 wp-includes/link-template.php:1465
+#: wp-includes/link-template.php:983 wp-includes/link-template.php:1302 wp-includes/link-template.php:1404 wp-includes/link-template.php:1465
 msgid "Edit This"
 msgstr "اسے مدوَن کریں"
 
@@ -4578,8 +4498,7 @@ msgstr "پرانے مراسلات"
 msgid "Newer posts"
 msgstr "جدید ترین مراسلات"
 
-#: wp-includes/link-template.php:2434 wp-includes/link-template.php:2489
-#: wp-includes/link-template.php:2534
+#: wp-includes/link-template.php:2434 wp-includes/link-template.php:2489 wp-includes/link-template.php:2534
 msgid "Posts navigation"
 msgstr "نیویگیشن مراسلات"
 
@@ -4643,44 +4562,37 @@ msgid "The site you have requested is not installed properly. Please contact the
 msgstr "جو سائٹ آپ نے درخواست کی ہے مناسب طریقے سے انسٹال نہیں ہے. براہ مہربانی سسٹم ایڈمنسٹریٹر سے رابطہ کریں."
 
 #. translators: weekday
-#: wp-includes/locale.php:112 wp-includes/locale.php:121
-#: wp-includes/locale.php:130
+#: wp-includes/locale.php:112 wp-includes/locale.php:121 wp-includes/locale.php:130
 msgid "Sunday"
 msgstr "اتوار"
 
 #. translators: weekday
-#: wp-includes/locale.php:113 wp-includes/locale.php:122
-#: wp-includes/locale.php:131
+#: wp-includes/locale.php:113 wp-includes/locale.php:122 wp-includes/locale.php:131
 msgid "Monday"
 msgstr "پیر"
 
 #. translators: weekday
-#: wp-includes/locale.php:114 wp-includes/locale.php:123
-#: wp-includes/locale.php:132
+#: wp-includes/locale.php:114 wp-includes/locale.php:123 wp-includes/locale.php:132
 msgid "Tuesday"
 msgstr "منگل"
 
 #. translators: weekday
-#: wp-includes/locale.php:115 wp-includes/locale.php:124
-#: wp-includes/locale.php:133
+#: wp-includes/locale.php:115 wp-includes/locale.php:124 wp-includes/locale.php:133
 msgid "Wednesday"
 msgstr "بدھ"
 
 #. translators: weekday
-#: wp-includes/locale.php:116 wp-includes/locale.php:125
-#: wp-includes/locale.php:134
+#: wp-includes/locale.php:116 wp-includes/locale.php:125 wp-includes/locale.php:134
 msgid "Thursday"
 msgstr "جمعرات"
 
 #. translators: weekday
-#: wp-includes/locale.php:117 wp-includes/locale.php:126
-#: wp-includes/locale.php:135
+#: wp-includes/locale.php:117 wp-includes/locale.php:126 wp-includes/locale.php:135
 msgid "Friday"
 msgstr "جمعہ"
 
 #. translators: weekday
-#: wp-includes/locale.php:118 wp-includes/locale.php:127
-#: wp-includes/locale.php:136
+#: wp-includes/locale.php:118 wp-includes/locale.php:127 wp-includes/locale.php:136
 msgid "Saturday"
 msgstr "ہفتہ"
 
@@ -5033,7 +4945,7 @@ msgstr "اَپ لوڈر بند کریں"
 
 #: wp-includes/media-template.php:194
 msgid "The web browser on your device cannot be used to upload files. You may be able to use the <a href=\"%s\">native app for your device</a> instead."
-msgstr "آپ کے ڈیوائس پر موجود ویب براؤزر پر فائل اپ لووڈنگ کی سہولت میسر نہیں۔ آپ اس کی بجا ئے <a href=\"%s\">متعلقہ ایپلیکیشن  </a> استعمال کر سکتے ہیں۔"
+msgstr "آپ کے ڈیوائس پر موجود ویب براؤزر پر فائل اپ لووڈنگ کی سہولت میسر نہیں۔ آپ اس کی بجا ئے <a href=\"%s\">متعلقہ ایپلیکیشن  </a> استعمال کر سکتے ہیں۔"
 
 #: wp-includes/media-template.php:196
 msgid "Upload Limit Exceeded"
@@ -5084,8 +4996,7 @@ msgstr "پچھلے میڈیا مواد میں ترمیم کریں"
 msgid "Edit next media item"
 msgstr "اگلے میڈیا مواد میں ترمیم کریں"
 
-#: wp-includes/media-template.php:327 wp-includes/media-template.php:521
-#: wp-includes/media.php:3402
+#: wp-includes/media-template.php:327 wp-includes/media-template.php:521 wp-includes/media.php:3402
 msgid "Edit Image"
 msgstr "تصویر میں ترمیم کریں"
 
@@ -5121,18 +5032,15 @@ msgstr "لمبائی"
 msgid "Bitrate:"
 msgstr "بِٹ ریٹ"
 
-#: wp-includes/media-template.php:383 wp-includes/media-template.php:562
-#: wp-includes/media.php:2123
+#: wp-includes/media-template.php:383 wp-includes/media-template.php:562 wp-includes/media.php:2123
 msgid "Artist"
 msgstr "آرٹسٹ"
 
-#: wp-includes/media-template.php:384 wp-includes/media-template.php:563
-#: wp-includes/media.php:2124
+#: wp-includes/media-template.php:384 wp-includes/media-template.php:563 wp-includes/media.php:2124
 msgid "Album"
 msgstr "البم"
 
-#: wp-includes/media-template.php:398 wp-includes/media-template.php:577
-#: wp-includes/media-template.php:836
+#: wp-includes/media-template.php:398 wp-includes/media-template.php:577 wp-includes/media-template.php:836
 msgid "Alt Text"
 msgstr "متبادل متن"
 
@@ -5161,8 +5069,7 @@ msgctxt "verb"
 msgid "Trash"
 msgstr "ردی کی ٹوکری میں ڈالے"
 
-#: wp-includes/media-template.php:436 wp-includes/media-template.php:537
-#: wp-includes/media.php:3371
+#: wp-includes/media-template.php:436 wp-includes/media-template.php:537 wp-includes/media.php:3371
 msgid "Delete Permanently"
 msgstr "ہمیشہ کے لیےحذف کریں"
 
@@ -5206,8 +5113,7 @@ msgstr "اٹیچمنٹ کو کس طرح دکھایا جائے"
 msgid "Embed or Link"
 msgstr "کندہ کریں یا معلق"
 
-#: wp-includes/media-template.php:633 wp-includes/media-template.php:711
-#: wp-includes/media-template.php:859 wp-includes/media-template.php:963
+#: wp-includes/media-template.php:633 wp-includes/media-template.php:711 wp-includes/media-template.php:859 wp-includes/media-template.php:963
 msgid "Link To"
 msgstr "لنک کریں"
 
@@ -5219,8 +5125,7 @@ msgstr "میڈیا پلیئر شامل کریں"
 msgid "Link to Media File"
 msgstr "میڈیا فائل سے تعلق"
 
-#: wp-includes/media-template.php:656 wp-includes/media-template.php:724
-#: wp-includes/media-template.php:967
+#: wp-includes/media-template.php:656 wp-includes/media-template.php:724 wp-includes/media-template.php:967
 msgid "Media File"
 msgstr "میڈیا فائل"
 
@@ -5228,38 +5133,31 @@ msgstr "میڈیا فائل"
 msgid "Link to Attachment Page"
 msgstr "منسلکہ صفحہ سے تعلق"
 
-#: wp-includes/media-template.php:663 wp-includes/media-template.php:721
-#: wp-includes/media-template.php:970
+#: wp-includes/media-template.php:663 wp-includes/media-template.php:721 wp-includes/media-template.php:970
 msgid "Attachment Page"
 msgstr "منسلکہ صفحہ"
 
-#: wp-includes/media-template.php:668 wp-includes/media-template.php:865
-#: wp-includes/media-template.php:978
+#: wp-includes/media-template.php:668 wp-includes/media-template.php:865 wp-includes/media-template.php:978
 msgid "Custom URL"
 msgstr "مرضی کا یو آر ایل"
 
-#: wp-includes/media-template.php:678 wp-includes/media-template.php:752
-#: wp-includes/media-template.php:927
+#: wp-includes/media-template.php:678 wp-includes/media-template.php:752 wp-includes/media-template.php:927
 msgid "Size"
 msgstr "سائز"
 
-#: wp-includes/media-template.php:687 wp-includes/media-template.php:762
-#: wp-includes/media-template.php:936 wp-includes/media.php:3088
+#: wp-includes/media-template.php:687 wp-includes/media-template.php:762 wp-includes/media-template.php:936 wp-includes/media.php:3088
 msgid "Thumbnail"
 msgstr "انگشت نما"
 
-#: wp-includes/media-template.php:688 wp-includes/media-template.php:763
-#: wp-includes/media-template.php:937 wp-includes/media.php:3089
+#: wp-includes/media-template.php:688 wp-includes/media-template.php:763 wp-includes/media-template.php:937 wp-includes/media.php:3089
 msgid "Medium"
 msgstr "درمیانہ"
 
-#: wp-includes/media-template.php:689 wp-includes/media-template.php:764
-#: wp-includes/media-template.php:938 wp-includes/media.php:3090
+#: wp-includes/media-template.php:689 wp-includes/media-template.php:764 wp-includes/media-template.php:938 wp-includes/media.php:3090
 msgid "Large"
 msgstr "بڑا"
 
-#: wp-includes/media-template.php:690 wp-includes/media-template.php:765
-#: wp-includes/media-template.php:939 wp-includes/media.php:3091
+#: wp-includes/media-template.php:690 wp-includes/media-template.php:765 wp-includes/media-template.php:939 wp-includes/media.php:3091
 msgid "Full Size"
 msgstr "مکمل سائز"
 
@@ -5299,9 +5197,7 @@ msgstr "تصاویر دکھا"
 msgid "Sorry, deleting the term failed."
 msgstr "معذرت، اصطلاح کو خارج نہیں کیا جاسکا"
 
-#: wp-includes/class-wp-xmlrpc-server.php:2110
-#: wp-includes/class-wp-xmlrpc-server.php:2168
-#: wp-includes/class-wp-xmlrpc-server.php:2263
+#: wp-includes/class-wp-xmlrpc-server.php:2110 wp-includes/class-wp-xmlrpc-server.php:2168 wp-includes/class-wp-xmlrpc-server.php:2263
 msgid "You are not allowed to assign terms in this taxonomy."
 msgstr "آپ کو اس درجہ بندی کی اصطلاحات میں تفویض کی اجازت نہیں ہے "
 
@@ -5309,8 +5205,7 @@ msgstr "آپ کو اس درجہ بندی کی اصطلاحات میں تفویض
 msgid "Sorry, you cannot edit users."
 msgstr "معاف کیجئے ، آپ صارفین میں ترمیم نہیں کر سکتے ."
 
-#: wp-includes/class-wp-xmlrpc-server.php:2398 wp-includes/user.php:1286
-#: wp-includes/user.php:1605 wp-includes/user.php:1611
+#: wp-includes/class-wp-xmlrpc-server.php:2398 wp-includes/user.php:1286 wp-includes/user.php:1605 wp-includes/user.php:1611
 msgid "Invalid user ID."
 msgstr " صارف کی غلط شناخت"
 
@@ -5322,8 +5217,7 @@ msgstr ""
 msgid "The role specified is not valid"
 msgstr "متعین کردہ کردار درست نہیں ہے"
 
-#: wp-includes/class-wp-xmlrpc-server.php:2524
-#: wp-includes/class-wp-xmlrpc-server.php:2570
+#: wp-includes/class-wp-xmlrpc-server.php:2524 wp-includes/class-wp-xmlrpc-server.php:2570
 msgid "Sorry, you cannot edit your profile."
 msgstr "معاف کیجئے گا، آپ اپنے پروفائل میں ترمیم نہیں کر سکتے ہیں."
 
@@ -5335,14 +5229,11 @@ msgstr "معاف کیجئے گا، آپ اپنے پروفائل میں ترمی�
 msgid "Sorry, you cannot edit this page."
 msgstr "معاف کیجئے گا، آپ کو اس صفحے کو مدون نہیں کر سکتے ہیں."
 
-#: wp-includes/class-wp-xmlrpc-server.php:2651
-#: wp-includes/class-wp-xmlrpc-server.php:2771
-#: wp-includes/class-wp-xmlrpc-server.php:2833
+#: wp-includes/class-wp-xmlrpc-server.php:2651 wp-includes/class-wp-xmlrpc-server.php:2771 wp-includes/class-wp-xmlrpc-server.php:2833
 msgid "Sorry, no such page."
 msgstr "معاف کیجئے گا، ایسا کوئی صفحہ ہے."
 
-#: wp-includes/class-wp-xmlrpc-server.php:2681
-#: wp-includes/class-wp-xmlrpc-server.php:2883
+#: wp-includes/class-wp-xmlrpc-server.php:2681 wp-includes/class-wp-xmlrpc-server.php:2883
 msgid "Sorry, you cannot edit pages."
 msgstr "معاف کیجئے گا، آپ صفحات مدون نہیں کر سکتے ہیں."
 
@@ -5358,9 +5249,7 @@ msgstr "صفحہ حذف کرنے میں ناکام رہے."
 msgid "Sorry, you do not have the right to edit this page."
 msgstr "معاف کیجئے گا، آپ اس صفحہ میں ترمیم کرنے کا حق نہیں ہے."
 
-#: wp-includes/class-wp-xmlrpc-server.php:2939
-#: wp-includes/class-wp-xmlrpc-server.php:4483
-#: wp-includes/class-wp-xmlrpc-server.php:5574
+#: wp-includes/class-wp-xmlrpc-server.php:2939 wp-includes/class-wp-xmlrpc-server.php:4483 wp-includes/class-wp-xmlrpc-server.php:5574
 msgid "Sorry, you cannot edit posts on this site."
 msgstr "معاف کیجئے گا، آپ اس سائٹ پر پیغامات مدون نہیں کر سکتے."
 
@@ -5372,8 +5261,7 @@ msgstr "معاف کیجئے گا، آپ کو حکم ٹیگ کو ملاحظہ ک�
 msgid "Sorry, you do not have the right to add a category."
 msgstr "معاف کیجئے گا، آپ کو زمرہ شامل کرنے کا حق نہیں ہے."
 
-#: wp-includes/class-wp-xmlrpc-server.php:3062
-#: wp-includes/class-wp-xmlrpc-server.php:3064
+#: wp-includes/class-wp-xmlrpc-server.php:3062 wp-includes/class-wp-xmlrpc-server.php:3064
 msgid "Sorry, the new category failed."
 msgstr "معاف کیجئے گا، نئے زمرے میں ناکام رہے."
 
@@ -5381,26 +5269,19 @@ msgstr "معاف کیجئے گا، نئے زمرے میں ناکام رہے."
 msgid "Sorry, you do not have the right to delete a category."
 msgstr "معاف کیجئے گا، آپ کو ایک قسم کو خارج کرنے کا حق نہیں ہے."
 
-#: wp-includes/class-wp-xmlrpc-server.php:3156
-#: wp-includes/class-wp-xmlrpc-server.php:5687
-#: wp-includes/class-wp-xmlrpc-server.php:5908
+#: wp-includes/class-wp-xmlrpc-server.php:3156 wp-includes/class-wp-xmlrpc-server.php:5687 wp-includes/class-wp-xmlrpc-server.php:5908
 msgid "Sorry, you must be able to edit posts on this site in order to view categories."
 msgstr "معاف کیجئے گا، آپ کے حکم کو زمرے دیکھنے کے لئے اس ویب سائٹ پر پیغامات مدون کے قابل ہونا چاہئے."
 
-#: wp-includes/class-wp-xmlrpc-server.php:3203
-#: wp-includes/class-wp-xmlrpc-server.php:3336
-#: wp-includes/class-wp-xmlrpc-server.php:3403
+#: wp-includes/class-wp-xmlrpc-server.php:3203 wp-includes/class-wp-xmlrpc-server.php:3336 wp-includes/class-wp-xmlrpc-server.php:3403
 msgid "Invalid comment ID."
 msgstr "غلط تبصرہ ID."
 
-#: wp-includes/class-wp-xmlrpc-server.php:3207
-#: wp-includes/class-wp-xmlrpc-server.php:3340
-#: wp-includes/class-wp-xmlrpc-server.php:3407
+#: wp-includes/class-wp-xmlrpc-server.php:3207 wp-includes/class-wp-xmlrpc-server.php:3340 wp-includes/class-wp-xmlrpc-server.php:3407
 msgid "You are not allowed to moderate or edit this comment."
 msgstr ""
 
-#: wp-includes/class-wp-xmlrpc-server.php:3260
-#: wp-includes/class-wp-xmlrpc-server.php:3418
+#: wp-includes/class-wp-xmlrpc-server.php:3260 wp-includes/class-wp-xmlrpc-server.php:3418
 msgid "Invalid comment status."
 msgstr "غلط تبصرہ حیثیت."
 
@@ -5428,11 +5309,7 @@ msgstr "تبصرہ مصنف کا نام اور ای میل کی ضرورت ہے"
 msgid "A valid email address is required"
 msgstr "ایک درست ای میل ایڈریس کی ضرورت ہے."
 
-#: wp-includes/class-wp-xmlrpc-server.php:3611
-#: wp-includes/class-wp-xmlrpc-server.php:3692
-#: wp-includes/class-wp-xmlrpc-server.php:3724
-#: wp-includes/class-wp-xmlrpc-server.php:3756
-#: wp-includes/class-wp-xmlrpc-server.php:3994
+#: wp-includes/class-wp-xmlrpc-server.php:3611 wp-includes/class-wp-xmlrpc-server.php:3692 wp-includes/class-wp-xmlrpc-server.php:3724 wp-includes/class-wp-xmlrpc-server.php:3756 wp-includes/class-wp-xmlrpc-server.php:3994
 msgid "You are not allowed access to details about this site."
 msgstr "آپ کو اس سائٹ کے بارے میں تفصیلات تک رسائی کی اجازت نہیں ہے."
 
@@ -5444,9 +5321,7 @@ msgstr ""
 msgid "You are not allowed to update options."
 msgstr "آپ کے اختیارات کو اپ ڈیٹ کرنے کی اجازت نہیں کر رہے ہیں."
 
-#: wp-includes/class-wp-xmlrpc-server.php:3902
-#: wp-includes/class-wp-xmlrpc-server.php:3950
-#: wp-includes/class-wp-xmlrpc-server.php:5751
+#: wp-includes/class-wp-xmlrpc-server.php:3902 wp-includes/class-wp-xmlrpc-server.php:3950 wp-includes/class-wp-xmlrpc-server.php:5751
 msgid "You do not have permission to upload files."
 msgstr "آپ کو فائلیں چڑھانے کرنے کی اجازت نہیں۔"
 
@@ -5458,8 +5333,7 @@ msgstr "معذرت، آپ کو اس تحریر کی قسم میں ترمیم ک�
 msgid "Sorry, you are not allowed to edit posts."
 msgstr "معاف کیجئے گا، آپ کو پیغامات میں مدون کرنے کی اجازت نہیں ہے۔"
 
-#: wp-includes/class-wp-xmlrpc-server.php:4202
-#: wp-includes/class-wp-xmlrpc-server.php:4272
+#: wp-includes/class-wp-xmlrpc-server.php:4202 wp-includes/class-wp-xmlrpc-server.php:4272
 msgid "Sorry, revisions are disabled."
 msgstr "معاف کیجیے۔ نظر ثانی غیر فعال ہے۔"
 
@@ -5467,30 +5341,23 @@ msgstr "معاف کیجیے۔ نظر ثانی غیر فعال ہے۔"
 msgid "Sorry, you do not have access to user data on this site."
 msgstr "معاف کیجئے گا، آپ اس سائٹ پر صارف کے ڈیٹا تک رسائی حاصل نہیں ہے."
 
-#: wp-includes/class-wp-xmlrpc-server.php:4491
-#: wp-includes/class-wp-xmlrpc-server.php:5858
+#: wp-includes/class-wp-xmlrpc-server.php:4491 wp-includes/class-wp-xmlrpc-server.php:5858
 msgid "Either there are no posts, or something went wrong."
 msgstr "یا تو کوئی خطوط نہیں ہیں، یا کچھ غلط ہو گیا تھا."
 
-#: wp-includes/class-wp-xmlrpc-server.php:4526
-#: wp-includes/class-wp-xmlrpc-server.php:4537
+#: wp-includes/class-wp-xmlrpc-server.php:4526 wp-includes/class-wp-xmlrpc-server.php:4537
 msgid "Sorry, that file cannot be edited."
 msgstr "معاف کیجیے اس فائل میں تبدیلی نہیں کی جا سکتی"
 
-#: wp-includes/class-wp-xmlrpc-server.php:4647
-#: wp-includes/class-wp-xmlrpc-server.php:4719
-#: wp-includes/class-wp-xmlrpc-server.php:5541
-#: wp-includes/class-wp-xmlrpc-server.php:6074
+#: wp-includes/class-wp-xmlrpc-server.php:4647 wp-includes/class-wp-xmlrpc-server.php:4719 wp-includes/class-wp-xmlrpc-server.php:5541 wp-includes/class-wp-xmlrpc-server.php:6074
 msgid "Sorry, no such post."
 msgstr "معاف کیجئے گا، ایسی کوئی پوسٹ ہے."
 
-#: wp-includes/class-wp-xmlrpc-server.php:4653
-#: wp-includes/class-wp-xmlrpc-server.php:5153
+#: wp-includes/class-wp-xmlrpc-server.php:4653 wp-includes/class-wp-xmlrpc-server.php:5153
 msgid "Sorry, you do not have the right to edit this post."
 msgstr "معاف کیجئے گا، آپ اس پوسٹ میں ترمیم کرنے کا حق نہیں ہے."
 
-#: wp-includes/class-wp-xmlrpc-server.php:4656
-#: wp-includes/class-wp-xmlrpc-server.php:5326
+#: wp-includes/class-wp-xmlrpc-server.php:4656 wp-includes/class-wp-xmlrpc-server.php:5326
 msgid "Sorry, you do not have the right to publish this post."
 msgstr "معاف کیجئے گا، آپ اس پوسٹ کو شائع کرنے کا حق نہیں ہے."
 
@@ -5502,14 +5369,11 @@ msgstr "کچھ عجیب ابھی تک بہت غصہ کی وجہ سے، اس پو
 msgid "Sorry, you are not allowed to publish pages on this site."
 msgstr "معاف کیجئے گا، آپ کو اس سائٹ پر صفحات پر شائع کرنے کی اجازت نہیں ہے."
 
-#: wp-includes/class-wp-xmlrpc-server.php:4821
-#: wp-includes/class-wp-xmlrpc-server.php:4834
-#: wp-includes/class-wp-xmlrpc-server.php:4839
+#: wp-includes/class-wp-xmlrpc-server.php:4821 wp-includes/class-wp-xmlrpc-server.php:4834 wp-includes/class-wp-xmlrpc-server.php:4839
 msgid "Sorry, you are not allowed to publish posts on this site."
 msgstr "معاف کیجئے گا، آپ کو اس سائٹ پر پیغامات کو شائع کرنے کی اجازت نہیں ہے."
 
-#: wp-includes/class-wp-xmlrpc-server.php:4847
-#: wp-includes/class-wp-xmlrpc-server.php:5167
+#: wp-includes/class-wp-xmlrpc-server.php:4847 wp-includes/class-wp-xmlrpc-server.php:5167
 msgid "Invalid post format"
 msgstr "غلط پوسٹ فارمیٹ"
 
@@ -5553,10 +5417,7 @@ msgstr "معاف کیجئے گا، آپ اس پوسٹ کو شائع نہیں ک�
 msgid "Is there no link to us?"
 msgstr "کیا وہاں ہمارے لئے کوئی لنک ہے؟"
 
-#: wp-includes/class-wp-xmlrpc-server.php:6224
-#: wp-includes/class-wp-xmlrpc-server.php:6231
-#: wp-includes/class-wp-xmlrpc-server.php:6238
-#: wp-includes/class-wp-xmlrpc-server.php:6377
+#: wp-includes/class-wp-xmlrpc-server.php:6224 wp-includes/class-wp-xmlrpc-server.php:6231 wp-includes/class-wp-xmlrpc-server.php:6238 wp-includes/class-wp-xmlrpc-server.php:6377
 msgid "The specified target URL cannot be used as a target. It either doesn&#8217;t exist, or it is not a pingback-enabled resource."
 msgstr "مخصوص ہدف URL کا ہدف کے طور پر استعمال نہیں کیا جا سکتا ہے. یہ یا تو موجود نہیں ہے یا یہ ایک pingback فعال وسائل نہیں ہے."
 
@@ -5658,29 +5519,23 @@ msgstr "ایک تبصرہ کو چھوڑ کرنے کے لئے لاگ ان کری�
 msgid "Click here to cancel reply."
 msgstr "جواب منسوخ کرنے کے لئے یہاں کلک کریں."
 
-#: wp-includes/comment-template.php:1850 wp-includes/comment-template.php:2179
-#: wp-includes/theme-compat/comments.php:75
+#: wp-includes/comment-template.php:1850 wp-includes/comment-template.php:2179 wp-includes/theme-compat/comments.php:75
 msgid "Leave a Reply"
 msgstr "جواب چھوڑیں"
 
-#: wp-includes/comment-template.php:1851 wp-includes/comment-template.php:2180
-#: wp-includes/theme-compat/comments.php:75
+#: wp-includes/comment-template.php:1851 wp-includes/comment-template.php:2180 wp-includes/theme-compat/comments.php:75
 msgid "Leave a Reply to %s"
 msgstr "%s ایک جواب دیں چھوڑ دو"
 
-#: wp-includes/comment-template.php:2147
-#: wp-includes/theme-compat/comments-popup.php:76
-#: wp-includes/theme-compat/comments.php:96
+#: wp-includes/comment-template.php:2147 wp-includes/theme-compat/comments-popup.php:76 wp-includes/theme-compat/comments.php:96
 msgid "Name"
 msgstr "نام"
 
-#: wp-includes/comment-template.php:2149
-#: wp-includes/theme-compat/comments-popup.php:81 wp-login.php:720
+#: wp-includes/comment-template.php:2149 wp-includes/theme-compat/comments-popup.php:81 wp-login.php:720
 msgid "Email"
 msgstr "&quot;ای میل"
 
-#: wp-includes/comment-template.php:2151
-#: wp-includes/theme-compat/comments.php:102
+#: wp-includes/comment-template.php:2151 wp-includes/theme-compat/comments.php:102
 msgid "Website"
 msgstr "ویب‌سائٹ"
 
@@ -5688,8 +5543,7 @@ msgstr "ویب‌سائٹ"
 msgid "Required fields are marked %s"
 msgstr "ضرورت کے کھیتوں ک%s نشان لگا دیا گیا ہے"
 
-#: wp-includes/comment-template.php:2169
-#: wp-includes/theme-compat/comments.php:82
+#: wp-includes/comment-template.php:2169 wp-includes/theme-compat/comments.php:82
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
 msgstr "ھونا ضروری ہے۔<a href=\"%s\">داخل</a> تبصرہ کرنے سے پہلے آپ کا "
 
@@ -5779,10 +5633,7 @@ msgstr "دو بار ڈیلی"
 msgid "Once Daily"
 msgstr "ایک بار ڈیلی"
 
-#: wp-includes/customize/class-wp-customize-color-control.php:41
-#: wp-includes/customize/class-wp-customize-image-control.php:38
-#: wp-includes/customize/class-wp-customize-media-control.php:61
-#: wp-includes/script-loader.php:611
+#: wp-includes/customize/class-wp-customize-color-control.php:41 wp-includes/customize/class-wp-customize-image-control.php:38 wp-includes/customize/class-wp-customize-media-control.php:61 wp-includes/script-loader.php:611
 msgid "Default"
 msgstr "طےشدہ"
 
@@ -5860,8 +5711,7 @@ msgctxt "custom headers"
 msgid "Suggested"
 msgstr "تجویز کردہ"
 
-#: wp-includes/customize/class-wp-customize-image-control.php:35
-#: wp-includes/customize/class-wp-customize-image-control.php:40
+#: wp-includes/customize/class-wp-customize-image-control.php:35 wp-includes/customize/class-wp-customize-image-control.php:40
 msgid "Select Image"
 msgstr "تصویر منتخب کریں"
 
@@ -5873,13 +5723,11 @@ msgstr "تصویر بدلیں"
 msgid "No image selected"
 msgstr "کوئی تصویر منتخب نہیں ہوا"
 
-#: wp-includes/customize/class-wp-customize-image-control.php:41
-#: wp-includes/media.php:3405
+#: wp-includes/customize/class-wp-customize-image-control.php:41 wp-includes/media.php:3405
 msgid "Choose Image"
 msgstr "تصویر منتخب کریں"
 
-#: wp-includes/customize/class-wp-customize-media-control.php:59
-#: wp-includes/customize/class-wp-customize-media-control.php:64
+#: wp-includes/customize/class-wp-customize-media-control.php:59 wp-includes/customize/class-wp-customize-media-control.php:64
 msgid "Select File"
 msgstr "فائل منتخب کریں"
 
@@ -5955,18 +5803,15 @@ msgstr "مینو آئٹم حذف کریں : %1$s (%2$s)"
 msgid "Navigation Label"
 msgstr "نیویگیشن لیبل"
 
-#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:110
-#: wp-includes/customize/class-wp-customize-nav-menus-panel.php:60
+#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:110 wp-includes/customize/class-wp-customize-nav-menus-panel.php:60
 msgid "Title Attribute"
 msgstr "عنوان کی خصوصیت"
 
-#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:116
-#: wp-includes/customize/class-wp-customize-nav-menus-panel.php:61
+#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:116 wp-includes/customize/class-wp-customize-nav-menus-panel.php:61
 msgid "CSS Classes"
 msgstr "سی ایسس ایسس کی کلاسیں"
 
-#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:122
-#: wp-includes/customize/class-wp-customize-nav-menus-panel.php:62
+#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:122 wp-includes/customize/class-wp-customize-nav-menus-panel.php:62
 msgid "Link Relationship (XFN)"
 msgstr ""
 
@@ -6012,18 +5857,15 @@ msgstr "بذریعہ %s"
 msgid "<span>Active:</span> %s"
 msgstr "%s</span>:فعال<span> "
 
-#: wp-includes/customize/class-wp-customize-theme-control.php:102
-#: wp-includes/customize/class-wp-customize-themes-section.php:70
+#: wp-includes/customize/class-wp-customize-theme-control.php:102 wp-includes/customize/class-wp-customize-themes-section.php:70
 msgid "Theme Details"
 msgstr "تھیم کے تفصیلات دیکھیں"
 
-#: wp-includes/customize/class-wp-customize-themes-section.php:43
-#: wp-includes/customize/class-wp-customize-themes-section.php:62
+#: wp-includes/customize/class-wp-customize-themes-section.php:43 wp-includes/customize/class-wp-customize-themes-section.php:62
 msgid "Active theme"
 msgstr "فعال تھیم"
 
-#: wp-includes/customize/class-wp-customize-themes-section.php:45
-#: wp-includes/customize/class-wp-customize-themes-section.php:64
+#: wp-includes/customize/class-wp-customize-themes-section.php:45 wp-includes/customize/class-wp-customize-themes-section.php:64
 msgid "Previewing theme"
 msgstr "تھیم کا مشاہدہ"
 
@@ -6032,8 +5874,7 @@ msgctxt "theme"
 msgid "Change"
 msgstr "تبدیلی"
 
-#: wp-includes/customize/class-wp-customize-themes-section.php:75
-#: wp-includes/customize/class-wp-customize-themes-section.php:76
+#: wp-includes/customize/class-wp-customize-themes-section.php:75 wp-includes/customize/class-wp-customize-themes-section.php:76
 msgid "Search installed themes&hellip;"
 msgstr ""
 
@@ -6071,12 +5912,7 @@ msgstr "مندرجہ ذیل الفاظ صحیح تاریخ کو بیان نہی�
 msgid "new WordPress Loop"
 msgstr "نئے ورڈپریس لوپ"
 
-#: wp-includes/deprecated.php:688 wp-includes/media-template.php:622
-#: wp-includes/media-template.php:649 wp-includes/media-template.php:727
-#: wp-includes/media-template.php:853 wp-includes/media-template.php:868
-#: wp-includes/media-template.php:919 wp-includes/media-template.php:981
-#: wp-includes/media-template.php:1079 wp-includes/media-template.php:1168
-#: wp-includes/script-loader.php:343
+#: wp-includes/deprecated.php:688 wp-includes/media-template.php:622 wp-includes/media-template.php:649 wp-includes/media-template.php:727 wp-includes/media-template.php:853 wp-includes/media-template.php:868 wp-includes/media-template.php:919 wp-includes/media-template.php:981 wp-includes/media-template.php:1079 wp-includes/media-template.php:1168 wp-includes/script-loader.php:343
 msgid "None"
 msgstr "کچھ نہیں"
 
@@ -6427,9 +6263,7 @@ msgstr "دستاویز کی خصوصیات"
 msgid "Robots"
 msgstr "Robots"
 
-#: wp-includes/class-wp-editor.php:885 wp-includes/media-template.php:377
-#: wp-includes/media-template.php:556 wp-includes/revision.php:31
-#: wp-includes/script-loader.php:533
+#: wp-includes/class-wp-editor.php:885 wp-includes/media-template.php:377 wp-includes/media-template.php:556 wp-includes/revision.php:31 wp-includes/script-loader.php:533
 msgid "Title"
 msgstr "عنوان"
 
@@ -6571,8 +6405,7 @@ msgstr "افقی جگہ"
 msgid "Restore last draft"
 msgstr "آخری ڈرافٹ بحال کریں"
 
-#: wp-includes/class-wp-editor.php:926 wp-includes/class-wp-editor.php:1401
-#: wp-includes/script-loader.php:403
+#: wp-includes/class-wp-editor.php:926 wp-includes/class-wp-editor.php:1401 wp-includes/script-loader.php:403
 msgid "Insert/edit link"
 msgstr "/ لنک میں ترمیم ڈالیں"
 
@@ -6790,9 +6623,7 @@ msgstr "قامت"
 msgid "Width"
 msgstr "چوڑائی"
 
-#: wp-includes/class-wp-editor.php:985 wp-includes/media-template.php:393
-#: wp-includes/media-template.php:572 wp-includes/media-template.php:830
-#: wp-includes/media-template.php:895
+#: wp-includes/class-wp-editor.php:985 wp-includes/media-template.php:393 wp-includes/media-template.php:572 wp-includes/media-template.php:830 wp-includes/media-template.php:895
 msgid "Caption"
 msgstr "عنوان"
 
@@ -6900,9 +6731,7 @@ msgstr "اگر آپ مائیکرو سافٹ ورڈ سے مواد پیسٹ کرن
 msgid "Rich Text Area. Press Alt-Shift-H for help"
 msgstr "Rich Text Area. Press Alt-Shift-H for help"
 
-#: wp-includes/class-wp-editor.php:1017 wp-includes/script-loader.php:436
-#: wp-includes/script-loader.php:526 wp-includes/script-loader.php:535
-#: wp-includes/script-loader.php:644 wp-includes/theme.php:2029
+#: wp-includes/class-wp-editor.php:1017 wp-includes/script-loader.php:436 wp-includes/script-loader.php:526 wp-includes/script-loader.php:535 wp-includes/script-loader.php:644 wp-includes/theme.php:2029
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr "تبدیلیاں آپ نے اگر آپ اس صفحے سے دور تشریف لے کھو جائے گا."
 
@@ -7040,9 +6869,7 @@ msgstr "Y/m/d"
 msgid "Enter the destination URL"
 msgstr "مطلوبہ یو آر ایل درج کریں"
 
-#: wp-includes/class-wp-editor.php:1414
-#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:105
-#: wp-includes/media-template.php:1001
+#: wp-includes/class-wp-editor.php:1414 wp-includes/customize/class-wp-customize-nav-menu-item-control.php:105 wp-includes/media-template.php:1001
 msgid "Open link in a new tab"
 msgstr "لنک کو نئے ٹیب میں کهولیں"
 
@@ -7062,43 +6889,35 @@ msgstr "تلاش کریں یا اوپر اور نیچے کے 'ایرو' بٹن �
 msgid "Add Link"
 msgstr "ربط شامل کریں"
 
-#: wp-includes/class-wp-http-curl.php:189
-#: wp-includes/class-wp-http-streams.php:228
+#: wp-includes/class-wp-http-curl.php:189 wp-includes/class-wp-http-streams.php:228
 msgid "Could not open handle for fopen() to %s"
 msgstr "fopen () کے لئے ہینڈل %s کھول نہیں کیا جا سکا"
 
-#: wp-includes/class-wp-http-curl.php:257
-#: wp-includes/class-wp-http-streams.php:256
+#: wp-includes/class-wp-http-curl.php:257 wp-includes/class-wp-http-streams.php:256
 msgid "Failed to write request to temporary file."
 msgstr "عارضی فائل کی درخواست لکھنے میں ناکامی."
 
-#: wp-includes/class-wp-http-streams.php:156
-#: wp-includes/class-wp-http-streams.php:164
+#: wp-includes/class-wp-http-streams.php:156 wp-includes/class-wp-http-streams.php:164
 msgid "The SSL certificate for the host could not be verified."
 msgstr "اس میزبان کی ایس ایس ایل سند مثتند نہیں ہے۔"
 
-#: wp-includes/class-wp-image-editor-gd.php:97
-#: wp-includes/class-wp-image-editor-imagick.php:130
+#: wp-includes/class-wp-image-editor-gd.php:97 wp-includes/class-wp-image-editor-imagick.php:130
 msgid "File doesn&#8217;t exist?"
 msgstr "فائل موجود نہیں؟"
 
-#: wp-includes/class-wp-image-editor-gd.php:113
-#: wp-includes/class-wp-image-editor-imagick.php:140
+#: wp-includes/class-wp-image-editor-gd.php:113 wp-includes/class-wp-image-editor-imagick.php:140
 msgid "File is not an image."
 msgstr "فائل ایک تصویر نہیں ہے."
 
-#: wp-includes/class-wp-image-editor-gd.php:117
-#: wp-includes/class-wp-image-editor-imagick.php:211
+#: wp-includes/class-wp-image-editor-gd.php:117 wp-includes/class-wp-image-editor-imagick.php:211
 msgid "Could not read image size."
 msgstr "تصویر کا سائز پڑھا نہیں جا سکا."
 
-#: wp-includes/class-wp-image-editor-gd.php:180
-#: wp-includes/class-wp-image-editor-gd.php:205
+#: wp-includes/class-wp-image-editor-gd.php:180 wp-includes/class-wp-image-editor-gd.php:205
 msgid "Image resize failed."
 msgstr "تصویر کا سائز تبدیل کرنے میں ناکامی ہوئی۔"
 
-#: wp-includes/class-wp-image-editor-gd.php:193
-#: wp-includes/class-wp-image-editor-imagick.php:245
+#: wp-includes/class-wp-image-editor-gd.php:193 wp-includes/class-wp-image-editor-imagick.php:245
 msgid "Could not calculate resized image dimensions"
 msgstr "تصویر کی متبادل جہات کا حساب نہ لگایا جا سکا۔"
 
@@ -7114,10 +6933,7 @@ msgstr "تصویر کو گھمانے میں ناکامی"
 msgid "Image flip failed."
 msgstr "تصویر کو الٹا کرنے میں ناکامی"
 
-#: wp-includes/class-wp-image-editor-gd.php:408
-#: wp-includes/class-wp-image-editor-gd.php:416
-#: wp-includes/class-wp-image-editor-gd.php:420
-#: wp-includes/class-wp-image-editor-gd.php:423
+#: wp-includes/class-wp-image-editor-gd.php:408 wp-includes/class-wp-image-editor-gd.php:416 wp-includes/class-wp-image-editor-gd.php:420 wp-includes/class-wp-image-editor-gd.php:423
 msgid "Image Editor Save Failed"
 msgstr "تصویر ایڈیٹر محفوظ کرنے میں ناکام"
 
@@ -7129,17 +6945,8 @@ msgstr "حد اطلاق[۱،۱۰۰] سے باہر تصویر کے معیار ق�
 msgid "Term ID is shared between multiple taxonomies"
 msgstr "یہ ٹرم آئی ڈی مختلف ٹیکسانومیز کے درمیان بٹی ہوئی ہے۔"
 
-#: wp-includes/class-wp-term.php:179
-#: wp-includes/class-wp-xmlrpc-server.php:1851
-#: wp-includes/class-wp-xmlrpc-server.php:1938
-#: wp-includes/class-wp-xmlrpc-server.php:2034
-#: wp-includes/class-wp-xmlrpc-server.php:2105
-#: wp-includes/class-wp-xmlrpc-server.php:2163
-#: wp-includes/class-wp-xmlrpc-server.php:2258 wp-includes/taxonomy.php:668
-#: wp-includes/taxonomy.php:757 wp-includes/taxonomy.php:908
-#: wp-includes/taxonomy.php:1081 wp-includes/taxonomy.php:2300
-#: wp-includes/taxonomy.php:2551 wp-includes/taxonomy.php:2794
-#: wp-includes/taxonomy.php:3127
+#: wp-includes/class-wp-term.php:179 wp-includes/class-wp-xmlrpc-server.php:1851 wp-includes/class-wp-xmlrpc-server.php:1938 wp-includes/class-wp-xmlrpc-server.php:2034 wp-includes/class-wp-xmlrpc-server.php:2105 wp-includes/class-wp-xmlrpc-server.php:2163 wp-includes/class-wp-xmlrpc-server.php:2258 wp-includes/taxonomy.php:668 wp-includes/taxonomy.php:757 wp-includes/taxonomy.php:908 wp-includes/taxonomy.php:1081 wp-includes/taxonomy.php:2300 wp-includes/taxonomy.php:2551
+#: wp-includes/taxonomy.php:2794 wp-includes/taxonomy.php:3127
 msgid "Invalid taxonomy"
 msgstr "غلط درجہ بندی"
 
@@ -7176,8 +6983,7 @@ msgid "Anonymous"
 msgstr "گمنام"
 
 #. translators: %s: WP_User->ID
-#: wp-includes/class-wp-user.php:275 wp-includes/class-wp-user.php:305
-#: wp-includes/class-wp-user.php:344 wp-includes/class-wp-user.php:368
+#: wp-includes/class-wp-user.php:275 wp-includes/class-wp-user.php:305 wp-includes/class-wp-user.php:344 wp-includes/class-wp-user.php:368
 msgid "Use %s instead."
 msgstr "%sکو استعمال کریں۔"
 
@@ -7321,34 +7127,12 @@ msgstr "معذرت، آپ ذاتی پیغام نہیں بھیج سکتے۔"
 msgid "Sorry, you are not allowed to stick this post."
 msgstr "معاف کیجئے گا، آپ کو اس پیغام کو چپکانے کی اجازت نہیں ہے."
 
-#: wp-includes/class-wp-xmlrpc-server.php:1286
-#: wp-includes/class-wp-xmlrpc-server.php:4077
-#: wp-includes/class-wp-xmlrpc-server.php:4825
-#: wp-includes/class-wp-xmlrpc-server.php:4883
-#: wp-includes/class-wp-xmlrpc-server.php:5157
-#: wp-includes/class-wp-xmlrpc-server.php:5221
+#: wp-includes/class-wp-xmlrpc-server.php:1286 wp-includes/class-wp-xmlrpc-server.php:4077 wp-includes/class-wp-xmlrpc-server.php:4825 wp-includes/class-wp-xmlrpc-server.php:4883 wp-includes/class-wp-xmlrpc-server.php:5157 wp-includes/class-wp-xmlrpc-server.php:5221
 msgid "Invalid post type"
 msgstr "تحریر کی غلط قسم"
 
-#: wp-includes/class-wp-xmlrpc-server.php:1292
-#: wp-includes/class-wp-xmlrpc-server.php:1545
-#: wp-includes/class-wp-xmlrpc-server.php:1611
-#: wp-includes/class-wp-xmlrpc-server.php:1709
-#: wp-includes/class-wp-xmlrpc-server.php:2637
-#: wp-includes/class-wp-xmlrpc-server.php:3518
-#: wp-includes/class-wp-xmlrpc-server.php:3522
-#: wp-includes/class-wp-xmlrpc-server.php:3648
-#: wp-includes/class-wp-xmlrpc-server.php:4195
-#: wp-includes/class-wp-xmlrpc-server.php:4259
-#: wp-includes/class-wp-xmlrpc-server.php:4262
-#: wp-includes/class-wp-xmlrpc-server.php:4265
-#: wp-includes/class-wp-xmlrpc-server.php:4427
-#: wp-includes/class-wp-xmlrpc-server.php:5150
-#: wp-includes/class-wp-xmlrpc-server.php:5441
-#: wp-includes/class-wp-xmlrpc-server.php:5953
-#: wp-includes/class-wp-xmlrpc-server.php:6007
-#: wp-includes/class-wp-xmlrpc-server.php:6126 wp-includes/post.php:2938
-#: wp-includes/post.php:3426 wp-includes/revision.php:265
+#: wp-includes/class-wp-xmlrpc-server.php:1292 wp-includes/class-wp-xmlrpc-server.php:1545 wp-includes/class-wp-xmlrpc-server.php:1611 wp-includes/class-wp-xmlrpc-server.php:1709 wp-includes/class-wp-xmlrpc-server.php:2637 wp-includes/class-wp-xmlrpc-server.php:3518 wp-includes/class-wp-xmlrpc-server.php:3522 wp-includes/class-wp-xmlrpc-server.php:3648 wp-includes/class-wp-xmlrpc-server.php:4195 wp-includes/class-wp-xmlrpc-server.php:4259 wp-includes/class-wp-xmlrpc-server.php:4262
+#: wp-includes/class-wp-xmlrpc-server.php:4265 wp-includes/class-wp-xmlrpc-server.php:4427 wp-includes/class-wp-xmlrpc-server.php:5150 wp-includes/class-wp-xmlrpc-server.php:5441 wp-includes/class-wp-xmlrpc-server.php:5953 wp-includes/class-wp-xmlrpc-server.php:6007 wp-includes/class-wp-xmlrpc-server.php:6126 wp-includes/post.php:2938 wp-includes/post.php:3426 wp-includes/revision.php:265
 msgid "Invalid post ID."
 msgstr "غلط پوسٹ ID."
 
@@ -7356,13 +7140,11 @@ msgstr "غلط پوسٹ ID."
 msgid "Sorry, you are not allowed to edit this post."
 msgstr "معاف کیجئے گا، آپ کو اس تحریر میں ترمیم کرنے کی اجازت نہیں ہے."
 
-#: wp-includes/class-wp-xmlrpc-server.php:1296
-#: wp-includes/class-wp-xmlrpc-server.php:5161
+#: wp-includes/class-wp-xmlrpc-server.php:1296 wp-includes/class-wp-xmlrpc-server.php:5161
 msgid "The post type may not be changed."
 msgstr "تحریر کی قسم تبدیل نہیں کیا جا سکتی."
 
-#: wp-includes/class-wp-xmlrpc-server.php:1299
-#: wp-includes/class-wp-xmlrpc-server.php:4573
+#: wp-includes/class-wp-xmlrpc-server.php:1299 wp-includes/class-wp-xmlrpc-server.php:4573
 msgid "Sorry, you are not allowed to post on this site."
 msgstr "معاف کیجئے گا، آپ کو اس سائٹ پر پوسٹ کرنے کی اجازت نہیں ہے."
 
@@ -7378,37 +7160,27 @@ msgstr "معاف کیجئے گا، آپ کو اس پیغام کی قسم میں 
 msgid "Sorry, you are not allowed to create password protected posts in this post type"
 msgstr "معاف کیجئے گا، آپ کو اس پیغام کی قسم میں پاس ورڈ محفوظ خطوط پیدا کرنے کی اجازت نہیں ہے"
 
-#: wp-includes/class-wp-xmlrpc-server.php:1327
-#: wp-includes/class-wp-xmlrpc-server.php:4876
+#: wp-includes/class-wp-xmlrpc-server.php:1327 wp-includes/class-wp-xmlrpc-server.php:4876
 msgid "You are not allowed to create posts as this user."
 msgstr "آپ اس صارف کے طور پر خطوط کو تخلیق کرنے کی اجازت نہیں ہے."
 
-#: wp-includes/class-wp-xmlrpc-server.php:1332
-#: wp-includes/class-wp-xmlrpc-server.php:4887
+#: wp-includes/class-wp-xmlrpc-server.php:1332 wp-includes/class-wp-xmlrpc-server.php:4887
 msgid "Invalid author ID."
 msgstr "ناموزوں مصنف ID."
 
-#: wp-includes/class-wp-xmlrpc-server.php:1372
-#: wp-includes/class-wp-xmlrpc-server.php:3908
-#: wp-includes/class-wp-xmlrpc-server.php:5031
-#: wp-includes/class-wp-xmlrpc-server.php:5386
+#: wp-includes/class-wp-xmlrpc-server.php:1372 wp-includes/class-wp-xmlrpc-server.php:3908 wp-includes/class-wp-xmlrpc-server.php:5031 wp-includes/class-wp-xmlrpc-server.php:5386
 msgid "Invalid attachment ID."
 msgstr "غلط ملحق ID."
 
-#: wp-includes/class-wp-xmlrpc-server.php:1393
-#: wp-includes/class-wp-xmlrpc-server.php:1417
+#: wp-includes/class-wp-xmlrpc-server.php:1393 wp-includes/class-wp-xmlrpc-server.php:1417
 msgid "Sorry, one of the given taxonomies is not supported by the post type."
 msgstr "معاف کیجئے گا، دی taxonomies کی ایک پوسٹ کی قسم کی طرف سے کی سہولت نہیں ہے."
 
-#: wp-includes/class-wp-xmlrpc-server.php:1396
-#: wp-includes/class-wp-xmlrpc-server.php:1420
+#: wp-includes/class-wp-xmlrpc-server.php:1396 wp-includes/class-wp-xmlrpc-server.php:1420
 msgid "Sorry, you are not allowed to assign a term to one of the given taxonomies."
 msgstr "معاف کیجئے گا، آپ کی اجازت دی taxonomies میں سے کسی ایک کے پاس ایک ایسی اصطلاح کو تفویض نہیں ہے."
 
-#: wp-includes/class-wp-xmlrpc-server.php:1404
-#: wp-includes/class-wp-xmlrpc-server.php:1956
-#: wp-includes/class-wp-xmlrpc-server.php:2047
-#: wp-includes/class-wp-xmlrpc-server.php:2118 wp-includes/taxonomy.php:2566
+#: wp-includes/class-wp-xmlrpc-server.php:1404 wp-includes/class-wp-xmlrpc-server.php:1956 wp-includes/class-wp-xmlrpc-server.php:2047 wp-includes/class-wp-xmlrpc-server.php:2118 wp-includes/taxonomy.php:2566
 msgid "Invalid term ID"
 msgstr "جعلی اصطلاح ID"
 
@@ -7420,9 +7192,7 @@ msgstr "مبہم اصطلاح کا نام ایک پدانکردوست درجہ �
 msgid "Sorry, you are not allowed to add a term to one of the given taxonomies."
 msgstr "معاف کیجئے گا، آپ کو ایک اصطلاح کو دیا taxonomies میں سے ایک کو شامل کرنے کی اجازت نہیں ہے."
 
-#: wp-includes/class-wp-xmlrpc-server.php:1501
-#: wp-includes/class-wp-xmlrpc-server.php:4593
-#: wp-includes/class-wp-xmlrpc-server.php:5052
+#: wp-includes/class-wp-xmlrpc-server.php:1501 wp-includes/class-wp-xmlrpc-server.php:4593 wp-includes/class-wp-xmlrpc-server.php:5052
 msgid "Sorry, your entry could not be posted. Something wrong happened."
 msgstr "معاف کیجئے گا، آپ کی انٹری پوسٹ نہیں کیا جا سکتا ہے. کچھ غلط ہوا ہے."
 
@@ -7430,22 +7200,15 @@ msgstr "معاف کیجئے گا، آپ کی انٹری پوسٹ نہیں کیا
 msgid "There is a revision of this post that is more recent."
 msgstr "اس تحریر پر ایک نئی نظرِ ثانی موجود ہے۔"
 
-#: wp-includes/class-wp-xmlrpc-server.php:1615
-#: wp-includes/class-wp-xmlrpc-server.php:4723
+#: wp-includes/class-wp-xmlrpc-server.php:1615 wp-includes/class-wp-xmlrpc-server.php:4723
 msgid "Sorry, you do not have the right to delete this post."
 msgstr "معاف کیجئے گا، آپ اس پوسٹ کو حذف کرنے کا حق نہیں ہے."
 
-#: wp-includes/class-wp-xmlrpc-server.php:1621
-#: wp-includes/class-wp-xmlrpc-server.php:4729
+#: wp-includes/class-wp-xmlrpc-server.php:1621 wp-includes/class-wp-xmlrpc-server.php:4729
 msgid "The post cannot be deleted."
 msgstr "اس تحریر کو حذف نہیں کیا جا سکتا ہے."
 
-#: wp-includes/class-wp-xmlrpc-server.php:1712
-#: wp-includes/class-wp-xmlrpc-server.php:4268
-#: wp-includes/class-wp-xmlrpc-server.php:4430
-#: wp-includes/class-wp-xmlrpc-server.php:5444
-#: wp-includes/class-wp-xmlrpc-server.php:5785
-#: wp-includes/class-wp-xmlrpc-server.php:6010
+#: wp-includes/class-wp-xmlrpc-server.php:1712 wp-includes/class-wp-xmlrpc-server.php:4268 wp-includes/class-wp-xmlrpc-server.php:4430 wp-includes/class-wp-xmlrpc-server.php:5444 wp-includes/class-wp-xmlrpc-server.php:5785 wp-includes/class-wp-xmlrpc-server.php:6010
 msgid "Sorry, you cannot edit this post."
 msgstr "معاف کیجئے گا، آپ اس پوسٹ کو مدون نہیں کر سکتے ہیں."
 
@@ -7461,8 +7224,7 @@ msgstr "معاف کیجئے گا، آپ کو اس پیغام کی قسم میں 
 msgid "You are not allowed to create terms in this taxonomy."
 msgstr "آپ کو اس درجہ بندی میں اصطلاحات کو تخلیق کرنے کی اجازت نہیں ہے۔"
 
-#: wp-includes/class-wp-xmlrpc-server.php:1865
-#: wp-includes/class-wp-xmlrpc-server.php:1962
+#: wp-includes/class-wp-xmlrpc-server.php:1865 wp-includes/class-wp-xmlrpc-server.php:1962
 msgid "The term name cannot be empty."
 msgstr "اصطلاح کا نام خالی نہیں ہو سکتا"
 
@@ -7470,9 +7232,7 @@ msgstr "اصطلاح کا نام خالی نہیں ہو سکتا"
 msgid "This taxonomy is not hierarchical."
 msgstr "یہ درجہ بندی درجہ وار نہیں ہے"
 
-#: wp-includes/class-wp-xmlrpc-server.php:1878
-#: wp-includes/class-wp-xmlrpc-server.php:1976 wp-includes/taxonomy.php:2575
-#: wp-includes/taxonomy.php:3167
+#: wp-includes/class-wp-xmlrpc-server.php:1878 wp-includes/class-wp-xmlrpc-server.php:1976 wp-includes/taxonomy.php:2575 wp-includes/taxonomy.php:3167
 msgid "Parent term does not exist."
 msgstr "بنیادی اصطلاح موجود نہیں ہے."
 
@@ -7496,8 +7256,7 @@ msgstr "معذرت، اصطلاح میں تبدیلی نہیں کی جا سکی"
 msgid "You are not allowed to delete terms in this taxonomy."
 msgstr "آپ کو اس درجہ بندی کی اصطلاحات میں تخریج کی اجازت نہیں ہے "
 
-#: wp-includes/class-wp-customize-section.php:236
-#: wp-includes/customize/class-wp-customize-themes-section.php:55
+#: wp-includes/class-wp-customize-section.php:236 wp-includes/customize/class-wp-customize-themes-section.php:55
 msgid "Customizing"
 msgstr "انفرادیت"
 
@@ -7530,12 +7289,7 @@ msgstr "کا اطلاق کریں"
 msgid "Save and preview changes before publishing them."
 msgstr "محفوظ کریں اورشائع کرنے سے پہلے اس میں تبدیلیوں کو دیکھائے۔"
 
-#: wp-includes/class-wp-customize-widgets.php:671
-#: wp-includes/class-wp-editor.php:1036
-#: wp-includes/customize/class-wp-customize-image-control.php:37
-#: wp-includes/customize/class-wp-customize-media-control.php:62
-#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:141
-#: wp-includes/media-template.php:467 wp-includes/media.php:3336
+#: wp-includes/class-wp-customize-widgets.php:671 wp-includes/class-wp-editor.php:1036 wp-includes/customize/class-wp-customize-image-control.php:37 wp-includes/customize/class-wp-customize-media-control.php:62 wp-includes/customize/class-wp-customize-nav-menu-item-control.php:141 wp-includes/media-template.php:467 wp-includes/media.php:3336
 msgid "Remove"
 msgstr "ہٹائیں"
 
@@ -7543,8 +7297,7 @@ msgstr "ہٹائیں"
 msgid "Trash widget by moving it to the inactive widgets sidebar."
 msgstr "ویجٹ کو غیر فعال بنانے کے لئے اسے غیر فعال سائیڈ بار پر لے جائیں "
 
-#: wp-includes/class-wp-customize-widgets.php:673
-#: wp-includes/script-loader.php:623
+#: wp-includes/class-wp-customize-widgets.php:673 wp-includes/script-loader.php:623
 msgid "An error has occurred. Please reload the page and try again."
 msgstr "ایک غلطی کے وقوع پزیر ہونے کی وجہ سے مسئلہ درپیش ہے۔ برائے کرم صفحہ دوبارہ لوڈ کریں اور دوبارہ کوشش کریں"
 
@@ -7560,13 +7313,11 @@ msgstr " وجٹس کو نیچے منتقل کر دیا گیا"
 msgid "There are no widget areas currently rendered in the preview. Navigate in the preview to a template that makes use of a widget area in order to access its widgets here."
 msgstr ""
 
-#: wp-includes/class-wp-customize-widgets.php:679
-#: wp-includes/customize/class-wp-widget-area-customize-control.php:63
+#: wp-includes/class-wp-customize-widgets.php:679 wp-includes/customize/class-wp-widget-area-customize-control.php:63
 msgid "Reorder widgets"
 msgstr ""
 
-#: wp-includes/class-wp-customize-widgets.php:718
-#: wp-includes/customize/class-wp-widget-area-customize-control.php:61
+#: wp-includes/class-wp-customize-widgets.php:718 wp-includes/customize/class-wp-widget-area-customize-control.php:61
 msgid "Add a Widget"
 msgstr "ایک ویجٹ ڈالیں"
 
@@ -7765,15 +7516,11 @@ msgstr "دوبارہ کریں"
 msgid "OK"
 msgstr "ٹھیک ہے"
 
-#: wp-includes/class-wp-editor.php:861 wp-includes/class-wp-editor.php:1446
-#: wp-includes/media.php:3333 wp-includes/script-loader.php:390
-#: wp-includes/script-loader.php:438 wp-includes/script-loader.php:507
+#: wp-includes/class-wp-editor.php:861 wp-includes/class-wp-editor.php:1446 wp-includes/media.php:3333 wp-includes/script-loader.php:390 wp-includes/script-loader.php:438 wp-includes/script-loader.php:507
 msgid "Cancel"
 msgstr "مسترد"
 
-#: wp-includes/class-wp-editor.php:862 wp-includes/class-wp-editor.php:1402
-#: wp-includes/functions.php:4937 wp-includes/script-loader.php:256
-#: wp-includes/script-loader.php:337 wp-includes/script-loader.php:439
+#: wp-includes/class-wp-editor.php:862 wp-includes/class-wp-editor.php:1402 wp-includes/functions.php:4937 wp-includes/script-loader.php:256 wp-includes/script-loader.php:337 wp-includes/script-loader.php:439
 msgid "Close"
 msgstr "بند کریں"
 
@@ -7837,8 +7584,7 @@ msgstr ""
 msgid "Site Identity"
 msgstr "سائٹ کی شناخت"
 
-#: wp-includes/class-wp-customize-manager.php:1808
-#: wp-includes/class-wp-xmlrpc-server.php:467
+#: wp-includes/class-wp-customize-manager.php:1808 wp-includes/class-wp-xmlrpc-server.php:467
 msgid "Site Title"
 msgstr "سائٹ کا عنوان"
 
@@ -7870,8 +7616,7 @@ msgstr "سرنامہ متن کا رنگ"
 msgid "Background Color"
 msgstr "پس منظر کا رنگ"
 
-#: wp-includes/class-wp-customize-manager.php:1887
-#: wp-includes/customize/class-wp-customize-header-image-control.php:31
+#: wp-includes/class-wp-customize-manager.php:1887 wp-includes/customize/class-wp-customize-header-image-control.php:31
 msgid "Header Image"
 msgstr "ہیڈر تصویر"
 
@@ -7899,21 +7644,15 @@ msgstr "عمودی ٹائل"
 msgid "Background Position"
 msgstr "پس منظر کی پوزیشن"
 
-#: wp-includes/class-wp-customize-manager.php:1950
-#: wp-includes/class-wp-editor.php:988 wp-includes/media-template.php:613
-#: wp-includes/media-template.php:844 wp-includes/media-template.php:910
+#: wp-includes/class-wp-customize-manager.php:1950 wp-includes/class-wp-editor.php:988 wp-includes/media-template.php:613 wp-includes/media-template.php:844 wp-includes/media-template.php:910
 msgid "Left"
 msgstr "بائیں"
 
-#: wp-includes/class-wp-customize-manager.php:1951
-#: wp-includes/class-wp-editor.php:989 wp-includes/media-template.php:616
-#: wp-includes/media-template.php:847 wp-includes/media-template.php:913
+#: wp-includes/class-wp-customize-manager.php:1951 wp-includes/class-wp-editor.php:989 wp-includes/media-template.php:616 wp-includes/media-template.php:847 wp-includes/media-template.php:913
 msgid "Center"
 msgstr "درمیان"
 
-#: wp-includes/class-wp-customize-manager.php:1952
-#: wp-includes/class-wp-editor.php:990 wp-includes/media-template.php:619
-#: wp-includes/media-template.php:850 wp-includes/media-template.php:916
+#: wp-includes/class-wp-customize-manager.php:1952 wp-includes/class-wp-editor.php:990 wp-includes/media-template.php:619 wp-includes/media-template.php:850 wp-includes/media-template.php:916
 msgid "Right"
 msgstr "دائیں"
 
@@ -7962,24 +7701,20 @@ msgctxt "nav menu home label"
 msgid "Home"
 msgstr "صفحہ اوّل"
 
-#: wp-includes/class-wp-customize-nav-menus.php:131
-#: wp-includes/nav-menu.php:757
+#: wp-includes/class-wp-customize-nav-menus.php:131 wp-includes/nav-menu.php:757
 msgid "Post Type Archive"
 msgstr ""
 
-#: wp-includes/class-wp-customize-nav-menus.php:231
-#: wp-includes/script-loader.php:407 wp-includes/script-loader.php:642
+#: wp-includes/class-wp-customize-nav-menus.php:231 wp-includes/script-loader.php:407 wp-includes/script-loader.php:642
 msgid "No results found."
 msgstr "کوئی نتائج نہیں ملے۔"
 
-#: wp-includes/class-wp-customize-nav-menus.php:336
-#: wp-includes/script-loader.php:645
+#: wp-includes/class-wp-customize-nav-menus.php:336 wp-includes/script-loader.php:645
 msgctxt "missing menu item navigation label"
 msgid "(no label)"
 msgstr "(بلا عنوان)"
 
-#: wp-includes/class-wp-customize-nav-menus.php:337
-#: wp-includes/customize/class-wp-customize-nav-menu-setting.php:440
+#: wp-includes/class-wp-customize-nav-menus.php:337 wp-includes/customize/class-wp-customize-nav-menu-setting.php:440
 msgctxt "Missing menu name."
 msgid "(unnamed)"
 msgstr "(بے نام)"
@@ -8028,10 +7763,7 @@ msgstr "اب مینیو آئٹم ایک سب آئٹم ہے"
 
 #. translators: &#9656; is the unicode right-pointing triangle, and %s is the
 #. section title in the Customizer
-#: wp-includes/class-wp-customize-nav-menus.php:351
-#: wp-includes/class-wp-customize-nav-menus.php:722
-#: wp-includes/class-wp-customize-section.php:234
-#: wp-includes/class-wp-customize-widgets.php:716
+#: wp-includes/class-wp-customize-nav-menus.php:351 wp-includes/class-wp-customize-nav-menus.php:722 wp-includes/class-wp-customize-section.php:234 wp-includes/class-wp-customize-widgets.php:716
 msgid "Customizing &#9656; %s"
 msgstr "تخصیص کرنا اور#9656;s%"
 
@@ -8057,23 +7789,19 @@ msgstr "اضافی آئٹمز ملے ہیں:  %d"
 msgid "Loading more results... please wait."
 msgstr "مزید نتائج لائے جا رہے ہیں۔۔۔ برا ئے کرم انتظار فرمائیے"
 
-#: wp-includes/class-wp-customize-nav-menus.php:359
-#: wp-includes/class-wp-customize-widgets.php:677
+#: wp-includes/class-wp-customize-nav-menus.php:359 wp-includes/class-wp-customize-widgets.php:677
 msgid "Reorder mode enabled"
 msgstr "ترتیبی موڈ فعال ہو گیا ہے۔"
 
-#: wp-includes/class-wp-customize-nav-menus.php:360
-#: wp-includes/class-wp-customize-widgets.php:678
+#: wp-includes/class-wp-customize-nav-menus.php:360 wp-includes/class-wp-customize-widgets.php:678
 msgid "Reorder mode closed"
 msgstr "ترتیبی موڈبند ہو گیا ہے۔"
 
-#: wp-includes/class-wp-customize-nav-menus.php:361
-#: wp-includes/customize/class-wp-customize-nav-menu-control.php:54
+#: wp-includes/class-wp-customize-nav-menus.php:361 wp-includes/customize/class-wp-customize-nav-menu-control.php:54
 msgid "Reorder menu items"
 msgstr "مینیو آئٹیمز کو دوبارہ ترتیب دیں"
 
-#: wp-includes/class-wp-customize-nav-menus.php:362
-#: wp-includes/class-wp-customize-widgets.php:680
+#: wp-includes/class-wp-customize-nav-menus.php:362 wp-includes/class-wp-customize-widgets.php:680
 msgid "Close reorder mode"
 msgstr "ترتیبی موڈ کو بند کریں"
 
@@ -8162,13 +7890,11 @@ msgstr "نئے مینو کا نام"
 msgid "Add to menu: %1$s (%2$s)"
 msgstr "مینو کا حصہ بنائیں : %1$s (%2$s)"
 
-#: wp-includes/class-wp-customize-nav-menus.php:694
-#: wp-includes/class-wp-customize-widgets.php:641
+#: wp-includes/class-wp-customize-nav-menus.php:694 wp-includes/class-wp-customize-widgets.php:641
 msgid "Move up"
 msgstr "اوپر جائے"
 
-#: wp-includes/class-wp-customize-nav-menus.php:695
-#: wp-includes/class-wp-customize-widgets.php:640
+#: wp-includes/class-wp-customize-nav-menus.php:695 wp-includes/class-wp-customize-widgets.php:640
 msgid "Move down"
 msgstr "نیچے جائے"
 
@@ -8180,12 +7906,7 @@ msgstr "ایک درجہ ترقتی دیں"
 msgid "Move one level down"
 msgstr "ایک درجہ تنزلی پر لے جائیں"
 
-#: wp-includes/class-wp-customize-nav-menus.php:716
-#: wp-includes/class-wp-customize-panel.php:369
-#: wp-includes/class-wp-customize-section.php:356
-#: wp-includes/class-wp-customize-widgets.php:711
-#: wp-includes/customize/class-wp-customize-nav-menus-panel.php:82
-#: wp-includes/media.php:3337
+#: wp-includes/class-wp-customize-nav-menus.php:716 wp-includes/class-wp-customize-panel.php:369 wp-includes/class-wp-customize-section.php:356 wp-includes/class-wp-customize-widgets.php:711 wp-includes/customize/class-wp-customize-nav-menus-panel.php:82 wp-includes/media.php:3337
 msgid "Back"
 msgstr "پیچھے جائیں"
 
@@ -8236,13 +7957,11 @@ msgstr "گزشتہ کفیت میں جانے کے لیے واپس کو دبائی
 
 #. translators: %s is the site/panel title in the Customizer
 #. Translators: %s is the site/panel title in the Customizer.
-#: wp-includes/class-wp-customize-panel.php:373
-#: wp-includes/customize/class-wp-customize-nav-menus-panel.php:88
+#: wp-includes/class-wp-customize-panel.php:373 wp-includes/customize/class-wp-customize-nav-menus-panel.php:88
 msgid "You are customizing %s"
 msgstr "آپ تخصیص کر رہے ہیں %s"
 
-#: wp-includes/class-wp-customize-panel.php:375
-#: wp-includes/customize/class-wp-customize-nav-menus-panel.php:92
+#: wp-includes/class-wp-customize-panel.php:375 wp-includes/customize/class-wp-customize-nav-menus-panel.php:92
 msgid "Help"
 msgstr "مدد"
 
@@ -8298,8 +8017,7 @@ msgstr "ورڈپریس کے بارے میں"
 msgid "WordPress.org"
 msgstr "WordPress.org"
 
-#: wp-includes/admin-bar.php:129
-#: wp-includes/widgets/class-wp-widget-meta.php:65 wp-login.php:101
+#: wp-includes/admin-bar.php:129 wp-includes/widgets/class-wp-widget-meta.php:65 wp-login.php:101
 msgid "https://wordpress.org/"
 msgstr "https://wordpress.org/"
 
@@ -8315,8 +8033,7 @@ msgstr "https://codex.wordpress.org/~~V"
 msgid "Support Forums"
 msgstr "امدادی فورم"
 
-#: wp-includes/admin-bar.php:145 wp-includes/wp-db.php:1085
-#: wp-includes/wp-db.php:1551 wp-includes/wp-db.php:1655 wp-login.php:780
+#: wp-includes/admin-bar.php:145 wp-includes/wp-db.php:1085 wp-includes/wp-db.php:1551 wp-includes/wp-db.php:1655 wp-login.php:780
 msgid "https://wordpress.org/support/"
 msgstr "https://wordpress.org/support/"
 
@@ -8348,8 +8065,7 @@ msgstr "%s : نیٹ ورک منتظم "
 msgid "User Dashboard: %s"
 msgstr "استعمال کنندہ کا تختئہ مشق : %s"
 
-#: wp-includes/admin-bar.php:314 wp-includes/admin-bar.php:504
-#: wp-includes/deprecated.php:2759
+#: wp-includes/admin-bar.php:314 wp-includes/admin-bar.php:504 wp-includes/deprecated.php:2759
 msgid "Visit Site"
 msgstr "سائیٹ پر جائیں"
 
@@ -8357,15 +8073,11 @@ msgstr "سائیٹ پر جائیں"
 msgid "Edit Site"
 msgstr "سائٹ میں ترمیم کریں"
 
-#: wp-includes/admin-bar.php:332 wp-includes/admin-bar.php:412
-#: wp-includes/admin-bar.php:479 wp-includes/deprecated.php:2761
-#: wp-includes/deprecated.php:2763
+#: wp-includes/admin-bar.php:332 wp-includes/admin-bar.php:412 wp-includes/admin-bar.php:479 wp-includes/deprecated.php:2761 wp-includes/deprecated.php:2763
 msgid "Dashboard"
 msgstr "ڈیش بورڈ"
 
-#: wp-includes/admin-bar.php:359
-#: wp-includes/customize/class-wp-customize-theme-control.php:85
-#: wp-includes/customize/class-wp-customize-themes-section.php:67
+#: wp-includes/admin-bar.php:359 wp-includes/customize/class-wp-customize-theme-control.php:85 wp-includes/customize/class-wp-customize-themes-section.php:67
 msgid "Customize"
 msgstr "منفرد بنائیں"
 
@@ -8385,8 +8097,7 @@ msgstr "سائٹس"
 msgid "Users"
 msgstr "صارفین"
 
-#: wp-includes/admin-bar.php:430 wp-includes/admin-bar.php:722
-#: wp-includes/customize/class-wp-customize-themes-section.php:56
+#: wp-includes/admin-bar.php:430 wp-includes/admin-bar.php:722 wp-includes/customize/class-wp-customize-themes-section.php:56
 msgid "Themes"
 msgstr "تھیمز"
 
@@ -8431,13 +8142,11 @@ msgid_plural "%s comments awaiting moderation"
 msgstr[0] "تبصرہ ادارت کے انتظار میں ہیں %s"
 msgstr[1] "تبصرے ادارت کے انتظار میں ہیں %s"
 
-#: wp-includes/admin-bar.php:735 wp-includes/class-wp-customize-widgets.php:359
-#: wp-includes/functions.php:3450
+#: wp-includes/admin-bar.php:735 wp-includes/class-wp-customize-widgets.php:359 wp-includes/functions.php:3450
 msgid "Widgets"
 msgstr "ویجٹ"
 
-#: wp-includes/admin-bar.php:741
-#: wp-includes/class-wp-customize-nav-menus.php:469
+#: wp-includes/admin-bar.php:741 wp-includes/class-wp-customize-nav-menus.php:469
 msgid "Menus"
 msgstr "مینیو"
 
@@ -8449,8 +8158,7 @@ msgstr "پس منظر"
 msgid "Header"
 msgstr "سرورق"
 
-#: wp-includes/admin-bar.php:809 wp-includes/admin-bar.php:810
-#: wp-includes/class-wp-editor.php:1421 wp-includes/media.php:3331
+#: wp-includes/admin-bar.php:809 wp-includes/admin-bar.php:810 wp-includes/class-wp-editor.php:1421 wp-includes/media.php:3331
 msgid "Search"
 msgstr "تلاش"
 
@@ -8482,8 +8190,7 @@ msgid "Bookmarks"
 msgstr "بک مارکس میں"
 
 #. translators: 1: post type, 2: capability name
-#: wp-includes/capabilities.php:71 wp-includes/capabilities.php:132
-#: wp-includes/capabilities.php:191 wp-includes/capabilities.php:228
+#: wp-includes/capabilities.php:71 wp-includes/capabilities.php:132 wp-includes/capabilities.php:191 wp-includes/capabilities.php:228
 msgid "The post type %1$s is not registered, so it may not be reliable to check the capability \"%2$s\" against a post of that type."
 msgstr ""
 
@@ -8500,10 +8207,7 @@ msgstr ""
 msgid "No categories"
 msgstr "کوئی زمرے نہیں"
 
-#: wp-includes/category-template.php:536
-#: wp-includes/theme-compat/sidebar.php:98
-#: wp-includes/widgets/class-wp-widget-categories.php:27
-#: wp-includes/widgets/class-wp-widget-categories.php:44
+#: wp-includes/category-template.php:536 wp-includes/theme-compat/sidebar.php:98 wp-includes/widgets/class-wp-widget-categories.php:27 wp-includes/widgets/class-wp-widget-categories.php:44
 msgid "Categories"
 msgstr "زمرے"
 
@@ -8533,8 +8237,7 @@ msgstr "فائل کو اوپر کے لئے مطلوبہ ڈائریکٹری مو�
 msgid "There are no HTTP transports available which can complete the requested request."
 msgstr "کوئی HTTP دستیاب ہیں ٹرانسپورٹ جس درخواست کی درخواست کو مکمل کر سکتے ہیں."
 
-#: wp-includes/class-http.php:802 wp-includes/class-wp-http-curl.php:232
-#: wp-includes/class-wp-http-curl.php:271
+#: wp-includes/class-http.php:802 wp-includes/class-wp-http-curl.php:232 wp-includes/class-wp-http-curl.php:271
 msgid "Too many redirects."
 msgstr "بہت سارے redirects."
 
@@ -8550,14 +8253,12 @@ msgstr "پنگ بیک:"
 msgid "<cite class=\"fn\">%s</cite> <span class=\"says\">says:</span>"
 msgstr "<cite class=\"fn\">%s</cite> <span class=\"says\">نے کہا :</span>"
 
-#: wp-includes/class-walker-comment.php:270
-#: wp-includes/class-walker-comment.php:335
+#: wp-includes/class-walker-comment.php:270 wp-includes/class-walker-comment.php:335
 msgid "Your comment is awaiting moderation."
 msgstr "آپ کی رائے اعتدال پسندی کا انتظار کر رہا ہے."
 
 #. translators: 1: comment date, 2: comment time
-#: wp-includes/class-walker-comment.php:277
-#: wp-includes/class-walker-comment.php:327
+#: wp-includes/class-walker-comment.php:277 wp-includes/class-walker-comment.php:327
 msgid "%1$s at %2$s"
 msgstr "2 $ S٪٪ 1 $ S"
 
@@ -8570,11 +8271,7 @@ msgid "%s <span class=\"says\">says:</span>"
 msgstr "%s <span class=\"says\">نے کہا:</span>"
 
 #. translators: %d: ID of a post
-#: wp-includes/class-walker-page-dropdown.php:59
-#: wp-includes/class-walker-page.php:114
-#: wp-includes/class-wp-customize-nav-menus.php:148
-#: wp-includes/class-wp-customize-nav-menus.php:277
-#: wp-includes/nav-menu.php:744 wp-includes/nav-menu.php:819
+#: wp-includes/class-walker-page-dropdown.php:59 wp-includes/class-walker-page.php:114 wp-includes/class-wp-customize-nav-menus.php:148 wp-includes/class-wp-customize-nav-menus.php:277 wp-includes/nav-menu.php:744 wp-includes/nav-menu.php:819
 msgid "#%d (no title)"
 msgstr "#%d (بلا عنوان)"
 
@@ -8590,14 +8287,11 @@ msgstr "ٹول بار پر جائیں"
 msgid "Toolbar"
 msgstr "ٹول بار"
 
-#: wp-includes/class-wp-customize-control.php:490
-#: wp-includes/class-wp-customize-nav-menus.php:493
-#: wp-includes/widgets/class-wp-nav-menu-widget.php:138
+#: wp-includes/class-wp-customize-control.php:490 wp-includes/class-wp-customize-nav-menus.php:493 wp-includes/widgets/class-wp-nav-menu-widget.php:138
 msgid "&mdash; Select &mdash;"
 msgstr "- منتخب کریں -"
 
-#: wp-includes/class-wp-customize-manager.php:327
-#: wp-includes/script-loader.php:440
+#: wp-includes/class-wp-customize-manager.php:327 wp-includes/script-loader.php:440
 msgid "Cheatin&#8217; uh?"
 msgstr "دھوکہ؟ اوہ"
 
@@ -8605,8 +8299,7 @@ msgstr "دھوکہ؟ اوہ"
 msgid "You must be logged in to complete this action."
 msgstr ""
 
-#: wp-includes/class-wp-customize-manager.php:368
-#: wp-includes/script-loader.php:441
+#: wp-includes/class-wp-customize-manager.php:368 wp-includes/script-loader.php:441
 msgid "You are not allowed to customize the appearance of this site."
 msgstr ""
 

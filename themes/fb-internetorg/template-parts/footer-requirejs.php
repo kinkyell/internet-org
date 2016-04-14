@@ -144,6 +144,14 @@ $url_prefix = internetorg_get_current_language();
 	 */
 	SETTINGS.RESULTS_FOUND_TEXT = '<?php esc_html_e( '%d Results Found', 'internetorg' ); ?>';
 
+
+	SETTINGS.ENGLISH_LANGUAGE_NOTIFICATION = {
+		PROMPT_TEXT: '<?php echo esc_js( esc_html__( 'You are now entering a section of the site that is in English only.', 'internetorg' ) ); ?>',
+		CANCEL_TEXT: '<?php echo esc_js( esc_html__( 'Cancel', 'internetorg' ) ); ?>',
+		OKAY_TEXT: '<?php echo esc_js( esc_html__( 'OK', 'internetorg' ) ); ?>'
+	};
+
+
 	/**
 	 * routes for static and WP endpoints
 	 *

@@ -2,21 +2,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Internet.org\n"
 "POT-Creation-Date: 2015-10-05 11:57-0500\n"
-"PO-Revision-Date: 2015-12-22 10:06-0500\n"
+"PO-Revision-Date: 2016-04-12 10:42-0700\n"
 "Last-Translator: Darcy Clarke <darcy@darcyclarke.me>\n"
 "Language-Team: Richard Aber <raber@nerdery.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: style.css\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;"
-"esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;"
-"__ngettext_noop:1,2\n"
-"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? "
-"3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
 "Language: ar\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
@@ -33,7 +30,8 @@ msgstr "غير موجودة"
 msgid "It looks like nothing was found at this location. Maybe try a search?"
 msgstr "يبدو أنه لم يتم العثور على هذا الموقع. هل تريد تجربة البحث؟"
 
-#: archive.php:69 template-parts/content-press-item.php:38 template-parts/content-search.php:40
+#: archive.php:69 template-parts/content-press-item.php:38
+#: template-parts/content-search.php:40
 msgid "Read More"
 msgstr "قراءة المزيد"
 
@@ -86,7 +84,8 @@ msgstr "الفيديو المطلوب إدراجه"
 msgid "Click Me"
 msgstr "اضغط هنا"
 
-#: functions.php:1656 plugins/internetorg-custom-fields/internetorg-custom-fields.php:150
+#: functions.php:1656
+#: plugins/internetorg-custom-fields/internetorg-custom-fields.php:150
 msgid "Link"
 msgstr "الرابط"
 
@@ -118,7 +117,8 @@ msgstr "رابط خارجي"
 msgid "External URL"
 msgstr "عنوان URL خارجي"
 
-#: functions.php:1683 plugins/internetorg-custom-posttypes/content-widget.php:71
+#: functions.php:1683
+#: plugins/internetorg-custom-posttypes/content-widget.php:71
 #: plugins/internetorg-custom-posttypes/content-widget.php:90
 msgid "URL"
 msgstr "عنوان URL"
@@ -176,7 +176,8 @@ msgid "% Comments"
 msgstr "% من التعليقات"
 
 #: inc/template-tags.php:85 inc/template-tags.php:107
-#: template-parts/content-page-entry-end.php:11 template-parts/content-page.php:26
+#: template-parts/content-page-entry-end.php:11
+#: template-parts/content-page.php:26
 msgid "Edit"
 msgstr "تعديل"
 
@@ -404,10 +405,8 @@ msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr "هل أنت مستعد لنشر أول منشوراتك؟ <a href=\"%1$s\">ابدأ هنا</a>."
 
 #: template-parts/content-none.php:24 template-parts/content-search-none.php:14
-msgid ""
-"Sorry, but nothing matched your search terms. Please try again with some different keywords."
-msgstr ""
-"عذرًا، لم يتم العثور على نتائج توافق بحثك. يرجى إعادة المحاولة مرة أخرى بكلمات أساسية مختلفة."
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "عذرًا، لم يتم العثور على نتائج توافق بحثك. يرجى إعادة المحاولة مرة أخرى بكلمات أساسية مختلفة."
 
 #: template-parts/content-none.php:29
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
@@ -429,8 +428,9 @@ msgstr "https://fb.me/Internetdotorg"
 msgid "Like us on Facebook"
 msgstr "سجل إعجابك بنا على فيسبوك"
 
-#: template-parts/content-page-entry-content.php:14 template-parts/content-page.php:19
-#: template-parts/content-single.php:23 template-parts/content.php:32
+#: template-parts/content-page-entry-content.php:14
+#: template-parts/content-page.php:19 template-parts/content-single.php:23
+#: template-parts/content.php:32
 msgid "Pages:"
 msgstr "الصفحات:"
 
@@ -438,7 +438,8 @@ msgstr "الصفحات:"
 msgid "Learn About"
 msgstr "اعرف معلومات عن"
 
-#: template-parts/content-search-mobile.php:19 template-parts/header-search.php:19
+#: template-parts/content-search-mobile.php:19
+#: template-parts/header-search.php:19
 msgctxt "placeholder"
 msgid "Search"
 msgstr "بحث"
@@ -447,7 +448,8 @@ msgstr "بحث"
 msgid "More Posts"
 msgstr "المزيد من المنشورات"
 
-#: template-parts/content-single-more.php:43 template-parts/content-single-more.php:71
+#: template-parts/content-single-more.php:43
+#: template-parts/content-single-more.php:71
 msgid "Read"
 msgstr "اقرأ"
 
@@ -497,8 +499,15 @@ msgstr "http://www.nerdery.com"
 msgid "%d Results Found"
 msgstr "نتائج البحث %d"
 
-# Standard WordPress PO File
+# Content in English dialog (front end)
+msgid "You are now entering a section of the site that is in English only."
+msgstr "انت تدخل الآن قسم من الموقع الذي هو باللغة الإنجليزية فقط."
 
+# Content in English dialog (wp-admin)
+msgid "Content in English dialog"
+msgstr "محتوى في الحوار الإنجليزية"
+
+# Standard WordPress PO File
 #. translators: 'rtl' or 'ltr'. This sets the text direction for WordPress.
 #: wp-includes/locale.php:201
 msgctxt "text direction"
@@ -7903,7 +7912,6 @@ msgstr "لسبب ما غريب، لا يمكن تحرير هذه المقالة.
 msgid "Sorry, you do not have the right to delete this post."
 msgstr "عفواً، لا تملك الصلاحيات الكافية لحذف هذه المقالة."
 
-
 #: wp-includes/comment-template.php:2151
 #: wp-includes/theme-compat/comments.php:102
 msgid "Website"
@@ -8713,6 +8721,3 @@ msgstr "تتحايل، ها؟"
 #: wp-includes/post.php:1368
 msgid "No posts found."
 msgstr "لا توجد مقالات."
-
-
-

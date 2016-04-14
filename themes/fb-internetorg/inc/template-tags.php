@@ -46,24 +46,46 @@ if ( ! function_exists( 'internetorg_posted_on_date' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'internetorg_link_class' ) ) :
-	/**
-	 * Append special classes to a link depending on the post.
-	 *
-	 * @return void
-	 */
-	function internetorg_link_class() {
-		$extra_classes = '';
+if ( ! function_exists( 'internetorg_english_lang_notification_class' ) ) :
 
+	/**
+	 * Return English language notification modal class, to be used when rendering
+	 * post links.
+	 *
+	 * @param array $options {
+	 *    Classes to include with or without dialog.
+	 *
+	 * 		@type string $and Classes to include with js-englishContentDialog.
+	 * 		@type string $or Classes to include without js-englishContentDialog.
+	 * }
+	 * @return string Class names.
+	 */
+	function internetorg_english_lang_notification_class( $options = array() ) {
+		$cookie_name = 'iorg-english-content-dialog-confirmed';
+		$cookie_value = 'true';
+
+		$classes_and = array_key_exists( 'and', $options ) ? $options['and'] : '';
+		$classes_or = array_key_exists( 'or', $options ) ? $options['or'] : '';
+
+		// Should this post show the dialog?
 		$show_english_content_dialog = get_post_meta( get_the_ID(), 'show-english-content-dialog', true );
 
-		if ($show_english_content_dialog) {
-			$extra_classes .= ' js-englishContentDialog';
+		// Has the user already dismissed the dialog? (Don't show again)
+		$check_cookie = array_key_exists( $cookie_name, $_COOKIE ) ? $_COOKIE[$cookie_name] : null;
+
+		if ( $check_cookie === $cookie_value ) {
+			$show_english_content_dialog = false;
 		}
 
-		return trim($extra_classes);
-	}
+		// Return with 'and' or 'or' classnames
+		if ($show_english_content_dialog) {
+			$classes = "js-englishContentDialog $classes_and";
+		} else {
+			$classes = $classes_or;
+		}
 
+		return trim($classes);
+	}
 endif;
 
 if ( ! function_exists( 'internetorg_entry_footer' ) ) :

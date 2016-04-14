@@ -153,11 +153,11 @@ function internetorg_english_content_dialog_metabox() {
 		'Fieldmanager_Checkbox',
 		array(
 			'name'  => 'show-english-content-dialog',
-			'label' => __( "Show 'content is in English' dialog", 'internetorg' ),
+			'label' => __( 'Show', 'internetorg' ),
 		),
 		array(
 			'add_meta_box' => array(
-				'Content in English Dialog',
+				__( "Content in English dialog", 'internetorg' ),
 				array(
 					'post',
 					'page'
