@@ -381,31 +381,25 @@ body.opera-fallback {
           }
         }
         .mainMenu-panel-primary > * {
-          min-height: 350px;
-        }
-        @media (max-height: 480px) {
-            .mainMenu-panel-primary > * {
-                min-height: initial;
-            }
+          min-height: 230px;
         }
         .mainMenu-panel-secondary {
           background:#f1efe7;
         }
-    }
-
-    .navigation-opera-mini {
-        .down-container{
-            position: fixed;
-            bottom: 100px;
-
+        .mainMenu-panel-lang {
+          a {
+            color: inherit;
+          }
         }
-        @media (max-height: 650px) {
-            .down-container{
-                bottom: 0;
-            }
-            .down-container{
-                position: relative;
-            }
+        .langSelect-label {
+          &:after {
+            margin-left: 10px;
+          }
+        }
+        .langSelect {
+          a {
+            color: inherit;
+          }
         }
     }
 

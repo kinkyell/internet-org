@@ -33,7 +33,8 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 		$list = internetorg_get_switcher_links();
 
 		// Select list of items, hidden from the user but recreated with css/js.
-		echo '<select id="js-LanguageView" class="js-select" onchange="document.location.href=this.options[this.selectedIndex].value;">';
+		echo '<select id="js-LanguageView" class="js-select" onchange="alert(this.options[this.selectedIndex].value); document.location.href=this.options[this.selectedIndex].value;">';
+
 		foreach ( $list as $item ) {
 			// Skip languages for which there is no translation.
 			// if ( in_array( 'bbl-add', $item['classes'] ) ) {
@@ -46,6 +47,114 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 		echo '</select>';
 	}
 endif;
+
+/**
+ * Build the language switcher fallback for Opera Mini.
+ *
+ * @return void
+ */
+function internetorg_language_switcher_menu_fallback() {
+	$links = internetorg_get_switcher_links();
+	$active_lang = '';
+
+	foreach ( $links as $link ) {
+		if ( $link['active'] === true ) {
+			$active_lang = $link['display_name'];
+		}
+	}
+?>
+	<div class="mainMenu-panel-lang">
+			<div class="langSelect">
+				<a href="<?php echo esc_url( internetorg_get_language_url_fallback() ); ?>">
+					<div class="langSelect-label"><?php echo esc_html( $active_lang ); ?></div>
+				</a>
+			</div>
+	</div>
+<?php
+}
+
+/**
+ * Build the language switcher menu items fallback for Opera Mini.
+ *
+ * @return void
+ */
+function internetorg_language_switcher_menu_items_fallback() {
+	$links = internetorg_get_switcher_links();
+
+	// Grab active language label first
+	$active_lang = '';
+	foreach ( $links as $link ) {
+		if ( $link['active'] === true ) {
+			$active_lang = $link['display_name'];
+		}
+	}
+?>
+	<div class="langSelect js-select isOpen">
+			<a href="<?php echo esc_url( internetorg_get_navigation_url_fallback() ); ?>">
+					<div class="langSelect-label"><?php echo esc_html( $active_lang ); ?></div>
+			</a>
+
+			<div class="langSelect-menu">
+			<?php foreach ( $links as $link ): ?>
+				<?php if ( ! empty( $link['href'] ) ): ?>
+
+					<a href="<?php echo esc_url( $link['href'] ); ?>">
+						<div class="langSelect-menu-item <?php echo esc_attr( $link['active'] ? ' isSelected' : '' ); ?>" tabindex="0">
+							<span><?php echo esc_html( $link['display_name'] ); ?></span>
+						</div>
+					</a>
+
+				<?php endif; ?>
+			<?php endforeach; ?>
+			</div>
+	</div>
+
+<?php
+}
+
+/**
+ * Return the URL to the navigation fallback page, adding GET parameter 'return_to'
+ * with the value of the current URL.
+ *
+ * @return string
+ */
+function internetorg_get_navigation_url_fallback() {
+	$return_to = array_key_exists( 'return_to', $_GET ) ? $_GET['return_to'] : '/';
+
+	if ( internetorg_is_fallback_menu_open() ) {
+		// "Close" menu
+		return $return_to;
+	} else {
+		// "Open" menu, passing the current URL so the user can be redirected back upon closing.
+		$current_url = add_query_arg( NULL, NULL );
+		$nav_url = add_query_arg( 'return_to', $current_url, site_url('navigation') );
+
+		return $nav_url;
+	}
+}
+
+/**
+ * Return the URL to the languages fallback page, preserving the return_to GET parameter.
+ *
+ * @return string
+ */
+function internetorg_get_language_url_fallback() {
+	$return_to = array_key_exists( 'return_to', $_GET ) ? $_GET['return_to'] : '/';
+	return add_query_arg( 'return_to', $return_to, site_url('languages') );
+}
+
+/**
+ * Is the fallback menu open?
+ *
+ * Checks if the user is on 'navigation' or 'languages' pages.
+ *
+ * @return bool
+ */
+function internetorg_is_fallback_menu_open() {
+	$URL  = $_SERVER['REQUEST_URI'];
+	$splitURL = explode("/", $URL);
+	return isset($splitURL[2]) && ( $splitURL[2] == 'navigation' || $splitURL[2] == 'languages' );
+}
 
 /**
  * Test the provided locale to determine if it is a right-to-left language.
