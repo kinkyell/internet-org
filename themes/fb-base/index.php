@@ -12,7 +12,6 @@ $user_language = substr( $_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2 );
 foreach( $languages as $site => $language ) {
     if ( stripos( $language, $user_language ) === 0 ) {
     	$site_prefix = mlp_get_blog_language( $site );
-    	//die( "/{$site_prefix}" . $_SERVER['REQUEST_URI'] );
     	wp_redirect( "/{$site_prefix}" . $_SERVER['REQUEST_URI'] );
     	exit;
     }

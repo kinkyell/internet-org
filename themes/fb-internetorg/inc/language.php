@@ -15,7 +15,7 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 	 */
 	function internetorg_language_switcher() {
 
-		if ( ! function_exists( 'bbl_get_switcher_links' ) ) {
+		if ( ! function_exists( 'internetorg_get_switcher_links' ) ) {
 
 			?>
 
@@ -30,17 +30,17 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 			return;
 		}
 
-		$list = bbl_get_switcher_links();
+		$list = internetorg_get_switcher_links();
 
 		// Select list of items, hidden from the user but recreated with css/js.
 		echo '<select id="js-LanguageView" class="js-select" onchange="document.location.href=this.options[this.selectedIndex].value;">';
 		foreach ( $list as $item ) {
 			// Skip languages for which there is no translation.
-			if ( in_array( 'bbl-add', $item['classes'] ) ) {
-				continue;
-			}
+			// if ( in_array( 'bbl-add', $item['classes'] ) ) {
+			// 	continue;
+			// }
 			if ( $item['href'] ) {
-				echo '<option value="' . esc_url( $item['href'] ) . '" ' . selected( $item['active'], true, false ) . ' data-dir="' . esc_attr( $item['lang']->text_direction ) . '">' . esc_html( $item['lang']->display_name ) . '</option>';
+				echo '<option value="' . esc_url( $item['href'] ) . '" ' . selected( $item['active'], true, false ) . ' data-dir="' . esc_attr( $item['text_direction'] ) . '">' . esc_html( $item['display_name'] ) . '</option>';
 			}
 		}
 		echo '</select>';

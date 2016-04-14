@@ -2676,3 +2676,40 @@ function internetorg_translate_required_text( $required_text ) {
 
 add_filter( 'jetpack_required_field_text', 'internetorg_translate_required_text' );
 
+
+/**
+ * Return each avaiable language allowing a language
+ * selector to be shown.
+ */
+function internetorg_get_switcher_links() {
+
+	$languages    = mlp_get_available_languages( true );
+	$current_site = get_current_site();
+	$menu 	      = array();
+
+	foreach( $languages as $site => $language ) {
+
+		$site_details 	= get_blog_details( $site );
+		$site_prefix  	= mlp_get_blog_language( $site );
+		$text_direction = 'ltr';
+		$active         = false;
+
+		if ( internetorg_is_rtl( $site_prefix ) ) {
+			$text_direction = 'rtl';
+		}
+
+		if ( get_current_blog_id() == $site_details->blog_id ) {
+			$active = true;
+		}
+
+		$menu[] = array(
+			'href' 			 => '/' . $site_prefix,
+			'active' 		 => $active,
+			'text_direction' => $text_direction,
+			'display_name' 	 => esc_attr__( $site_details->blogname, 'internetorg' ),
+		);
+    }
+
+    return $menu;
+}
+
