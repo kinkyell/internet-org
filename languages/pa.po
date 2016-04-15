@@ -147,6 +147,50 @@ msgstr "ਹੋਰ ਜਾਣੋ"
 msgid "English"
 msgstr "ਅੰਗ੍ਰੇਜ਼ੀ"
 
+#. Language Selector
+msgid "French"
+msgstr "ਫਰਾਂਸੀਸੀ"
+
+#. Language Selector
+msgid "Arabic"
+msgstr "ਅਰਬੀ ਵਿਚ"
+
+#. Language Selector
+msgid "Bengali"
+msgstr "ਦਾ ਬੰਗਾਲੀ"
+
+#. Language Selector
+msgid "Spanish"
+msgstr "ਸਪੇਨੀ"
+
+#. Language Selector
+msgid "Hindi"
+msgstr "ਦਾ ਹਿੰਦੀ"
+
+#. Language Selector
+msgid "Indonesian"
+msgstr "ਇੰਡੋਨੇਸ਼ੀਆਈ ਵਿਚ"
+
+#. Language Selector
+msgid "Japanese"
+msgstr "ਜਪਾਨੀ"
+
+#. Language Selector
+msgid "Panjabi"
+msgstr "ਪੰਜਾਬੀ"
+
+#. Language Selector
+msgid "Portuguese"
+msgstr "ਪੁਰਤਗਾਲੀ"
+
+#. Language Selector
+msgid "Russian"
+msgstr "ਰੂਸੀ"
+
+#. Language Selector
+msgid "Urdu"
+msgstr "ਉਰਦੂ"
+
 #: inc/template-tags.php:45
 #, php-format
 msgctxt "post date"

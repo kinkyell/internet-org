@@ -148,6 +148,50 @@ msgstr "Подробнее"
 msgid "English"
 msgstr "Английский"
 
+#. Language Selector
+msgid "French"
+msgstr "Французский"
+
+#. Language Selector
+msgid "Arabic"
+msgstr "арабский"
+
+#. Language Selector
+msgid "Bengali"
+msgstr "бенгальский"
+
+#. Language Selector
+msgid "Spanish"
+msgstr "испанский"
+
+#. Language Selector
+msgid "Hindi"
+msgstr "хинди"
+
+#. Language Selector
+msgid "Indonesian"
+msgstr "индонезийский"
+
+#. Language Selector
+msgid "Japanese"
+msgstr "Японский"
+
+#. Language Selector
+msgid "Panjabi"
+msgstr "панджаби"
+
+#. Language Selector
+msgid "Portuguese"
+msgstr "португальский"
+
+#. Language Selector
+msgid "Russian"
+msgstr "русский"
+
+#. Language Selector
+msgid "Urdu"
+msgstr "урду"
+
 #: inc/template-tags.php:45
 #, php-format
 msgctxt "post date"
