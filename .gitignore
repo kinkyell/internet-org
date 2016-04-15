@@ -16,3 +16,8 @@ npm-debug.log
 db.php
 
 /plugins/internetorg-custom-export/
+/plugins/wp-migrate-db-pro
+/plugins/wp-migrate-db-pro-cli
+/plugins/wp-migrate-db-pro-media-files
+/plugins/wp-migrate-db-pro-multisite-tools
+
