@@ -49,9 +49,24 @@ define(function(require, exports, module) { // jshint ignore:line
             htmlStr = htmlStr.responseText;
         }
         var parsed = $.parseHTML(htmlStr);
+
         var viewWindowEl = _getViewWindow(parsed);
+
+        var fbroot = viewWindowEl.querySelector('#fb-root')
+        if( fbroot ) {
+            viewWindowEl.removeChild(fbroot);
+        }
+
+        var wpadminbar = viewWindowEl.querySelector('#wpadminbar');
+        if ( wpadminbar ) {
+            viewWindowEl.removeChild(wpadminbar);
+        }
+
         var viewWindowStory = viewWindowEl ? viewWindowEl.lastElementChild.firstElementChild.firstElementChild : null;
-        viewWindowStory.className = '';
+
+        if (viewWindowStory != null) {
+            viewWindowStory.className = '';
+        }
 
         _updateTitle(parsed);
 

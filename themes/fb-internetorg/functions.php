@@ -2712,4 +2712,3 @@ function internetorg_get_switcher_links() {
 
     return $menu;
 }
-
