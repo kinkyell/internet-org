@@ -13,7 +13,9 @@
 .hdg_1 {
     @include remify(font-size, 29px);
     line-height: 1.2;
+    word-wrap: break-word;
 }
+
 
 .hdg_2 {
     @include remify(font-size, 30px);
@@ -71,7 +73,7 @@
 .mix-hdg_gray 	{ color: $CLR_GRAY; }
 .mix-hdg_italic { font-style: italic; }
 .mix-hdg_bold   { font-weight: 700; }
-.mix-hdg_splash { color: $CLR_WHITE; word-wrap: break-word; }
+.mix-hdg_splash { color: $CLR_WHITE; }
 .mix-hdg_centerInMobile { text-align: center; }
 .mix-hdg_light { font-weight: 400; }
 
