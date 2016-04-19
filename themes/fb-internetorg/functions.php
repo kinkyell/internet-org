@@ -2684,10 +2684,41 @@ function internetorg_alter_links_to_match_language( $content ) {
 
 	if ( $site_prefix != 'en' )
 	{
-		$content = str_replace('href="/en/', 'href="/' . $site_prefix . '/', $content );
-		$content = str_replace('href=\'/en/', 'href=\'/' . $site_prefix . '/', $content );
+		$content = str_replace( 'href="/en/', 'href="/' . $site_prefix . '/', $content );
+		$content = str_replace( 'href=\'/en/', 'href=\'/' . $site_prefix . '/', $content );
 	}
 
     return $content;
 }
 add_filter( 'the_content', 'internetorg_alter_links_to_match_language' );
+
+
+/**
+ * Remove domain and setting them english based links
+ * from insert link option in the editor. Example linking
+ * to a post on the French or English site would result in
+ * /en/some-slug
+ */
+
+function internetorg_strip_domain_from_insert_link( $permalink, $post )
+{
+	$permalink = str_replace( get_site_url(), '/en', $permalink );
+    return $permalink;
+}
+
+function internetorg_add_link_filters( $query ) {
+	add_filter( 'post_link', 	  'internetorg_strip_domain_from_insert_link', 10, 2 );
+	add_filter( 'post_type_link', 'internetorg_strip_domain_from_insert_link', 10, 2 );
+	add_filter( 'page_link', 	  'internetorg_strip_domain_from_insert_link', 10, 2 );
+	return $query;
+}
+
+function internetorg_remove_link_filters( $query ) {
+	remove_filter( 'post_link', 	 'internetorg_strip_domain_from_insert_link', 10 );
+	remove_filter( 'post_type_link', 'internetorg_strip_domain_from_insert_link', 10 );
+	remove_filter( 'page_link', 	 'internetorg_strip_domain_from_insert_link', 10 );
+	return $query;
+}
+
+add_filter( 'wp_link_query_args', 'internetorg_add_link_filters'    );
+add_filter( 'wp_link_query', 	  'internetorg_remove_link_filters' );
