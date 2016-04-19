@@ -4002,7 +4002,8 @@ carousel layout
 
 .transformBlock-stmnt-item {
   position: absolute;
-  opacity: 0; }
+  opacity: 0;
+  max-width: 100%; }
 
 .transformBlock-stmnt-item:nth-child(1) {
   opacity: 1; }
@@ -5622,7 +5623,8 @@ body .contact-form label.radio {
 .hdg_1 {
   font-size: 29px;
   font-size: 1.8125rem;
-  line-height: 1.2; }
+  line-height: 1.2;
+  word-wrap: break-word; }
 
 .hdg_2 {
   font-size: 30px;

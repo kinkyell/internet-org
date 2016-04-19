@@ -2643,9 +2643,8 @@ add_filter( 'jetpack_required_field_text', 'internetorg_translate_required_text'
  */
 function internetorg_get_switcher_links() {
 
-	$languages    = mlp_get_available_languages( true );
-	$current_site = get_current_site();
-	$menu 	      = array();
+	$languages = mlp_get_available_languages( true );
+	$menu	   = array();
 
 	foreach( $languages as $site => $language ) {
 
@@ -2672,3 +2671,58 @@ function internetorg_get_switcher_links() {
 
     return $menu;
 }
+
+
+/**
+ * Catches links within the post/page content
+ * if the link has /en/ but we are not on the English
+ * site then we must replace it so link is correct.
+ */
+function internetorg_alter_links_to_match_language( $content ) {
+
+	$site_prefix = mlp_get_blog_language( get_current_blog_id() );
+
+	if ( $site_prefix != 'en' )
+	{
+		$content = str_replace( 'href="/en/', 'href="/' . $site_prefix . '/', $content );
+		$content = str_replace( 'href=\'/en/', 'href=\'/' . $site_prefix . '/', $content );
+	}
+
+    return $content;
+}
+add_filter( 'the_content', 'internetorg_alter_links_to_match_language' );
+
+
+/**
+ * Remove domain and setting them english based links
+ * from insert link option in the editor. Example linking
+ * to a post on the French or English site would result in
+ * /en/some-slug
+ */
+
+function internetorg_strip_domain_from_insert_link( $permalink, $post )
+{
+	$protocols = array( 'http://', 'https://' );
+	$site_url  = str_replace( $protocols, '', get_site_url() );
+	$permalink = str_replace( $protocols, '', $permalink );
+	$permalink = str_replace( $site_url, '/en', $permalink );
+
+    return $permalink;
+}
+
+function internetorg_add_link_filters( $query ) {
+	add_filter( 'post_link', 	  'internetorg_strip_domain_from_insert_link', 10, 2 );
+	add_filter( 'post_type_link', 'internetorg_strip_domain_from_insert_link', 10, 2 );
+	add_filter( 'page_link', 	  'internetorg_strip_domain_from_insert_link', 10, 2 );
+	return $query;
+}
+
+function internetorg_remove_link_filters( $query ) {
+	remove_filter( 'post_link', 	 'internetorg_strip_domain_from_insert_link', 10 );
+	remove_filter( 'post_type_link', 'internetorg_strip_domain_from_insert_link', 10 );
+	remove_filter( 'page_link', 	 'internetorg_strip_domain_from_insert_link', 10 );
+	return $query;
+}
+
+add_filter( 'wp_link_query_args', 'internetorg_add_link_filters'    );
+add_filter( 'wp_link_query', 	  'internetorg_remove_link_filters' );

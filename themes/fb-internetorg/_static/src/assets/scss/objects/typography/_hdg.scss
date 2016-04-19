@@ -13,7 +13,9 @@
 .hdg_1 {
     @include remify(font-size, 29px);
     line-height: 1.2;
+    word-wrap: break-word;
 }
+
 
 .hdg_2 {
     @include remify(font-size, 30px);
@@ -190,11 +192,11 @@
 }
 
 
-[lang="ar"], 
+[lang="ar"],
 [lang="ur"] {
     .hdg {
         @include font(SERIF_MED);
-    }   
+    }
 
 }
 
