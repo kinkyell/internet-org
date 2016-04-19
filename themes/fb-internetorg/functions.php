@@ -2704,11 +2704,17 @@ function internetorg_strip_domain_from_insert_link( $permalink, $post )
 {
 	$site_url = get_site_url();
 
-	if ( is_ssl() && substr( $site_url, 0, 8 ) != 'https://' ) {
-		$site_url = str_replace( 'http://', 'https://', $site_url );
+	if ( substr( $site_url, 0, 8 ) == 'https://' ) {
+		$site_url_http  = $site_url;
+		$site_url_https = str_replace( 'http://', 'https://', $site_url );
+	} else {
+		$site_url_http  = str_replace( 'https://', 'http://', $site_url );
+		$site_url_https = $site_url;
 	}
 
-	$permalink = str_replace( $site_url, '/en', $permalink );
+	$permalink = str_replace( $site_url_http, '/en', $permalink );
+	$permalink = str_replace( $site_url_https, '/en', $permalink );
+
     return $permalink;
 }
 
