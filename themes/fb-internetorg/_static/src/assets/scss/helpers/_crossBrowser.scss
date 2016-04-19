@@ -109,6 +109,12 @@ body.opera-fallback {
         right: 20px !important;
     }
 
+    html[dir="rtl"] & .header-backBtn,
+    html[dir="rtl"] & .header-menuBtn {
+        right: auto !important;
+        left: 20px !important;
+    }
+
     &.opera-mini {
 
         &,
@@ -282,6 +288,7 @@ body.opera-fallback {
 
 	.viewWindow.isShifted > .viewWindow-panel:last-child {
 	    left: 0;
+        right: auto;
 	}
 
 	.introBlock.u-isHiddenMedium {
@@ -856,6 +863,7 @@ body.opera-fallback {
             .viewWindow{
                 &.isShifted {
                     left: 0px;
+                    right: auto;
                 }
             }
             .viewWindow-panel:not(.isAnimating):first-child.isActive > .viewWindow-panel-content {
