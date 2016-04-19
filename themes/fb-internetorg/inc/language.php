@@ -268,8 +268,7 @@ function internetorg_english_content_dialog_metabox() {
 			'add_meta_box' => array(
 				__( "Content in English dialog", 'internetorg' ),
 				array(
-					'post',
-					'page'
+					'post'
 				),
 				'side',
 				'default'
