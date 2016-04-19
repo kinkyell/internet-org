@@ -55,7 +55,7 @@
     }
 }
 
-@media (max-height: 320px) {
+@media (max-height: 414px) { // Up through iPhone 6 Plus landscape.
     .statementBlock_end {
         padding-top: 75px;
     }
@@ -80,6 +80,11 @@
     .splashFooter-section {
         width: 48%;
         float: left;
+        margin-right: 2%;
+
+        &:nth-child(2n) {
+            margin-right: 0;
+        }
     }
 
     .splashFooter-section:nth-child(2n+3) {

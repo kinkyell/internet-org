@@ -4203,7 +4203,7 @@ For loading placeholder
   .statementBlock_end .statementBlock-bd {
     height: 52%; } }
 
-@media (max-height: 320px) {
+@media (max-height: 414px) {
   .statementBlock_end {
     padding-top: 75px; }
   .statementBlock_end .statementBlock-pre {
@@ -4224,7 +4224,10 @@ For loading placeholder
     clear: both; }
   .splashFooter-section {
     width: 48%;
-    float: left; }
+    float: left;
+    margin-right: 2%; }
+    .splashFooter-section:nth-child(2n) {
+      margin-right: 0; }
   .splashFooter-section:nth-child(2n+3) {
     clear: left; } }
 
