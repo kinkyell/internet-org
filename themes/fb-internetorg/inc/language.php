@@ -258,6 +258,15 @@ function internetorg_english_content_dialog_metabox() {
 		return;
 	}
 
+	// Do not show on English wp-admin.
+	if ( function_exists( 'mlp_get_current_blog_language' ) ) {
+		$lang = mlp_get_current_blog_language();
+
+		if ( $lang === 'en_US' ) {
+			return;
+		}
+	}
+
 	new Babble_Translatable_Fieldmanager(
 		'Fieldmanager_Checkbox',
 		array(
