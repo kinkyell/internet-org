@@ -2702,7 +2702,13 @@ add_filter( 'the_content', 'internetorg_alter_links_to_match_language' );
 
 function internetorg_strip_domain_from_insert_link( $permalink, $post )
 {
-	$permalink = str_replace( get_site_url(), '/en', $permalink );
+	$site_url = get_site_url();
+
+	if ( is_ssl() && substr( $site_url, 0, 8 ) == 'https://' ) {
+		$site_url = str_replace( 'http://', 'https://', $site_url );
+	}
+
+	$permalink = str_replace( $site_url, '/en', $permalink );
     return $permalink;
 }
 
