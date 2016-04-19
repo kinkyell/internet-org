@@ -2704,7 +2704,7 @@ function internetorg_strip_domain_from_insert_link( $permalink, $post )
 {
 	$site_url = get_site_url();
 
-	if ( is_ssl() && substr( $site_url, 0, 8 ) == 'https://' ) {
+	if ( is_ssl() && substr( $site_url, 0, 8 ) != 'https://' ) {
 		$site_url = str_replace( 'http://', 'https://', $site_url );
 	}
 
