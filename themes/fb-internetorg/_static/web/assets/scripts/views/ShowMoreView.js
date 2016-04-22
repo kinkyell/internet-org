@@ -114,8 +114,6 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onContentLoad = function(res) {
-        console.log('_onContentLoad', res.resultsHtml);
-        console.log('_onContentLoad', res.results);
         var newContent = document.createElement('div');
         newContent.className = 'resultsList-list';
 

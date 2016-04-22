@@ -24,7 +24,9 @@ if ( empty( $next_post ) && empty( $prev_post ) ) {
 		<div>
 			<div class="topicBlock">
 				<div class="topicBlock-hd">
-					<a class="js-stateLink" href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>"
+					<a
+						 class="<?php echo esc_attr( internetorg_english_lang_notification_class( ['or' => 'js-stateLink'], $next_post->ID ) ); ?>"
+						 href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>"
 					   data-title="<?php echo esc_attr( apply_filters( 'the_title',  $next_post->post_title ) ); ?>"
 					   data-date="<?php echo esc_attr( get_the_date( '', $next_post->ID ) ); ?>"
 					   data-social="true"
@@ -40,7 +42,7 @@ if ( empty( $next_post ) && empty( $prev_post ) ) {
 					</p>
 				</div>
 				<div class="topicBlock-cta">
-					<a class="btn js-stateLink" href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>"
+					<a class="btn <?php echo esc_attr( internetorg_english_lang_notification_class( ['or' => 'js-stateLink'], $next_post->ID ) ); ?>" href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>"
 					   data-title="<?php echo esc_attr( apply_filters( 'the_title',  $next_post->post_title ) ); ?>"
 					   data-date="<?php echo esc_attr( get_the_date( '', $next_post->ID ) ); ?>"
 					   data-social="true"
@@ -56,7 +58,7 @@ if ( empty( $next_post ) && empty( $prev_post ) ) {
 		<div>
 			<div class="topicBlock">
 				<div class="topicBlock-hd">
-					<a class="js-stateLink"
+					<a class="<?php echo esc_attr( internetorg_english_lang_notification_class( ['or' => 'js-stateLink'], $prev_post->ID ) ); ?>"
 					  href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>"
 					  data-title="<?php echo  esc_attr( apply_filters( 'the_title', $prev_post->post_title ) ); ?>"
 					  data-social="true"
@@ -73,7 +75,7 @@ if ( empty( $next_post ) && empty( $prev_post ) ) {
 					</p>
 				</div>
 				<div class="topicBlock-cta">
-					<a class="btn js-stateLink"
+					<a class="btn <?php echo esc_attr( internetorg_english_lang_notification_class( ['or' => 'js-stateLink'], $next_post->ID ) ); ?>"
 					   href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>"
 					   data-title="<?php echo  esc_attr( apply_filters( 'the_title', $prev_post->post_title ) ); ?>"
 					   data-social="true"

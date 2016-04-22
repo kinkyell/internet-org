@@ -58,17 +58,22 @@ if ( ! function_exists( 'internetorg_english_lang_notification_class' ) ) :
 	 * 		@type string $and Classes to include with js-englishContentDialog.
 	 * 		@type string $or Classes to include without js-englishContentDialog.
 	 * }
+	 * @param int|null $post_id Post ID.
 	 * @return string Class names.
 	 */
-	function internetorg_english_lang_notification_class( $options = array() ) {
+	function internetorg_english_lang_notification_class( $options = array(), $post_id = null ) {
 		$cookie_name = 'iorg-english-content-dialog-confirmed';
 		$cookie_value = 'true';
+
+		if ( is_null( $post_id ) ) {
+			$post_id = get_the_ID();
+		}
 
 		$classes_and = array_key_exists( 'and', $options ) ? $options['and'] : '';
 		$classes_or = array_key_exists( 'or', $options ) ? $options['or'] : '';
 
 		// Should this post show the dialog?
-		$show_english_content_dialog = get_post_meta( get_the_ID(), 'show-english-content-dialog', true );
+		$show_english_content_dialog = get_post_meta( $post_id, 'show-english-content-dialog', true );
 
 		// Has the user already dismissed the dialog? (Don't show again)
 		$check_cookie = array_key_exists( $cookie_name, $_COOKIE ) ? $_COOKIE[$cookie_name] : null;
