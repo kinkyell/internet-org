@@ -114,9 +114,18 @@ define(function(require, exports, module) { // jshint ignore:line
      * @private
      */
     proto._onContentLoad = function(res) {
+        console.log('_onContentLoad', res.resultsHtml);
+        console.log('_onContentLoad', res.results);
         var newContent = document.createElement('div');
         newContent.className = 'resultsList-list';
-        newContent.innerHTML = res.results;
+
+        if (res.resultsHtml) {
+            // Currently only sending server rendered html for 'post'
+            newContent.innerHTML = res.resultsHtml;
+        } else {
+            newContent.innerHTML = res.results;
+        }
+        
         this.targetEl.appendChild(newContent);
 
         return tweenAsync.from(newContent, animationSpeeds.ADDL_CONTENT, {

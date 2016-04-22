@@ -178,6 +178,9 @@ define(function(require, exports, module) { // jshint ignore:line
                 return {
                     hasNextPage: page < res.data.max_num_pages,
                     totalResults: typeof res.data.found_posts === 'number' ? res.data.found_posts : 'Unknown',
+                    resultsHtml: res.data.posts.map(function(result) {
+                        return result.post_html;
+                    }).join(''),
                     results: res.data.posts.map(function(result) {
                         return templates['archive-result']({
                             title: result.post_title,

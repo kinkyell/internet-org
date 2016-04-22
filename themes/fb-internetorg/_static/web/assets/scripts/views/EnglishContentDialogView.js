@@ -5,6 +5,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var Cookies = require('cookies');
     var vex = require('vex');
     var dialog = require('vex-dialog');
+    var $ = require('jquery');
 
     /**
      * Prompt user to verify they would like to browse content in English
@@ -42,6 +43,15 @@ define(function(require, exports, module) { // jshint ignore:line
         value: 'true',
         expires: 1 /*days*/
     };
+
+    /**
+     * Has the view been enabled (once) ?
+     * 
+     * @static
+     * @type {boolean}
+     */
+    EnglishContentDialogView.isEnabled = false;
+
 
     var proto = AbstractView.createChild(EnglishContentDialogView);
 
@@ -81,9 +91,11 @@ define(function(require, exports, module) { // jshint ignore:line
     proto.onEnable = function() {
         this.destinationUrl = this.$element.attr('href');
 
-        if (this.enabled_()) {
-            this.$element.on('click', this._handleOpenDialog);
+        if (!EnglishContentDialogView.isEnabled && this.enabled_()) {
+            $(document).on('click', '.js-englishContentDialog', this._handleOpenDialog);
         }
+
+        EnglishContentDialogView.isEnabled = true;
     };
 
     /**
@@ -130,6 +142,12 @@ define(function(require, exports, module) { // jshint ignore:line
      * @public
      */
     proto.onDisable = function() {
+        if (EnglishContentDialogView.isEnabled) {
+            $(document).off('click', '.js-englishContentDialog', this._handleOpenDialog);
+        }
+
+        EnglishContentDialogView.isEnabled = false;
+
         if (this.$vexContent && this.$vexContent.data().vex) {
             vex.close(this.$vexContent.data().vex.id);
         }

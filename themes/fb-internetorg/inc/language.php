@@ -33,7 +33,7 @@ if ( ! function_exists( 'internetorg_language_switcher' ) ) :
 		$list = internetorg_get_switcher_links();
 
 		// Select list of items, hidden from the user but recreated with css/js.
-		echo '<select id="js-LanguageView" class="js-select" onchange="alert(this.options[this.selectedIndex].value); document.location.href=this.options[this.selectedIndex].value;">';
+		echo '<select id="js-LanguageView" class="js-select" onchange="document.location.href=this.options[this.selectedIndex].value;">';
 
 		foreach ( $list as $item ) {
 			// Skip languages for which there is no translation.

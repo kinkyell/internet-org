@@ -1170,6 +1170,7 @@ function internetorg_do_ajax_more_posts() {
 	);
 
 	while ( $query->have_posts() ) {
+		global $post;
 		$query->the_post();
 
 		/**
@@ -1179,6 +1180,16 @@ function internetorg_do_ajax_more_posts() {
 		 */
 		$post_thumbnail = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'listing-image' );
 
+		$post_html = '';
+
+		// Press
+		if ( $post->post_type === 'post' ) {
+			ob_start();
+			get_template_part( 'template-parts/content', 'press-item' );
+			$post_html = ob_get_contents();
+			ob_end_clean();
+		}
+
 		$data['posts'][] = array(
 			'ID'             => get_the_ID(),
 			'post_title'     => get_the_title(),
@@ -1187,8 +1198,11 @@ function internetorg_do_ajax_more_posts() {
 			'permalink'      => get_the_permalink(),
 			'post_thumbnail' => $post_thumbnail,
 			'media_embed' 	 => internetorg_media_embed( true ),
+			'post_html'			 => $post_html
 		);
 	}
+
+	wp_reset_postdata();
 
 	wp_send_json_success( $data );
 
