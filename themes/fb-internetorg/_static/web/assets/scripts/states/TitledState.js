@@ -1,4 +1,4 @@
-define(function(require, exports, module) { // jshint ignore:line
+define(function(require, exports, module) { // jshint ignore:line 
     'use strict';
 
     var BasicState = require('./BasicState');
@@ -105,7 +105,7 @@ define(function(require, exports, module) { // jshint ignore:line
         this.loader.removeThrobber();
         this.loader = null;
 
-        FB.XFBML.parse( $markup[0] );
+        FB.XFBML.parse( $markup[0] ); // jshint ignore:line
 
     };
 

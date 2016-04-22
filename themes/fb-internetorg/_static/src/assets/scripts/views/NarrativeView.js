@@ -532,9 +532,6 @@ define(function(require, exports, module) { // jshint ignore:line
 
             // Anything Else
             } else {    
-                if(subsLength > 0  && subPosition >= subsLength){
-                    //this._updateCtas(false);
-                }
 
                 this._subPosition = 0;
                 this._updateIndicators(this._position + 1);

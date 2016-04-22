@@ -52,7 +52,8 @@ define(function(require, exports, module) { // jshint ignore:line
 
         var viewWindowEl = _getViewWindow(parsed);
 
-        var fbroot = viewWindowEl.querySelector('#fb-root')
+        var fbroot = viewWindowEl.querySelector('#fb-root');
+        
         if( fbroot ) {
             viewWindowEl.removeChild(fbroot);
         }
