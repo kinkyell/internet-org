@@ -143,54 +143,6 @@ msgstr "Todas as publicações"
 msgid "Learn More"
 msgstr "Saiba mais"
 
-#: inc/language.php:26
-msgid "English"
-msgstr "Inglês"
-
-#. Language Selector
-msgid "French"
-msgstr "Francês"
-
-#. Language Selector
-msgid "Arabic"
-msgstr "Árabe"
-
-#. Language Selector
-msgid "Bengali"
-msgstr "Bengali"
-
-#. Language Selector
-msgid "Spanish"
-msgstr "Espanhol"
-
-#. Language Selector
-msgid "Hindi"
-msgstr "Hindi"
-
-#. Language Selector
-msgid "Indonesian"
-msgstr "Indonésio"
-
-#. Language Selector
-msgid "Japanese"
-msgstr "Japonês"
-
-#. Language Selector
-msgid "Panjabi"
-msgstr "Panjabi"
-
-#. Language Selector
-msgid "Portuguese"
-msgstr "Português"
-
-#. Language Selector
-msgid "Russian"
-msgstr "Russo"
-
-#. Language Selector
-msgid "Urdu"
-msgstr "Urdu"
-
 #: inc/template-tags.php:45
 #, php-format
 msgctxt "post date"
@@ -518,6 +470,55 @@ msgstr "The Nerdery"
 #. Author URI of the plugin/theme
 msgid "http://www.nerdery.com"
 msgstr "http://www.nerdery.com"
+
+# New Site Changes
+#: inc/language.php:26
+msgid "English"
+msgstr "Inglês"
+
+#. Language Selector
+msgid "French"
+msgstr "Francês"
+
+#. Language Selector
+msgid "Arabic"
+msgstr "Árabe"
+
+#. Language Selector
+msgid "Bengali"
+msgstr "Bengali"
+
+#. Language Selector
+msgid "Spanish"
+msgstr "Espanhol"
+
+#. Language Selector
+msgid "Hindi"
+msgstr "Hindi"
+
+#. Language Selector
+msgid "Indonesian"
+msgstr "Indonésio"
+
+#. Language Selector
+msgid "Japanese"
+msgstr "Japonês"
+
+#. Language Selector
+msgid "Panjabi"
+msgstr "Panjabi"
+
+#. Language Selector
+msgid "Portuguese"
+msgstr "Português"
+
+#. Language Selector
+msgid "Russian"
+msgstr "Russo"
+
+#. Language Selector
+msgid "Urdu"
+msgstr "Urdu"
 
 #: search.php:68
 #, php-format
