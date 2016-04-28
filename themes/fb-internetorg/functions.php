@@ -33,6 +33,12 @@ wpcom_vip_load_plugin( 'internetorg-custom-fields' );
 /** Babble */
 require IO_DIR . '/inc/babble-fieldmanager-context.php';
 
+/** Image helpers */
+require IO_DIR . '/inc/internetorg-images.php';
+
+/** Responisve images */
+require IO_DIR . '/inc/internetorg-responsive-images.php';
+
 /** Disable emoji from loading */
 function disable_wp_emojicons() {
 	remove_action( 'admin_print_styles', 'print_emoji_styles' );
@@ -2740,3 +2746,10 @@ function internetorg_remove_link_filters( $query ) {
 
 add_filter( 'wp_link_query_args', 'internetorg_add_link_filters'    );
 add_filter( 'wp_link_query', 	  'internetorg_remove_link_filters' );
+
+/**
+ * Disable responsive images on local dev (public URL is required for photon image resize).
+ */
+if ( stripos( get_site_url(), '/internet-org.app' ) !== false ) {
+	add_filter( 'internetorg_responsive_images_enabled', '__return_false' );
+}

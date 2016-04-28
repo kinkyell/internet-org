@@ -573,6 +573,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 confItem.subSections = [];
                 var $structureSection = $sections.eq(i);
                 var featureImage = $structureSection.data('feature');
+                var featureClassName = $structureSection.data('feature-classname');
                 var $subSections = $structureSection.find('> ul > li');
                 var subsLength = $subSections.length;
 
@@ -582,17 +583,19 @@ define(function(require, exports, module) { // jshint ignore:line
                     for (; p < pl; p++) {
                         var $subSection = $subSections.eq(p);
                         var subFeature = $subSection.data('feature');
+                        var subFeatureClassName = $subSection.data('feature-classname');
                         var subContent = $subSection.html();
 
                         confItem.subSections.push({
                             featureImage: subFeature,
+                            featureClassName: subFeatureClassName,
                             content: subContent
                         });
                     }
-
                 }
 
                 confItem.featureImage = featureImage;
+                confItem.featureClassName = featureClassName;
                 confItem.element = this.$narrativeSections.eq(i);
 
                 this._sectionConf.push(confItem);
