@@ -20,7 +20,7 @@
       return;
     }
 
-    $base_img = internetorg_get_media_image_url( $img_id , $size );
+    $base_img = internetorg_get_media_image_url( $img_id , 'full' );
 
     $use_photon = function_exists( 'wpcom_vip_get_resized_attachment_url' ) &&
                   apply_filters( 'internetorg_responsive_images_enabled', true );
