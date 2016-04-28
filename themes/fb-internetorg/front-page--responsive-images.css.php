@@ -20,7 +20,8 @@
       return;
     }
 
-    $base_img = internetorg_get_media_image_url( $img_id , 'full' );
+    $base_img = internetorg_get_media_image_url( $img_id , 'panel-image' );
+    // 960 x 1200
 
     $use_photon = function_exists( 'wpcom_vip_get_resized_attachment_url' ) &&
                   apply_filters( 'internetorg_responsive_images_enabled', true );
@@ -59,6 +60,19 @@
               background-image: url(<?php echo esc_url_raw( $xs ); ?>);
             }
           }
+
+          <?php /* Always load highest res version for high density screens, since the maximum
+          width of a panel-image is only 960px. */ ?>
+          
+          @media
+            only screen and (min-device-pixel-ratio: 2),
+            only screen and (min-resolution: 192dpi) {
+
+            .<?php echo sanitize_html_class( $class_name ); ?> {
+              background-image: url(<?php echo esc_url_raw( $base_img ); ?>);
+            }
+          }
+
         <?php endif;
 
       break;
