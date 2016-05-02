@@ -12,6 +12,14 @@
     transition: all 0.2s ease;
 }
 
+.logged-in .header {
+    top: $WP_ADMIN_BAR_HEIGHT_DESKTOP;
+    
+    @media screen and (max-width: $BP_WP_MOBILE_MAX) {
+        top: $WP_ADMIN_BAR_HEIGHT_MOBILE;
+    }
+}
+
 .header.isVisible {
     height: 70px;
     background-color: $CLR_GRAY_LIGHTER;

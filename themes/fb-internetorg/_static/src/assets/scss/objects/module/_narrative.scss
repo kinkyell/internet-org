@@ -47,6 +47,11 @@
     position: absolute;
     bottom: 0;
     right: 0;
+
+    [dir="rtl"] & {
+        right: auto;
+        left: 0;
+    }
 }
 
 .narrative-section-bd {
@@ -72,6 +77,11 @@
     position: absolute;
     bottom: -40px;
     right: 0;
+
+    [dir="rtl"] & {
+        right: auto;
+        left: 0;
+    }
 }
 
 .narrative-section-bd-ft {

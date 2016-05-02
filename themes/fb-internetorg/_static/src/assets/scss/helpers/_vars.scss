@@ -29,6 +29,11 @@ $BP_SM: 500px;
 $BP_MD: 769px; // sets tablet to use mobile view
 $BP_LG: 1280px;
 
+$BP_WP_MOBILE_MAX: 782px; // WordPress.com media query for admin-bar
+
+$WP_ADMIN_BAR_HEIGHT_MOBILE: 46px;
+$WP_ADMIN_BAR_HEIGHT_DESKTOP: 32px;
+
 //----------------------------------------------------------------------------
 //Fonts
 //----------------------------------------------------------------------------
