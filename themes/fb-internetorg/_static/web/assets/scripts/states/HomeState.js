@@ -48,9 +48,10 @@ define(function(require, exports, module) { // jshint ignore:line
                 var lastFeature = this._narrativeView._narrativeManager._currentFeature;
                 if (lastFeature) {
                     if (lastFeature.type === 'image') {
-                        viewWindow.replaceFeatureImage(lastFeature.img, 'left');
+                        viewWindow.replaceFeatureImage(lastFeature.img, 'left', lastFeature.className);
                     } else {
-                        viewWindow.replaceFeatureContent(lastFeature.content, 'left', lastFeature.img);
+                        viewWindow.replaceFeatureContent(lastFeature.content, 'left',
+                            lastFeature.img, lastFeature.className);
                     }
                 }
                 this._narrativeView.enable();
@@ -58,7 +59,8 @@ define(function(require, exports, module) { // jshint ignore:line
                 this._narrativeView = new NarrativeView($('.js-narrativeView'));
                 if (event.method !== 'init') {
                     var defaultImage = this._narrativeView._sectionConf[0].featureImage;
-                    viewWindow.replaceFeatureImage(defaultImage, 'left');
+                    var defaultClassName = this._narrativeView._sectionConf[0].featureClassName;
+                    viewWindow.replaceFeatureImage(defaultImage, 'left', defaultClassName);
                 }
             }
 

@@ -18,6 +18,14 @@ the targeted element. ex: <div class="loadingIcon"><?div>
     background-color: rgba(239, 237, 228, 0.85);
 }
 
+.logged-in .loadingIcon {
+    top: $WP_ADMIN_BAR_HEIGHT_DESKTOP;
+    
+    @media screen and (max-width: $BP_WP_MOBILE_MAX) {
+        top: $WP_ADMIN_BAR_HEIGHT_MOBILE;
+    }
+}
+
 .loadingIcon_opaque {
     background-color: rgba(239, 237, 228, 1);
 }

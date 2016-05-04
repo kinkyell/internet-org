@@ -65,7 +65,9 @@ define(function(require, exports, module) { // jshint ignore:line
 
         this._currentFeature = {
             type: 'image',
-            img: this._sectionsConf[0].featureImage
+            img: this._sectionsConf[0].featureImage,
+            content: '',
+            className: ''
         };
 
         this._init();
@@ -437,6 +439,7 @@ define(function(require, exports, module) { // jshint ignore:line
             var imgDirection = (direction === 'down') ? 'bottom' : 'top';
             var timeline = (direction === 'down') ? this._timeLine : this._timeLineReverse;
             var featureImage;
+            var featureClassName;
             var content;
             var section = this._sectionsConf[destPos];
             var subsLast = section.subSections.length - 1;
@@ -451,21 +454,25 @@ define(function(require, exports, module) { // jshint ignore:line
 
             if (section.subSections.length > 0 && direction === 'up') {
                 featureImage = section.subSections[subsLast].featureImage;
+                featureClassName = section.subSections[subsLast].featureClassName;
                 content = section.subSections[subsLast].content;
             } else {
                 featureImage = section.featureImage;
+                featureClassName = section.featureClassName;
                 content = '';
             }
 
             this.viewWindow.replaceFeatureContent(
                 content,
                 imgDirection,
-                featureImage);
+                featureImage,
+                featureClassName);
 
             this._currentFeature = {
                 type: 'content',
                 img: featureImage,
-                content: content
+                content: content,
+                className: featureClassName
             };
 
         }.bind(this));
@@ -486,17 +493,20 @@ define(function(require, exports, module) { // jshint ignore:line
             var imgDirection = (direction === 'down') ? 'bottom' : 'top';
             var subSection = section.subSections[destSlidPos - 1];
             var featureImage = (destSlidPos === 0) ? section.featureImage : subSection.featureImage;
+            var featureClassName = (destSlidPos === 0) ? section.featureClassName : subSection.featureClassName;
             var content = (subSection !== undefined) ? subSection.content : '';
 
             this.viewWindow.replaceFeatureContent(
                 content,
                 imgDirection,
-                featureImage).then(this._onSubSectionComplete.bind(this, destSlidPos, resolve)).catch(log);
+                featureImage,
+                featureClassName).then(this._onSubSectionComplete.bind(this, destSlidPos, resolve)).catch(log);
 
             this._currentFeature = {
                 type: 'content',
                 img: featureImage,
-                content: content
+                content: content,
+                className: featureClassName
             };
         }.bind(this));
     };

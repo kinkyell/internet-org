@@ -15,8 +15,14 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 	 * @var string $home_bg_url
 	 */
 	$home_bg_url = internetorg_get_media_image_url( get_post_thumbnail_id( get_the_ID() ), 'panel-image' );
+
+	/**
+	 * @var id $home_bg_id
+	 */
+	$home_bg_id = get_post_thumbnail_id( get_the_ID() );
 } else {
 	$home_bg_url = '';
+	$home_bg_id = '';
 }
 
 ?>
@@ -63,9 +69,17 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 			 */
 			$get_involved_content_widget_image = null;
 
+			/**
+			 * Panel-image id associated with the io_ctntwdgt post, else null.
+			 *
+			 * @var null|int $get_involved_content_widget_image_id
+			 */
+			$get_involved_content_widget_image_id = null;
+
 			if ( ! empty( $get_involved_content_widget ) ) {
 				$get_involved_content_widget_post = $get_involved_content_widget['post'];
 				if ( ! empty( $get_involved_content_widget['meta'] ) && ! empty( $get_involved_content_widget['meta']['widget-data'] ) ) :
+					$get_involved_content_widget_image_id = $get_involved_content_widget['meta']['widget-data'][0]['image-id'];
 					$get_involved_content_widget_image = $get_involved_content_widget['meta']['widget-data'][0]['image'];
 				endif;
 			}
@@ -81,7 +95,11 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 
 									<ul class="narrativeDT-sections">
 
-										<li class="narrativeDT-sections-item" data-feature="<?php echo esc_url( $home_bg_url ); ?>">
+										<li
+											class="narrativeDT-sections-item"
+											data-feature=""
+											data-feature-classname="<?php echo esc_attr( internetorg_responsive_images_classname( $home_bg_id, 'panel-image' ) ); ?>"
+										>
 
 											<?php foreach ( $custom_fields as $group ) : ?>
 
@@ -91,14 +109,22 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 
 											<?php if ( ! empty( $fieldset['image'] ) ) : ?>
 
-										<li class="narrativeDT-sections-item" data-feature="<?php echo esc_url( internetorg_get_media_image_url( $fieldset['image'], 'panel-image' ) ); ?>">
+										<li
+											class="narrativeDT-sections-item"
+											data-feature=""
+											data-feature-classname="<?php echo esc_attr( internetorg_responsive_images_classname( $fieldset['image'], 'panel-image' ) ); ?>"
+										>
+
 
 										<?php if ( ! empty( $fieldset['call-to-action'] ) ) : ?>
 												<ul>
 													<?php foreach ( $fieldset['call-to-action'] as $cta ) : ?>
 														<?php if ( ! empty( $cta['image'] ) ) : $imgUrl = internetorg_get_media_image_url( $cta['image'], 'panel-image' ); ?>
 
-															<li data-feature="<?php echo esc_url( $imgUrl ); ?>">
+															<li
+																data-feature=""
+																data-feature-classname="<?php echo esc_attr( internetorg_responsive_images_classname( $cta['image'], 'panel-image' ) ); ?>"
+															>
 																<?php if ( ! empty( $cta['link'] ) ) : ?>
 																	<div class="featureContent">
 																		<?php
@@ -187,8 +213,11 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 											<?php $meta = ( ! empty( $get_involved_content_widget['meta'] )
 												? $get_involved_content_widget['meta'] : '' ); ?>
 											<?php if ( ! empty( $meta['widget-data'] ) ) : ?>
-												<li class="narrativeDT-sections-item" data-feature="<?php echo esc_url( ( ! empty( $meta['widget-data'][0] )
-													? $meta['widget-data'][0]['image'] : '' ) ); ?>"></li>
+												<li
+													class="narrativeDT-sections-item"
+													data-feature=""
+													data-feature-classname="<?php echo esc_attr( ! empty( $meta['widget-data'][0] ) ? internetorg_responsive_images_classname( $meta['widget-data'][0]['image-id'], 'panel-image' ) : '' ); ?>"
+												></li>
 												<?php unset( $meta ); ?>
 											<?php endif; ?>
 
@@ -294,7 +323,8 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 							<div class="narrative">
 								<div class="narrative-section">
 									<div class="narrative-section-slides">
-										<div class="narrative-section-slides-item" style="background-image: url('<?php echo esc_attr( $home_bg_url ); ?>')"></div>
+										<div
+											class="narrative-section-slides-item <?php echo esc_attr( internetorg_responsive_images_classname( $home_bg_id, 'panel-image' ) ); ?>"<?php /* style="background-image: url('<?php echo esc_attr( $home_bg_url ); ?>')"*/ ?>></div>
 									</div>
 									<div class="narrative-section-bd narrative-section-bd_low">
 										<div class="container container_wide">
@@ -328,7 +358,10 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 
 														<?php if ( ! empty( $cf_content_section['image'] ) ) : ?>
 
-															<div class="narrative-section-slides-item" style="background-image: url('<?php echo esc_url( internetorg_get_media_image_url( $cf_content_section['image'], 'panel-image' ) ); ?>')">
+															<div
+																class="narrative-section-slides-item <?php echo esc_attr( internetorg_responsive_images_classname( $cf_content_section['image'], 'panel-image' ) ); ?>"
+																<?php /*style="background-image: url('<?php echo esc_url( internetorg_get_media_image_url( $cf_content_section['image'], 'panel-image' ) ); ?>')" */ ?>
+															>
 																<div class="narrative-section-slides-item-inner"></div>
 															</div>
 
@@ -342,7 +375,11 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 																	if ( empty( $data_img ) ) {
 																		$data_img = $cta['image'];
 																	} ?>
-																	<div class="narrative-section-slides-item" style="background-image: url('<?php echo esc_url( internetorg_get_media_image_url( $cta['image'], 'panel-image' ) ); ?>')">
+																	<div
+																		class="narrative-section-slides-item <?php echo esc_attr( internetorg_responsive_images_classname( $cta['image'], 'panel-image' ) ); ?>"
+																		<?php /* style="background-image: url('<?php echo esc_url( internetorg_get_media_image_url( $cta['image'], 'panel-image' ) ); ?>')" */ ?>
+																	>
+
 																		<?php if ( ! empty( $cta['link'] ) ) : ?>
 																			<div class="narrative-section-slides-item-inner">
 																				<?php
@@ -476,7 +513,10 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 
 								<div class="narrative-section">
 									<div class="narrative-section-slides">
-										<div class="narrative-section-slides-item" style="background-image: url('<?php echo esc_attr( ! empty( $get_involved_content_widget_image ) ? $get_involved_content_widget_image : '' ); ?>')">
+										<div
+											class="narrative-section-slides-item <?php echo esc_attr( ! empty( $get_involved_content_widget_image_id ) ? internetorg_responsive_images_classname( $get_involved_content_widget_image_id, 'panel-image' ) : '' ); ?>"
+											<?php /* style="background-image: url('<?php echo esc_attr( ! empty( $get_involved_content_widget_image ) ? $get_involved_content_widget_image : '' ); ?>')" */ ?>
+											>
 											<div class="statementBlock statementBlock_end">
 												<div class="statementBlock-pre statementBlock-pre_divide">
 													<span class="bdcpy bdcpy_narrative mix-bdcpy_splash"><?php echo esc_html( ! empty( $get_involved_content_widget_post ) ? $get_involved_content_widget_post->post_title : '' ); ?></span>
@@ -511,7 +551,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 			</div>
 			<div class="viewWindow-panel viewWindow-panel_feature">
 				<div class="viewWindow-panel-content">
-					<div class="viewWindow-panel-content-inner" style="background-image: url('<?php echo esc_attr( $home_bg_url ); ?>');"></div>
+					<div class="viewWindow-panel-content-inner <?php echo esc_attr( internetorg_responsive_images_classname( $home_bg_id, 'panel-image' ) ); ?>" <?php /* style="background-image: url('<?php echo esc_attr( $home_bg_url ); ?>');" */ ?>></div>
 				</div>
 			</div>
 			<div class="viewWindow-panel viewWindow-panel_story">

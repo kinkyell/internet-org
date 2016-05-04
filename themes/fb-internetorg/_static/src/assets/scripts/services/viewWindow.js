@@ -13,7 +13,6 @@ define(function(require, exports, module) { // jshint ignore:line
     var AnimationQueue = require('util/AnimationQueue');
 
     var parseUrl = require('stark/string/parseUrl');
-    var log = require('util/log');
     var vwConfig = require('appConfig').viewWindow;
     var eventHub = require('services/eventHub');
     var assetLoader = require('services/assetLoader');
@@ -58,11 +57,13 @@ define(function(require, exports, module) { // jshint ignore:line
         this._shiftQueue = new AnimationQueue();
         this._isShifted = false;
         this._featureImage = null;
+        this._className = null;
         this._handlePanelScroll = this._onPanelScroll.bind(this);
         this.$story.children().on('scroll', this._handlePanelScroll);
 
         // get bg image if available
         var childImg = this.$feature.find('.viewWindow-panel-content-inner').css('background-image');
+
         if (BG_IMG_REGEX.test(childImg)) {
             this._featureImage = childImg.match(BG_IMG_REGEX)[1];
             this._featureImage = parseUrl(this._featureImage).href;
@@ -77,26 +78,34 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {String} direction Direction to animate to/from
      * @return {Promise} resolves when finished
      */
-    ViewWindow.prototype.replaceFeatureImage = function(imagePath, direction) {
-        imagePath = parseUrl(imagePath).href;
+    ViewWindow.prototype.replaceFeatureImage = function(imagePath, direction, bgClassName) {
+        if (imagePath) {
+            imagePath = parseUrl(imagePath).href;
+        }
+        
         var swapImage = function() {
             return this._featureQueue.queue(function() {
 
                 var $panel;
 
-                if (this._featureImage === imagePath || !imagePath) {
-                    if (!imagePath) {
-                        log('ViewWindow: [warning] image path is undefined!');
-                    }
+                if (this._featureImage === imagePath && this._className === bgClassName) {
                     return Promise.resolve(this.$feature.children());
                 }
 
                 $panel = this._getPanelWrap();
-                $panel.children().css({
-                    'background-color': '#efede4',
-                    'background-image': 'url(' + imagePath + ')'
-                });
+
+                if (imagePath) {
+                    $panel.children().css('background-image', 'url(' + imagePath + ')');
+                } else {
+                    $panel.children().css('background-image', null);
+                }
+
+                $panel.children()
+                .css('background-color', '#efede4')
+                .addClass(bgClassName);
+
                 this._featureImage = imagePath;
+                this._className = bgClassName;
 
                 return this._updatePanel(
                     $panel,
@@ -116,9 +125,10 @@ define(function(require, exports, module) { // jshint ignore:line
      * @param {String} html HTML content to add
      * @param {String} direction Direction to animate to/from
      * @param {String} bgImg Optional background images to swap on container
+     * @param {String} bgClassName Optional background image classname to swap.
      * @return {Promise} resolves when finished
      */
-    ViewWindow.prototype.replaceFeatureContent = function(html, direction, bgImg) {
+    ViewWindow.prototype.replaceFeatureContent = function(html, direction, bgImg, bgClassName) {
         return this._featureQueue.queue(function() {
             var $panel = this._getPanelWrap();
 
@@ -126,10 +136,15 @@ define(function(require, exports, module) { // jshint ignore:line
             this._featureImage = html;
 
             if (typeof bgImg !== 'undefined') {
-                $panel.children().css({
-                    'background-color': '#efede4',
-                    'background-image': 'url(' + bgImg + ')'
-                });
+                if (bgImg) {
+                    $panel.children().css('background-image', 'url(' + bgImg + ')');
+                } else {
+                    $panel.children().css('background-image', null);
+                }
+
+                $panel.children()
+                .css('background-color', '#efede4')
+                .addClass(bgClassName);
             }
 
             return this._updatePanel(

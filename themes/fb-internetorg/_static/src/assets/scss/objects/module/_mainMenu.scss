@@ -20,6 +20,15 @@
     }
 }
 
+.logged-in .mainMenu {
+    box-sizing: border-box;
+    padding-top: $WP_ADMIN_BAR_HEIGHT_DESKTOP;
+    
+    @media screen and (max-width: $BP_WP_MOBILE_MAX) {
+        padding-top: $WP_ADMIN_BAR_HEIGHT_MOBILE;
+    }
+}
+
 .mainMenu-panel {
     width: 100%;
     height: 100%;
