@@ -40,9 +40,9 @@ class IORG_CEI_Shortcode_Parser {
 			return substr( $m[0], 1, -1 );
 		}
 
-		$tag  = $m[2];
+		$tag  = 'wp-' . str_replace('_', '-', $m[2]);
 		$attr = shortcode_parse_atts( $m[3] );
-		$xml  = "<{$tag}>";
+		$xml  = '<' . $tag . ' wp_type="shortcode">';
 
 		foreach( $attr as $key => $value ) {
 			$xml .= "<{$key}>{$value}</{$key}>";

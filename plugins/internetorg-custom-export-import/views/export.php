@@ -74,6 +74,34 @@
 		<span class="label-responsive">Example: 167,456,1987</span>
 		<input type="text" name="ids" value="" class="" />
 	</label>
+	<h2>Extras</h2>
+	<ul>
+		<li>
+			<label>
+				<span class="label-responsive">Include Menus</span>
+				<select name="include_menus" class="">
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+				</select>
+			</label>
+		</li>
+		<li>
+			<label>
+				<span class="label-responsive">Include PO</span>
+				<select name="include_po" class="">
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+				</select>
+			</label>
+		</li>
+		<li>
+			<label>
+				<span class="label-responsive">PO Strings</span>
+			</label>
+
+			<textarea name="po_strings" style="width:100%; height: 300px; display: block;"><?php echo $po_strings ?></textarea>
+		</li>
+	</ul>
 
 	<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Download Export File"></p>
 	</form>
