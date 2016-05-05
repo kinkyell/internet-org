@@ -25,7 +25,11 @@
         }
 
         .vex-content {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
             width: 75%;
+            left: 12.5%;
         }
     }
 
@@ -34,6 +38,9 @@
     }
 
     .btn-confirm {
+        font-size: 14px;
+        font-weight: normal;
+        padding: 14px 0 !important;
         border: solid 2px $CLR_ACCENT;
         @include transition(
                     background-color 0.2s ease-in-out,
@@ -46,6 +53,9 @@
         }
     }
     .btn-cancel {
+        font-size: 14px;
+        font-weight: normal;
+        padding: 14px 0 !important;
         background: $CLR_WHITE;
         border: solid 2px $CLR_ACCENT;
         color: $CLR_ACCENT;
