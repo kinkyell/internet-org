@@ -53,6 +53,8 @@ class IORG_CEI_Menu {
 		$sites = wp_get_sites();
 		unset($sites[0]);
 
+		$po_strings = new IORG_CEI_PO_Strings;
+
 		IORG_CEI_View::render( 'export', array(
 			'types'    	  => get_post_types(),
 			'statuses' 	  => array( 'all', 'publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash' ),
@@ -60,6 +62,7 @@ class IORG_CEI_Menu {
 			'sites'	 	  => $sites,
 			'shortcodes'  => json_encode( $shortcode_tags ),
 			'form_action' => IORG_CEI_Route::action( $this->export_route, 'process' ),
+			'po_strings'  => $po_strings->get(),
 		) );
 
 	}

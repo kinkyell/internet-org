@@ -121,33 +121,3 @@
         transform: scale(1);
     }
 }
-
-/* Right to Left Language support */
-[dir="rtl"] {
-
-    .circleBtn {
-        transform: scale(0.65) rotate(180deg);
-    }
-
-    /* Intentionally disabling transistion
-       due to inconsistancies of other elements
-       firing thier respective transistions on :hover */
-    .circleBtn:after,
-    .circleBtn:before {
-        transition: none;
-    }
-
-}
-
-@include breakpoint(MD) {
-
-    /* Right to Left Language support */
-    [dir="rtl"] {
-
-        .circleBtn {
-            transform: scale(1.0) rotate(180deg);
-        }
-
-    }
-
-}
