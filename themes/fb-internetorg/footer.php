@@ -83,7 +83,7 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
 
-  <?php if ( strpos( home_url(), 'internetorg.jam3.net' ) !== false ) : ?>
+  <?php if ( strpos( home_url(), 'dmo.xyz' ) !== false ) : ?>
 
 		<script type="text/javascript">
 		(function() {
