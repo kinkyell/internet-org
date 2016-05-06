@@ -721,6 +721,14 @@ function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button 
 
 	$widget = internetorg_get_content_widget_by_slug( $widget_slug );
 
+	// Lets enabled a way to filter widget content.
+	if ( isset( $widget['meta']['widget-data'] ) && is_array( $widget['meta']['widget-data'] ) ) {
+		foreach ( $widget['meta']['widget-data'] as $key => $widget_data ) {
+			$widget['meta']['widget-data'][$key]['label'] = apply_filters( 'widget_data_label_filter', $widget_data['label'] );
+			$widget['meta']['widget-data'][$key]['url']   = apply_filters( 'widget_data_url_filter',   $widget_data['url']   );
+		}
+	}
+
 	if ( ! empty( $widget ) || ( isset( $widget['post'] ) && empty( $widget['post'] ) ) ) {
 		$meta = ( ! empty( $widget['meta'] ) ? $widget['meta'] : null );
 		$post = $widget['post'];
@@ -2711,6 +2719,24 @@ function internetorg_alter_links_to_match_language( $content ) {
     return $content;
 }
 add_filter( 'the_content', 'internetorg_alter_links_to_match_language' );
+
+/**
+ * Catches links within the widget content
+ * if the link has /en/ but we are not on the English
+ * site then we must replace it so link is correct.
+ */
+function internetorg_alter_widget_url_to_match_language( $url ) {
+
+	$site_prefix = mlp_get_blog_language( get_current_blog_id() );
+
+	if ( $site_prefix != 'en' )
+	{
+		$url = str_replace( '/en/', '/' . $site_prefix . '/', $url );
+	}
+
+    return $url;
+}
+add_filter( 'widget_data_url_filter', 'internetorg_alter_widget_url_to_match_language' );
 
 
 /**
