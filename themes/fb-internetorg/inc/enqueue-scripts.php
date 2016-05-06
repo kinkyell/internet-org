@@ -17,9 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function internetorg_enqueue_scripts() {
 
+	$site_prefix = mlp_get_blog_language( get_current_blog_id() );
+
 	wp_enqueue_style(
 		'internetorg-screen',
-		get_stylesheet_directory_uri() . '/_static/web/assets/styles/screen.css',
+		get_stylesheet_directory_uri() . '/_static/web/assets/styles/' . ( $site_prefix === 'ja' ? 'screen-ja.css' : 'screen.css' ),
 		array(),
 		false,
 		'screen, projection'
