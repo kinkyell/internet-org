@@ -43,41 +43,95 @@ $WP_ADMIN_BAR_HEIGHT_DESKTOP: 32px;
 // $FONT_SERIF: 'Lava Pro', Times New Roman,  serif; // Lava Pro Medium
 // $FONT_SERIF_ITALIC: 'Lava Pro', Times New Roman, serif; // Lava Pro Regular Italic
 $BASE_FONT_SIZE: 16px;
+$FONT-SET : 'default' !default;
 
 @mixin font($style) {
     @if $style == SANS {
-        font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
-        font-weight: 200; // normal
-        font-style: normal;
+        @if $FONT-SET == JAPANESE {
+            font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        } @else {
+            font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+            font-weight: 200; // normal
+            font-style: normal;
+        }
+
     } @else if $style == SANS_BLACK {
-        font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
-        font-weight: 500;
-        font-style: normal;
+
+        @if $FONT-SET == JAPANESE {
+            font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+            font-weight: 600;
+            font-style: normal;
+        } @else {
+            font-family: "Basis Grotesque Pro", Tahoma, Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-style: normal;    
+        }
+
     } @else if $style == SERIF {
-        font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif ;
-        font-style: Normal;
-        font-weight: 600;
-        font-stretch: normal;
+
+        @if $FONT-SET == JAPANESE {
+            font-family: 'Hiragino Mincho Pro', 'MS PMincho', serif;
+            font-style: Normal;
+            font-weight: 400;
+            font-stretch: normal;
+        } @else {
+            font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif ;
+            font-style: Normal;
+            font-weight: 600;
+            font-stretch: normal;
+        }
+
     } @else if $style == SERIF_ITALIC {
-        font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif ;
-        font-style: Italic;
-        font-weight: 400;
-        font-stretch: normal;
+        @if $FONT-SET == JAPANESE {
+            font-family: 'Hiragino Mincho Pro', 'MS PMincho', serif;
+            font-style: Italic;
+            font-weight: 400;
+            font-stretch: normal;
+        } @else {
+            font-family: "Lava", "Harir Regular", Times New Roman, Georgia, serif ;
+            font-style: Italic;
+            font-weight: 400;
+            font-stretch: normal;
+        }
     } @else if $style == SERIF_MED_ITALIC {
-        font-family: "Lava", "Harir Bold", Timesgri New Roman, Georgia, serif ;
-        font-style: Italic;
-        font-weight: 500;
-        font-stretch: normal;
+        @if $FONT-SET == JAPANESE {
+            font-family: 'Hiragino Mincho Pro', 'MS PMincho', serif;
+            font-style: Italic;
+            font-weight: 400;
+            font-stretch: normal;
+        } @else {
+            font-family: "Lava", "Harir Bold", Timesgri New Roman, Georgia, serif ;
+            font-style: Italic;
+            font-weight: 500;
+            font-stretch: normal;
+        }
+
     } @else if $style == SERIF_ALT {
-        font-family: "Harir", Times New Roman, Georgia, serif ;
-        font-style: Normal;
-        font-weight: 400;
-        font-stretch: normal;
+        @if $FONT-SET == JAPANESE {
+            font-family: 'Hiragino Mincho Pro', 'MS PMincho', serif;
+            font-style: Normal;
+            font-weight: 400;
+            font-stretch: normal;
+        } @else {
+            font-family: "Harir", Times New Roman, Georgia, serif ;
+            font-style: Normal;
+            font-weight: 400;
+            font-stretch: normal;
+        }
     } @else if $style == SERIF_ALT_BOLD {
-        font-family: "Harir", Times New Roman, Georgia, serif ;
-        font-style: Normal;
-        font-weight: 700;
-        font-stretch: normal;
+        @if $FONT-SET == JAPANESE {
+            font-family: 'Hiragino Mincho Pro', 'MS PMincho', serif;
+            font-style: Normal;
+            font-weight: 700;
+            font-stretch: normal;
+        } @else {
+            font-family: "Harir", Times New Roman, Georgia, serif ;
+            font-style: Normal;
+            font-weight: 700;
+            font-stretch: normal;
+        }
     }
 }
 
