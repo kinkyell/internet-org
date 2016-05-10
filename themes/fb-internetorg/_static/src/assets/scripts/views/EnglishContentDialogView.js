@@ -166,6 +166,8 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._onOpen = function($vexContent, event) {
         this._previousFocus = document.activeElement;
 
+        $vexContent.wrap('<div class="vex-content-wrap"></div>');
+
         // disable button outlines on click
         $vexContent.find('button,input[type="button"],input[type="submit"]').on('mousedown', function(event) {
             event.preventDefault();

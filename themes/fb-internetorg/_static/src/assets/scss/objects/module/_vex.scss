@@ -2,6 +2,11 @@
 @import "vex-theme-plain";
 
 
+.vex-content-wrap {
+    height: 100%;
+    position: relative;
+}
+
 .vex.dialog-confirm-english {
     left: 0;
     width: 100%;
@@ -10,6 +15,10 @@
         width: 82.5%;
         padding: 28px;
         max-width: 450px;
+
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
     }
 
     @media (min-width: 769px) {
@@ -23,14 +32,6 @@
             padding-right: 2px;
             box-sizing: content-box;
         }
-
-        .vex-content {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 75%;
-            left: 12.5%;
-        }
     }
 
     .vex-dialog-message {
@@ -39,7 +40,7 @@
 
     .btn-confirm {
         font-size: 14px;
-        font-weight: normal;
+        font-weight: 200;
         padding: 14px 0 !important;
         border: solid 2px $CLR_ACCENT;
         @include transition(
@@ -54,7 +55,7 @@
     }
     .btn-cancel {
         font-size: 14px;
-        font-weight: normal;
+        font-weight: 200;
         padding: 14px 0 !important;
         background: $CLR_WHITE;
         border: solid 2px $CLR_ACCENT;
