@@ -23,8 +23,9 @@
     $base_img = internetorg_get_media_image_url( $img_id , 'panel-image' );
     // 960 x 1200
 
-    $use_photon = function_exists( 'wpcom_vip_get_resized_attachment_url' ) &&
-                  apply_filters( 'internetorg_responsive_images_enabled', true );
+    $disabled = apply_filters( 'internetorg_responsive_images_disabled', false );
+
+    $use_photon = function_exists( 'wpcom_vip_get_resized_attachment_url' ) && ! $disabled;
 
     if ( $use_photon === false ) {
       $size = null;
