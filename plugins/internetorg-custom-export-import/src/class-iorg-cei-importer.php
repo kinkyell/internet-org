@@ -1,14 +1,54 @@
 <?php
 
+/**
+ * Class to handle the importing of content.
+ */
 class IORG_CEI_Importer {
 
+	/**
+	 * Store the XML content to import
+	 * @var SimpleXMLElement
+	 */
 	private $content;
+
+	/**
+	 * Stores instance of Shortcode Parser class
+	 * @var IORG_CEI_Shortcode_Parser
+	 */
 	private $parser;
+
+	/**
+	 * Stores site id where the content came from.
+	 * @var string
+	 */
 	private $original_site;
+
+	/**
+	 * Stores site id where content is going too.
+	 * @var string
+	 */
 	private $target_site;
+
+	/**
+	 * Stores instance of Mlp_Content_Relations
+	 * The MultilingualPress class for handling relationships
+	 * between posts.
+	 * @var Mlp_Content_Relations
+	 */
 	private $mlp_content_relations;
+
+	/**
+	 * Stores messages to output to the user.
+	 * @var array
+	 */
 	private $output;
 
+	/**
+	 * Execute the importer
+	 * @param  string $content
+	 * @param  array $request
+	 * @return array
+	 */
 	public function run( $content, $request ) {
 
 		global $wpdb;
@@ -79,6 +119,10 @@ class IORG_CEI_Importer {
 		return $this->output;
 	}
 
+	/**
+	 * Import posts
+	 * @param  array $posts
+	 */
 	private function posts( $posts ) {
 
 		foreach ( $posts as $post ) {
@@ -132,6 +176,10 @@ class IORG_CEI_Importer {
 		}
 	}
 
+	/**
+	 * Import Menus
+	 * @param  array $menus
+	 */
 	private function menus( $menus ) {
 
 		$this->switch_to_target_site();
@@ -192,6 +240,11 @@ class IORG_CEI_Importer {
 		set_theme_mod( 'nav_menu_locations', $locations );
 	}
 
+	/**
+	 * Returns the id of post for the target site.
+	 * @param  string|int $id
+	 * @return string|int
+	 */
 	private function get_related_post_id( $id ) {
 
 		$ids = mlp_get_linked_elements( $id );
@@ -203,6 +256,12 @@ class IORG_CEI_Importer {
 		return 0;
 	}
 
+	/**
+	 * Correct orginial site to target site
+	 * e.g. domain.com/en/my-post becomes domain.com/fr/my-post
+	 * @param  string $url
+	 * @return string
+	 */
 	private function correct_site_urls( $url ) {
 
 		$protocols 			  = array( 'http://', 'https://' );
@@ -213,6 +272,12 @@ class IORG_CEI_Importer {
 		return str_replace( $site_url . $original_site_prefix . '/', $site_url . $target_site_prefix . '/', $url );
 	}
 
+	/**
+	 * Strips opening and closing tag of a string.
+	 * @param  string $string
+	 * @param  string $tag_name
+	 * @return string
+	 */
 	private function strip_xml_tag( $string, $tag_name ) {
 		$string = preg_replace( '/<('. $tag_name .') [^>]*>/', '', $string );
 		$string = str_replace( '<'. $tag_name .'>', '', $string );
@@ -220,14 +285,24 @@ class IORG_CEI_Importer {
 		return $string;
 	}
 
+	/**
+	 * Switches site/blog to original site (where content came from)
+	 */
 	private function switch_to_original_site() {
 		switch_to_blog( $this->original_site );
 	}
 
+	/**
+	 * Switches site/blog to target site (where content going too)
+	 */
 	private function switch_to_target_site() {
 		switch_to_blog( $this->target_site );
 	}
 
+	/**
+	 * Sets 'target_site' from the locale found in the import file.
+	 * @param string $locale
+	 */
 	private function set_target_site( $locale ) {
 
 		$languages 	     = mlp_get_available_languages( true );

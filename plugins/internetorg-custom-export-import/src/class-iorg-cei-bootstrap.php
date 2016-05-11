@@ -2,7 +2,7 @@
 
 /**
  * Creates a new instance of each class that is necessary
- * for the plugin to fun.
+ * for the plugin to run.
  */
 class IORG_CEI_Bootstrap {
 

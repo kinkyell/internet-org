@@ -1,11 +1,32 @@
 <?php
 
+/**
+ * Class to handle the exporting of content.
+ */
 class IORG_CEI_Exporter {
 
+	/**
+	 * Stores the request array (generally $_POST)
+	 * @var array
+	 */
 	private $request;
+
+	/**
+	 * Stores instance of Shortcode Parser class
+	 * @var IORG_CEI_Shortcode_Parser
+	 */
 	private $parser;
+
+	/**
+	 * Stores instance of PO String class
+	 * @var IORG_CEI_PO_Strings
+	 */
 	private $po_strings;
 
+	/**
+	 * Execute the exporter
+	 * @param  array $request
+	 */
 	public function run( $request ) {
 
 		$this->request = $request;
@@ -39,6 +60,10 @@ class IORG_CEI_Exporter {
 		}
 	}
 
+	/**
+	 * Gets post/pages by id's
+	 * @param  array $ids
+	 */
 	private function ids( $ids ) {
 
 		$args = array(
@@ -52,6 +77,10 @@ class IORG_CEI_Exporter {
 		$this->output( $posts );
 	}
 
+	/**
+	 * Gets post/pages using a query
+	 * depending on $request
+	 */
 	private function query() {
 
 		$args = array(
@@ -85,6 +114,12 @@ class IORG_CEI_Exporter {
 		$this->output( $posts );
 	}
 
+	/**
+	 * Sets array[element] based on request[key]
+	 * @param string $name
+	 * @param string $arg_name
+	 * @param array $args
+	 */
 	private function set_arg_from_request( $name, $arg_name, $args ) {
 		if ( isset( $this->request[$name] ) ) {
 			$args[$arg_name] = $this->request[$name];
@@ -92,6 +127,9 @@ class IORG_CEI_Exporter {
 		return $args;
 	}
 
+	/**
+	 * Outputs Menus as XML
+	 */
 	private function menus() {
 		$menus 			 = get_terms( 'nav_menu', array( 'hide_empty' => true ) );
 		$theme_locations = get_nav_menu_locations();
@@ -118,6 +156,9 @@ class IORG_CEI_Exporter {
 		}
 	}
 
+	/**
+	 * Outputs PO Strings as XML
+	 */
 	private function po() {
 		$strings = explode( PHP_EOL, $this->po_strings->get() );
 
@@ -131,6 +172,10 @@ class IORG_CEI_Exporter {
 		echo '</wp-obj>';
 	}
 
+	/**
+	 * Outputs Posts/Pages as XML
+	 * @param  array $posts
+	 */
 	private function output( $posts ) {
 
 		foreach ( $posts as $post ) {
@@ -140,6 +185,11 @@ class IORG_CEI_Exporter {
 		}
 	}
 
+	/**
+	 * Filter content before inserting it into XML
+	 * @param  string $string
+	 * @return string
+	 */
 	private function filter( $string ) {
 
 		$string = str_replace( '&nbsp;', '&#160;', $string );
