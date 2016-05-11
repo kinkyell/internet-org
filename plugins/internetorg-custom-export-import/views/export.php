@@ -5,8 +5,6 @@
 	<p>This format will contain your posts and pages. Shortcodes are converted into custom tags which are compatible with the Facebook translation tool.</p>
 	<p>Once a translation has been completed, for example French. Please visit the French the site and select import add the new translated content to the site.</p>
 
-
-
 	<form action="<?php echo $form_action ?>" method="post">
 	<h2>Choose which site to export from.</h2>
 	<ul>
@@ -102,6 +100,8 @@
 			<textarea name="po_strings" style="width:100%; height: 300px; display: block;"><?php echo $po_strings ?></textarea>
 		</li>
 	</ul>
+
+	<?php wp_nonce_field( 'iorg_cei_export', 'nonce' ); ?>
 
 	<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Download Export File"></p>
 	</form>

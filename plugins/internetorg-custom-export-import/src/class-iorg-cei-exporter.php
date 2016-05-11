@@ -60,17 +60,48 @@ class IORG_CEI_Exporter {
 			'orderby'		 => 'post_type',
 		);
 
+		$fields = array(
+			'type' 		 => 'post_type',
+			'status' 	 => 'post_status',
+			'author' 	 => 'author',
+		);
+
+		foreach ( $fields as $field => $arg_name ) {
+			$args = $this->set_arg_from_request( $field, $arg_name, $args );
+		}
+
+		if ( isset( $this->request['start_date'] ) && isset( $this->request['end_date'] ) ) {
+			$args['date_query'] = array(
+				array(
+					'after'     => $this->request['start_date'],
+					'before'    => $this->request['end_date'],
+					'inclusive' => true,
+				),
+			);
+		}
+
 		$posts = get_posts( $args );
 
 		$this->output( $posts );
 	}
 
+	private function set_arg_from_request( $name, $arg_name, $args ) {
+		if ( isset( $this->request[$name] ) ) {
+			$args[$arg_name] = $this->request[$name];
+		}
+		return $args;
+	}
+
 	private function menus() {
-		$menus = get_terms( 'nav_menu', array( 'hide_empty' => true ) );
-		//wp_update_nav_menu_item
+		$menus 			 = get_terms( 'nav_menu', array( 'hide_empty' => true ) );
+		$theme_locations = get_nav_menu_locations();
+
 		foreach ( $menus as $menu ) {
-			$menu_items = wp_get_nav_menu_items( $menu->term_id );
-			echo '<wp-obj wp_menu_id="' . $menu->term_id . '" wp_type="' . 'menu' .'" wp_menu_slug="' . $menu->slug . '">';
+
+			$menu_location = array_search( $menu->term_id, $theme_locations );
+			$menu_items    = wp_get_nav_menu_items( $menu->term_id );
+
+			echo '<wp-obj wp_menu_id="' . $menu->term_id . '" wp_type="' . 'menu' .'" wp_menu_slug="' . $menu->slug .'" wp_menu_name="' . $menu->name .'" wp_menu_location="' . $menu_location .'">';
 				foreach ( $menu_items as $item ) {
 					echo '<wp-menu-item wp_item_id="' . $this->filter( $item->ID ) . '">';
 					echo '<wp-menu-item-object-id>'. $this->filter( $item->object_id ) .'</wp-menu-item-object-id>';
