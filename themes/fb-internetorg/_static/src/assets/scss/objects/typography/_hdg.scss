@@ -90,8 +90,11 @@
 @include breakpoint(MD) {
     .hdg_1 {
         @include remify(font-size, 64px);
-        // line-height: 1.28;
         line-height: 1.18;
+
+        html[lang="bn-BD"] & {
+            @include remify(font-size, 46px);
+        }
     }
 
     .hdg_2 {
@@ -140,6 +143,10 @@
 @include breakpoint(LG) {
     .hdg_1 {
         font-size: 5vw;
+
+        html[lang="bn-BD"] & {
+            font-size: 5vw;
+        }
     }
 
     .hdg_2 {

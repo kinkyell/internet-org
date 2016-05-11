@@ -2777,5 +2777,5 @@ add_filter( 'wp_link_query', 	  'internetorg_remove_link_filters' );
  * Disable responsive images on local dev (public URL is required for photon image resize).
  */
 if ( stripos( get_site_url(), '/internet-org.app' ) !== false ) {
-	add_filter( 'internetorg_responsive_images_enabled', '__return_true' );
+	add_filter( 'internetorg_responsive_images_disabled', '__return_true' );
 }
