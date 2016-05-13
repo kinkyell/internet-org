@@ -144,8 +144,12 @@
     .hdg_1 {
         font-size: 5vw;
 
-        html[lang="bn-BD"] & {
+        // IORG-232
+        html[lang="bn-BD"] &,
+        html[lang="hi-IN"] &,
+        html[lang="pa-IN"] & {
             font-size: 5vw;
+            margin-top: 2vh;
         }
     }
 
