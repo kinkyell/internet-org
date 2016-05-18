@@ -73,7 +73,7 @@ class IORG_CEI_Importer {
 		$posts = array();
 		$menus = array();
 
-		foreach ( $this->content->{'wp-obj'} as $key => $obj ) {
+		foreach ( $this->content->obj->container->{'wp-obj'} as $key => $obj ) {
 
 			if ( $obj['wp_type'] == 'post' ||  $obj['wp_type'] == 'page' ) {
 
