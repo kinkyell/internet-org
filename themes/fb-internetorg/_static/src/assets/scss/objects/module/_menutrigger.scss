@@ -11,16 +11,18 @@
     cursor: pointer;
 }
 
-.menuTrigger_onDark .menuTrigger-label {
+.menuTrigger_onDark .menuTrigger-label, .menuTrigger_onDarkwt .menuTrigger-label {
     color: $CLR_WHITE;
 }
 
-.menuTrigger_onDark .menuTrigger-icon {
+.menuTrigger_onDark .menuTrigger-icon, .menuTrigger_onDarkwt .menuTrigger-icon {
     border-bottom: 2px solid $CLR_WHITE;
 }
 
 .menuTrigger_onDark .menuTrigger-icon:before,
-.menuTrigger_onDark .menuTrigger-icon:after {
+.menuTrigger_onDark .menuTrigger-icon:after, 
+.menuTrigger_onDarkwt .menuTrigger-icon:before,
+.menuTrigger_onDarkwt .menuTrigger-icon:after {
     background-color: $CLR_WHITE;
 }
 

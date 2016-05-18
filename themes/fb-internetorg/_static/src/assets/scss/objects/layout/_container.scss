@@ -14,3 +14,7 @@ wrapper for constraining content to a max width
 .container_xl {
     @include contain(xl);
 }
+
+.viewWindow-panel-content-blogc .container {
+	width: 100%;
+}

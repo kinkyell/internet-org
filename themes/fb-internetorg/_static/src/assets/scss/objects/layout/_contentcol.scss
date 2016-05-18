@@ -9,6 +9,32 @@ Layout for padded columns of content.
     padding: 22px 0;
 }
 
+ .contentCol_fullPage {
+    @media screen and (max-width: 768px){
+        margin-left: 64px;
+        margin-right: 64px;
+    }
+
+    @media screen and (max-width: 360px) {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+}
+.viewWindow-panel-content-blogc-inner .contentCol_fullPage {
+    margin-left: 248px;
+    margin-right: 248px;
+    @media screen and (max-width: 768px){
+        margin-left: 64px;
+        margin-right: 64px;
+    }
+
+    @media screen and (max-width: 360px) {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+}
+
+
 .contentCol_flush {
     padding-top: 0;
     // overflow: hidden;
@@ -45,7 +71,22 @@ Layout for padded columns of content.
   	width: 100%;
 }
 
+.readMoreDiv {
+    text-align: center;
+}
+.readMore {
+    width: 90%;
+    height: 65px;
+    background-color: #FFCD00;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+
 @include breakpoint(MD) {
+    .readMore {
+        width: 90%;
+    }
     .contentCol {
         padding: $SPACE_x5 0;
     }
@@ -65,4 +106,10 @@ Layout for padded columns of content.
 	.contentCol_tight.four-o-four, {
 	  	position: absolute;
 	}
+}
+@include breakpoint(LG) {
+    .readMore {
+        max-width: 593px;
+    }
+
 }
