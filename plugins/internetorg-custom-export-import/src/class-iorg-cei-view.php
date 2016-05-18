@@ -12,12 +12,16 @@ class IORG_CEI_View {
 	 */
 	public static function render( $template, $data = [] ) {
 		$path = plugin_dir_path( __DIR__ ) . 'views/';
-		extract( $data );
-		ob_start();
-			include $path . $template . '.php';
-			$buffer = ob_get_contents();
-		@ob_end_clean();
-		echo $buffer;
+		$file = $path . $template . '.php';
+
+		if ( validate_file( $file ) === 0 ) {
+			extract( $data );
+			ob_start();
+				include $file;
+				$buffer = ob_get_contents();
+			@ob_end_clean();
+			echo $buffer;
+		}
 	}
 
 }

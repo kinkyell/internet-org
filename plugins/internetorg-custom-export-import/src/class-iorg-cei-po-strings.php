@@ -19,6 +19,8 @@ class IORG_CEI_PO_Strings {
 
 	public function set( $value )
 	{
+		$value = sanitize_text_field( $value );
+
 		return update_site_option( self::name, $value );
 	}
 }

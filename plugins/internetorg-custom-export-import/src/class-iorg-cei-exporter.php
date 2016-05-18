@@ -69,7 +69,7 @@ class IORG_CEI_Exporter {
 		$args = array(
 			'post__in'  	 => $ids,
 			'post_type' 	 => 'any',
-			'posts_per_page' => -1,
+			'posts_per_page' => count( $ids ),
 		);
 
 		$posts = get_posts( $args );
@@ -84,9 +84,10 @@ class IORG_CEI_Exporter {
 	private function query() {
 
 		$args = array(
-			'post_type' 	 => 'any',
-			'posts_per_page' => -1,
-			'orderby'		 => 'post_type',
+			'post_type' 	   => 'any',
+			'posts_per_page'   => 200,
+			'orderby'		   => 'post_type',
+			'suppress_filters' => false
 		);
 
 		$fields = array(
@@ -139,15 +140,15 @@ class IORG_CEI_Exporter {
 			$menu_location = array_search( $menu->term_id, $theme_locations );
 			$menu_items    = wp_get_nav_menu_items( $menu->term_id );
 
-			echo '<wp-obj wp_menu_id="' . $menu->term_id . '" wp_type="' . 'menu' .'" wp_menu_slug="' . $menu->slug .'" wp_menu_name="' . $menu->name .'" wp_menu_location="' . $menu_location .'">';
+			echo '<wp-obj wp_menu_id="' . esc_attr( $menu->term_id ) . '" wp_type="' . 'menu' .'" wp_menu_slug="' . esc_attr( $menu->slug ) .'" wp_menu_name="' . esc_attr( $menu->name ) .'" wp_menu_location="' . esc_attr( $menu_location ) .'">';
 				foreach ( $menu_items as $item ) {
 					echo '<wp-menu-item wp_item_id="' . $this->filter( $item->ID ) . '">';
 					echo '<wp-menu-item-object-id>'. $this->filter( $item->object_id ) .'</wp-menu-item-object-id>';
 					echo '<wp-menu-item-object>'. $this->filter( $item->object ) .'</wp-menu-item-object>';
 					echo '<wp-menu-item-type>'. $this->filter( $item->type ) .'</wp-menu-item-type>';
 					echo '<wp-menu-item-title>'. $this->filter( $item->title ) .'</wp-menu-item-title>';
-					echo '<wp-menu-item-url>'. $item->url .'</wp-menu-item-url>';
-					echo '<wp-menu-item-classes>'. implode( '|', $item->classes ) .'</wp-menu-item-classes>';
+					echo '<wp-menu-item-url>'. $this->filter( $item->url ) .'</wp-menu-item-url>';
+					echo '<wp-menu-item-classes>'. $this->filter( implode( '|', $item->classes ) ).'</wp-menu-item-classes>';
 					echo '<wp-menu-item-order>'. $this->filter( $item->menu_order ) .'</wp-menu-item-order>';
 					echo '<wp-menu-item-parent>'. $this->filter( $item->menu_item_parent ) .'</wp-menu-item-parent>';
 					echo '</wp-menu-item>';
@@ -179,8 +180,8 @@ class IORG_CEI_Exporter {
 	private function output( $posts ) {
 
 		foreach ( $posts as $post ) {
-			echo '<wp-obj wp_post_id="' . $post->ID . '" wp_type="' . $post->post_type . '" wp_post_title="' . esc_attr( $post->post_title ) . '">';
-			echo $this->parser->to_xml( $this->filter( $post->post_content ) );
+			echo '<wp-obj wp_post_id="' . esc_attr( $post->ID ) . '" wp_type="' . esc_attr( $post->post_type ) . '" wp_post_title="' . esc_attr( $post->post_title ) . '">';
+			echo $this->parser->to_xml( $this->filter( $post->post_content, false ) );
 			echo '</wp-obj>';
 		}
 	}
@@ -190,9 +191,13 @@ class IORG_CEI_Exporter {
 	 * @param  string $string
 	 * @return string
 	 */
-	private function filter( $string ) {
+	private function filter( $string, $escape = true ) {
 
 		$string = str_replace( '&nbsp;', '&#160;', $string );
+
+		if ( $escape ) {
+			return esc_html( $string );
+		}
 
 		return $string;
 	}
