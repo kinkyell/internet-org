@@ -52,6 +52,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         var viewWindowEl = _getViewWindow(parsed);
 
+
         var fbroot = viewWindowEl.querySelector('#fb-root');
         
         if( fbroot ) {
@@ -92,6 +93,7 @@ define(function(require, exports, module) { // jshint ignore:line
             if (path.indexOf('http') !== 0) {
                 path = '/' + path;
             }
+
             return Promise.resolve($.get(path)).then(_parseHtmlResponse, _parseHtmlResponse);
         },
 
@@ -134,6 +136,8 @@ define(function(require, exports, module) { // jshint ignore:line
                             url: result.permalink,
                             type: result.post_type,
                             date: result.post_date,
+                            videourl: result.post_video_url,
+                            imageurl: result.post_image_url,
                             image: result.panel_image,
                             mobileImage: result.mobile_image,
                             isPost: result.post_type === 'post',
@@ -163,6 +167,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 return apiService.getSearchResults(args, page);
             }
             return Promise.resolve($.get('/' + resultsPath + filterSection + 'page/' + page)).then(function(res) {
+                
                 if (typeof res === 'string') {
                     res = JSON.parse(res);
                 }
@@ -180,6 +185,7 @@ define(function(require, exports, module) { // jshint ignore:line
                     hasNextPage: page < res.data.max_num_pages,
                     totalResults: typeof res.data.found_posts === 'number' ? res.data.found_posts : 'Unknown',
                     resultsHtml: res.data.posts.map(function(result) {
+
                         return result.post_html;
                     }).join(''),
                     results: res.data.posts.map(function(result) {
@@ -187,6 +193,8 @@ define(function(require, exports, module) { // jshint ignore:line
                             title: result.post_title,
                             desc: result.post_excerpt,
                             date: result.post_date,
+                            videourl: result.post_video_url,
+                            imageurl: result.post_image_url,
                             url: result.permalink,
                             image: result.post_thumbnail,
                             readMoreText: window.SETTINGS.READ_MORE_TEXT,

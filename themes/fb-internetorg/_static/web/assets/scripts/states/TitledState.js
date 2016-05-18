@@ -21,6 +21,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var LoadingContainer = require('util/LoadingContainer');
 
     var log = require('util/log');
+    var setheader = "";
 
     /**
      * Manages the stack of active states
@@ -31,10 +32,12 @@ define(function(require, exports, module) { // jshint ignore:line
      * @constructor
      */
     var TitledState = function(options) {
+
         this._handlePanelContentLoad = this._onPanelContentLoad.bind(this);
         this._handleStaticContent = this._onStaticContent.bind(this);
         this._handleLoaderInit = this._onLoaderInit.bind(this);
 
+        
         BasicState.call(this, options);
         this._options.social = (this._options.social === 'true');
     };
@@ -68,17 +71,75 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     TitledState.prototype.onActivate = function(event) {
         var transitions = this.getAnimationDirections(event);
-
-        if (event.silent) {
-            viewWindow.getCurrentStory().then(this._handleStaticContent, log);
-            return;
+        var tasks = [];
+        console.log("header-img-color :",this._options['header-img-color']);
+        if(this._options['header-img-color']=="white") {
+            console.log("inside : ",this._options['header-img-color']);
+            $('.header-logo').addClass("header-logo_invertwt");    
+        } else {
+            $('.header-logo').removeClass("header-logo_invertwt");    
         }
+        console.log("header-color :",this._options['header-color']);
+        if(this._options['header-color']=="white") {
+           $('.menuTrigger').addClass("menuTrigger_onDarkwt");    
+           
+        } else {
+           $('.menuTrigger').removeClass("menuTrigger_onDarkwt");     
+        }
+        
+        if(this._options['story-page']=="full_screen") {
+            $('.viewWindow').css({"right": "0"});
+        if(this._options.path) {
+            var checkifStory = this._options.path;   
+            if(checkifStory.indexOf('blog') > -1) {
+               
+                tasks = [
+                            apiService.getPanelContent(this._options.path),
+                            viewWindow.replaceFeatureContentBlog(templates['page-title-panel'](this._options), transitions.feature),
+                            viewWindow.replaceStoryContentBlog('', transitions.content).then(tap(this._handleLoaderInit)),
+                            viewWindow.changetoFullScreen(this._options)
+                        ];
+            } else {
+                if (event.silent) {
+                    viewWindow.getCurrentStory().then(this._handleStaticContent, log);
+                    return;
+                }
+                
+                tasks = [
+                            apiService.getPanelContent(this._options.path),
+                            viewWindow.replaceFeatureContent(templates['page-title-panel'](this._options), transitions.feature),
+                            viewWindow.replaceStoryContent('', transitions.content).then(tap(this._handleLoaderInit)),
+                            viewWindow.changetoOriginal()
+                        ];
+            } 
+        } else {
+            if (event.silent) {
+                viewWindow.getCurrentStory().then(this._handleStaticContent, log);
+                return;
+            }
+            
+            tasks = [
+                            apiService.getPanelContent(this._options.path),
+                            viewWindow.replaceFeatureContent(templates['page-title-panel'](this._options), transitions.feature),
+                            viewWindow.replaceStoryContent('', transitions.content).then(tap(this._handleLoaderInit)),
+                            viewWindow.changetoOriginal()
+                        ];
+        }
+    } else {
+        $('.viewWindow').css({"right": ""});
+         if (event.silent) {
+                viewWindow.getCurrentStory().then(this._handleStaticContent, log);
+                return;
+            }
+            
+            tasks = [
+                            apiService.getPanelContent(this._options.path),
+                            viewWindow.replaceFeatureContent(templates['page-title-panel'](this._options), transitions.feature),
+                            viewWindow.replaceStoryContent('', transitions.content).then(tap(this._handleLoaderInit)),
+                            viewWindow.changetoOriginal()
+                        ];
+    }
 
-        var tasks = [
-            apiService.getPanelContent(this._options.path),
-            viewWindow.replaceFeatureContent(templates['page-title-panel'](this._options), transitions.feature),
-            viewWindow.replaceStoryContent('', transitions.content).then(tap(this._handleLoaderInit))
-        ];
 
         Promise.all(tasks)
             .then(spread(this._handlePanelContentLoad))
@@ -96,9 +157,11 @@ define(function(require, exports, module) { // jshint ignore:line
         if (!this.active) {
             return;
         }
+        
         var $markup = $(markup);
         $panel.append($markup);
         Tween.from($markup[0], 0.25, { opacity: 0 });
+
         this.refreshComponents($panel);
 
         // remove loader

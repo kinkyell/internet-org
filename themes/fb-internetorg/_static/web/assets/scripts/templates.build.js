@@ -79,12 +79,32 @@ this["JST"]["home-feature"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.
 },"useData":true});
 
 this["JST"]["page-title-panel"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
+    return "        <div class=\"container displayFullSccreen\">\n";
+},"3":function(depth0,helpers,partials,data) {
+    return "        <div class=\"container\">\n";
+},"5":function(depth0,helpers,partials,data) {
+    var helper;
+
+  return "                    <div class=\"imgWrap isLoaded contentOnMedia-media \" id=\"heroImage\" style=\"background: url("
+    + this.escapeExpression(((helper = (helper = helpers['image-display'] || (depth0 != null ? depth0['image-display'] : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"image-display","hash":{},"data":data}) : helper)))
+    + ") no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: over; background-size: cover; width:100%;\">&nbsp;</div>\n                    \n";
+},"7":function(depth0,helpers,partials,data) {
+    var helper;
+
+  return "                    <a href=\""
+    + this.escapeExpression(((helper = (helper = helpers.video || (depth0 != null ? depth0.video : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"video","hash":{},"data":data}) : helper)))
+    + "\" class=\"contentOnMedia-link contentOnMedia-link_ct js-videoModal swipebox-video HeroImagePlay\">\n                        <span class=\"circleBtn circleBtn_play\"></span>\n                    </a>\n                    \n";
+},"9":function(depth0,helpers,partials,data) {
+    return "                <div class=\"topicBlock-hd topicBlock-hd_plus\">\n";
+},"11":function(depth0,helpers,partials,data) {
+    return "                <div class=\"topicBlock-hd topicBlock-hd_plus topic-padding\">\n";
+},"13":function(depth0,helpers,partials,data) {
     var helper;
 
   return "                <div class=\"topicBlock-subHd\">\n                    <div class=\"hdg hdg_6 mix-hdg_italic mix-hdg_gray\">"
     + this.escapeExpression(((helper = (helper = helpers.date || (depth0 != null ? depth0.date : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"date","hash":{},"data":data}) : helper)))
     + "</div>\n                </div>\n";
-},"3":function(depth0,helpers,partials,data) {
+},"15":function(depth0,helpers,partials,data) {
     var helper;
 
   return "                <div class=\"topicBlock-bd\">\n                    <p class=\"bdcpy\">"
@@ -93,11 +113,18 @@ this["JST"]["page-title-panel"] = Handlebars.template({"1":function(depth0,helpe
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper;
 
-  return "<div class=\"introBlock introBlock_fill\">\n    <div class=\"introBlock-inner\">\n        <div class=\"container\">\n            <div class=\"topicBlock\">\n                <div class=\"topicBlock-hd topicBlock-hd_plus\">\n                    <h2 class=\"hdg hdg_2\">"
+  return "<div class=\"introBlock introBlock_fill\">\n    <div class=\"introBlock-inner page-title-panel\">\n"
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0['image-display'] : depth0),{"name":"if","hash":{},"fn":this.program(1, data, 0),"inverse":this.program(3, data, 0),"data":data})) != null ? stack1 : "")
+    + "\n            <div class=\"topicBlock\">\n"
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0['image-display'] : depth0),{"name":"if","hash":{},"fn":this.program(5, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.video : depth0),{"name":"if","hash":{},"fn":this.program(7, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0['image-display'] : depth0),{"name":"if","hash":{},"fn":this.program(9, data, 0),"inverse":this.program(11, data, 0),"data":data})) != null ? stack1 : "")
+    + "                    <h2 class=\"hdg hdg_2 hdg_fullPage\">"
     + this.escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"title","hash":{},"data":data}) : helper)))
     + "</h2>\n                </div>\n"
-    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.date : depth0),{"name":"if","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.desc : depth0),{"name":"if","hash":{},"fn":this.program(3, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.date : depth0),{"name":"if","hash":{},"fn":this.program(13, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + "\n"
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.desc : depth0),{"name":"if","hash":{},"fn":this.program(15, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
     + "            </div>\n        </div>\n    </div>\n</div>\n";
 },"useData":true});
 
