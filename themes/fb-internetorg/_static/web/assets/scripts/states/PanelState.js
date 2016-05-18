@@ -92,21 +92,72 @@ define(function(require, exports, module) { // jshint ignore:line
         var transitions = this.getAnimationDirections(event);
         var theme = this._options.theme;
         var mobileImage = this._options['mobile-image'];
+        var tasks = [];
+        if(this._options['story-page']=="full_screen") {
+            if(this._options.path) {
+                var checkifStory = this._options.path;   
+                if(checkifStory.indexOf('blog') > -1) {
+                    
+                    tasks = [
+                                apiService.getPanelContent(this._options.path),
+                                viewWindow.replaceStoryContent(templates['article-header']({
+                                    title: this._options.title,
+                                    desc: this._options.desc,
+                                    image: mobileImage ? mobileImage : this._options.image,
+                                    theme: (typeof theme === 'string' && theme.length) ? capitalize(theme) : theme
+                                }), transitions.content).then(tap(this._handleLoaderInit)),
+                                viewWindow.changetoFullScreen(this._options)
+                            ];
+                } else {
+                    if (event.silent) {
+                viewWindow.getCurrentStory().then(this._handleStaticContent);
+                return;
+            }
+                    tasks = [
+                                apiService.getPanelContent(this._options.path),
+                                viewWindow.replaceStoryContent(templates['article-header']({
+                                    title: this._options.title,
+                                    desc: this._options.desc,
+                                    image: mobileImage ? mobileImage : this._options.image,
+                                    theme: (typeof theme === 'string' && theme.length) ? capitalize(theme) : theme
+                                }), transitions.content).then(tap(this._handleLoaderInit)),
+                                viewWindow.changetoOriginal()
+                            ];
+                } 
+            } else {
+                if (event.silent) {
+                    viewWindow.getCurrentStory().then(this._handleStaticContent);
+                    return;
+                }
+                tasks = [
+                            apiService.getPanelContent(this._options.path),
+                            viewWindow.replaceStoryContent(templates['article-header']({
+                                title: this._options.title,
+                                desc: this._options.desc,
+                                image: mobileImage ? mobileImage : this._options.image,
+                                theme: (typeof theme === 'string' && theme.length) ? capitalize(theme) : theme
+                            }), transitions.content).then(tap(this._handleLoaderInit)),
+                            viewWindow.changetoOriginal()
+                        ];
+            }
+        } else {
 
-        if (event.silent) {
-            viewWindow.getCurrentStory().then(this._handleStaticContent);
-            return;
+            if (event.silent) {
+                viewWindow.getCurrentStory().then(this._handleStaticContent);
+                return;
+            }
+            tasks = [
+                        apiService.getPanelContent(this._options.path),
+                        viewWindow.replaceStoryContent(templates['article-header']({
+                            title: this._options.title,
+                            desc: this._options.desc,
+                            image: mobileImage ? mobileImage : this._options.image,
+                            theme: (typeof theme === 'string' && theme.length) ? capitalize(theme) : theme
+                        }), transitions.content).then(tap(this._handleLoaderInit)),
+                        viewWindow.changetoOriginal()
+                    ];
         }
-
-        var tasks = [
-            apiService.getPanelContent(this._options.path),
-            viewWindow.replaceStoryContent(templates['article-header']({
-                title: this._options.title,
-                desc: this._options.desc,
-                image: mobileImage ? mobileImage : this._options.image,
-                theme: (typeof theme === 'string' && theme.length) ? capitalize(theme) : theme
-            }), transitions.content).then(tap(this._handleLoaderInit))
-        ];
+        
 
         if (this._options.image) {
             tasks.push(viewWindow.replaceFeatureImage(this._options.image, transitions.feature));

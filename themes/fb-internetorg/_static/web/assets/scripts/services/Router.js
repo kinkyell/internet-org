@@ -20,13 +20,18 @@ define(function(require, exports, module) { // jshint ignore:line
     var SCRAPE_ATTRS = [
         'type',
         'image',
+        'image-display',
         'mobile-image',
+        'video',
         'title',
         'theme',
         'route',
         'desc',
         'date',
         'social',
+        'story-page',
+        'header-color',
+        'header-img-color',
         'search-text'
     ];
 
@@ -61,7 +66,7 @@ define(function(require, exports, module) { // jshint ignore:line
          * @type Array
          * @default []
          * @private
-         */
+         **/
         this._currentStates = [];
 
         /**
@@ -69,7 +74,7 @@ define(function(require, exports, module) { // jshint ignore:line
          *
          * @property historyManager
          * @type AbstractHistoryManager
-         */
+         **/
         this.historyManager = Modernizr.history ?
             new UrlHistoryManager() :
             new FallbackHistoryManager();
@@ -222,7 +227,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @method _onSearch
      * @param {SubmitEvent} event Submit event from search form
      * @private
-     */
+     **/
     Router.prototype._onSearch = function(event) {
         var prevStates = this._currentStates.slice(0);
         var prefix = '/' + appConfig.langPath + '/search/';
@@ -261,7 +266,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @method _scrapeDataAttrs
      * @returns {Object} attributes and values scraped
      * @private
-     */
+     **/
     Router.prototype._scrapeDataAttrs = function(el) {
         return SCRAPE_ATTRS.reduce(function(scraped, currentAttr) {
             var val = el.getAttribute('data-' + currentAttr);
