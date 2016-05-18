@@ -431,7 +431,6 @@ define(function(require, exports, module) { // jshint ignore:line
             });
 
             $('.header-logo').on("click",function(event) {
-              alert("Clicked");
                 //this.changetoOriginal();
                 $('.header').css({"width": "", "margin": "", "height": "", "background-color": ""});
                 $('.viewWindow').css({"max-width": "", "width": "", "left": "", "margin" : ""});
