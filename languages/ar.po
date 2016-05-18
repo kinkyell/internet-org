@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Internet.org\n"
 "POT-Creation-Date: 2015-10-05 11:57-0500\n"
-"PO-Revision-Date: 2016-04-12 10:42-0700\n"
+"PO-Revision-Date: 2016-05-17 18:00-0700\n"
 "Last-Translator: Darcy Clarke <darcy@darcyclarke.me>\n"
 "Language-Team: Richard Aber <raber@nerdery.com>\n"
 "MIME-Version: 1.0\n"
@@ -138,6 +138,54 @@ msgstr "كل المنشورات"
 #: functions.php:1983
 msgid "Learn More"
 msgstr "اعرف المزيد"
+
+#: inc/language.php:26
+msgid "English"
+msgstr "الإنجليزية"
+
+#. Language Selector
+msgid "French"
+msgstr "الفرنسية"
+
+#. Language Selector
+msgid "Arabic"
+msgstr "العربية"
+
+#. Language Selector
+msgid "Bengali"
+msgstr "البنغالية"
+
+#. Language Selector
+msgid "Spanish"
+msgstr "الإسبانية"
+
+#. Language Selector
+msgid "Hindi"
+msgstr "الهندية"
+
+#. Language Selector
+msgid "Indonesian"
+msgstr "الإندونيسية"
+
+#. Language Selector
+msgid "Japanese"
+msgstr "اليابانية"
+
+#. Language Selector
+msgid "Panjabi"
+msgstr "البنجابية"
+
+#. Language Selector
+msgid "Portuguese"
+msgstr "البرتغالية"
+
+#. Language Selector
+msgid "Russian"
+msgstr "الروسية"
+
+#. Language Selector
+msgid "Urdu"
+msgstr "الأردية"
 
 #: inc/template-tags.php:45
 #, php-format
@@ -490,67 +538,18 @@ msgstr "The Nerdery"
 msgid "http://www.nerdery.com"
 msgstr "http://www.nerdery.com"
 
-# New Site Changes
-#: inc/language.php:26
-msgid "English"
-msgstr "العربية"
-
-#. Language Selector
-msgid "French"
-msgstr "اللغة الفرنسية"
-
-#. Language Selector
-msgid "Arabic"
-msgstr "العربية"
-
-#. Language Selector
-msgid "Bengali"
-msgstr "البنغالي"
-
-#. Language Selector
-msgid "Spanish"
-msgstr "الأسبانية"
-
-#. Language Selector
-msgid "Hindi"
-msgstr "الهندية"
-
-#. Language Selector
-msgid "Indonesian"
-msgstr "الأندونيسية"
-
-#. Language Selector
-msgid "Japanese"
-msgstr "اليابانية"
-
-#. Language Selector
-msgid "Panjabi"
-msgstr "بنجابي"
-
-#. Language Selector
-msgid "Portuguese"
-msgstr "البرتغالية"
-
-#. Language Selector
-msgid "Russian"
-msgstr "الروسية"
-
-#. Language Selector
-msgid "Urdu"
-msgstr "الأردية"
-
 #: search.php:68
 #, php-format
 msgid "%d Results Found"
-msgstr "نتائج البحث %d"
+msgstr "تم العثور على %d نتائج"
 
 # Content in English dialog (front end)
 msgid "You are now entering a section of the site that is in English only."
-msgstr "انت تدخل الآن قسم من الموقع الذي هو باللغة الإنجليزية فقط."
+msgstr "أنت الآن على وشك الدخول إلى أحد أقسام الموقع المتوفر باللغة الإنجليزية فقط."
 
 # Content in English dialog (wp-admin)
 msgid "Content in English dialog"
-msgstr "محتوى في الحوار الإنجليزية"
+msgstr "مربع الحوار محتوى باللغة الإنجليزية"
 
 # Standard WordPress PO File
 #. translators: 'rtl' or 'ltr'. This sets the text direction for WordPress.
