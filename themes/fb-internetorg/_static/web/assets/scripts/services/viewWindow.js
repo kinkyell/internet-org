@@ -429,6 +429,17 @@ define(function(require, exports, module) { // jshint ignore:line
                // $('.innerHeader').css({"width": "100%", "margin": "auto", "position": "relative"});
              
             });
+
+            $('.header-logo').on("click",function(event) {
+                //this.changetoOriginal();
+                $('.header').css({"width": "", "margin": "", "height": "", "background-color": ""});
+                $('.viewWindow').css({"max-width": "", "width": "", "left": "", "margin" : ""});
+                $('.viewWindow-panel').css({"width": "", "height": "", "left":""});
+                $('.viewWindow').unbind( 'DOMMouseScroll mousewheel');
+
+                $('.header-logo').unbind("click");
+            });
+
             var ImageDisplay = displayoption;
             $('.viewWindow').on( 'DOMMouseScroll mousewheel', function ( event ) {
               if( event.originalEvent.detail > 0 || event.originalEvent.wheelDelta < 0 ) { //alternative options for wheelData: wheelDeltaX & wheelDeltaY
@@ -469,6 +480,8 @@ define(function(require, exports, module) { // jshint ignore:line
         $('.viewWindow').css({"max-width": "", "width": "", "left": "", "margin" : ""});
         $('.viewWindow-panel').css({"width": "", "height": "", "left":""});
         $('.viewWindow').unbind( 'DOMMouseScroll mousewheel');
+
+        $('.header-logo').unbind("click");
 
     }
 
