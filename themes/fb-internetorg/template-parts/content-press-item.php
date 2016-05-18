@@ -5,6 +5,35 @@
  * @package Internet.org
  */
 
+
+ $showDate = get_post_custom_values('iorg_display_date'); 
+ $displayDate = "hide";
+
+if(is_array($showDate) && strtolower($showDate[0])=="n") {
+ 	$displayDate = "hide";
+
+ } else {
+ 	$displayDate = "show";
+
+ }
+
+$showMedia = get_post_custom_values('iorg_hero_vdo_url'); 
+$showImage = get_post_custom_values('iorg_hero_image'); 
+$showHero = get_post_custom_values('iorg_show_hero'); 
+if(is_array($showHero) && ($showHero[0]!="Y")) {
+	if(is_array($showImage)) {
+		$showImage[0] = "";
+	}	
+}
+
+$story_page = get_post_custom_values('iorg_story_page'); 
+$display_story = "full_screen";
+if(is_array($story_page) && $story_page[0]!="") {
+		$display_story = $story_page[0];
+	} 
+$header_color = get_post_custom_values('iorg_header_color'); 
+$header_img_color = get_post_custom_values('iorg_header_img_color'); 
+
 ?>
 
 <div class="resultsList-list-item">
@@ -49,7 +78,7 @@
 						href="<?php echo esc_url( get_the_permalink() ); ?>"
 						data-title="<?php echo esc_attr( get_the_title() ); ?>"
 						data-social="true"
-						data-date="<?php echo esc_attr( get_the_date() ); ?>"
+						 data-date="<?php if($displayDate=='show') internetorg_posted_on_date(); ?>" <?php if(is_array($showImage) && $showImage[0]!="") { ?> data-image-display="<?php echo $showImage[0]; ?>" <?php } ?> <?php if(is_array($showMedia) && $showMedia[0]!="") { ?> data-video="<?php echo $showMedia[0]; ?>" <?php } ?> data-story-page="<?php echo $display_story; ?>" <?php if(is_array($header_color) && $header_color[0]!="") { ?> data-header-color="<?php echo $header_color[0]; ?>" <?php } ?> <?php if(is_array($header_img_color) && $header_img_color[0]!="") { ?> data-header-img-color="<?php echo $header_img_color[0]; ?>" <?php } ?>
 						data-type="titled"
 					>
 						<?php esc_html_e( 'Read More', 'internetorg' ); ?>

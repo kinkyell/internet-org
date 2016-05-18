@@ -74,6 +74,89 @@ Sections of content that introduce landing and story pages
     padding-bottom: 0;
 }
 
+.viewWindow-panel-content-blog .introBlock {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    background: none;
+    background-position: 0;
+    background-size: 0;
+    .opera-link {
+        display: none;
+    }
+}
+
+.HeroImage {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    background: none;
+    background-position: 0;
+    background-size: 0;
+    .opera-link {
+        display: none;
+    }
+    padding: 0;
+}
+
+
+
+.viewWindow-panel-content-blog .introBlock_flushMobi {
+    padding: 45px 0;
+}
+
+.viewWindow-panel-content-blog .introBlock_foot {
+    padding-top: 45px;
+}
+
+.viewWindow-panel-content-blog .introBlock_social {
+    padding: 45px 0 150px;
+}
+
+.viewWindow-panel-content-blog .introBlock-inner {
+    display: table-cell; // fallback
+    display: block;
+    width: 100%;
+    vertical-align: middle;
+}
+
+.viewWindow-panel-content-blog .introBlock-inner_stack {
+    display: block;
+}
+
+.viewWindow-panel-content-blog .introBlock-ft {
+    padding-top: $SPACE_x3;
+    margin-top: $SPACE_x3;
+    display: block;
+    width: 100%;
+}
+
+.viewWindow-panel-content-blog .introBlock-ft_rule {
+    border-top: 1px solid #d0cfc6;
+}
+
+.viewWindow-panel-content-blog .introBlock-ft {
+    padding-bottom: $SPACE_x3;
+    margin-top: 0;
+    position: absolute;
+    bottom: 0;
+    left: 12.5%;
+    width: 75%;
+    text-align: center;
+}
+
+.viewWindow-panel-content-blog .introBlock-ft_social {
+    position: static;
+    margin: $SPACE_x3 auto 0;
+    padding-bottom: 0;
+}
+
+.viewWindow-panel-content-blog .introBlock_media {
+    padding-bottom: 0;
+}
+
 @include breakpoint(MD) {
     .introBlock {
         display: table; // fallback
@@ -106,6 +189,41 @@ Sections of content that introduce landing and story pages
         height: 420px;
     }
 
+
+    .displayFullSccreen {
+    width:100%;
+    }
+
+    .viewWindow-panel-content-blog .introBlock {
+        display: table; // fallback
+        display: flex;
+        // height: 620px;
+        padding: 0;
+        /*padding-top: 100px;*/
+
+        align-items: center;
+    }
+
+    .noImage {
+        padding-top: 145px !important;
+    }
+
+    .viewWindow-panel-content-blog .introBlock-ft_social {
+        position: absolute;
+        margin: 0;
+        padding-bottom: $SPACE_x3;
+    }
+
+    /* reset border */
+    .viewWindow-panel-content-blog .viewWindow-panel-content-inner > .introBlock {
+        margin-top: 0;
+    }
+
+    /* Targeting Firefox */
+    .viewWindow-panel-content-blog  _::-moz-range-track, body:last-child .selector {
+        height: 420px;
+    }
+
 }
 
 // NOTE: moved below to override media query
@@ -126,6 +244,27 @@ _:-ms-fullscreen, :root .introBlock_fill {
 }
 
 .introBlock {
+    .fb-like {
+        overflow: hidden;
+    }
+}
+
+.viewWindow-panel-content-blog .introBlock_fill {
+    // height: calc(100vh - 45px); NEED TO FIND A IOS only solution for this
+    min-height: 100%;
+    height: auto;
+}
+
+// browser hack for IE 11
+.viewWindow-panel-content-blog _:-ms-fullscreen, :root .introBlock_fill {
+    height: 100%;
+}
+
+.viewWindow-panel-content-blog .introBlock_fill > .introBlock-inner {
+    padding-bottom: 0;
+}
+
+.viewWindow-panel-content-blog .introBlock {
     .fb-like {
         overflow: hidden;
     }

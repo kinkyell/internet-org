@@ -1,0 +1,22 @@
+.iorg-custom-fields {
+	width:100%;
+	position: relative;
+}
+
+.iorg-custom-fields-left {
+	width:20%;
+	float: left;
+}
+
+.iorg-custom-fields-right {
+	width:79%;
+	float: left;
+}
+
+.iorg-custom-fields-clear {
+	clear: both;
+}
+
+.iorg_text {
+	width: 70%;
+}

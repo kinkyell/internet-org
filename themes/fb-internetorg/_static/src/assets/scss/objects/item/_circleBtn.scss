@@ -116,6 +116,24 @@
     background-color: $CLR_MISSION_ACTIVE;
 }
 
+.viewWindow-panel-content-blog .circleBtn {
+    background-color: #ff6b00;
+}
+
+.viewWindow-panel-content-blog .circleBtn:hover {
+    background-color: #ff6b00;
+}
+
+.viewWindow-panel-content-blog .circleBtn:active {
+    background-color: #ff6b00;    
+}
+
+.viewWindow-panel-content-blog .contentOnMedia-link:hover > .circleBtn,
+.circleBtn:hover,
+.circleBtn:active {
+    background-color: #ff6b00;
+}
+
 @include breakpoint(MD) {
     .circleBtn {
         transform: scale(1);

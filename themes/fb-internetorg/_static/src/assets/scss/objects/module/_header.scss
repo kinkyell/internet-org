@@ -117,11 +117,16 @@
 }
 
 .header-logo_invert path,
+.header-logo_invertwt rect,
 .header-logo_invert rect,
 .header-logo_invert polygon,
 .header-menuBtn_invert path,
 .header-backBtn_invert path {
     fill: #ffffff;
+}
+
+.HeaderPadding {
+    padding-top: 100px;
 }
 
 @include breakpoint(MD) {

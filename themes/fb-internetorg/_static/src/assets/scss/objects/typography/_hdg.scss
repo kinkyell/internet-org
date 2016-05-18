@@ -17,7 +17,8 @@
 }
 
 
-.hdg_2 {
+.hdg_2,
+.hdg_fullPage {
     @include remify(font-size, 30px);
     line-height: 1.28;
 }
@@ -51,6 +52,16 @@
     @include remify(font-size, 29px);
     line-height: 1.25;
 }
+
+.hdg_fullPage {
+    max-width: 944px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.viewWindow-panel-content-blogc .footBox .hdg_8 {
+       @include remify(font-size, 19px);
+    }
 
 .hdg_subHdg {
 	// font-family: $FONT_SANS;
@@ -125,6 +136,10 @@
         @include remify(font-size, 40px);
     }
 
+    .viewWindow-panel-content-blogc .footBox .hdg_8 {
+       @include remify(font-size, 25px);
+    }
+
     .hdg_subHdg {
         @include remify(font-size, 28px);
     }
@@ -157,6 +172,10 @@
         font-size: 3.8vw;
     }
 
+    .viewWindow-panel-content-blog .hdg_2 {
+        font-size: 2.7vw;
+    }
+
     .hdg_3 {
         font-size: 2.5vw;
     }
@@ -179,6 +198,10 @@
 
     .hdg_8 {
         font-size: 3.1vw;
+    }
+
+    .viewWindow-panel-content-blogc .footBox .hdg_8 {
+        font-size: 2.0vw;
     }
 
     .hdg_subHdg {

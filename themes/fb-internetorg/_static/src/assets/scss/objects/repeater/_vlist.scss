@@ -67,6 +67,31 @@
     color: $CLR_MISSION;
 }
 
+.viewWindow-panel-content-blogc .vList_footBox > * + * {
+	padding-top: 0;
+	margin-top: 0;
+	border-top: 0;
+}
+
+.viewWindow-panel-content-blogc .vList > * + * {
+	margin-top: 0;
+}
+
+
+
+@include breakpoint(LG) {
+	.viewWindow-panel-content-blogc .vList_footBox > div:first-child {
+		width: 49%;
+		float: left;
+
+	}
+
+	.viewWindow-panel-content-blogc .vList_footBox > div:nth-of-type(2) {
+		width: 49%;
+		float: left;
+	}
+}
+
 /* Right to Left Language support */
 [dir="rtl"] {
 

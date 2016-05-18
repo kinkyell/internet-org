@@ -47,12 +47,23 @@ define(function(require, exports, module) { // jshint ignore:line
             .addClass('swipebox-video')
             .attr('rel', 'vimeo' + this.videoNum);
 
-        // NOTE: Needs to be queried because it uses the 'selector' property of the jquery object
-        $('[rel="vimeo'+ this.videoNum + '"]').swipebox({
-            vimeoColor: 'ff6b00',
-            afterOpen: this._handleOpen,
-            afterClose: this._handleClose
-        });
+        if(this.$element.hasClass("HeroImagePlay")) {
+            if(!$('.HeroImagePlay').attr('rel')) {
+                $('.HeroImagePlay').attr('rel', 'vimeo' + this.videoNum);
+            }
+            $('[rel="vimeo'+ this.videoNum + '"]').swipebox({
+                vimeoColor: 'ff6b00',
+                afterOpen: this._handleOpen,
+                afterClose: this._handleClose
+            });
+        } else {
+            // NOTE: Needs to be queried because it uses the 'selector' property of the jquery object
+            $('[rel="vimeo'+ this.videoNum + '"]').swipebox({
+                vimeoColor: 'ff6b00',
+                afterOpen: this._handleOpen,
+                afterClose: this._handleClose
+            });    
+        }
     };
 
     /**

@@ -5,11 +5,25 @@
 ------------------------------------------------------------------------ */
 .topicBlock {
 	text-align: center;
+
 	// position: relative;
+}
+
+.viewWindow-panel-content-blogc .footBox .topicBlock {
+	text-align: left;
 }
 
 .topicBlock > * {
 	@include contain();
+}
+
+.viewWindow-panel-content-blog .topicBlock > *{
+
+	width: 100%;
+}
+
+.viewWindow-panel-content-blogc .footBox .topicBlock > * {
+	width: 95%;
 }
 
 .footBox > .topicBlock {
@@ -25,6 +39,15 @@
 	margin-bottom: $SPACE_x2;
 }
 
+.viewWindow-panel-content-blog .topicBlock-hd {
+	padding-top:49px;
+}
+
+    .viewWindow-panel-content-blog .topicBlock-hd, .viewWindow-panel-content-blogc .footBox .topicBlock-hd, .HeroImage .topicBlock-hd {
+
+        margin-bottom: 0;
+    }
+
 .topicBlock-hd:after {
 	content: "";
 	display: inline-block;
@@ -33,6 +56,11 @@
 	position: relative;
 	text-align: center;
 	background-color: $CLR_ACCENT;
+}
+
+
+.viewWindow-panel-content-blogc .footBox .topicBlock-hd:after {
+	display:none;
 }
 
 .theme-impact .topicBlock-hd:after,
@@ -52,8 +80,19 @@
 	margin-bottom: $SPACE_x1;
 }
 
+.viewWindow-panel-content-blog .topicBlock-subHd {
+    /*display: none;*/
+    padding-top: 25px;
+    margin-bottom: 13px;
+}
+
 .topicBlock-cta {
 	margin-top: $SPACE_x4;
+}
+
+.viewWindow-panel-content-blogc .footBox .topicBlock-cta {
+	margin-top: 10px;
+	margin-bottom: $SPACE_x4;
 }
 
 .mix-topicBlock_push {
@@ -66,9 +105,39 @@
 	margin-top: $SPACE_x4;
 }
 
+#heroImage {
+
+	 height: 224px;
+}
 
 @include breakpoint(MD) {
 	.topicBlock-media {
 		@include isVisuallyHidden();
+	}
+
+	.viewWindow-panel-content-blog .topic-padding {
+	    padding-top: 160px;
+	}
+
+
+	#heroImage {
+		 height: 322px;
+	}
+	.HeroImagePlay {
+	    left:50%;
+	    top: calc(222px / 2);
+	    width:80px !important;
+	}
+}
+
+
+@include breakpoint(LG) {
+	#heroImage {
+		 height: 460px;
+	}
+	.HeroImagePlay {
+	    left:50%;
+	    top: calc(360px / 2);
+	    width:80px !important;
 	}
 }
