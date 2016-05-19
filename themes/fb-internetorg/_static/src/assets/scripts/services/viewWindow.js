@@ -120,7 +120,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @return {Promise} resolves when finished
      */
     ViewWindow.prototype.replaceFeatureContent = function(html, direction, bgImg) {
-            
+
         return this._featureQueue.queue(function() {
             var $panel = this._getPanelWrap();
 
@@ -176,7 +176,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     ViewWindow.prototype.replaceStoryContent = function(html, direction) {
 
-        
+
         return this._storyQueue.queue(function() {
 
             var $panel = this._getPanelWrap();
@@ -199,7 +199,7 @@ define(function(require, exports, module) { // jshint ignore:line
             var $panel = this._getPanelWrapBlogContent();
 
             $panel.children().append(html);
-            
+
             return this._updatePanel(
                 $panel,
                 this.$story,
@@ -261,7 +261,7 @@ define(function(require, exports, module) { // jshint ignore:line
             ease: vwConfig.FEATURE_EASE()[vwConfig.EASE_DIRECTION]
         };
         var directionInvert = document.documentElement.dir === 'ltr' ? 1 : -1;
-        console.log("direction : ", direction);
+        console.log('direction : ', direction);
         switch (direction.toLowerCase()) {
         case 'top':
             inOpts.yPercent = -100;
@@ -316,8 +316,8 @@ define(function(require, exports, module) { // jshint ignore:line
         var $removedPanel;
         // var addMethod = direction === 'left' ? 'prepend' : 'append';
         //console.log();
-        
-       
+
+
         //console.log(mainHTML);
         if (direction === 'left') {
             $target.prepend($panel);
@@ -339,8 +339,8 @@ define(function(require, exports, module) { // jshint ignore:line
         }
 
         var cleanup = function() {
-            
-            
+
+
             $removedPanel.remove();
             $target
                 .removeClass('isAnimating')
@@ -351,17 +351,17 @@ define(function(require, exports, module) { // jshint ignore:line
             cleanup();
             return Promise.resolve($newPanel.children());
         }
-     
+
             return Promise.all([
                 tweenAsync.from($newPanel[0], TRANSITION_SPEED, opts.in),
                 tweenAsync.to($removedPanel[0], TRANSITION_SPEED, opts.out)
             ]).then(cleanup).then(function() {
-                
-                     
+
+
                 return $newPanel.children();
             });
-       
-        
+
+
     };
 
     /**
@@ -415,8 +415,8 @@ define(function(require, exports, module) { // jshint ignore:line
         //$('.header').css({"height": "100px"
          $('.viewWindow').css({"left": "100%"});
         setTimeout(function(){
-            $('.viewWindow').css({"width": "100%", "display":"block", "margin" : "auto"});
-            $('.viewWindow-panel').css({"width": "100%", "height": "auto", "left":"0"});
+            $('.viewWindow').css({'width': "100%", 'display':'block', 'margin' : 'auto'});
+            $('.viewWindow-panel').css({'width': '100%', 'height': 'auto', 'left':'0'});
             /*
             var headerHTML = $('.header').html();
             var headerDiv = document.createElement('div');
@@ -424,37 +424,37 @@ define(function(require, exports, module) { // jshint ignore:line
             $(headerDiv).html(headerHTML);
             $('.header').html(headerDiv);
             */
-            $('.viewWindow').animate({left:"0"}, 500, function() {
+            $('.viewWindow').animate({left:'0'}, 500, function() {
                 // Animation complete.
                // $('.innerHeader').css({"width": "100%", "margin": "auto", "position": "relative"});
-             
+
             });
 
-            $('.header-logo').on("click",function(event) {
+            $('.header-logo').on('click',function(event) {
                 //this.changetoOriginal();
-                $('.header').css({"width": "", "margin": "", "height": "", "background-color": ""});
-                $('.viewWindow').css({"max-width": "", "width": "", "left": "", "margin" : ""});
-                $('.viewWindow-panel').css({"width": "", "height": "", "left":""});
+                $('.header').css({'width': '', 'margin': '', 'height': '', 'background-color': ''});
+                $('.viewWindow').css({'max-width': '', 'width': '', 'left': '', 'margin' : ''});
+                $('.viewWindow-panel').css({'width': '', 'height': '', 'left':''});
                 $('.viewWindow').unbind( 'DOMMouseScroll mousewheel');
 
-                $('.header-logo').unbind("click");
+                $('.header-logo').unbind('click');
             });
 
             var ImageDisplay = displayoption;
             $('.viewWindow').on( 'DOMMouseScroll mousewheel', function ( event ) {
               if( event.originalEvent.detail > 0 || event.originalEvent.wheelDelta < 0 ) { //alternative options for wheelData: wheelDeltaX & wheelDeltaY
                 //scroll down
-                var height = $('.innerHeader').css("height");
-                if(height!="100px") {
-                    $('.header').css({"height": "100px", "background-color": "#EFEDE4"});
+                var height = $('.innerHeader').css('height');
+                if(height!='100px') {
+                    $('.header').css({'height': '100px', 'background-color': '#EFEDE4'});
                     //$('.innerHeader').css({"height": "100px", "background-color": "#EFEDE4"});
-                    //console.log('Down again');    
+                    //console.log('Down again');
                 }
               } else {
                 if(($('.page-title-panel').offset().top == 32) || ($('.page-title-panel').offset().top == 0)) {
-                        $('.header').css({"height": "", "background-color": ""});    
-                    } 
-               
+                        $('.header').css({'height': '', 'background-color': ''});
+                    }
+
               }
               //prevent page fom scrolling
               return true;
@@ -466,7 +466,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         }, 300);
 
-       
+
     }
 
     ViewWindow.prototype.changetoOriginal = function() {
@@ -522,7 +522,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @method loadHomepageContent
      */
     ViewWindow.prototype.loadHomepageContent = function() {
-        
+
         if (this._homepageResolution) {
             return this._homepageResolution;
         }
