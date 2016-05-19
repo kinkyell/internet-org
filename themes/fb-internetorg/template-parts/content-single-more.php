@@ -8,6 +8,19 @@
 $next_post = get_next_post();
 $prev_post = get_previous_post();
 
+if(!$next_post) {
+	 $next = new WP_Query('posts_per_page=1&order=ASC'); 
+	 $next_post = $next->posts[0];
+
+}
+
+if(!$prev_post) {
+	 $prev = new WP_Query('posts_per_page=1&order=DESC'); 
+	 $prev_post = $prev->posts[0];
+}
+
+
+
 if ( empty( $next_post ) && empty( $prev_post ) ) {
 	return;
 }
@@ -78,6 +91,7 @@ if(is_array($story_page_Prev) && $story_page_Prev[0]!="") {
 	} 
 
 } else {
+
 	$showDatePrev = '';
 	$displayDatePrev = "show";
 	$showMediaPrev = '';
