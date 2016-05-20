@@ -39,7 +39,7 @@
 
     a:not(.contentOnMedia-link),
     a:not(.link) {
-        @include transition(all 0.3s ease-in-out); 
+        @include transition(all 0.3s ease-in-out);
         @include font(SANS_BLACK);
         @include remify(font-size, 13px);
         display: inline-block;
@@ -48,7 +48,7 @@
         color: $CLR_ACCENT;
         -webkit-font-smoothing: antialiased;
         font-smoothing: antialiased;
-    }    
+    }
 
     a.link {
         /* Forcing to retain top margin as designed */
@@ -111,7 +111,7 @@
     }
 
     img {
-        margin-top: 30px;
+        margin-top: 19px;
     }
 
     img,
@@ -234,7 +234,7 @@
 }
 
 
-[lang="ar"], 
+[lang="ar"],
 [lang="ur"] {
     .quarantine {
 
