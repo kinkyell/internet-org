@@ -42,7 +42,10 @@ $showHeroNext = get_post_custom_values('iorg_show_hero', $next_post->ID);
 if(is_array($showHeroNext) && ($showHeroNext[0]!="Y")) {
 	if(is_array($showImageNext)) {
 		$showImageNext[0] = "";
-	}	
+	}
+	if(is_array($showMediaNext)) {
+		$showMediaNext[0] = "";
+	}		
 }
 
 $story_page_Next = get_post_custom_values('iorg_story_page', $next_post->ID); 
@@ -78,6 +81,10 @@ $showHeroPrev = get_post_custom_values('iorg_show_hero', $prev_post->ID);
 if(is_array($showHeroPrev) && ($showHeroPrev[0]!="Y")) {
 	if(is_array($showImagePrev)) {
 		$showImagePrev[0] = "";
+	}
+
+	if(is_array($showMediaPrev)) {
+		$showMediaPrev[0] = "";
 	}	
 }
 
