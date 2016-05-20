@@ -23,6 +23,9 @@ $showHero = get_post_custom_values('iorg_show_hero');
 if(is_array($showHero) && ($showHero[0]!="Y")) {
 	if(is_array($showImage)) {
 		$showImage[0] = "";
+	}
+	if(is_array($showMedia)) {
+		$showMedia[0] = "";
 	}	
 }
 

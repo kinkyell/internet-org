@@ -62,7 +62,7 @@ define(function(require, exports, module) { // jshint ignore:line
                 vimeoColor: 'ff6b00',
                 afterOpen: this._handleOpen,
                 afterClose: this._handleClose
-            });    
+            });
         }
     };
 
