@@ -22,12 +22,12 @@
     }
 
     @media (min-width: 769px) {
-        left: 50%;
-        width: 50%;
+        /*left: 50%;
+        width: 50%;*/
 
         [dir="rtl"] & {
-            left: auto;
-            right: 50%;
+            /*left: auto;
+            right: 50%;*/
             margin-right: -2px;
             padding-right: 2px;
             box-sizing: content-box;
