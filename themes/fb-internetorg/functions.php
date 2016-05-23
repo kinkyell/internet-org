@@ -724,8 +724,14 @@ function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button 
 	// Lets enabled a way to filter widget content.
 	if ( isset( $widget['meta']['widget-data'] ) && is_array( $widget['meta']['widget-data'] ) ) {
 		foreach ( $widget['meta']['widget-data'] as $key => $widget_data ) {
-			$widget['meta']['widget-data'][$key]['label'] = apply_filters( 'widget_data_label_filter', $widget_data['label'] );
-			$widget['meta']['widget-data'][$key]['url']   = apply_filters( 'widget_data_url_filter',   $widget_data['url']   );
+
+			if ( isset( $widget_data['label'] ) ) {
+				$widget['meta']['widget-data'][$key]['label'] = apply_filters( 'widget_data_label_filter', $widget_data['label'] );
+			}
+
+			if ( isset( $widget_data['url'] ) ) {
+				$widget['meta']['widget-data'][$key]['url']   = apply_filters( 'widget_data_url_filter',   $widget_data['url']   );
+			}
 		}
 	}
 
