@@ -164,22 +164,22 @@ html:not(.touch) {
 
 /* IMPACT */
 .theme-impact .link,
-.link_themeImpact { color: $CLR_IMPACT !important; }
+.link_themeImpact { color: $CLR_ACCENT !important; }
 
 .theme-impact .link:after,
-.link_themeImpact:after { border-color: $CLR_IMPACT; }
+.link_themeImpact:after { border-color: $CLR_ACCENT; }
 
 .theme-impact .link:before,
-.link_themeImpact:before { background-color: $CLR_IMPACT; }
+.link_themeImpact:before { background-color: $CLR_ACCENT; }
 
 .theme-impact .link:hover,
-.link_themeImpact:hover { color: $CLR_IMPACT_ACTIVE; }
+.link_themeImpact:hover { color: $CLR_ACCENT_ACTIVE; }
 
 .theme-impact .link:hover:after,
-.link_themeImpact:hover:after { border-color: $CLR_IMPACT_ACTIVE; }
+.link_themeImpact:hover:after { border-color: $CLR_ACCENT_ACTIVE; }
 
 .theme-impact .link:hover:before,
-.link_themeImpact:hover:before { background-color: $CLR_IMPACT_ACTIVE; }
+.link_themeImpact:hover:before { background-color: $CLR_ACCENT_ACTIVE; }
 
 /* APPROACH */
 .theme-approach .link,
@@ -219,22 +219,22 @@ html:not(.touch) {
 
 /* MISSION */
 .theme-mission .link,
-.link_themeMission { color: $CLR_MISSION !important; }
+.link_themeMission { color: $CLR_ACCENT !important; }
 
 .theme-mission .link:after,
-.link_themeMission:after, { border-color: $CLR_MISSION; }
+.link_themeMission:after, { border-color: $CLR_ACCENT; }
 
 .theme-mission .link:before,
-.link_themeMission:before { background-color: $CLR_MISSION; }
+.link_themeMission:before { background-color: $CLR_ACCENT; }
 
 .theme-mission .link:hover,
-.link_themeMission:hover { color: $CLR_MISSION_ACTIVE; }
+.link_themeMission:hover { color: $CLR_ACCENT_ACTIVE; }
 
 .theme-mission .link:hover:after,
-.link_themeMission:hover:after { border-color: $CLR_MISSION_ACTIVE; }
+.link_themeMission:hover:after { border-color: $CLR_ACCENT_ACTIVE; }
 
 .theme-mission .link:hover:before,
-.link_themeMission:hover:before { background-color: $CLR_MISSION_ACTIVE; }
+.link_themeMission:hover:before { background-color: $CLR_ACCENT_ACTIVE; }
 
 @include breakpoint(MD) {
     .link {
