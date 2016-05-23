@@ -1,0 +1,112 @@
+@import "../../../vendor/vex/sass/vex";
+@import "vex-theme-plain";
+
+
+.vex-content-wrap {
+    height: 100%;
+    position: relative;
+}
+
+.vex.dialog-confirm-english {
+    left: 50%;
+    width: 50%;
+
+    .vex-content {
+        width: 82.5%;
+        padding: 28px;
+        max-width: 450px;
+
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    @media (min-width: 769px) {
+        left: auto;
+        right: 50%;
+
+        [dir="rtl"] & {
+            /*left: auto;
+            right: 50%;*/
+            margin-right: -2px;
+            padding-right: 2px;
+            box-sizing: content-box;
+        }
+    }
+
+    .vex-dialog-message {
+        margin: 4px 0 28px 0;
+    }
+
+    .btn-confirm {
+        font-size: 14px;
+        font-weight: 200;
+        padding: 14px 0 !important;
+        border: solid 2px $CLR_ACCENT;
+        @include transition(
+                    background-color 0.2s ease-in-out,
+                    border-color 0.2s ease-in-out
+                 );
+
+        &:hover,
+        &:active {
+            border-color: $CLR_ACCENT_ACTIVE;
+        }
+    }
+    .btn-cancel {
+        font-size: 14px;
+        font-weight: 200;
+        padding: 14px 0 !important;
+        background: $CLR_WHITE;
+        border: solid 2px $CLR_ACCENT;
+        color: $CLR_ACCENT;
+
+        @include transition(
+                    border-color 0.2s ease-in-out,
+                    color 0.2s ease-in-out
+                 );
+
+        &:hover,
+        &:active {
+            border-color: $CLR_ACCENT_ACTIVE;
+            color: $CLR_ACCENT_ACTIVE;
+        }
+    }
+
+
+    .vex-dialog-button {
+        padding: 14px;
+    }
+
+    .vex-dialog-buttons {
+        .vex-dialog-button.btn-cancel {
+            width: 49%;
+            float: left;
+            margin: 0;
+
+            [dir="rtl"] & {
+                float: right;
+            }
+        }
+        .vex-dialog-button.btn-confirm {
+            width: 49%;
+            float: right;
+            margin: 0;
+
+            [dir="rtl"] & {
+                float: left;
+            }
+        }
+    }
+}
+
+[dir="rtl"] .vex .vex-close {
+    right: auto;
+    left: 0;
+
+    &:before {
+        left: 3px;
+        right: auto;
+    }
+}
+

@@ -1,8 +1,8 @@
 .idea
 .projects
 .htaccess
-wp-content/uploads
-wp-content/debug.log
+/uploads
+/debug.log
 robots.txt
 i18n/input/
 wp-config.php
@@ -10,4 +10,14 @@ npm-debug.log
 .DS_Store
 ._*
 .svn
+
+
+/mu-plugins
+db.php
+
+/plugins/internetorg-custom-export/
+/plugins/wp-migrate-db-pro
+/plugins/wp-migrate-db-pro-cli
+/plugins/wp-migrate-db-pro-media-files
+/plugins/wp-migrate-db-pro-multisite-tools
 

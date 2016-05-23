@@ -1,0 +1,118 @@
+/* ---------------------------------------------------------------------
+Content Col
+
+Layout for padded columns of content.
+------------------------------------------------------------------------ */
+
+.contentCol {
+    @include clearfix();
+    padding: 22px 0;
+}
+
+// .contentCol_fullPage {
+//    @media screen and (max-width: 768px){
+//        margin-left: 64px;
+//        margin-right: 64px;
+//    }
+//
+//    @media screen and (max-width: 360px) {
+//        margin-left: 30px;
+//        margin-right: 30px;
+//    }
+//}
+.viewWindow-panel-content-blogc-inner .contentCol_fullPage {
+    max-width: 943px;
+    margin-left: auto;
+    margin-right: auto;
+    //margin-left: 248px;
+    //margin-right: 248px;
+    @media screen and (max-width: 768px){
+        margin-left: 64px;
+        margin-right: 64px;
+    }
+
+    @media screen and (max-width: 360px) {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+}
+
+
+.contentCol_flush {
+    padding-top: 0;
+    // overflow: hidden;
+    // margin-bottom: 40px;
+}
+
+.contentCol + .contentCol_flush,
+.contentCol_flush + .contentCol {
+    padding-top: 0;
+}
+
+.contentCol_divided {
+    border-bottom: 1px solid #efede4;
+}
+
+.contentCol_flushTight {
+    padding-bottom: 11px;
+}
+
+.contentCol_tight {
+  	position: absolute;
+  	bottom: 0;
+  	width: 100%;
+}
+
+.contentCol_tight.impact {
+  	position: relative;
+  	width: 100%;
+  	padding: 0;
+}
+
+.contentCol_tight.four-o-four, {
+  	position: relative;
+  	width: 100%;
+}
+
+.readMoreDiv {
+    text-align: center;
+}
+.readMore {
+    width: 90%;
+    height: 65px;
+    background-color: #FFCD00;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+
+@include breakpoint(MD) {
+    .readMore {
+        width: 90%;
+    }
+    .contentCol {
+        padding: $SPACE_x5 0;
+    }
+    .contentCol_flush {
+        padding: 0 0 $SPACE_x5 0;
+    }
+    .contentCol_flush + .contentCol {
+        padding-top: 0;
+    }
+    .contentCol_flushTight {
+        padding: 0 0 40px 0;
+    }
+    .contentCol_tight {
+	  	padding: 45px 0;
+    }
+
+	.contentCol_tight.four-o-four, {
+	  	position: absolute;
+	}
+}
+@include breakpoint(LG) {
+    .readMore {
+        max-width: 593px;
+    }
+
+}

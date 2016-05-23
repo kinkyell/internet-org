@@ -1,0 +1,41 @@
+<div class="introBlock introBlock_fill">
+    <div class="introBlock-inner page-title-panel">
+    {{#if image-display}}
+        <div class="container displayFullSccreen">
+    {{else}}
+        <div class="container">
+    {{/if}}
+
+            <div class="topicBlock">
+                {{#if image-display}}
+                    <div class="imgWrap isLoaded contentOnMedia-media " id="heroImage" style="background: url({{image-display}}) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: over; background-size: cover; width:100%;">&nbsp;</div>
+
+                {{/if}}
+                {{#if video}}
+                    <a href="{{video}}" class="contentOnMedia-link contentOnMedia-link_ct js-videoModal swipebox-video HeroImagePlay">
+                        <span class="circleBtn circleBtn_play"></span>
+                    </a>
+
+                {{/if}}
+                {{#if image-display}}
+                <div class="topicBlock-hd topicBlock-hd_plus">
+                {{else}}
+                <div class="topicBlock-hd topicBlock-hd_plus topic-padding">
+                {{/if}}
+                    <h2 class="hdg hdg_2 hdg_fullPage">{{title}}</h2>
+                </div>
+                {{#if date}}
+                <div class="topicBlock-subHd">
+                    <div class="hdg hdg_6 mix-hdg_italic mix-hdg_gray">{{date}}</div>
+                </div>
+                {{/if}}
+
+                {{#if desc}}
+                <div class="topicBlock-bd">
+                    <p class="bdcpy">{{desc}}</p>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>

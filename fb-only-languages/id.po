@@ -1,0 +1,61 @@
+# New Site Changes
+#: inc/language.php:26
+msgid "English"
+msgstr "Inggris"
+
+#. Language Selector
+msgid "French"
+msgstr "Perancis"
+
+#. Language Selector
+msgid "Arabic"
+msgstr "Arab"
+
+#. Language Selector
+msgid "Bengali"
+msgstr "Benggala"
+
+#. Language Selector
+msgid "Spanish"
+msgstr "Spanyol"
+
+#. Language Selector
+msgid "Hindi"
+msgstr "Hindi"
+
+#. Language Selector
+msgid "Indonesian"
+msgstr "Bahasa Indonesia"
+
+#. Language Selector
+msgid "Japanese"
+msgstr "Jepang"
+
+#. Language Selector
+msgid "Panjabi"
+msgstr "Panjabi"
+
+#. Language Selector
+msgid "Portuguese"
+msgstr "Portugis"
+
+#. Language Selector
+msgid "Russian"
+msgstr "Rusia"
+
+#. Language Selector
+msgid "Urdu"
+msgstr "Urdu"
+
+#: search.php:68
+#, php-format
+msgid "%d Results Found"
+msgstr "%d Hasil Ditemukan"
+
+# Content in English dialog (front end)
+msgid "You are now entering a section of the site that is in English only."
+msgstr "Anda sekarang masuk bagian dari situs yang dalam bahasa Inggris."
+
+# Content in English dialog (wp-admin)
+msgid "Content in English dialog"
+msgstr "Konten dalam dialog bahasa Inggris"

@@ -1,0 +1,61 @@
+# New Site Changes
+#: inc/language.php:26
+msgid "English"
+msgstr "انگریزی"
+
+#. Language Selector
+msgid "French"
+msgstr "فرانسیسی"
+
+#. Language Selector
+msgid "Arabic"
+msgstr "عربی"
+
+#. Language Selector
+msgid "Bengali"
+msgstr "بنگالی"
+
+#. Language Selector
+msgid "Spanish"
+msgstr "ہسپانوی"
+
+#. Language Selector
+msgid "Hindi"
+msgstr "ہندی"
+
+#. Language Selector
+msgid "Indonesian"
+msgstr "انڈونیشی"
+
+#. Language Selector
+msgid "Japanese"
+msgstr "جاپانی"
+
+#. Language Selector
+msgid "Panjabi"
+msgstr "ہندی"
+
+#. Language Selector
+msgid "Portuguese"
+msgstr "پرتگالی"
+
+#. Language Selector
+msgid "Russian"
+msgstr "روسی"
+
+#. Language Selector
+msgid "Urdu"
+msgstr "اردو"
+
+#: search.php:68
+#, php-format
+msgid "%d Results Found"
+msgstr "ملا %d نتائج"
+
+# Content in English dialog (front end)
+msgid "You are now entering a section of the site that is in English only."
+msgstr "اب تم ہی انگریزی میں ہے کہ اس ویب سائٹ کے ایک حصے میں داخل ہو رہے."
+
+# Content in English dialog (wp-admin)
+msgid "Content in English dialog"
+msgstr "انگریزی ڈائیلاگ میں مواد"
