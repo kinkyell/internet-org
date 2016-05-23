@@ -64,13 +64,13 @@
 }
 
 .theme-impact .topicBlock-hd:after,
-.topicBlock-hd_themeImpact:after { background-color: $CLR_IMPACT; }
+.topicBlock-hd_themeImpact:after { background-color: $CLR_ACCENT; }
 
 .theme-mission .topicBlock-hd:after,
-.topicBlock-hd_themeMission:after { background-color: $CLR_MISSION; }
+.topicBlock-hd_themeMission:after { background-color: $CLR_ACCENT; }
 
 .theme-approach .topicBlock-hd:after,
-.topicBlock-hd_themeApproach:after { background-color: $CLR_APPROACH; }
+.topicBlock-hd_themeApproach:after { background-color: $CLR_ACCENT; }
 
 .topicBlock-preHd {
 	margin-bottom: $SPACE_x1;

@@ -59,6 +59,11 @@
     margin-right: auto;
 }
 
+.hdg_date {
+    margin-top: 18px;
+    margin-bottom: 20px;
+}
+
 .viewWindow-panel-content-blogc .footBox .hdg_8 {
        @include remify(font-size, 19px);
     }

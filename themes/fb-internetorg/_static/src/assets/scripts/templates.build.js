@@ -87,13 +87,13 @@ this["JST"]["page-title-panel"] = Handlebars.template({"1":function(depth0,helpe
 
   return "                    <div class=\"imgWrap isLoaded contentOnMedia-media \" id=\"heroImage\" style=\"background: url("
     + this.escapeExpression(((helper = (helper = helpers['image-display'] || (depth0 != null ? depth0['image-display'] : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"image-display","hash":{},"data":data}) : helper)))
-    + ") no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: over; background-size: cover; width:100%;\">&nbsp;</div>\n                    \n";
+    + ") no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: over; background-size: cover; width:100%;\">&nbsp;</div>\n\n";
 },"7":function(depth0,helpers,partials,data) {
     var helper;
 
   return "                    <a href=\""
     + this.escapeExpression(((helper = (helper = helpers.video || (depth0 != null ? depth0.video : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"video","hash":{},"data":data}) : helper)))
-    + "\" class=\"contentOnMedia-link contentOnMedia-link_ct js-videoModal swipebox-video HeroImagePlay\">\n                        <span class=\"circleBtn circleBtn_play\"></span>\n                    </a>\n                    \n";
+    + "\" class=\"contentOnMedia-link contentOnMedia-link_ct js-videoModal swipebox-video HeroImagePlay\">\n                        <span class=\"circleBtn circleBtn_play\"></span>\n                    </a>\n\n";
 },"9":function(depth0,helpers,partials,data) {
     return "                <div class=\"topicBlock-hd topicBlock-hd_plus\">\n";
 },"11":function(depth0,helpers,partials,data) {

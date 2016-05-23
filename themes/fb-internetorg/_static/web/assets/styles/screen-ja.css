@@ -1530,27 +1530,27 @@ html:not(.touch) .link:hover:after, html:not(.touch) .link_preArrows:hover:befor
 /* APPROACH */
 .theme-approach .link,
 .link_themeApproach {
-  color: #fa5cb6 !important; }
+  color: #ffcc02 !important; }
 
 .theme-approach .link:after,
 .link_themeApproach:after {
-  border-color: #fa5cb6; }
+  border-color: #ffcc02; }
 
 .theme-approach .link:before,
 .link_themeApproach:before {
-  background-color: #fa5cb6; }
+  background-color: #ffcc02; }
 
 .theme-approach .link:hover,
 .link_themeApproach:hover {
-  color: #eb4aa6; }
+  color: #efbe02; }
 
 .theme-approach .link:hover:after,
 .link_themeApproach:hover:after {
-  border-color: #eb4aa6; }
+  border-color: #efbe02; }
 
 .theme-approach .link:hover:before,
 .link_themeApproach:hover:before {
-  background-color: #eb4aa6; }
+  background-color: #efbe02; }
 
 .theme-approach .quarantine .link_title {
   display: block;
@@ -5071,15 +5071,15 @@ Feature content module
 
 .theme-impact .topicBlock-hd:after,
 .topicBlock-hd_themeImpact:after {
-  background-color: #ff6b00; }
+  background-color: #ffcc02; }
 
 .theme-mission .topicBlock-hd:after,
 .topicBlock-hd_themeMission:after {
-  background-color: #9d25a0; }
+  background-color: #ffcc02; }
 
 .theme-approach .topicBlock-hd:after,
 .topicBlock-hd_themeApproach:after {
-  background-color: #fa5cb6; }
+  background-color: #ffcc02; }
 
 .topicBlock-preHd {
   margin-bottom: 16px; }
@@ -5928,6 +5928,10 @@ body .contact-form label.radio {
   margin-left: auto;
   margin-right: auto; }
 
+.hdg_date {
+  margin-top: 18px;
+  margin-bottom: 20px; }
+
 .viewWindow-panel-content-blogc .footBox .hdg_8 {
   font-size: 19px;
   font-size: 1.1875rem; }
@@ -6098,6 +6102,9 @@ body .contact-form label.radio {
 .bdcpy_narrative {
   font-size: 17px;
   line-height: 1.411764706; }
+
+.bdcpy_more {
+  margin-bottom: 28px; }
 
 .mix-bdcpy_splash {
   color: #ffffff; }
@@ -7889,8 +7896,8 @@ body.vex-open {
   position: relative; }
 
 .vex.dialog-confirm-english {
-  left: 0;
-  width: 100%; }
+  left: 50%;
+  width: 50%; }
   .vex.dialog-confirm-english .vex-content {
     width: 82.5%;
     padding: 28px;
@@ -7902,8 +7909,8 @@ body.vex-open {
             transform: translateY(-50%); }
   @media (min-width: 769px) {
     .vex.dialog-confirm-english {
-      /*left: 50%;
-        width: 50%;*/ }
+      left: auto;
+      right: 50%; }
       [dir="rtl"] .vex.dialog-confirm-english {
         /*left: auto;
             right: 50%;*/

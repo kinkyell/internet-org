@@ -8,8 +8,8 @@
 }
 
 .vex.dialog-confirm-english {
-    left: 0;
-    width: 100%;
+    left: 50%;
+    width: 50%;
 
     .vex-content {
         width: 82.5%;
@@ -22,8 +22,8 @@
     }
 
     @media (min-width: 769px) {
-        /*left: 50%;
-        width: 50%;*/
+        left: auto;
+        right: 50%;
 
         [dir="rtl"] & {
             /*left: auto;
@@ -103,7 +103,7 @@
 [dir="rtl"] .vex .vex-close {
     right: auto;
     left: 0;
-    
+
     &:before {
         left: 3px;
         right: auto;

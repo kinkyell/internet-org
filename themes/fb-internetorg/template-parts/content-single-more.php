@@ -130,12 +130,12 @@ if(is_array($story_page_Prev) && $story_page_Prev[0]!="") {
 						<h2 class="hdg hdg_8 mix-hdg_bold">
 							<?php echo esc_html( apply_filters( 'the_title',  $next_post->post_title ) ); ?>
 						</h2>
-						<div class="hdg hdg_7 mix-hdg_italic mix-hdg_gray"><?php echo esc_attr( get_the_date( '', $next_post->ID ) ); ?></div>
+						<div class="hdg hdg_7 mix-hdg_italic mix-hdg_gray hdg_date"><?php echo esc_attr( get_the_date( '', $next_post->ID ) ); ?></div>
 						
 					</a>
 				</div>
 				<div class="topicBlock-bd">
-					<p class="bdcpy">
+					<p class="bdcpy bdcpy_more">
 						<?php
 						$temp = $post;
 						$post = get_post( $next_post->ID );
@@ -173,12 +173,12 @@ if(is_array($story_page_Prev) && $story_page_Prev[0]!="") {
 						<h2 class="hdg hdg_8 mix-hdg_bold">
 							<?php echo  esc_html( apply_filters( 'the_title', $prev_post->post_title ) ); ?>
 						</h2>
-						<div class="hdg hdg_7 mix-hdg_italic mix-hdg_gray"><?php echo esc_attr( get_the_date( '', $prev_post->ID ) ); ?></div>
+						<div class="hdg hdg_7 mix-hdg_italic mix-hdg_gray hdg_date"><?php echo esc_attr( get_the_date( '', $prev_post->ID ) ); ?></div>
 
 					</a>
 				</div>
 				<div class="topicBlock-bd">
-					<p class="bdcpy">
+					<p class="bdcpy bdcpy_more">
 						
 						<?php
 						

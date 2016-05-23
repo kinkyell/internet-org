@@ -183,22 +183,22 @@ html:not(.touch) {
 
 /* APPROACH */
 .theme-approach .link,
-.link_themeApproach { color: $CLR_APPROACH !important; }
+.link_themeApproach { color: $CLR_ACCENT !important; }
 
 .theme-approach .link:after,
-.link_themeApproach:after { border-color: $CLR_APPROACH; }
+.link_themeApproach:after { border-color: $CLR_ACCENT; }
 
 .theme-approach .link:before,
-.link_themeApproach:before { background-color: $CLR_APPROACH; }
+.link_themeApproach:before { background-color: $CLR_ACCENT; }
 
 .theme-approach .link:hover,
-.link_themeApproach:hover { color: $CLR_APPROACH_ACTIVE; }
+.link_themeApproach:hover { color: $CLR_ACCENT_ACTIVE; }
 
 .theme-approach .link:hover:after,
-.link_themeApproach:hover:after { border-color: $CLR_APPROACH_ACTIVE; }
+.link_themeApproach:hover:after { border-color: $CLR_ACCENT_ACTIVE; }
 
 .theme-approach .link:hover:before,
-.link_themeApproach:hover:before { background-color: $CLR_APPROACH_ACTIVE; }
+.link_themeApproach:hover:before { background-color: $CLR_ACCENT_ACTIVE; }
 
 .theme-approach .quarantine .link_title {
   	display: block;
