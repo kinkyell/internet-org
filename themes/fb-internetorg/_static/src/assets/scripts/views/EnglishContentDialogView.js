@@ -108,7 +108,7 @@ define(function(require, exports, module) { // jshint ignore:line
     proto._openDialog = function(event) {
         event.preventDefault();
         var displayClass = ""; 
-        
+        console.log(event.toElement);
         if(($(event.toElement).attr("data-page")) && ($(event.toElement).attr("data-page")=="single")) {
             if($('.viewWindow-panel-content-blogc')) {
                 displayClass = " FullPageDialog";
