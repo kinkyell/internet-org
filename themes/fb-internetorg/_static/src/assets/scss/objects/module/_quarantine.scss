@@ -134,6 +134,12 @@
     }
 }
 
+hr {
+    border: 0;
+    height: 1px;
+    background: #d5d4ca;
+}
+
 /* THEME CLASSES for li bullets by contectual selection */
 .theme-impact .quarantine ul:not(.carousel-handle) li:before { color: $CLR_IMPACT; }
 .theme-approach .quarantine ul:not(.carousel-handle) li:before { color: $CLR_APPROACH; }
