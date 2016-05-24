@@ -89,6 +89,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
         if(this._options['story-page']=="full_screen") {
             $('.viewWindow').css({"right": "0"});
+            $('.dialog-confirm-english').css({'width': '100%', 'left':'0', 'right':'0' });
         if(this._options.path) {
             var checkifStory = this._options.path;
             if(checkifStory.indexOf('blog') > -1) {
@@ -127,6 +128,7 @@ define(function(require, exports, module) { // jshint ignore:line
         }
     } else {
         $('.viewWindow').css({"right": ""});
+         $('.dialog-confirm-english').css({'width': '', 'left':'', 'right':'' });
          if (event.silent) {
                 viewWindow.getCurrentStory().then(this._handleStaticContent, log);
                 return;

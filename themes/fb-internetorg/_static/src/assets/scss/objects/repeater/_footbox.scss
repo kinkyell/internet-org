@@ -9,6 +9,7 @@
 	// max-width: 480px;
 	padding: 80px 0;
     background-color: $CLR_GRAY_LIGHTER;
+    
 }
 
 .viewWindow-panel-content-blogc .footBox {
@@ -51,10 +52,13 @@
 
 .footBox {
   	padding: 28px 0;
+    margin-left:64;
+    margin-right: 64;
 }
 
 @include breakpoint(MD) {
     .footBox {
+
         padding: 80px 0 $SPACE_x4;
     }
     .viewWindow-panel-content-blogc .footBox {

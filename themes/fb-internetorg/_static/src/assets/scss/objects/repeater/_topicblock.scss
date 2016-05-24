@@ -39,6 +39,15 @@
 	margin-bottom: $SPACE_x2;
 }
 
+.FeatureImg {
+	width:auto !important; 
+	max-width:120px !important; 
+	max-height:120px !important; 
+	float: left; 
+	margin-right: 10px;
+	margin-top: 5px 
+}
+
 .viewWindow-panel-content-blog .topicBlock-hd {
 	padding-top:49px;
 }
