@@ -7,6 +7,55 @@
     }
 }
 
+#main-content{
+    .imgLeftMid {
+        width: 50%;
+        max-width: 50%;
+        float: left;
+    }
+}
+
+
+
+#main-content{
+    .imgLeftSmall {
+        width: 30%;
+        max-width: 30%;
+        float: left;
+    }
+}
+
+#main-content{
+    .imgCenterMid {
+        width: 70%;
+        
+    }
+}
+
+#main-content{
+    .imgCenterSmall {
+        width: 50%;
+        
+    }
+}
+
+#main-content{
+    .imgRightMid {
+        width: 50%;
+        max-width: 50%;
+        float: right;
+    }
+}
+
+
+#main-content{
+    .imgRightSmall {
+        width: 30%;
+        max-width: 30%;
+        float: right;
+    }
+}
+
 a {
     text-decoration: none;
 }
