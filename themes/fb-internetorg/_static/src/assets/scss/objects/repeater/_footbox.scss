@@ -65,5 +65,9 @@
         padding: 60px 0 $SPACE_x4;
         max-width: 944px;
         margin: auto auto;
+        @media screen and (max-width: 950px){
+            margin-left: 64px;
+            margin-right: 64px;
+        }
     }
 }
