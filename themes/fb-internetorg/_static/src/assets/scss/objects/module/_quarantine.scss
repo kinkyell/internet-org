@@ -112,6 +112,7 @@
 
     img {
         margin-top: 19px;
+        margin-bottom: 19px;
     }
 
     img,
@@ -131,6 +132,12 @@
         padding: $SPACE_x1;
         margin-top: 0;
     }
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #d5d4ca;
 }
 
 /* THEME CLASSES for li bullets by contectual selection */

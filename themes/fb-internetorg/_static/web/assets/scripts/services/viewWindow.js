@@ -356,8 +356,6 @@ define(function(require, exports, module) { // jshint ignore:line
                 tweenAsync.from($newPanel[0], TRANSITION_SPEED, opts.in),
                 tweenAsync.to($removedPanel[0], TRANSITION_SPEED, opts.out)
             ]).then(cleanup).then(function() {
-
-
                 return $newPanel.children();
             });
 
@@ -417,6 +415,7 @@ define(function(require, exports, module) { // jshint ignore:line
         setTimeout(function(){
             $('.viewWindow').css({'width': "100%", 'display':'block', 'margin' : 'auto'});
             $('.viewWindow-panel').css({'width': '100%', 'height': 'auto', 'left':'0'});
+            
             /*
             var headerHTML = $('.header').html();
             var headerDiv = document.createElement('div');
@@ -482,6 +481,7 @@ define(function(require, exports, module) { // jshint ignore:line
         $('.viewWindow').unbind( 'DOMMouseScroll mousewheel');
 
         $('.header-logo').unbind("click");
+       
 
     }
 
