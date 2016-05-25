@@ -2785,3 +2785,65 @@ add_filter( 'wp_link_query', 	  'internetorg_remove_link_filters' );
 if ( stripos( get_site_url(), '/internet-org.app' ) !== false ) {
 	add_filter( 'internetorg_responsive_images_disabled', '__return_true' );
 }
+
+/**
+ * Set up the custom fields which the exporter/importer
+ * should handle.
+ */
+function internetorg_cei_handle_custom_fields( $fields ) {
+	$fields = array(
+	    'home-content-section' => array(
+	        'tag' => 'wp-section',
+	        'repeater' => true,
+	        'structure' => array(
+	            'title' => 'wp-section-title',
+	            'name'  => 'wp-section-name',
+	            'content' => 'wp-section-description',
+	            'src' => 'wp-section-source',
+	            'url-src' => 'wp-section-source-url',
+	            'slug' => 'wp-section-source-slug',
+	            'theme' => 'wp-section-theme',
+	            'image' => 'wp-section-background-image',
+	            'call-to-action' => array(
+	                'parent' => 'wp-section-ctas',
+	                'tag' => 'wp-section-cta',
+	                'repeater' => true,
+	                'structure' => array(
+	                    'title' => 'wp-section-cta-title',
+	                    'text' => 'wp-section-cta-content',
+	                    'cta_src' => 'wp-section-cta-source',
+	                    'link_src' => 'wp-section-cta-source-url',
+	                    'link' => 'wp-section-cta-source-slug',
+	                    'image' => 'wp-section-cta-image',
+	                )
+	            )
+	        )
+	    ),
+	    'page_intro_block' => array(
+	        'tag' => 'wp-page-intro',
+	        'repeater' => false,
+	        'structure' => array(
+	            'intro_title' => 'wp-page-intro-title',
+	            'intro_content' => 'wp-page-intro-copy',
+	        )
+	    ),
+	    'page_subtitle' => array(
+	        'parent' => 'wp-page-config',
+	        'tag' => 'wp-page-config-subtitle',
+	        'repeater' => false,
+	        'structure' => array()
+	    ),
+	    'internetorg_custom_og' => array(
+	        'tag' => 'wp-meta-data',
+	        'repeater' => false,
+	        'structure' => array(
+	            'iorg_title' => 'wp-meta-data-og-title',
+	            'iorg_description' => 'wp-meta-data-og-description',
+	            'iorg_image' => 'wp-meta-data-og-image',
+	        )
+	    ),
+	);
+	return $fields;
+}
+
+add_filter( 'iorg_cei_custom_fields_filter', 'internetorg_cei_handle_custom_fields' );
