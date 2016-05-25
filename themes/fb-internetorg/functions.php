@@ -2794,6 +2794,7 @@ function internetorg_cei_handle_custom_fields( $fields ) {
 	$fields = array(
 	    'home-content-section' => array(
 	        'tag' => 'wp-section',
+	        'repeater' => true,
 	        'structure' => array(
 	            'title' => 'wp-section-title',
 	            'name'  => 'wp-section-name',
@@ -2806,6 +2807,7 @@ function internetorg_cei_handle_custom_fields( $fields ) {
 	            'call-to-action' => array(
 	                'parent' => 'wp-section-ctas',
 	                'tag' => 'wp-section-cta',
+	                'repeater' => true,
 	                'structure' => array(
 	                    'title' => 'wp-section-cta-title',
 	                    'text' => 'wp-section-cta-content',
@@ -2819,6 +2821,7 @@ function internetorg_cei_handle_custom_fields( $fields ) {
 	    ),
 	    'page_intro_block' => array(
 	        'tag' => 'wp-page-intro',
+	        'repeater' => false,
 	        'structure' => array(
 	            'intro_title' => 'wp-page-intro-title',
 	            'intro_content' => 'wp-page-intro-copy',
@@ -2827,10 +2830,12 @@ function internetorg_cei_handle_custom_fields( $fields ) {
 	    'page_subtitle' => array(
 	        'parent' => 'wp-page-config',
 	        'tag' => 'wp-page-config-subtitle',
+	        'repeater' => false,
 	        'structure' => array()
 	    ),
 	    'internetorg_custom_og' => array(
 	        'tag' => 'wp-meta-data',
+	        'repeater' => false,
 	        'structure' => array(
 	            'iorg_title' => 'wp-meta-data-og-title',
 	            'iorg_description' => 'wp-meta-data-og-description',

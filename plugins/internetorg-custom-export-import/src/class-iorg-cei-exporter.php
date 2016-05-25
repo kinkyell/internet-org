@@ -177,28 +177,24 @@ class IORG_CEI_Exporter {
 	 * @param  string $post_id
 	 */
 	private function custom_fields( $post_id ) {
-		$fields = array();
-
-		$fields = apply_filters( 'iorg_cei_custom_fields_filter', $fields );
+		$fields = apply_filters( 'iorg_cei_custom_fields_filter', array() );
 
 		foreach ( $fields as $name => $info ) {
 			$data = get_post_meta( $post_id, $name, true );
 
-			echo '<wp-custom-field>';
+			echo '<wp-custom-field wp_type="'. $name . '">';
 
 			if ( isset( $info['parent'] ) ) {
 				echo '<' . $info['parent'] . '>';
 			}
 
-			echo '<' . $info['tag'] . '>';
-
 			if ( !empty( $info['structure'] ) ) {
-				$this->prepare_parse_for_cf( $data, $info['structure'] );
+				$this->prepare_parse_for_cf( $data, $info['structure'], $info['tag'] );
 			} else {
+				echo '<' . $info['tag'] . '>';
 				echo $data;
+				echo '</' . $info['tag'] . '>';
 			}
-
-			echo '</' . $info['tag'] . '>';
 
 			if ( isset( $info['parent'] ) ) {
 				echo '</' . $info['parent'] . '>';
@@ -206,8 +202,6 @@ class IORG_CEI_Exporter {
 
 			echo '</wp-custom-field>';
 		}
-
-		// need to includ execrept
 	}
 
 	/**
@@ -215,17 +209,21 @@ class IORG_CEI_Exporter {
 	 * @param  array $data
 	 * @param  array $structure
 	 */
-	private function prepare_parse_for_cf( $data, $structure ) {
+	private function prepare_parse_for_cf( $data, $structure, $tag ) {
 
 		if ( !is_array( $data ) ) {
 			return;
 		}
 
 		if ( $this->has_string_keys( $data ) ) {
+			echo "<{$tag}>";
 			$this->parse_cf( $data, $structure );
+			echo "</{$tag}>";
 		} else {
 			foreach ( $data as $entry ) {
+				echo "<{$tag}>";
 				$this->parse_cf( $entry, $structure );
+				echo "</{$tag}>";
 			}
 		}
 	}
@@ -244,14 +242,14 @@ class IORG_CEI_Exporter {
 					echo "<{$child}>{$value}</{$child}>";
 				} else {
 
-					if ( isset( $structure['parent'] ) ) {
-						echo '<' . $structure['parent'] . '>';
+					if ( isset( $structure[$key]['parent'] ) ) {
+						echo '<' . $structure[$key]['parent'] . ' wp_type="'. $key . '">';
 					}
 
-					$this->prepare_parse_for_cf( $value, $structure[$key]['structure'] );
+					$this->prepare_parse_for_cf( $value, $structure[$key]['structure'], $structure[$key]['tag'] );
 
-					if ( isset( $structure['parent'] ) ) {
-						echo '</' . $structure['parent'] . '>';
+					if ( isset( $structure[$key]['parent'] ) ) {
+						echo '</' . $structure[$key]['parent'] . '>';
 					}
 				}
 			}
@@ -278,9 +276,11 @@ class IORG_CEI_Exporter {
 			echo $this->parser->to_xml( $this->filter( $post->post_content ) );
 			echo '<wp-custom-fields>';
 			$this->custom_fields( $post->ID );
+			echo '<wp-custom-field>';
 			echo '<wp-excerpt>';
 			echo get_post_field( 'post_excerpt', $post->ID );
 			echo '</wp-excerpt>';
+			echo '</wp-custom-field>';
 			echo '</wp-custom-fields>';
 			echo '</wp-obj>';
 		}
