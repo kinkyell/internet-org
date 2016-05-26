@@ -37,6 +37,15 @@ if(is_array($story_page) && $story_page[0]!="") {
 $header_color = get_post_custom_values('iorg_header_color'); 
 $header_img_color = get_post_custom_values('iorg_header_img_color'); 
 
+if(is_array($showImage) && $showImage[0]=="") {
+
+	if(is_array($showMedia) && $showMedia[0]!="") {
+
+		$thumbnail = internetorg_get_thumbnail($showMedia[0]);
+		$showImage[0] = $thumbnail;
+	}
+}
+
 ?>
 
 <div class="resultsList-list-item">

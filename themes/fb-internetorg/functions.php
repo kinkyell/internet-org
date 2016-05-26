@@ -144,7 +144,89 @@ endif;
 
 add_action( 'after_setup_theme', 'internetorg_setup' );
 
+function internetorg_get_youtube_thumbnail_url( $id ) {
+	$maxres = 'http://img.youtube.com/vi/' . $id . '/maxresdefault.jpg';
+	$response = wp_remote_head( $maxres );
+	if ( !is_wp_error( $response ) && $response['response']['code'] == '200' ) {
+		$result = $maxres;
+	} else {
+		$result = 'http://img.youtube.com/vi/' . $id . '/0.jpg';
+	}
+	return $result;
+}
 
+
+function internetorg_scan_for_youtube_thumbnail( $markup ) {
+
+	$regexes = array(
+		'#(?:https?:)?//www\.youtube(?:\-nocookie)?\.com/(?:v|e|embed)/([A-Za-z0-9\-_]+)#', // Comprehensive search for both iFrame and old school embeds
+		'#(?:https?(?:a|vh?)?://)?(?:www\.)?youtube(?:\-nocookie)?\.com/watch\?.*v=([A-Za-z0-9\-_]+)#', // Any YouTube URL. After http(s) support a or v for Youtube Lyte and v or vh for Smart Youtube plugin
+		'#(?:https?(?:a|vh?)?://)?youtu\.be/([A-Za-z0-9\-_]+)#', // Any shortened youtu.be URL. After http(s) a or v for Youtube Lyte and v or vh for Smart Youtube plugin
+		'#<div class="lyte" id="([A-Za-z0-9\-_]+)"#', // YouTube Lyte
+		'#data-youtube-id="([A-Za-z0-9\-_]+)"#' // LazyYT.js
+	);
+
+
+	foreach ( $regexes as $regex ) {
+		if ( preg_match( $regex, $markup, $matches ) ) {
+			return internetorg_get_youtube_thumbnail_url( $matches[1] );
+		}
+	}
+}
+
+
+function internetorg_get_vimeo_thumbnail_url( $id ) {
+		// Get our settings
+	$request = "http://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/$id";
+	$response = wp_remote_get( $request );
+	if( is_wp_error( $response ) ) {
+		$result = '';
+	} elseif ( $response['response']['code'] == 404 ) {
+		$result = '';
+	} elseif ( $response['response']['code'] == 403 ) {
+		$result = '';
+	} else {
+		$result = json_decode( $response['body'] );
+		$result = $result->thumbnail_url;
+	}
+	
+	return $result;
+}
+
+
+function internetorg_scan_for_vimeo_thumbnail( $markup ) {
+
+	$regexes = array(
+		'#<object[^>]+>.+?http://vimeo\.com/moogaloop.swf\?clip_id=([A-Za-z0-9\-_]+)&.+?</object>#s', // Standard Vimeo embed code
+		'#(?:https?:)?//player\.vimeo\.com/video/([0-9]+)#', // Vimeo iframe player
+		'#\[vimeo id=([A-Za-z0-9\-_]+)]#', // JR_embed shortcode
+		'#\[vimeo clip_id="([A-Za-z0-9\-_]+)"[^>]*]#', // Another shortcode
+		'#\[vimeo video_id="([A-Za-z0-9\-_]+)"[^>]*]#', // Yet another shortcode
+		'#(?:https?://)?(?:www\.)?vimeo\.com/([0-9]+)#', // Vimeo URL
+		'#(?:https?://)?(?:www\.)?vimeo\.com/channels/(?:[A-Za-z0-9]+)/([0-9]+)#' // Channel URL
+	);
+
+
+	foreach ( $regexes as $regex ) {
+		if ( preg_match( $regex, $markup, $matches ) ) {
+			return internetorg_get_vimeo_thumbnail_url( $matches[1] );
+		}
+	}
+}
+
+function internetorg_get_thumbnail($url) {
+	$pos = strpos($url, "youtube.com");
+	if($pos===false) {
+		$pos = strpos($url, "vimeo.com");
+		if($pos!==false) {
+			return internetorg_scan_for_vimeo_thumbnail($url);	
+		} else {
+			return '';
+		}
+	} else {
+		return internetorg_scan_for_youtube_thumbnail($url);
+	}
+}
 
 
 
