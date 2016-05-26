@@ -75,7 +75,7 @@ class IORG_CEI_Importer {
 
 		foreach ( $this->content->obj->container->{'wp-obj'} as $key => $obj ) {
 
-			if ( $obj['wp_type'] == 'post' ||  $obj['wp_type'] == 'page' ) {
+			if ( $obj['wp_type'] == 'post' ||  $obj['wp_type'] == 'page' || $obj['wp_type'] == 'io_story' ) {
 
 				$posts[] = array(
 					'original_id' => (string) $obj['wp_post_id'],
@@ -175,7 +175,7 @@ class IORG_CEI_Importer {
 					$this->target_site,
 					$post['original_id'],
 					$post_id,
-					$post['type']
+					'post'
 				);
 			}
 
