@@ -114,6 +114,23 @@ if(is_array($story_page_Cur) && $story_page_Cur[0]!="") {
 		$display_story_Cur = $story_page_Cur[0];
 	} 
 
+if(is_array($showImageNext) && $showImageNext[0]=="") {
+
+	if(is_array($showMediaNext) && $showMediaNext[0]!="") {
+
+		$thumbnailNext = internetorg_get_thumbnail($showMediaNext[0]);
+		$showImageNext[0] = $thumbnailNext;
+	}
+}
+
+if(is_array($showImagePrev) && $showImagePrev[0]=="") {
+
+	if(is_array($showMediaPrev) && $showMediaPrev[0]!="") {
+
+		$thumbnailPrev = internetorg_get_thumbnail($showMediaPrev[0]);
+		$showImagePrev[0] = $thumbnailPrev;
+	}
+}
 ?>
 
 <div class="footBox-hd">

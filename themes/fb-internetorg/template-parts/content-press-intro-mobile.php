@@ -32,6 +32,16 @@ if(((is_array($showImage) && $showImage[0]!="") || (is_array($showMedia) && $sho
 		$HeroMobile = "HeroImage";
 	}
 $HeroTitleClass = "";
+
+if(is_array($showImage) && $showImage[0]=="") {
+
+	if(is_array($showMedia) && $showMedia[0]!="") {
+
+		$thumbnail = internetorg_get_thumbnail($showMedia[0]);
+		$showImage[0] = $thumbnail;
+	}
+}
+
 ?>
 
 <!-- START MOBILE ONLY CONTENT HERE -->

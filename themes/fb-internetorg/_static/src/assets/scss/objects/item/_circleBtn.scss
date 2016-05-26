@@ -15,12 +15,18 @@
     font-size: 0;
     @include transition(all 0.2s ease-in-out);
     transform: scale(0.65);
+     @media screen and (max-width: 800px){
+        background-color: #ff6b00;
+    }    
 }
 
 .contentOnMedia-link:hover > .circleBtn,
 .circleBtn:hover,
 .circleBtn:active {
     background-color: $CLR_ACCENT_ACTIVE;
+     @media screen and (max-width: 800px){
+        background-color: #ff6b00;
+    } 
 }
 
 .circleBtn:after,
