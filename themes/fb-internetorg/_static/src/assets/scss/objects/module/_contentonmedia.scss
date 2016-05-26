@@ -46,7 +46,13 @@
     left: 50%;
     margin-left: -40px;
     margin-top: -40px;
-    
+    @media screen and (max-width: 800px){
+        top: 25%;
+        left: 10%;
+    } 
+    @media screen and (max-width: 380px){
+        top: 20%;
+    }    
 }
 
 .contentOnMedia-link_br {
