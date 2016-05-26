@@ -414,7 +414,7 @@ define(function(require, exports, module) { // jshint ignore:line
          $('.viewWindow').css({"left": "100%"});
         setTimeout(function(){
             $('.viewWindow').css({'width': "100%", 'display':'block', 'margin' : 'auto'});
-            $('.viewWindow-panel').css({'width': '100%', 'height': 'auto', 'left':'0'});
+            $('.viewWindow-panel').css({'width': '100%', 'height': 'auto', 'left':'0', "right": "0"});
             
             /*
             var headerHTML = $('.header').html();
@@ -426,14 +426,15 @@ define(function(require, exports, module) { // jshint ignore:line
             $('.viewWindow').animate({left:'0'}, 500, function() {
                 // Animation complete.
                // $('.innerHeader').css({"width": "100%", "margin": "auto", "position": "relative"});
-
+                $('.viewWindow').css({'right' : '0'});
             });
+
 
             $('.header-logo').on('click',function(event) {
                 //this.changetoOriginal();
                 $('.header').css({'width': '', 'margin': '', 'height': '', 'background-color': ''});
-                $('.viewWindow').css({'max-width': '', 'width': '', 'left': '', 'margin' : ''});
-                $('.viewWindow-panel').css({'width': '', 'height': '', 'left':''});
+                $('.viewWindow').css({'max-width': '', 'width': '', 'left': '', "right": "", 'margin' : ''});
+                $('.viewWindow-panel').css({'width': '', 'height': '', 'left':'', "right": ""});
                 $('.viewWindow').unbind( 'DOMMouseScroll mousewheel');
 
                 $('.header-logo').unbind('click');
@@ -476,8 +477,8 @@ define(function(require, exports, module) { // jshint ignore:line
 */
        // $('.innerHeader').css({"width": "", "margin": "", "position": ""});
         $('.header').css({"width": "", "margin": "", "height": "", "background-color": ""});
-        $('.viewWindow').css({"max-width": "", "width": "", "left": "", "margin" : ""});
-        $('.viewWindow-panel').css({"width": "", "height": "", "left":""});
+        $('.viewWindow').css({"max-width": "", "width": "", "left": "", "right": "", "margin" : ""});
+        $('.viewWindow-panel').css({"width": "", "height": "", "left":"", "right": ""});
         $('.viewWindow').unbind( 'DOMMouseScroll mousewheel');
 
         $('.header-logo').unbind("click");

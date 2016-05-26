@@ -62,11 +62,12 @@ class IORG_CEI_Shortcode_Parser {
 			return substr( $m[0], 1, -1 );
 		}
 
-		$tag  = 'wp-' . str_replace('_', '-', $m[2]);
+		$tag  = 'wp-' . $m[2];
 		$attr = shortcode_parse_atts( $m[3] );
 		$xml  = '<' . $tag . ' wp_type="shortcode">';
 
 		foreach( $attr as $key => $value ) {
+			$key  = str_replace( '_', '-', $key );
 			$xml .= "<{$key}>{$value}</{$key}>";
 		}
 
@@ -115,7 +116,7 @@ class IORG_CEI_Shortcode_Parser {
 			if ( $child['wp_type'] == 'shortcode' ) {
 				$has_children = true;
 			} else {
-				$convert_shortcode .= $child->getName() . '="' . $this->xml_to_string_or_html( $child ) . '" ';
+				$convert_shortcode .= str_replace( '-', '_', $child->getName() ) . '="' . $this->xml_to_string_or_html( $child ) . '" ';
 			}
 		}
 

@@ -1,16 +1,19 @@
 <div class="wrap">
 	<h1>Importing</h1>
 
-	<p>Importing posts/pages:</p>
-	<?php foreach ( $output['posts'] as $message ): ?>
-		<div class="cei-output cei-<?php echo $message['type'] ?>"><?php echo $message['description'] ?></div>
-	<?php endforeach ?>
+	<?php if ( isset( $output['posts'] ) ): ?>
+		<p>Importing posts/pages:</p>
+		<?php foreach ( $output['posts'] as $message ): ?>
+			<div class="cei-output cei-<?php echo $message['type'] ?>"><?php echo $message['description'] ?></div>
+		<?php endforeach ?>
+	<?php endif; ?>
 
-	<p>Importing menus:</p>
-	<?php foreach ( $output['menus'] as $message ): ?>
-		<div class="cei-output cei-<?php echo $message['type'] ?>"><?php echo $message['description'] ?></div>
-	<?php endforeach ?>
-
+	<?php if ( isset( $output['menus'] ) ): ?>
+		<p>Importing menus:</p>
+		<?php foreach ( $output['menus'] as $message ): ?>
+			<div class="cei-output cei-<?php echo $message['type'] ?>"><?php echo $message['description'] ?></div>
+		<?php endforeach ?>
+	<?php endif; ?>
 	<p>Import complete</p>
 </div>
 
