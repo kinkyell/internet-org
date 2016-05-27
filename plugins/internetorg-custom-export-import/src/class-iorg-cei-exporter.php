@@ -192,7 +192,7 @@ class IORG_CEI_Exporter {
 				$this->prepare_parse_for_cf( $data, $info['structure'], $info['tag'] );
 			} else {
 				echo '<' . $info['tag'] . '>';
-				echo $data;
+				echo $this->filter( $data );
 				echo '</' . $info['tag'] . '>';
 			}
 
@@ -239,7 +239,7 @@ class IORG_CEI_Exporter {
 				$child = $structure[$key];
 
 				if ( !is_array( $value ) ) {
-					echo "<{$child}>{$value}</{$child}>";
+					echo "<{$child}>" . $this->filter( $value ) . "</{$child}>";
 				} else {
 
 					if ( isset( $structure[$key]['parent'] ) ) {
@@ -278,7 +278,7 @@ class IORG_CEI_Exporter {
 			$this->custom_fields( $post->ID );
 			echo '<wp-custom-field>';
 			echo '<wp-excerpt>';
-			echo get_post_field( 'post_excerpt', $post->ID );
+			echo $this->filter( get_post_field( 'post_excerpt', $post->ID ) );
 			echo '</wp-excerpt>';
 			echo '</wp-custom-field>';
 			echo '</wp-custom-fields>';
@@ -292,8 +292,10 @@ class IORG_CEI_Exporter {
 	 * @return string
 	 */
 	private function filter( $string ) {
-
-		$string = str_replace( '&nbsp;', '&#160;', $string );
+		$string = str_replace( '&quot;', '@quot;@', $string );
+		$string = html_entity_decode( $string );
+		$string = str_replace( '&', '&amp;', $string );
+		$string = str_replace( '@quot;@', '&quot;', $string );
 
 		return $string;
 	}
