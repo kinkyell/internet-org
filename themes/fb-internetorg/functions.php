@@ -143,7 +143,9 @@ if ( ! function_exists( 'internetorg_setup' ) ) :
 endif;
 
 add_action( 'after_setup_theme', 'internetorg_setup' );
-
+/*
+*Get thumbnail url of a youtube video using youtube id 
+*/
 function internetorg_get_youtube_thumbnail_url( $id ) {
 	$maxres = 'http://img.youtube.com/vi/' . $id . '/maxresdefault.jpg';
 	$response = wp_remote_head( $maxres );
@@ -155,7 +157,9 @@ function internetorg_get_youtube_thumbnail_url( $id ) {
 	return $result;
 }
 
-
+/*
+*Extract youtube id from youtube video url 
+*/
 function internetorg_scan_for_youtube_thumbnail( $markup ) {
 
 	$regexes = array(
@@ -174,7 +178,9 @@ function internetorg_scan_for_youtube_thumbnail( $markup ) {
 	}
 }
 
-
+/*
+*Get thumbnail url of a vimeo video using vimeo id 
+*/
 function internetorg_get_vimeo_thumbnail_url( $id ) {
 		// Get our settings
 	$request = "http://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/$id";
@@ -193,7 +199,9 @@ function internetorg_get_vimeo_thumbnail_url( $id ) {
 	return $result;
 }
 
-
+/*
+*Extract vimeo id from vimeo video url 
+*/
 function internetorg_scan_for_vimeo_thumbnail( $markup ) {
 
 	$regexes = array(
@@ -214,6 +222,10 @@ function internetorg_scan_for_vimeo_thumbnail( $markup ) {
 	}
 }
 
+/*
+*check if the video is from youtube or vimeo
+*then get the thumbnail url of the respective video 
+*/
 function internetorg_get_thumbnail($url) {
 	$pos = strpos($url, "youtube.com");
 	if($pos===false) {

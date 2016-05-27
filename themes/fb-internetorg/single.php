@@ -141,7 +141,7 @@ if(is_array($showImage) && $showImage[0]=="") {
 										echo $content_short; 
 										if($content_extended!="") {
 										 ?>
-										 <div class="readMoreDiv" ><button onclick="javascript:  jQuery('.readMoreDiv').hide(); jQuery('#extendedContent').show('slow');" class="readMore">SHOW MORE</button></div>
+										 <div class="readMoreDiv" ><button onclick="javascript:  jQuery('.readMoreDiv').hide(); jQuery('#extendedContent').slideDown(1000);" class="readMore">SHOW MORE</button></div>
 										 <div id="extendedContent" style="display: none;">
 										 	<?php echo $content_extended; ?>
 										 </div>
