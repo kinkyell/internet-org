@@ -255,21 +255,22 @@ class IORG_CEI_Importer {
 
 		$custom_fields = apply_filters( 'iorg_cei_custom_fields_filter', array() );
 		$sorted_fields = array();
+		if ( $obj->{'wp-custom-fields'}->{'wp-custom-field'} ) {
 
-		foreach ( $obj->{'wp-custom-fields'}->{'wp-custom-field'} as $field ) {
+			foreach ( $obj->{'wp-custom-fields'}->{'wp-custom-field'} as $field ) {
 
-			$type = (string) $field['wp_type'];
+				$type = (string) $field['wp_type'];
 
-			if ( isset( $custom_fields[$type] ) ) {
+				if ( isset( $custom_fields[$type] ) ) {
 
-				if ( isset( $custom_fields[$type]['parent'] ) && empty( $custom_fields[$type]['structure'] ) ) {
-					$sorted_fields[$type] = (string) $field->{$custom_fields[$type]['parent']}->{$custom_fields[$type]['tag']};
-				} else {
-					$current 			  = $custom_fields[$type];
-					$sorted_fields[$type] = $this->parse_xml_custom_fields( $current, $field );
+					if ( isset( $custom_fields[$type]['parent'] ) && empty( $custom_fields[$type]['structure'] ) ) {
+						$sorted_fields[$type] = (string) $field->{$custom_fields[$type]['parent']}->{$custom_fields[$type]['tag']};
+					} else {
+						$current 			  = $custom_fields[$type];
+						$sorted_fields[$type] = $this->parse_xml_custom_fields( $current, $field );
+					}
 				}
 			}
-
 		}
 
 		return $sorted_fields;
@@ -294,10 +295,16 @@ class IORG_CEI_Importer {
 
 		    		if ( $gc_key = array_search( $gc_name, $current['structure'] ) ) {
 
+		    			$value = (string) $grandchildren;
+
+		    			if ( $gc_key == 'content' || $gc_key == 'text' ) {
+		    				$value = $this->strip_xml_tag( $grandchildren->asXML(), $gc_name );
+		    			}
+
 		    			if( $current['repeater'] ) {
-							$sorted_fields[$count][$gc_key] = (string) $grandchildren;
+							$sorted_fields[$count][$gc_key] = $value;
 		    			} else {
-		    				$sorted_fields[$gc_key] = (string) $grandchildren;
+		    				$sorted_fields[$gc_key] = $value;
 		    			}
 
 		    		} else {
@@ -307,7 +314,7 @@ class IORG_CEI_Importer {
 						if ( isset( $current['structure'][$gc_type] ) ) {
 
 							$gc_current 			 = $current['structure'][$gc_type];
-							$sorted_fields[$gc_type] = $this->parse_xml_custom_fields( $gc_current, $grandchildren );
+							$sorted_fields[$gc_key][$gc_type] = $this->parse_xml_custom_fields( $gc_current, $grandchildren );
 
 						}
 		    		}
