@@ -124,16 +124,16 @@
 }
 
 .HeroImagePlay {
-	    
+
 	    /* Firefox */
-		left: -moz-calc(50% - 40px);
+		//left: -moz-calc(50% - 40px);
 		/* Opera */
-		left: -o-calc(50% - 40px);
+		//left: -o-calc(50% - 40px);
 	    /* standard */
-	    left:calc(50%-40px);
+	    //left:calc(50%-40px);
 	    /* WebKit */
-		left: -webkit-calc(50% - 40px);
-		
+		//left: -webkit-calc(50% - 40px);
+
 	    top: calc(112px - 40px);
 	    width:0% !important;
 	}
@@ -152,16 +152,16 @@
 		 height: 322px;
 	}
 	.HeroImagePlay {
-	    
+
 	    /* Firefox */
-		left: -moz-calc(50% - 40px);
-		
+		//left: -moz-calc(50% - 40px);
+
 		/* Opera */
-		left: -o-calc(50% - 40px);
+		//left: -o-calc(50% - 40px);
 	    /* standard */
-	    left:calc(50%-40px);
+	   // left:calc(50%-40px);
 	    /* WebKit */
-		left: -webkit-calc(50% - 40px);
+		//left: -webkit-calc(50% - 40px);
 	    top: calc(161px - 80px);
 	    width:0% !important;
 	}
@@ -175,14 +175,14 @@
 	.HeroImagePlay {
 
 	    /* Firefox */
-		left: -moz-calc(50% - 40px);
+		//left: -moz-calc(50% - 40px);
 		/* Opera */
-		left: -o-calc(50% - 40px);
+		//left: -o-calc(50% - 40px);
 	    /* standard */
-	    left:calc(50%-40px);
+	   // left:calc(50%-40px);
 	    /* WebKit */
-		left: -webkit-calc(50% - 40px);
-		
+		//left: -webkit-calc(50% - 40px);
+
 	    top: calc(230px - 80px);
 	    width:0% !important;
 	}
