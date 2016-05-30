@@ -13,6 +13,14 @@
         max-width: 50%;
         margin-right: 30px;
         float: left;
+        @media screen and (max-width: 769px){
+            width: 100%;
+            max-width: 100%;
+            float: none;
+            margin-left: auto;
+            margin-right: auto;
+        }
+       
     }
 }
 
@@ -27,6 +35,13 @@
         width: 30%;
         max-width: 30%;
         float: left;
+        @media screen and (max-width: 769px){
+            width: 100%;
+            max-width: 100%;
+            float: none;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 }
 
@@ -35,6 +50,12 @@
         width: 70%;
         margin-left: auto;
         margin-right: auto;
+        @media screen and (max-width: 769px) {
+            width: 100%;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
     }
 }
@@ -45,6 +66,13 @@
         margin-left: auto;
         margin-right: auto;
 
+       @media screen and (max-width: 769px) {
+            width: 100%;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
     }
 }
 
@@ -53,6 +81,14 @@
         width: 50%;
         max-width: 50%;
         float: right;
+        @media screen and (max-width: 769px){
+            width: 100%;
+            max-width: 100%;
+            float: none;
+            margin-left: auto;
+            margin-right: auto;
+        }
+       
     }
 }
 
@@ -62,6 +98,14 @@
         width: 30%;
         max-width: 30%;
         float: right;
+        @media screen and (max-width: 769px){
+            width: 100%;
+            max-width: 100%;
+            float: none;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
     }
 }
 
@@ -73,6 +117,10 @@
             margin-right: auto;
         }
     }
+}
+
+.NewLineContent{
+    clear: both;
 }
 
 a {
