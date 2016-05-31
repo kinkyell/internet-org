@@ -42,19 +42,12 @@
 }
 
 .contentOnMedia-link_ct {
-    /*top: calc((460px / 2) - 80px);
-    left: calc(50% - 80px);*/
+   top: 50%;
+    left: 50%;
     margin-left: -40px;
     margin-top: -40px;
     width: 0% !important;
-    /*
-    @media screen and (max-width: 800px){
-        top: calc((322px / 2) - 80px);
-        left: calc(50% - 40px);
-    } 
-    @media screen and (max-width: 580px){
-        top: calc((224px /2) - 40px);
-    }    */
+    
 }
 
 .contentOnMedia-link_br {
