@@ -144,7 +144,6 @@ class IORG_CEI_Importer {
 			unset(
 				$current_post['post_content_filtered'],
 				$current_post['guid'],
-				$current_post['post_parent'],
 				$current_post['menu_order']
 			);
 
@@ -314,8 +313,12 @@ class IORG_CEI_Importer {
 						if ( isset( $current['structure'][$gc_type] ) ) {
 
 							$gc_current 			 = $current['structure'][$gc_type];
-							$sorted_fields[$gc_key][$gc_type] = $this->parse_xml_custom_fields( $gc_current, $grandchildren );
 
+							if( $current['repeater'] ) {
+								$sorted_fields[$count][$gc_type] = $this->parse_xml_custom_fields( $gc_current, $grandchildren );
+			    			} else {
+			    				$sorted_fields[$gc_key][$gc_type] = $this->parse_xml_custom_fields( $gc_current, $grandchildren );
+			    			}
 						}
 		    		}
 		    	}
