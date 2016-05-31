@@ -5272,11 +5272,8 @@ Feature content module
   .HeroImagePlay {
     /* Firefox */
     /* Opera */
-    left: -o-calc(50% - 40px);
     /* standard */
-    left: calc(50%-40px);
     /* WebKit */
-    left: -webkit-calc(50% - 40px);
     top: calc(161px - 40px);
     width: 0% !important; } }
 
