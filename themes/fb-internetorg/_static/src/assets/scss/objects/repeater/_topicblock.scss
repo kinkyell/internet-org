@@ -4,77 +4,77 @@
  common content structure useded throughout
 ------------------------------------------------------------------------ */
 .topicBlock {
-	text-align: center;
+    text-align: center;
 
-	// position: relative;
+    // position: relative;
 }
 
 .viewWindow-panel-content-blogc .footBox .topicBlock {
-	text-align: left;
+    text-align: left;
 }
 
 .topicBlock > * {
-	@include contain();
+    @include contain();
 
 }
 
 .viewWindow-panel-content-blog .topicBlock > *{
 
-	width: 100%;
+    width: 100%;
 }
 
 .viewWindow-panel-content-blogc .footBox .topicBlock > * {
-	width: 95%;
+    width: 95%;
 }
 
 .footBox > .topicBlock {
-	margin-top: 0;
+    margin-top: 0;
 }
 
 .topicBlock-media {
-	@include unContain();
-	margin-bottom: $SPACE_x2;
+    @include unContain();
+    margin-bottom: $SPACE_x2;
 }
 
 .topicBlock-hd {
-	margin-bottom: $SPACE_x2;
+    margin-bottom: $SPACE_x2;
 }
 
 .FeatureImg {
-	width:auto !important;
-	max-width:120px !important;
-	max-height:120px !important;
-	float: left;
-	margin-right: 10px;
-	margin-top: 5px
+    width:auto !important;
+    max-width:120px !important;
+    max-height:120px !important;
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px
 }
 
 .viewWindow-panel-content-blog .topicBlock-hd {
-	padding-top:49px;
-	@media screen and (max-width: 360px) {
+    padding-top:49px;
+    @media screen and (max-width: 360px) {
         margin-left: 30px;
         margin-right: 30px;
     }
 }
 
-    .viewWindow-panel-content-blog .topicBlock-hd, .viewWindow-panel-content-blogc .footBox .topicBlock-hd, .HeroImage .topicBlock-hd {
+.viewWindow-panel-content-blog .topicBlock-hd, .viewWindow-panel-content-blogc .footBox .topicBlock-hd, .HeroImage .topicBlock-hd {
 
-        margin-bottom: 0;
-    }
+    margin-bottom: 0;
+}
 
 .topicBlock-hd:after {
-	content: "";
-	display: inline-block;
-	height: 4px;
-	width: 40px;
-	position: relative;
-	text-align: center;
-	background-color: $CLR_ACCENT;
+    content: "";
+    display: inline-block;
+    height: 4px;
+    width: 40px;
+    position: relative;
+    text-align: center;
+    background-color: $CLR_ACCENT;
 }
 
 
 .viewWindow-panel-content-blogc .footBox .topicBlock-hd:after {
-	display:none;
+    display:none;
 }
 
 .theme-impact .topicBlock-hd:after,
@@ -87,11 +87,11 @@
 .topicBlock-hd_themeApproach:after { background-color: $CLR_APPROACH; }
 
 .topicBlock-preHd {
-	margin-bottom: $SPACE_x1;
+    margin-bottom: $SPACE_x1;
 }
 
 .topicBlock-subHd {
-	margin-bottom: $SPACE_x1;
+    margin-bottom: $SPACE_x1;
 }
 
 .viewWindow-panel-content-blog .topicBlock-subHd {
@@ -101,90 +101,89 @@
 }
 
 .topicBlock-cta {
-	margin-top: $SPACE_x4;
+    margin-top: $SPACE_x4;
 }
 
 .viewWindow-panel-content-blogc .footBox .topicBlock-cta {
-	margin-top: 10px;
-	margin-bottom: $SPACE_x4;
+    margin-top: 10px;
+    margin-bottom: $SPACE_x4;
 }
 
 .mix-topicBlock_push {
-	padding-bottom: 40px;
+    padding-bottom: 40px;
 }
 
 .topicBlock-ft {
-	border-top: 1px solid #d0cfc6;
-	padding: $SPACE_x3;
-	margin-top: $SPACE_x4;
+    border-top: 1px solid #d0cfc6;
+    padding: $SPACE_x3;
+    margin-top: $SPACE_x4;
 }
 
 #heroImage {
-	 height: 224px;
+    height: 224px;
 }
 
 .HeroImagePlay {
 
-	    /* Firefox */
-		left: -moz-calc(50% - 40px);
-		/* Opera */
-		left: -o-calc(50% - 40px);
-	    /* standard */
-	    left:calc(50%-40px);
-	    /* WebKit */
-		left: -webkit-calc(50% - 40px);
+    /* Firefox */
+    //left: -moz-calc(50% - 40px);
+    /* Opera */
+    //left: -o-calc(50% - 40px);
+    /* standard */
+    //left:calc(50%-40px);
+    /* WebKit */
+    //left: -webkit-calc(50% - 40px);
 
-	    top: calc(112px - 40px);
-	    width:0% !important;
-	}
+    top: calc(112px - 40px);
+    width:0% !important;
+}
 
 @include breakpoint(MD) {
-	.topicBlock-media {
-		@include isVisuallyHidden();
-	}
+    .topicBlock-media {
+        @include isVisuallyHidden();
+    }
 
-	.viewWindow-panel-content-blog .topic-padding {
-	    padding-top: 160px;
-	}
+    .viewWindow-panel-content-blog .topic-padding {
+        padding-top: 160px;
+    }
 
 
-	#heroImage {
-		 height: 322px;
-	}
-	.HeroImagePlay {
+    #heroImage {
+        height: 322px;
+    }
+    .HeroImagePlay {
 
-	    /* Firefox */
-		//left: -moz-calc(50% - 40px);
+        /* Firefox */
+        //left: -moz-calc(50% - 40px);
 
-		/* Opera */
-		//left: -o-calc(50% - 40px);
-	    /* standard */
-	    //left:calc(50%-40px);
-	    /* WebKit */
-		//left: -webkit-calc(50% - 40px);
-
-	    top: calc(161px - 40px);
-	    width:0% !important;
-	}
+        /* Opera */
+        //left: -o-calc(50% - 40px);
+        /* standard */
+        // left:calc(50%-40px);
+        /* WebKit */
+        //left: -webkit-calc(50% - 40px);
+        top: calc(161px - 80px);
+        width:0% !important;
+    }
 }
 
 
 @include breakpoint(LG) {
-	#heroImage {
-		 height: 460px;
-	}
-	.HeroImagePlay {
+    #heroImage {
+        height: 460px;
+    }
+    .HeroImagePlay {
 
-	    /* Firefox */
-		left: -moz-calc(50% - 40px);
-		/* Opera */
-		left: -o-calc(50% - 40px);
-	    /* standard */
-	    left:calc(50%-40px);
-	    /* WebKit */
-		left: -webkit-calc(50% - 40px);
+        /* Firefox */
+        //left: -moz-calc(50% - 40px);
+        /* Opera */
+        //left: -o-calc(50% - 40px);
+        /* standard */
+        // left:calc(50%-40px);
+        /* WebKit */
+        //left: -webkit-calc(50% - 40px);
 
-	    top: calc(230px - 80px);
-	    width:0% !important;
-	}
+        top: calc(230px - 80px);
+        width:0% !important;
+    }
 }

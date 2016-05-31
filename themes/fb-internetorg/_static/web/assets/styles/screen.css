@@ -5247,11 +5247,8 @@ Feature content module
 .HeroImagePlay {
   /* Firefox */
   /* Opera */
-  left: -o-calc(50% - 40px);
   /* standard */
-  left: calc(50%-40px);
   /* WebKit */
-  left: -webkit-calc(50% - 40px);
   top: calc(112px - 40px);
   width: 0% !important; }
 
@@ -5274,7 +5271,7 @@ Feature content module
     /* Opera */
     /* standard */
     /* WebKit */
-    top: calc(161px - 40px);
+    top: calc(161px - 80px);
     width: 0% !important; } }
 
 @media (min-width: 1280px) {
@@ -5283,11 +5280,8 @@ Feature content module
   .HeroImagePlay {
     /* Firefox */
     /* Opera */
-    left: -o-calc(50% - 40px);
     /* standard */
-    left: calc(50%-40px);
     /* WebKit */
-    left: -webkit-calc(50% - 40px);
     top: calc(230px - 80px);
     width: 0% !important; } }
 
