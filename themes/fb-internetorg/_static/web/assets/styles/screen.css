@@ -1043,9 +1043,12 @@ textarea:focus,
 input:not([type="submit"]):focus {
   outline: 0; }
 
+<<<<<<< HEAD
 em {
   font-weight: bold; }
 
+=======
+>>>>>>> remotes/origin/vip-full-page-final
 #main-content img {
   width: 100%;
   max-width: 100%;
@@ -5275,8 +5278,11 @@ Feature content module
     /* standard */
     /* WebKit */
     top: calc(161px - 80px);
+<<<<<<< HEAD
     left: -webkit-calc(50% - 40px);
     top: calc(161px - 40px);
+=======
+>>>>>>> remotes/origin/vip-full-page-final
     width: 0% !important; } }
 
 @media (min-width: 1280px) {
