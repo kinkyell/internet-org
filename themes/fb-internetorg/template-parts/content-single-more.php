@@ -51,6 +51,7 @@ if(is_array($showHeroNext) && ($showHeroNext[0]!="Y")) {
 $story_page_Next = get_post_custom_values('iorg_story_page', $next_post->ID); 
 $header_color_Next = get_post_custom_values('iorg_header_color', $next_post->ID); 
 $header_img_color_Next = get_post_custom_values('iorg_header_img_color', $next_post->ID); 
+$featured_img_Next = internetorg_get_post_thumbnail( $next_post->ID, 'listing-image' ) ;
 $display_story_Next = "full_screen";
 if(is_array($story_page_Next) && $story_page_Next[0]!="") {
 		$display_story_Next = $story_page_Next[0];
@@ -60,6 +61,7 @@ if(is_array($story_page_Next) && $story_page_Next[0]!="") {
 	$displayDateNext = "show";
 	$showMediaNext = '';
 	$showImageNext = '';
+	$featured_img_Next = '';
 }
 
 if($prev_post) {
@@ -91,7 +93,7 @@ if(is_array($showHeroPrev) && ($showHeroPrev[0]!="Y")) {
 $story_page_Prev = get_post_custom_values('iorg_story_page', $prev_post->ID); 
 $header_color_Prev = get_post_custom_values('iorg_header_color', $prev_post->ID); 
 $header_img_color_Prev = get_post_custom_values('iorg_header_img_color', $prev_post->ID); 
-
+$featured_img_Prev = internetorg_get_post_thumbnail( $prev_post->ID, 'listing-image' ) ;
 $display_story_Prev = "full_screen";
 if(is_array($story_page_Prev) && $story_page_Prev[0]!="") {
 		$display_story_Prev = $story_page_Prev[0];
@@ -103,11 +105,32 @@ if(is_array($story_page_Prev) && $story_page_Prev[0]!="") {
 	$displayDatePrev = "show";
 	$showMediaPrev = '';
 	$showImagePrev = '';
+	$featured_img_Prev = '';
 }
 
+$story_page_Cur = get_post_custom_values('iorg_story_page'); 
+$display_story_Cur = "full_screen";
+if(is_array($story_page_Cur) && $story_page_Cur[0]!="") {
+		$display_story_Cur = $story_page_Cur[0];
+	} 
 
+if(is_array($showImageNext) && $showImageNext[0]=="") {
 
+	if(is_array($showMediaNext) && $showMediaNext[0]!="") {
 
+		$thumbnailNext = internetorg_get_thumbnail($showMediaNext[0]);
+		$showImageNext[0] = $thumbnailNext;
+	}
+}
+
+if(is_array($showImagePrev) && $showImagePrev[0]=="") {
+
+	if(is_array($showMediaPrev) && $showMediaPrev[0]!="") {
+
+		$thumbnailPrev = internetorg_get_thumbnail($showMediaPrev[0]);
+		$showImagePrev[0] = $thumbnailPrev;
+	}
+}
 ?>
 
 <div class="footBox-hd">
@@ -126,11 +149,14 @@ if(is_array($story_page_Prev) && $story_page_Prev[0]!="") {
 					   data-title="<?php echo esc_attr( apply_filters( 'the_title',  $next_post->post_title ) ); ?>"
 					  data-date="<?php if($displayDateNext=='show') echo esc_attr( get_the_date( '', $next_post->ID ) ); ?>"
 					   data-social="true"
-					   data-type="titled" <?php if(is_array($showImageNext) && $showImageNext[0]!="") { ?> data-image-display="<?php echo $showImageNext[0]; ?>" <?php } ?> <?php if(is_array($showMediaNext) && $showMediaNext[0]!="") { ?> data-video="<?php echo $showMediaNext[0]; ?>" <?php } ?>  data-story-page="<?php echo $display_story_Next; ?>" <?php if(is_array($header_color_Next) && $header_color_Next[0]!="") { ?> data-header-color="<?php echo $header_color_Next[0]; ?>" <?php } ?> <?php if(is_array($header_img_color_Next) && $header_img_color_Next[0]!="") { ?> data-header-img-color="<?php echo $header_img_color_Next[0]; ?>" <?php } ?>>
+					   data-type="titled" <?php if(is_array($showImageNext) && $showImageNext[0]!="") { ?> data-image-display="<?php echo $showImageNext[0]; ?>" <?php } ?> <?php if(is_array($showMediaNext) && $showMediaNext[0]!="") { ?> data-video="<?php echo $showMediaNext[0]; ?>" <?php } ?>  data-story-page="<?php echo $display_story_Next; ?>" <?php if(is_array($header_color_Next) && $header_color_Next[0]!="") { ?> data-header-color="<?php echo $header_color_Next[0]; ?>" <?php } ?> <?php if(is_array($header_img_color_Next) && $header_img_color_Next[0]!="") { ?> data-header-img-color="<?php echo $header_img_color_Next[0]; ?>" <?php } ?>  data-page="single">
+					   <?php if( ($display_story_Cur=="full_screen") && (has_post_thumbnail($next_post)) && ($featured_img_Next!="")) { ?>
+					   	<img src="<?php  echo esc_url($featured_img_Next); ?>" class="FeatureImg" />
+					   <?php } ?>
 						<h2 class="hdg hdg_8 mix-hdg_bold">
 							<?php echo esc_html( apply_filters( 'the_title',  $next_post->post_title ) ); ?>
 						</h2>
-						<div class="hdg hdg_7 mix-hdg_italic mix-hdg_gray hdg_date"><?php echo esc_attr( get_the_date( '', $next_post->ID ) ); ?></div>
+						<div class="hdg hdg_7 mix-hdg_italic mix-hdg_gray hdg_date" style="clear: both;"><?php echo esc_attr( get_the_date( '', $next_post->ID ) ); ?></div>
 						
 					</a>
 				</div>
@@ -152,7 +178,7 @@ if(is_array($story_page_Prev) && $story_page_Prev[0]!="") {
 					   data-title="<?php echo esc_attr( apply_filters( 'the_title',  $next_post->post_title ) ); ?>"
 					   data-date="<?php if($displayDateNext=='show') echo esc_attr( get_the_date( '', $next_post->ID ) ); ?>"
 					   data-social="true"
-					   data-type="titled" <?php if(is_array($showImageNext) && $showImageNext[0]!="") { ?> data-image-display="<?php echo $showImageNext[0]; ?>" <?php } ?> <?php if(is_array($showMediaNext) && $showMediaNext[0]!="") { ?> data-video="<?php echo $showMediaNext[0]; ?>" <?php } ?>  data-story-page="<?php echo $display_story_Next; ?>" <?php if(is_array($header_color_Next) && $header_color_Next[0]!="") { ?> data-header-color="<?php echo $header_color_Next[0]; ?>" <?php } ?> <?php if(is_array($header_img_color_Next) && $header_img_color_Next[0]!="") { ?> data-header-img-color="<?php echo $header_img_color_Next[0]; ?>" <?php } ?>>
+					   data-type="titled" <?php if(is_array($showImageNext) && $showImageNext[0]!="") { ?> data-image-display="<?php echo $showImageNext[0]; ?>" <?php } ?> <?php if(is_array($showMediaNext) && $showMediaNext[0]!="") { ?> data-video="<?php echo $showMediaNext[0]; ?>" <?php } ?>  data-story-page="<?php echo $display_story_Next; ?>" <?php if(is_array($header_color_Next) && $header_color_Next[0]!="") { ?> data-header-color="<?php echo $header_color_Next[0]; ?>" <?php } ?> <?php if(is_array($header_img_color_Next) && $header_img_color_Next[0]!="") { ?> data-header-img-color="<?php echo $header_img_color_Next[0]; ?>" <?php } ?>  data-page="single">
 						<?php esc_html_e( 'Read More', 'internetorg' ); ?>
 					</a>
 				</div>
@@ -169,11 +195,14 @@ if(is_array($story_page_Prev) && $story_page_Prev[0]!="") {
 					  data-title="<?php echo  esc_attr( apply_filters( 'the_title', $prev_post->post_title ) ); ?>"
 					  data-social="true"
 					  data-date="<?php  if($displayDatePrev=='show') echo esc_attr( get_the_date( '', $prev_post->ID ) ); ?>"
-					  data-type="titled" <?php if(is_array($showImagePrev) && $showImagePrev[0]!="") { ?> data-image-display="<?php echo $showImagePrev[0]; ?>" <?php } ?> <?php if(is_array($showMediaPrev) && $showMediaPrev[0]!="") { ?> data-video="<?php echo $showMediaPrev[0]; ?>" <?php } ?>  data-story-page="<?php echo $display_story_Prev; ?>" <?php if(is_array($header_color_Prev) && $header_color_Prev[0]!="") { ?> data-header-color="<?php echo $header_color_Prev[0]; ?>" <?php } ?> <?php if(is_array($header_img_color_Prev) && $header_img_color_Prev[0]!="") { ?> data-header-img-color="<?php echo $header_img_color_Prev[0]; ?>" <?php } ?>>
+					  data-type="titled" <?php if(is_array($showImagePrev) && $showImagePrev[0]!="") { ?> data-image-display="<?php echo $showImagePrev[0]; ?>" <?php } ?> <?php if(is_array($showMediaPrev) && $showMediaPrev[0]!="") { ?> data-video="<?php echo $showMediaPrev[0]; ?>" <?php } ?>  data-story-page="<?php echo $display_story_Prev; ?>" <?php if(is_array($header_color_Prev) && $header_color_Prev[0]!="") { ?> data-header-color="<?php echo $header_color_Prev[0]; ?>" <?php } ?> <?php if(is_array($header_img_color_Prev) && $header_img_color_Prev[0]!="") { ?> data-header-img-color="<?php echo $header_img_color_Prev[0]; ?>" <?php } ?>  data-page="single">
+					  <?php if( ($display_story_Cur=="full_screen") &&  (has_post_thumbnail($prev_post)) && ($featured_img_Prev!="")) { ?>
+					   	<img src="<?php  echo esc_url($featured_img_Prev); ?>" class="FeatureImg" />
+					   <?php } ?>
 						<h2 class="hdg hdg_8 mix-hdg_bold">
 							<?php echo  esc_html( apply_filters( 'the_title', $prev_post->post_title ) ); ?>
 						</h2>
-						<div class="hdg hdg_7 mix-hdg_italic mix-hdg_gray hdg_date"><?php echo esc_attr( get_the_date( '', $prev_post->ID ) ); ?></div>
+						<div class="hdg hdg_7 mix-hdg_italic mix-hdg_gray hdg_date" style="clear: both;"><?php echo esc_attr( get_the_date( '', $prev_post->ID ) ); ?></div>
 
 					</a>
 				</div>
@@ -198,7 +227,7 @@ if(is_array($story_page_Prev) && $story_page_Prev[0]!="") {
 					   data-title="<?php echo  esc_attr( apply_filters( 'the_title', $prev_post->post_title ) ); ?>"
 					   data-social="true"
 					   data-date="<?php if($displayDatePrev=='show') echo esc_attr( get_the_date( '', $prev_post->ID ) ); ?>"
-					   data-type="titled" <?php if(is_array($showImagePrev) && $showImagePrev[0]!="") { ?> data-image-display="<?php echo $showImagePrev[0]; ?>" <?php } ?> <?php if(is_array($showMediaPrev) && $showMediaPrev[0]!="") { ?> data-video="<?php echo $showMediaPrev[0]; ?>" <?php } ?>  data-story-page="<?php echo $display_story_Prev; ?>" <?php if(is_array($header_color_Prev) && $header_color_Prev[0]!="") { ?> data-header-color="<?php echo $header_color_Prev[0]; ?>" <?php } ?> <?php if(is_array($header_img_color_Prev) && $header_img_color_Prev[0]!="") { ?> data-header-img-color="<?php echo $header_img_color_Prev[0]; ?>" <?php } ?>>
+					   data-type="titled" <?php if(is_array($showImagePrev) && $showImagePrev[0]!="") { ?> data-image-display="<?php echo $showImagePrev[0]; ?>" <?php } ?> <?php if(is_array($showMediaPrev) && $showMediaPrev[0]!="") { ?> data-video="<?php echo $showMediaPrev[0]; ?>" <?php } ?>  data-story-page="<?php echo $display_story_Prev; ?>" <?php if(is_array($header_color_Prev) && $header_color_Prev[0]!="") { ?> data-header-color="<?php echo $header_color_Prev[0]; ?>" <?php } ?> <?php if(is_array($header_img_color_Prev) && $header_img_color_Prev[0]!="") { ?> data-header-img-color="<?php echo $header_img_color_Prev[0]; ?>" <?php } ?>  data-page="single">
 						<?php esc_html_e( 'Read More', 'internetorg' ); ?>
 					</a>
 				</div>

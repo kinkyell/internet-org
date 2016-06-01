@@ -9,6 +9,7 @@
 	// max-width: 480px;
 	padding: 80px 0;
     background-color: $CLR_GRAY_LIGHTER;
+
 }
 
 .viewWindow-panel-content-blogc .footBox {
@@ -46,20 +47,28 @@
 }
 
 .footBox-ft {
-    margin-top: $SPACE_x4;   
+    margin-top: $SPACE_x4;
 }
 
-.footBox {
-  	padding: 28px 0;
+.footBoxFull {
+    padding: 28px 0;
+    margin-left:30px;
+    margin-right: 30px;
+
 }
 
 @include breakpoint(MD) {
     .footBox {
+
         padding: 80px 0 $SPACE_x4;
     }
     .viewWindow-panel-content-blogc .footBox {
         padding: 60px 0 $SPACE_x4;
         max-width: 944px;
         margin: auto auto;
+        @media screen and (max-width: 1100px){
+            margin-left: 64px;
+            margin-right: 64px;
+        }
     }
 }

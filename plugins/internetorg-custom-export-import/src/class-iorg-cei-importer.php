@@ -75,13 +75,15 @@ class IORG_CEI_Importer {
 
 		foreach ( $this->content->obj->container->{'wp-obj'} as $key => $obj ) {
 
-			if ( $obj['wp_type'] == 'post' ||  $obj['wp_type'] == 'page' ) {
+			if ( $obj['wp_type'] == 'post' ||  $obj['wp_type'] == 'page' || $obj['wp_type'] == 'io_story' ) {
 
 				$posts[] = array(
 					'original_id' => (string) $obj['wp_post_id'],
 					'type'		  => (string) $obj['wp_type'],
 					'title'		  => (string) $obj['wp_post_title'],
-					'content'	  => (string) $this->strip_xml_tag( $obj->asXML(), 'wp-obj' ),
+					'content'	  => (string) $this->get_content( $obj ),
+					'custom'	  => $this->get_custom_fields( $obj ),
+					'excerpt'	  => (string) $this->get_excerpt( $obj ),
 				);
 
 			} else if ( $obj['wp_type'] == 'menu' ) {
@@ -137,12 +139,11 @@ class IORG_CEI_Importer {
 			$current_post['ID'] 		  = (int) $id;
 			$current_post['post_title']   = $post['title'];
 			$current_post['post_content'] = $this->parser->from_xml( $post['content'] );
+			$current_post['post_excerpt'] = $post['excerpt'];
 
 			unset(
 				$current_post['post_content_filtered'],
-				$current_post['post_excerpt'],
 				$current_post['guid'],
-				$current_post['post_parent'],
 				$current_post['menu_order']
 			);
 
@@ -161,6 +162,10 @@ class IORG_CEI_Importer {
 		    	'type'	  	  => 'success',
 		    );
 
+		    foreach ( $post['custom'] as $key => $cf ) {
+		    	update_post_meta( $post_id, $key, $cf );
+		    }
+
 			$this->switch_to_original_site();
 
 			if ( $id == 0 ) {
@@ -169,7 +174,7 @@ class IORG_CEI_Importer {
 					$this->target_site,
 					$post['original_id'],
 					$post_id,
-					$post['type']
+					'post'
 				);
 			}
 
@@ -238,6 +243,113 @@ class IORG_CEI_Importer {
 		}
 
 		set_theme_mod( 'nav_menu_locations', $locations );
+	}
+
+	/**
+	 * Get custom fields for a post an returns them as an array.
+	 * @param  SimpleXMLElement $obj
+	 * @return array
+	 */
+	private function get_custom_fields( $obj ) {
+
+		$custom_fields = apply_filters( 'iorg_cei_custom_fields_filter', array() );
+		$sorted_fields = array();
+		if ( $obj->{'wp-custom-fields'}->{'wp-custom-field'} ) {
+
+			foreach ( $obj->{'wp-custom-fields'}->{'wp-custom-field'} as $field ) {
+
+				$type = (string) $field['wp_type'];
+
+				if ( isset( $custom_fields[$type] ) ) {
+
+					if ( isset( $custom_fields[$type]['parent'] ) && empty( $custom_fields[$type]['structure'] ) ) {
+						$sorted_fields[$type] = (string) $field->{$custom_fields[$type]['parent']}->{$custom_fields[$type]['tag']};
+					} else {
+						$current 			  = $custom_fields[$type];
+						$sorted_fields[$type] = $this->parse_xml_custom_fields( $current, $field );
+					}
+				}
+			}
+		}
+
+		return $sorted_fields;
+	}
+
+	/**
+	 * Parse XMl for Custom Fields
+	 * @param  array $current
+	 * @param  SimpleXMLElement $field
+	 * @return array
+	 */
+	private function parse_xml_custom_fields( $current, $field ) {
+
+		$sorted_fields = array();
+		$count 	 	   = 0;
+
+		foreach ($field->children() as $children) {
+
+		    if ( $children->getName() == $current['tag'] ) {
+		    	foreach ($children->children() as $grandchildren) {
+		    		$gc_name = (string) $grandchildren->getName();
+
+		    		if ( $gc_key = array_search( $gc_name, $current['structure'] ) ) {
+
+		    			$value = (string) $grandchildren;
+
+		    			if ( $gc_key == 'content' || $gc_key == 'text' ) {
+		    				$value = $this->strip_xml_tag( $grandchildren->asXML(), $gc_name );
+		    			}
+
+		    			if( $current['repeater'] ) {
+							$sorted_fields[$count][$gc_key] = $value;
+		    			} else {
+		    				$sorted_fields[$gc_key] = $value;
+		    			}
+
+		    		} else {
+
+		    			$gc_type = (string) $grandchildren['wp_type'];
+
+						if ( isset( $current['structure'][$gc_type] ) ) {
+
+							$gc_current 			 = $current['structure'][$gc_type];
+
+							if( $current['repeater'] ) {
+								$sorted_fields[$count][$gc_type] = $this->parse_xml_custom_fields( $gc_current, $grandchildren );
+			    			} else {
+			    				$sorted_fields[$gc_key][$gc_type] = $this->parse_xml_custom_fields( $gc_current, $grandchildren );
+			    			}
+						}
+		    		}
+		    	}
+		    	$count++;
+		    }
+		}
+
+		return $sorted_fields;
+	}
+
+	/**
+	 * Get excerpt for a post
+	 * @param  SimpleXMLElement $obj
+	 * @return string
+	 */
+	private function get_excerpt( $obj ) {
+		$result = $obj->xpath('wp-custom-fields/wp-custom-field/wp-excerpt');
+		if ( isset( $result[0] ) ) {
+			return (string) $result[0];
+		}
+		return '';
+	}
+
+	/**
+	 * Get content for a post while stripping its custom fields
+	 * @param  SimpleXMLElement $obj
+	 * @return string
+	 */
+	private function get_content( $obj ) {
+		$content = (string) $this->strip_xml_tag( $obj->asXML(), 'wp-obj' );
+		return preg_replace( '/<wp-custom-fields>(.*?)<\/wp-custom-fields>/s', '', $content );
 	}
 
 	/**

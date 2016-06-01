@@ -46,10 +46,67 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 		add_action( 'add_meta_boxes', 'my_custom_field_checkboxes' );
 		add_action( 'save_post', 'my_custom_field_data', 1);
 		add_filter( 'the_content_more_link', 'modify_read_more_link' );
-add_filter( 'fee_rich_clean', '__return_false' );
+		add_filter( 'fee_rich_clean', '__return_false' );
+		//add_filter( 'attachment_fields_to_edit', 'internetorg_image_custom_field_edit', 10, 2 );
+		//add_filter( 'attachment_fields_to_save', 'internetorg_image_custom_field_save', 10, 2 );
+		//add_filter( 'media_send_to_editor', 'saveFields', 10, 2 );
 		return;
 	}
 
+	function saveFields( $html, $id  ) {
+	   $attachment = get_post( $id );
+        $mime_type = $attachment->post_mime_type;
+        $pos = strpos($mime_type, "image");
+        // I only needed PDF but you can use whatever mime_type you need
+        if ( $pos !== false ) {
+        	$mainClass = get_post_meta($id, 'imageClass', true);
+            $src = wp_get_attachment_image( $id );
+           	$dom = new DOMDocument();
+			$dom->loadHTML($src);
+			$tags = $dom->getElementsByTagName('img')->item(0);
+            $html = '<img';
+            foreach ($tags->attributes as $attr) {
+            	 $name = $attr->nodeName;
+    			 $value = $attr->nodeValue;
+    			 if($name=="class") {
+    				$html .= ' '.$name.'="'.$value.' '.$mainClass.'"'; 	
+    			 } else {
+    			 	$html .= ' '.$name.'="'.$value.'"';
+    			 }
+			    
+			}
+			$html .=" />";
+			$html = json_encode($attachment);
+        }
+
+        return $html;
+
+	}
+
+	function internetorg_image_custom_field_edit( $form_fields, $post ) {
+	    $field_value = get_post_meta( $post->ID, 'imageClass', true );
+	    $form_fields['imageClass'] = array(
+	        'value' => $field_value ? $field_value : '',
+	        'label' => __( 'Image Class' ),
+	        'helps' => __( 'Set a location for this attachment' )
+	    );
+	    $field_value = get_post_meta( $post->ID, 'imageClassmt', true );
+	    $form_fields['imageClassMt'] = array(
+	        'value' => $field_value ? $field_value : '',
+	        'label' => __( 'Class for Mobile/Tablet' )
+	    );
+	    return $form_fields;
+	}
+
+	function internetorg_image_custom_field_edit_save($post, $attachment) {
+		if( isset( $attachment['imageClass'] ) )
+	        update_post_meta( $post['ID'], 'imageClass', $attachment['imageClass']  );
+	   	
+	   	if( isset( $attachment['imageClassMt'] ) )
+	        update_post_meta( $post['ID'], 'imageClassMt', $attachment['imageClassMt']  );
+
+		return $post;
+	}
 
 	function modify_read_more_link() {
 	return '<a class="more-link" href="' . get_permalink() . '">Your Read More Link Text</a>';
@@ -59,7 +116,10 @@ add_filter( 'fee_rich_clean', '__return_false' );
 		wp_register_style( 'custom-style', plugins_url('internetorg-custom-fields.css', __FILE__ ), array(), '1', 'all' );
 		wp_enqueue_style( 'custom-style' );
 		wp_register_script( 'custom-script', plugins_url('internetorg-custom-fields.js', __FILE__ ), array(), '1', 'all' );
+		
 		wp_enqueue_script( 'custom-script' );
+		wp_register_script( 'color-script', plugins_url('jscolor.min.js', __FILE__ ), array(), '1', 'all' );
+		wp_enqueue_script( 'color-script' );
 	}
 		// register the meta box
 	
@@ -113,6 +173,18 @@ add_filter( 'fee_rich_clean', '__return_false' );
 	    	$display_hero = "";
 	    }
 
+	    if(($header_img_color!="") && ($header_img_color!="black")) {
+	    	$header_img_color = $header_img_color;
+	    } else {
+	    	$header_img_color = "000000";
+	    }
+
+	    if(($header_color!="") && ($header_color!="black")) {
+	    	$header_color = $header_color;
+	    } else {
+	    	$header_color = "000000";
+	    }
+
 
 
 
@@ -147,19 +219,21 @@ add_filter( 'fee_rich_clean', '__return_false' );
 	    	<div class="iorg-custom-fields-clear"></div>
 	    	<div class="iorg-custom-fields-left">Header image color</div>
 	    	<div class="iorg-custom-fields-right">
-	    		<select name="iorg_header_img_color">
+	    		<input type="text" class="jscolor" id="iorg_header_img_color" name="iorg_header_img_color" value="<?php echo $header_img_color; ?>" />
+	    		<?php /* ?><select name="iorg_header_img_color">
 			    	<option value="white" <?php if($header_img_color=="white") echo " selected "; ?> >White</option>
 			    	<option value="black" <?php if($header_img_color!="white") echo " selected "; ?>>Black</option>
-		    	</select>
+		    	</select> <?php */ ?>
 	    	</div>
 	    	<div class="iorg-custom-fields-clear"></div>
 	    	<div class="iorg-custom-fields-left">Header menu color</div>
 	    	<div class="iorg-custom-fields-right">
-	    		<select name="iorg_header_color">
+	    		<input type="text" class="jscolor" id="iorg_header_color" name="iorg_header_color" value="<?php echo $header_color; ?>" />
+	    		<?php /* ?><select name="iorg_header_color">
 			    	<option value="white" <?php if($header_color=="white") echo " selected "; ?> >White</option>
 			    	<option value="black" <?php if($header_color!="white") echo " selected "; ?>>Black</option>
 			    	
-		    	</select>
+		    	</select><?php */ ?>
 	    	</div>
 	    	<div class="iorg-custom-fields-clear"></div>
 	    	<div class="iorg-custom-fields-left">Story Page</div>
@@ -247,5 +321,7 @@ function internetorg_cf_on_activate() {
 
 	return;
 }
+
+
 
 register_activation_hook( __FILE__, 'internetorg_cf_on_activate' );

@@ -143,8 +143,102 @@ if ( ! function_exists( 'internetorg_setup' ) ) :
 endif;
 
 add_action( 'after_setup_theme', 'internetorg_setup' );
+/*
+*Get thumbnail url of a youtube video using youtube id
+*/
+function internetorg_get_youtube_thumbnail_url( $id ) {
+	$maxres = 'http://img.youtube.com/vi/' . $id . '/maxresdefault.jpg';
+	$response = wp_remote_head( $maxres );
+	if ( !is_wp_error( $response ) && $response['response']['code'] == '200' ) {
+		$result = $maxres;
+	} else {
+		$result = 'http://img.youtube.com/vi/' . $id . '/0.jpg';
+	}
+	return $result;
+}
+
+/*
+*Extract youtube id from youtube video url
+*/
+function internetorg_scan_for_youtube_thumbnail( $markup ) {
+
+	$regexes = array(
+		'#(?:https?:)?//www\.youtube(?:\-nocookie)?\.com/(?:v|e|embed)/([A-Za-z0-9\-_]+)#', // Comprehensive search for both iFrame and old school embeds
+		'#(?:https?(?:a|vh?)?://)?(?:www\.)?youtube(?:\-nocookie)?\.com/watch\?.*v=([A-Za-z0-9\-_]+)#', // Any YouTube URL. After http(s) support a or v for Youtube Lyte and v or vh for Smart Youtube plugin
+		'#(?:https?(?:a|vh?)?://)?youtu\.be/([A-Za-z0-9\-_]+)#', // Any shortened youtu.be URL. After http(s) a or v for Youtube Lyte and v or vh for Smart Youtube plugin
+		'#<div class="lyte" id="([A-Za-z0-9\-_]+)"#', // YouTube Lyte
+		'#data-youtube-id="([A-Za-z0-9\-_]+)"#' // LazyYT.js
+	);
 
 
+	foreach ( $regexes as $regex ) {
+		if ( preg_match( $regex, $markup, $matches ) ) {
+			return internetorg_get_youtube_thumbnail_url( $matches[1] );
+		}
+	}
+}
+
+/*
+*Get thumbnail url of a vimeo video using vimeo id
+*/
+function internetorg_get_vimeo_thumbnail_url( $id ) {
+		// Get our settings
+	$request = "http://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/$id";
+	$response = wp_remote_get( $request );
+	if( is_wp_error( $response ) ) {
+		$result = '';
+	} elseif ( $response['response']['code'] == 404 ) {
+		$result = '';
+	} elseif ( $response['response']['code'] == 403 ) {
+		$result = '';
+	} else {
+		$result = json_decode( $response['body'] );
+		$result = $result->thumbnail_url;
+	}
+
+	return $result;
+}
+
+/*
+*Extract vimeo id from vimeo video url
+*/
+function internetorg_scan_for_vimeo_thumbnail( $markup ) {
+
+	$regexes = array(
+		'#<object[^>]+>.+?http://vimeo\.com/moogaloop.swf\?clip_id=([A-Za-z0-9\-_]+)&.+?</object>#s', // Standard Vimeo embed code
+		'#(?:https?:)?//player\.vimeo\.com/video/([0-9]+)#', // Vimeo iframe player
+		'#\[vimeo id=([A-Za-z0-9\-_]+)]#', // JR_embed shortcode
+		'#\[vimeo clip_id="([A-Za-z0-9\-_]+)"[^>]*]#', // Another shortcode
+		'#\[vimeo video_id="([A-Za-z0-9\-_]+)"[^>]*]#', // Yet another shortcode
+		'#(?:https?://)?(?:www\.)?vimeo\.com/([0-9]+)#', // Vimeo URL
+		'#(?:https?://)?(?:www\.)?vimeo\.com/channels/(?:[A-Za-z0-9]+)/([0-9]+)#' // Channel URL
+	);
+
+
+	foreach ( $regexes as $regex ) {
+		if ( preg_match( $regex, $markup, $matches ) ) {
+			return internetorg_get_vimeo_thumbnail_url( $matches[1] );
+		}
+	}
+}
+
+/*
+*check if the video is from youtube or vimeo
+*then get the thumbnail url of the respective video
+*/
+function internetorg_get_thumbnail($url) {
+	$pos = strpos($url, "youtube.com");
+	if($pos===false) {
+		$pos = strpos($url, "vimeo.com");
+		if($pos!==false) {
+			return internetorg_scan_for_vimeo_thumbnail($url);
+		} else {
+			return '';
+		}
+	} else {
+		return internetorg_scan_for_youtube_thumbnail($url);
+	}
+}
 
 
 
@@ -724,8 +818,14 @@ function get_internet_org_get_content_widget_html( $widget_slug, $cta_as_button 
 	// Lets enabled a way to filter widget content.
 	if ( isset( $widget['meta']['widget-data'] ) && is_array( $widget['meta']['widget-data'] ) ) {
 		foreach ( $widget['meta']['widget-data'] as $key => $widget_data ) {
-			$widget['meta']['widget-data'][$key]['label'] = apply_filters( 'widget_data_label_filter', $widget_data['label'] );
-			$widget['meta']['widget-data'][$key]['url']   = apply_filters( 'widget_data_url_filter',   $widget_data['url']   );
+
+			if ( isset( $widget_data['label'] ) ) {
+				$widget['meta']['widget-data'][$key]['label'] = apply_filters( 'widget_data_label_filter', $widget_data['label'] );
+			}
+
+			if ( isset( $widget_data['url'] ) ) {
+				$widget['meta']['widget-data'][$key]['url']   = apply_filters( 'widget_data_url_filter',   $widget_data['url']   );
+			}
 		}
 	}
 
@@ -2638,7 +2738,7 @@ function internetorg_get_current_language( $facebook_sdk = false ) {
 		'id' => 'id_ID',
 		'ja' => 'ja_JP',
 		'pa' => 'pa_IN',
-		'pt' => 'pt_PT',
+		'pt' => 'pt_BR',
 		'ru' => 'ru_RU',
 		'ur' => 'ur_PK'
 	);
@@ -2779,3 +2879,65 @@ add_filter( 'wp_link_query', 	  'internetorg_remove_link_filters' );
 if ( stripos( get_site_url(), '/internet-org.app' ) !== false ) {
 	add_filter( 'internetorg_responsive_images_disabled', '__return_true' );
 }
+
+/**
+ * Set up the custom fields which the exporter/importer
+ * should handle.
+ */
+function internetorg_cei_handle_custom_fields( $fields ) {
+	$fields = array(
+	    'home-content-section' => array(
+	        'tag' => 'wp-section',
+	        'repeater' => true,
+	        'structure' => array(
+	            'title' => 'wp-section-title',
+	            'name'  => 'wp-section-name',
+	            'content' => 'wp-section-description',
+	            'src' => 'wp-section-source',
+	            'url-src' => 'wp-section-source-url',
+	            'slug' => 'wp-section-source-slug',
+	            'theme' => 'wp-section-theme',
+	            'image' => 'wp-section-background-image',
+	            'call-to-action' => array(
+	                'parent' => 'wp-section-ctas',
+	                'tag' => 'wp-section-cta',
+	                'repeater' => true,
+	                'structure' => array(
+	                    'title' => 'wp-section-cta-title',
+	                    'text' => 'wp-section-cta-content',
+	                    'cta_src' => 'wp-section-cta-source',
+	                    'link_src' => 'wp-section-cta-source-url',
+	                    'link' => 'wp-section-cta-source-slug',
+	                    'image' => 'wp-section-cta-image',
+	                )
+	            )
+	        )
+	    ),
+	    'page_intro_block' => array(
+	        'tag' => 'wp-page-intro',
+	        'repeater' => false,
+	        'structure' => array(
+	            'intro_title' => 'wp-page-intro-title',
+	            'intro_content' => 'wp-page-intro-copy',
+	        )
+	    ),
+	    'page_subtitle' => array(
+	        'parent' => 'wp-page-config',
+	        'tag' => 'wp-page-config-subtitle',
+	        'repeater' => false,
+	        'structure' => array()
+	    ),
+	    'internetorg_custom_og' => array(
+	        'tag' => 'wp-meta-data',
+	        'repeater' => false,
+	        'structure' => array(
+	            'iorg_title' => 'wp-meta-data-og-title',
+	            'iorg_description' => 'wp-meta-data-og-description',
+	            'iorg_image' => 'wp-meta-data-og-image',
+	        )
+	    ),
+	);
+	return $fields;
+}
+
+add_filter( 'iorg_cei_custom_fields_filter', 'internetorg_cei_handle_custom_fields' );

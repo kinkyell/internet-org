@@ -30,7 +30,7 @@
 
 .hdg_4 {
     @include remify(font-size, 16px);
-    line-height: 1.4565384;
+    line-height: 1;
 }
 
 .hdg_5 {
@@ -64,7 +64,7 @@
     margin-bottom: 20px;
 }
 
-.viewWindow-panel-content-blogc .footBox .hdg_8 {
+.viewWindow-panel-content-blogc .footBox .footBoxFull .hdg_8 {
        @include remify(font-size, 19px);
     }
 

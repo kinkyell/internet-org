@@ -51,19 +51,31 @@ if(is_array($story_page) && $story_page[0]!="") {
 $display_margin = "";
 $display_viewwindow_rtl = "";
 
-if($display_story=="half_screen") {
+if($display_story == "half_screen") {
 	$display_margin = 'ContainerPadding';
+	$contentCol = 'contentCol';
+	$footBox = 'footBox';
 
 } else {
 	$display_viewwindow_rtl = "isShiftedRtl";
+	$contentCol = 'contentCol_fullPage';
+	$footBox = 'footBox';
 }
 
 $header_color = get_post_custom_values('iorg_header_color'); 
 $header_img_color = get_post_custom_values('iorg_header_img_color'); 
 
+if(is_array($showImage) && $showImage[0]=="") {
+
+	if(is_array($showMedia) && $showMedia[0]!="") {
+
+		$thumbnail = internetorg_get_thumbnail($showMedia[0]);
+		$showImage[0] = $thumbnail;
+	}
+}
 
 ?>
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault <?php echo $display_viewwindow_rtl; ?>" id="main-content" role="main" data-type="titled" data-route="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-social="true" data-date="<?php if($displayDate=='show') internetorg_posted_on_date(); ?>" <?php if(is_array($showImage) && $showImage[0]!="") { ?> data-image-display="<?php echo $showImage[0]; ?>" <?php } ?> <?php if(is_array($showMedia) && $showMedia[0]!="") { ?> data-video="<?php echo $showMedia[0]; ?>" <?php } ?> data-story-page="<?php echo $display_story; ?>" <?php if(is_array($header_color) && $header_color[0]!="") { ?> data-header-color="<?php echo $header_color[0]; ?>" <?php } ?> <?php if(is_array($header_img_color) && $header_img_color[0]!="") { ?> data-header-img-color="<?php echo $header_img_color[0]; ?>" <?php } ?>>
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault <?php echo $display_viewwindow_rtl; ?>" id="main-content" role="main" data-type="titled" data-route="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-social="true" data-date="<?php if($displayDate=='show') internetorg_posted_on_date(); ?>" <?php if(is_array($showImage) && $showImage[0]!="") { ?> data-image-display="<?php echo $showImage[0]; ?>" <?php } ?> <?php if(is_array($showMedia) && $showMedia[0]!="") { ?> data-video="<?php echo $showMedia[0]; ?>" <?php } ?> data-story-page="<?php echo $display_story; ?>" <?php if(is_array($header_color) && $header_color[0]!="") { ?> data-header-color="<?php echo $header_color[0]; ?>" <?php } ?> <?php if(is_array($header_img_color) && $header_img_color[0]!="") { ?> data-header-img-color="<?php echo $header_img_color[0]; ?>" <?php } ?> data-page="single">
 		<?php while ( have_posts() ) : the_post(); 
 		 ?>
 
@@ -114,7 +126,9 @@ $header_img_color = get_post_custom_values('iorg_header_img_color');
 					<div>
 						<?php get_template_part( 'template-parts/content', 'press-intro-mobile' ); ?>
 
-						<div class="contentCol_fullPage">
+
+
+						<div class="<?php echo $contentCol ?>">
 							<div class="container <?php echo $display_margin; ?>">
 								<div class="feature">
 									<div class="feature-bd wysiwyg quarantine">
@@ -133,7 +147,7 @@ $header_img_color = get_post_custom_values('iorg_header_img_color');
 										echo $content_short; 
 										if($content_extended!="") {
 										 ?>
-										 <div class="readMoreDiv" ><button onclick="javascript:  jQuery('.readMoreDiv').hide(); jQuery('#extendedContent').show('slow');" class="readMore">SHOW MORE</button></div>
+										 <div class="readMoreDiv" ><button onclick="javascript:  jQuery('.readMoreDiv').hide(); jQuery('#extendedContent').slideDown(1000);" class="readMore">SHOW MORE</button></div>
 										 <div id="extendedContent" style="display: none;">
 										 	<?php echo $content_extended; ?>
 										 </div>
@@ -149,7 +163,8 @@ $header_img_color = get_post_custom_values('iorg_header_img_color');
 							</div>
 						</div>
 
-						<div class="footBox">
+
+						<div class="<?php echo $footBox ?>">
 							<?php if($displayFooterPosts=="show") { ?>
 							<div class="container">
 								<?php get_template_part( 'template-parts/content', 'single-more' ); ?>

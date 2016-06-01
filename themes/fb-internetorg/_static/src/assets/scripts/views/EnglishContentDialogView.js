@@ -107,13 +107,31 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._openDialog = function(event) {
         event.preventDefault();
+        var displayClass = ""; 
+        console.log(event.toElement);
+        if(($(event.toElement).attr("data-page")) && ($(event.toElement).attr("data-page")=="single")) {
+            if($('.viewWindow-panel-content-blogc')) {
+                displayClass = " FullPageDialog";
+            } else {
+                displayClass = "";
+            }
+        } else {
+            displayClass = "";
+        }
+        /*
+        console.log("----------------");
+        console.log(event);
 
+        console.log($(event.toElement).attr("data-story-page"));
+        console.log($(event.toElement).attr("data-page"));
+        console.log("----------------");
+        */
         this.$vexContent = dialog.confirm({
             afterOpen: this._handleOpen,
             escapeButtonCloses: true,
             focusFirstInput: false,
             message: this._TEXT.prompt,
-            className: 'vex-theme-plain dialog-confirm-english',
+            className: 'vex-theme-plain dialog-confirm-english'+displayClass,
             showCloseButton: true,
             buttons: {
                 YES: {

@@ -37,6 +37,15 @@ if(is_array($story_page) && $story_page[0]!="") {
 $header_color = get_post_custom_values('iorg_header_color'); 
 $header_img_color = get_post_custom_values('iorg_header_img_color'); 
 
+if(is_array($showImage) && $showImage[0]=="") {
+
+	if(is_array($showMedia) && $showMedia[0]!="") {
+
+		$thumbnail = internetorg_get_thumbnail($showMedia[0]);
+		$showImage[0] = $thumbnail;
+	}
+}
+
 ?>
 
 <div class="resultsList-list-item">
@@ -83,6 +92,7 @@ $header_img_color = get_post_custom_values('iorg_header_img_color');
 						data-social="true"
 						 data-date="<?php if($displayDate=='show') internetorg_posted_on_date(); ?>" <?php if(is_array($showImage) && $showImage[0]!="") { ?> data-image-display="<?php echo $showImage[0]; ?>" <?php } ?> <?php if(is_array($showMedia) && $showMedia[0]!="") { ?> data-video="<?php echo $showMedia[0]; ?>" <?php } ?> data-story-page="<?php echo $display_story; ?>" <?php if(is_array($header_color) && $header_color[0]!="") { ?> data-header-color="<?php echo $header_color[0]; ?>" <?php } ?> <?php if(is_array($header_img_color) && $header_img_color[0]!="") { ?> data-header-img-color="<?php echo $header_img_color[0]; ?>" <?php } ?>
 						data-type="titled"
+						data-page="press"
 					>
 						<?php esc_html_e( 'Read More', 'internetorg' ); ?>
 					</a>
