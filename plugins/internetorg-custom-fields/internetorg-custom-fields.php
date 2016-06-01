@@ -185,7 +185,7 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 	    	$header_color = "000000";
 	    }
 
-	    echo "<br>HeaderColor : ".$header_color;
+
 
 
 	    	?>
