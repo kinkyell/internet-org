@@ -95,9 +95,9 @@ define(function(require, exports, module) { // jshint ignore:line
         var tasks = [];
         if(this._options['story-page']=="full_screen") {
             if(this._options.path) {
-                var checkifStory = this._options.path;   
+                var checkifStory = this._options.path;
                 if(checkifStory.indexOf('blog') > -1) {
-                    
+
                     tasks = [
                                 apiService.getPanelContent(this._options.path),
                                 viewWindow.replaceStoryContent(templates['article-header']({
@@ -123,7 +123,7 @@ define(function(require, exports, module) { // jshint ignore:line
                                 }), transitions.content).then(tap(this._handleLoaderInit)),
                                 viewWindow.changetoOriginal()
                             ];
-                } 
+                }
             } else {
                 if (event.silent) {
                     viewWindow.getCurrentStory().then(this._handleStaticContent);
@@ -157,7 +157,7 @@ define(function(require, exports, module) { // jshint ignore:line
                         viewWindow.changetoOriginal()
                     ];
         }
-        
+
 
         if (this._options.image) {
             tasks.push(viewWindow.replaceFeatureImage(this._options.image, transitions.feature));
