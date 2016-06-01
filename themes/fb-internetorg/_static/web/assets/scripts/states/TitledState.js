@@ -72,19 +72,26 @@ define(function(require, exports, module) { // jshint ignore:line
     TitledState.prototype.onActivate = function(event) {
         var transitions = this.getAnimationDirections(event);
         var tasks = [];
-        console.log("header-img-color :",this._options['header-img-color']);
-        if(this._options['header-img-color']=="white") {
-            console.log("inside : ",this._options['header-img-color']);
-            $('.header-logo').addClass("header-logo_invertwt");
+        if((this._options['header-img-color']!="") && (this._options['header-img-color']!="black") && (this._options['header-img-color']!="000000")) {
+            $('.header-logo rect').css("fill", "#"+this._options['header-img-color']);
         } else {
-            $('.header-logo').removeClass("header-logo_invertwt");
+            $('.header-logo rect').css("fill", "#000000");
         }
-        console.log("header-color :",this._options['header-color']);
-        if(this._options['header-color']=="white") {
-           $('.menuTrigger').addClass("menuTrigger_onDarkwt");
+        if((this._options['header-color']!="") && (this._options['header-color']!="black") && (this._options['header-color']!="000000")) {
+           $('.menuTrigger-label').css("color", "#"+this._options['header-color']);
+           $('.menuTrigger-icon').css("border-color", "#"+this._options['header-color']);
+           if( $( '#pseudo' ).length ) {
+                $( '#pseudo' ).remove();
+            }
+            var css = '<style id="pseudo">.menuTrigger-icon::after, .menuTrigger-icon::before{background-color: #'+this._options['header-color']+' !important;}</style>';
+            document.head.insertAdjacentHTML( 'beforeEnd', css );
 
         } else {
-           $('.menuTrigger').removeClass("menuTrigger_onDarkwt");
+           $('.menuTrigger-label').css("color", "#000000");
+           $('.menuTrigger-icon').css("border-color", "#000000");
+           if( $( '#pseudo' ).length ) {
+                $( '#pseudo' ).remove();
+            }
         }
 
         if(this._options['story-page']=="full_screen") {
