@@ -129,7 +129,6 @@ define(function(require, exports, module) { // jshint ignore:line
                     hasNextPage: res.data.paged < res.data.max_num_pages,
                     totalResults: typeof res.data.found_posts === 'number' ? res.data.found_posts : 'Unknown',
                     results: res.data.posts.map(function(result) {
-                        console.log(result);
                         return templates['search-result']({
                             title: result.post_title,
                             desc: result.post_excerpt,
@@ -195,9 +194,12 @@ define(function(require, exports, module) { // jshint ignore:line
                         return templates['archive-result']({
                             title: result.post_title,
                             desc: result.post_excerpt,
-                            date: result.post_date,
-                            videourl: result.post_video_url,
-                            imageurl: result.post_image_url,
+                            date: result['data-date'],
+                            videourl: result['data-video'],
+                            imageurl: result['data-image-display'],
+                            headerimgcolor: result['data-header-img-color'],
+                            headercolor: result['data-header-color'],
+                            storypage: result['data-story-page'],
                             url: result.permalink,
                             image: result.post_thumbnail,
                             readMoreText: window.SETTINGS.READ_MORE_TEXT,

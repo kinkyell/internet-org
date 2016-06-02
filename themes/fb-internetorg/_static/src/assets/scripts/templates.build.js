@@ -141,43 +141,55 @@ this["JST"]["search-result"] = Handlebars.template({"1":function(depth0,helpers,
 },"3":function(depth0,helpers,partials,data) {
     var stack1;
 
-  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.image : depth0),{"name":"if","hash":{},"fn":this.program(4, data, 0),"inverse":this.program(6, data, 0),"data":data})) != null ? stack1 : "");
+  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.storypage : depth0),{"name":"if","hash":{},"fn":this.program(4, data, 0),"inverse":this.program(6, data, 0),"data":data})) != null ? stack1 : "");
 },"4":function(depth0,helpers,partials,data) {
-    return "                    data-type=\"panel\"\n                    data-theme=\"approach\"\n";
+    return "                    data-type=\"titled\"   \n";
 },"6":function(depth0,helpers,partials,data) {
+    var stack1;
+
+  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.image : depth0),{"name":"if","hash":{},"fn":this.program(7, data, 0),"inverse":this.program(9, data, 0),"data":data})) != null ? stack1 : "");
+},"7":function(depth0,helpers,partials,data) {
+    return "                    data-type=\"panel\"\n                    data-theme=\"approach\"\n";
+},"9":function(depth0,helpers,partials,data) {
     return "                    data-type=\"titled\"\n               ";
-},"8":function(depth0,helpers,partials,data) {
+},"11":function(depth0,helpers,partials,data) {
     var helper;
 
   return "               data-image-display=\""
     + this.escapeExpression(((helper = (helper = helpers.imageurl || (depth0 != null ? depth0.imageurl : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"imageurl","hash":{},"data":data}) : helper)))
     + "\"\n";
-},"10":function(depth0,helpers,partials,data) {
+},"13":function(depth0,helpers,partials,data) {
     var helper;
 
   return "               data-video=\""
     + this.escapeExpression(((helper = (helper = helpers.videourl || (depth0 != null ? depth0.videourl : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"videourl","hash":{},"data":data}) : helper)))
     + "\"\n";
-},"12":function(depth0,helpers,partials,data) {
+},"15":function(depth0,helpers,partials,data) {
     var helper;
 
   return "               data-story-page=\""
     + this.escapeExpression(((helper = (helper = helpers.storypage || (depth0 != null ? depth0.storypage : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"storypage","hash":{},"data":data}) : helper)))
     + "\" \n";
-},"14":function(depth0,helpers,partials,data) {
+},"17":function(depth0,helpers,partials,data) {
     var helper;
 
   return "               data-header-color=\""
     + this.escapeExpression(((helper = (helper = helpers.headercolor || (depth0 != null ? depth0.headercolor : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"headercolor","hash":{},"data":data}) : helper)))
     + "\" \n";
-},"16":function(depth0,helpers,partials,data) {
+},"19":function(depth0,helpers,partials,data) {
     var helper;
 
   return "               data-header-img-color=\""
     + this.escapeExpression(((helper = (helper = helpers.headerimgcolor || (depth0 != null ? depth0.headerimgcolor : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"headerimgcolor","hash":{},"data":data}) : helper)))
     + "\"\n";
-},"18":function(depth0,helpers,partials,data) {
+},"21":function(depth0,helpers,partials,data) {
     return "                    data-social=\"true\"\n                ";
+},"23":function(depth0,helpers,partials,data) {
+    var stack1;
+
+  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.storypage : depth0),{"name":"if","hash":{},"fn":this.program(24, data, 0),"inverse":this.program(6, data, 0),"data":data})) != null ? stack1 : "");
+},"24":function(depth0,helpers,partials,data) {
+    return "                    data-type=\"titled\"\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 
@@ -192,15 +204,15 @@ this["JST"]["search-result"] = Handlebars.template({"1":function(depth0,helpers,
     + "\"\n\n               data-image=\""
     + alias3(((helper = (helper = helpers.image || (depth0 != null ? depth0.image : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"image","hash":{},"data":data}) : helper)))
     + "\"\n"
-    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.imageurl : depth0),{"name":"if","hash":{},"fn":this.program(8, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.videourl : depth0),{"name":"if","hash":{},"fn":this.program(10, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.storypage : depth0),{"name":"if","hash":{},"fn":this.program(12, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.headercolor : depth0),{"name":"if","hash":{},"fn":this.program(14, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.headerimgcolor : depth0),{"name":"if","hash":{},"fn":this.program(16, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.imageurl : depth0),{"name":"if","hash":{},"fn":this.program(11, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.videourl : depth0),{"name":"if","hash":{},"fn":this.program(13, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.storypage : depth0),{"name":"if","hash":{},"fn":this.program(15, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.headercolor : depth0),{"name":"if","hash":{},"fn":this.program(17, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.headerimgcolor : depth0),{"name":"if","hash":{},"fn":this.program(19, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
     + "               data-mobile-image=\""
     + alias3(((helper = (helper = helpers.mobileImage || (depth0 != null ? depth0.mobileImage : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"mobileImage","hash":{},"data":data}) : helper)))
     + "\"\n"
-    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.isPost : depth0),{"name":"if","hash":{},"fn":this.program(18, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.isPost : depth0),{"name":"if","hash":{},"fn":this.program(21, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
     + "><h2 class=\"hdg hdg_4\">"
     + ((stack1 = ((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"title","hash":{},"data":data}) : helper))) != null ? stack1 : "")
     + "</h2></a>\n        </div>\n        "
@@ -210,7 +222,7 @@ this["JST"]["search-result"] = Handlebars.template({"1":function(depth0,helpers,
     + "</p>\n        </div>\n        <div class=\"feature-cta\">\n            <a href=\""
     + alias3(((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"url","hash":{},"data":data}) : helper)))
     + "\"\n               class=\"link mix-link_small js-stateLink\"\n"
-    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.isStory : depth0),{"name":"if","hash":{},"fn":this.program(1, data, 0),"inverse":this.program(3, data, 0),"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.isStory : depth0),{"name":"if","hash":{},"fn":this.program(1, data, 0),"inverse":this.program(23, data, 0),"data":data})) != null ? stack1 : "")
     + "               data-title=\""
     + alias3(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"title","hash":{},"data":data}) : helper)))
     + "\"\n               data-date=\""
@@ -218,15 +230,15 @@ this["JST"]["search-result"] = Handlebars.template({"1":function(depth0,helpers,
     + "\"\n               data-image=\""
     + alias3(((helper = (helper = helpers.image || (depth0 != null ? depth0.image : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"image","hash":{},"data":data}) : helper)))
     + "\"\n"
-    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.imageurl : depth0),{"name":"if","hash":{},"fn":this.program(8, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.videourl : depth0),{"name":"if","hash":{},"fn":this.program(10, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.storypage : depth0),{"name":"if","hash":{},"fn":this.program(12, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.headercolor : depth0),{"name":"if","hash":{},"fn":this.program(14, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.headerimgcolor : depth0),{"name":"if","hash":{},"fn":this.program(16, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.imageurl : depth0),{"name":"if","hash":{},"fn":this.program(11, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.videourl : depth0),{"name":"if","hash":{},"fn":this.program(13, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.storypage : depth0),{"name":"if","hash":{},"fn":this.program(15, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.headercolor : depth0),{"name":"if","hash":{},"fn":this.program(17, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.headerimgcolor : depth0),{"name":"if","hash":{},"fn":this.program(19, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
     + "               data-mobile-image=\""
     + alias3(((helper = (helper = helpers.mobileImage || (depth0 != null ? depth0.mobileImage : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"mobileImage","hash":{},"data":data}) : helper)))
     + "\"\n"
-    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.isPost : depth0),{"name":"if","hash":{},"fn":this.program(18, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.isPost : depth0),{"name":"if","hash":{},"fn":this.program(21, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
     + ">"
     + alias3(((helper = (helper = helpers.readMoreText || (depth0 != null ? depth0.readMoreText : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"readMoreText","hash":{},"data":data}) : helper)))
     + "</a>\n        </div>\n    </div>\n</div>\n";
