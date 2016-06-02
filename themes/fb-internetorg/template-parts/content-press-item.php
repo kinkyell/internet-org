@@ -30,7 +30,7 @@ if(is_array($showHero) && ($showHero[0]!="Y")) {
 }
 
 $story_page = get_post_custom_values('iorg_story_page'); 
-$display_story = "full_screen";
+$display_story = "half_screen";
 if(is_array($story_page) && $story_page[0]!="") {
 		$display_story = $story_page[0];
 	} 

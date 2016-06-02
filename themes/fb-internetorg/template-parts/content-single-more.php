@@ -52,7 +52,7 @@ $story_page_Next = get_post_custom_values('iorg_story_page', $next_post->ID);
 $header_color_Next = get_post_custom_values('iorg_header_color', $next_post->ID); 
 $header_img_color_Next = get_post_custom_values('iorg_header_img_color', $next_post->ID); 
 $featured_img_Next = internetorg_get_post_thumbnail( $next_post->ID, 'listing-image' ) ;
-$display_story_Next = "full_screen";
+$display_story_Next = "half_screen";
 if(is_array($story_page_Next) && $story_page_Next[0]!="") {
 		$display_story_Next = $story_page_Next[0];
 	} 
@@ -94,7 +94,7 @@ $story_page_Prev = get_post_custom_values('iorg_story_page', $prev_post->ID);
 $header_color_Prev = get_post_custom_values('iorg_header_color', $prev_post->ID); 
 $header_img_color_Prev = get_post_custom_values('iorg_header_img_color', $prev_post->ID); 
 $featured_img_Prev = internetorg_get_post_thumbnail( $prev_post->ID, 'listing-image' ) ;
-$display_story_Prev = "full_screen";
+$display_story_Prev = "half_screen";
 if(is_array($story_page_Prev) && $story_page_Prev[0]!="") {
 		$display_story_Prev = $story_page_Prev[0];
 	} 
