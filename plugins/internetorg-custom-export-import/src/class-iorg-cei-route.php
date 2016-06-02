@@ -12,10 +12,10 @@ class IORG_CEI_Route {
 	 * @return string
 	 */
 	public static function action( $page, $action = false ) {
-		$route = get_admin_url() . 'admin.php?page=' . $page;
+		$route = get_admin_url() . 'admin.php?page=' . rawurlencode( $page );
 
 		if ( $action ) {
-			$route .=  '&action=' . $action;
+			$route .=  '&action=' . rawurlencode( $action );
 		}
 
 		return $route;

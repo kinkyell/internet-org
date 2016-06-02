@@ -83,7 +83,14 @@ function internetorg_responsive_images_update_template( $template ) {
   if ( $internetorg_responsive_images_requested === true ) {
     $path = pathinfo( $template );
 
-    $new_template = locate_template( array( $path['filename'] . '--responsive-images.css.php' ) );
+    $file = $path['filename'] . '--responsive-images.css.php';
+
+    // Check for valid file, to prevent directory traversal.
+    if ( validate_file( $file ) !== 0 ) {
+      exit;
+    }
+
+    $new_template = locate_template( array( $file) );
 
     if ( ! empty( $new_template ) ) {
       ob_start();
