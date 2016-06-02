@@ -1,7 +1,7 @@
 <div class="wrap">
 	<h1>Import</h1>
 
-	<form action="<?php echo esc_attr( $form_action ) ?>" method="post" enctype="multipart/form-data">
+	<form action="<?php echo  esc_url( $form_action ) ?>" method="post" enctype="multipart/form-data">
 		<h2>Please upload a file to Import.</h2>
 		<ul>
 		<li>

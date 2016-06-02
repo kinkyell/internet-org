@@ -5,7 +5,7 @@
 	<p>This format will contain your posts and pages. Shortcodes are converted into custom tags which are compatible with the Facebook translation tool.</p>
 	<p>Once a translation has been completed, for example French. Please visit the French the site and select import add the new translated content to the site.</p>
 
-	<form action="<?php echo esc_attr( $form_action ) ?>" method="post">
+	<form action="<?php echo esc_url( $form_action ) ?>" method="post">
 	<h2>Choose which site to export from.</h2>
 	<ul>
 		<li>
