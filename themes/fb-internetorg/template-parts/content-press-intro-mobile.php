@@ -51,6 +51,7 @@ if(is_array($showImage) && $showImage[0]=="") {
 		<div class="topicBlock">
 
 			<?php
+			if($display_story=="full_screen") {
 			if(is_array($showImage) && $showImage[0]!="") {
 			?>
 			<div class="imgWrap isLoaded"  id="heroImage" style="background: url(<?php echo $showImage[0]; ?>) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: over; background-size: cover; width:100%;">&nbsp;</div>
@@ -64,7 +65,9 @@ if(is_array($showImage) && $showImage[0]=="") {
 			<a href="<?php echo $showMedia[0]; ?>" class="contentOnMedia-link contentOnMedia-link_ct js-videoModal swipebox-video HeroImagePlay" rel="vimeo0">
 				<span class="circleBtn circleBtn_play"></span>
 			</a>
-			<?php }//media ?>
+			<?php }//media
+
+			} ?>
 			<div class="topicBlock-hd topicBlock-hd_plus <?php echo $HeroTitleClass; ?>">
 				<h2 class="hdg hdg_2 mix-hdg_bold"><?php the_title(); ?></h2>
 			</div>
