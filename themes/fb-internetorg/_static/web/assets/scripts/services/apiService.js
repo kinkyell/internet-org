@@ -106,7 +106,6 @@ define(function(require, exports, module) { // jshint ignore:line
             page = page || 1;
 
             var path = '/' + appConfig.searchPath + encodeURIComponent(searchText) + '/page/' + page;
-
             var handleResponse = function(res) {
                 if (typeof res === 'string') {
                     res = JSON.parse(res);
@@ -135,9 +134,12 @@ define(function(require, exports, module) { // jshint ignore:line
                             desc: result.post_excerpt,
                             url: result.permalink,
                             type: result.post_type,
-                            date: result.post_date,
-                            videourl: result.post_video_url,
-                            imageurl: result.post_image_url,
+                            date: result['data-date'],
+                            videourl: result['data-video'],
+                            imageurl: result['data-image-display'],
+                            headerimgcolor: result['data-header-img-color'],
+                            headercolor: result['data-header-color'],
+                            storypage: result['data-story-page'],
                             image: result.panel_image,
                             mobileImage: result.mobile_image,
                             isPost: result.post_type === 'post',
@@ -192,9 +194,12 @@ define(function(require, exports, module) { // jshint ignore:line
                         return templates['archive-result']({
                             title: result.post_title,
                             desc: result.post_excerpt,
-                            date: result.post_date,
-                            videourl: result.post_video_url,
-                            imageurl: result.post_image_url,
+                            date: result['data-date'],
+                            videourl: result['data-video'],
+                            imageurl: result['data-image-display'],
+                            headerimgcolor: result['data-header-img-color'],
+                            headercolor: result['data-header-color'],
+                            storypage: result['data-story-page'],
                             url: result.permalink,
                             image: result.post_thumbnail,
                             readMoreText: window.SETTINGS.READ_MORE_TEXT,

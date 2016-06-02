@@ -144,7 +144,7 @@ endif;
 
 add_action( 'after_setup_theme', 'internetorg_setup' );
 /*
-*Get thumbnail url of a youtube video using youtube id
+*Get thumbnail url of a youtube video using youtube id 
 */
 function internetorg_get_youtube_thumbnail_url( $id ) {
 	$maxres = 'http://img.youtube.com/vi/' . $id . '/maxresdefault.jpg';
@@ -158,7 +158,7 @@ function internetorg_get_youtube_thumbnail_url( $id ) {
 }
 
 /*
-*Extract youtube id from youtube video url
+*Extract youtube id from youtube video url 
 */
 function internetorg_scan_for_youtube_thumbnail( $markup ) {
 
@@ -179,7 +179,7 @@ function internetorg_scan_for_youtube_thumbnail( $markup ) {
 }
 
 /*
-*Get thumbnail url of a vimeo video using vimeo id
+*Get thumbnail url of a vimeo video using vimeo id 
 */
 function internetorg_get_vimeo_thumbnail_url( $id ) {
 		// Get our settings
@@ -195,12 +195,12 @@ function internetorg_get_vimeo_thumbnail_url( $id ) {
 		$result = json_decode( $response['body'] );
 		$result = $result->thumbnail_url;
 	}
-
+	
 	return $result;
 }
 
 /*
-*Extract vimeo id from vimeo video url
+*Extract vimeo id from vimeo video url 
 */
 function internetorg_scan_for_vimeo_thumbnail( $markup ) {
 
@@ -224,14 +224,14 @@ function internetorg_scan_for_vimeo_thumbnail( $markup ) {
 
 /*
 *check if the video is from youtube or vimeo
-*then get the thumbnail url of the respective video
+*then get the thumbnail url of the respective video 
 */
 function internetorg_get_thumbnail($url) {
 	$pos = strpos($url, "youtube.com");
 	if($pos===false) {
 		$pos = strpos($url, "vimeo.com");
 		if($pos!==false) {
-			return internetorg_scan_for_vimeo_thumbnail($url);
+			return internetorg_scan_for_vimeo_thumbnail($url);	
 		} else {
 			return '';
 		}
@@ -1168,6 +1168,49 @@ function internetorg_do_ajax_search() {
 
 		$post_type = get_post_type();
 
+		$showDate = get_post_custom_values('iorg_display_date', get_the_ID()); 
+		 $displayDate = "show";
+		 $displayFooterPosts = "show";
+
+		if(is_array($showDate) && strtolower($showDate[0])=="n") {
+		 	$displayDate = "hide";
+
+		 } else {
+		 	$displayDate = "show";
+
+		 }
+
+		$showMedia = get_post_custom_values('iorg_hero_vdo_url', get_the_ID()); 
+		$showImage = get_post_custom_values('iorg_hero_image', get_the_ID()); 
+		$showHero = get_post_custom_values('iorg_show_hero', get_the_ID()); 
+		if(is_array($showHero) && ($showHero[0]!="Y")) {
+			if(is_array($showImage)) {
+				$showImage[0] = "";
+			}
+			if(is_array($showMedia)) {
+				$showMedia[0] = "";
+			}	
+		}
+
+		$story_page = get_post_custom_values('iorg_story_page', get_the_ID()); 
+		$display_story = "half_screen";
+		if(is_array($story_page) && $story_page[0]!="") {
+				$display_story = $story_page[0];
+			} 
+		$header_color = get_post_custom_values('iorg_header_color', get_the_ID()); 
+		$header_img_color = get_post_custom_values('iorg_header_img_color', get_the_ID()); 
+
+		if(is_array($showImage) && $showImage[0]=="") {
+
+			if(is_array($showMedia) && $showMedia[0]!="") {
+
+				$thumbnail = internetorg_get_thumbnail($showMedia[0]);
+				$showImage[0] = $thumbnail;
+			}
+		}
+
+		
+
 		$data['posts'][] = array(
 			'ID'             => get_the_ID(),
 			'post_title'     => get_the_title(),
@@ -1177,7 +1220,12 @@ function internetorg_do_ajax_search() {
 			'mobile_image'   => $mobile_image,
 			'panel_image'    => $panel_image,
 			'post_type'      => $post_type,
-			'post_date'      => get_the_date( '' ),
+			'data-date'      => ($displayDate=='show') ? get_the_date( '' ) : '',
+			'data-image-display'      =>  ($display_story=="full_screen")? (is_array($showImage) && $showImage[0]!="") ? $showImage[0] : '' : '',
+			'data-video'      => ($display_story=="full_screen")?  (is_array($showMedia) && $showMedia[0]!="")? $showMedia[0] : '' : '',
+			'data-story-page'      => $display_story,
+			'data-header-color'      => (is_array($header_color) && $header_color[0]!="")? $header_color[0] : '',
+			'data-header-img-color'      => (is_array($header_img_color) && $header_img_color[0]!="")? $header_img_color[0] : '',
 			'media_embed'    => internetorg_media_embed( true ),
 		);
 	}
@@ -2738,7 +2786,7 @@ function internetorg_get_current_language( $facebook_sdk = false ) {
 		'id' => 'id_ID',
 		'ja' => 'ja_JP',
 		'pa' => 'pa_IN',
-		'pt' => 'pt_BR',
+		'pt' => 'pt_PT',
 		'ru' => 'ru_RU',
 		'ur' => 'ur_PK'
 	);

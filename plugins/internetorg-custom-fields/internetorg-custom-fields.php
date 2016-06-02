@@ -239,8 +239,8 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 	    	<div class="iorg-custom-fields-left">Story Page</div>
 	    	<div class="iorg-custom-fields-right">
 		    	<select name="iorg_story_page">
-			    	<option value="half_screen" <?php if($story_page=="half_screen") echo " selected "; ?> >Half Screen</option>
-			    	<option value="full_screen" <?php if($story_page!="half_screen") echo " selected "; ?>>Full Screen</option>
+			    	<option value="half_screen" <?php if($story_page!="full_screen") echo " selected "; ?> >Half Screen</option>
+			    	<option value="full_screen" <?php if($story_page=="full_screen") echo " selected "; ?>>Full Screen</option>
 			    	
 		    	</select>
 		    </div> 

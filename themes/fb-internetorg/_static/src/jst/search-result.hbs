@@ -6,6 +6,8 @@
                {{#if isStory}}
                    data-type="panel"
                    data-theme="approach"
+               {{else if storypage}}
+                    data-type="titled"   
                {{else if image}}
                     data-type="panel"
                     data-theme="approach"
@@ -14,7 +16,23 @@
                {{/if}}
                data-title="{{title}}"
                data-date="{{date}}"
+
                data-image="{{image}}"
+               {{#if imageurl}}
+               data-image-display="{{imageurl}}"
+               {{/if}}
+               {{#if videourl}}
+               data-video="{{videourl}}"
+               {{/if}}
+               {{#if storypage}}
+               data-story-page="{{storypage}}" 
+               {{/if}}
+               {{#if headercolor}}
+               data-header-color="{{headercolor}}" 
+               {{/if}}
+               {{#if headerimgcolor}}
+               data-header-img-color="{{headerimgcolor}}"
+               {{/if}}
                data-mobile-image="{{mobileImage}}"
                 {{#if isPost}}
                     data-social="true"
@@ -30,6 +48,8 @@
                {{#if isStory}}
                    data-type="panel"
                    data-theme="approach"
+                {{else if storypage}}
+                    data-type="titled"
                 {{else if image}}
                     data-type="panel"
                     data-theme="approach"
@@ -39,6 +59,21 @@
                data-title="{{title}}"
                data-date="{{date}}"
                data-image="{{image}}"
+               {{#if imageurl}}
+               data-image-display="{{imageurl}}"
+               {{/if}}
+               {{#if videourl}}
+               data-video="{{videourl}}"
+               {{/if}}
+               {{#if storypage}}
+               data-story-page="{{storypage}}" 
+               {{/if}}
+               {{#if headercolor}}
+               data-header-color="{{headercolor}}" 
+               {{/if}}
+               {{#if headerimgcolor}}
+               data-header-img-color="{{headerimgcolor}}"
+               {{/if}}
                data-mobile-image="{{mobileImage}}"
                 {{#if isPost}}
                     data-social="true"

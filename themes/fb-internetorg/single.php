@@ -44,18 +44,17 @@ if(is_array($showFooterPosts) && strtolower($showFooterPosts[0])=="n") {
 
 
 $story_page = get_post_custom_values('iorg_story_page'); 
-$display_story = "full_screen";
+$display_story = "half_screen";
 if(is_array($story_page) && $story_page[0]!="") {
 		$display_story = $story_page[0];
 	} 
 $display_margin = "";
 $display_viewwindow_rtl = "";
 
-if($display_story == "half_screen") {
+if($display_story=="half_screen") {
 	$display_margin = 'ContainerPadding';
 	$contentCol = 'contentCol';
 	$footBox = 'footBox';
-
 } else {
 	$display_viewwindow_rtl = "isShiftedRtl";
 	$contentCol = 'contentCol_fullPage';
@@ -75,7 +74,7 @@ if(is_array($showImage) && $showImage[0]=="") {
 }
 
 ?>
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault <?php echo $display_viewwindow_rtl; ?>" id="main-content" role="main" data-type="titled" data-route="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-social="true" data-date="<?php if($displayDate=='show') internetorg_posted_on_date(); ?>" <?php if(is_array($showImage) && $showImage[0]!="") { ?> data-image-display="<?php echo $showImage[0]; ?>" <?php } ?> <?php if(is_array($showMedia) && $showMedia[0]!="") { ?> data-video="<?php echo $showMedia[0]; ?>" <?php } ?> data-story-page="<?php echo $display_story; ?>" <?php if(is_array($header_color) && $header_color[0]!="") { ?> data-header-color="<?php echo $header_color[0]; ?>" <?php } ?> <?php if(is_array($header_img_color) && $header_img_color[0]!="") { ?> data-header-img-color="<?php echo $header_img_color[0]; ?>" <?php } ?> data-page="single">
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault <?php echo $display_viewwindow_rtl; ?>" id="main-content" role="main" data-type="titled" data-route="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-social="true" data-date="<?php if($displayDate=='show') internetorg_posted_on_date(); ?>" <?php if($display_story=="full_screen") { if(is_array($showImage) && $showImage[0]!="") { ?> data-image-display="<?php echo $showImage[0]; ?>" <?php } ?> <?php if(is_array($showMedia) && $showMedia[0]!="") { ?> data-video="<?php echo $showMedia[0]; ?>" <?php } } ?> data-story-page="<?php echo $display_story; ?>" <?php if(is_array($header_color) && $header_color[0]!="") { ?> data-header-color="<?php echo $header_color[0]; ?>" <?php } ?> <?php if(is_array($header_img_color) && $header_img_color[0]!="") { ?> data-header-img-color="<?php echo $header_img_color[0]; ?>" <?php } ?> data-page="single">
 		<?php while ( have_posts() ) : the_post(); 
 		 ?>
 
@@ -89,6 +88,7 @@ if(is_array($showImage) && $showImage[0]=="") {
 							<div class="container">
 								<div class="topicBlock">
 								<?php
+								if($display_story=="full_screen") {
 								if(is_array($showImage) && $showImage[0]!="") {
 								?>
 								<div class="imgWrap isLoaded"  id="heroImage" style="background: url(<?php echo $showImage[0]; ?>) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: over; background-size: cover; width:100%;">&nbsp;</div>
@@ -100,7 +100,9 @@ if(is_array($showImage) && $showImage[0]=="") {
 								<a href="<?php echo $showMedia[0]; ?>" class="contentOnMedia-link contentOnMedia-link_ct js-videoModal swipebox-video HeroImagePlay">
 									<span class="circleBtn circleBtn_play"></span>
 								</a>
-								<?php }//media ?>
+								<?php }//media 
+							}
+								?>
 									<div class="topicBlock-hd topicBlock-hd_plus">
 										<h2 class="hdg hdg_2 mix-hdg_bold"><?php the_title(); ?></h2>
 									</div>
@@ -126,9 +128,7 @@ if(is_array($showImage) && $showImage[0]=="") {
 					<div>
 						<?php get_template_part( 'template-parts/content', 'press-intro-mobile' ); ?>
 
-
-
-						<div class="<?php echo $contentCol ?>">
+						<div class="<?php echo $contentCol; ?>">
 							<div class="container <?php echo $display_margin; ?>">
 								<div class="feature">
 									<div class="feature-bd wysiwyg quarantine">
@@ -163,8 +163,7 @@ if(is_array($showImage) && $showImage[0]=="") {
 							</div>
 						</div>
 
-
-						<div class="<?php echo $footBox ?>">
+						<div class="<?php echo $footBox; ?>">
 							<?php if($displayFooterPosts=="show") { ?>
 							<div class="container">
 								<?php get_template_part( 'template-parts/content', 'single-more' ); ?>

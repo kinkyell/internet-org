@@ -176,7 +176,6 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     ViewWindow.prototype.replaceStoryContent = function(html, direction) {
 
-
         return this._storyQueue.queue(function() {
 
             var $panel = this._getPanelWrap();
@@ -436,8 +435,14 @@ define(function(require, exports, module) { // jshint ignore:line
                 $('.viewWindow').css({'max-width': '', 'width': '', 'left': '', "right": "", 'margin' : ''});
                 $('.viewWindow-panel').css({'width': '', 'height': '', 'left':'', "right": ""});
                 $('.viewWindow').unbind( 'DOMMouseScroll mousewheel');
-
+                $('.header-logo rect').css("fill", "");
+                $('.menuTrigger-label').css("color", "");
+                $('.menuTrigger-icon').css("border-color", "");
+                if( $( '#pseudo' ).length ) {
+                    $( '#pseudo' ).remove();
+                }
                 $('.header-logo').unbind('click');
+
             });
 
             var ImageDisplay = displayoption;
@@ -482,6 +487,12 @@ define(function(require, exports, module) { // jshint ignore:line
         $('.viewWindow').unbind( 'DOMMouseScroll mousewheel');
 
         $('.header-logo').unbind("click");
+        $('.header-logo rect').css("fill", "");
+        $('.menuTrigger-label').css("color", "");
+        $('.menuTrigger-icon').css("border-color", "");
+        if( $( '#pseudo' ).length ) {
+                $( '#pseudo' ).remove();
+            }
        
 
     }
