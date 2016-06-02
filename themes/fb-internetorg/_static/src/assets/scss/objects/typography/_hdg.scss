@@ -32,11 +32,10 @@
     @include remify(font-size, 16px);
     line-height: 1;
 
-    html[lang="bn-BD"] {
-        line-height: 1.2;
-    }
+
     html[lang="hi-IN"] &,
-    html[lang="pa-IN"] & {
+    html[lang="pa-IN"] &,
+    html[lang="bn-BD"] & {
         line-height: 1.4;
     }
 }
