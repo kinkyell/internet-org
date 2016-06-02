@@ -176,7 +176,6 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     ViewWindow.prototype.replaceStoryContent = function(html, direction) {
 
-
         return this._storyQueue.queue(function() {
 
             var $panel = this._getPanelWrap();

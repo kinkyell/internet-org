@@ -14,7 +14,23 @@
                {{/if}}
                data-title="{{title}}"
                data-date="{{date}}"
+
                data-image="{{image}}"
+               {{#if imageurl}}
+               data-image-display="{{imageurl}}"
+               {{/if}}
+               {{#if videourl}}
+               data-video="{{videourl}}"
+               {{/if}}
+               {{#if storypage}}
+               data-story-page="{{storypage}}" 
+               {{/if}}
+               {{#if headercolor}}
+               data-header-color="{{headercolor}}" 
+               {{/if}}
+               {{#if headerimgcolor}}
+               data-header-img-color="{{headerimgcolor}}"
+               {{/if}}
                data-mobile-image="{{mobileImage}}"
                 {{#if isPost}}
                     data-social="true"
@@ -39,6 +55,21 @@
                data-title="{{title}}"
                data-date="{{date}}"
                data-image="{{image}}"
+               {{#if imageurl}}
+               data-image-display="{{imageurl}}"
+               {{/if}}
+               {{#if videourl}}
+               data-video="{{videourl}}"
+               {{/if}}
+               {{#if storypage}}
+               data-story-page="{{storypage}}" 
+               {{/if}}
+               {{#if headercolor}}
+               data-header-color="{{headercolor}}" 
+               {{/if}}
+               {{#if headerimgcolor}}
+               data-header-img-color="{{headerimgcolor}}"
+               {{/if}}
                data-mobile-image="{{mobileImage}}"
                 {{#if isPost}}
                     data-social="true"
