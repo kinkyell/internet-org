@@ -53,9 +53,12 @@ $display_viewwindow_rtl = "";
 
 if($display_story=="half_screen") {
 	$display_margin = 'ContainerPadding';
-
+	$contentCol = 'contentCol';
+	$footBox = 'footBox';
 } else {
 	$display_viewwindow_rtl = "isShiftedRtl";
+	$contentCol = 'contentCol_fullPage';
+	$footBox = 'footBox';
 }
 
 $header_color = get_post_custom_values('iorg_header_color'); 
@@ -122,7 +125,7 @@ if(is_array($showImage) && $showImage[0]=="") {
 					<div>
 						<?php get_template_part( 'template-parts/content', 'press-intro-mobile' ); ?>
 
-						<div class="contentCol_fullPage">
+						<div class="<?php echo $contentCol; ?>">
 							<div class="container <?php echo $display_margin; ?>">
 								<div class="feature">
 									<div class="feature-bd wysiwyg quarantine">
@@ -157,7 +160,7 @@ if(is_array($showImage) && $showImage[0]=="") {
 							</div>
 						</div>
 
-						<div class="footBox">
+						<div class="<?php echo $footBox; ?>">
 							<?php if($displayFooterPosts=="show") { ?>
 							<div class="container">
 								<?php get_template_part( 'template-parts/content', 'single-more' ); ?>
