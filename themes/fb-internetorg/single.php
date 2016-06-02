@@ -74,7 +74,7 @@ if(is_array($showImage) && $showImage[0]=="") {
 }
 
 ?>
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault <?php echo $display_viewwindow_rtl; ?>" id="main-content" role="main" data-type="titled" data-route="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-social="true" data-date="<?php if($displayDate=='show') internetorg_posted_on_date(); ?>" <?php if(is_array($showImage) && $showImage[0]!="") { ?> data-image-display="<?php echo $showImage[0]; ?>" <?php } ?> <?php if(is_array($showMedia) && $showMedia[0]!="") { ?> data-video="<?php echo $showMedia[0]; ?>" <?php } ?> data-story-page="<?php echo $display_story; ?>" <?php if(is_array($header_color) && $header_color[0]!="") { ?> data-header-color="<?php echo $header_color[0]; ?>" <?php } ?> <?php if(is_array($header_img_color) && $header_img_color[0]!="") { ?> data-header-img-color="<?php echo $header_img_color[0]; ?>" <?php } ?> data-page="single">
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault <?php echo $display_viewwindow_rtl; ?>" id="main-content" role="main" data-type="titled" data-route="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-social="true" data-date="<?php if($displayDate=='show') internetorg_posted_on_date(); ?>" <?php if($display_story=="full_screen") { if(is_array($showImage) && $showImage[0]!="") { ?> data-image-display="<?php echo $showImage[0]; ?>" <?php } ?> <?php if(is_array($showMedia) && $showMedia[0]!="") { ?> data-video="<?php echo $showMedia[0]; ?>" <?php } } ?> data-story-page="<?php echo $display_story; ?>" <?php if(is_array($header_color) && $header_color[0]!="") { ?> data-header-color="<?php echo $header_color[0]; ?>" <?php } ?> <?php if(is_array($header_img_color) && $header_img_color[0]!="") { ?> data-header-img-color="<?php echo $header_img_color[0]; ?>" <?php } ?> data-page="single">
 		<?php while ( have_posts() ) : the_post(); 
 		 ?>
 
@@ -88,6 +88,7 @@ if(is_array($showImage) && $showImage[0]=="") {
 							<div class="container">
 								<div class="topicBlock">
 								<?php
+								if($display_story=="full_screen") {
 								if(is_array($showImage) && $showImage[0]!="") {
 								?>
 								<div class="imgWrap isLoaded"  id="heroImage" style="background: url(<?php echo $showImage[0]; ?>) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: over; background-size: cover; width:100%;">&nbsp;</div>
@@ -99,7 +100,9 @@ if(is_array($showImage) && $showImage[0]=="") {
 								<a href="<?php echo $showMedia[0]; ?>" class="contentOnMedia-link contentOnMedia-link_ct js-videoModal swipebox-video HeroImagePlay">
 									<span class="circleBtn circleBtn_play"></span>
 								</a>
-								<?php }//media ?>
+								<?php }//media 
+							}
+								?>
 									<div class="topicBlock-hd topicBlock-hd_plus">
 										<h2 class="hdg hdg_2 mix-hdg_bold"><?php the_title(); ?></h2>
 									</div>
