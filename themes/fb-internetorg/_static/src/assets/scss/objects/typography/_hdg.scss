@@ -31,10 +31,13 @@
 .hdg_4 {
     @include remify(font-size, 16px);
     line-height: 1;
-    html[lang="bn-BD"] &,
+
+    html[lang="bn-BD"] {
+        line-height: 1.2;
+    }
     html[lang="hi-IN"] &,
     html[lang="pa-IN"] & {
-        line-height: 1.2;
+        line-height: 1.4;
     }
 }
 
