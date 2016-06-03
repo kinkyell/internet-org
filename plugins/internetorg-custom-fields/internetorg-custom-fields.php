@@ -47,9 +47,9 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 		add_action( 'save_post', 'my_custom_field_data', 1);
 		add_filter( 'the_content_more_link', 'modify_read_more_link' );
 		add_filter( 'fee_rich_clean', '__return_false' );
-		//add_filter( 'attachment_fields_to_edit', 'internetorg_image_custom_field_edit', 10, 2 );
-		//add_filter( 'attachment_fields_to_save', 'internetorg_image_custom_field_save', 10, 2 );
-		//add_filter( 'media_send_to_editor', 'saveFields', 10, 2 );
+		add_filter( 'attachment_fields_to_edit', 'internetorg_image_custom_field_edit', 10, 2 );
+		add_filter( 'attachment_fields_to_save', 'internetorg_image_custom_field_save', 10, 2 );
+		add_filter( 'media_send_to_editor', 'saveFields', 10, 2 );
 		return;
 	}
 
@@ -88,12 +88,15 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 	    $form_fields['imageClass'] = array(
 	        'value' => $field_value ? $field_value : '',
 	        'label' => __( 'Image Class' ),
-	        'helps' => __( 'Set a location for this attachment' )
+	        'input' => "html",
+	        'html' => "<input type='radio' value='imgLeftSmall' name='attachments[{$post->ID}][imageClass]' id='attachments[{$post->ID}][imageClass1]' /> <label for='attachments[{$post->ID}][imageClass1]'>imgLeftSmall</label><br/><input type='radio' value='imgLeftMid' name='attachments[{$post->ID}][imageClass]' id='attachments[{$post->ID}][imageClass2]' /> <label for='attachments[{$post->ID}][imageClass2]'>imgLeftMid</label><br/><input type='radio' value='imgRightSmall' name='attachments[{$post->ID}][imageClass]' id='attachments[{$post->ID}][imageClass3]' /> <label for='attachments[{$post->ID}][imageClass3]'>imgRightSmall</label><br/><input type='radio' value='imgRightMid' name='attachments[{$post->ID}][imageClass]' id='attachments[{$post->ID}][imageClass4]' /> <label for='attachments[{$post->ID}][imageClass4]'>imgRightMid</label><br/><input type='radio' value='imgCenterSmall' name='attachments[{$post->ID}][imageClass]' id='attachments[{$post->ID}][imageClass5]' /> <label for='attachments[{$post->ID}][imageClass5]'>imgCenterSmall</label><br/><input type='radio' value='imgCenterMid' name='attachments[{$post->ID}][imageClass]' id='attachments[{$post->ID}][imageClass6]' /> <label for='attachments[{$post->ID}][imageClass6]'>imgCenterMid</label>"
 	    );
 	    $field_value = get_post_meta( $post->ID, 'imageClassmt', true );
 	    $form_fields['imageClassMt'] = array(
 	        'value' => $field_value ? $field_value : '',
-	        'label' => __( 'Class for Mobile/Tablet' )
+	        'label' => __( 'Class for Mobile/Tablet' ),
+	        'input' => "html",
+	        'html' => "<input type='radio' value='mtMid' name='attachments[{$post->ID}][imageClassMt]' id='attachments[{$post->ID}][imageClassMt1]' /> <label for='attachments[{$post->ID}][imageClassMt1]'>mtMid</label><br/><input type='radio' value='mtSmall' name='attachments[{$post->ID}][imageClassMt]' id='attachments[{$post->ID}][imageClassMt2]' /> <label for='attachments[{$post->ID}][imageClassMt2]'>mtSmall</label><br/><input type='radio' value='mtLarge' name='attachments[{$post->ID}][imageClassMt]' id='attachments[{$post->ID}][imageClassMt3]' /> <label for='attachments[{$post->ID}][imageClassMt3]'>mtLarge</label>"
 	    );
 	    return $form_fields;
 	}
@@ -189,7 +192,6 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 
 
 	    	?>
-		
 	    <div class="iorg-custom-fields">
 	    	<div class="iorg-custom-fields-left">Show  post date</div>
 	    	<div class="iorg-custom-fields-right">
@@ -244,6 +246,7 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 			    	<option value="full_screen" <?php if($story_page=="full_screen") echo " selected "; ?>>Full Screen</option>
 			    	
 		    	</select>
+		    	<input type="button" onclick="changeMeta()" value="Change DB to Split Screen">
 		    </div> 
 	    	<div class="iorg-custom-fields-clear"></div>
 	    </div>
@@ -311,7 +314,18 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 	}
 }
 add_action( 'init', 'internetorg_custom_fields_init' );
+add_action( 'wp_ajax_my_action', 'my_action_callback' );
 
+function my_action_callback() {
+	global $wpdb; // this is how you get access to the database
+	$q = "UPDATE $wpdb->postmeta SET meta_value = 'half_screen' where meta_key = 'iorg_story_page' and meta_value = 'full_screen'";
+	$wpdb->query($q);
+	
+
+    echo "Records updated to split screen view";
+
+	wp_die(); // this is required to terminate immediately and return a proper response
+}
 /**
  * Called when the plugin activates, use to do anything that needs to be done once.
  *
