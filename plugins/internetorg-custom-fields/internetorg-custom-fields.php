@@ -192,7 +192,45 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 
 
 	    	?>
-	    <div class="iorg-custom-fields">
+		<?php add_thickbox(); ?>
+		<div id="specModal" style="display:none;">
+			<h1>Specs</h1>
+			<br>
+			<h2>Size/Dimensions/Quality</h2>
+				<li>Recommended Aspect Ratio: 4:3 or 16:9</li>
+				<li>Minimum width: 1280px</li>
+				<li>Maximum file size for hero assets is 2MB</li>
+				<li>Supported file formats: JPEG, GIF, PNG</li>
+			<h2>Hero & Navigation</h2>
+			<em>Make sure logo and nav menu is legible over the selected image:</em>
+			<br>
+			<li>Make sure the center of the hero image is the focal point</li>
+			<li>Default color of nav is black, but can be changed to white</li>
+			<li>Select Navigation color from drop down (choice between black or white)</li>
+			<li>Flexibility to override by inputting custom hex color code</li>
+			<li>Always preview article before posting by clicking the Preview button in the upper right corner</li>
+
+			<h2>Inline Images</h2>
+			<em>These classes define the size and the alignment of the inline image. The format is imgALIGNSIZE.</em>
+			<li>imgLeftSmall (aligned left,  30% width)</li>
+			<li>imgLeftMid (aligned left, 50% width)</li>
+			<li>imgCenterSmall (aligned center, 30% width)</li>
+			<li>imgCenterMid (aligned center, 50% width)</li>
+			<li>imgRightSmall (aligned right, 30% width)</li>
+			<li>imgRightMid (aligned right, 50%width)</li>
+
+
+			<em>NOTE: The following classes will only display in mobile and tablet sized screens. This will be an addon to the previous listed classes for mobile and tablet optimization.</em>
+
+			<li>mtMid (mobile and tablet align center, 50% width)</li>
+			<li>mtSmall (mobile and tablet align center, 30% width)</li>
+			<li>mtLarge (mobile and tablet align center, 75% width)</li>
+
+
+		</div>
+
+		<a href="#TB_inline?width=900&height=1000&inlineId=specModal" class="thickbox"><button>Specs</button></a>
+		<div class="iorg-custom-fields">
 	    	<div class="iorg-custom-fields-left">Show  post date</div>
 	    	<div class="iorg-custom-fields-right">
 	    		<input type="checkbox" name="iorg_display_date" value="Y" <?php echo $show_display_date; ?> />
@@ -246,7 +284,7 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 			    	<option value="full_screen" <?php if($story_page=="full_screen") echo " selected "; ?>>Full Screen</option>
 			    	
 		    	</select>
-		    	<input type="button" onclick="changeMeta()" value="Change DB to Split Screen">
+<!--		    	<input type="button" onclick="changeMeta()" value="Change DB to Split Screen">-->
 		    </div> 
 	    	<div class="iorg-custom-fields-clear"></div>
 	    </div>
