@@ -284,7 +284,7 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 			    	<option value="full_screen" <?php if($story_page=="full_screen") echo " selected "; ?>>Full Screen</option>
 			    	
 		    	</select>
-<!--		    	<input type="button" onclick="changeMeta()" value="Change DB to Split Screen">-->
+		    	<input type="button" onclick="changeMeta()" value="Change DB to Split Screen">
 		    </div> 
 	    	<div class="iorg-custom-fields-clear"></div>
 	    </div>
@@ -354,16 +354,16 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 add_action( 'init', 'internetorg_custom_fields_init' );
 add_action( 'wp_ajax_my_action', 'my_action_callback' );
 
-//function my_action_callback() {
-//	global $wpdb; // this is how you get access to the database
-//	$q = "UPDATE $wpdb->postmeta SET meta_value = 'half_screen' where meta_key = 'iorg_story_page' and meta_value = 'full_screen'";
-//	$wpdb->query($q);
-//
-//
-//    echo "Records updated to split screen view";
-//
-//	wp_die(); // this is required to terminate immediately and return a proper response
-//}
+function my_action_callback() {
+	global $wpdb; // this is how you get access to the database
+	$q = "UPDATE $wpdb->postmeta SET meta_value = 'half_screen' where meta_key = 'iorg_story_page' and meta_value = 'full_screen'";
+	$wpdb->query($q);
+
+
+    echo "Records updated to split screen view";
+
+	wp_die(); // this is required to terminate immediately and return a proper response
+}
 /**
  * Called when the plugin activates, use to do anything that needs to be done once.
  *
