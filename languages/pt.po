@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Internet.org\n"
 "POT-Creation-Date: 2015-10-05 11:57-0500\n"
-"PO-Revision-Date: 2016-06-01 20:14-0700\n"
+"PO-Revision-Date: 2016-05-30 14:29-0700\n"
 "Last-Translator: Darcy Clarke <darcy@darcyclarke.me>\n"
 "Language-Team: Richard Aber <raber@nerdery.com>\n"
 "MIME-Version: 1.0\n"
@@ -4822,67 +4822,67 @@ msgstr "Sex"
 #. translators: three-letter abbreviation of the weekday
 #: wp-includes/locale.php:136
 msgid "Sat"
-msgstr "sáb"
+msgstr "Sáb"
 
 #. translators: month name
 #: wp-includes/locale.php:139 wp-includes/locale.php:167
 msgid "January"
-msgstr "janeiro"
+msgstr "Janeiro"
 
 #. translators: month name
 #: wp-includes/locale.php:140 wp-includes/locale.php:168
 msgid "February"
-msgstr "fevereiro"
+msgstr "Fevereiro"
 
 #. translators: month name
 #: wp-includes/locale.php:141 wp-includes/locale.php:169
 msgid "March"
-msgstr "março"
+msgstr "Março"
 
 #. translators: month name
 #: wp-includes/locale.php:142 wp-includes/locale.php:170
 msgid "April"
-msgstr "abril"
+msgstr "Abril"
 
 #. translators: month name
 #: wp-includes/locale.php:143 wp-includes/locale.php:171
 msgid "May"
-msgstr "maio"
+msgstr "Maio"
 
 #. translators: month name
 #: wp-includes/locale.php:144 wp-includes/locale.php:172
 msgid "June"
-msgstr "junho"
+msgstr "Junho"
 
 #. translators: month name
 #: wp-includes/locale.php:145 wp-includes/locale.php:173
 msgid "July"
-msgstr "julho"
+msgstr "Julho"
 
 #. translators: month name
 #: wp-includes/locale.php:146 wp-includes/locale.php:174
 msgid "August"
-msgstr "agosto"
+msgstr "Agosto"
 
 #. translators: month name
 #: wp-includes/locale.php:147 wp-includes/locale.php:175
 msgid "September"
-msgstr "setembro"
+msgstr "Setembro"
 
 #. translators: month name
 #: wp-includes/locale.php:148 wp-includes/locale.php:176
 msgid "October"
-msgstr "outubro"
+msgstr "Outubro"
 
 #. translators: month name
 #: wp-includes/locale.php:149 wp-includes/locale.php:177
 msgid "November"
-msgstr "novembro"
+msgstr "Novembro"
 
 #. translators: month name
 #: wp-includes/locale.php:150 wp-includes/locale.php:178
 msgid "December"
-msgstr "dezembro"
+msgstr "Dezembro"
 
 #. translators: month name, genitive
 #: wp-includes/locale.php:153
@@ -4960,73 +4960,73 @@ msgstr "dezembro"
 #: wp-includes/locale.php:167
 msgctxt "January abbreviation"
 msgid "Jan"
-msgstr "jan"
+msgstr "Jan"
 
 #. translators: three-letter abbreviation of the month
 #: wp-includes/locale.php:168
 msgctxt "February abbreviation"
 msgid "Feb"
-msgstr "fev"
+msgstr "Fev"
 
 #. translators: three-letter abbreviation of the month
 #: wp-includes/locale.php:169
 msgctxt "March abbreviation"
 msgid "Mar"
-msgstr "mar"
+msgstr "Mar"
 
 #. translators: three-letter abbreviation of the month
 #: wp-includes/locale.php:170
 msgctxt "April abbreviation"
 msgid "Apr"
-msgstr "abr"
+msgstr "Abr"
 
 #. translators: three-letter abbreviation of the month
 #: wp-includes/locale.php:171
 msgctxt "May abbreviation"
 msgid "May"
-msgstr "mai"
+msgstr "Mai"
 
 #. translators: three-letter abbreviation of the month
 #: wp-includes/locale.php:172
 msgctxt "June abbreviation"
 msgid "Jun"
-msgstr "jun"
+msgstr "Jun"
 
 #. translators: three-letter abbreviation of the month
 #: wp-includes/locale.php:173
 msgctxt "July abbreviation"
 msgid "Jul"
-msgstr "jul"
+msgstr "Jul"
 
 #. translators: three-letter abbreviation of the month
 #: wp-includes/locale.php:174
 msgctxt "August abbreviation"
 msgid "Aug"
-msgstr "ago"
+msgstr "Ago"
 
 #. translators: three-letter abbreviation of the month
 #: wp-includes/locale.php:175
 msgctxt "September abbreviation"
 msgid "Sep"
-msgstr "set"
+msgstr "Set"
 
 #. translators: three-letter abbreviation of the month
 #: wp-includes/locale.php:176
 msgctxt "October abbreviation"
 msgid "Oct"
-msgstr "out"
+msgstr "Out"
 
 #. translators: three-letter abbreviation of the month
 #: wp-includes/locale.php:177
 msgctxt "November abbreviation"
 msgid "Nov"
-msgstr "nov"
+msgstr "Nov"
 
 #. translators: three-letter abbreviation of the month
 #: wp-includes/locale.php:178
 msgctxt "December abbreviation"
 msgid "Dec"
-msgstr "dez"
+msgstr "Dez"
 
 #: wp-includes/locale.php:181
 msgid "am"

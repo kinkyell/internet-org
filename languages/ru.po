@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Internet.org\n"
 "POT-Creation-Date: 2015-10-05 11:57-0500\n"
-"PO-Revision-Date: 2016-06-01 19:47-0700\n"
+"PO-Revision-Date: 2016-05-17 18:20-0700\n"
 "Last-Translator: Darcy Clarke <darcy@darcyclarke.me>\n"
 "Language-Team: Richard Aber <raber@nerdery.com>\n"
 "MIME-Version: 1.0\n"
@@ -504,7 +504,7 @@ msgstr "Больше публикаций"
 #: template-parts/content-single-more.php:43
 #: template-parts/content-single-more.php:71
 msgid "Read"
-msgstr "ЧИТАТЬ"
+msgstr "Чтение"
 
 #: template-parts/content-social-links.php:12
 msgid "Facebook"
