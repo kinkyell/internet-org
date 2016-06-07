@@ -260,7 +260,7 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 	    	<div class="iorg-custom-fields-clear"></div>
 	    	<div class="iorg-custom-fields-left">Header image color</div>
 	    	<div class="iorg-custom-fields-right">
-	    		<input type="text" class="jscolor" id="iorg_header_img_color" name="iorg_header_img_color" value="<?php echo $header_img_color; ?>" />
+	    		<input type="text" class="jscolor" id="iorg_header_img_color" name="iorg_header_img_color" value="<?php echo esc_attr($header_img_color); ?>" />
 	    		<?php /* ?><select name="iorg_header_img_color">
 			    	<option value="white" <?php if($header_img_color=="white") echo " selected "; ?> >White</option>
 			    	<option value="black" <?php if($header_img_color!="white") echo " selected "; ?>>Black</option>
