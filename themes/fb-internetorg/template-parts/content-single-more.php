@@ -176,8 +176,8 @@ if(is_array($showImagePrev) && $showImagePrev[0]=="") {
 				<div class="topicBlock-cta">
 				<?php if($display_story_Cur=="half_screen") { ?> 
 					<a class="btn js-stateLink"
-					   href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>"
-					   data-title="<?php echo  esc_attr( apply_filters( 'the_title', $prev_post->post_title ) ); ?>"
+					   href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>"
+					   data-title="<?php echo  esc_attr( apply_filters( 'the_title', $next_post->post_title ) ); ?>"
 					   data-date="<?php if($displayDateNext=='show') echo esc_attr( get_the_date( '', $next_post->ID ) ); ?>"
 					   data-social="true"
 					   data-type="titled" <?php if($display_story_Next == "full_screen") { if(is_array($showImageNext) && $showImageNext[0]!="") { ?> data-image-display="<?php echo $showImageNext[0]; ?>" <?php } ?> <?php if(is_array($showMediaNext) && $showMediaNext[0]!="") { ?> data-video="<?php echo $showMediaNext[0]; ?>" <?php } } ?>  data-story-page="<?php echo $display_story_Next; ?>" <?php if(is_array($header_color_Next) && $header_color_Next[0]!="") { ?> data-header-color="<?php echo $header_color_Next[0]; ?>" <?php } ?> <?php if(is_array($header_img_color_Next) && $header_img_color_Next[0]!="") { ?> data-header-img-color="<?php echo $header_img_color_Next[0]; ?>" <?php } ?>  data-page="single">
