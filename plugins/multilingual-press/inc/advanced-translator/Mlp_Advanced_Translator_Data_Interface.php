@@ -21,11 +21,4 @@ interface Mlp_Advanced_Translator_Data_Interface {
 	 * @return string
 	 */
 	public function get_name_base();
-
-	/**
-	 * Base string for ID attribute in translation view.
-	 *
-	 * @return string
-	 */
-	public function get_id_base();
 }

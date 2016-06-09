@@ -52,6 +52,8 @@ class Mlp_Redirect_Response implements Mlp_Redirect_Response_Interface {
 		 *                                    'site_id'  => int
 		 *                                }
 		 * @param int    $current_site_id Current site ID.
+		 *
+		 * @return string
 		 */
 		$url = (string) apply_filters( 'mlp_redirect_url', $redirect_match['url'], $redirect_match, $current_site_id );
 		if ( ! $url ) {
@@ -61,9 +63,19 @@ class Mlp_Redirect_Response implements Mlp_Redirect_Response_Interface {
 		$this->save_session( $redirect_match['language'] );
 
 		wp_redirect( $url );
-		mlp_exit();
+		$this->call_exit();
 
 		return true;
+	}
+
+	/**
+	 * Wrapper for exit(). Allows to easily test this class.
+	 *
+	 * @return void
+	 */
+	public function call_exit() {
+
+		exit();
 	}
 
 	/**
@@ -84,7 +96,7 @@ class Mlp_Redirect_Response implements Mlp_Redirect_Response_Interface {
 		} else {
 			$_SESSION['noredirect'] = (array) $_SESSION['noredirect'];
 
-			if ( in_array( $language, $_SESSION['noredirect'], true ) ) {
+			if ( in_array( $language, $_SESSION['noredirect'] ) ) {
 				return;
 			}
 		}

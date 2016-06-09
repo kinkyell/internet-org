@@ -58,7 +58,7 @@ class Mlp_Term_Fields {
 			return '';
 		}
 
-		if ( ! in_array( $screen->taxonomy, $this->taxonomies, true ) ) {
+		if ( ! in_array( $screen->taxonomy, $this->taxonomies ) ) {
 			return '';
 		}
 

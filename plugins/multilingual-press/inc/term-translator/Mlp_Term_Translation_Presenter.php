@@ -156,7 +156,7 @@ class Mlp_Term_Translation_Presenter {
 	 */
 	public function get_group_title() {
 
-		return esc_html__( 'Translations', 'multilingual-press' );
+		return esc_html__( 'Translations', 'multilingualpress' );
 	}
 
 	/**

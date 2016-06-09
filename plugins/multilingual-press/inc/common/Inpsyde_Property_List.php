@@ -279,7 +279,7 @@ class Inpsyde_Property_List implements Inpsyde_Property_List_Interface {
 			$code = __CLASS__;
 
 		if ( class_exists( 'WP_Error' ) )
-			return Mlp_WP_Error_Factory::create( $code, $msg );
+			return new WP_Error( $code, $msg );
 
 		throw new Exception( $msg, $code );
 	}

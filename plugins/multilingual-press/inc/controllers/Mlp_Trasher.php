@@ -1,191 +1,193 @@
-<?php # -*- coding: utf-8 -*-
-
+<?php
 /**
- * Provides a new post meta and checkbox to trash the posts through the related blogs.
+ * Module Name:	MultilingualPress Trasher
+ * Description:	This Trasher provides a new post meta and checkbox to trash the posts through the related blogs
+ * Author:		Inpsyde GmbH
+ * Version:		2013.12.04
+ * Author URI:	http://inpsyde.com
  */
+
 class Mlp_Trasher {
 
 	/**
-	 * @var Mlp_Module_Manager_Interface
-	 */
-	private $module_manager;
-
-	/**
-	 * @var bool
-	 */
-	private $saved_post = false;
-
-	/**
-	 * Constructor. Sets up the properties.
+	 * Passed by main controller.
 	 *
-	 * @param Mlp_Module_Manager_Interface $module_manager Module manager object.
+	 * @type Inpsyde_Property_List_Interface
 	 */
-	public function __construct( Mlp_Module_Manager_Interface $module_manager ) {
-
-		$this->module_manager = $module_manager;
-	}
+	private $plugin_data;
 
 	/**
-	 * Wires up all functions.
+	 * Used in save_post() to prevent recursion
 	 *
-	 * @return void
+	 * @static
+	 * @since	0.3
+	 * @var		NULL | integer
 	 */
-	public function initialize() {
+	private static $source_blog = NULL;
 
-		// Quit here if module is turned off.
-		if ( ! $this->register_setting() ) {
+	/**
+	 * @param Inpsyde_Property_List_Interface $data
+	 */
+	public function __construct( Inpsyde_Property_List_Interface $data ) {
+
+		$this->plugin_data = $data;
+
+		// Quit here if module is turned off
+		if ( ! $this->register_setting() )
 			return;
-		}
 
-		// Register Trasher post meta to the submit box.
-		add_action( 'post_submitbox_misc_actions', array( $this, 'post_submitbox_misc_actions' ) );
+		// Register Translated Post Meta to the submit box
+		add_filter( 'post_submitbox_misc_actions', array( $this, 'post_submitbox_misc_actions' ) );
 
-		// Trash and delete the post method before WordPress 3.2.0.
-		add_action( 'trash_post', array( $this, 'trash_post' ) );
+		// Trash and delete the post method
+		add_filter( 'trash_post', array( $this, 'trash_post' ) );
 
-		// Trash and delete the post method after WordPress 3.2.0.
-		add_action( 'wp_trash_post', array( $this, 'trash_post' ) );
+		// Trash and delete the post method after WP 3.2
+		add_filter( 'wp_trash_post', array( $this, 'trash_post' ) );
 
-		add_action( 'save_post', array( $this, 'save_post' ) );
+		// Own save method
+		add_filter( 'save_post', array( $this, 'save_post' ) );
 	}
 
 	/**
-	 * Displays the checkbox for the Trasher post meta.
+	 * Register our UI for the module manager.
 	 *
-	 * @since 0.1
+	 * @return bool
+	 */
+	private function register_setting() {
+
+		/** @var Mlp_Module_Manager_Interface $module_manager */
+		$module_manager = $this->plugin_data->get( 'module_manager' );
+
+		$display_name = __( 'Trasher', 'multilingualpress' );
+
+		$description = __(
+			'This module provides a new post meta and checkbox to trash the posts. If you enable the checkbox and move a post to the trash MultilingualPress also will trash the linked posts.',
+			'multilingualpress'
+		);
+
+		return $module_manager->register(
+			array(
+				'display_name' => $display_name,
+				'slug'         => 'class-' . __CLASS__,
+				'description'  => $description,
+			)
+		);
+	}
+
+	/**
+	 * Displays the checkbox for the post translated meta
 	 *
-	 * @return void
+	 * @access	public
+	 * @since	0.1
+	 * @uses	get_post_meta, _e
+	 * @return	void
 	 */
 	public function post_submitbox_misc_actions() {
 
-		if ( isset( $_GET['post'] ) ) {
+		if ( isset( $_GET[ 'post' ] ) ) {
 			// old key
-			$trash_the_other_posts = (int) get_post_meta( $_GET['post'], 'trash_the_other_posts', true );
+			$trash_the_other_posts = (int) get_post_meta( $_GET[ 'post' ], 'trash_the_other_posts', TRUE );
 
-			if ( 1 !== $trash_the_other_posts ) {
-				$trash_the_other_posts = (int) get_post_meta( $_GET['post'], '_trash_the_other_posts', true );
-			}
+			if ( 1 !== $trash_the_other_posts )
+				$trash_the_other_posts = (int) get_post_meta( $_GET[ 'post' ], '_trash_the_other_posts', TRUE );
 		} else {
-			$trash_the_other_posts = false;
+			$trash_the_other_posts = FALSE;
 		}
 		?>
 		<div class="misc-pub-section curtime misc-pub-section-last">
-			<input type="hidden" name="trasher_box" value="1">
-			<label for="trash_the_other_posts">
-				<input type="checkbox" id="trash_the_other_posts" name="_trash_the_other_posts"
-					<?php checked( 1, $trash_the_other_posts ); ?>>
-				<?php _e( 'Send all the translations to trash when this post is trashed.', 'multilingual-press' ); ?>
-			</label>
+			<input type="hidden" name="trasher_box" value="1" />
+			<input type="checkbox" id="trash_the_other_posts" name="_trash_the_other_posts"<?php checked( 1, $trash_the_other_posts ); ?> />
+			<label for="trash_the_other_posts"><?php _e( 'Send all the translations to trash when this post is trashed.', 'multilingualpress' ); ?></label>
+
 		</div>
 		<?php
 	}
 
 	/**
-	 * Trashes the related posts if the user wants to.
+	 * Trashes the related posts if the user want to
 	 *
-	 * @param int $post_id Post ID.
-	 *
+	 * @param  int $post_id
 	 * @return void
 	 */
 	public function trash_post( $post_id ) {
 
-		$trash_the_other_posts = (int) get_post_meta( $post_id, '_trash_the_other_posts', true );
+		$trash_the_other_posts = (int) get_post_meta( $post_id, '_trash_the_other_posts', TRUE );
 
 		// old key
-		if ( 1 !== $trash_the_other_posts ) {
-			$trash_the_other_posts = (int) get_post_meta( $post_id, 'trash_the_other_posts', true );
-		}
+		if ( 1 !== $trash_the_other_posts )
+			$trash_the_other_posts = (int) get_post_meta( $post_id, 'trash_the_other_posts', TRUE );
 
-		if ( 1 !== $trash_the_other_posts ) {
+		if ( 1 !== $trash_the_other_posts )
 			return;
-		}
+
+		$linked_posts = mlp_get_linked_elements( $post_id );
 
 		// remove filter to avoid recursion
 		remove_filter( current_filter(), array( $this, __FUNCTION__ ) );
 
-		$linked_posts = mlp_get_linked_elements( $post_id );
 		foreach ( $linked_posts as $linked_blog => $linked_post ) {
 			switch_to_blog( $linked_blog );
-
 			wp_trash_post( $linked_post );
-
 			restore_current_blog();
 		}
-
 		add_filter( current_filter(), array( $this, __FUNCTION__ ) );
 	}
 
 	/**
-	 * Updates the post meta.
+	 * update post meta
 	 *
-	 * @param int $post_id Post ID.
-	 *
-	 * @return void
+	 * @param   int $post_id ID of the post
+	 * @return  void
 	 */
 	public function save_post( $post_id ) {
 
 		// leave function if box was not available
-		if ( ! isset ( $_POST['trasher_box'] ) ) {
+		if ( ! isset ( $_POST[ 'trasher_box' ] ) )
 			return;
-		}
 
 		// We're only interested in published posts at this time
 		$post_status = get_post_status( $post_id );
-		if ( ! in_array( $post_status, array( 'publish', 'draft' ), true ) ) {
+		if ( 'publish' !== $post_status && 'draft' !== $post_status )
 			return;
-		}
 
-		// The wp_insert_post() method fires the save_post action hook, so we have to avoid recursion.
-		if ( $this->saved_post ) {
+		// Avoid recursion:
+		// wp_insert_post() invokes the save_post hook, so we have to make sure
+		// the loop below is only entered once per save action. Therefore we save
+		// the source_blog in a static class variable. If it is already set we
+		// know the loop has already been entered and we can exit the save action.
+		if ( NULL === self::$source_blog )
+			self::$source_blog = get_current_blog_id();
+		else
 			return;
-		} else {
-			$this->saved_post = true;
-		}
 
 		// old key
 		delete_post_meta( $post_id, 'trash_the_other_posts' );
-
-		$trash_the_other_posts = false;
+		$trash_the_other_posts = FALSE;
 
 		// Should the other post also been trashed?
-		if ( ! empty( $_POST['_trash_the_other_posts'] ) && 'on' === $_POST['_trash_the_other_posts'] ) {
-			$trash_the_other_posts = true;
-
+		if ( isset( $_POST[ '_trash_the_other_posts' ] ) && 'on' == $_POST[ '_trash_the_other_posts' ] ) {
 			update_post_meta( $post_id, '_trash_the_other_posts', '1' );
+			$trash_the_other_posts = TRUE;
 		} else {
 			update_post_meta( $post_id, '_trash_the_other_posts', '0' );
 		}
 
 		// Get linked posts
 		$linked_posts = mlp_get_linked_elements( $post_id );
+
 		foreach ( $linked_posts as $linked_blog => $linked_post ) {
 			switch_to_blog( $linked_blog );
-
 			delete_post_meta( $linked_post, 'trash_the_other_posts' );
 
 			// Should the other post also been trashed?
-			update_post_meta( $linked_post, '_trash_the_other_posts', $trash_the_other_posts ? '1' : '0' );
+			if ( $trash_the_other_posts )
+				update_post_meta( $linked_post, '_trash_the_other_posts', '1' );
+			else
+				update_post_meta( $linked_post, '_trash_the_other_posts', '0' );
 
 			restore_current_blog();
 		}
 	}
 
-	/**
-	 * Registers the UI for the module manager.
-	 *
-	 * @return bool
-	 */
-	private function register_setting() {
-
-		$description = __(
-			'This module provides a new post meta and checkbox to trash the posts. If you enable the checkbox and move a post to the trash MultilingualPress also will trash the linked posts.',
-			'multilingual-press'
-		);
-
-		return $this->module_manager->register( array(
-			'display_name' => __( 'Trasher', 'multilingual-press' ),
-			'slug'         => 'class-' . __CLASS__,
-			'description'  => $description,
-		) );
-	}
 }

@@ -75,7 +75,7 @@ class Mlp_Language_Updater {
 		$amount = $this->update_changed_items( $diff );
 
 		wp_safe_redirect( $this->get_url( $amount ) );
-		mlp_exit();
+		exit;
 	}
 
 	/**
@@ -91,7 +91,7 @@ class Mlp_Language_Updater {
 		);
 
 		if ( empty ( $_POST[ 'languages' ] ) )
-			mlp_exit( 'invalid request' );
+			die( 'invalid request' );
 
 		return (array) $_POST[ 'languages' ];
 	}

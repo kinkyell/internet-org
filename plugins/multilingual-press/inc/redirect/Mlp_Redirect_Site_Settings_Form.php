@@ -39,22 +39,22 @@ class Mlp_Redirect_Site_Settings_Form {
 		wp_nonce_field( $this->nonce->get_action(), $this->nonce->get_name() );
 
 		$current = $this->data->get_current_option_value();
-		$label   = __( 'Enable automatic redirection', 'multilingual-press' );
+		$label   = esc_attr__( 'Enable automatic redirection', 'multilingualpress' );
 		$name    = $this->data->get_checkbox_name();
 		$id      = "{$name}_id";
 		?>
-		<tr class="form-field">
-			<th scope="row"><?php esc_html_e( 'Redirection', 'multilingual-press' ); ?></th>
+		<tr>
+			<td><?php esc_html_e( 'Redirection', 'multilingualpress' ); ?></td>
 			<td>
-				<label for="<?php echo esc_attr( $id ); ?>">
+				<label for="<?php print $id; ?>">
 					<input type="checkbox" <?php
 					checked( 1, $current );
 					?> id="<?php
-					echo esc_attr( $id );
+					print $id;
 					?>" value="1" name="<?php
-					echo esc_attr( $name );
+					print $name;
 					?>" />
-					<?php echo esc_attr( $label ); ?>
+					<?php print $label; ?>
 				</label>
 			</td>
 		</tr>

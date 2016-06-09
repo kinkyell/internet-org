@@ -28,7 +28,7 @@ class Mlp_Simple_Nav_Menu_Selectors {
 
 		$list_id = $this->data->get_list_id();
 		?>
-		<div id="mlp-<?php echo esc_attr( $list_id ); ?>">
+		<div id="mlp-<?php print $list_id; ?>">
 			<?php
 			$this->print_item_list( $list_id );
 			$this->print_button_controls( $list_id );
@@ -43,21 +43,24 @@ class Mlp_Simple_Nav_Menu_Selectors {
 	public function show_selected_languages() {
 
 		$menu_items = $this->data->get_ajax_menu_items();
-		if ( empty( $menu_items ) ) {
-			wp_send_json_error();
-		}
 
-		// Needed for the walker.
+		if ( empty ( $menu_items ) )
+			die( -1 );
+
+		// Needed for the walker
 		require_once ABSPATH . 'wp-admin/includes/nav-menu.php';
 
-		$data = walk_nav_menu_tree( $menu_items, 0, (object) array(
+		$args = array(
 			'after'       => '',
 			'before'      => '',
 			'link_after'  => '',
 			'link_before' => '',
-			'walker'      => new Walker_Nav_Menu_Edit(),
-		) );
-		wp_send_json_success( $data );
+			'walker'      => new Walker_Nav_Menu_Edit
+		);
+
+		echo walk_nav_menu_tree( $menu_items, 0, (object) $args );
+
+		exit;
 	}
 
 	/**
@@ -80,13 +83,13 @@ class Mlp_Simple_Nav_Menu_Selectors {
 	 * @return void
 	 */
 	private function print_select_all( $list_id ) {
-
-		$url = $this->get_select_all_url( $list_id );
 		?>
 		<span class="list-controls">
-			<a href="<?php echo esc_url( $url ); ?>" class="select-all">
-				<?php esc_html_e( 'Select All', 'multilingual-press' ); ?>
-			</a>
+			<a href="<?php
+			print $this->get_select_all_url( $list_id );
+			?>" class="select-all"><?php
+				_e( 'Select All', 'multilingualpress' );
+				?></a>
 		</span>
 		<?php
 	}
@@ -100,12 +103,12 @@ class Mlp_Simple_Nav_Menu_Selectors {
 		$items = $this->data->get_list();
 
 		if ( empty ( $items ) ) {
-			esc_html_e( 'No languages found', 'multilingual-press' );
+			esc_html_e( 'No languages found', 'multilingualpress' );
 			return;
 		}
 		// class "tabs-panel-active" is needed to make "Select All" work
 		?>
-		<ul id="<?php echo esc_attr( $list_id ); ?>" class="tabs-panel-active">
+		<ul id="<?php print $list_id; ?>" class="tabs-panel-active">
 			<?php
 			foreach ( $items as $value => $text )
 				$this->print_item( $value, $text );
@@ -120,11 +123,13 @@ class Mlp_Simple_Nav_Menu_Selectors {
 	 * @return void
 	 */
 	private function print_item( $value, $text ) {
+		$v = esc_attr( $value );
+		$t = esc_attr( $text );
 		?>
 		<li>
 			<label class="menu-item-title">
-				<input type="checkbox" value ="<?php echo esc_attr( $value ); ?>">
-				&nbsp;<?php echo esc_attr( $text ); ?>
+				<input type="checkbox" value ="<?php print $v; ?>">
+				&nbsp;<?php print $t; ?>
 			</label>
 		</li>
 	<?php
@@ -148,7 +153,7 @@ class Mlp_Simple_Nav_Menu_Selectors {
 		<span class="add-to-menu">
 				<?php
 				submit_button(
-					esc_attr__( 'Add to Menu', 'multilingual-press' ),
+					esc_attr__( 'Add to Menu', 'multilingualpress' ),
 					'button-secondary submit-add-to-menu right',
 					"add-$button_id-item",
 					FALSE,

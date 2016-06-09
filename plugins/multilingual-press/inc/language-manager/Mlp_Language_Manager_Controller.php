@@ -70,7 +70,7 @@ class Mlp_Language_Manager_Controller implements Mlp_Updatable {
 
 		$this->plugin_data     = $data;
 		$this->wpdb = $wpdb;
-		$this->page_title      = __( 'Language Manager', 'multilingual-press' );
+		$this->page_title      = __( 'Language Manager', 'multilingualpress' );
 		$this->db              = $database;
 		$this->pagination_data = new Mlp_Language_Manager_Pagination_Data( $database );
 		$this->page_data       = new Mlp_Language_Manager_Options_Page_Data( $this->page_title );
@@ -182,13 +182,10 @@ class Mlp_Language_Manager_Controller implements Mlp_Updatable {
 			),
 			$this->page_data->get_form_action()
 		);
-		?>
-		<p>
-			<a href="<?php echo esc_url( $url ); ?>" class="delete submitdelete" style="color:red">
-				<?php esc_html_e( 'Reset table to default values', 'multilingual-press' ); ?>
-			</a>
-		</p>
-		<?php
+		// there is no general class for delete links. this is not ideal.
+		print "<p><a href='$url' class='delete submitdelete' style='color:red'>"
+			. esc_html__( 'Reset table to default values', 'multilingualpress' )
+			. '</a></p>';
 	}
 
 	/**
@@ -215,7 +212,7 @@ class Mlp_Language_Manager_Controller implements Mlp_Updatable {
 
 		$url = add_query_arg( 'msg', 'resettable', $_REQUEST[ '_wp_http_referer' ] );
 		wp_safe_redirect( $url );
-		mlp_exit();
+		exit;
 	}
 
 	/**
@@ -223,9 +220,8 @@ class Mlp_Language_Manager_Controller implements Mlp_Updatable {
 	 */
 	private function before_form() {
 
-		if ( ! empty( $_GET['msg'] ) ) {
-			echo $this->get_update_message();
-		}
+		if ( ! empty ( $_GET[ 'msg' ] ) )
+			print $this->get_update_message();
 	}
 
 	/**
@@ -246,7 +242,7 @@ class Mlp_Language_Manager_Controller implements Mlp_Updatable {
 					'One language changed.',
 					'%s languages changed.',
 					$num,
-					'multilingual-press'
+					'multilingualpress'
 				),
 				$num_f
 			);
@@ -254,7 +250,7 @@ class Mlp_Language_Manager_Controller implements Mlp_Updatable {
 		if ( 'resettable' === $type ) {
 			$text = esc_html__(
 				'Table reset to default values.',
-				'multilingual-press'
+				'multilingualpress'
 			);
 		}
 
@@ -269,28 +265,26 @@ class Mlp_Language_Manager_Controller implements Mlp_Updatable {
 	 */
 	private function after_form() {
 
+		?><p class="description" style="padding-top:20px;clear:both">
+		<?php
+		esc_html_e(
+			'Languages are sorted descending by priority and ascending by their English name.',
+			'multilingualpress'
+		);
 		?>
-		<p class="description" style="padding-top:20px;clear:both">
-			<?php
-			esc_html_e(
-				'Languages are sorted descending by priority and ascending by their English name.',
-				'multilingual-press'
-			);
-			?>
+		</p>
+		<p class="description">
+		<?php
+		esc_html_e(
+			'If you change the priority of a language to a higher value, it will show up on an earlier page.',
+			'multilingualpress'
+		);
+		?>
 		</p>
 
-		<p class="description">
-			<?php
-			esc_html_e(
-				'If you change the priority of a language to a higher value, it will show up on an earlier page.',
-				'multilingual-press'
-			);
-			?>
-		</p>
 		<?php
-		if ( isset( $_GET['msg'] ) && 'resettable' === $_GET['msg'] ) {
+		if ( isset ( $_GET[ 'msg' ] ) && 'resettable' === $_GET[ 'msg' ] )
 			return;
-		}
 
 		$this->get_reset_table_link();
 	}
@@ -300,11 +294,9 @@ class Mlp_Language_Manager_Controller implements Mlp_Updatable {
 	 */
 	private function before_table() {
 
-		?>
-		<div class="tablenav top">
-			<?php $this->get_pagination_object()->print_pagination(); ?>
-		</div>
-		<?php
+		print '<div class="tablenav top">';
+		$this->get_pagination_object()->print_pagination();
+		print '</div>';
 	}
 
 	/**
@@ -312,11 +304,11 @@ class Mlp_Language_Manager_Controller implements Mlp_Updatable {
 	 */
 	private function after_table() {
 
-		?>
-		<div class="tablenav bottom">
-			<?php $this->get_pagination_object()->print_pagination(); ?>
-		</div>
-		<?php
+		print '<div class="tablenav bottom">';
+
+		$this->get_pagination_object()->print_pagination();
+
+		print '</div>';
 	}
 
 	/**
@@ -352,56 +344,56 @@ class Mlp_Language_Manager_Controller implements Mlp_Updatable {
 	private function get_columns() {
 		return array (
 			'native_name' => array (
-				'header'     => __( 'Native name', 'multilingual-press' ),
+				'header'     => esc_html__( 'Native name', 'multilingualpress' ),
 				'type'       => 'input_text',
 				'attributes' => array (
 					'size' => 20
 				)
 			),
 			'english_name' => array (
-				'header'     => __( 'English name', 'multilingual-press' ),
+				'header'     => esc_html__( 'English name', 'multilingualpress' ),
 				'type'       => 'input_text',
 				'attributes' => array (
 					'size' => 20
 				)
 			),
 			'is_rtl' => array (
-				'header'     => __( 'RTL', 'multilingual-press' ),
+				'header'     => esc_html__( 'RTL', 'multilingualpress' ),
 				'type'       => 'input_checkbox',
 				'attributes' => array (
 					'size' => 20
 				)
 			),
 			'http_name' => array (
-				'header'     => __( 'HTTP', 'multilingual-press' ),
+				'header'     => esc_html__( 'HTTP', 'multilingualpress' ),
 				'type'       => 'input_text',
 				'attributes' => array (
 					'size' => 5
 				)
 			),
 			'iso_639_1' => array (
-				'header'     => __( 'ISO&#160;639-1', 'multilingual-press' ),
+				'header'     => esc_html__( 'ISO&#160;639-1', 'multilingualpress' ),
 				'type'       => 'input_text',
 				'attributes' => array (
 					'size' => 5
 				)
 			),
 			'iso_639_2' => array (
-				'header'     => __( 'ISO&#160;639-2', 'multilingual-press' ),
+				'header'     => esc_html__( 'ISO&#160;639-2', 'multilingualpress' ),
 				'type'       => 'input_text',
 				'attributes' => array (
 					'size' => 5
 				)
 			),
 			'wp_locale' => array (
-				'header'     => __( 'wp_locale', 'multilingual-press' ),
+				'header'     => esc_html__( 'wp_locale', 'multilingualpress' ),
 				'type'       => 'input_text',
 				'attributes' => array (
 					'size' => 5
 				)
 			),
 			'priority' => array (
-				'header'     => __( 'Priority', 'multilingual-press' ),
+				'header'     => esc_html__( 'Priority', 'multilingualpress' ),
 				'type'       => 'input_number',
 				'attributes' => array (
 					'min'  => 1,

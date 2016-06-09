@@ -16,7 +16,7 @@ class Mlp_Cpt_Translator implements Mlp_Updatable {
 	 * @since	0.1
 	 * @var		array $post_types
 	 */
-	private $post_types;
+	private $post_types = NULL;
 
 	/**
 	 * Prefix for 'name' attribute in form fields.
@@ -45,7 +45,7 @@ class Mlp_Cpt_Translator implements Mlp_Updatable {
 	public function __construct( Inpsyde_Property_List_Interface $data ) {
 
 		$this->plugin_data = $data;
-		$this->nonce_validator = Mlp_Nonce_Validator_Factory::create( 'save_cpt_translator_settings' );
+		$this->nonce_validator = new Inpsyde_Nonce_Validator( 'cpt_translator' );
 
 		// Quit here if module is turned off
 		if ( ! $this->register_setting() )
@@ -84,11 +84,11 @@ class Mlp_Cpt_Translator implements Mlp_Updatable {
 		/** @var Mlp_Module_Manager_Interface $module_manager */
 		$module_manager = $this->plugin_data->get( 'module_manager' );
 
-		$display_name = __( 'Custom Post Type Translator', 'multilingual-press' );
+		$display_name = __( 'Custom Post Type Translator', 'multilingualpress' );
 
 		$description = __(
 			'Enable translation of custom post types. Creates a second settings box below this. The post types must be activated for the whole network or on the main site.',
-			'multilingual-press'
+			'multilingualpress'
 		);
 
 		return $module_manager->register(
@@ -112,7 +112,7 @@ class Mlp_Cpt_Translator implements Mlp_Updatable {
 
 		if ( empty ( $found ) ) {
 			return '<p class="mlp-callback-indent"><em>'
-				. __( 'No custom post type found.', 'multilingual-press' )
+				. __( 'No custom post type found.', 'multilingualpress' )
 				. '</em></p>';
 		}
 
@@ -188,23 +188,36 @@ class Mlp_Cpt_Translator implements Mlp_Updatable {
 	}
 
 	/**
-	 * Returns all custom post types.
+	 * Get all custom post types
 	 *
-	 * @return array
+	 * @return	array
 	 */
 	public function get_custom_post_types() {
 
-		if ( is_array( $this->post_types ) ) {
+		if ( NULL !== $this->post_types )
 			return $this->post_types;
+
+		// Change type to indicate we have processed this already.
+		$this->post_types = array ();
+
+		$post_types = get_post_types( array ( '_builtin' => FALSE ), 'objects' );
+
+		if ( empty ( $post_types ) )
+			return array ();
+
+		/* We need an extra check, because get_post_types() cannot filter
+		 * by support.
+		 * @see http://core.trac.wordpress.org/ticket/17620
+		 */
+		foreach ( $post_types as $post_type => $properties ) {
+			if ( post_type_supports( $post_type, 'editor' ) )
+				$this->post_types[ $post_type ] = $properties;
 		}
 
-		$this->post_types = get_post_types( array(
-			'_builtin' => false,
-			'show_ui'  => true,
-		), 'objects' );
-		if ( $this->post_types ) {
-			uasort( $this->post_types, array( $this, 'sort_cpts_by_label' ) );
-		}
+		if ( empty ( $this->post_types ) )
+			return array ();
+
+		uasort( $this->post_types, array ( $this, 'sort_cpts_by_label' ) );
 
 		return $this->post_types;
 	}
@@ -254,20 +267,21 @@ class Mlp_Cpt_Translator implements Mlp_Updatable {
 		<p>
 			<label for="translate_this_post">
 				<input type="checkbox" id="translate_this_post" name="translate_this_post"
-					<?php
-					/**
-					 * Filter the default value of the 'Translate this post' checkbox.
-					 *
-					 * @param bool $translate Should 'Translate this post' be checked by default?
-					 */
-					$translate = (bool) apply_filters( 'mlp_translate_this_post_checkbox', false );
-					checked( $translate );
-					?>
-				>
-				<?php _e( 'Translate this post', 'multilingual-press' ); ?>
+				<?php
+				/**
+				 * Filter the default value of the 'Translate this post' checkbox.
+				 *
+				 * @param bool $translate Should 'Translate this post' be checked by default?
+				 *
+				 * @return bool
+				 */
+				$translate = (bool) apply_filters( 'mlp_translate_this_post_checkbox', FALSE );
+				checked( TRUE, $translate );
+				?> />
+				<?php _e( 'Translate this post', 'multilingualpress' ); ?>
 			</label>
 		</p>
-		<?php
+	<?php
 	}
 
 	/**
@@ -356,6 +370,9 @@ class Mlp_Cpt_Translator implements Mlp_Updatable {
 		if ( empty ( $post->post_status ) )
 			return FALSE;
 
-		return in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft' ), true );
+		return in_array(
+			$post->post_status,
+			array ( 'draft', 'pending', 'auto-draft' )
+		);
 	}
 }

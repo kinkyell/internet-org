@@ -111,10 +111,10 @@ class Mlp_Requirements_Check implements Mlp_Requirements_Check_Interface {
 			return;
 		}
 
-		/* translators: 1: required PHP version, 2: current PHP version */
-		$msg = esc_html__(
+		$msg = esc_html_x(
 			'This plugin requires PHP version %1$s, your version %2$s is too old. Please upgrade.',
-			'multilingual-press'
+			'1 = required PHP version, 2 = current',
+			'multilingualpress'
 		);
 		$this->errors[ 'php' ] = sprintf( $msg, $required, $current );
 	}
@@ -134,10 +134,10 @@ class Mlp_Requirements_Check implements Mlp_Requirements_Check_Interface {
 			return;
 		}
 
-		/* translators: 1: required WordPress version, 2: current WordPress version */
-		$msg = esc_html__(
+		$msg = esc_html_x(
 			'This plugin requires WordPress version %1$s, your version %2$s is too old. Please upgrade.',
-			'multilingual-press'
+			'1 = required WordPress version, 2 = current',
+			'multilingualpress'
 		);
 		$this->errors[ 'wp' ] = sprintf( $msg, $required, $current );
 	}
@@ -157,14 +157,14 @@ class Mlp_Requirements_Check implements Mlp_Requirements_Check_Interface {
 			return;
 		}
 
-		/* translators: %s: link to installation instructions */
-		$msg = __(
+		$msg = _x(
 			'This plugin needs to run in a multisite. Please <a href="%s">convert this WordPress installation to multisite</a>.',
-			'multilingual-press'
+			'%s = link to installation instructions',
+			'multilingualpress'
 		);
 		$this->errors[ 'installation' ] = sprintf(
 			$msg,
-			'http://make.multilingualpress.pro/2014/02/how-to-install-multi-site/'
+			'http://make.marketpress.com/multilingualpress/2014/02/how-to-install-multi-site/'
 		);
 	}
 
@@ -183,10 +183,10 @@ class Mlp_Requirements_Check implements Mlp_Requirements_Check_Interface {
 			}
 		}
 
-		/* translators: %s: link to network plugin screen */
-		$msg = __(
+		$msg = _x(
 			'This plugin must be activated for the network. Please use the <a href="%s">network plugin administration</a>.',
-			'multilingual-press'
+			'%s = link to network plugin screen',
+			'multilingualpress'
 		);
 		$url = network_admin_url( 'plugins.php' );
 		$this->errors[ 'activation' ] = sprintf( $msg, $url );

@@ -18,7 +18,7 @@ function mlp_feature_connection_column() {
 	$columns = new Mlp_Custom_Columns(
 		array(
 			'id'               => 'mlp_interlinked',
-			'header'           => esc_attr__( 'Relationships', 'multilingual-press' ),
+			'header'           => esc_attr__( 'Relationships', 'multilingualpress' ),
 			'content_callback' => 'mlp_render_related_blog_column',
 		)
 	);
@@ -47,7 +47,7 @@ function mlp_render_related_blog_column(
 	unset( $blogs[ $blog_id ] );
 
 	if ( empty( $blogs ) ) {
-		return esc_html__( 'none', 'multilingual-press' );
+		return esc_html__( 'none', 'multilingualpress' );
 	}
 
 	$blogs = array_map( 'esc_html', $blogs );

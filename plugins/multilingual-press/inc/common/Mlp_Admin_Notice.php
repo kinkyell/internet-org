@@ -45,14 +45,12 @@ class Mlp_Admin_Notice {
 	 */
 	public function show() {
 
-		$html = new Mlp_Html();
-
+		$html = new Mlp_Html;
 		$attrs = $html->array_to_attrs( $this->attrs );
 
 		$msg = wpautop( $this->msg );
-
 		$str = "<div $attrs>$msg</div>";
-		echo $str;
+		print $str;
 
 		return $str;
 	}

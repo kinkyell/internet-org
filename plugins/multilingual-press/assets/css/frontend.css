@@ -1,28 +1,25 @@
-.mlp-quicklinks.bl:after, .mlp-quicklinks.br:after {
-  content: '';
-  display: table;
+.clear {
   clear: both;
 }
 
-.mlp-language-box ul li {
+.mlp_language_box ul li {
   display: inline;
   margin: 0 5px 0 0;
   list-style-type: none;
 }
 
-.mlp-quicklinks {
+.mlp_quicklinks {
   max-width: 10em;
   padding: 10px;
 }
-.mlp-quicklinks.bl, .mlp-quicklinks.tl {
+.mlp_quicklinks.bl, .mlp_quicklinks.tl {
   float: left;
   margin-right: 20px;
 }
-.mlp-quicklinks.br, .mlp-quicklinks.tr {
+.mlp_quicklinks.br, .mlp_quicklinks.tr {
   float: right;
   margin-left: 20px;
 }
-
-.mlp-quicklinks-form input {
+.mlp_quicklinks input {
   font-size: .9em;
 }

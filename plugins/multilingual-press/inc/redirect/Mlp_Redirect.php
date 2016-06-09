@@ -6,6 +6,11 @@
 class Mlp_Redirect {
 
 	/**
+	 * @var string
+	 */
+	private $image_url;
+
+	/**
 	 * @var Mlp_Language_Api_Interface
 	 */
 	private $language_api;
@@ -25,15 +30,17 @@ class Mlp_Redirect {
 	 *
 	 * @param Mlp_Module_Manager_Interface $modules
 	 * @param Mlp_Language_Api_Interface   $language_api
-	 * @param                              $deprecated
+	 * @param string                       $image_url
 	 */
 	public function __construct(
 		Mlp_Module_Manager_Interface $modules,
 		Mlp_Language_Api_Interface $language_api,
-		$deprecated
+		$image_url
 	) {
 
 		$this->modules = $modules;
+
+		$this->image_url = $image_url;
 
 		$this->language_api = $language_api;
 	}
@@ -86,7 +93,7 @@ class Mlp_Redirect {
 	 */
 	private function activation_column() {
 
-		$controller = new Mlp_Redirect_Column( null, null );
+		$controller = new Mlp_Redirect_Column( $this->option, $this->image_url );
 		$controller->setup();
 	}
 

@@ -75,11 +75,9 @@ class Mlp_Term_Field_View {
 	public function edit_term() {
 
 		$this->updatable->update( self::EDIT_TERM_BEFORE );
-
-		$title = $this->updatable->update( self::EDIT_TERM_TITLE );
 		?>
 		<tr class="form-field">
-			<th scope="row"><?php echo esc_html( $title ); ?></th>
+			<th scope="row"><?php $this->updatable->update( self::EDIT_TERM_TITLE ); ?></th>
 			<td><?php $this->updatable->update( self::EDIT_TERM_FIELDS ); ?></td>
 		</tr>
 		<?php
@@ -94,13 +92,9 @@ class Mlp_Term_Field_View {
 	public function add_term() {
 
 		$this->updatable->update( self::ADD_TERM_BEFORE );
-
-		$id = $this->updatable->update( self::ADD_TERM_FIELDSET_ID );
-
-		$title = $this->updatable->update( self::ADD_TERM_TITLE );
 		?>
-		<fieldset class="form-field" id="<?php echo esc_attr( $id ); ?>">
-			<legend><?php echo esc_html( $title ); ?></legend>
+		<fieldset id="<?php $this->updatable->update( self::ADD_TERM_FIELDSET_ID ); ?>">
+			<legend><?php $this->updatable->update( self::ADD_TERM_TITLE ); ?></legend>
 			<?php $this->updatable->update( self::ADD_TERM_FIELDS ); ?>
 		</fieldset>
 		<?php

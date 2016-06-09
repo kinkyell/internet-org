@@ -29,7 +29,7 @@ class Mlp_User_Settings_Container_Html {
 
 		?>
 		<tr>
-			<th scope="row">
+			<th>
 				<?php $this->details->show_header( $user ); ?>
 			</th>
 			<td>

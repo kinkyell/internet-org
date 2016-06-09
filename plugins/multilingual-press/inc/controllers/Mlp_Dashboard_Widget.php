@@ -1,257 +1,234 @@
-<?php # -*- coding: utf-8 -*-
-
+<?php
 /**
  * Dashboard widget for incomplete translations.
+ *
+ * @version 2014.07.04
+ * @author  Inpsyde GmbH, toscho
+ * @license GPL
  */
 class Mlp_Dashboard_Widget {
 
 	/**
-	 * @var Mlp_Site_Relations_Interface
+	 * @var Inpsyde_Property_List_Interface
 	 */
-	private $site_relations;
+	private $plugin_data;
 
 	/**
-	 * Constructor. Sets up the properties.
+	 * Constructor
 	 *
-	 * @param Mlp_Site_Relations_Interface $site_relations
+	 * @param Inpsyde_Property_List_Interface $data
 	 */
-	public function __construct( Mlp_Site_Relations_Interface $site_relations ) {
+	public function __construct( Inpsyde_Property_List_Interface $data ) {
 
-		$this->site_relations = $site_relations;
+		$this->plugin_data = $data;
+
+		// Register Translated Post Meta to the submit box
+		add_filter( 'post_submitbox_misc_actions', array( $this, 'post_submitbox_misc_actions' ) );
+
+		// Register the Dashboard Widget
+		add_filter( 'wp_dashboard_setup', array( $this, 'wp_dashboard_setup' ) );
+
+		// Own save method
+		add_filter( 'save_post', array( $this, 'save_post' ) );
 	}
 
 	/**
-	 * Wires up all functions.
+	 * Displays the checkbox for the post translated meta
 	 *
-	 * @return void
-	 */
-	public function initialize() {
-
-		// Register Translated post meta to the submit box.
-		add_action( 'post_submitbox_misc_actions', array( $this, 'post_submitbox_misc_actions' ) );
-
-		/**
-		 * Filters the capability required to view the dashboard widget.
-		 *
-		 * @param string $capability Capability required to view the dashboard widget.
-		 */
-		$capability = apply_filters( 'mlp_dashboard_widget_access', 'edit_others_posts' );
-		if ( current_user_can( $capability ) ) {
-			// Register the dashboard widget.
-			add_action( 'wp_dashboard_setup', array( $this, 'wp_dashboard_setup' ) );
-		}
-
-		add_action( 'save_post', array( $this, 'save_post' ) );
-	}
-
-	/**
-	 * Displays the checkbox for the post meta.
-	 *
-	 * @since   0.1
-	 *
-	 * @wp-hook post_submitbox_misc_actions
-	 *
-	 * @return void
+	 * @access	public
+	 * @since	0.1
+	 * @uses	get_post_meta
+	 * @return	void
 	 */
 	public function post_submitbox_misc_actions() {
 
-		$post_id = $this->get_post_id();
-
+		$post_id       = $this->get_post_id();
 		$is_translated = $this->is_translated( $post_id );
 
+		$context = array (
+			'post_id'       => $post_id,
+			'is_translated' => $is_translated,
+		);
+
 		/**
-		 * Filters the visibility of the 'Translation completed' checkbox.
+		 * Filter the visibility of the 'Translation completed' checkbox.
 		 *
 		 * @param bool  $show_checkbox Show the checkbox?
 		 * @param array $context       Post context. {
 		 *                             'post_id'       => int
 		 *                             'is_translated' => bool
 		 *                             }
+		 *
+		 * @return bool
 		 */
-		$show_checkbox = (bool) apply_filters( 'mlp_show_translation_completed_checkbox', true, array(
-			'post_id'       => $post_id,
-			'is_translated' => $is_translated,
-		) );
+		$show_checkbox = (bool) apply_filters( 'mlp_show_translation_completed_checkbox', TRUE, $context );
 		if ( ! $show_checkbox ) {
 			return;
 		}
 		?>
 		<div class="misc-pub-section">
-			<input type="hidden" name="post_is_translated_blogid"
-				value="<?php echo get_current_blog_id(); ?>">
 			<label for="post_is_translated">
-				<input type="checkbox" name="_post_is_translated" value="1" id="post_is_translated"
-					<?php checked( $is_translated ); ?>>
-				<?php _e( 'Translation completed', 'multilingual-press' ); ?>
+				<input type="hidden" name="post_is_translated_blogid" value="<?php echo get_current_blog_id(); ?>" />
+				<input type="checkbox" id="post_is_translated" value="1" name="_post_is_translated"<?php checked( TRUE, $is_translated );  ?> />
+				<?php _e( 'Translation completed', 'multilingualpress' ); ?>
 			</label>
 		</div>
 		<?php
 	}
 
 	/**
-	 * Registers the dashboard widget.
+	 * Registers the dashboard widget
 	 *
-	 * @since   0.1
-	 *
-	 * @wp-hook wp_dashboard_setup
-	 *
-	 * @return void
+	 * @access	public
+	 * @since	0.1
+	 * @uses	user_can, get_current_user_id, wp_register_sidebar_widget
+	 * @return	void
 	 */
 	public function wp_dashboard_setup() {
 
-		wp_add_dashboard_widget(
-			'multilingualpress-dashboard-widget',
-			__( 'Untranslated Posts', 'multilingual-press' ),
-			array( $this, 'dashboard_widget' )
-		);
+		/**
+		 * Filter the capability required to view the dashboard widget.
+		 *
+		 * @param string $capability Capability required to view the dashboard widget.
+		 *
+		 * @return string
+		 */
+		$capability = apply_filters( 'mlp_dashboard_widget_access', 'edit_others_posts' );
+
+		if ( current_user_can( $capability ) )
+			wp_add_dashboard_widget(
+				'multilingualpress-dashboard-widget',
+				__( 'Untranslated Posts', 'multilingualpress' ),
+				array( $this, 'dashboard_widget' )
+			);
 	}
 
 	/**
-	 * Displays the posts which are not translated yet.
+	 * Displays the posts which are not translated yet
 	 *
-	 * @since 0.1
-	 *
-	 * @return void
+	 * @access	public
+	 * @since	0.1
+	 * @uses	get_option, get_site_option, $wpdb, get_the_time, get_the_title, admin_url,
+	 * 			switch_to_blog, restore_current_blog, get_current_blog_id
+	 * @return	void
 	 */
 	public function dashboard_widget() {
 
-		$related_blogs = $this->site_relations->get_related_sites();
-		if ( ! $related_blogs ) {
-			?>
-			<p>
-				<?php _e( 'Sorry, there are no connected sites in the system for this site.', 'multilingual-press' ); ?>
-			</p>
-			<?php
+		$site_relations = $this->plugin_data->get( 'site_relations' );
+
+		$related_blogs = $site_relations->get_related_sites( 0, FALSE );
+
+		// We have no related blogs so we can stop here
+		if ( ! is_array( $related_blogs ) ) {
+			echo '<p>' . __( 'Sorry, there are no connected sites in the system for this site.', 'multilingualpress' ) . '</p>';
 			return;
 		}
+
 		?>
 		<table class="widefat">
-			<?php foreach ( array_unique( $related_blogs ) as $blog_to_translate ) : ?>
-				<?php switch_to_blog( $blog_to_translate ); ?>
-				<tr>
-					<th colspan="3">
-						<strong>
-							<?php
-							/* translators: %s: site name */
-							$message = __( 'Pending Translations for %s', 'multilingual-press' );
-							printf( $message, get_bloginfo( 'name' ) );
-							?>
-						</strong>
-					</th>
-				</tr>
-				<?php
-				// Post status 'any' automatically excludes both 'auto-draft' and 'trash'.
-				// Not suppressing filters (which is done by default when using get_posts()) makes caching possible.
-				$posts_to_translate = get_posts( array(
-					'suppress_filters' => false,
-					'post_status'      => 'any',
-					'meta_query'       => array(
-						'relation' => 'OR',
-						array(
-							'key'   => '_post_is_translated',
-							'value' => '0',
-						),
-						array(
-							'key'   => 'post_is_translated',
-							'value' => '0',
-						),
-					),
-				) );
-				?>
-				<?php if ( $posts_to_translate ) : ?>
-					<?php foreach ( $posts_to_translate as $post ) : ?>
-						<tr>
-							<td style="width: 20%;">
-								<?php edit_post_link( __( 'Translate', 'multilingual-press' ), '', '', $post->ID ); ?>
-							</td>
-							<td style="width: 55%;">
-								<?php echo esc_html( get_the_title( $post->ID ) ); ?>
-							</td>
-							<td style="width: 25%;">
-								<?php echo esc_html( get_the_time( get_option( 'date_format' ), $post->ID ) ); ?>
-							</td>
-						</tr>
-					<?php endforeach; ?>
-				<?php endif; ?>
-				<?php restore_current_blog(); ?>
-			<?php endforeach; ?>
+		<?php
+
+		$related_blogs = array_unique( $related_blogs );
+
+		// Let's run each blog to get the posts
+		foreach ( $related_blogs as $blog_to_translate ) {
+			switch_to_blog( $blog_to_translate );
+
+			?><tr><th colspan="3"><strong><?php _e( 'Pending Translations for', 'multilingualpress' ); ?> <?php bloginfo( 'name' ); ?></strong></th></tr><?php
+
+			global $wpdb;
+
+			$query = 'SELECT * FROM ' . $wpdb->posts . ' p INNER JOIN ' . $wpdb->postmeta . ' pm ON
+							pm.post_id = p.ID WHERE
+							( pm.meta_key = "post_is_translated" OR pm.meta_key = "_post_is_translated" ) AND
+							pm.meta_value = "0" AND
+							p.post_status != "trash"
+						ORDER BY
+							p.post_date';
+			$posts_to_translate = $wpdb->get_results( $query );
+
+			if ( 0 < count( $posts_to_translate ) ) {
+				foreach ( $posts_to_translate as $post ) {
+					?>
+					<tr>
+						<td style="width:20%;"><a href="<?php echo admin_url(); ?>post.php?post=<?php echo $post->ID; ?>&action=edit"><?php _e( 'Translate', 'multilingualpress' ); ?></a></td>
+						<td style="width:55%;"><?php echo get_the_title( $post->ID ); ?></td>
+						<td style="width:25%;"><?php echo get_the_time( get_option( 'date_format' ), $post->ID ); ?></td>
+					</tr>
+					<?php
+				}
+			}
+			restore_current_blog();
+		}
+		?>
 		</table>
 		<?php
 	}
 
 	/**
-	 * Updates the post meta.
+	 * update post meta
 	 *
-	 * @wp-hook save_post
-	 *
-	 * @param int $post_id Post ID.
-	 *
-	 * @return void
+	 * @param   int $post_id ID of the post
+	 * @return  void
 	 */
 	public function save_post( $post_id ) {
 
-		// If checkbox is not checked, return.
-		if ( ! isset( $_POST['translate_this_post'] ) ) {
-			return;
-		}
-
-		// We're only interested in published posts at this time.
+		// We're only interested in published posts at this time
 		$post_status = get_post_status( $post_id );
-		if ( ! in_array( $post_status, array( 'publish', 'draft' ), true ) ) {
+		if ( 'publish' !== $post_status && 'draft' !== $post_status )
 			return;
-		}
 
-		// Check the current blog ID against the according hidden variable to avoid recursion.
-		if (
-			! isset( $_POST['post_is_translated_blogid'] )
-			|| get_current_blog_id() !== (int) $_POST['post_is_translated_blogid']
-		) {
+		// Avoid recursion:
+		// wp_insert_post() invokes the save_post hook, we check the current blog_id
+		// against the hidden post variable for the blog_id.
+		if ( ! isset( $_POST[ 'post_is_translated_blogid' ] ) || $_POST[ 'post_is_translated_blogid' ] != get_current_blog_id() )
 			return;
-		}
+
+		// If checkbox is not checked, return
+		if ( isset( $_POST[ 'translate_this_post' ] ) )
+			return;
 
 		delete_post_meta( $post_id, 'post_is_translated' );
 
-		// Well, is this post translated? We just need the single way.
-		$post_is_translated = ! empty( $_POST['_post_is_translated'] ) && '1' === $_POST['_post_is_translated'];
-		update_post_meta( $post_id, '_post_is_translated', $post_is_translated );
+		// Well, is this post translated? we just need the single way
+		if ( isset( $_POST[ '_post_is_translated' ] ) && '1' == $_POST[ '_post_is_translated' ] )
+			update_post_meta( $post_id, '_post_is_translated', '1' );
+		else
+			update_post_meta( $post_id, '_post_is_translated', '0' );
 	}
 
 	/**
-	 * Returns the current post ID, or 0 on failure.
+	 * Get the current post ID or 0
 	 *
 	 * @return int
 	 */
 	private function get_post_id() {
 
-		if ( empty( $_GET['post'] ) ) {
+		if ( ! isset ( $_GET[ 'post' ] ) )
 			return 0;
-		}
 
-		return absint( $_GET['post'] );
+		return absint( $_GET[ 'post' ] );
 	}
 
 	/**
-	 * Checks if the current post is translated already.
+	 * Check if the current post is translated already
 	 *
-	 * @param int $post_id Post ID.
-	 *
+	 * @param  int $post_id
 	 * @return bool
 	 */
 	private function is_translated( $post_id ) {
 
-		if ( ! $post_id ) {
-			return false;
-		}
+		if ( ! $post_id )
+			return FALSE;
 
-		if ( get_post_meta( $_GET['post'], '_post_is_translated', true ) ) {
-			return true;
-		}
+		if ( (int) get_post_meta( $_GET[ 'post' ], '_post_is_translated', TRUE ) )
+			return TRUE;
 
 		// old key
-		if ( get_post_meta( $post_id, 'post_is_translated', true ) ) {
-			return true;
-		}
+		if ( (int) get_post_meta( $post_id, 'post_is_translated', TRUE ) )
+			return TRUE;
 
-		return false;
+		return FALSE;
 	}
+
 }

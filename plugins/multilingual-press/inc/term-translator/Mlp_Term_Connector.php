@@ -74,8 +74,8 @@ class Mlp_Term_Connector {
 		$term_id, $term_taxonomy_id, $taxonomy
 	) {
 
-		if ( ! in_array( $taxonomy, $this->taxonomies, true ) ) {
-			return false;
+		if ( ! $this->is_valid_request( $taxonomy ) ) {
+			return FALSE;
 		}
 
 		/**
@@ -134,10 +134,6 @@ class Mlp_Term_Connector {
 	 * @return bool
 	 */
 	public function create_term( $term_taxonomy_id ) {
-
-		if ( ! $this->nonce->is_valid() ) {
-			return FALSE;
-		}
 
 		$success = FALSE;
 
@@ -211,10 +207,6 @@ class Mlp_Term_Connector {
 	 * @return bool
 	 */
 	public function edit_term( $term_taxonomy_id ) {
-
-		if ( ! $this->nonce->is_valid() ) {
-			return FALSE;
-		}
 
 		$success = FALSE;
 
@@ -300,4 +292,23 @@ class Mlp_Term_Connector {
 			'term'
 		);
 	}
+
+	/**
+	 * @param string $taxonomy
+	 *
+	 * @return bool
+	 */
+	private function is_valid_request( $taxonomy ) {
+
+		if ( ! $this->nonce->is_valid() ) {
+			return FALSE;
+		}
+
+		if ( ! in_array( $taxonomy, $this->taxonomies ) ) {
+			return FALSE;
+		}
+
+		return TRUE;
+	}
+
 }

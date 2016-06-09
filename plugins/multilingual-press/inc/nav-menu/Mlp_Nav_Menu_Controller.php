@@ -62,20 +62,6 @@ class Mlp_Nav_Menu_Controller {
 	}
 
 	/**
-	 * Wires up all general functions.
-	 *
-	 * @return void
-	 */
-	public function initialize() {
-
-		global $wpdb;
-
-		$deletor = new Mlp_Nav_Menu_Item_Deletor( $wpdb, $this->meta_key );
-
-		add_action( 'delete_blog', array( $deletor, 'delete_items_for_deleted_site' ) );
-	}
-
-	/**
 	 * Register filter for nav menu items.
 	 *
 	 * @wp-hook template_redirect
@@ -95,12 +81,12 @@ class Mlp_Nav_Menu_Controller {
 	 * Set up backend management.
 	 *
 	 * @wp-hook inpsyde_mlp_loaded
-	 *
-	 * @return void
+	 * @param string $js_url
+	 * @return  void
 	 */
-	public function backend_setup() {
+	public function backend_setup( $js_url ) {
 
-		$this->create_instances();
+		$this->create_instances( $js_url );
 		$this->add_actions();
 	}
 
@@ -112,7 +98,7 @@ class Mlp_Nav_Menu_Controller {
 	 */
 	public function add_meta_box() {
 
-		$title = esc_html__( 'Languages', 'multilingual-press' );
+		$title = esc_html__( 'Languages', 'multilingualpress' );
 
 		add_meta_box(
 			$this->handle,
@@ -128,21 +114,22 @@ class Mlp_Nav_Menu_Controller {
 	 * Create nonce, view and data objects.
 	 *
 	 * @wp-hook inpsyde_mlp_loaded
-	 *
-	 * @return void
+	 * @return  void
 	 */
 	private function create_instances() {
 
-		$nonce_validator = Mlp_Nonce_Validator_Factory::create( 'add_languages_to_nav_menu' );
-
+		$nonce = new Inpsyde_Nonce_Validator(
+			$this->handle
+		);
 		$this->data = new Mlp_Language_Nav_Menu_Data(
 			$this->handle,
 			$this->meta_key,
-			$nonce_validator,
+			$nonce,
 			$this->assets
 		);
-
-		$this->view = new Mlp_Simple_Nav_Menu_Selectors( $this->data );
+		$this->view = new Mlp_Simple_Nav_Menu_Selectors(
+			$this->data
+		);
 	}
 
 	/**

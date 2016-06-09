@@ -1,7 +1,12 @@
-<?php # -*- coding: utf-8 -*-
-
+<?php
 /**
- * Handles the site-specific Redirect setting.
+ * Site specific settings.
+ *
+ * @version 2014.04.28
+ * @author  Inpsyde GmbH, toscho
+ * @license GPL
+ * @package    MultilingualPress
+ * @subpackage Redirect
  */
 class Mlp_Redirect_Site_Settings {
 
@@ -16,7 +21,6 @@ class Mlp_Redirect_Site_Settings {
 	 * @param string $option_name
 	 */
 	public function __construct( $option_name ) {
-
 		$this->option_name = $option_name;
 	}
 
@@ -27,14 +31,11 @@ class Mlp_Redirect_Site_Settings {
 	 */
 	public function setup() {
 
-		$nonce = Mlp_Nonce_Validator_Factory::create( 'save_redirect_site_setting' );
+		$nonce = new Inpsyde_Nonce_Validator( 'mlp_redirect' );
+		$data  = new Mlp_Redirect_Settings_Data( $nonce, $this->option_name );
+		$view  = new Mlp_Redirect_Site_Settings_Form( $nonce, $data );
 
-		$data = new Mlp_Redirect_Settings_Data( $nonce, $this->option_name );
-
-		$view = new Mlp_Redirect_Site_Settings_Form( $nonce, $data );
-
-		add_filter( 'mlp_blogs_add_fields', array( $view, 'render' ) );
-
-		add_filter( 'mlp_blogs_save_fields', array( $data, 'save' ) );
+		add_filter( 'mlp_blogs_add_fields',  array ( $view, 'render' ) );
+		add_filter( 'mlp_blogs_save_fields', array ( $data, 'save' ) );
 	}
 }

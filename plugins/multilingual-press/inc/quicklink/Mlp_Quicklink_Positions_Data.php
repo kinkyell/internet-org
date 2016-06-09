@@ -1,16 +1,23 @@
-<?php # -*- coding: utf-8 -*-
+<?php
 
 /**
- * Provides data for the configuration on the MultilingualPress network settings page.
+ * Mlp_Quicklink_Positions_Data
+ *
+ * Provide data for the configuration in wp-admin/network/settings.php?page=mlp
+ *
+ * @version 2014.04.03
+ * @author  Inpsyde GmbH, toscho
+ * @license GPL
  */
-class Mlp_Quicklink_Positions_Data implements Mlp_Extra_General_Settings_Box_Data_Interface {
+class Mlp_Quicklink_Positions_Data
+	implements Mlp_Extra_General_Settings_Box_Data_Interface {
 
 	/**
 	 * Prefix for 'name' attribute in form fields.
 	 *
-	 * @var string
+	 * @type string
 	 */
-	private $form_name = 'mlp-quicklink-position';
+	private $form_name = 'mlp_quicklink_position';
 
 	/**
 	 * @var Inpsyde_Nonce_Validator_Interface
@@ -18,59 +25,58 @@ class Mlp_Quicklink_Positions_Data implements Mlp_Extra_General_Settings_Box_Dat
 	private $nonce_validator;
 
 	/**
-	 * Constructor. Sets up the properties.
+	 * Constructor.
 	 *
-	 * @param Inpsyde_Nonce_Validator_Interface $nonce_validator Nonce validator object.
+	 * @param Inpsyde_Nonce_Validator_Interface $nonce_validator
 	 */
-	public function __construct( Inpsyde_Nonce_Validator_Interface $nonce_validator ) {
-
+	public function __construct(
+		Inpsyde_Nonce_Validator_Interface $nonce_validator
+	) {
 		$this->nonce_validator = $nonce_validator;
 	}
 
 	/**
-	 * Returns the box title.
+	 * Get box title.
 	 *
 	 * Will be wrapped in h4 tags by the view if it is not empty.
 	 *
 	 * @return string
 	 */
 	public function get_title() {
-
-		return esc_html__( 'Quicklink position', 'multilingual-press' );
+		return esc_html__( 'Quicklink position', 'multilingualpress' );
 	}
 
 	/**
-	 * Returns the box description.
+	 * Get the box description.
 	 *
-	 * Will be enclosed in p tags by the view, so make sure the markup is valid afterwards.
+	 * Will be enclosed in p tags by the view, so make sure the markup
+	 * is valid afterwards.
 	 *
 	 * @return string
 	 */
 	public function get_main_description() {
-
 		return '';
 	}
 
 	/**
-	 * Returns the ID used in the main form element.
+	 * The ID used in the main form element.
 	 *
-	 * Used to wrap the description in a label element, so it is accessible for screen reader users.
+	 * Used to wrap the description in a label element, so it is accessible for
+	 * screen reader users.
 	 *
 	 * @return string
 	 */
 	public function get_main_label_id() {
-
 		return '';
 	}
 
 	/**
-	 * Returns the value for ID attribute for the box.
+	 * Value for ID attribute for the box.
 	 *
 	 * @return string
 	 */
 	public function get_box_id() {
-
-		return $this->form_name . '-setting';
+		return $this->form_name . '_setting';
 	}
 
 	/**
@@ -88,25 +94,21 @@ class Mlp_Quicklink_Positions_Data implements Mlp_Extra_General_Settings_Box_Dat
 	}
 
 	/**
-	 * Creates the content for the extra box, four illustrated checkboxes.
+	 * Create the content for the extra box, four illustrated checkboxes.
 	 *
 	 * @return string
 	 */
 	private function get_box_content() {
 
 		$positions = $this->get_position_names();
-
-		$current = $this->get_current_position( $positions );
-
-		$out = wp_nonce_field( $this->nonce_validator->get_action(), $this->nonce_validator->get_name(), true, false );
-		$out .= '<p id="mlp-quicklink-positions">';
+		$current   = $this->get_current_position( $positions );
+		$out       = '<p>';
 
 		foreach ( $positions as $key => $label ) {
-			$checked = checked( $current, $key, false );
-
+			$checked = checked( $current, $key, FALSE );
 			$out .= sprintf(
-				' <label for="mlp-%1$s-id" class="quicklink-position-label quicklink-position-%1$s">
-					<input type="radio" name="quicklink-position" value="%1$s" id="mlp-%1$s-id" %2$s>
+				' <label for="mlp_%1$s_id" class="quicklink-position-label quicklink-position-%1$s">
+					<input type="radio" name="quicklink-position" value="%1$s" id="mlp_%1$s_id" %2$s>
 					%3$s
 				</label>',
 				$key,
@@ -115,46 +117,44 @@ class Mlp_Quicklink_Positions_Data implements Mlp_Extra_General_Settings_Box_Dat
 			);
 		}
 
-		return $out . '</p>';
+		return $out . '<br class="clear"></p>';
 	}
 
 	/**
-	 * Returns the currently selected position.
+	 * Get the currently selected position.
 	 *
 	 * Default is bottom right.
 	 *
-	 * @param string[] $positions Positions.
-	 *
+	 * @param  array $positions
 	 * @return string
 	 */
-	private function get_current_position( array $positions ) {
-
-		$positions = array_keys( $positions );
+	private function get_current_position( Array $positions ) {
 
 		$options = get_site_option( 'inpsyde_multilingual_quicklink_options' );
 
-		if (
-			! empty( $options['mlp_quicklink_position'] )
-			&& in_array( $options['mlp_quicklink_position'], $positions, true )
-		) {
-			return $options['mlp_quicklink_position'];
-		}
+		if ( ! empty ( $options[ 'mlp_quicklink_position' ] )
+			and in_array( $options[ 'mlp_quicklink_position' ], array_keys( $positions ) )
+		)
+			return $options[ 'mlp_quicklink_position' ];
 
-		return array_pop( $positions );
+		end( $positions );
+
+		return key( $positions );
 	}
 
 	/**
-	 * Returns the keys and labels for the positions.
+	 * Get keys and labels for the positions.
 	 *
-	 * @return string[]
+	 * @return array
 	 */
 	private function get_position_names() {
 
 		return array (
-			'tl' => esc_attr__( 'Top left', 'multilingual-press' ),
-			'tr' => esc_attr__( 'Top right', 'multilingual-press' ),
-			'bl' => esc_attr__( 'Bottom left', 'multilingual-press' ),
-			'br' => esc_attr__( 'Bottom right', 'multilingual-press' ),
+			'tl' => esc_attr__( 'Top left', 'multilingualpress' ),
+			'tr' => esc_attr__( 'Top right', 'multilingualpress' ),
+			'bl' => esc_attr__( 'Bottom left', 'multilingualpress' ),
+			'br' => esc_attr__( 'Bottom right', 'multilingualpress' ),
 		);
 	}
+
 }

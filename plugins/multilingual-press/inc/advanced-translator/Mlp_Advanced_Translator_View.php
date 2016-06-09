@@ -31,29 +31,23 @@ class Mlp_Advanced_Translator_View {
 	 *
 	 * @wp-hook media_buttons
 	 *
-	 * @param string $editor_id      tinyMCE editor ID.
-	 * @param int    $remote_site_id Remote site ID.
+	 * @param string $editor_id
 	 *
 	 * @return  void
 	 */
-	public function show_copy_button( $editor_id, $remote_site_id ) {
+	public function show_copy_button( $editor_id ) {
 
 		$matches = array();
+		preg_match( '~mlp_translation_data_(\d+)_content~', $editor_id, $matches );
 
-		preg_match( '~mlp-translation-data-(\d+)-content~', $editor_id, $matches );
-		if ( empty( $matches[1] ) ) {
+		if ( empty( $matches[ 1 ] ) ) {
 			return;
 		}
-
-		$name = $this->get_name( $remote_site_id, 'copied_post' );
-
-		$id = $this->get_id( $remote_site_id, 'copied-post' );
 		?>
-		<a href="#" class="button mlp-copy-post-button dashicons-before dashicons-image-rotate-right"
-			data-site-id="<?php echo esc_attr( $matches[1] ); ?>"><?php
-			esc_html_e( 'Copy source post', 'multilingual-press' );
+		<a href="#" class="button mlp_copy_button dashicons-before dashicons-image-rotate-right"
+				data-blog_id="<?php echo $matches[1]; ?>"><?php
+			esc_attr_e( 'Copy source post', 'multilingualpress' );
 			?></a>
-		<input type="hidden" name="<?php echo esc_attr( $name ); ?>" value="" id="<?php echo esc_attr( $id ); ?>">
 		<?php
 	}
 
@@ -69,21 +63,26 @@ class Mlp_Advanced_Translator_View {
 		WP_Post $source_post, $remote_blog_id, WP_Post $post
 	) {
 
-		$name = $this->get_name( $remote_blog_id, 'title' );
-
+		$title = esc_attr( $post->post_title );
 		$placeholder = $this->get_placeholder_title( $post );
-
+		$name = $this->get_name( $remote_blog_id, 'title' );
 		$id = $this->get_id( $remote_blog_id, 'title' );
+
 		?>
-		<div class="mlp-titlediv">
+		<div class="mlp_titlediv">
 			<div>
-				<input type="text" name="<?php echo esc_attr( $name ); ?>"
-					value="<?php echo esc_attr( $post->post_title ); ?>"
-					placeholder="<?php echo esc_attr( $placeholder ); ?>" size="30" class="mlp-title"
-					id="<?php echo esc_attr( $id ); ?>">
+				<input
+					class="mlp_title"
+					type="text"
+					name="<?php echo $name; ?>"
+					size="30"
+					placeholder="<?php echo $placeholder ?>"
+					value="<?php echo $title; ?>"
+					id="<?php echo $id; ?>"
+					>
 			</div>
 		</div>
-		<?php
+	<?php
 	}
 
 	/**
@@ -98,28 +97,33 @@ class Mlp_Advanced_Translator_View {
 		WP_Post $source_post, $remote_blog_id, WP_Post $post
 	) {
 
-		$id = $this->get_id( $remote_blog_id, 'name' );
-
-		$name = $this->get_name( $remote_blog_id, 'name' );
-
 		$value = $post->post_name;
 		if ( empty( $value ) ) {
 			$value = sanitize_title( $post->post_title );
 		}
 		$value = urldecode( $value );
+		$value = esc_attr( $value );
+		$placeholder = esc_attr__( 'Enter name here', 'multilingualpress' );
+		$name = $this->get_name( $remote_blog_id, 'name' );
+		$id = $this->get_id( $remote_blog_id, 'name' );
 		?>
-		<div class="mlp-namediv">
+		<div class="mlp_namediv">
 			<div>
-				<label for="<?php echo esc_attr( $id ); ?>">
-					<?php _e( 'Post Name:', 'multilingual-press' ) ?><br>
-					<input type="text" name="<?php echo esc_attr( $name ); ?>"
-						value="<?php echo esc_attr( $value ); ?>"
-						placeholder="<?php echo esc_attr__( 'Enter name here', 'multilingual-press' ) ?>" size="30"
-						class="mlp-name" id="<?php echo esc_attr( $id ); ?>">
+				<label for="<?php echo $id; ?>">
+					<?php _e( 'Post Name:', 'multilingualpress' ) ?><br>
+					<input
+						class="mlp_name"
+						type="text"
+						name="<?php echo $name; ?>"
+						size="30"
+						placeholder="<?php echo $placeholder ?>"
+						value="<?php echo $value; ?>"
+						id="<?php echo $id; ?>"
+						>
 				</label>
 			</div>
 		</div>
-		<?php
+	<?php
 	}
 
 	/**
@@ -134,22 +138,25 @@ class Mlp_Advanced_Translator_View {
 		WP_Post $source_post, $remote_blog_id, WP_Post $post
 	) {
 
-		$id = $this->get_id( $remote_blog_id, 'excerpt' );
-
-		$name = $this->get_name( $remote_blog_id, 'excerpt' );
-
 		$value = $post->post_excerpt;
+		$value = esc_attr( $value );
+		$placeholder = esc_attr__( 'Enter excerpt here', 'multilingualpress' );
+		$name = $this->get_name( $remote_blog_id, 'excerpt' );
+		$id = $this->get_id( $remote_blog_id, 'excerpt' );
 		?>
-		<div class="mlp-excerptdiv">
+		<div class="mlp_excerptdiv">
 			<div>
-				<label for="<?php echo esc_attr( $id ); ?>"><?php _e( 'Post Excerpt:', 'multilingual-press' ) ?></label>
-				<textarea name="<?php echo esc_attr( $name ); ?>"
-					placeholder="<?php echo esc_attr__( 'Enter excerpt here', 'multilingual-press' ) ?>"
-					class="mlp-excerpt"
-					id="<?php echo esc_attr( $id ); ?>"><?php echo esc_textarea( $value ); ?></textarea>
+				<label for="<?php echo $id; ?>">
+					<?php _e( 'Post Excerpt:', 'multilingualpress' ) ?><br>
+					<textarea
+						class="mlp_excerpt"
+						name="<?php echo $name; ?>"
+						placeholder="<?php echo $placeholder ?>"
+						id="<?php echo $id; ?>"
+						><?php echo $value; ?></textarea>
 			</div>
 		</div>
-		<?php
+	<?php
 	}
 
 	/**
@@ -165,19 +172,20 @@ class Mlp_Advanced_Translator_View {
 	) {
 
 		$editor_id = $this->get_id( $remote_blog_id, 'content' );
-
-		$this->show_copy_button( $editor_id, $remote_blog_id );
-
-		wp_editor( $remote_post->post_content, $editor_id, array(
-			'tabindex'      => false,
+		$editor_name = $this->get_name( $remote_blog_id, 'content' );
+		$settings = array(
+			'tabindex'      => FALSE,
 			'editor_height' => 150,
-			'resize'        => true,
-			'textarea_name' => $this->get_name( $remote_blog_id, 'content' ),
-			'media_buttons' => false,
+			'resize'        => TRUE,
+			'textarea_name' => $editor_name,
+			'media_buttons' => FALSE,
 			'tinymce'       => array(
-				'resize' => true,
-			),
-		) );
+				'resize' => TRUE
+			)
+		);
+
+		$this->show_copy_button( $editor_id );
+		wp_editor( $remote_post->post_content, $editor_id, $settings );
 	}
 
 	/**
@@ -192,20 +200,22 @@ class Mlp_Advanced_Translator_View {
 		WP_Post $source_post, $remote_blog_id, WP_Post $post
 	) {
 
-		$id = $this->get_id( $remote_blog_id, 'thumbnail' ) . '_id';
-
+		$id = $this->get_id( $remote_blog_id, 'thumbnail' );
 		$name = $this->get_name( $remote_blog_id, 'thumbnail' );
 		?>
+
 		<p>
-			<label for="<?php echo esc_attr( $id ); ?>">
-				<input type="checkbox" name="<?php echo esc_attr( $name ); ?>" value="1"
-					id="<?php echo esc_attr( $id ); ?>">
-				<?php _e( 'Copy the featured image of the source post.', 'multilingual-press' ); ?>
+			<label for="<?php echo $id; ?>_id">
+				<input type="checkbox" name="<?php echo $name; ?>"
+					id="<?php echo $id; ?>_id" value="1" />
+				<?php _e( 'Copy the featured image of the source post.', 'multilingualpress' ); ?>
 				<span class="description"><?php
-					_e( 'Overwrites an existing featured image in the target post.', 'multilingual-press' ); ?></span>
+					_e( 'Overwrites an existing featured image in the target post.', 'multilingualpress' );
+					?></span>
 			</label>
 		</p>
-		<?php
+	<?php
+
 	}
 
 	/**
@@ -221,34 +231,42 @@ class Mlp_Advanced_Translator_View {
 	) {
 
 		$taxonomies = $this->data->get_taxonomies( $post, $remote_blog_id );
-		if ( empty( $taxonomies['inclusive'] ) && empty( $taxonomies['exclusive'] ) ) {
+
+		if ( empty( $taxonomies )
+			or ( empty( $taxonomies[ 'inclusive' ] ) && empty( $taxonomies[ 'exclusive' ] ) )
+		) {
 			return;
 		}
 
 		$toggle_id = 'tax_toggle_' . $remote_blog_id;
-		?>
-		<button type="button" name="toggle_<?php echo esc_attr( $remote_blog_id ); ?>"
-			data-toggle-target="#<?php echo esc_attr( $toggle_id ); ?>"
-			class="button secondary mlp-click-toggler">
-			<?php echo esc_html__( 'Change taxonomies', 'multilingual-press' ); ?>
-		</button>
-		<div class="hidden" id="<?php echo esc_attr( $toggle_id ); ?>">
-			<?php if ( ! empty( $taxonomies['inclusive'] ) ) : ?>
-				<div class="mlp-taxonomy-fieldset-container">
-					<?php foreach ( $taxonomies['inclusive'] as $taxonomy => $data ) : ?>
-						<?php $this->list_terms( $taxonomy, $data, $remote_blog_id, 'checkbox' ); ?>
-					<?php endforeach; ?>
-				</div>
-			<?php endif; ?>
-			<?php if ( ! empty( $taxonomies['exclusive'] ) ) : ?>
-				<div class="mlp-taxonomy-fieldset-container">
-					<?php foreach ( $taxonomies['exclusive'] as $taxonomy => $data ) : ?>
-						<?php $this->list_terms( $taxonomy, $data, $remote_blog_id, 'radio' ); ?>
-					<?php endforeach; ?>
-				</div>
-			<?php endif; ?>
-		</div>
-		<?php
+
+		printf(
+			'<button type="button" class="button secondary" name="toggle_%2$d"
+				data-toggle_selector="#%3$s">%1$s</button>',
+			esc_html__( 'Change taxonomies', 'multilingualpress' ),
+			$remote_blog_id,
+			$toggle_id
+		);
+
+		echo "<div id='$toggle_id' class='hidden'>";
+
+		if ( ! empty( $taxonomies[ 'inclusive' ] ) ) {
+			foreach ( $taxonomies[ 'inclusive' ] as $taxonomy => $data ) {
+				$this->list_inclusive_terms( $taxonomy, $data, $remote_blog_id );
+			}
+
+			echo '<br class="clear">';
+		}
+
+		if ( ! empty( $taxonomies[ 'exclusive' ] ) ) {
+			foreach ( $taxonomies[ 'exclusive' ] as $taxonomy => $data ) {
+				$this->list_exclusive_terms( $taxonomy, $data, $remote_blog_id );
+			}
+
+			echo '<br class="clear">';
+		}
+
+		echo '</div>';
 	}
 
 	/**
@@ -260,14 +278,16 @@ class Mlp_Advanced_Translator_View {
 	 */
 	public function blog_id_input( WP_Post $source_post, $remote_blog_id, WP_Post $post ) {
 
-		$source_name = $this->get_name( $remote_blog_id, 'source_post_id' );
+		$input = '<input type="hidden" name="%1$s" value="%2$s">';
 
-		$remote_name = $this->get_name( $remote_blog_id, 'remote_post_id' );
-		?>
-		<input type="hidden" name="<?php echo esc_attr( $source_name ); ?>"
-			value="<?php echo esc_attr( $source_post->ID ); ?>">
-		<input type="hidden" name="<?php echo esc_attr( $remote_name ); ?>" value="<?php echo absint( $post->ID ); ?>">
-		<?php
+		$data = array(
+			'source_post_id' => $source_post->ID,
+			'remote_post_id' => (int) $post->ID // force dummy post to 0
+		);
+
+		foreach ( $data as $key => $value ) {
+			printf( $input, $this->get_name( $remote_blog_id, $key ), $value );
+		}
 	}
 
 	/**
@@ -293,7 +313,7 @@ class Mlp_Advanced_Translator_View {
 	 */
 	private function get_id( $blog_id, $name ) {
 
-		return $this->data->get_id_base() . '-' . (int) $blog_id . '-' . $name;
+		return $this->data->get_name_base() . '_' . (int) $blog_id . '_' . $name;
 	}
 
 	/**
@@ -305,10 +325,11 @@ class Mlp_Advanced_Translator_View {
 	 */
 	private function get_placeholder_title( WP_Post $post ) {
 
-		$placeholder = __( 'Enter title here', 'multilingual-press' );
-
+		$placeholder = __( 'Enter title here', 'multilingualpress' );
 		/** This filter is documented in wp-admin/edit-form-advanced.php */
-		return apply_filters( 'enter_title_here', $placeholder, $post );
+		$placeholder = apply_filters( 'enter_title_here', $placeholder, $post );
+
+		return esc_attr( $placeholder );
 	}
 
 	/**
@@ -317,29 +338,67 @@ class Mlp_Advanced_Translator_View {
 	 * @param string $taxonomy
 	 * @param array  $data
 	 * @param int    $remote_blog_id
-	 * @param string $input_type     Either 'checkbox' (e.g., for categories) or 'radio' (e.g., for post formats).
 	 *
 	 * @return void
 	 */
-	private function list_terms( $taxonomy, Array $data, $remote_blog_id, $input_type ) {
+	private function list_exclusive_terms( $taxonomy, Array $data, $remote_blog_id ) {
 
+		$fields = array();
 		$name = $this->get_name( $remote_blog_id, 'tax' ) . '[' . $taxonomy . ']';
+		$html = '<label for="%2$s_id">
+					<input type="radio" name="%1$s[]" id="%2$s_id" value="%3$s"%4$s>
+					%5$s
+				</label>';
 
-		$html = '';
+		foreach ( $data[ 'terms' ] as $term ) {
 
-		foreach ( $data['terms'] as $term ) {
-			$html .= sprintf(
-				'<label for="%2$s"><input type="%3$s" name="%4$s[]" id="%2$s" value="%5$s"%6$s>%1$s</label><br>',
-				esc_html( $term->name ),
-				esc_attr( $term->slug ) . '_id',
-				esc_attr( $input_type ),
-				esc_attr( $name ),
-				esc_attr( $term->term_id ),
-				checked( $term->active, true, false )
+			$checked = checked( $term->active, TRUE, FALSE );
+
+			$fields[ ] = sprintf(
+				$html,
+				$name,
+				$term->slug,
+				$term->term_id,
+				$checked,
+				esc_html( $term->name )
 			);
 		}
 
-		$this->term_box( $data['properties']->labels->name, $html );
+		$this->term_box( $data[ 'properties' ]->labels->name, join( '<br>', $fields ) );
+	}
+
+	/**
+	 * List terms which can be combined like categories.
+	 *
+	 * @param string $taxonomy
+	 * @param array  $data
+	 * @param int    $remote_blog_id
+	 *
+	 * @return void
+	 */
+	private function list_inclusive_terms( $taxonomy, $data, $remote_blog_id ) {
+
+		$fields = array();
+		$name = $this->get_name( $remote_blog_id, 'tax' ) . '[' . $taxonomy . ']';
+
+		foreach ( $data[ 'terms' ] as $term ) {
+
+			$checked = checked( $term->active, TRUE, FALSE );
+
+			$fields[ ] = sprintf(
+				'<label for="%2$s_id">
+					<input type="checkbox" name="%1$s[]" id="%2$s_id" value="%3$s"%4$s>
+					%5$s
+				</label>',
+				$name,
+				$term->slug,
+				$term->term_id,
+				$checked,
+				esc_html( $term->name )
+			);
+		}
+
+		$this->term_box( $data[ 'properties' ]->labels->name, join( '<br>', $fields ) );
 	}
 
 	/**
@@ -353,8 +412,8 @@ class Mlp_Advanced_Translator_View {
 	private function term_box( $title, $html ) {
 
 		?>
-		<fieldset class="mlp-taxonomy-box">
-			<legend><?php echo esc_html( $title ); ?></legend>
+		<fieldset class="mlp_taxonomy_box">
+			<legend><?php echo $title; ?></legend>
 			<?php echo $html; ?>
 		</fieldset>
 	<?php
@@ -372,9 +431,10 @@ class Mlp_Advanced_Translator_View {
 		<div class="mlp-warning">
 			<p><?php _e(
 					'The remote post is trashed. You are not able to edit it here. If you want to, restore the remote post. Also mind the options below.',
-					'multilingual-press'
+					'multilingualpress'
 				); ?></p>
 		</div>
-		<?php
+	<?php
 	}
+
 }

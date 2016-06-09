@@ -142,9 +142,8 @@ class Mlp_Db_Table_List implements Mlp_Db_Table_List_Interface {
 	 */
 	private function is_valid_custom_site_table( $name, $exclude, $prefix ) {
 
-		if ( in_array( $name, $exclude, true ) ) {
-			return false;
-		}
+		if ( in_array( $name, $exclude ) )
+			return FALSE;
 
 		return (bool) preg_match( '~^' . $prefix . '[^0-9]~', $name );
 	}

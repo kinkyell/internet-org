@@ -161,21 +161,21 @@ class Mlp_Array_Diff {
 /* $columns format:
 array (
 	'native_name' => array (
-		'header'     => esc_html__( 'Native name', 'multilingual-press' ),
+		'header'     => esc_html__( 'Native name', 'multilingualpress' ),
 		'type'       => 'input_text',
 		'attributes' => array (
 			'size' => 20
 		)
 	),
 	'is_rtl' => array (
-		'header'     => esc_html__( 'RTL', 'multilingual-press' ),
+		'header'     => esc_html__( 'RTL', 'multilingualpress' ),
 		'type'       => 'input_checkbox',
 		'attributes' => array (
 			'size' => 20
 		)
 	),
 	'priority' => array (
-		'header'     => esc_html__( 'Priority', 'multilingual-press' ),
+		'header'     => esc_html__( 'Priority', 'multilingualpress' ),
 		'type'       => 'input_number',
 		'attributes' => array (
 			'min'  => 1,
