@@ -142,15 +142,15 @@ class IORG_CEI_Exporter {
 
 			echo '<wp-obj wp_menu_id="' . esc_attr( $menu->term_id ) . '" wp_type="' . 'menu' .'" wp_menu_slug="' . esc_attr( $menu->slug ) .'" wp_menu_name="' . esc_attr( $menu->name ) .'" wp_menu_location="' . esc_attr( $menu_location ) .'">';
 				foreach ( $menu_items as $item ) {
-					echo '<wp-menu-item wp_item_id="' . $this->filter( $item->ID ) . '">';
-					echo '<wp-menu-item-object-id>'. $this->filter( $item->object_id ) .'</wp-menu-item-object-id>';
-					echo '<wp-menu-item-object>'. $this->filter( $item->object ) .'</wp-menu-item-object>';
-					echo '<wp-menu-item-type>'. $this->filter( $item->type ) .'</wp-menu-item-type>';
-					echo '<wp-menu-item-title>'. $this->filter( $item->title ) .'</wp-menu-item-title>';
-					echo '<wp-menu-item-url>'. $this->filter( $item->url ) .'</wp-menu-item-url>';
-					echo '<wp-menu-item-classes>'. $this->filter( implode( '|', $item->classes ) ).'</wp-menu-item-classes>';
-					echo '<wp-menu-item-order>'. $this->filter( $item->menu_order ) .'</wp-menu-item-order>';
-					echo '<wp-menu-item-parent>'. $this->filter( $item->menu_item_parent ) .'</wp-menu-item-parent>';
+					echo '<wp-menu-item wp_item_id="'. esc_attr( $item->ID ) .'">';
+					echo '<wp-menu-item-object-id>'	 	. $this->filter( $item->object_id ) 				.'</wp-menu-item-object-id>';	// WPCS: XSS ok.
+					echo '<wp-menu-item-object>'		. $this->filter( $item->object ) 					.'</wp-menu-item-object>';		// WPCS: XSS ok.
+					echo '<wp-menu-item-type>'			. $this->filter( $item->type ) 						.'</wp-menu-item-type>';		// WPCS: XSS ok.
+					echo '<wp-menu-item-title>'			. $this->filter( $item->title ) 					.'</wp-menu-item-title>';		// WPCS: XSS ok.
+					echo '<wp-menu-item-url>'			. $this->filter( $item->url ) 						.'</wp-menu-item-url>';			// WPCS: XSS ok.
+					echo '<wp-menu-item-classes>'		. $this->filter( implode( '|', $item->classes ) )	.'</wp-menu-item-classes>';		// WPCS: XSS ok.
+					echo '<wp-menu-item-order>'			. $this->filter( $item->menu_order ) 				.'</wp-menu-item-order>';		// WPCS: XSS ok.
+					echo '<wp-menu-item-parent>'		. $this->filter( $item->menu_item_parent ) 			.'</wp-menu-item-parent>';		// WPCS: XSS ok.
 					echo '</wp-menu-item>';
 				}
 			echo '</wp-obj>';
@@ -166,8 +166,8 @@ class IORG_CEI_Exporter {
 		echo '<wp-obj wp_type="po">';
 			foreach ( $strings as $string ) {
 				echo '<wp-po-item>';
-				echo '<wp-po-item-original>' . $this->filter( $string ) . '</wp-po-item-original>';
-				echo '<wp-po-item-translated>' . $this->filter( $string ) . '</wp-po-item-translated>';
+				echo '<wp-po-item-original>' 	. $this->filter( $string ) . '</wp-po-item-original>';		// WPCS: XSS ok.
+				echo '<wp-po-item-translated>' 	. $this->filter( $string ) . '</wp-po-item-translated>';	// WPCS: XSS ok.
 				echo '</wp-po-item>';
 			}
 		echo '</wp-obj>';
@@ -186,19 +186,19 @@ class IORG_CEI_Exporter {
 			echo '<wp-custom-field wp_type="'. $name . '">';
 
 			if ( isset( $info['parent'] ) ) {
-				echo '<' . $info['parent'] . '>';
+				echo '<' . esc_attr( $info['parent'] ) . '>';
 			}
 
 			if ( !empty( $info['structure'] ) ) {
 				$this->prepare_parse_for_cf( $data, $info['structure'], $info['tag'] );
 			} else {
-				echo '<' . $info['tag'] . '>';
-				echo $this->filter( $data );
-				echo '</' . $info['tag'] . '>';
+				echo '<' . esc_attr( $info['tag'] ) . '>';
+				echo $this->filter( $data );	// WPCS: XSS ok.
+				echo '</' . esc_attr( $info['tag'] ) . '>';
 			}
 
 			if ( isset( $info['parent'] ) ) {
-				echo '</' . $info['parent'] . '>';
+				echo '</' . esc_attr( $info['parent'] ) . '>';
 			}
 
 			echo '</wp-custom-field>';
@@ -217,14 +217,14 @@ class IORG_CEI_Exporter {
 		}
 
 		if ( $this->has_string_keys( $data ) ) {
-			echo "<{$tag}>";
+			echo '<' . esc_attr( $tag ) . '>';
 			$this->parse_cf( $data, $structure );
-			echo "</{$tag}>";
+			echo '</' . esc_attr( $tag ) . '>';
 		} else {
 			foreach ( $data as $entry ) {
-				echo "<{$tag}>";
+				echo '<' . esc_attr( $tag ) . '>';
 				$this->parse_cf( $entry, $structure );
-				echo "</{$tag}>";
+				echo '</' . esc_attr( $tag ) . '>';
 			}
 		}
 	}
@@ -240,17 +240,17 @@ class IORG_CEI_Exporter {
 				$child = $structure[$key];
 
 				if ( !is_array( $value ) ) {
-					echo "<{$child}>" . $this->filter( $value ) . "</{$child}>";
+					echo '<' . esc_attr( $child ) . '>' . $this->filter( $value ) . '</' . esc_attr( $child ) .'>';	// WPCS: XSS ok.
 				} else {
 
 					if ( isset( $structure[$key]['parent'] ) ) {
-						echo '<' . $structure[$key]['parent'] . ' wp_type="'. $key . '">';
+						echo '<' . esc_attr( $structure[$key]['parent'] ) . ' wp_type="'. esc_attr( $key ) . '">';
 					}
 
 					$this->prepare_parse_for_cf( $value, $structure[$key]['structure'], $structure[$key]['tag'] );
 
 					if ( isset( $structure[$key]['parent'] ) ) {
-						echo '</' . $structure[$key]['parent'] . '>';
+						echo '</' . esc_attr( $structure[$key]['parent'] ) . '>';
 					}
 				}
 			}
@@ -274,12 +274,12 @@ class IORG_CEI_Exporter {
 
 		foreach ( $posts as $post ) {
 			echo '<wp-obj wp_post_id="' . esc_attr( $post->ID ) . '" wp_type="' . esc_attr( $post->post_type ) . '" wp_post_title="' . esc_attr( $post->post_title ) . '">';
-			echo $this->parser->to_xml( $this->filter( $post->post_content ) );
+			echo $this->parser->to_xml( $this->filter( $post->post_content ) );	// WPCS: XSS ok.
 			echo '<wp-custom-fields>';
 			$this->custom_fields( $post->ID );
 			echo '<wp-custom-field>';
 			echo '<wp-excerpt>';
-			echo $this->filter( get_post_field( 'post_excerpt', $post->ID ) );
+			echo $this->filter( get_post_field( 'post_excerpt', $post->ID ) );	// WPCS: XSS ok.
 			echo '</wp-excerpt>';
 			echo '</wp-custom-field>';
 			echo '</wp-custom-fields>';

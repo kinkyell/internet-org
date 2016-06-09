@@ -66,7 +66,16 @@ class IORG_CEI_Importer {
 		require_once $theme->get_template_directory() . '/functions.php';
 
 		$this->parser  = new IORG_CEI_Shortcode_Parser;
+
+		libxml_use_internal_errors( true );
+
 		$this->content = simplexml_load_string( $content );
+
+		if ( ! $this->content ) {
+			$this->output['xml'] = libxml_get_errors();
+
+			return $this->output;
+		}
 
 		$this->set_target_site( $this->content['locale'] );
 
