@@ -83,7 +83,7 @@ define(function(require, exports, module) { // jshint ignore:line
            if( $( '#pseudo' ).length ) {
                 $( '#pseudo' ).remove();
             }
-            var css = '<style id="pseudo">.menuTrigger-icon::after, .menuTrigger-icon::before{background-color: #'+this._options['header-color']+' !important;}</style>';
+            var css = '<style id="pseudo">.menuTrigger-icon::after, .menuTrigger-icon::before{background-color: #'+encodeURIComponent(this._options['header-color'])+' !important;}</style>';
             document.head.insertAdjacentHTML( 'beforeEnd', css );
 
         } else {
