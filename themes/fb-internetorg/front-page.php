@@ -357,10 +357,7 @@ if ( has_post_thumbnail( get_the_ID() ) ) {
 												<div class="narrative-section">
 													<div class="narrative-section-slides narrative-section-slides_short">
 
-														<?php if ( ! empty( $cf_content_section['image'] ) ) :
-
-														 echo "NewImgFile:".esc_url( internetorg_get_media_image_url( $cf_content_section['image'], 'panel-image' ) );
-														?>
+														<?php if ( ! empty( $cf_content_section['image'] ) ) : ?>
 
 															<div
 																class="narrative-section-slides-item"
