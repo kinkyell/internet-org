@@ -59,7 +59,8 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
         $pos = strpos($mime_type, "image");
         // I only needed PDF but you can use whatever mime_type you need
         if ( $pos !== false ) {
-        	$mainClass = get_post_meta($id, 'imageClass', true);
+        	$mainClass = esc_attr(get_post_meta($id, 'imageClass', true));
+        	$mobileClass=  esc_attr(get_post_meta($id, 'imageClassMt', true));
             $src = wp_get_attachment_image( $id );
            	$dom = new DOMDocument();
 			$dom->loadHTML($src);
@@ -69,14 +70,14 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
             	 $name = $attr->nodeName;
     			 $value = $attr->nodeValue;
     			 if($name=="class") {
-    				$html .= ' '.$name.'="'.$value.' '.$mainClass.'"'; 	
+    				$html .= ' '.$name.'="'.$value.' '.$mainClass.' '.$mobileClass.'"'; 	
     			 } else {
     			 	$html .= ' '.$name.'="'.$value.'"';
     			 }
 			    
 			}
 			$html .=" />";
-			$html = json_encode($attachment);
+			//$html = json_encode($attachment);
         }
 
         return $html;
@@ -101,7 +102,7 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 	    return $form_fields;
 	}
 
-	function internetorg_image_custom_field_edit_save($post, $attachment) {
+	function internetorg_image_custom_field_save($post, $attachment ) {
 		if( isset( $attachment['imageClass'] ) )
 	        update_post_meta( $post['ID'], 'imageClass', $attachment['imageClass']  );
 	   	
