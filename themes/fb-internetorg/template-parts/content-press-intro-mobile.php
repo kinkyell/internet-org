@@ -86,8 +86,8 @@ if(is_array($showImage) && $showImage[0]=="") {
 			</div>
 			<?php } ?>
 			<div class="topicBlock-bd">
-				<p class="bdcpy">
-					<?php echo wp_kses_post( get_post_field( 'post_excerpt', get_the_ID() ) ); ?>
+				<p class="bdcpy" >
+					<?php if($display_story=="half_screen"){echo wp_kses_post( get_post_field( 'post_excerpt', get_the_ID() ) );} else {echo "";} ?>
 				</p>
 			</div>
 		</div>
