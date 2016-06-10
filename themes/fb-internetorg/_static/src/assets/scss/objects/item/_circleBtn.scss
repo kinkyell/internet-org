@@ -17,7 +17,7 @@
     transform: scale(0.65);
      @media screen and (max-width: 800px){
         background-color: #ff6b00;
-    }    
+    }
 }
 
 .contentOnMedia-link:hover > .circleBtn,
@@ -26,7 +26,7 @@
     background-color: $CLR_ACCENT_ACTIVE;
      @media screen and (max-width: 800px){
         background-color: #ff6b00;
-    } 
+    }
 }
 
 .circleBtn:after,
@@ -131,7 +131,7 @@
 }
 
 .viewWindow-panel-content-blog .circleBtn:active {
-    background-color: #ff6b00;    
+    background-color: #ff6b00;
 }
 
 .viewWindow-panel-content-blog .contentOnMedia-link:hover > .circleBtn,
