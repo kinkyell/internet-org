@@ -29,6 +29,11 @@
     }
 }
 
+
+.rtl .circleBtn {
+    left: 85px;
+}
+
 .circleBtn:after,
 .circleBtn:before {
     content: "";
