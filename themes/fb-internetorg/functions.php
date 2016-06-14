@@ -2984,6 +2984,37 @@ function internetorg_cei_handle_custom_fields( $fields ) {
 	            'iorg_image' => 'wp-meta-data-og-image',
 	        )
 	    ),
+		'internetorg_media_embed' => array(
+			'tag' => 'wp-post-meta-data',
+			'repeater' => false,
+			'structure' => array(
+				'iorg_media_embed_url' => 'wp-post-meta-data-embed-url',
+				'iorg_media_embed_visibility' => 'wp-post-meta-data-embed-visibility',
+			)
+		),
+		'widget-data' => array(
+			'tag' => 'wp-cw-section',
+			'repeater' => true,
+			'structure' => array(
+				'label' => 'wp-cw-section-label',
+				'url' => 'wp-cw-section-url',
+				'image' => 'wp-cw-section-image',
+			),
+		),
+		'iorg-custom-fields' => array(
+			'tag' => 'wp-icf-section',
+			'repeater' => false,
+			'structure' => array(
+				'iorg_display_date' => 'wp-icf-section-iorg-display-date',
+				'iorg_show_footer' => 'wp-icf-section-iorg-show-footer',
+				'iorg_show_hero' => 'wp-icf-section-iorg-show-hero',
+				'iorg_hero_image' => 'wp-icf-section-iorg-hero-image',
+				'iorg_hero_vdo_url' => 'wp-icf-section-iorg-hero-video-url',
+				'iorg_header_img_color' => 'wp-icf-section-iorg-header-img-color',
+				'iorg_header_color' => 'wp-icf-section-iorg-header-color',
+				'iorg_story_page' => 'wp-icf-section-iorg-story-page',
+			),
+		),
 	);
 	return $fields;
 }
