@@ -5,8 +5,11 @@
 .auxLink {
     display: block;
     // display: inline-block;
-    padding: 19px;
-    @include font(SANS_BLACK);    
+    padding-top: 19px;
+    padding-bottom: 19px;
+    padding-left: 15px;
+    padding-right: 15px;
+    @include font(SANS_BLACK);
     @include remify(font-size, 10px);
     line-height: 1.6;
     text-decoration: none;
