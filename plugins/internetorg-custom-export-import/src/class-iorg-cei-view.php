@@ -15,13 +15,9 @@ class IORG_CEI_View {
 		$file = $path . $template . '.php';
 
 		if ( validate_file( $file ) === 0 ) {
+			// @TODO: Remove extract call
 			extract( $data );
-			ob_start();
-				include $file;
-				$buffer = ob_get_contents();
-			@ob_end_clean();
-			echo $buffer;
+			include( $file );
 		}
 	}
-
 }
