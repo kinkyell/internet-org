@@ -183,7 +183,7 @@ class IORG_CEI_Exporter {
 		foreach ( $fields as $name => $info ) {
 			$data = get_post_meta( $post_id, $name, true );
 
-			echo '<wp-custom-field wp_type="'. $name . '">';
+			echo '<wp-custom-field wp_type="'. esc_attr( $name ) . '">';
 
 			if ( isset( $info['parent'] ) ) {
 				echo '<' . esc_attr( $info['parent'] ) . '>';
