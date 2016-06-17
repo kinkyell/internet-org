@@ -244,8 +244,8 @@ class wpGoogleAnalytics {
 			echo '<label for="wga_custom_var_' . $i . '_scope">' . __( 'Scope', 'wp-google-analytics' ) . '&nbsp;';
 			echo '<select id="wga_custom_var_' . $i . '_scope" name="wga[custom_vars][' . $i . '][scope]">';
 			foreach( $scope_options as $key => $label ) {
-				echo '<option value="' . $key . '" ' . selected( $scope, $key, false ) . '>';
-				echo $label . '</option>';
+				echo '<option value="' . esc_attr( $key ) . '" ' . selected( $scope, $key, false ) . '>';
+				echo esc_html( $label ) . '</option>';
 			}
 			echo '</select>';
 			echo '</label><br />';

@@ -250,13 +250,13 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 	    	<div class="iorg-custom-fields-clear"></div>
 	    	<div class="iorg-custom-fields-left">Hero Image</div>
 	    	<div class="iorg-custom-fields-right">
-	    		<input type="text" class="iorg_text" id="iorg_hero_image" name="iorg_hero_image" value="<?php echo $hero_image; ?>" />
+	    		<input type="text" class="iorg_text" id="iorg_hero_image" name="iorg_hero_image" value="<?php echo esc_attr( $hero_image ); ?>" />
 	    		<button id="iorg_select_img" onclick="javascript: selectMedia('iorg_select_img', 'iorg_hero_image');">Select Media</button>
 	    	</div>
 	    	<div class="iorg-custom-fields-clear"></div>
 	    	<div class="iorg-custom-fields-left">Hero Video URL</div>
 	    	<div class="iorg-custom-fields-right">
-	    		<input type="text" class="iorg_text" id="iorg_hero_vdo_url" name="iorg_hero_vdo_url" value="<?php echo $vdo_url; ?>" />
+	    		<input type="text" class="iorg_text" id="iorg_hero_vdo_url" name="iorg_hero_vdo_url" value="<?php echo esc_url( $vdo_url ); ?>" />
 	    		</div>
 	    	<div class="iorg-custom-fields-clear"></div>
 	    	<div class="iorg-custom-fields-left">Header image color</div>

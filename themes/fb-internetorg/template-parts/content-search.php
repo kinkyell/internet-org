@@ -61,37 +61,35 @@ $mobile_image = esc_url( internetorg_get_mobile_featured_image( get_post_type( g
 $theme = ( in_array( get_post_type( get_the_ID() ), $io_story_shadow ) ) ? 'approach' : '';
 
 
-$showDate = get_post_custom_values('iorg_display_date', get_the_ID()); 
+$showDate = get_post_custom_values('iorg_display_date', get_the_ID());
  $displayDate = "show";
  $displayFooterPosts = "show";
 
 if(is_array($showDate) && strtolower($showDate[0])=="n") {
  	$displayDate = "hide";
-
  } else {
  	$displayDate = "show";
-
  }
 
-$showMedia = get_post_custom_values('iorg_hero_vdo_url', get_the_ID()); 
-$showImage = get_post_custom_values('iorg_hero_image', get_the_ID()); 
-$showHero = get_post_custom_values('iorg_show_hero', get_the_ID()); 
+$showMedia = get_post_custom_values('iorg_hero_vdo_url', get_the_ID());
+$showImage = get_post_custom_values('iorg_hero_image', get_the_ID());
+$showHero = get_post_custom_values('iorg_show_hero', get_the_ID());
 if(is_array($showHero) && ($showHero[0]!="Y")) {
 	if(is_array($showImage)) {
 		$showImage[0] = "";
 	}
 	if(is_array($showMedia)) {
 		$showMedia[0] = "";
-	}	
+	}
 }
 
-$story_page = get_post_custom_values('iorg_story_page', get_the_ID()); 
+$story_page = get_post_custom_values('iorg_story_page', get_the_ID());
 $display_story = "half_screen";
 if(is_array($story_page) && $story_page[0]!="") {
 		$display_story = $story_page[0];
-	} 
-$header_color = get_post_custom_values('iorg_header_color', get_the_ID()); 
-$header_img_color = get_post_custom_values('iorg_header_img_color', get_the_ID()); 
+	}
+$header_color = get_post_custom_values('iorg_header_color', get_the_ID());
+$header_img_color = get_post_custom_values('iorg_header_img_color', get_the_ID());
 
 if(is_array($showImage) && $showImage[0]=="") {
 
@@ -117,8 +115,8 @@ if(is_array($showImage) && $showImage[0]=="") {
 					data-social="true"
 					<?php endif; ?>
 			   data-type="<?php echo esc_attr( $type ); ?>"
-			   data-date="<?php if($displayDate=='show') internetorg_posted_on_date(); ?>" <?php if(is_array($showImage) && $showImage[0]!="") { ?> data-image-display="<?php echo $showImage[0]; ?>" <?php } ?> <?php if(is_array($showMedia) && $showMedia[0]!="") { ?> data-video="<?php echo $showMedia[0]; ?>" <?php } ?> data-story-page="<?php echo $display_story; ?>" <?php if(is_array($header_color) && $header_color[0]!="") { ?> data-header-color="<?php echo $header_color[0]; ?>" <?php } ?> <?php if(is_array($header_img_color) && $header_img_color[0]!="") { ?> data-header-img-color="<?php echo $header_img_color[0]; ?>" <?php } ?>>
-				<h2 class="hdg hdg_4"><?php echo $header_img_color[0]; ?> - <?php the_title(); ?></h2>
+			   data-date="<?php if($displayDate=='show') internetorg_posted_on_date(); ?>" <?php if(is_array($showImage) && $showImage[0]!="") { ?> data-image-display="<?php echo esc_attr( $showImage[0] ); ?>" <?php } ?> <?php if(is_array($showMedia) && $showMedia[0]!="") { ?> data-video="<?php echo esc_attr( $showMedia[0] ); ?>" <?php } ?> data-story-page="<?php echo esc_attr( $display_story ); ?>" <?php if(is_array($header_color) && $header_color[0]!="") { ?> data-header-color="<?php echo esc_attr( $header_color[0] ); ?>" <?php } ?> <?php if(is_array($header_img_color) && $header_img_color[0]!="") { ?> data-header-img-color="<?php echo esc_attr( $header_img_color[0] ); ?>" <?php } ?>>
+				<h2 class="hdg hdg_4"><?php echo esc_attr( $header_img_color[0] ); ?> - <?php the_title(); ?></h2>
 			</a>
 			</h2>
 		</div>
@@ -137,7 +135,7 @@ if(is_array($showImage) && $showImage[0]=="") {
 				<?php endif; ?>
 
 			   data-type="<?php echo esc_attr( $type ); ?>"
-			   data-date="<?php if($displayDate=='show') internetorg_posted_on_date(); ?>" <?php if(is_array($showImage) && $showImage[0]!="") { ?> data-image-display="<?php echo $showImage[0]; ?>" <?php } ?> <?php if(is_array($showMedia) && $showMedia[0]!="") { ?> data-video="<?php echo $showMedia[0]; ?>" <?php } ?> data-story-page="<?php echo $display_story; ?>" <?php if(is_array($header_color) && $header_color[0]!="") { ?> data-header-color="<?php echo $header_color[0]; ?>" <?php } ?> <?php if(is_array($header_img_color) && $header_img_color[0]!="") { ?> data-header-img-color="<?php echo $header_img_color[0]; ?>" <?php } ?>
+			   data-date="<?php if($displayDate=='show') internetorg_posted_on_date(); ?>" <?php if(is_array($showImage) && $showImage[0]!="" ) { ?> data-image-display="<?php echo esc_attr( $showImage[0] ); ?>" <?php } ?> <?php if(is_array($showMedia) && $showMedia[0]!="") { ?> data-video="<?php echo esc_attr( $showMedia[0] ); ?>" <?php } ?> data-story-page="<?php echo esc_attr( $display_story ); ?>" <?php if(is_array($header_color) && $header_color[0]!="") { ?> data-header-color="<?php echo esc_attr( $header_color[0] ); ?>" <?php } ?> <?php if(is_array($header_img_color) && $header_img_color[0]!="") { ?> data-header-img-color="<?php echo esc_attr( $header_img_color[0] ); ?>" <?php } ?>
 			   >
 				<?php esc_html_e( 'Read More', 'internetorg' ); ?>
 			</a>

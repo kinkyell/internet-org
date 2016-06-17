@@ -45,7 +45,7 @@ if(is_array($showImage) && $showImage[0]=="") {
 ?>
 
 <!-- START MOBILE ONLY CONTENT HERE -->
-<div class="introBlock isHidden u-isHiddenMedium <?php echo $HeroMobile; ?>" aria-hidden="true">
+<div class="introBlock isHidden u-isHiddenMedium <?php echo esc_attr( $HeroMobile ); ?>" aria-hidden="true">
 	<div class="introBlock-inner introBlock-inner_stack">
 
 		<div class="topicBlock">
@@ -54,7 +54,7 @@ if(is_array($showImage) && $showImage[0]=="") {
 			if($display_story=="full_screen") {
 			if(is_array($showImage) && $showImage[0]!="") {
 			?>
-			<div class="imgWrap isLoaded"  id="heroImage" style="background: url(<?php echo $showImage[0]; ?>) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: over; background-size: cover; width:100%;">&nbsp;</div>
+			<div class="imgWrap isLoaded"  id="heroImage" style="background: url(<?php echo esc_url( $showImage[0] ); ?>) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: over; background-size: cover; width:100%;">&nbsp;</div>
 			<?php
 			 } elseif ($HeroMobile=="HeroImage") {
 			 	$HeroTitleClass = "HeaderPadding";
@@ -62,13 +62,13 @@ if(is_array($showImage) && $showImage[0]=="") {
 			?>
 
 			<?php if(is_array($showMedia) && $showMedia[0]!="") { ?>
-			<a href="<?php echo $showMedia[0]; ?>" class="contentOnMedia-link contentOnMedia-link_ct js-videoModal swipebox-video HeroImagePlay" rel="vimeo0">
+			<a href="<?php echo esc_url( $showMedia[0] ); ?>" class="contentOnMedia-link contentOnMedia-link_ct js-videoModal swipebox-video HeroImagePlay" rel="vimeo0">
 				<span class="circleBtn circleBtn_play"></span>
 			</a>
 			<?php }//media
 
 			} ?>
-			<div class="topicBlock-hd topicBlock-hd_plus <?php echo $HeroTitleClass; ?>">
+			<div class="topicBlock-hd topicBlock-hd_plus <?php echo esc_attr( $HeroTitleClass ); ?>">
 				<h2 class="hdg hdg_2 mix-hdg_bold"><?php the_title(); ?></h2>
 			</div>
 

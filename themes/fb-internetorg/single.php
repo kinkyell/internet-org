@@ -74,7 +74,7 @@ if(is_array($showImage) && $showImage[0]=="") {
 }
 
 ?>
-	<div class="viewWindow isShifted js-viewWindow js-stateDefault <?php echo $display_viewwindow_rtl; ?>" id="main-content" role="main" data-type="titled" data-route="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-social="true" data-date="<?php if($displayDate=='show') internetorg_posted_on_date(); ?>" <?php if($display_story=="full_screen") { if(is_array($showImage) && $showImage[0]!="") { ?> data-image-display="<?php echo $showImage[0]; ?>" <?php } ?> <?php if(is_array($showMedia) && $showMedia[0]!="") { ?> data-video="<?php echo $showMedia[0]; ?>" <?php } } ?> data-story-page="<?php echo $display_story; ?>" <?php if(is_array($header_color) && $header_color[0]!="") { ?> data-header-color="<?php echo $header_color[0]; ?>" <?php } ?> <?php if(is_array($header_img_color) && $header_img_color[0]!="") { ?> data-header-img-color="<?php echo $header_img_color[0]; ?>" <?php } ?> data-page="single">
+	<div class="viewWindow isShifted js-viewWindow js-stateDefault <?php echo esc_attr( $display_viewwindow_rtl ); ?>" id="main-content" role="main" data-type="titled" data-route="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-social="true" data-date="<?php if($displayDate=='show') internetorg_posted_on_date(); ?>" <?php if($display_story=="full_screen") { if(is_array($showImage) && $showImage[0]!="") { ?> data-image-display="<?php echo esc_attr( $showImage[0] ); ?>" <?php } ?> <?php if(is_array($showMedia) && $showMedia[0]!="") { ?> data-video="<?php echo esc_attr( $showMedia[0] ); ?>" <?php } } ?> data-story-page="<?php echo esc_attr( $display_story ); ?>" <?php if(is_array($header_color) && $header_color[0]!="") { ?> data-header-color="<?php echo esc_attr( $header_color[0] ); ?>" <?php } ?> <?php if(is_array($header_img_color) && $header_img_color[0]!="") { ?> data-header-img-color="<?php echo esc_attr( $header_img_color[0] ); ?>" <?php } ?> data-page="single">
 		<?php while ( have_posts() ) : the_post(); 
 		 ?>
 
@@ -91,13 +91,13 @@ if(is_array($showImage) && $showImage[0]=="") {
 								if($display_story=="full_screen") {
 								if(is_array($showImage) && $showImage[0]!="") {
 								?>
-								<div class="imgWrap isLoaded"  id="heroImage" style="background: url(<?php echo $showImage[0]; ?>) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: over; background-size: cover; width:100%;">&nbsp;</div>
+								<div class="imgWrap isLoaded"  id="heroImage" style="background: url(<?php echo esc_attr( $showImage[0] ); ?>) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: over; background-size: cover; width:100%;">&nbsp;</div>
 								<?php
 								 }
 								?>
 
 								<?php if(is_array($showMedia) && $showMedia[0]!="") { ?>
-								<a href="<?php echo $showMedia[0]; ?>" class="contentOnMedia-link contentOnMedia-link_ct js-videoModal swipebox-video HeroImagePlay">
+								<a href="<?php echo esc_attr( $showMedia[0] ); ?>" class="contentOnMedia-link contentOnMedia-link_ct js-videoModal swipebox-video HeroImagePlay">
 									<span class="circleBtn circleBtn_play"></span>
 								</a>
 								<?php }//media 
@@ -128,8 +128,8 @@ if(is_array($showImage) && $showImage[0]=="") {
 					<div>
 						<?php get_template_part( 'template-parts/content', 'press-intro-mobile' ); ?>
 
-						<div class="<?php echo $contentCol; ?>">
-							<div class="container <?php echo $display_margin; ?>">
+						<div class="<?php echo esc_attr( $contentCol ); ?>">
+							<div class="container <?php echo esc_attr( $display_margin ); ?>">
 								<div class="feature">
 									<div class="feature-bd wysiwyg quarantine">
 
@@ -144,12 +144,12 @@ if(is_array($showImage) && $showImage[0]=="") {
 										$content_short = apply_filters('the_content', $content_parts['main']);
 										$content_extended = apply_filters('the_content', $content_parts['extended']);
 										
-										echo $content_short; 
+										echo wp_kses_post( $content_short ); 
 										if($content_extended!="") {
 										 ?>
 										 <div class="readMoreDiv" ><button onclick="javascript:  jQuery('.readMoreDiv').hide(); jQuery('#extendedContent').slideDown(1000);" class="readMore">SHOW MORE</button></div>
 										 <div id="extendedContent" style="display: none;">
-										 	<?php echo $content_extended; ?>
+										 	<?php echo wp_kses_post( $content_extended ); ?>
 										 </div>
 										 <?php } ?>
 									  <div class="fb-like"
@@ -163,7 +163,7 @@ if(is_array($showImage) && $showImage[0]=="") {
 							</div>
 						</div>
 
-						<div class="<?php echo $footBox; ?>">
+						<div class="<?php echo esc_attr( $footBox ); ?>">
 							<?php if($displayFooterPosts=="show") { ?>
 							<div class="container">
 								<?php get_template_part( 'template-parts/content', 'single-more' ); ?>
