@@ -73,6 +73,13 @@ if(is_array($showImage) && $showImage[0]=="") {
 	}
 }
 
+
+if (get_locale() == 'ur') {
+	$fbUR = 'button';
+} else {
+	$fbUR = 'standard';
+}
+
 ?>
 	<div class="viewWindow isShifted js-viewWindow js-stateDefault <?php echo esc_attr( $display_viewwindow_rtl ); ?>" id="main-content" role="main" data-type="titled" data-route="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-social="true" data-date="<?php if($displayDate=='show') internetorg_posted_on_date(); ?>" <?php if($display_story=="full_screen") { if(is_array($showImage) && $showImage[0]!="") { ?> data-image-display="<?php echo esc_attr( $showImage[0] ); ?>" <?php } ?> <?php if(is_array($showMedia) && $showMedia[0]!="") { ?> data-video="<?php echo esc_attr( $showMedia[0] ); ?>" <?php } } ?> data-story-page="<?php echo esc_attr( $display_story ); ?>" <?php if(is_array($header_color) && $header_color[0]!="") { ?> data-header-color="<?php echo esc_attr( $header_color[0] ); ?>" <?php } ?> <?php if(is_array($header_img_color) && $header_img_color[0]!="") { ?> data-header-img-color="<?php echo esc_attr( $header_img_color[0] ); ?>" <?php } ?> data-page="single">
 		<?php while ( have_posts() ) : the_post(); 
@@ -153,7 +160,7 @@ if(is_array($showImage) && $showImage[0]=="") {
 										 </div>
 										 <?php } ?>
 									  <div class="fb-like"
-									      data-layout="button"
+										  data-layout="<?php echo esc_attr( $fbUR ); ?>"
 									      data-action="like"
 									      data-share="true">
 									  </div>
@@ -172,6 +179,7 @@ if(is_array($showImage) && $showImage[0]=="") {
 							<div class="footBox-ft">
 								<div class="container">
 									<?php internetorg_vip_powered_wpcom( 'pwdByVip-txt' ); ?>
+									
 								</div>
 							</div>
 						</div>
