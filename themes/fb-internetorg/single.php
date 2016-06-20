@@ -153,7 +153,7 @@ if(is_array($showImage) && $showImage[0]=="") {
 										 </div>
 										 <?php } ?>
 									  <div class="fb-like"
-									      data-layout="standard"
+									      data-layout="button"
 									      data-action="like"
 									      data-share="true">
 									  </div>
