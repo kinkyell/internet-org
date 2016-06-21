@@ -165,7 +165,7 @@ msgstr "بنگالی"
 
 #. Language Selector
 msgid "Spanish"
-msgstr ""
+msgstr "ہسپانوی"
 
 #. Language Selector
 msgid "Hindi"
