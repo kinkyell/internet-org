@@ -74,6 +74,12 @@ if(is_array($showImage) && $showImage[0]=="") {
 }
 
 
+if (wp_is_mobile() == true) {
+	$fb_like = '300px';
+} else {
+	$fb_like = '500px';
+}
+
 if (get_locale() == 'ur') {
 	$fbUR = 'button';
 } else {
@@ -160,6 +166,7 @@ if (get_locale() == 'ur') {
 										 </div>
 										 <?php } ?>
 									  <div class="fb-like"
+										  data-width="<?php echo esc_attr( $fb_like ); ?>"
 										  data-layout="<?php echo esc_attr( $fbUR ); ?>"
 									      data-action="like"
 									      data-share="true">
