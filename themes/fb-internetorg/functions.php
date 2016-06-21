@@ -2786,7 +2786,7 @@ function internetorg_get_current_language( $facebook_sdk = false ) {
 		'id' => 'id_ID',
 		'ja' => 'ja_JP',
 		'pa' => 'pa_IN',
-		'pt' => 'pt_PT',
+		'pt' => 'pt_BR',
 		'ru' => 'ru_RU',
 		'ur' => 'ur_PK'
 	);
