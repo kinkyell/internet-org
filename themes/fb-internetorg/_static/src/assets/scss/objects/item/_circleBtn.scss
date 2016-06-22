@@ -31,7 +31,12 @@
 
 
 .rtl .circleBtn {
-    left: 85px;
+    left: 0;
+    margin-left: 0;
+}
+
+.rtl .contentOnMedia .circleBtn {
+    left: 85px
 }
 
 .circleBtn:after,
