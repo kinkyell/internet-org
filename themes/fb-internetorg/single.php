@@ -167,7 +167,7 @@ if (get_locale() == 'ur') {
 										 <?php } ?>
 									  <div class="fb-like"
 										  data-width="<?php echo esc_attr( $fb_like ); ?>"
-										  data-layout="<?php echo esc_attr( $fbUR ); ?>"
+										  data-layout="standard"
 									      data-action="like"
 									      data-share="true">
 									  </div>
