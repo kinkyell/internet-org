@@ -30,10 +30,6 @@
 }
 
 
-.rtl .circleBtn {
-    left: 85px;
-}
-
 .circleBtn:after,
 .circleBtn:before {
     content: "";
@@ -144,6 +140,21 @@
 .circleBtn:active {
     background-color: #ff6b00;
 }
+
+html[dir="rtl"] .narrative-section-bd-link .circleBtn:after,
+html[dir="rtl"] .narrative-section-bd-link .circleBtn:before,
+html[dir="rtl"] .tertiaryCta .circleBtn:after,
+html[dir="rtl"] .tertiaryCta .circleBtn:before
+{
+    border-bottom: none!important;
+    border-right: none!important;
+    border-top: 3px solid white!important;
+    border-left: 3px solid white!important;
+    left: 6px!important;
+}
+
+html[dir="rtl"] .contentOnMedia-link .circleBtn{ left: 80px!important; }
+
 
 @include breakpoint(MD) {
     .circleBtn {
