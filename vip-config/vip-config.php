@@ -12,5 +12,5 @@
  * - The WordPress.com VIP Team
  **/
 
- define( 'WPMDB_LICENCE', 'a12fbf1e-77ff-40de-9160-61d0172b80f0' );
+ define( 'WPMDB_LICENCE', '43085609-7014-42c6-82ed-521bdd95d7f9' );
 
