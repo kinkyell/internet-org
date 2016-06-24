@@ -29,6 +29,16 @@
     }
 }
 
+
+.rtl .circleBtn {
+    left: 0;
+    margin-left: 0;
+}
+
+.rtl .contentOnMedia .circleBtn {
+    left: 85px
+}
+
 .circleBtn:after,
 .circleBtn:before {
     content: "";
@@ -82,13 +92,13 @@
 
 .circleBtn_play:before {
     content: none;
-    left: 36px;
-    transform: none;
 }
 
 .contentOnMedia-link:hover > .circleBtn_play:after,
 .circleBtn_play:hover:after {
     //transform: translateX(36px);
+    left: 36px;
+    transform: none;
 }
 
 // THEME CLASSES by contectual or chain selection
@@ -152,16 +162,5 @@
     }
 }
 
-html[dir="rtl"] .narrative-section-bd-link .circleBtn:after,
-html[dir="rtl"] .narrative-section-bd-link .circleBtn:before,
-html[dir="rtl"] .js-stateLink .circleBtn:after,
-html[dir="rtl"] .js-stateLink .circleBtn:before
-{
-    border-bottom: none!important;
-    border-right: none!important;
-    border-top: 3px solid white!important;
-    border-left: 3px solid white!important;
-}
 
-html[dir="rtl"] .contentOnMedia-link .circleBtn{ left: 80px!important; }
 

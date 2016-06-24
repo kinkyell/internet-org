@@ -1743,8 +1743,7 @@ html:not(.touch) .link:hover:after, html:not(.touch) .link_preArrows:hover:befor
           transform: translateX(-8px); }
 
 [dir="rtl"] .link:hover:after {
-  -webkit-transform: translate3d(-8px, 0, 0) rotate(-44deg);
-          transform: translate3d(-8px, 0, 0) rotate(-44deg); }
+  right: 8px; }
 
 [dir="rtl"] .link:after,
 [dir="rtl"] .link:before {
@@ -1909,6 +1908,13 @@ html:not(.touch) .link:hover:after, html:not(.touch) .link_preArrows:hover:befor
     .circleBtn:active {
       background-color: #ff6b00; } }
 
+.rtl .circleBtn {
+  left: 0;
+  margin-left: 0; }
+
+.rtl .contentOnMedia .circleBtn {
+  left: 85px; }
+
 .circleBtn:after,
 .circleBtn:before {
   content: "";
@@ -1967,7 +1973,10 @@ html:not(.touch) .link:hover:after, html:not(.touch) .link_preArrows:hover:befor
   transition: left 0.2s ease-in-out; }
 
 .circleBtn_play:before {
-  content: none;
+  content: none; }
+
+.contentOnMedia-link:hover > .circleBtn_play:after,
+.circleBtn_play:hover:after {
   left: 36px;
   -webkit-transform: none;
       -ms-transform: none;
@@ -2022,18 +2031,6 @@ html:not(.touch) .link:hover:after, html:not(.touch) .link_preArrows:hover:befor
     -webkit-transform: scale(1);
         -ms-transform: scale(1);
             transform: scale(1); } }
-
-html[dir="rtl"] .narrative-section-bd-link .circleBtn:after,
-html[dir="rtl"] .narrative-section-bd-link .circleBtn:before,
-html[dir="rtl"] .js-stateLink .circleBtn:after,
-html[dir="rtl"] .js-stateLink .circleBtn:before {
-  border-bottom: none !important;
-  border-right: none !important;
-  border-top: 3px solid white !important;
-  border-left: 3px solid white !important; }
-
-html[dir="rtl"] .contentOnMedia-link .circleBtn {
-  left: 80px !important; }
 
 /* ---------------------------------------------------------------------
  Tertiary Call To Action
