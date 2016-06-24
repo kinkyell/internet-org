@@ -4676,7 +4676,8 @@ html.swipebox-html.swipebox-touch {
   white-space: nowrap;
   position: absolute;
   display: none;
-  cursor: pointer; }
+  cursor: pointer;
+  direction: ltr; }
 
 #swipebox-slider .slide {
   height: 100%;
