@@ -1955,22 +1955,23 @@ html:not(.touch) .link:hover:after, html:not(.touch) .link_preArrows:hover:befor
   width: 0;
   height: 0;
   border: none;
-  -webkit-transform: translateX(33px);
-      -ms-transform: translateX(33px);
-          transform: translateX(33px);
+  left: 33px;
   top: calc(50% - 12px);
   border-top: 12px solid transparent;
   border-bottom: 12px solid transparent;
-  border-left: 20px solid white; }
+  border-left: 20px solid white;
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none;
+  -webkit-transition: left 0.2s ease-in-out;
+  transition: left 0.2s ease-in-out; }
 
 .circleBtn_play:before {
-  content: none; }
-
-.contentOnMedia-link:hover > .circleBtn_play:after,
-.circleBtn_play:hover:after {
-  -webkit-transform: translateX(36px);
-      -ms-transform: translateX(36px);
-          transform: translateX(36px); }
+  content: none;
+  left: 36px;
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none; }
 
 .theme-impact .circleBtn,
 .circleBtn_themeImpact {
