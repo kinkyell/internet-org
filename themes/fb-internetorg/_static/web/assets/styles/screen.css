@@ -1738,9 +1738,7 @@ html:not(.touch) .link:hover:after, html:not(.touch) .link_preArrows:hover:befor
   margin: -15px; }
 
 [dir="rtl"] .link:not(.link_preArrows):not(.link_inline):not(.link_twoArrows):hover:before {
-  -webkit-transform: translateX(-8px);
-      -ms-transform: translateX(-8px);
-          transform: translateX(-8px); }
+  right: -8px; }
 
 [dir="rtl"] .link:hover:after {
   right: 8px; }

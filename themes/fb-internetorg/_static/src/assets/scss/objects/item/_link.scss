@@ -268,7 +268,8 @@ html:not(.touch) {
     }
 
     .link:not(.link_preArrows):not(.link_inline):not(.link_twoArrows):hover:before {
-        transform: translateX(-8px);
+        //transform: translateX(-8px);
+        right: -8px;
     }
 
     .link:hover:after {
