@@ -130,7 +130,7 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 	function my_custom_field_checkboxes() {
 	    add_meta_box(
 	        'my_meta_box_id',          // this is HTML id of the box on edit screen
-	        'Internet org custom fields',    // title of the box
+	        'Full Page Options',    // title of the box
 	        'my_customfield_box_content',   // function to be called to display the checkboxes, see the function below
 	        'post',        // on which edit screen the box should appear
 	        'normal',      // part of page where the box should appear
@@ -227,6 +227,9 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 			<li>mtSmall (mobile and tablet align center, 30% width)</li>
 			<li>mtLarge (mobile and tablet align center, 75% width)</li>
 
+			<h2>No Wrap Around Text</h2>
+			<li>Add "class="NewLineContent" to a new div under any image to prevent text from wrapping.</li>
+
 
 		</div>
 
@@ -237,7 +240,7 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 	    		<input type="checkbox" name="iorg_display_date" value="Y" <?php echo $show_display_date; ?> />
 	    	</div>
 	    	<div class="iorg-custom-fields-clear"></div>
-	    	<div class="iorg-custom-fields-left">Show footer more posts</div>
+	    	<div class="iorg-custom-fields-left">Show more posts footer</div>
 	    	<div class="iorg-custom-fields-right">
 	    		<input type="checkbox" name="iorg_show_footer" value="Y" <?php echo $show_show_footer; ?> />
 	    	</div>
@@ -248,7 +251,7 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 	    		<input type="checkbox" name="iorg_show_hero" value="Y" <?php echo $display_hero; ?> />
 	    	</div>
 	    	<div class="iorg-custom-fields-clear"></div>
-	    	<div class="iorg-custom-fields-left">Hero Image</div>
+	    	<div class="iorg-custom-fields-left">Hero Image Upload</div>
 	    	<div class="iorg-custom-fields-right">
 	    		<input type="text" class="iorg_text" id="iorg_hero_image" name="iorg_hero_image" value="<?php echo esc_attr( $hero_image ); ?>" />
 	    		<button id="iorg_select_img" onclick="javascript: selectMedia('iorg_select_img', 'iorg_hero_image');">Select Media</button>
@@ -259,7 +262,7 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 	    		<input type="text" class="iorg_text" id="iorg_hero_vdo_url" name="iorg_hero_vdo_url" value="<?php echo esc_url( $vdo_url ); ?>" />
 	    		</div>
 	    	<div class="iorg-custom-fields-clear"></div>
-	    	<div class="iorg-custom-fields-left">Header image color</div>
+	    	<div class="iorg-custom-fields-left">Logo image color</div>
 	    	<div class="iorg-custom-fields-right">
 	    		<input type="text" class="jscolor" id="iorg_header_img_color" name="iorg_header_img_color" value="<?php echo esc_attr( $header_img_color ); ?>" />
 	    		<?php /* ?><select name="iorg_header_img_color">
@@ -278,7 +281,7 @@ if ( ! function_exists( 'internetorg_custom_fields_init' ) ) {
 		    	</select><?php */ ?>
 	    	</div>
 	    	<div class="iorg-custom-fields-clear"></div>
-	    	<div class="iorg-custom-fields-left">Story Page</div>
+	    	<div class="iorg-custom-fields-left">Layout Options</div>
 	    	<div class="iorg-custom-fields-right">
 		    	<select name="iorg_story_page">
 			    	<option value="half_screen" <?php if($story_page!="full_screen") echo " selected "; ?> >Half Screen</option>
