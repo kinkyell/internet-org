@@ -160,7 +160,6 @@ if (wp_is_mobile() == true) {
 										 </div>
 										 <?php } ?>
 									  <div class="fb-like"
-										  data-width="300px"
 										  data-layout="standard"
 									      data-action="like"
 									      data-share="true">
