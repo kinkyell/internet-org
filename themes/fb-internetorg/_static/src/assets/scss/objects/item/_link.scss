@@ -49,7 +49,7 @@
     width: 10px;
     border-bottom: 1px solid $CLR_ACCENT;
     border-right: 1px solid $CLR_ACCENT;
-    transform: rotate(-44deg) translate3d(0,0,0); //44 instead of 45 fixes IE11 aliasing bug
+    transform: rotate(-44deg); //44 instead of 45 fixes IE11 aliasing bug
 }
 
 .link:before {
@@ -67,14 +67,12 @@ html:not(.touch) {
         color: $CLR_ACCENT_ACTIVE;
     }
 
-    .link:hover:before {
-        transform: translateX(8px);
+    .link:hover:after, .link:hover:before {
+        //transform: translateX(8px);
+        right: 8px;
     }
 
-    .link:hover:before { background-color: $CLR_ACCENT_ACTIVE; }
-
-
-    .link:hover:after, .link_preArrows:hover:before { border-color: $CLR_ACCENT; }
+    .link_preArrows:hover:after, .link_preArrows:hover:before { border-color: $CLR_ACCENT; }
 
 }
 
@@ -82,7 +80,7 @@ html:not(.touch) {
     .link:hover:after,
     .link_twoArrows:hover:before, .link_preArrows:hover:before {
         background-color: transparent;
-        transform: translate3d(8px, 0, 0) rotate(-44deg); //44 instead of 45 fixes IE11 aliasing bug
+        //transform: translate3d(8px, 0, 0) rotate(-44deg); //44 instead of 45 fixes IE11 aliasing bug
     }
 }
 
@@ -144,6 +142,14 @@ html:not(.touch) {
     border-bottom: 2px solid $CLR_ACCENT;
     border-right: 2px solid $CLR_ACCENT;
     transform: rotate(-44deg);
+}
+
+.link_preArrows:hover:before {
+    left: 0;
+}
+
+.link_preArrows:hover:after {
+    left: 5px;
 }
 
 .link_inline {
@@ -260,7 +266,7 @@ html:not(.touch) {
 }
 
 /* Right to Left Language support */
-[dir="rtl"] {
+html[dir="rtl"] {
 
     .link:not(.link_preArrows):not(.link_inline):not(.link_twoArrows) {
         padding: 15px 15px 15px 50px;
@@ -268,18 +274,21 @@ html:not(.touch) {
     }
 
     .link:not(.link_preArrows):not(.link_inline):not(.link_twoArrows):hover:before {
-        transform: translateX(-8px);
+        //transform: translateX(-8px);
+        left: -8px;
+        right: auto;
     }
 
     .link:hover:after {
         //transform: translate3d(-8px, 0, 0) rotate(-44deg);
-        right: 8px;
+        left: -8px;
+        right: auto;
     }
 
     .link:after,
     .link:before {
         right: auto;
-        left: 8px;
+        left: 0;
     }
 
     .link:after {
@@ -317,6 +326,10 @@ html:not(.touch) {
         padding-right: 15px;
     }
 
+    .link_preArrows:hover:after {
+        right: 5px;
+    }
+
     .link_preArrows:after,
     .link_preArrows:before {
         top: 2px;
@@ -333,6 +346,10 @@ html:not(.touch) {
         right: -5px;
     }
 
+    .link_preArrows:hover:before {
+        right: 0;
+        left: auto;
+    }
 }
 
 // specific client direction adjustments
