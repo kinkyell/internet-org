@@ -175,7 +175,7 @@ if ( is_array($showImagePrev) && $showImagePrev[0]=="") {
 				</div>
 				<div class="topicBlock-cta">
 					<?php if ( $display_story_Cur=="half_screen") { ?>
-						<a class="btn js-stateLink"
+						<a class="btn <?php echo esc_attr( internetorg_english_lang_notification_class( ['or' => 'js-stateLink'], $next_post->ID ) ); ?>"
 						href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>"
 						data-title="<?php echo  esc_attr( apply_filters( 'the_title', $next_post->post_title ) ); ?>"
 						data-date="<?php if ( $displayDateNext=='show') echo esc_attr( get_the_date( '', $next_post->ID ) ); ?>"
@@ -184,7 +184,7 @@ if ( is_array($showImagePrev) && $showImagePrev[0]=="") {
 						<?php esc_html_e( 'Read', 'internetorg' ); ?>
 					</a>
 					<?php } else { ?>
-						<a class="link <?php echo esc_attr( internetorg_english_lang_notification_class( ['or' => 'js-stateLink'] ) ); ?>" href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>"
+						<a class="link <?php echo esc_attr( internetorg_english_lang_notification_class( ['or' => 'js-stateLink'], $next_post->ID ) ); ?>" href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>"
 							data-title="<?php echo esc_attr( apply_filters( 'the_title',  $next_post->post_title ) ); ?>"
 							data-date="<?php if ( $displayDateNext=='show') echo esc_attr( get_the_date( '', $next_post->ID ) ); ?>"
 							data-social="true"
