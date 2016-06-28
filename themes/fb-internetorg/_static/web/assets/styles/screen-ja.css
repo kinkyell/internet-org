@@ -1515,8 +1515,9 @@ html::-webkit-scrollbar {
   width: 10px;
   border-bottom: 1px solid #ffcc02;
   border-right: 1px solid #ffcc02;
-  -webkit-transform: rotate(-44deg) translate3d(0, 0, 0);
-          transform: rotate(-44deg) translate3d(0, 0, 0); }
+  -webkit-transform: rotate(-44deg);
+      -ms-transform: rotate(-44deg);
+          transform: rotate(-44deg); }
 
 .link:before {
   top: 50%;
@@ -1529,22 +1530,15 @@ html:not(.touch) .link:hover,
 html:not(.touch) .link:active {
   color: #efbe02; }
 
-html:not(.touch) .link:hover:before {
-  -webkit-transform: translateX(8px);
-      -ms-transform: translateX(8px);
-          transform: translateX(8px); }
+html:not(.touch) .link:hover:after, html:not(.touch) .link:hover:before {
+  right: 8px; }
 
-html:not(.touch) .link:hover:before {
-  background-color: #efbe02; }
-
-html:not(.touch) .link:hover:after, html:not(.touch) .link_preArrows:hover:before {
+html:not(.touch) .link_preArrows:hover:after, html:not(.touch) .link_preArrows:hover:before {
   border-color: #ffcc02; }
 
 [dir="ltr"] .link:hover:after,
 [dir="ltr"] .link_twoArrows:hover:before, [dir="ltr"] .link_preArrows:hover:before {
-  background-color: transparent;
-  -webkit-transform: translate3d(8px, 0, 0) rotate(-44deg);
-          transform: translate3d(8px, 0, 0) rotate(-44deg); }
+  background-color: transparent; }
 
 .mix-link_small {
   font-size: 13px;
@@ -1609,6 +1603,12 @@ html:not(.touch) .link:hover:after, html:not(.touch) .link_preArrows:hover:befor
   -webkit-transform: rotate(-44deg);
       -ms-transform: rotate(-44deg);
           transform: rotate(-44deg); }
+
+.link_preArrows:hover:before {
+  left: 0; }
+
+.link_preArrows:hover:after {
+  left: 5px; }
 
 .link_inline {
   text-transform: none;
@@ -1733,32 +1733,34 @@ html:not(.touch) .link:hover:after, html:not(.touch) .link_preArrows:hover:befor
     bottom: 6px; } }
 
 /* Right to Left Language support */
-[dir="rtl"] .link:not(.link_preArrows):not(.link_inline):not(.link_twoArrows) {
+html[dir="rtl"] .link:not(.link_preArrows):not(.link_inline):not(.link_twoArrows) {
   padding: 15px 15px 15px 50px;
   margin: -15px; }
 
-[dir="rtl"] .link:not(.link_preArrows):not(.link_inline):not(.link_twoArrows):hover:before {
-  right: -8px; }
+html[dir="rtl"] .link:not(.link_preArrows):not(.link_inline):not(.link_twoArrows):hover:before {
+  left: -8px;
+  right: auto; }
 
-[dir="rtl"] .link:hover:after {
-  right: 8px; }
+html[dir="rtl"] .link:hover:after {
+  left: -8px;
+  right: auto; }
 
-[dir="rtl"] .link:after,
-[dir="rtl"] .link:before {
+html[dir="rtl"] .link:after,
+html[dir="rtl"] .link:before {
   right: auto;
-  left: 8px; }
+  left: 0; }
 
-[dir="rtl"] .link:after {
+html[dir="rtl"] .link:after {
   border: none;
   border-top: 1px solid;
   border-left: 1px solid; }
 
-[dir="rtl"] .link_twoArrows {
+html[dir="rtl"] .link_twoArrows {
   padding-right: 0;
   padding-left: 15px; }
 
-[dir="rtl"] .link_twoArrows:after,
-[dir="rtl"] .link_twoArrows:before {
+html[dir="rtl"] .link_twoArrows:after,
+html[dir="rtl"] .link_twoArrows:before {
   right: auto;
   left: 0;
   border-bottom: none;
@@ -1766,19 +1768,22 @@ html:not(.touch) .link:hover:after, html:not(.touch) .link_preArrows:hover:befor
   border-top: 2px solid #ffcc02;
   border-left: 2px solid #ffcc02; }
 
-[dir="rtl"] .link_twoArrows:before {
+html[dir="rtl"] .link_twoArrows:before {
   right: auto;
   left: -5px; }
 
-[dir="rtl"] .link_twoArrows:hover:before {
+html[dir="rtl"] .link_twoArrows:hover:before {
   left: -23px; }
 
-[dir="rtl"] .link_preArrows {
+html[dir="rtl"] .link_preArrows {
   padding-left: 0;
   padding-right: 15px; }
 
-[dir="rtl"] .link_preArrows:after,
-[dir="rtl"] .link_preArrows:before {
+html[dir="rtl"] .link_preArrows:hover:after {
+  right: 5px; }
+
+html[dir="rtl"] .link_preArrows:after,
+html[dir="rtl"] .link_preArrows:before {
   top: 2px;
   left: auto;
   right: 0;
@@ -1787,9 +1792,13 @@ html:not(.touch) .link:hover:after, html:not(.touch) .link_preArrows:hover:befor
   border-top: 2px solid #dbaf00;
   border-left: 2px solid #dbaf00; }
 
-[dir="rtl"] .link_preArrows:before {
+html[dir="rtl"] .link_preArrows:before {
   left: auto;
   right: -5px; }
+
+html[dir="rtl"] .link_preArrows:hover:before {
+  right: 0;
+  left: auto; }
 
 @media (min-width: 1280px) {
   .narrativeDT .link_preArrows {
