@@ -207,20 +207,20 @@ html:not(.touch) {
 .link_themeApproach:hover:before { background-color: $CLR_APPROACH_ACTIVE; }
 
 .theme-approach .quarantine .link_title {
-  	display: block;
-	margin-top: 45px;
-  	@include font(SERIF);
-	font-size: 1.25rem;
-	color: #000;
+    display: block;
+    margin-top: 45px;
+    @include font(SERIF);
+    font-size: 1.25rem;
+    color: #000;
 }
 @include breakpoint(MD) {
-	.theme-approach .quarantine .link_title {
-		margin-top: 58px;
-		font-size: 2rem;
-  }
+    .theme-approach .quarantine .link_title {
+        margin-top: 58px;
+        font-size: 2rem;
+    }
 }
 .theme-approach .quarantine .link_image {
-  display: block;
+    display: block;
 }
 
 /* MISSION */
@@ -362,15 +362,13 @@ html[dir="rtl"] {
 @media (max-width: 500px) {
     [lang="hi"] {
         .quarantine a.link {
-             @include remify(font-size, 16px);
+            @include remify(font-size, 16px);
         }
     }
 
     [lang="bn"] {
         .quarantine a.link {
-             @include remify(font-size, 16px);
+            @include remify(font-size, 16px);
         }
     }
 }
-
-

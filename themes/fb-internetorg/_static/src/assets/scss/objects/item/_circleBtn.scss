@@ -15,7 +15,7 @@
     font-size: 0;
     @include transition(all 0.2s ease-in-out);
     transform: scale(0.65);
-     @media screen and (max-width: 800px){
+    @media screen and (max-width: 800px){
         background-color: #ff6b00;
     }
 }
@@ -24,7 +24,7 @@
 .circleBtn:hover,
 .circleBtn:active {
     background-color: $CLR_ACCENT_ACTIVE;
-     @media screen and (max-width: 800px){
+    @media screen and (max-width: 800px){
         background-color: #ff6b00;
     }
 }
@@ -161,3 +161,19 @@
         transform: scale(1);
     }
 }
+
+html[dir="rtl"] .narrative-section-bd-link .circleBtn:after,
+html[dir="rtl"] .narrative-section-bd-link .circleBtn:before,
+html[dir="rtl"] .js-stateLink .circleBtn:after,
+html[dir="rtl"] .js-stateLink .circleBtn:before
+{
+    border-bottom: none!important;
+    border-right: none!important;
+    border-top: 3px solid white!important;
+    border-left: 3px solid white!important;
+    left: 6px!important;
+}
+
+html[dir="rtl"] .contentOnMedia-link .circleBtn{ left: 80px!important; }
+
+

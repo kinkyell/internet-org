@@ -35,7 +35,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     /**
      * Cookie data to be set once user confirms an English link.
-     * 
+     *
      * @enum
      */
     EnglishContentDialogView.CONFIRMED_COOKIE = {
@@ -46,7 +46,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     /**
      * Has the view been enabled (once) ?
-     * 
+     *
      * @static
      * @type {boolean}
      */
@@ -71,7 +71,7 @@ define(function(require, exports, module) { // jshint ignore:line
 
     /**
      * Enable this component?
-     * 
+     *
      * @return {Boolaen}
      * @private
      */
@@ -107,7 +107,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto._openDialog = function(event) {
         event.preventDefault();
-        var displayClass = ""; 
+        var displayClass = "";
         console.log(event.currentTarget);
         if(($(event.currentTarget).attr("data-page")) && ($(event.currentTarget).attr("data-page")=="single")) {
             if($('.viewWindow-panel-content-blogc')) {
