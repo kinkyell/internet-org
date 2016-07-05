@@ -11,21 +11,21 @@ define('jquery', function() {
     return window.jQuery;
 });
 
-require(['./config'], function(){});
+require(['./config'], function(){
+    /**
+     * Bootstrap.
+     */
+    require(
+        [
+            './App'
+        ],
+        function(
+            App
+        ) {
+            'use strict';
 
-/**
- * Bootstrap.
- */
-require(
-    [
-        './App'
-    ],
-    function(
-        App
-    ) {
-        'use strict';
 
-
-        window.app = new App();
-    }
-);
+            window.app = new App();
+        }
+    );
+});
