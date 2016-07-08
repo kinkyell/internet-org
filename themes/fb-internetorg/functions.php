@@ -2788,7 +2788,8 @@ function internetorg_get_current_language( $facebook_sdk = false ) {
 		'pa' => 'pa_IN',
 		'pt' => 'pt_BR',
 		'ru' => 'ru_RU',
-		'ur' => 'ur_PK'
+		'ur' => 'ur_PK',
+		'ph' => 'tl_PH'
 	);
 
 	if ( isset( $current_blog->path ) ) {
@@ -2826,6 +2827,7 @@ function internetorg_get_switcher_links() {
 
 		$site_details 	= get_blog_details( $site );
 		$site_prefix  	= mlp_get_blog_language( $site );
+		if($site_prefix == 'tl') $site_prefix = 'ph';
 		$text_direction = 'ltr';
 		$active         = false;
 
