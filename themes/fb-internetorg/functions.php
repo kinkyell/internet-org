@@ -2827,7 +2827,6 @@ function internetorg_get_switcher_links() {
 
 		$site_details 	= get_blog_details( $site );
 		$site_prefix  	= mlp_get_blog_language( $site );
-		if($site_prefix == 'tl') $site_prefix = 'ph';
 		$text_direction = 'ltr';
 		$active         = false;
 
@@ -2840,7 +2839,7 @@ function internetorg_get_switcher_links() {
 		}
 
 		$menu[] = array(
-			'href' 			 => '/' . $site_prefix,
+			'href' 			 => $site_details->path,
 			'active' 		 => $active,
 			'text_direction' => $text_direction,
 			'display_name' 	 => esc_attr__( $site_details->blogname, 'internetorg' ),
