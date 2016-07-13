@@ -2857,17 +2857,19 @@ function internetorg_get_switcher_links() {
  */
 function internetorg_alter_links_to_match_language( $content ) {
 
-	$site_prefix = mlp_get_blog_language( get_current_blog_id() );
+	//$site_prefix = mlp_get_blog_language( get_current_blog_id() );
+	$site_details 	= get_blog_details( get_current_blog_id() );
 
-	if ( $site_prefix != 'en' )
+	if ( $site_details->path != '/en/' )
 	{
-		$content = str_replace( 'href="/en/', 'href="/' . $site_prefix . '/', $content );
-		$content = str_replace( 'href=\'/en/', 'href=\'/' . $site_prefix . '/', $content );
+		$content = str_replace( 'href="/en/', 'href="' . $site_details->path, $content );
+		$content = str_replace( 'href=\'/en/', 'href=\'' . $site_details->path, $content );
 	}
 
     return $content;
 }
 add_filter( 'the_content', 'internetorg_alter_links_to_match_language' );
+add_filter( 'iorg_url', 'internetorg_alter_links_to_match_language');
 
 /**
  * Catches links within the widget content
@@ -2876,14 +2878,15 @@ add_filter( 'the_content', 'internetorg_alter_links_to_match_language' );
  */
 function internetorg_alter_widget_url_to_match_language( $url ) {
 
-	$site_prefix = mlp_get_blog_language( get_current_blog_id() );
+	//$site_prefix = mlp_get_blog_language( get_current_blog_id() );
+	$site_details 	= get_blog_details( get_current_blog_id() );
 
-	if ( $site_prefix != 'en' )
+	if ( $site_details->path != '/en/' )
 	{
-		$url = str_replace( '/en/', '/' . $site_prefix . '/', $url );
+		$url = str_replace( '/en/', $site_details->path, $url );
 	}
 
-    return $url;
+	return $url;
 }
 add_filter( 'widget_data_url_filter', 'internetorg_alter_widget_url_to_match_language' );
 
@@ -2902,7 +2905,7 @@ function internetorg_strip_domain_from_insert_link( $permalink, $post )
 	$permalink = str_replace( $protocols, '', $permalink );
 	$permalink = str_replace( $site_url, '/en', $permalink );
 
-    return $permalink;
+	return $permalink;
 }
 
 function internetorg_add_link_filters( $query ) {
