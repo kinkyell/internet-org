@@ -199,7 +199,9 @@ define(function(require, exports, module) { // jshint ignore:line
         this.element.options[idx].setAttribute('selected', '');
         this.element.selectedIndex = idx;
         this._render();
-        eventHub.publish('SelectView:change', this.element, this._getSelected().value);
+        var pathname=document.location.pathname;
+        pathname = pathname.replace(/\/(.*?)\//, this._getSelected().value);
+        eventHub.publish('SelectView:change', this.element, pathname);
         this._toggleMenu();
     };
 
